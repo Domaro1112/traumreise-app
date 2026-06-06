@@ -289,3 +289,51 @@ input::placeholder { color: var(--color-text-muted); }
   -ms-overflow-style: none;
 }
 .blog-category-chips::-webkit-scrollbar { display: none; }
+
+/* ── Article page: 2-column layout ───────────────────────────────────────── */
+.article-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: start;
+}
+@media (min-width: 1024px) {
+  .article-layout {
+    grid-template-columns: minmax(0, 2fr) 320px;
+    gap: 56px;
+  }
+}
+
+/* Article sidebar: hidden on mobile, shown on desktop */
+.article-sidebar-desktop {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .article-sidebar-desktop {
+    display: block;
+  }
+}
+
+/* Sticky sidebar on desktop */
+.article-sidebar-sticky {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+@media (min-width: 1024px) {
+  .article-sidebar-sticky {
+    position: sticky;
+    top: 96px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  .article-sidebar-sticky::-webkit-scrollbar { display: none; }
+}
+
+/* Article prose: native details/summary styles */
+details[open] > summary span:last-child {
+  transform: rotate(45deg);
+}
+details > summary::-webkit-details-marker { display: none; }
+details > summary::marker { display: none; }

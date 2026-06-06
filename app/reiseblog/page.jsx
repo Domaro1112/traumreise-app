@@ -277,7 +277,7 @@ export default function Reiseblog() {
                   fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
                 }}
               >
-                KI-Reiseplanung
+                Deine Reiseplanung
               </div>
               <h2
                 style={{
@@ -311,7 +311,7 @@ export default function Reiseblog() {
                   margin: '0 auto 40px',
                 }}
               >
-                Lass unsere KI in 2 Minuten das perfekte Reiseziel für dich finden – 100 %
+                Lass unsere Analyse in 2 Minuten das perfekte Reiseziel für dich finden – 100 %
                 kostenlos und personalisiert auf deinen Stil.
               </p>
               <Link
@@ -332,7 +332,7 @@ export default function Reiseblog() {
                   letterSpacing: '-0.01em',
                 }}
               >
-                KI-Finder starten
+                Analyse starten
                 <ArrowRight size={18} strokeWidth={2.5} />
               </Link>
               <p
