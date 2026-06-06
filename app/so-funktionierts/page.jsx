@@ -6,7 +6,7 @@ import HowItWorksSection from '@/components/landing/HowItWorksSection';
 
 export const metadata = {
   title: 'So funktioniert\'s – Traumreise',
-  description: 'In 3 einfachen Schritten zu deiner persönlichen Traumreise mit KI-Unterstützung.',
+  description: 'In 3 einfachen Schritten zu deiner persönlichen Traumreise.',
 };
 
 export default function SoFunktionierts() {
@@ -19,7 +19,7 @@ export default function SoFunktionierts() {
             <SectionTitle
               label="Die Traumreise wartet"
               title="So funktioniert's"
-              subtitle="Unser KI-Reiseplaner findet in wenigen Minuten dein perfektes Reiseziel – ganz persönlich und kostenlos."
+              subtitle="Unser Reiseplaner findet in wenigen Minuten dein perfektes Reiseziel – ganz persönlich und kostenlos."
             />
           </Container>
         </div>
