@@ -77,7 +77,7 @@ export default function Footer() {
               </span>
             </div>
             <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.7, marginBottom: '24px' }}>
-              Dein KI-Reisekompass für persönliche Urlaubsideen. Kostenlos & sofort.
+              Dein Reisekompass für persönliche Urlaubsideen. Kostenlos & sofort verfügbar.
             </p>
             <div style={{ display: 'flex', gap: '10px' }}>
               {socialLinks.map((s) => (

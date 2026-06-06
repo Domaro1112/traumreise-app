@@ -1,7 +1,9 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
+// ── Data constants (logic unchanged) ─────────────────────────────────────────
 const INTERESTS = [
   { id: "beach",     label: "🏖️ Strand & Meer",     desc: "Sonne, Sand, Wellen" },
   { id: "mountains", label: "⛰️ Berge & Natur",      desc: "Wandern, Frische Luft" },
@@ -33,10 +35,10 @@ const VIBES = [
   { id: "relax",     emoji: "🌴", label: "Entspannung", color: "#00C9A7" },
   { id: "adventure", emoji: "🏔️", label: "Abenteuer",   color: "#FF6B35" },
   { id: "city",      emoji: "🌆", label: "Städtetrip",  color: "#A78BFA" },
-  { id: "culture",   emoji: "🏛️", label: "Kultur",      color: "#FBBF24" },
+  { id: "culture",   emoji: "🏛️", label: "Kultur",      color: "#F59E0B" },
   { id: "food",      emoji: "🍜", label: "Kulinarik",   color: "#F472B6" },
-  { id: "nature",    emoji: "🌿", label: "Natur",       color: "#4ADE80" },
-  { id: "wellness",  emoji: "🧘", label: "Wellness",    color: "#67E8F9" },
+  { id: "nature",    emoji: "🌿", label: "Natur",       color: "#22C55E" },
+  { id: "wellness",  emoji: "🧘", label: "Wellness",    color: "#06B6D4" },
   { id: "party",     emoji: "🎉", label: "Nightlife",   color: "#FB923C" },
 ];
 const SCENE_EMOJIS = {
@@ -60,40 +62,28 @@ const EXAMPLES = [
   "Städte, in denen man sich verlaufen kann und es gut ist…",
   "Ich will Essen probieren, das ich zuhause nie finden würde…",
 ];
-const STARS = Array.from({ length: 50 }, () => ({
-  w: Math.random() * 2 + 1,
-  top: Math.random() * 100,
-  left: Math.random() * 100,
-  op: Math.random() * 0.5 + 0.1,
-  dur: Math.random() * 3 + 2,
-  delay: Math.random() * 4,
-}));
 
-const BG_IMAGES = [
-  "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&q=80",
-  "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1600&q=80",
-  "https://images.unsplash.com/photo-1439405326854-014607f694d7?w=1600&q=80",
-];
-
-function Chip({ label, desc, selected, color = "#FFD700", onClick }) {
+// ── Chip (light design) ───────────────────────────────────────────────────────
+function Chip({ label, desc, selected, onClick }) {
   return (
     <button onClick={onClick} style={{
       padding: desc ? "12px 16px" : "10px 18px",
       borderRadius: "12px",
-      border: `1.5px solid ${selected ? color : "rgba(255,255,255,.12)"}`,
-      background: selected ? `${color}18` : "rgba(255,255,255,.03)",
-      color: selected ? color : "rgba(255,255,255,.7)",
+      border: `2px solid ${selected ? "#0EA5E9" : "#E2E8F0"}`,
+      background: selected ? "#EFF6FF" : "#FFFFFF",
+      color: selected ? "#0284C7" : "#475569",
       cursor: "pointer", transition: "all .2s", textAlign: "left",
-      fontSize: "14px", fontWeight: selected ? 600 : 400, lineHeight: 1.3,
-      boxShadow: selected ? `0 0 14px ${color}33` : "none",
+      fontSize: "14px", fontWeight: selected ? 600 : 500, lineHeight: 1.3,
+      boxShadow: selected ? "0 0 0 3px rgba(14,165,233,0.12)" : "0 1px 4px rgba(15,23,42,0.06)",
       fontFamily: "inherit",
     }}>
       <div>{label}</div>
-      {desc && <div style={{ fontSize: "11px", opacity: .6, marginTop: "2px" }}>{desc}</div>}
+      {desc && <div style={{ fontSize: "11px", opacity: .7, marginTop: "2px" }}>{desc}</div>}
     </button>
   );
 }
 
+// ── TypewriterText (logic unchanged) ─────────────────────────────────────────
 function TypewriterText({ text, speed = 22, onDone }) {
   const [shown, setShown] = useState("");
   const [done, setDone] = useState(false);
@@ -110,6 +100,7 @@ function TypewriterText({ text, speed = 22, onDone }) {
   return <span>{shown}{!done && <span style={{ animation: "blink 1s step-end infinite" }}>|</span>}</span>;
 }
 
+// ── FloatingEmoji (logic unchanged) ──────────────────────────────────────────
 function FloatingEmoji({ emojis }) {
   const items = Array.from({ length: 10 }, (_, i) => ({
     emoji: emojis[i % emojis.length],
@@ -129,6 +120,7 @@ function FloatingEmoji({ emojis }) {
   );
 }
 
+// ── AffiliateCard (light design, links/logic unchanged) ───────────────────────
 function AffiliateCard({ destination, country, imageEmoji, tagline, highlights, bookingUrl, trivagoUrl, skyUrl, gygUrl, check24Url }) {
   const btns = [
     { href: trivagoUrl,  bg: "linear-gradient(90deg,#d00e17,#ff4d57)",  label: "🏨 Hotels auf Trivago" },
@@ -138,20 +130,22 @@ function AffiliateCard({ destination, country, imageEmoji, tagline, highlights, 
     { href: check24Url,  bg: "linear-gradient(90deg,#003399,#e30613)",  label: "✅ Pauschalreise CHECK24" },
   ];
   return (
-    <div style={{ background: "rgba(255,255,255,.04)", border: "1px solid rgba(255,215,100,.15)", borderRadius: "20px", overflow: "hidden", transition: "transform .3s,box-shadow .3s" }}
-      onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-6px)"; e.currentTarget.style.boxShadow = "0 20px 60px rgba(255,180,50,.15)"; }}
-      onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}>
-      <div style={{ background: "linear-gradient(135deg,rgba(255,180,50,.2),rgba(255,100,80,.15))", padding: "28px 24px 20px", textAlign: "center", borderBottom: "1px solid rgba(255,215,100,.1)" }}>
+    <div
+      style={{ background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: "20px", overflow: "hidden", boxShadow: "0 2px 16px rgba(15,23,42,0.06)", transition: "transform .3s, box-shadow .3s" }}
+      onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-6px)"; e.currentTarget.style.boxShadow = "0 20px 60px rgba(14,165,233,0.16)"; }}
+      onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 2px 16px rgba(15,23,42,0.06)"; }}
+    >
+      <div style={{ background: "linear-gradient(135deg, #EFF6FF 0%, #ECFEFF 100%)", padding: "28px 24px 20px", textAlign: "center", borderBottom: "1px solid #E2E8F0" }}>
         <div style={{ fontSize: "52px", marginBottom: "8px" }}>{imageEmoji}</div>
-        <div style={{ fontSize: "22px", fontFamily: "'Playfair Display',serif", fontWeight: 700, color: "#fff" }}>{destination}</div>
-        <div style={{ fontSize: "13px", color: "#FFD700", marginTop: "4px", fontWeight: 500, letterSpacing: "1px", textTransform: "uppercase" }}>{country}</div>
-        <div style={{ fontSize: "14px", color: "rgba(255,255,255,.65)", marginTop: "8px", fontStyle: "italic" }}>{tagline}</div>
+        <div style={{ fontSize: "22px", fontFamily: "var(--font-heading)", fontWeight: 700, color: "#0F172A" }}>{destination}</div>
+        <div style={{ fontSize: "13px", color: "#0EA5E9", marginTop: "4px", fontWeight: 600, letterSpacing: "1px", textTransform: "uppercase" }}>{country}</div>
+        <div style={{ fontSize: "14px", color: "#64748B", marginTop: "8px", fontStyle: "italic" }}>{tagline}</div>
       </div>
       <div style={{ padding: "16px 24px" }}>
         {highlights.map((h, i) => (
           <div key={i} style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
-            <span style={{ color: "#FFD700", fontSize: "14px" }}>✦</span>
-            <span style={{ color: "rgba(255,255,255,.75)", fontSize: "13px" }}>{h}</span>
+            <span style={{ color: "#0EA5E9", fontSize: "14px", fontWeight: 700 }}>✓</span>
+            <span style={{ color: "#475569", fontSize: "13px" }}>{h}</span>
           </div>
         ))}
       </div>
@@ -169,21 +163,31 @@ function AffiliateCard({ destination, country, imageEmoji, tagline, highlights, 
   );
 }
 
+// ── EmailPopup (light design, logic unchanged) ────────────────────────────────
 function EmailPopup({ destination = "", onClose }) {
   const [email, setEmail] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [done, setDone] = useState(false);
   const valid = email.includes("@") && email.includes(".") && agreed;
 
+  const modalCard = {
+    background: "#FFFFFF",
+    border: "1px solid #E2E8F0",
+    borderRadius: "24px",
+    boxShadow: "0 24px 80px rgba(15,23,42,0.20)",
+    maxWidth: "420px",
+    width: "100%",
+  };
+
   if (done) return (
-    <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,.8)", zIndex: 200, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
-      <div style={{ background: "linear-gradient(160deg,#0d1220,#07070f)", border: "1px solid rgba(255,215,0,.2)", borderRadius: "24px", padding: "40px 32px", maxWidth: "420px", width: "100%", textAlign: "center" }}>
+    <div style={{ position: "fixed", inset: 0, background: "rgba(15,23,42,0.72)", zIndex: 200, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
+      <div style={{ ...modalCard, padding: "40px 32px", textAlign: "center" }}>
         <div style={{ fontSize: "52px", marginBottom: "16px" }}>📬</div>
-        <h3 style={{ fontFamily: "'Playfair Display',serif", fontSize: "22px", fontWeight: 700, color: "#fff", marginBottom: "10px" }}>Fast geschafft!</h3>
-        <p style={{ color: "rgba(255,255,255,.55)", fontSize: "15px", lineHeight: 1.7, marginBottom: "24px" }}>
-          Wir haben dir eine <strong style={{ color: "#FFD700" }}>Bestätigungsmail</strong> geschickt.<br />Klick auf den Link — dann bist du dabei!
+        <h3 style={{ fontFamily: "var(--font-heading)", fontSize: "22px", fontWeight: 700, color: "#0F172A", marginBottom: "10px" }}>Fast geschafft!</h3>
+        <p style={{ color: "#64748B", fontSize: "15px", lineHeight: 1.7, marginBottom: "24px" }}>
+          Wir haben dir eine <strong style={{ color: "#0EA5E9" }}>Bestätigungsmail</strong> geschickt.<br />Klick auf den Link — dann bist du dabei!
         </p>
-        <button onClick={onClose} style={{ padding: "12px 28px", borderRadius: "10px", border: "none", background: "linear-gradient(90deg,#FFD700,#FF8C00)", color: "#0a0a14", fontWeight: 700, fontSize: "15px", cursor: "pointer" }}>
+        <button onClick={onClose} style={{ padding: "12px 28px", borderRadius: "12px", border: "none", background: "linear-gradient(135deg,#0EA5E9,#06B6D4)", color: "#fff", fontWeight: 700, fontSize: "15px", cursor: "pointer", boxShadow: "0 4px 16px rgba(14,165,233,0.35)" }}>
           Alles klar 👍
         </button>
       </div>
@@ -191,33 +195,33 @@ function EmailPopup({ destination = "", onClose }) {
   );
 
   return (
-    <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,.8)", zIndex: 200, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
-      <div style={{ background: "linear-gradient(160deg,#0d1220,#07070f)", border: "1px solid rgba(255,215,0,.2)", borderRadius: "24px", padding: "36px 32px", maxWidth: "420px", width: "100%", position: "relative" }}>
-        <button onClick={onClose} style={{ position: "absolute", top: 14, right: 18, background: "none", border: "none", color: "rgba(255,255,255,.3)", fontSize: 22, cursor: "pointer" }}>×</button>
+    <div style={{ position: "fixed", inset: 0, background: "rgba(15,23,42,0.72)", zIndex: 200, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
+      <div style={{ ...modalCard, padding: "36px 32px", position: "relative" }}>
+        <button onClick={onClose} style={{ position: "absolute", top: 14, right: 18, background: "none", border: "none", color: "#94A3B8", fontSize: 22, cursor: "pointer", lineHeight: 1 }}>×</button>
         <div style={{ textAlign: "center", marginBottom: "24px" }}>
           <div style={{ fontSize: "40px", marginBottom: "12px" }}>✈️</div>
-          <h3 style={{ fontFamily: "'Playfair Display',serif", fontSize: "22px", fontWeight: 700, color: "#fff", marginBottom: "8px" }}>Reise-Inspiration ins Postfach</h3>
-          <p style={{ color: "rgba(255,255,255,.5)", fontSize: "14px", lineHeight: 1.6 }}>
+          <h3 style={{ fontFamily: "var(--font-heading)", fontSize: "22px", fontWeight: 700, color: "#0F172A", marginBottom: "8px" }}>Reise-Inspiration ins Postfach</h3>
+          <p style={{ color: "#64748B", fontSize: "14px", lineHeight: 1.6 }}>
             {destination ? `Erhalte deinen ${destination}-Reiseplan + wöchentlich die besten Deals.` : "Wöchentlich die besten Deals & Inspiration."}
           </p>
         </div>
         <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="deine@email.de"
-          style={{ width: "100%", boxSizing: "border-box", background: "rgba(255,255,255,.06)", border: `1.5px solid ${email.includes("@") ? "rgba(255,215,0,.4)" : "rgba(255,255,255,.12)"}`, borderRadius: "12px", padding: "13px 16px", color: "#fff", fontSize: "15px", outline: "none", marginBottom: "14px", fontFamily: "inherit" }} />
+          style={{ width: "100%", boxSizing: "border-box", background: "#F8FAFF", border: `2px solid ${email.includes("@") ? "#0EA5E9" : "#E2E8F0"}`, borderRadius: "12px", padding: "13px 16px", color: "#0F172A", fontSize: "15px", outline: "none", marginBottom: "14px", fontFamily: "inherit", transition: "border-color .2s" }} />
         <label style={{ display: "flex", alignItems: "flex-start", gap: "10px", cursor: "pointer", marginBottom: "20px" }}>
-          <div onClick={() => setAgreed(a => !a)} style={{ width: "20px", height: "20px", minWidth: "20px", borderRadius: "5px", border: `1.5px solid ${agreed ? "#FFD700" : "rgba(255,255,255,.2)"}`, background: agreed ? "rgba(255,215,0,.15)" : "transparent", display: "flex", alignItems: "center", justifyContent: "center", marginTop: "1px", cursor: "pointer" }}>
-            {agreed && <span style={{ color: "#FFD700", fontSize: "13px", fontWeight: 700 }}>✓</span>}
+          <div onClick={() => setAgreed(a => !a)} style={{ width: "20px", height: "20px", minWidth: "20px", borderRadius: "5px", border: `2px solid ${agreed ? "#0EA5E9" : "#CBD5E1"}`, background: agreed ? "#EFF6FF" : "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center", marginTop: "1px", cursor: "pointer" }}>
+            {agreed && <span style={{ color: "#0EA5E9", fontSize: "13px", fontWeight: 700 }}>✓</span>}
           </div>
-          <span style={{ fontSize: "12px", color: "rgba(255,255,255,.4)", lineHeight: 1.6 }}>
+          <span style={{ fontSize: "12px", color: "#64748B", lineHeight: 1.6 }}>
             Ich bin einverstanden, Reise-Inspiration & Angebote per Mail zu erhalten. Abmeldung jederzeit möglich.
           </span>
         </label>
         <button onClick={() => valid && setDone(true)} disabled={!valid}
-          style={{ width: "100%", padding: "14px", borderRadius: "12px", border: "none", background: valid ? "linear-gradient(90deg,#FFD700,#FF8C00)" : "rgba(255,255,255,.08)", color: valid ? "#0a0a14" : "rgba(255,255,255,.2)", fontWeight: 700, fontSize: "15px", cursor: valid ? "pointer" : "not-allowed", fontFamily: "inherit" }}>
+          style={{ width: "100%", padding: "14px", borderRadius: "12px", border: "none", background: valid ? "linear-gradient(135deg,#0EA5E9,#06B6D4)" : "#F1F5F9", color: valid ? "#fff" : "#94A3B8", fontWeight: 700, fontSize: "15px", cursor: valid ? "pointer" : "not-allowed", fontFamily: "inherit", boxShadow: valid ? "0 4px 16px rgba(14,165,233,0.35)" : "none" }}>
           📬 Kostenlos anmelden
         </button>
         <div style={{ display: "flex", justifyContent: "center", gap: "14px", marginTop: "12px" }}>
           {["🔒 Kein Spam", "✅ DSGVO-konform", "📤 Abmelden"].map(t => (
-            <span key={t} style={{ fontSize: "11px", color: "rgba(255,255,255,.25)" }}>{t}</span>
+            <span key={t} style={{ fontSize: "11px", color: "#94A3B8" }}>{t}</span>
           ))}
         </div>
       </div>
@@ -225,29 +229,38 @@ function EmailPopup({ destination = "", onClose }) {
   );
 }
 
+// ── Home screen (light design, logic unchanged) ───────────────────────────────
 function Home({ onSelect }) {
   return (
     <div style={{ textAlign: "center", animation: "fadeUp .55s ease both" }}>
       <div style={{ marginBottom: "40px" }}>
-        <div style={{ fontSize: "13px", letterSpacing: "4px", color: "#FFD700", textTransform: "uppercase", marginBottom: "14px", fontWeight: 600 }}>✦ Dein Reise-Kompass ✦</div>
-        <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(32px,5vw,52px)", fontWeight: 700, margin: "0 0 12px", lineHeight: 1.15, background: "linear-gradient(135deg,#fff 20%,#FFD700 70%,#FF8C00)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-          Wo zieht es dich hin?
+        <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "6px 18px", borderRadius: "20px", background: "#EFF6FF", border: "1px solid #BFDBFE", fontSize: "12px", fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "#0284C7", marginBottom: "16px", fontFamily: "var(--font-heading)" }}>
+          ✈️ Dein persönlicher Reise-Kompass
+        </div>
+        <h1 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(26px,5vw,44px)", fontWeight: 800, margin: "0 0 14px", lineHeight: 1.1, color: "#0F172A", letterSpacing: "-0.02em" }}>
+          Finde deine persönliche{" "}
+          <span style={{ background: "linear-gradient(135deg,#0EA5E9,#06B6D4)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            Traumreise
+          </span>
         </h1>
-        <p style={{ color: "rgba(255,255,255,.45)", fontSize: "15px", fontWeight: 300 }}>Wähle deinen Weg zur Inspiration</p>
+        <p style={{ color: "#64748B", fontSize: "16px", fontWeight: 400, lineHeight: 1.7, maxWidth: "500px", margin: "0 auto" }}>
+          Beantworte ein paar kurze Fragen und erhalte Reiseziele, die wirklich zu dir passen.
+        </p>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14px", maxWidth: "560px", margin: "0 auto" }}>
+
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", maxWidth: "580px", margin: "0 auto" }}>
         {[
-          { id: "classic", emoji: "🗺️", title: "Reiseziel-Finder", desc: "Schritt für Schritt zum perfekten Reiseziel — mit Interessen, Budget & Affiliate-Links", color: "#FFD700", badge: null },
+          { id: "classic", emoji: "🗺️", title: "Reiseziel-Finder", desc: "Schritt für Schritt zum perfekten Reiseziel — mit Interessen, Budget & Affiliate-Links", color: "#0EA5E9", badge: null },
           { id: "zukunft", emoji: "🔮", title: "Dein Reise-Zukunfts-Ich", desc: "Sieh wie dein Leben aussieht wenn du diesen Trip machst — emotional & viral", color: "#A78BFA", badge: "✨ NEU" },
         ].map(m => (
           <button key={m.id} onClick={() => onSelect(m.id)}
-            style={{ padding: "24px 20px", borderRadius: "20px", textAlign: "left", border: `1.5px solid ${m.color}33`, background: "rgba(255,255,255,.03)", cursor: "pointer", transition: "all .25s", position: "relative", fontFamily: "inherit" }}
-            onMouseEnter={e => { e.currentTarget.style.border = `1.5px solid ${m.color}`; e.currentTarget.style.background = `${m.color}14`; e.currentTarget.style.boxShadow = `0 0 28px ${m.color}33`; }}
-            onMouseLeave={e => { e.currentTarget.style.border = `1.5px solid ${m.color}33`; e.currentTarget.style.background = "rgba(255,255,255,.03)"; e.currentTarget.style.boxShadow = "none"; }}>
-            {m.badge && <div style={{ position: "absolute", top: 12, right: 12, fontSize: "10px", background: `${m.color}22`, color: m.color, padding: "2px 8px", borderRadius: 20, fontWeight: 700 }}>{m.badge}</div>}
-            <div style={{ fontSize: "36px", marginBottom: "10px" }}>{m.emoji}</div>
-            <div style={{ fontSize: "15px", fontWeight: 700, color: "#fff", marginBottom: "6px" }}>{m.title}</div>
-            <div style={{ fontSize: "12px", color: "rgba(255,255,255,.45)", lineHeight: 1.6 }}>{m.desc}</div>
+            style={{ padding: "28px 22px", borderRadius: "20px", textAlign: "left", border: "2px solid #E2E8F0", background: "#FFFFFF", cursor: "pointer", transition: "all .25s", position: "relative", fontFamily: "inherit", boxShadow: "0 2px 12px rgba(15,23,42,0.06)" }}
+            onMouseEnter={e => { e.currentTarget.style.border = `2px solid ${m.color}`; e.currentTarget.style.boxShadow = `0 8px 32px ${m.color}40`; e.currentTarget.style.transform = "translateY(-3px)"; }}
+            onMouseLeave={e => { e.currentTarget.style.border = "2px solid #E2E8F0"; e.currentTarget.style.boxShadow = "0 2px 12px rgba(15,23,42,0.06)"; e.currentTarget.style.transform = "translateY(0)"; }}>
+            {m.badge && <div style={{ position: "absolute", top: 12, right: 12, fontSize: "10px", background: `${m.color}18`, border: `1px solid ${m.color}44`, color: m.color, padding: "3px 10px", borderRadius: 20, fontWeight: 700 }}>{m.badge}</div>}
+            <div style={{ width: "52px", height: "52px", borderRadius: "16px", background: `${m.color}15`, border: `1.5px solid ${m.color}30`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: "26px", marginBottom: "16px" }}>{m.emoji}</div>
+            <div style={{ fontSize: "16px", fontWeight: 700, color: "#0F172A", marginBottom: "8px", fontFamily: "var(--font-heading)" }}>{m.title}</div>
+            <div style={{ fontSize: "13px", color: "#64748B", lineHeight: 1.6 }}>{m.desc}</div>
           </button>
         ))}
       </div>
@@ -255,6 +268,7 @@ function Home({ onSelect }) {
   );
 }
 
+// ── Classic (light design, ALL logic unchanged) ───────────────────────────────
 function Classic({ onBack }) {
   const [step, setStep] = useState(0);
   const [freeText, setFreeText] = useState("");
@@ -333,49 +347,66 @@ function Classic({ onBack }) {
 
   return (
     <>
+      {/* Progress bar */}
       {step < 4 && (
         <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginBottom: "36px" }}>
-          {[0, 1, 2, 3].map(i => <div key={i} style={{ height: "4px", width: "48px", borderRadius: "2px", background: i <= step ? "#FFD700" : "rgba(255,255,255,.1)", transition: "background .4s" }} />)}
+          {[0, 1, 2, 3].map(i => (
+            <div key={i} style={{ height: "4px", width: "48px", borderRadius: "2px", background: i <= step ? "#0EA5E9" : "#E2E8F0", transition: "background .4s" }} />
+          ))}
         </div>
       )}
 
+      {/* Step 0 — Freitext */}
       {step === 0 && (
         <div style={{ animation: "fadeUp .55s ease both" }}>
-          <h2 style={{ fontFamily: "'Playfair Display'", fontSize: "24px", marginBottom: "8px", fontWeight: 700 }}>Erzähl uns von dir ✍️</h2>
-          <p style={{ color: "rgba(255,255,255,.45)", fontSize: "14px", marginBottom: "20px", lineHeight: 1.7 }}>Was macht deinen Traumurlaub aus? Schreib einfach drauf los.</p>
+          <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "22px", marginBottom: "6px", fontWeight: 700, color: "#0F172A" }}>Erzähl uns von dir ✍️</h2>
+          <p style={{ color: "#64748B", fontSize: "14px", marginBottom: "20px", lineHeight: 1.7 }}>Was macht deinen Traumurlaub aus? Schreib einfach drauf los.</p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "14px" }}>
             {EXAMPLES.map((ex, i) => (
-              <button key={i} onClick={() => setFreeText(ex)} style={{ padding: "6px 14px", borderRadius: "20px", fontSize: "12px", border: "1px solid rgba(255,215,0,.2)", background: "rgba(255,215,0,.05)", color: "rgba(255,255,255,.5)", cursor: "pointer", fontFamily: "inherit" }}
-                onMouseEnter={e => e.currentTarget.style.color = "#FFD700"} onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,.5)"}>
+              <button key={i} onClick={() => setFreeText(ex)} className="finder-example-pill">
                 💡 {ex.length > 40 ? ex.slice(0, 40) + "…" : ex}
               </button>
             ))}
           </div>
           <div style={{ position: "relative" }}>
-            <textarea value={freeText} onChange={e => setFreeText(e.target.value)} rows={5} placeholder="Ich träume von einem Ort, wo morgens die Gassen noch leer sind…"
-              style={{ width: "100%", boxSizing: "border-box", background: "rgba(255,255,255,.04)", border: `1.5px solid ${freeText.length >= 20 ? "rgba(255,215,0,.45)" : "rgba(255,255,255,.1)"}`, borderRadius: "14px", padding: "16px 18px 36px", color: "#fff", fontSize: "15px", lineHeight: 1.75, fontFamily: "inherit", fontWeight: 300, resize: "none", outline: "none" }} />
-            <div style={{ position: "absolute", bottom: "12px", right: "14px", fontSize: "12px", color: freeText.length >= 20 ? "rgba(255,215,0,.6)" : "rgba(255,255,255,.2)" }}>{freeText.length}{freeText.length < 20 ? ` (noch ${20 - freeText.length})` : " ✓"}</div>
+            <textarea value={freeText} onChange={e => setFreeText(e.target.value)} rows={5}
+              placeholder="Ich träume von einem Ort, wo morgens die Gassen noch leer sind…"
+              style={{ width: "100%", boxSizing: "border-box", background: "#F8FAFF", border: `2px solid ${freeText.length >= 20 ? "#0EA5E9" : "#E2E8F0"}`, borderRadius: "14px", padding: "16px 18px 36px", color: "#0F172A", fontSize: "15px", lineHeight: 1.75, fontFamily: "inherit", fontWeight: 400, resize: "none", outline: "none", transition: "border-color .2s, box-shadow .2s", boxShadow: freeText.length >= 20 ? "0 0 0 3px rgba(14,165,233,0.12)" : "none" }} />
+            <div style={{ position: "absolute", bottom: "12px", right: "14px", fontSize: "12px", color: freeText.length >= 20 ? "#0EA5E9" : "#94A3B8", fontWeight: 500 }}>
+              {freeText.length}{freeText.length < 20 ? ` (noch ${20 - freeText.length})` : " ✓"}
+            </div>
           </div>
-          {freeText.length >= 20 && <div style={{ marginTop: "12px", padding: "12px 16px", background: "rgba(255,215,0,.06)", border: "1px solid rgba(255,215,0,.2)", borderRadius: "12px", display: "flex", alignItems: "center", gap: "10px" }}><span>✨</span><span style={{ fontSize: "13px", color: "rgba(255,255,255,.6)", fontStyle: "italic" }}>Die KI erkennt deinen Reisetyp.</span></div>}
+          {freeText.length >= 20 && (
+            <div style={{ marginTop: "12px", padding: "12px 16px", background: "#EFF6FF", border: "1px solid #BFDBFE", borderRadius: "12px", display: "flex", alignItems: "center", gap: "10px" }}>
+              <span>✨</span>
+              <span style={{ fontSize: "13px", color: "#0284C7", fontStyle: "italic" }}>Die KI erkennt deinen Reisetyp.</span>
+            </div>
+          )}
         </div>
       )}
 
+      {/* Step 1 — Interessen */}
       {step === 1 && (
         <div style={{ animation: "fadeUp .55s ease both" }}>
-          <h2 style={{ fontFamily: "'Playfair Display'", fontSize: "24px", marginBottom: "8px", fontWeight: 700 }}>Was liebst du an Reisen?</h2>
-          <p style={{ color: "rgba(255,255,255,.45)", fontSize: "14px", marginBottom: "20px" }}>Mehrfachauswahl möglich</p>
+          <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "22px", marginBottom: "6px", fontWeight: 700, color: "#0F172A" }}>Was liebst du an Reisen?</h2>
+          <p style={{ color: "#64748B", fontSize: "14px", marginBottom: "20px" }}>Mehrfachauswahl möglich</p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(160px,1fr))", gap: "12px" }}>
             {INTERESTS.map(i => <Chip key={i.id} label={i.label} desc={i.desc} selected={interests.includes(i.id)} onClick={() => toggle(i.id)} />)}
           </div>
         </div>
       )}
 
+      {/* Step 2 — Rahmenbedingungen */}
       {step === 2 && (
         <div style={{ animation: "fadeUp .55s ease both" }}>
-          <h2 style={{ fontFamily: "'Playfair Display'", fontSize: "24px", marginBottom: "24px", fontWeight: 700 }}>Rahmenbedingungen</h2>
-          {[{ label: "Budget", items: BUDGETS, val: budget, set: setBudget }, { label: "Reisedauer", items: DURATIONS, val: duration, set: setDuration }, { label: "Reisezeit", items: SEASONS, val: season, set: setSeason }].map(({ label, items, val, set }) => (
+          <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "22px", marginBottom: "22px", fontWeight: 700, color: "#0F172A" }}>Rahmenbedingungen</h2>
+          {[
+            { label: "Budget", items: BUDGETS, val: budget, set: setBudget },
+            { label: "Reisedauer", items: DURATIONS, val: duration, set: setDuration },
+            { label: "Reisezeit", items: SEASONS, val: season, set: setSeason },
+          ].map(({ label, items, val, set }) => (
             <div key={label} style={{ marginBottom: "24px" }}>
-              <div style={{ fontSize: "13px", color: "#FFD700", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "10px", fontWeight: 600 }}>{label}</div>
+              <div className="finder-step-label">{label}</div>
               <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
                 {items.map(it => <Chip key={it.id} label={it.label} desc={it.desc} selected={val === it.id} onClick={() => set(it.id)} />)}
               </div>
@@ -384,38 +415,58 @@ function Classic({ onBack }) {
         </div>
       )}
 
+      {/* Step 3 — Reisende */}
       {step === 3 && (
         <div style={{ animation: "fadeUp .55s ease both" }}>
-          <h2 style={{ fontFamily: "'Playfair Display'", fontSize: "24px", marginBottom: "8px", fontWeight: 700 }}>Wer reist mit?</h2>
-          <p style={{ color: "rgba(255,255,255,.45)", fontSize: "14px", marginBottom: "24px" }}>Anzahl der Reisenden festlegen</p>
-          {[{ label: "👤 Erwachsene", sub: "18+ Jahre", val: adults, set: setAdults, min: 1 }, { label: "🧒 Kinder", sub: "unter 18 Jahre", val: children, set: setChildren, min: 0 }].map(({ label, sub, val, set, min }) => (
-            <div key={label} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", background: "rgba(255,255,255,.04)", border: "1px solid rgba(255,255,255,.08)", borderRadius: "16px", padding: "20px 24px", marginBottom: "14px" }}>
-              <div><div style={{ fontSize: "16px", fontWeight: 600 }}>{label}</div><div style={{ fontSize: "12px", color: "rgba(255,255,255,.4)", marginTop: "2px" }}>{sub}</div></div>
+          <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "22px", marginBottom: "6px", fontWeight: 700, color: "#0F172A" }}>Wer reist mit?</h2>
+          <p style={{ color: "#64748B", fontSize: "14px", marginBottom: "24px" }}>Anzahl der Reisenden festlegen</p>
+          {[
+            { label: "👤 Erwachsene", sub: "18+ Jahre",      val: adults,   set: setAdults,   min: 1 },
+            { label: "🧒 Kinder",     sub: "unter 18 Jahre", val: children, set: setChildren, min: 0 },
+          ].map(({ label, sub, val, set, min }) => (
+            <div key={label} className="finder-traveler-row">
+              <div>
+                <div style={{ fontSize: "16px", fontWeight: 600, color: "#0F172A" }}>{label}</div>
+                <div style={{ fontSize: "12px", color: "#94A3B8", marginTop: "2px" }}>{sub}</div>
+              </div>
               <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-                <button onClick={() => set(v => Math.max(min, v - 1))} style={{ width: "36px", height: "36px", borderRadius: "50%", border: "1.5px solid rgba(255,215,0,.4)", background: "transparent", color: "#FFD700", fontSize: "20px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "inherit" }}>−</button>
-                <span style={{ fontSize: "22px", fontWeight: 700, minWidth: "28px", textAlign: "center" }}>{val}</span>
-                <button onClick={() => set(v => v + 1)} style={{ width: "36px", height: "36px", borderRadius: "50%", border: "1.5px solid rgba(255,215,0,.4)", background: "rgba(255,215,0,.1)", color: "#FFD700", fontSize: "20px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "inherit" }}>+</button>
+                <button onClick={() => set(v => Math.max(min, v - 1))} style={{ width: "36px", height: "36px", borderRadius: "50%", border: "2px solid #E2E8F0", background: "#FFFFFF", color: "#475569", fontSize: "20px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "inherit", boxShadow: "0 1px 4px rgba(15,23,42,0.08)" }}>−</button>
+                <span style={{ fontSize: "22px", fontWeight: 700, minWidth: "28px", textAlign: "center", color: "#0F172A" }}>{val}</span>
+                <button onClick={() => set(v => v + 1)} style={{ width: "36px", height: "36px", borderRadius: "50%", border: "2px solid #0EA5E9", background: "#EFF6FF", color: "#0284C7", fontSize: "20px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "inherit" }}>+</button>
               </div>
             </div>
           ))}
+
+          {/* Reisedaten */}
           <div style={{ marginTop: "16px" }}>
-            <div style={{ fontSize: "13px", color: "#FFD700", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "12px", fontWeight: 600 }}>🗓️ Reisedaten <span style={{ color: "rgba(255,255,255,.3)", fontSize: "11px", textTransform: "none", fontWeight: 400, letterSpacing: 0 }}>(optional)</span></div>
+            <div className="finder-step-label">
+              🗓️ Reisedaten{" "}
+              <span style={{ color: "#94A3B8", fontSize: "11px", textTransform: "none", fontWeight: 400, letterSpacing: 0 }}>(optional)</span>
+            </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
               {[{ label: "Anreise", val: checkin, set: setCheckin }, { label: "Abreise", val: checkout, set: setCheckout }].map(({ label, val, set }) => (
                 <div key={label}>
-                  <div style={{ fontSize: "12px", color: "rgba(255,255,255,.4)", marginBottom: "6px" }}>{label}</div>
+                  <div style={{ fontSize: "12px", color: "#64748B", marginBottom: "6px", fontWeight: 500 }}>{label}</div>
                   <input type="date" value={val} min={new Date().toISOString().split("T")[0]} onChange={e => set(e.target.value)}
-                    style={{ width: "100%", boxSizing: "border-box", background: "rgba(255,255,255,.05)", border: `1.5px solid ${val ? "rgba(255,215,0,.4)" : "rgba(255,255,255,.1)"}`, borderRadius: "10px", padding: "10px 14px", color: val ? "#fff" : "rgba(255,255,255,.3)", fontSize: "14px", outline: "none", colorScheme: "dark", fontFamily: "inherit" }} />
+                    style={{ width: "100%", boxSizing: "border-box", background: "#F8FAFF", border: `2px solid ${val ? "#0EA5E9" : "#E2E8F0"}`, borderRadius: "10px", padding: "10px 14px", color: val ? "#0F172A" : "#94A3B8", fontSize: "14px", outline: "none", fontFamily: "inherit", transition: "border-color .2s" }} />
                 </div>
               ))}
             </div>
           </div>
+
+          {/* Abflughafen */}
           <div style={{ marginTop: "22px" }}>
-            <div style={{ fontSize: "13px", color: "#FFD700", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "12px", fontWeight: 600 }}>✈️ Dein Abflughafen</div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(120px,1fr))", gap: "8px" }}>
-              {[{ code: "FRA", label: "🏙️ Frankfurt" },{ code: "MUC", label: "🥨 München" },{ code: "BER", label: "🐻 Berlin" },{ code: "DUS", label: "🌊 Düsseldorf" },{ code: "HAM", label: "⚓ Hamburg" },{ code: "STR", label: "🏰 Stuttgart" },{ code: "CGN", label: "⛪ Köln" },{ code: "VIE", label: "🎻 Wien" },{ code: "ZRH", label: "🏔️ Zürich" }].map(ap => (
+            <div className="finder-step-label">✈️ Dein Abflughafen</div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(110px,1fr))", gap: "8px" }}>
+              {[
+                { code: "FRA", label: "🏙️ Frankfurt" }, { code: "MUC", label: "🥨 München" },
+                { code: "BER", label: "🐻 Berlin" },    { code: "DUS", label: "🌊 Düsseldorf" },
+                { code: "HAM", label: "⚓ Hamburg" },   { code: "STR", label: "🏰 Stuttgart" },
+                { code: "CGN", label: "⛪ Köln" },      { code: "VIE", label: "🎻 Wien" },
+                { code: "ZRH", label: "🏔️ Zürich" },
+              ].map(ap => (
                 <button key={ap.code} onClick={() => setDeparture(d => d === ap.code ? "" : ap.code)}
-                  style={{ padding: "10px 6px", borderRadius: "10px", border: `1.5px solid ${departure === ap.code ? "#FFD700" : "rgba(255,255,255,.1)"}`, background: departure === ap.code ? "rgba(255,215,0,.12)" : "rgba(255,255,255,.03)", color: departure === ap.code ? "#FFD700" : "rgba(255,255,255,.6)", cursor: "pointer", fontSize: "12px", fontWeight: departure === ap.code ? 700 : 400, transition: "all .2s", textAlign: "center", lineHeight: 1.5, fontFamily: "inherit" }}>
+                  style={{ padding: "10px 6px", borderRadius: "10px", border: `2px solid ${departure === ap.code ? "#0EA5E9" : "#E2E8F0"}`, background: departure === ap.code ? "#EFF6FF" : "#FFFFFF", color: departure === ap.code ? "#0284C7" : "#475569", cursor: "pointer", fontSize: "12px", fontWeight: departure === ap.code ? 700 : 500, transition: "all .2s", textAlign: "center", lineHeight: 1.5, fontFamily: "inherit", boxShadow: departure === ap.code ? "0 0 0 3px rgba(14,165,233,0.12)" : "0 1px 3px rgba(15,23,42,0.06)" }}>
                   {ap.label}<br /><span style={{ fontSize: "11px", opacity: .65 }}>{ap.code}</span>
                 </button>
               ))}
@@ -424,50 +475,76 @@ function Classic({ onBack }) {
         </div>
       )}
 
+      {/* Step 4 — Ergebnisse */}
       {step === 4 && results && (
         <div style={{ animation: "fadeIn .5s ease" }}>
           {personality && (
-            <div style={{ marginBottom: "32px", background: "linear-gradient(135deg,rgba(255,215,0,.08),rgba(255,100,80,.06))", border: "1px solid rgba(255,215,0,.25)", borderRadius: "20px", padding: "26px 28px", position: "relative", overflow: "hidden" }}>
-              <div style={{ fontSize: "12px", color: "#FFD700", letterSpacing: "3px", textTransform: "uppercase", marginBottom: "12px", fontWeight: 600 }}>Du bist der Typ für</div>
+            <div style={{ marginBottom: "32px", background: "linear-gradient(135deg,#EFF6FF,#ECFEFF)", border: "1px solid #BFDBFE", borderRadius: "20px", padding: "26px 28px" }}>
+              <div style={{ fontSize: "11px", color: "#0284C7", letterSpacing: "3px", textTransform: "uppercase", marginBottom: "12px", fontWeight: 700, fontFamily: "var(--font-heading)" }}>Du bist der Typ für</div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "14px" }}>
-                {personality.types.map((t, i) => <span key={i} style={{ padding: "6px 14px", borderRadius: "20px", background: "rgba(255,215,0,.1)", border: "1px solid rgba(255,215,0,.25)", fontSize: "13px", color: "#fff", fontWeight: 500 }}>{t}</span>)}
+                {personality.types.map((t, i) => (
+                  <span key={i} style={{ padding: "6px 14px", borderRadius: "20px", background: "#FFFFFF", border: "1px solid #BFDBFE", fontSize: "13px", color: "#0284C7", fontWeight: 600 }}>{t}</span>
+                ))}
               </div>
-              <div style={{ fontSize: "17px", fontFamily: "'Playfair Display',serif", fontStyle: "italic", color: "rgba(255,255,255,.85)", lineHeight: 1.5 }}>„{personality.summary}"</div>
+              <div style={{ fontSize: "17px", fontStyle: "italic", color: "#334155", lineHeight: 1.5 }}>„{personality.summary}"</div>
             </div>
           )}
+
           <div style={{ textAlign: "center", marginBottom: "24px" }}>
-            <div style={{ fontSize: "13px", color: "#FFD700", letterSpacing: "3px", textTransform: "uppercase", marginBottom: "8px" }}>Deine Empfehlungen</div>
-            <h2 style={{ fontFamily: "'Playfair Display'", fontSize: "26px", fontWeight: 700, margin: 0 }}>3 perfekte Reiseziele ✨</h2>
+            <div style={{ fontSize: "11px", color: "#0284C7", letterSpacing: "3px", textTransform: "uppercase", marginBottom: "8px", fontWeight: 700, fontFamily: "var(--font-heading)" }}>Deine Empfehlungen</div>
+            <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "26px", fontWeight: 700, margin: 0, color: "#0F172A" }}>3 perfekte Reiseziele ✨</h2>
           </div>
+
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(240px,1fr))", gap: "18px", marginBottom: "24px" }}>
             {results.map((d, i) => <AffiliateCard key={i} {...d} />)}
           </div>
-          <div style={{ background: "linear-gradient(135deg,rgba(255,215,0,.08),rgba(167,139,250,.06))", border: "1px solid rgba(255,215,0,.2)", borderRadius: "16px", padding: "20px 24px", marginBottom: "20px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px", flexWrap: "wrap" }}>
-            <div><div style={{ fontSize: "15px", fontWeight: 600, color: "#fff", marginBottom: "4px" }}>📬 Reiseplan per Mail erhalten</div><div style={{ fontSize: "13px", color: "rgba(255,255,255,.45)" }}>Wöchentlich Deals & Inspiration</div></div>
-            <button onClick={() => setShowEmail(true)} style={{ padding: "11px 22px", borderRadius: "10px", border: "none", background: "linear-gradient(90deg,#FFD700,#FF8C00)", color: "#0a0a14", fontWeight: 700, fontSize: "14px", cursor: "pointer", fontFamily: "inherit" }}>Kostenlos →</button>
+
+          <div style={{ background: "linear-gradient(135deg,#EFF6FF,#ECFEFF)", border: "1px solid #BAE6FD", borderRadius: "16px", padding: "20px 24px", marginBottom: "20px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px", flexWrap: "wrap" }}>
+            <div>
+              <div style={{ fontSize: "15px", fontWeight: 600, color: "#0F172A", marginBottom: "4px" }}>📬 Reiseplan per Mail erhalten</div>
+              <div style={{ fontSize: "13px", color: "#64748B" }}>Wöchentlich Deals & Inspiration</div>
+            </div>
+            <button onClick={() => setShowEmail(true)} style={{ padding: "11px 22px", borderRadius: "12px", border: "none", background: "linear-gradient(135deg,#0EA5E9,#06B6D4)", color: "#fff", fontWeight: 700, fontSize: "14px", cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 16px rgba(14,165,233,0.35)", whiteSpace: "nowrap" }}>Kostenlos →</button>
           </div>
-          <div style={{ textAlign: "center", fontSize: "11px", color: "rgba(255,255,255,.2)", marginBottom: "16px" }}>* Affiliate-Links — für dich entstehen keine Mehrkosten 🙏</div>
+
+          <div style={{ textAlign: "center", fontSize: "11px", color: "#94A3B8", marginBottom: "16px" }}>
+            * Affiliate-Links — für dich entstehen keine Mehrkosten 🙏
+          </div>
           <div style={{ textAlign: "center" }}>
-            <button onClick={reset} style={{ padding: "11px 26px", borderRadius: "10px", border: "1.5px solid rgba(255,255,255,.18)", background: "transparent", color: "rgba(255,255,255,.55)", cursor: "pointer", fontSize: "14px", fontFamily: "inherit" }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = "#FFD700"; e.currentTarget.style.color = "#FFD700"; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,.18)"; e.currentTarget.style.color = "rgba(255,255,255,.55)"; }}>
+            <button onClick={reset}
+              style={{ padding: "11px 26px", borderRadius: "10px", border: "2px solid #E2E8F0", background: "#FFFFFF", color: "#475569", cursor: "pointer", fontSize: "14px", fontFamily: "inherit", boxShadow: "0 1px 4px rgba(15,23,42,0.06)", transition: "all .2s" }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = "#0EA5E9"; e.currentTarget.style.color = "#0EA5E9"; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = "#E2E8F0"; e.currentTarget.style.color = "#475569"; }}>
               ↩ Neue Suche
             </button>
           </div>
         </div>
       )}
 
-      {loading && <div style={{ textAlign: "center", padding: "60px 0" }}><div style={{ width: "48px", height: "48px", border: "3px solid rgba(255,215,0,.2)", borderTopColor: "#FFD700", borderRadius: "50%", animation: "spin .8s linear infinite", margin: "0 auto 18px" }} /><div style={{ color: "rgba(255,255,255,.55)", fontSize: "15px" }}>KI sucht deine perfekte Reise…</div></div>}
-      {error && <div style={{ color: "#FF6B6B", textAlign: "center", padding: "16px", background: "rgba(255,100,100,.08)", borderRadius: "12px" }}>{error}</div>}
+      {/* Loading */}
+      {loading && (
+        <div style={{ textAlign: "center", padding: "60px 0" }}>
+          <div style={{ width: "48px", height: "48px", border: "3px solid #BAE6FD", borderTopColor: "#0EA5E9", borderRadius: "50%", animation: "spin .8s linear infinite", margin: "0 auto 18px" }} />
+          <div style={{ color: "#64748B", fontSize: "15px", fontWeight: 500 }}>Deine Traumreise wird vorbereitet…</div>
+        </div>
+      )}
+
+      {/* Error */}
+      {error && (
+        <div style={{ color: "#DC2626", textAlign: "center", padding: "16px", background: "#FEF2F2", border: "1px solid #FECACA", borderRadius: "12px", fontSize: "14px" }}>{error}</div>
+      )}
+
       {showEmail && <EmailPopup destination={results?.[0]?.destination || ""} onClose={() => setShowEmail(false)} />}
 
+      {/* Navigation */}
       {step < 4 && !loading && (
         <div style={{ display: "flex", justifyContent: "space-between", marginTop: "28px" }}>
-          <button onClick={() => step === 0 ? onBack() : setStep(s => s - 1)} style={{ padding: "13px 24px", borderRadius: "10px", border: "1.5px solid rgba(255,255,255,.14)", background: "transparent", color: "rgba(255,255,255,.5)", cursor: "pointer", fontSize: "15px", fontWeight: 500, fontFamily: "inherit" }}>
+          <button onClick={() => step === 0 ? onBack() : setStep(s => s - 1)}
+            style={{ padding: "13px 24px", borderRadius: "12px", border: "2px solid #E2E8F0", background: "#FFFFFF", color: "#475569", cursor: "pointer", fontSize: "15px", fontWeight: 500, fontFamily: "inherit" }}>
             ← Zurück
           </button>
           <button onClick={() => step < 3 ? setStep(s => s + 1) : fetch_()} disabled={!canGo()}
-            style={{ padding: "13px 32px", borderRadius: "10px", border: "none", fontSize: "15px", fontWeight: 700, background: canGo() ? "linear-gradient(90deg,#FFD700,#FF8C00)" : "rgba(255,255,255,.08)", color: canGo() ? "#0a0a14" : "rgba(255,255,255,.2)", cursor: canGo() ? "pointer" : "not-allowed", boxShadow: canGo() ? "0 4px 20px rgba(255,180,0,.3)" : "none", fontFamily: "inherit" }}>
+            style={{ padding: "13px 32px", borderRadius: "12px", border: "none", fontSize: "15px", fontWeight: 700, background: canGo() ? "linear-gradient(135deg,#0EA5E9,#06B6D4)" : "#F1F5F9", color: canGo() ? "#fff" : "#94A3B8", cursor: canGo() ? "pointer" : "not-allowed", boxShadow: canGo() ? "0 4px 20px rgba(14,165,233,0.35)" : "none", fontFamily: "inherit" }}>
             {step === 3 ? "✨ Reiseziele finden" : "Weiter →"}
           </button>
         </div>
@@ -476,6 +553,7 @@ function Classic({ onBack }) {
   );
 }
 
+// ── Zukunft (light design, ALL logic unchanged) ───────────────────────────────
 function Zukunft({ onBack }) {
   const [vibes, setVibes] = useState([]);
   const [text, setText] = useState("");
@@ -520,83 +598,107 @@ function Zukunft({ onBack }) {
   };
 
   const cur = results[idx];
-  const color = cur ? (VIBES.find(v => v.id === cur.vibe)?.color || "#FFD700") : "#FFD700";
+  const color = cur ? (VIBES.find(v => v.id === cur.vibe)?.color || "#0EA5E9") : "#0EA5E9";
   const emojis = cur ? (SCENE_EMOJIS[cur.vibe] || SCENE_EMOJIS.relax) : [];
 
   return (
     <>
+      {/* Step 0 — Vibe-Auswahl */}
       {zStep === 0 && (
         <div style={{ animation: "fadeUp .55s ease .15s both" }}>
           <div style={{ textAlign: "center", marginBottom: "28px" }}>
-            <h2 style={{ fontFamily: "'Playfair Display'", fontSize: "clamp(22px,4vw,30px)", fontWeight: 700, marginBottom: "8px" }}>Wie sieht dein Leben aus,<br />wenn du fährst?</h2>
-            <p style={{ color: "rgba(255,255,255,.4)", fontSize: "14px", fontWeight: 300 }}>Keine Hotellisten. Nur du — und dein alternatives Leben.</p>
+            <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(20px,4vw,26px)", fontWeight: 700, marginBottom: "8px", color: "#0F172A" }}>
+              Wie sieht dein Leben aus,<br />wenn du fährst?
+            </h2>
+            <p style={{ color: "#64748B", fontSize: "14px", fontWeight: 400 }}>Keine Hotellisten. Nur du — und dein alternatives Leben.</p>
           </div>
-          <div style={{ fontSize: "13px", color: "#A78BFA", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "14px", fontWeight: 600, textAlign: "center" }}>Welches Gefühl rufst du?</div>
+
+          <div style={{ fontSize: "12px", color: "#64748B", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "14px", fontWeight: 700, fontFamily: "var(--font-heading)", textAlign: "center" }}>
+            Welches Gefühl rufst du?
+          </div>
+
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "10px", marginBottom: "24px" }}>
             {VIBES.map(v => {
               const sel = vibes.includes(v.id);
               return (
-                <button key={v.id} onClick={() => toggle(v.id)} style={{ padding: "14px 8px", borderRadius: "16px", border: `1.5px solid ${sel ? v.color : "rgba(255,255,255,.1)"}`, background: sel ? `${v.color}18` : "rgba(255,255,255,.03)", cursor: "pointer", transition: "all .25s", display: "flex", flexDirection: "column", alignItems: "center", gap: "5px", boxShadow: sel ? `0 0 18px ${v.color}44` : "none", fontFamily: "inherit" }}>
+                <button key={v.id} onClick={() => toggle(v.id)}
+                  style={{ padding: "14px 8px", borderRadius: "16px", border: `2px solid ${sel ? v.color : "#E2E8F0"}`, background: sel ? `${v.color}15` : "#FFFFFF", cursor: "pointer", transition: "all .25s", display: "flex", flexDirection: "column", alignItems: "center", gap: "5px", boxShadow: sel ? `0 4px 16px ${v.color}44` : "0 1px 4px rgba(15,23,42,0.06)", fontFamily: "inherit" }}>
                   <span style={{ fontSize: "26px" }}>{v.emoji}</span>
-                  <span style={{ fontSize: "11px", color: sel ? v.color : "rgba(255,255,255,.5)", fontWeight: sel ? 600 : 400 }}>{v.label}</span>
+                  <span style={{ fontSize: "11px", color: sel ? v.color : "#64748B", fontWeight: sel ? 700 : 500 }}>{v.label}</span>
                 </button>
               );
             })}
           </div>
-          <textarea value={text} onChange={e => setText(e.target.value)} rows={3} placeholder="Ich brauche Abstand… oder ich will endlich wieder richtig leben…"
-            style={{ width: "100%", boxSizing: "border-box", background: "rgba(255,255,255,.04)", border: "1.5px solid rgba(255,255,255,.08)", borderRadius: "14px", padding: "14px 18px", color: "#fff", fontSize: "14px", lineHeight: 1.7, fontFamily: "inherit", fontWeight: 300, resize: "none", outline: "none", marginBottom: "24px" }}
-            onFocus={e => e.target.style.borderColor = "rgba(167,139,250,.4)"} onBlur={e => e.target.style.borderColor = "rgba(255,255,255,.08)"} />
-          {err && <div style={{ color: "#FF6B6B", textAlign: "center", marginBottom: 16 }}>{err}</div>}
+
+          <textarea value={text} onChange={e => setText(e.target.value)} rows={3}
+            placeholder="Ich brauche Abstand… oder ich will endlich wieder richtig leben…"
+            style={{ width: "100%", boxSizing: "border-box", background: "#F8FAFF", border: "2px solid #E2E8F0", borderRadius: "14px", padding: "14px 18px", color: "#0F172A", fontSize: "14px", lineHeight: 1.7, fontFamily: "inherit", fontWeight: 400, resize: "none", outline: "none", marginBottom: "24px", transition: "border-color .2s" }}
+            onFocus={e => e.target.style.borderColor = "#A78BFA"} onBlur={e => e.target.style.borderColor = "#E2E8F0"} />
+
+          {err && <div style={{ color: "#DC2626", textAlign: "center", marginBottom: 16, fontSize: "14px" }}>{err}</div>}
+
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <button onClick={onBack} style={{ padding: "13px 24px", borderRadius: "10px", border: "1.5px solid rgba(255,255,255,.14)", background: "transparent", color: "rgba(255,255,255,.5)", cursor: "pointer", fontSize: "15px", fontWeight: 500, fontFamily: "inherit" }}>← Zurück</button>
+            <button onClick={onBack} style={{ padding: "13px 24px", borderRadius: "12px", border: "2px solid #E2E8F0", background: "#FFFFFF", color: "#475569", cursor: "pointer", fontSize: "15px", fontWeight: 500, fontFamily: "inherit" }}>← Zurück</button>
             <button onClick={fetch_} disabled={vibes.length === 0}
-              style={{ padding: "16px 40px", borderRadius: "14px", border: "none", fontSize: "16px", fontWeight: 700, background: vibes.length > 0 ? "linear-gradient(90deg,#A78BFA,#7C3AED)" : "rgba(255,255,255,.08)", color: vibes.length > 0 ? "#fff" : "rgba(255,255,255,.2)", cursor: vibes.length > 0 ? "pointer" : "not-allowed", boxShadow: vibes.length > 0 ? "0 6px 28px rgba(167,139,250,.4)" : "none", fontFamily: "inherit" }}>
+              style={{ padding: "16px 40px", borderRadius: "14px", border: "none", fontSize: "16px", fontWeight: 700, background: vibes.length > 0 ? "linear-gradient(135deg,#A78BFA,#7C3AED)" : "#F1F5F9", color: vibes.length > 0 ? "#fff" : "#94A3B8", cursor: vibes.length > 0 ? "pointer" : "not-allowed", boxShadow: vibes.length > 0 ? "0 6px 28px rgba(167,139,250,.4)" : "none", fontFamily: "inherit" }}>
               🔮 Zeig mir mein Reise-Ich
             </button>
           </div>
         </div>
       )}
 
+      {/* Step 1 — Loading */}
       {zStep === 1 && (
         <div style={{ textAlign: "center", padding: "90px 0", animation: "fadeIn .4s ease" }}>
           <div style={{ position: "relative", width: 80, height: 80, margin: "0 auto 28px" }}>
-            <div style={{ width: 80, height: 80, border: "3px solid rgba(167,139,250,.2)", borderTopColor: "#A78BFA", borderRadius: "50%", animation: "spin 1s linear infinite" }} />
+            <div style={{ width: 80, height: 80, border: "3px solid #EDE9FE", borderTopColor: "#A78BFA", borderRadius: "50%", animation: "spin 1s linear infinite" }} />
             <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28 }}>🔮</div>
           </div>
-          <div style={{ fontSize: 15, color: "rgba(255,255,255,.55)", fontStyle: "italic" }}>{LOADING_MSGS[msgIdx]}</div>
+          <div style={{ fontSize: 15, color: "#64748B", fontStyle: "italic", fontWeight: 500 }}>{LOADING_MSGS[msgIdx]}</div>
         </div>
       )}
 
+      {/* Step 2 — Story */}
       {zStep === 2 && cur && (
         <div style={{ animation: "fadeIn .5s ease" }}>
-          <div style={{ position: "relative", borderRadius: "24px", overflow: "hidden", background: `linear-gradient(160deg,${color}18,${color}06,rgba(0,0,0,.3))`, border: `1.5px solid ${color}33`, padding: "36px 28px 28px", marginBottom: "24px", boxShadow: `0 0 60px ${color}18` }}>
+          <div style={{ position: "relative", borderRadius: "24px", overflow: "hidden", backgroundColor: "#FFFFFF", background: `linear-gradient(160deg, ${color}14, ${color}07, transparent)`, border: `2px solid ${color}40`, padding: "36px 28px 28px", marginBottom: "24px", boxShadow: `0 8px 32px ${color}22, 0 2px 8px rgba(15,23,42,0.06)` }}>
             <FloatingEmoji emojis={emojis} />
             <div style={{ position: "relative", zIndex: 1 }}>
-              <div style={{ fontSize: "11px", color, letterSpacing: "3px", textTransform: "uppercase", marginBottom: "10px", fontWeight: 600 }}>Dein Reise-Ich · #{idx + 1} von {results.length}</div>
+              <div style={{ fontSize: "11px", color, letterSpacing: "3px", textTransform: "uppercase", marginBottom: "10px", fontWeight: 700, fontFamily: "var(--font-heading)" }}>
+                Dein Reise-Ich · #{idx + 1} von {results.length}
+              </div>
               <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "14px" }}>
                 <span style={{ fontSize: "48px" }}>{cur.emoji}</span>
                 <div>
-                  <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(22px,4vw,32px)", fontWeight: 700, margin: 0, color: "#fff" }}>{cur.destination}</h2>
-                  <div style={{ fontSize: "13px", color, letterSpacing: "1px", textTransform: "uppercase", marginTop: "2px" }}>{cur.country}</div>
+                  <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(20px,4vw,30px)", fontWeight: 700, margin: 0, color: "#0F172A" }}>{cur.destination}</h2>
+                  <div style={{ fontSize: "13px", color, letterSpacing: "1px", textTransform: "uppercase", marginTop: "2px", fontWeight: 600 }}>{cur.country}</div>
                 </div>
               </div>
-              <div style={{ fontFamily: "'Playfair Display',serif", fontSize: "16px", fontStyle: "italic", color: "rgba(255,255,255,.65)", lineHeight: 1.5, marginBottom: "18px", borderLeft: `3px solid ${color}`, paddingLeft: "14px" }}>„{cur.identity_title}"</div>
-              <div style={{ fontSize: "16px", lineHeight: 1.85, color: "rgba(255,255,255,.85)", marginBottom: "20px", minHeight: "90px" }}>
+              <div style={{ fontSize: "16px", fontStyle: "italic", color: "#475569", lineHeight: 1.5, marginBottom: "18px", borderLeft: `3px solid ${color}`, paddingLeft: "14px" }}>
+                „{cur.identity_title}"
+              </div>
+              <div style={{ fontSize: "16px", lineHeight: 1.85, color: "#1E293B", marginBottom: "20px", minHeight: "90px" }}>
                 <TypewriterText text={cur.story} speed={18} onDone={() => { setTextDone(true); setTimeout(() => setShowBtns(true), 400); }} />
               </div>
-              {textDone && <div style={{ background: `${color}12`, border: `1px solid ${color}30`, borderRadius: "14px", padding: "14px 18px", fontSize: "15px", color, fontStyle: "italic", fontWeight: 600, animation: "fadeUp .5s ease" }}>✨ {cur.moment}</div>}
+              {textDone && (
+                <div style={{ background: `${color}12`, border: `1px solid ${color}30`, borderRadius: "14px", padding: "14px 18px", fontSize: "15px", color, fontStyle: "italic", fontWeight: 600, animation: "fadeUp .5s ease" }}>
+                  ✨ {cur.moment}
+                </div>
+              )}
             </div>
           </div>
 
           {showBtns && (
             <div style={{ animation: "fadeUp .5s ease" }}>
-              <div style={{ textAlign: "center", fontSize: "12px", color: "rgba(255,255,255,.35)", marginBottom: "14px", letterSpacing: "1px" }}>ERLEBE DIESES LEBEN JETZT</div>
+              <div style={{ textAlign: "center", fontSize: "11px", color: "#94A3B8", marginBottom: "14px", letterSpacing: "1.5px", textTransform: "uppercase", fontWeight: 700, fontFamily: "var(--font-heading)" }}>
+                Erlebe dieses Leben jetzt
+              </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginBottom: "14px" }}>
                 {[
                   { href: cur.trivagoUrl, bg: "linear-gradient(90deg,#d00e17,#ff4d57)", label: "🏨 Hotels Trivago" },
                   { href: cur.bookingUrl, bg: "linear-gradient(90deg,#003580,#0057b8)", label: "🛏️ Booking.com" },
-                  { href: cur.skyUrl, bg: "linear-gradient(90deg,#0770e3,#00a0de)", label: "✈️ Flug finden" },
-                  { href: cur.gygUrl, bg: "linear-gradient(90deg,#FF5533,#FF8C00)", label: "🎭 Erlebnisse" },
+                  { href: cur.skyUrl,     bg: "linear-gradient(90deg,#0770e3,#00a0de)", label: "✈️ Flug finden" },
+                  { href: cur.gygUrl,     bg: "linear-gradient(90deg,#FF5533,#FF8C00)", label: "🎭 Erlebnisse" },
                   { href: cur.check24Url, bg: "linear-gradient(90deg,#003399,#e30613)", label: "✅ CHECK24" },
                 ].map(btn => (
                   <a key={btn.label} href={btn.href} target="_blank" rel="noopener noreferrer"
@@ -607,68 +709,70 @@ function Zukunft({ onBack }) {
                 ))}
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginBottom: "14px" }}>
-                <button onClick={next} style={{ padding: "13px", borderRadius: "12px", border: `1.5px solid ${color}44`, background: `${color}10`, color, fontWeight: 700, fontSize: "14px", cursor: "pointer", fontFamily: "inherit" }}>😈 Alternatives Leben</button>
-                <button onClick={() => setShowShare(true)} style={{ padding: "13px", borderRadius: "12px", border: "1.5px solid rgba(255,255,255,.15)", background: "rgba(255,255,255,.05)", color: "#fff", fontWeight: 700, fontSize: "14px", cursor: "pointer", fontFamily: "inherit" }}>📲 Teilen</button>
+                <button onClick={next} style={{ padding: "13px", borderRadius: "12px", border: `2px solid ${color}44`, background: `${color}10`, color, fontWeight: 700, fontSize: "14px", cursor: "pointer", fontFamily: "inherit" }}>
+                  😈 Alternatives Leben
+                </button>
+                <button onClick={() => setShowShare(true)} style={{ padding: "13px", borderRadius: "12px", border: "2px solid #E2E8F0", background: "#FFFFFF", color: "#475569", fontWeight: 700, fontSize: "14px", cursor: "pointer", fontFamily: "inherit" }}>
+                  📲 Teilen
+                </button>
               </div>
               <div style={{ textAlign: "center", marginBottom: "16px" }}>
-                <button onClick={reset} style={{ background: "none", border: "none", color: "rgba(255,255,255,.3)", fontSize: "13px", cursor: "pointer", textDecoration: "underline", fontFamily: "inherit" }}>↩ Neu starten</button>
+                <button onClick={reset} style={{ background: "none", border: "none", color: "#94A3B8", fontSize: "13px", cursor: "pointer", textDecoration: "underline", fontFamily: "inherit" }}>
+                  ↩ Neu starten
+                </button>
               </div>
             </div>
           )}
         </div>
       )}
 
+      {/* Share modal */}
       {showShare && cur && (
-        <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,.85)", zIndex: 200, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
-          <div style={{ background: "linear-gradient(135deg,#0d0d1a,#1a1a2e)", border: `1.5px solid ${color}44`, borderRadius: "24px", padding: "40px 32px", maxWidth: "380px", width: "100%", textAlign: "center", position: "relative" }}>
-            <button onClick={() => setShowShare(false)} style={{ position: "absolute", top: 14, right: 18, background: "none", border: "none", color: "rgba(255,255,255,.4)", fontSize: 24, cursor: "pointer" }}>×</button>
+        <div style={{ position: "fixed", inset: 0, background: "rgba(15,23,42,0.72)", zIndex: 200, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
+          <div style={{ background: "#FFFFFF", border: `2px solid ${color}44`, borderRadius: "24px", boxShadow: "0 24px 80px rgba(15,23,42,0.20)", padding: "40px 32px", maxWidth: "380px", width: "100%", textAlign: "center", position: "relative" }}>
+            <button onClick={() => setShowShare(false)} style={{ position: "absolute", top: 14, right: 18, background: "none", border: "none", color: "#94A3B8", fontSize: 24, cursor: "pointer" }}>×</button>
             <div style={{ fontSize: 52, marginBottom: 10 }}>{VIBES.find(v => v.id === cur.vibe)?.emoji || "✈️"}</div>
-            <div style={{ fontFamily: "'Playfair Display',serif", fontSize: 22, fontWeight: 700, color: "#fff", marginBottom: 10 }}>{cur.destination}</div>
-            <div style={{ fontSize: 13, color: "rgba(255,255,255,.5)", lineHeight: 1.7, marginBottom: 20, fontStyle: "italic" }}>„{cur.teaser}"</div>
-            <button onClick={() => { const t = `✈️ Mein Reise-Ich: ${cur.destination}\n„${cur.teaser}"\n\nFinde dein Reise-Ich → traumreise.ai`; if (navigator.share) navigator.share({ text: t }); else navigator.clipboard?.writeText(t); }} style={{ width: "100%", padding: "13px", borderRadius: 12, border: "none", background: `linear-gradient(90deg,${color},${color}bb)`, color: "#000", fontWeight: 700, fontSize: 15, cursor: "pointer", fontFamily: "inherit" }}>📲 Teile dein Reise-Ich</button>
+            <div style={{ fontFamily: "var(--font-heading)", fontSize: 22, fontWeight: 700, color: "#0F172A", marginBottom: 10 }}>{cur.destination}</div>
+            <div style={{ fontSize: 13, color: "#64748B", lineHeight: 1.7, marginBottom: 20, fontStyle: "italic" }}>„{cur.teaser}"</div>
+            <button
+              onClick={() => { const t = `✈️ Mein Reise-Ich: ${cur.destination}\n„${cur.teaser}"\n\nFinde dein Reise-Ich → traumreise.ai`; if (navigator.share) navigator.share({ text: t }); else navigator.clipboard?.writeText(t); }}
+              style={{ width: "100%", padding: "13px", borderRadius: 12, border: "none", background: `linear-gradient(135deg,${color},${color}bb)`, color: "#000", fontWeight: 700, fontSize: 15, cursor: "pointer", fontFamily: "inherit" }}>
+              📲 Teile dein Reise-Ich
+            </button>
           </div>
         </div>
       )}
+
       {showEmail && <EmailPopup destination={cur?.destination || ""} onClose={() => setShowEmail(false)} />}
     </>
   );
 }
 
+// ── FinderPage wrapper (light, with Header + Footer) ──────────────────────────
 export default function FinderPage() {
   const [page, setPage] = useState("home");
 
   return (
-    <div style={{ minHeight: "100vh", fontFamily: "'Lato',system-ui,sans-serif", color: "#fff", overflowX: "hidden", position: "relative", background: "linear-gradient(160deg,#07070f 0%,#0d1220 50%,#070f07 100%)" }}>
-      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet" />
-      <style>{`
-        @keyframes twinkle{0%,100%{opacity:.08}50%{opacity:.7}}
-        @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
-        @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-        @keyframes spin{to{transform:rotate(360deg)}}
-        @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-        @keyframes floatUp{0%{opacity:0;transform:translateY(0) scale(.8)}15%{opacity:.6}85%{opacity:.3}100%{opacity:0;transform:translateY(-300px)}}
-        textarea{color:#fff!important}
-        textarea::placeholder{color:rgba(255,255,255,.25)!important}
-        input[type=date]{color-scheme:dark}
-      `}</style>
-
-      {/* Stars */}
-      <div style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 1 }}>
-        {STARS.map((s, i) => <div key={i} style={{ position: "absolute", width: s.w, height: s.w, borderRadius: "50%", background: "#fff", opacity: s.op, top: s.top + "%", left: s.left + "%", animation: `twinkle ${s.dur}s ease-in-out ${s.delay}s infinite` }} />)}
-      </div>
-
-      {/* Back link */}
-      <div style={{ position: "fixed", top: "16px", left: "16px", zIndex: 50 }}>
-        <Link href="/" style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 16px", borderRadius: "10px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.6)", textDecoration: "none", fontSize: "13px", fontWeight: 500 }}>
-          ← Startseite
-        </Link>
-      </div>
-
-      <div style={{ position: "relative", zIndex: 2, maxWidth: "820px", margin: "0 auto", padding: "80px 20px 80px" }}>
-        {page === "home" && <Home onSelect={setPage} />}
-        {page === "classic" && <Classic onBack={() => setPage("home")} />}
-        {page === "zukunft" && <Zukunft onBack={() => setPage("home")} />}
-      </div>
-    </div>
+    <>
+      <Header />
+      <main
+        style={{
+          paddingTop: "68px",
+          minHeight: "100vh",
+          background: "linear-gradient(160deg, #F0F9FF 0%, #ECFEFF 35%, #F8FAFF 100%)",
+          overflowX: "hidden",
+        }}
+      >
+        <div style={{ maxWidth: "860px", margin: "0 auto", padding: "60px clamp(16px,4vw,40px) 80px" }}>
+          {/* White card wrapper */}
+          <div style={{ background: "#FFFFFF", borderRadius: "28px", border: "1px solid #E2E8F0", boxShadow: "0 8px 48px rgba(15,23,42,0.08)", padding: "clamp(28px,5vw,48px)" }}>
+            {page === "home"    && <Home onSelect={setPage} />}
+            {page === "classic" && <Classic onBack={() => setPage("home")} />}
+            {page === "zukunft" && <Zukunft onBack={() => setPage("home")} />}
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }

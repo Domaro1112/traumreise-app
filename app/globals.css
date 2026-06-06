@@ -174,13 +174,36 @@ input::placeholder { color: var(--color-text-muted); }
 ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
 
-/* ── Finder page (dark override – keeps the AI tool its own dark style) ──── */
-.finder-page {
-  background: linear-gradient(160deg,#07070f 0%,#0d1220 50%,#070f07 100%);
-  min-height: 100vh;
-  color: #fff;
-  font-family: var(--font-body);
+/* ── Finder: utility classes ─────────────────────────────────────────────── */
+.finder-step-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #64748B;
+  margin-bottom: 10px;
+  font-family: var(--font-heading);
 }
-.finder-page textarea { color: #fff !important; }
-.finder-page textarea::placeholder { color: rgba(255,255,255,0.3) !important; }
-.finder-page input[type="date"] { color-scheme: dark; }
+.finder-traveler-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #F8FAFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 14px;
+}
+.finder-example-pill {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  border: 1.5px solid #BFDBFE;
+  background: #EFF6FF;
+  color: #0284C7;
+  cursor: pointer;
+  font-weight: 500;
+  font-family: inherit;
+  transition: all .15s;
+}
+.finder-example-pill:hover { background: #DBEAFE; border-color: #93C5FD; }
