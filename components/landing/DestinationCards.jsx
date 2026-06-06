@@ -255,15 +255,7 @@ export default function DestinationCards() {
           subtitle="Von tropischen Stränden bis zu pulsierenden Metropolen — wir kennen das perfekte Ziel für jeden Reisetyp."
         />
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(270px, 1fr))',
-            gap: '24px',
-            alignItems: 'stretch',
-            marginBottom: '48px',
-          }}
-        >
+        <div className="destinations-grid">
           {destinations.map((dest) => (
             <DestinationCard key={dest.id} destination={dest} />
           ))}

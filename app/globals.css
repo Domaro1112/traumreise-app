@@ -108,6 +108,21 @@ input::placeholder { color: var(--color-text-muted); }
   background-clip: text;
 }
 
+/* ── Destination cards grid ───────────────────────────────────────────────── */
+.destinations-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: stretch;
+  margin-bottom: 48px;
+}
+@media (min-width: 640px) {
+  .destinations-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1200px) {
+  .destinations-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
 /* ── Card styles ──────────────────────────────────────────────────────────── */
 .card {
   background: #fff;
