@@ -23,8 +23,23 @@ export const metadata: Metadata = {
   keywords: ["Reise", "KI", "Reiseplaner", "Traumreise", "Urlaub", "Reiseberatung"],
   openGraph: {
     title: "Traumreise – Deine persönliche KI-Reiseberaterin",
-    description: "Persönliche Reiseempfehlungen durch KI. Kostenlos & sofort.",
+    description: "Persönliche Reiseempfehlungen durch KI. Kostenlos & sofort verfügbar.",
     type: "website",
+  },
+  // ── Vorübergehend: Indexierung global deaktiviert ─────────────────────────
+  robots: {
+    index: false,
+    follow: false,
+    noarchive: true,
+    nosnippet: true,
+    noimageindex: true,
+    googleBot: {
+      index: false,
+      follow: false,
+      noarchive: true,
+      nosnippet: true,
+      noimageindex: true,
+    },
   },
 };
 

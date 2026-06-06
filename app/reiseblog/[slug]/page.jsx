@@ -57,6 +57,14 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: `https://traumreise.de/reiseblog/${slug}`,
     },
+    // ── Vorübergehend: Indexierung deaktiviert ───────────────────────────────
+    robots: {
+      index: false,
+      follow: false,
+      noarchive: true,
+      nosnippet: true,
+      noimageindex: true,
+    },
   };
 }
 

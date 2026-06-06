@@ -1,3 +1,12 @@
+// ── Vorübergehend: Sitemap leer (keine Seiten für Suchmaschinen sichtbar) ────
+// Zum Reaktivieren: vollständige Sitemap aus dem Kommentar-Block unten einfügen.
+
+export default function sitemap() {
+  return [];
+}
+
+/*
+// ── Vollständige Sitemap – reaktivieren wenn Website öffentlich geht ─────────
 import { blogArticles } from '@/data/blogArticles';
 
 const BASE_URL = 'https://traumreise.de';
@@ -23,3 +32,4 @@ export default function sitemap() {
 
   return [...staticRoutes, ...articleRoutes];
 }
+*/
