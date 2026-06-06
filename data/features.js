@@ -36,9 +36,9 @@ export const howItWorksSteps = [
   {
     step: 2,
     icon: '🧠',
-    title: 'KI findet dein perfektes Ziel',
+    title: 'Wir finden dein perfektes Ziel',
     description:
-      'Unsere KI analysiert deine Angaben und findet das Reiseziel, das wirklich zu dir passt.',
+      'Wir analysieren deine Angaben und finden das Reiseziel, das wirklich zu dir passt.',
   },
   {
     step: 3,

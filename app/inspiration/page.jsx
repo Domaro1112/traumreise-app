@@ -13,7 +13,7 @@ export default function Inspiration() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '72px', background: '#07070f', minHeight: '100vh' }}>
+      <main style={{ paddingTop: '72px', background: '#FFFFFF', minHeight: '100vh' }}>
         <div style={{ paddingTop: '80px', paddingBottom: '0' }}>
           <Container>
             <SectionTitle

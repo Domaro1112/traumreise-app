@@ -15,20 +15,19 @@ export default function BlogGrid({ posts }) {
           style={{
             borderRadius: '20px',
             overflow: 'hidden',
-            background: 'rgba(255,255,255,0.03)',
-            border: '1px solid rgba(255,255,255,0.07)',
-            transition: 'transform 0.3s, box-shadow 0.3s, border-color 0.3s',
+            background: '#FFFFFF',
+            border: '1px solid #E2E8F0',
+            boxShadow: '0 2px 12px rgba(15,23,42,0.06)',
+            transition: 'transform 0.3s, box-shadow 0.3s',
             cursor: 'pointer',
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'translateY(-6px)';
-            e.currentTarget.style.boxShadow = '0 20px 50px rgba(255,180,0,0.1)';
-            e.currentTarget.style.borderColor = 'rgba(255,215,0,0.2)';
+            e.currentTarget.style.boxShadow = '0 16px 48px rgba(14,165,233,0.14)';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'none';
-            e.currentTarget.style.boxShadow = 'none';
-            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)';
+            e.currentTarget.style.boxShadow = '0 2px 12px rgba(15,23,42,0.06)';
           }}
         >
           <div style={{ position: 'relative', height: '200px', overflow: 'hidden' }}>
@@ -43,16 +42,17 @@ export default function BlogGrid({ posts }) {
                 position: 'absolute',
                 top: '14px',
                 left: '14px',
-                padding: '4px 12px',
+                padding: '5px 12px',
                 borderRadius: '20px',
                 fontSize: '11px',
                 fontWeight: 700,
-                letterSpacing: '0.05em',
+                letterSpacing: '0.06em',
                 textTransform: 'uppercase',
-                background: 'rgba(255,215,0,0.15)',
-                border: '1px solid rgba(255,215,0,0.4)',
-                color: '#FFD700',
+                background: 'rgba(255,255,255,0.9)',
+                border: '1px solid #E2E8F0',
+                color: '#0284C7',
                 backdropFilter: 'blur(8px)',
+                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
               }}
             >
               {post.tag}
@@ -64,8 +64,9 @@ export default function BlogGrid({ posts }) {
                 display: 'flex',
                 gap: '12px',
                 fontSize: '12px',
-                color: 'rgba(255,255,255,0.3)',
+                color: '#94A3B8',
                 marginBottom: '12px',
+                fontWeight: 500,
               }}
             >
               <span>{post.date}</span>
@@ -74,17 +75,17 @@ export default function BlogGrid({ posts }) {
             </div>
             <h2
               style={{
-                fontFamily: 'var(--font-playfair, "Playfair Display", Georgia, serif)',
+                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
                 fontSize: '18px',
                 fontWeight: 700,
-                color: '#fff',
+                color: '#0F172A',
                 marginBottom: '10px',
                 lineHeight: 1.35,
               }}
             >
               {post.title}
             </h2>
-            <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.65 }}>
+            <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.65 }}>
               {post.excerpt}
             </p>
           </div>

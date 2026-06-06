@@ -7,27 +7,33 @@ import Button from '@/components/ui/Button';
 import { destinations } from '@/data/destinations';
 import { formatPrice } from '@/lib/utils';
 
+const BADGE_COLORS = {
+  Beliebt: { bg: '#FFF7ED', border: '#FED7AA', color: '#C2410C' },
+  Neu: { bg: '#F0FDF4', border: '#BBF7D0', color: '#15803D' },
+  Exklusiv: { bg: '#EFF6FF', border: '#BFDBFE', color: '#0284C7' },
+};
+
 function DestinationCard({ destination }) {
+  const badgeStyle = BADGE_COLORS[destination.badge] ?? BADGE_COLORS['Beliebt'];
+
   return (
     <div
       style={{
         borderRadius: '20px',
         overflow: 'hidden',
-        background: 'rgba(255,255,255,0.03)',
-        border: '1px solid rgba(255,255,255,0.07)',
-        transition: 'transform 0.35s ease, box-shadow 0.35s ease',
+        background: '#FFFFFF',
+        border: '1px solid #E2E8F0',
+        boxShadow: '0 2px 16px rgba(15,23,42,0.06)',
+        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
         cursor: 'pointer',
-        position: 'relative',
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'translateY(-8px)';
-        e.currentTarget.style.boxShadow = '0 24px 60px rgba(255,180,0,0.12)';
-        e.currentTarget.style.border = '1px solid rgba(255,215,0,0.25)';
+        e.currentTarget.style.transform = 'translateY(-6px)';
+        e.currentTarget.style.boxShadow = '0 16px 48px rgba(14,165,233,0.16)';
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = 'translateY(0)';
-        e.currentTarget.style.boxShadow = 'none';
-        e.currentTarget.style.border = '1px solid rgba(255,255,255,0.07)';
+        e.currentTarget.style.boxShadow = '0 2px 16px rgba(15,23,42,0.06)';
       }}
     >
       {/* Image */}
@@ -46,31 +52,22 @@ function DestinationCard({ destination }) {
           onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.06)')}
           onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
         />
-        {/* Gradient overlay on image */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background:
-              'linear-gradient(to bottom, transparent 50%, rgba(7,7,15,0.7) 100%)',
-          }}
-        />
         {/* Badge */}
         <div
           style={{
             position: 'absolute',
             top: '14px',
             left: '14px',
-            padding: '4px 12px',
+            padding: '5px 12px',
             borderRadius: '20px',
             fontSize: '11px',
             fontWeight: 700,
-            letterSpacing: '0.05em',
+            letterSpacing: '0.06em',
             textTransform: 'uppercase',
-            background: 'rgba(255,215,0,0.15)',
-            border: '1px solid rgba(255,215,0,0.4)',
-            color: '#FFD700',
-            backdropFilter: 'blur(8px)',
+            background: badgeStyle.bg,
+            border: `1px solid ${badgeStyle.border}`,
+            color: badgeStyle.color,
+            fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
           }}
         >
           {destination.badge}
@@ -81,11 +78,11 @@ function DestinationCard({ destination }) {
       <div style={{ padding: '20px 22px 24px' }}>
         <h3
           style={{
-            fontFamily: 'var(--font-playfair, "Playfair Display", Georgia, serif)',
-            fontSize: '20px',
+            fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+            fontSize: '19px',
             fontWeight: 700,
-            color: '#fff',
-            marginBottom: '4px',
+            color: '#0F172A',
+            marginBottom: '3px',
           }}
         >
           {destination.name}
@@ -94,9 +91,9 @@ function DestinationCard({ destination }) {
           style={{
             fontSize: '12px',
             fontWeight: 600,
-            letterSpacing: '1.5px',
+            letterSpacing: '1.2px',
             textTransform: 'uppercase',
-            color: '#FFD700',
+            color: '#0EA5E9',
             marginBottom: '10px',
           }}
         >
@@ -105,7 +102,7 @@ function DestinationCard({ destination }) {
         <p
           style={{
             fontSize: '14px',
-            color: 'rgba(255,255,255,0.5)',
+            color: '#64748B',
             lineHeight: 1.6,
             marginBottom: '16px',
           }}
@@ -114,29 +111,24 @@ function DestinationCard({ destination }) {
         </p>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div>
-            <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)' }}>ab </span>
-            <span
-              style={{
-                fontSize: '20px',
-                fontWeight: 700,
-                color: '#fff',
-              }}
-            >
+            <span style={{ fontSize: '12px', color: '#94A3B8' }}>ab </span>
+            <span style={{ fontSize: '20px', fontWeight: 700, color: '#0F172A' }}>
               {formatPrice(destination.priceFrom)} €
             </span>
-            <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)' }}> p.P.</span>
+            <span style={{ fontSize: '12px', color: '#94A3B8' }}> p.P.</span>
           </div>
           <div
             style={{
               width: '36px',
               height: '36px',
               borderRadius: '50%',
-              border: '1.5px solid rgba(255,215,0,0.35)',
+              background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#FFD700',
+              color: '#fff',
               fontSize: '16px',
+              boxShadow: '0 4px 12px rgba(14,165,233,0.35)',
             }}
           >
             →
@@ -151,9 +143,9 @@ export default function DestinationCards() {
   return (
     <section
       style={{
-        background: 'linear-gradient(180deg, #07070f 0%, #0a0e1a 100%)',
-        paddingTop: '100px',
-        paddingBottom: '100px',
+        background: '#FFFFFF',
+        paddingTop: '96px',
+        paddingBottom: '96px',
       }}
     >
       <Container>
@@ -161,6 +153,7 @@ export default function DestinationCards() {
           label="Lass dich inspirieren"
           title="Traumziele, die zu dir"
           titleHighlight="passen könnten"
+          subtitle="Von tropischen Stränden bis zu pulsierenden Metropolen — unsere KI kennt das perfekte Ziel für jeden Reisetyp."
         />
 
         <div

@@ -11,7 +11,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -25,15 +25,11 @@ export default function Header() {
           left: 0,
           right: 0,
           zIndex: 100,
-          transition: 'background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease',
-          background: scrolled
-            ? 'rgba(7, 7, 15, 0.92)'
-            : 'rgba(7, 7, 15, 0.4)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          borderBottom: scrolled
-            ? '1px solid rgba(255,215,0,0.12)'
-            : '1px solid rgba(255,255,255,0.06)',
+          transition: 'background 0.3s ease, box-shadow 0.3s ease',
+          background: scrolled ? '#FFFFFF' : 'rgba(255,255,255,0.85)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          boxShadow: scrolled ? '0 1px 0 #E2E8F0, 0 4px 20px rgba(15,23,42,0.06)' : 'none',
         }}
       >
         <Container>
@@ -42,29 +38,33 @@ export default function Header() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              height: '72px',
+              height: '68px',
             }}
           >
             {/* Logo */}
-            <Link
-              href="/"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                textDecoration: 'none',
-                flexShrink: 0,
-              }}
-            >
-              <span style={{ fontSize: '22px' }}>🌍</span>
+            <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', flexShrink: 0 }}>
+              <div
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '10px',
+                  background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '18px',
+                  boxShadow: '0 4px 12px rgba(14,165,233,0.35)',
+                }}
+              >
+                🌍
+              </div>
               <span
                 style={{
-                  fontFamily: 'var(--font-playfair, "Playfair Display", Georgia, serif)',
+                  fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
                   fontSize: '20px',
                   fontWeight: 700,
-                  color: '#fff',
-                  letterSpacing: '0.05em',
-                  textTransform: 'uppercase',
+                  color: '#0F172A',
+                  letterSpacing: '-0.02em',
                 }}
               >
                 Traumreise
@@ -72,30 +72,30 @@ export default function Header() {
             </Link>
 
             {/* Desktop Nav */}
-            <nav
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
-              }}
-              className="hide-mobile"
-            >
+            <nav className="hide-mobile" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
               {mainNav.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   style={{
                     padding: '8px 16px',
-                    borderRadius: '8px',
+                    borderRadius: '10px',
                     fontSize: '14px',
                     fontWeight: 500,
-                    color: 'rgba(255,255,255,0.75)',
+                    color: '#475569',
                     textDecoration: 'none',
-                    transition: 'color 0.2s',
+                    transition: 'color 0.2s, background 0.2s',
                     whiteSpace: 'nowrap',
+                    fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = '#FFD700')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.75)')}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = '#0EA5E9';
+                    e.currentTarget.style.background = '#EFF6FF';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = '#475569';
+                    e.currentTarget.style.background = 'transparent';
+                  }}
                 >
                   {item.label}
                 </Link>
@@ -105,21 +105,20 @@ export default function Header() {
             {/* CTA + Hamburger */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <Button href="/finder" size="sm" className="hide-mobile">
-                Jetzt starten ✈️
+                ✈️ Jetzt starten
               </Button>
 
-              {/* Hamburger — mobile only */}
+              {/* Mobile hamburger */}
               <button
                 onClick={() => setMobileOpen((o) => !o)}
                 aria-label="Menü öffnen"
                 className="show-mobile"
                 style={{
-                  width: '42px',
-                  height: '42px',
+                  width: '40px',
+                  height: '40px',
                   borderRadius: '10px',
-                  border: '1px solid rgba(255,255,255,0.12)',
-                  background: 'rgba(255,255,255,0.05)',
-                  color: '#fff',
+                  border: '1.5px solid #E2E8F0',
+                  background: '#F8FAFF',
                   cursor: 'pointer',
                   display: 'flex',
                   flexDirection: 'column',
@@ -129,53 +128,38 @@ export default function Header() {
                   padding: '0',
                 }}
               >
-                <span
-                  style={{
-                    display: 'block',
-                    width: '18px',
-                    height: '2px',
-                    background: '#fff',
-                    borderRadius: '2px',
-                    transition: 'all 0.3s',
-                    transform: mobileOpen ? 'rotate(45deg) translateY(7px)' : 'none',
-                  }}
-                />
-                <span
-                  style={{
-                    display: 'block',
-                    width: '18px',
-                    height: '2px',
-                    background: '#fff',
-                    borderRadius: '2px',
-                    transition: 'all 0.3s',
-                    opacity: mobileOpen ? 0 : 1,
-                  }}
-                />
-                <span
-                  style={{
-                    display: 'block',
-                    width: '18px',
-                    height: '2px',
-                    background: '#fff',
-                    borderRadius: '2px',
-                    transition: 'all 0.3s',
-                    transform: mobileOpen ? 'rotate(-45deg) translateY(-7px)' : 'none',
-                  }}
-                />
+                {[0, 1, 2].map((i) => (
+                  <span
+                    key={i}
+                    style={{
+                      display: 'block',
+                      width: '18px',
+                      height: '2px',
+                      background: '#0F172A',
+                      borderRadius: '2px',
+                      transition: 'all 0.3s',
+                      transform:
+                        mobileOpen
+                          ? i === 0 ? 'rotate(45deg) translateY(7px)' : i === 2 ? 'rotate(-45deg) translateY(-7px)' : 'scaleX(0)'
+                          : 'none',
+                      opacity: mobileOpen && i === 1 ? 0 : 1,
+                    }}
+                  />
+                ))}
               </button>
             </div>
           </div>
         </Container>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile menu */}
       {mobileOpen && (
         <div
           style={{
             position: 'fixed',
             inset: 0,
             zIndex: 99,
-            background: 'rgba(7,7,15,0.97)',
+            background: 'rgba(255,255,255,0.98)',
             backdropFilter: 'blur(20px)',
             display: 'flex',
             flexDirection: 'column',
@@ -191,30 +175,25 @@ export default function Header() {
               href={item.href}
               onClick={() => setMobileOpen(false)}
               style={{
-                fontSize: '24px',
-                fontFamily: 'var(--font-playfair, "Playfair Display", Georgia, serif)',
+                fontSize: '22px',
+                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
                 fontWeight: 700,
-                color: 'rgba(255,255,255,0.85)',
+                color: '#0F172A',
                 textDecoration: 'none',
-                padding: '14px 24px',
+                padding: '16px 24px',
                 width: '100%',
                 textAlign: 'center',
-                borderRadius: '12px',
-                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: '14px',
+                border: '1.5px solid #E2E8F0',
                 marginBottom: '8px',
+                background: '#F8FAFF',
               }}
             >
               {item.label}
             </Link>
           ))}
-          <Button
-            href="/finder"
-            fullWidth
-            size="lg"
-            style={{ marginTop: '24px' }}
-            onClick={() => setMobileOpen(false)}
-          >
-            Jetzt starten ✈️
+          <Button href="/finder" fullWidth size="lg" style={{ marginTop: '16px' }} onClick={() => setMobileOpen(false)}>
+            ✈️ Jetzt starten
           </Button>
         </div>
       )}

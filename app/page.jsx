@@ -11,7 +11,7 @@ import NewsletterSection from '@/components/landing/NewsletterSection';
 export const metadata = {
   title: 'Traumreise – Deine persönliche KI-Reiseberaterin',
   description:
-    'Erzähl uns von dir – unsere KI findet dein perfektes Reiseziel inkl. Hotels, Flügen & Aktivitäten. 100% kostenlos.',
+    'Erzähl uns von dir – wir finden dein perfektes Reiseziel inkl. Hotels, Flügen & Aktivitäten. 100% kostenlos.',
 };
 
 export default function LandingPage() {

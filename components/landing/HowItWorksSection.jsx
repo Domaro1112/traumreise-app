@@ -10,9 +10,9 @@ export default function HowItWorksSection() {
     <section
       id="so-funktionierts"
       style={{
-        background: 'linear-gradient(180deg, #0a0e1a 0%, #07070f 100%)',
-        paddingTop: '100px',
-        paddingBottom: '100px',
+        background: '#F8FAFF',
+        paddingTop: '96px',
+        paddingBottom: '96px',
       }}
     >
       <Container>
@@ -20,6 +20,7 @@ export default function HowItWorksSection() {
           label="So funktioniert's"
           title="In 3 einfachen Schritten"
           titleHighlight="zu deiner Traumreise"
+          subtitle="Keine langen Formulare, kein Stress. Einfach erzählen, KI starten, Traumreise finden."
         />
 
         <div
@@ -28,12 +29,11 @@ export default function HowItWorksSection() {
             gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
             gap: '24px',
             marginBottom: '56px',
-            position: 'relative',
           }}
         >
           {howItWorksSteps.map((step, idx) => (
             <div key={step.step} style={{ position: 'relative' }}>
-              {/* Connector line (desktop only) */}
+              {/* Connector line (desktop) */}
               {idx < howItWorksSteps.length - 1 && (
                 <div
                   style={{
@@ -42,7 +42,7 @@ export default function HowItWorksSection() {
                     right: '-12px',
                     width: '24px',
                     height: '2px',
-                    background: 'linear-gradient(90deg, rgba(255,215,0,0.4), rgba(255,215,0,0.1))',
+                    background: 'linear-gradient(90deg, #0EA5E9, rgba(14,165,233,0.2))',
                     zIndex: 1,
                   }}
                   aria-hidden="true"
@@ -51,38 +51,42 @@ export default function HowItWorksSection() {
 
               <div
                 style={{
-                  background: 'rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(255,255,255,0.07)',
+                  background: '#FFFFFF',
+                  border: '1px solid #E2E8F0',
                   borderRadius: '20px',
                   padding: '36px 28px',
                   height: '100%',
-                  transition: 'border-color 0.3s, background 0.3s',
+                  transition: 'border-color 0.3s, box-shadow 0.3s, transform 0.3s',
+                  boxShadow: '0 2px 12px rgba(15,23,42,0.05)',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(255,215,0,0.04)';
-                  e.currentTarget.style.borderColor = 'rgba(255,215,0,0.2)';
+                  e.currentTarget.style.borderColor = '#0EA5E9';
+                  e.currentTarget.style.boxShadow = '0 12px 40px rgba(14,165,233,0.14)';
+                  e.currentTarget.style.transform = 'translateY(-4px)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)';
+                  e.currentTarget.style.borderColor = '#E2E8F0';
+                  e.currentTarget.style.boxShadow = '0 2px 12px rgba(15,23,42,0.05)';
+                  e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >
-                {/* Step number */}
+                {/* Step number + icon */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>
                   <div
                     style={{
                       width: '44px',
                       height: '44px',
                       borderRadius: '50%',
-                      border: '2px solid rgba(255,215,0,0.4)',
-                      background: 'rgba(255,215,0,0.08)',
+                      background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       fontSize: '16px',
                       fontWeight: 700,
-                      color: '#FFD700',
+                      color: '#fff',
                       flexShrink: 0,
+                      boxShadow: '0 4px 14px rgba(14,165,233,0.35)',
+                      fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
                     }}
                   >
                     {step.step}
@@ -92,10 +96,10 @@ export default function HowItWorksSection() {
 
                 <h3
                   style={{
-                    fontFamily: 'var(--font-playfair, "Playfair Display", Georgia, serif)',
-                    fontSize: '20px',
+                    fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                    fontSize: '19px',
                     fontWeight: 700,
-                    color: '#fff',
+                    color: '#0F172A',
                     marginBottom: '12px',
                   }}
                 >
@@ -104,7 +108,7 @@ export default function HowItWorksSection() {
                 <p
                   style={{
                     fontSize: '14px',
-                    color: 'rgba(255,255,255,0.5)',
+                    color: '#64748B',
                     lineHeight: 1.7,
                   }}
                 >

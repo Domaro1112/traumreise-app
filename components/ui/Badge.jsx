@@ -1,23 +1,33 @@
-export default function Badge({ children, variant = 'gold', style }) {
+export default function Badge({ children, variant = 'blue', style }) {
   const variants = {
-    gold: {
-      background: 'rgba(255,215,0,0.12)',
-      border: '1px solid rgba(255,215,0,0.35)',
-      color: '#FFD700',
+    blue: {
+      background: '#EFF6FF',
+      border: '1px solid #BFDBFE',
+      color: '#0284C7',
     },
-    dark: {
-      background: 'rgba(255,255,255,0.06)',
-      border: '1px solid rgba(255,255,255,0.12)',
-      color: 'rgba(255,255,255,0.7)',
+    cyan: {
+      background: '#ECFEFF',
+      border: '1px solid #A5F3FC',
+      color: '#0891B2',
     },
-    accent: {
-      background: 'rgba(255,140,0,0.15)',
-      border: '1px solid rgba(255,140,0,0.3)',
-      color: '#FF8C00',
+    coral: {
+      background: '#FFF7ED',
+      border: '1px solid #FED7AA',
+      color: '#C2410C',
+    },
+    green: {
+      background: '#F0FDF4',
+      border: '1px solid #BBF7D0',
+      color: '#15803D',
+    },
+    gray: {
+      background: '#F8FAFC',
+      border: '1px solid #E2E8F0',
+      color: '#475569',
     },
   };
 
-  const v = variants[variant] ?? variants.gold;
+  const v = variants[variant] ?? variants.blue;
 
   return (
     <span
@@ -30,6 +40,7 @@ export default function Badge({ children, variant = 'gold', style }) {
         fontWeight: 700,
         letterSpacing: '0.06em',
         textTransform: 'uppercase',
+        fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
         ...v,
         ...style,
       }}

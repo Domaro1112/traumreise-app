@@ -15,7 +15,7 @@ function StarRating({ rating = 4.8 }) {
           width="18"
           height="18"
           viewBox="0 0 24 24"
-          fill={i < full || (i === full && hasHalf) ? '#00B67A' : 'rgba(255,255,255,0.15)'}
+          fill={i < full || (i === full && hasHalf) ? '#00B67A' : '#E2E8F0'}
         >
           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
         </svg>
@@ -28,10 +28,11 @@ export default function PartnerTrustSection() {
   return (
     <section
       style={{
-        background: '#07070f',
-        paddingTop: '72px',
-        paddingBottom: '72px',
-        borderTop: '1px solid rgba(255,255,255,0.04)',
+        background: '#F8FAFF',
+        paddingTop: '64px',
+        paddingBottom: '64px',
+        borderTop: '1px solid #E2E8F0',
+        borderBottom: '1px solid #E2E8F0',
       }}
     >
       <Container>
@@ -48,42 +49,33 @@ export default function PartnerTrustSection() {
           <div style={{ flex: 1, minWidth: '280px' }}>
             <p
               style={{
-                fontSize: '13px',
-                fontWeight: 600,
+                fontSize: '12px',
+                fontWeight: 700,
                 letterSpacing: '2px',
                 textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.3)',
-                marginBottom: '24px',
+                color: '#94A3B8',
+                marginBottom: '20px',
+                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
               }}
             >
               Wir vergleichen für dich die besten Anbieter
             </p>
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '24px',
-                alignItems: 'center',
-              }}
-            >
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '28px', alignItems: 'center' }}>
               {partners.map((p) => (
                 <span
                   key={p.id}
                   style={{
                     fontSize: 'clamp(14px, 2vw, 18px)',
                     fontWeight: 700,
-                    color: 'rgba(255,255,255,0.35)',
+                    color: '#CBD5E1',
                     letterSpacing: p.id === 'skyscanner' ? '-0.5px' : '0',
                     transition: 'color 0.2s',
                     cursor: 'default',
                     fontStyle: p.id === 'trivago' ? 'italic' : 'normal',
+                    fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
                   }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = 'rgba(255,255,255,0.75)')
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = 'rgba(255,255,255,0.35)')
-                  }
+                  onMouseEnter={(e) => (e.currentTarget.style.color = '#475569')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = '#CBD5E1')}
                 >
                   {p.label}
                 </span>
@@ -99,14 +91,14 @@ export default function PartnerTrustSection() {
               alignItems: 'flex-end',
               gap: '10px',
               padding: '24px 28px',
-              borderRadius: '16px',
-              border: '1px solid rgba(255,255,255,0.08)',
-              background: 'rgba(255,255,255,0.03)',
+              borderRadius: '20px',
+              border: '1px solid #E2E8F0',
+              background: '#FFFFFF',
+              boxShadow: '0 4px 20px rgba(15,23,42,0.06)',
               minWidth: '200px',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              {/* Trustpilot star icon */}
               <div
                 style={{
                   width: '28px',
@@ -126,8 +118,9 @@ export default function PartnerTrustSection() {
                 style={{
                   fontSize: '14px',
                   fontWeight: 700,
-                  color: 'rgba(255,255,255,0.6)',
-                  letterSpacing: '1px',
+                  color: '#0F172A',
+                  letterSpacing: '0.5px',
+                  fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
                 }}
               >
                 Trustpilot
@@ -135,17 +128,10 @@ export default function PartnerTrustSection() {
             </div>
             <StarRating rating={4.8} />
             <div style={{ textAlign: 'right' }}>
-              <span
-                style={{
-                  fontSize: '24px',
-                  fontWeight: 700,
-                  color: '#fff',
-                  display: 'block',
-                }}
-              >
+              <span style={{ fontSize: '24px', fontWeight: 700, color: '#0F172A', display: 'block' }}>
                 4,8/5
               </span>
-              <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)' }}>
+              <span style={{ fontSize: '12px', color: '#94A3B8' }}>
                 basierend auf 1.200+ Bewertungen
               </span>
             </div>

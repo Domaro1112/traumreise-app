@@ -3,15 +3,10 @@ export default function GlassPanel({ children, style, className, gold = false })
     <div
       className={className}
       style={{
-        background: gold
-          ? 'rgba(13, 18, 32, 0.88)'
-          : 'rgba(255, 255, 255, 0.04)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        border: gold
-          ? '1px solid rgba(255, 215, 0, 0.18)'
-          : '1px solid rgba(255, 255, 255, 0.08)',
+        background: '#FFFFFF',
         borderRadius: '24px',
+        border: '1px solid #E2E8F0',
+        boxShadow: '0 4px 40px rgba(15,23,42,0.08), 0 1px 4px rgba(15,23,42,0.04)',
         ...style,
       }}
     >

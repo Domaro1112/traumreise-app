@@ -11,16 +11,17 @@ export default function Impressum() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '72px', background: '#07070f', minHeight: '100vh' }}>
+      <main style={{ paddingTop: '72px', background: '#FFFFFF', minHeight: '100vh' }}>
         <div style={{ paddingTop: '80px', paddingBottom: '100px' }}>
           <Container size="sm">
             <h1
               style={{
-                fontFamily: 'var(--font-playfair, "Playfair Display", Georgia, serif)',
+                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
                 fontSize: 'clamp(28px, 4vw, 44px)',
                 fontWeight: 700,
-                color: '#fff',
+                color: '#0F172A',
                 marginBottom: '48px',
+                letterSpacing: '-0.02em',
               }}
             >
               Impressum
@@ -28,8 +29,8 @@ export default function Impressum() {
 
             <div
               style={{
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(255,255,255,0.08)',
+                background: '#F8FAFF',
+                border: '1px solid #E2E8F0',
                 borderRadius: '20px',
                 padding: '36px',
               }}
@@ -44,12 +45,13 @@ export default function Impressum() {
                 <div key={item.label} style={{ marginBottom: '28px' }}>
                   <h2
                     style={{
-                      fontSize: '13px',
+                      fontSize: '12px',
                       fontWeight: 700,
                       letterSpacing: '2px',
                       textTransform: 'uppercase',
-                      color: '#FFD700',
+                      color: '#0EA5E9',
                       marginBottom: '10px',
+                      fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
                     }}
                   >
                     {item.label}
@@ -57,7 +59,7 @@ export default function Impressum() {
                   <p
                     style={{
                       fontSize: '15px',
-                      color: 'rgba(255,255,255,0.55)',
+                      color: '#475569',
                       lineHeight: 1.8,
                       whiteSpace: 'pre-line',
                     }}

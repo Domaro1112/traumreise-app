@@ -31,14 +31,14 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: '#050509',
-        borderTop: '1px solid rgba(255,215,0,0.1)',
+        background: '#F8FAFF',
+        borderTop: '1px solid #E2E8F0',
         paddingTop: '64px',
         paddingBottom: '32px',
       }}
     >
       <Container>
-        {/* Top row: Logo + columns */}
+        {/* Top grid */}
         <div
           style={{
             display: 'grid',
@@ -49,40 +49,37 @@ export default function Footer() {
         >
           {/* Brand column */}
           <div style={{ maxWidth: '260px' }}>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                marginBottom: '16px',
-              }}
-            >
-              <span style={{ fontSize: '22px' }}>🌍</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
+              <div
+                style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '10px',
+                  background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '18px',
+                }}
+              >
+                🌍
+              </div>
               <span
                 style={{
-                  fontFamily: 'var(--font-playfair, "Playfair Display", Georgia, serif)',
+                  fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
                   fontSize: '20px',
                   fontWeight: 700,
-                  color: '#fff',
-                  letterSpacing: '0.05em',
-                  textTransform: 'uppercase',
+                  color: '#0F172A',
+                  letterSpacing: '-0.02em',
                 }}
               >
                 Traumreise
               </span>
             </div>
-            <p
-              style={{
-                fontSize: '14px',
-                color: 'rgba(255,255,255,0.4)',
-                lineHeight: 1.7,
-                marginBottom: '24px',
-              }}
-            >
-              Dein Reise-Kompass für persönliche Urlaubsideen.
+            <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.7, marginBottom: '24px' }}>
+              Dein KI-Reisekompass für persönliche Urlaubsideen. Kostenlos & sofort.
             </p>
-            {/* Social icons */}
-            <div style={{ display: 'flex', gap: '12px' }}>
+            <div style={{ display: 'flex', gap: '10px' }}>
               {socialLinks.map((s) => (
                 <a
                   key={s.icon}
@@ -91,25 +88,25 @@ export default function Footer() {
                   style={{
                     width: '36px',
                     height: '36px',
-                    borderRadius: '8px',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    background: 'rgba(255,255,255,0.04)',
+                    borderRadius: '10px',
+                    border: '1.5px solid #E2E8F0',
+                    background: '#fff',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: 'rgba(255,255,255,0.45)',
+                    color: '#94A3B8',
                     textDecoration: 'none',
                     transition: 'all 0.2s',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(255,215,0,0.4)';
-                    e.currentTarget.style.color = '#FFD700';
-                    e.currentTarget.style.background = 'rgba(255,215,0,0.06)';
+                    e.currentTarget.style.borderColor = '#0EA5E9';
+                    e.currentTarget.style.color = '#0EA5E9';
+                    e.currentTarget.style.background = '#EFF6FF';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
-                    e.currentTarget.style.color = 'rgba(255,255,255,0.45)';
-                    e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
+                    e.currentTarget.style.borderColor = '#E2E8F0';
+                    e.currentTarget.style.color = '#94A3B8';
+                    e.currentTarget.style.background = '#fff';
                   }}
                 >
                   {SOCIAL_ICONS[s.icon]}
@@ -127,12 +124,13 @@ export default function Footer() {
             <div key={col.title}>
               <h4
                 style={{
-                  fontSize: '12px',
+                  fontSize: '13px',
                   fontWeight: 700,
-                  letterSpacing: '3px',
+                  letterSpacing: '1.5px',
                   textTransform: 'uppercase',
-                  color: '#FFD700',
+                  color: '#0EA5E9',
                   marginBottom: '20px',
+                  fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
                 }}
               >
                 {col.title}
@@ -142,16 +140,9 @@ export default function Footer() {
                   <li key={item.href} style={{ marginBottom: '12px' }}>
                     <Link
                       href={item.href}
-                      style={{
-                        fontSize: '14px',
-                        color: 'rgba(255,255,255,0.45)',
-                        textDecoration: 'none',
-                        transition: 'color 0.2s',
-                      }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = '#fff')}
-                      onMouseLeave={(e) =>
-                        (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')
-                      }
+                      style={{ fontSize: '14px', color: '#64748B', textDecoration: 'none', transition: 'color 0.2s' }}
+                      onMouseEnter={(e) => (e.currentTarget.style.color = '#0EA5E9')}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = '#64748B')}
                     >
                       {item.label}
                     </Link>
@@ -165,7 +156,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div
           style={{
-            borderTop: '1px solid rgba(255,255,255,0.06)',
+            borderTop: '1px solid #E2E8F0',
             paddingTop: '24px',
             display: 'flex',
             alignItems: 'center',
@@ -174,10 +165,10 @@ export default function Footer() {
             gap: '12px',
           }}
         >
-          <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.25)' }}>
+          <p style={{ fontSize: '13px', color: '#94A3B8' }}>
             © 2024 Traumreise. Alle Rechte vorbehalten.
           </p>
-          <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.25)' }}>
+          <p style={{ fontSize: '13px', color: '#94A3B8' }}>
             Gemacht mit ❤️ für Reisebegeisterte
           </p>
         </div>

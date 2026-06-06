@@ -13,11 +13,11 @@ export default function SoFunktionierts() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '72px', background: '#07070f', minHeight: '100vh' }}>
+      <main style={{ paddingTop: '72px', background: '#FFFFFF', minHeight: '100vh' }}>
         <div style={{ paddingTop: '80px', paddingBottom: '40px' }}>
           <Container>
             <SectionTitle
-              label="Traumreise AI"
+              label="Die Traumreise wartet"
               title="So funktioniert's"
               subtitle="Unser KI-Reiseplaner findet in wenigen Minuten dein perfektes Reiseziel – ganz persönlich und kostenlos."
             />

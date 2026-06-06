@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
 import Container from '@/components/layout/Container';
 import Button from '@/components/ui/Button';
 import { useNewsletter } from '@/hooks/useNewsletter';
@@ -12,7 +11,7 @@ export default function NewsletterSection() {
   return (
     <section
       style={{
-        background: '#07070f',
+        background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 50%, #0284C7 100%)',
         paddingTop: '80px',
         paddingBottom: '80px',
       }}
@@ -22,8 +21,8 @@ export default function NewsletterSection() {
           style={{
             borderRadius: '28px',
             overflow: 'hidden',
-            border: '1px solid rgba(255,215,0,0.12)',
-            background: 'rgba(13,18,32,0.9)',
+            background: '#FFFFFF',
+            boxShadow: '0 24px 80px rgba(15,23,42,0.18)',
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
           }}
@@ -46,33 +45,34 @@ export default function NewsletterSection() {
                 display: 'block',
               }}
             />
-            {/* Overlay */}
+            {/* Subtle overlay */}
             <div
               style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(to right, rgba(13,18,32,0.3), transparent)',
+                background: 'linear-gradient(to bottom, transparent 40%, rgba(15,23,42,0.3) 100%)',
               }}
             />
-            {/* Floating card */}
+            {/* Floating badge */}
             <div
               style={{
                 position: 'absolute',
                 bottom: '24px',
                 right: '20px',
-                background: 'rgba(13,18,32,0.85)',
+                background: 'rgba(255,255,255,0.95)',
                 backdropFilter: 'blur(12px)',
-                border: '1px solid rgba(255,215,0,0.25)',
+                border: '1px solid #E2E8F0',
                 borderRadius: '14px',
                 padding: '14px 18px',
                 fontSize: '13px',
-                color: '#FFD700',
+                color: '#0F172A',
                 fontWeight: 600,
+                boxShadow: '0 8px 24px rgba(15,23,42,0.12)',
               }}
             >
               ✈️ Exklusive Tipps
               <br />
-              <span style={{ color: 'rgba(255,255,255,0.55)', fontWeight: 400, fontSize: '12px' }}>
+              <span style={{ color: '#64748B', fontWeight: 400, fontSize: '12px' }}>
                 nur für Abonnenten
               </span>
             </div>
@@ -82,31 +82,39 @@ export default function NewsletterSection() {
           <div style={{ padding: 'clamp(32px, 5vw, 56px)' }}>
             <div
               style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '5px 14px',
+                borderRadius: '20px',
+                background: '#EFF6FF',
+                border: '1px solid #BFDBFE',
                 fontSize: '11px',
                 fontWeight: 700,
-                letterSpacing: '3px',
+                letterSpacing: '2px',
                 textTransform: 'uppercase',
-                color: '#FFD700',
+                color: '#0284C7',
                 marginBottom: '16px',
+                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
               }}
             >
-              Exklusiver Bonus
+              Newsletter
             </div>
 
             <h2
               style={{
-                fontFamily: 'var(--font-playfair, "Playfair Display", Georgia, serif)',
-                fontSize: 'clamp(24px, 3.5vw, 36px)',
+                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                fontSize: 'clamp(22px, 3.5vw, 34px)',
                 fontWeight: 700,
-                color: '#fff',
+                color: '#0F172A',
                 lineHeight: 1.25,
-                marginBottom: '16px',
+                marginBottom: '14px',
               }}
             >
               Reise-Inspiration &amp; exklusive Deals{' '}
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #FFD700 0%, #FF8C00 100%)',
+                  background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -119,9 +127,9 @@ export default function NewsletterSection() {
             <p
               style={{
                 fontSize: '15px',
-                color: 'rgba(255,255,255,0.5)',
+                color: '#64748B',
                 lineHeight: 1.7,
-                marginBottom: '32px',
+                marginBottom: '28px',
               }}
             >
               Erhalte regelmäßig handverlesene Reiseideen, Tipps &amp; exklusive Angebote
@@ -133,9 +141,9 @@ export default function NewsletterSection() {
                 style={{
                   padding: '20px 24px',
                   borderRadius: '14px',
-                  background: 'rgba(0,200,100,0.1)',
-                  border: '1px solid rgba(0,200,100,0.3)',
-                  color: '#4ADE80',
+                  background: '#F0FDF4',
+                  border: '1px solid #BBF7D0',
+                  color: '#15803D',
                   fontWeight: 600,
                   fontSize: '15px',
                 }}
@@ -162,19 +170,16 @@ export default function NewsletterSection() {
                     style={{
                       flex: '1',
                       minWidth: '200px',
-                      background: 'rgba(255,255,255,0.06)',
-                      border: `1.5px solid ${
-                        email.includes('@')
-                          ? 'rgba(255,215,0,0.4)'
-                          : 'rgba(255,255,255,0.12)'
-                      }`,
+                      background: '#F8FAFF',
+                      border: `2px solid ${email.includes('@') ? '#0EA5E9' : '#E2E8F0'}`,
                       borderRadius: '12px',
                       padding: '14px 18px',
-                      color: '#fff',
+                      color: '#0F172A',
                       fontSize: '15px',
                       outline: 'none',
                       fontFamily: 'inherit',
-                      transition: 'border-color 0.2s',
+                      transition: 'border-color 0.2s, box-shadow 0.2s',
+                      boxShadow: email.includes('@') ? '0 0 0 3px rgba(14,165,233,0.12)' : 'none',
                     }}
                   />
                   <Button
@@ -188,12 +193,12 @@ export default function NewsletterSection() {
                 </div>
 
                 {state.error && (
-                  <p style={{ fontSize: '13px', color: '#FF6B6B', marginBottom: '8px' }}>
+                  <p style={{ fontSize: '13px', color: '#DC2626', marginBottom: '8px' }}>
                     {state.error}
                   </p>
                 )}
 
-                <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.25)' }}>
+                <p style={{ fontSize: '12px', color: '#94A3B8' }}>
                   🔒 Kein Spam. Jederzeit abbestellbar. DSGVO-konform.
                 </p>
               </form>

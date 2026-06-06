@@ -13,7 +13,7 @@ export default function UeberUns() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '72px', background: '#07070f', minHeight: '100vh' }}>
+      <main style={{ paddingTop: '72px', background: '#FFFFFF', minHeight: '100vh' }}>
         <div style={{ paddingTop: '80px', paddingBottom: '100px' }}>
           <Container size="sm">
             <SectionTitle
@@ -25,8 +25,8 @@ export default function UeberUns() {
 
             <div
               style={{
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(255,215,0,0.12)',
+                background: '#F8FAFF',
+                border: '1px solid #E2E8F0',
                 borderRadius: '24px',
                 padding: 'clamp(32px, 5vw, 56px)',
                 marginBottom: '40px',
@@ -34,56 +34,37 @@ export default function UeberUns() {
             >
               <h2
                 style={{
-                  fontFamily: 'var(--font-playfair, "Playfair Display", Georgia, serif)',
-                  fontSize: 'clamp(22px, 3vw, 30px)',
+                  fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                  fontSize: 'clamp(20px, 3vw, 26px)',
                   fontWeight: 700,
-                  color: '#fff',
+                  color: '#0F172A',
                   marginBottom: '20px',
                 }}
               >
                 Unsere Mission
               </h2>
-              <p
-                style={{
-                  fontSize: '16px',
-                  color: 'rgba(255,255,255,0.6)',
-                  lineHeight: 1.8,
-                  marginBottom: '20px',
-                }}
-              >
+              <p style={{ fontSize: '16px', color: '#475569', lineHeight: 1.8, marginBottom: '20px' }}>
                 Traumreise wurde gegründet, weil wir es leid waren, stundenlang in Reisebüros zu sitzen oder
                 unzählige Webseiten zu vergleichen – nur um am Ende mit einem Standardpaket abzureisen, das
                 sich wie eine Massenware anfühlt.
               </p>
-              <p
-                style={{
-                  fontSize: '16px',
-                  color: 'rgba(255,255,255,0.6)',
-                  lineHeight: 1.8,
-                  marginBottom: '20px',
-                }}
-              >
+              <p style={{ fontSize: '16px', color: '#475569', lineHeight: 1.8, marginBottom: '20px' }}>
                 Wir nutzen modernste KI-Technologie, um deine Persönlichkeit, deine Wünsche und deinen Stil
                 zu verstehen – und finden dann das Reiseziel, das wirklich zu dir passt. Inkl. Hotels,
                 Flügen und Aktivitäten.
               </p>
-              <p
-                style={{
-                  fontSize: '16px',
-                  color: 'rgba(255,255,255,0.6)',
-                  lineHeight: 1.8,
-                }}
-              >
-                Das alles <strong style={{ color: '#FFD700' }}>100% kostenlos</strong> und ohne versteckte
-                Gebühren. Wir verdienen durch Partner-Provisionen, wenn du über unsere Links buchst – ohne
-                Mehrkosten für dich.
+              <p style={{ fontSize: '16px', color: '#475569', lineHeight: 1.8 }}>
+                Das alles{' '}
+                <strong style={{ color: '#0EA5E9', fontWeight: 700 }}>100% kostenlos</strong> und ohne
+                versteckte Gebühren. Wir verdienen durch Partner-Provisionen, wenn du über unsere Links
+                buchst – ohne Mehrkosten für dich.
               </p>
             </div>
 
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
                 gap: '20px',
                 marginBottom: '48px',
               }}
@@ -100,25 +81,26 @@ export default function UeberUns() {
                     textAlign: 'center',
                     padding: '28px 20px',
                     borderRadius: '16px',
-                    background: 'rgba(255,215,0,0.05)',
-                    border: '1px solid rgba(255,215,0,0.15)',
+                    background: '#EFF6FF',
+                    border: '1px solid #BFDBFE',
                   }}
                 >
                   <div
                     style={{
-                      fontFamily: 'var(--font-playfair, "Playfair Display", Georgia, serif)',
-                      fontSize: '36px',
-                      fontWeight: 700,
-                      background: 'linear-gradient(135deg, #FFD700 0%, #FF8C00 100%)',
+                      fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                      fontSize: '32px',
+                      fontWeight: 800,
+                      background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text',
                       marginBottom: '8px',
+                      letterSpacing: '-0.02em',
                     }}
                   >
                     {stat.number}
                   </div>
-                  <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.45)' }}>{stat.label}</div>
+                  <div style={{ fontSize: '14px', color: '#64748B', fontWeight: 500 }}>{stat.label}</div>
                 </div>
               ))}
             </div>

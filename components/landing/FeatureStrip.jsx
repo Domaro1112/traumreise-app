@@ -5,18 +5,18 @@ export default function FeatureStrip() {
   return (
     <section
       style={{
-        background: '#07070f',
-        paddingTop: '80px',
-        paddingBottom: '80px',
-        borderTop: '1px solid rgba(255,255,255,0.04)',
-        borderBottom: '1px solid rgba(255,255,255,0.04)',
+        background: '#F8FAFF',
+        paddingTop: '72px',
+        paddingBottom: '72px',
+        borderTop: '1px solid #E2E8F0',
+        borderBottom: '1px solid #E2E8F0',
       }}
     >
       <Container>
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
             gap: '40px',
           }}
         >
@@ -24,20 +24,27 @@ export default function FeatureStrip() {
             <div key={feature.id} style={{ textAlign: 'center' }}>
               <div
                 style={{
-                  fontSize: '36px',
-                  marginBottom: '16px',
-                  display: 'block',
-                  lineHeight: 1,
+                  width: '64px',
+                  height: '64px',
+                  borderRadius: '18px',
+                  background: 'linear-gradient(135deg, #EFF6FF 0%, #ECFEFF 100%)',
+                  border: '1px solid #BFDBFE',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '28px',
+                  margin: '0 auto 18px',
+                  boxShadow: '0 2px 12px rgba(14,165,233,0.12)',
                 }}
               >
                 {feature.icon}
               </div>
               <h3
                 style={{
-                  fontFamily: 'var(--font-playfair, "Playfair Display", Georgia, serif)',
-                  fontSize: '18px',
+                  fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                  fontSize: '17px',
                   fontWeight: 700,
-                  color: '#fff',
+                  color: '#0F172A',
                   marginBottom: '10px',
                 }}
               >
@@ -46,7 +53,7 @@ export default function FeatureStrip() {
               <p
                 style={{
                   fontSize: '14px',
-                  color: 'rgba(255,255,255,0.45)',
+                  color: '#64748B',
                   lineHeight: 1.7,
                   maxWidth: '220px',
                   margin: '0 auto',

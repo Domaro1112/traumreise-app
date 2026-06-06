@@ -44,7 +44,7 @@ export default function Reiseblog() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '72px', background: '#07070f', minHeight: '100vh' }}>
+      <main style={{ paddingTop: '72px', background: '#FFFFFF', minHeight: '100vh' }}>
         <div style={{ paddingTop: '80px', paddingBottom: '60px' }}>
           <Container>
             <SectionTitle
@@ -55,7 +55,7 @@ export default function Reiseblog() {
             />
             <BlogGrid posts={BLOG_POSTS} />
             <div style={{ textAlign: 'center', marginTop: '48px' }}>
-              <p style={{ color: 'rgba(255,255,255,0.35)', marginBottom: '24px', fontSize: '15px' }}>
+              <p style={{ color: '#94A3B8', marginBottom: '24px', fontSize: '15px' }}>
                 Weitere Artikel erscheinen bald. Newsletter abonnieren und nichts verpassen!
               </p>
               <Button href="/#newsletter" variant="secondary">

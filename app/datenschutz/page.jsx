@@ -11,21 +11,22 @@ export default function Datenschutz() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '72px', background: '#07070f', minHeight: '100vh' }}>
+      <main style={{ paddingTop: '72px', background: '#FFFFFF', minHeight: '100vh' }}>
         <div style={{ paddingTop: '80px', paddingBottom: '100px' }}>
           <Container size="sm">
             <h1
               style={{
-                fontFamily: 'var(--font-playfair, "Playfair Display", Georgia, serif)',
+                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
                 fontSize: 'clamp(28px, 4vw, 44px)',
                 fontWeight: 700,
-                color: '#fff',
-                marginBottom: '12px',
+                color: '#0F172A',
+                marginBottom: '8px',
+                letterSpacing: '-0.02em',
               }}
             >
               Datenschutzerklärung
             </h1>
-            <p style={{ color: 'rgba(255,255,255,0.4)', marginBottom: '48px', fontSize: '14px' }}>
+            <p style={{ color: '#94A3B8', marginBottom: '48px', fontSize: '14px' }}>
               Stand: Januar 2024
             </p>
 
@@ -56,19 +57,26 @@ export default function Datenschutz() {
                   'Du hast das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung deiner Daten. Wende dich dazu an datenschutz@traumreise.de.',
               },
             ].map((section) => (
-              <div key={section.title} style={{ marginBottom: '36px' }}>
+              <div
+                key={section.title}
+                style={{
+                  marginBottom: '36px',
+                  paddingBottom: '36px',
+                  borderBottom: '1px solid #E2E8F0',
+                }}
+              >
                 <h2
                   style={{
-                    fontFamily: 'var(--font-playfair, "Playfair Display", Georgia, serif)',
-                    fontSize: '20px',
+                    fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                    fontSize: '18px',
                     fontWeight: 700,
-                    color: '#fff',
+                    color: '#0F172A',
                     marginBottom: '12px',
                   }}
                 >
                   {section.title}
                 </h2>
-                <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.55)', lineHeight: 1.8 }}>
+                <p style={{ fontSize: '15px', color: '#475569', lineHeight: 1.8 }}>
                   {section.content}
                 </p>
               </div>

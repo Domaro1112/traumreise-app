@@ -10,7 +10,7 @@ export default function HeroSection() {
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        paddingTop: '72px',
+        paddingTop: '68px',
         overflow: 'hidden',
       }}
     >
@@ -20,91 +20,110 @@ export default function HeroSection() {
           position: 'absolute',
           inset: 0,
           backgroundImage:
-            'url(https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=85)',
+            'url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=85)',
           backgroundSize: 'cover',
-          backgroundPosition: 'center 40%',
+          backgroundPosition: 'center 55%',
           zIndex: 0,
         }}
       />
 
-      {/* Gradient overlay — dark luxury */}
+      {/* Light gradient overlay — lets the photo breathe */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(to bottom, rgba(7,7,15,0.5) 0%, rgba(7,7,15,0.55) 40%, rgba(7,7,15,0.85) 80%, #07070f 100%)',
+            'linear-gradient(to bottom, rgba(15,23,42,0.35) 0%, rgba(15,23,42,0.4) 50%, rgba(15,23,42,0.65) 80%, rgba(15,23,42,0.85) 100%)',
           zIndex: 1,
         }}
       />
 
       {/* Content */}
-      <Container style={{ position: 'relative', zIndex: 2, paddingTop: '60px', paddingBottom: '100px' }}>
-        <div style={{ maxWidth: '760px', margin: '0 auto', textAlign: 'center' }}>
+      <Container style={{ position: 'relative', zIndex: 2, paddingTop: '60px', paddingBottom: '120px' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
           {/* Eyebrow */}
           <div
             style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
-              padding: '6px 18px',
-              borderRadius: '20px',
-              background: 'rgba(255,215,0,0.1)',
-              border: '1px solid rgba(255,215,0,0.25)',
+              padding: '7px 20px',
+              borderRadius: '24px',
+              background: 'rgba(14,165,233,0.25)',
+              border: '1px solid rgba(14,165,233,0.5)',
+              backdropFilter: 'blur(8px)',
               marginBottom: '28px',
-              fontSize: '12px',
-              fontWeight: 700,
-              letterSpacing: '3px',
-              textTransform: 'uppercase',
-              color: '#FFD700',
+              fontSize: '13px',
+              fontWeight: 600,
+              letterSpacing: '1px',
+              color: '#fff',
+              fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
             }}
           >
-            ✦ Traumreise AI ✦
+            ✨ KI-Reiseplanung — kostenlos &amp; sofort
           </div>
 
           {/* Main heading */}
           <h1
             style={{
-              fontFamily: 'var(--font-playfair, "Playfair Display", Georgia, serif)',
-              fontSize: 'clamp(42px, 7vw, 80px)',
-              fontWeight: 700,
-              margin: '0 0 8px',
+              fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+              fontSize: 'clamp(36px, 6.5vw, 72px)',
+              fontWeight: 800,
+              margin: '0 0 20px',
               lineHeight: 1.1,
               color: '#fff',
+              letterSpacing: '-0.02em',
             }}
           >
-            Deine Traumreise.
+            Finde deine perfekte
+            <br />
+            <span
+              style={{
+                background: 'linear-gradient(135deg, #38BDF8 0%, #06B6D4 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              Traumreise
+            </span>
           </h1>
-          <h2
-            style={{
-              fontFamily: 'var(--font-playfair, "Playfair Display", Georgia, serif)',
-              fontSize: 'clamp(28px, 4.5vw, 52px)',
-              fontWeight: 700,
-              margin: '0 0 28px',
-              lineHeight: 1.15,
-              background: 'linear-gradient(135deg, #FFD700 0%, #FF8C00 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
-          >
-            Persönlich. Einzigartig. KI-basiert.
-          </h2>
 
           {/* Subtitle */}
           <p
             style={{
-              fontSize: 'clamp(16px, 2vw, 19px)',
-              color: 'rgba(255,255,255,0.65)',
+              fontSize: 'clamp(16px, 2.2vw, 20px)',
+              color: 'rgba(255,255,255,0.82)',
               lineHeight: 1.75,
-              marginBottom: '40px',
-              fontWeight: 300,
+              marginBottom: '44px',
+              fontWeight: 400,
+              maxWidth: '600px',
+              margin: '0 auto 44px',
             }}
           >
-            Erzähl uns von dir – unsere KI findet dein perfektes Reiseziel
-            <br />
-            inkl. Hotels, Flügen &amp; Aktivitäten – auf dich abgestimmt.
+            Unsere KI findet in wenigen Minuten Reiseziele, Hotels und Erlebnisse,
+            die wirklich zu dir passen.
           </p>
+
+          {/* CTA buttons */}
+          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '48px' }}>
+            <Button href="/finder" size="lg">
+              Traumreise finden ✈️
+            </Button>
+            <Button
+              href="#so-funktionierts"
+              size="lg"
+              style={{
+                background: 'rgba(255,255,255,0.15)',
+                backdropFilter: 'blur(8px)',
+                border: '1.5px solid rgba(255,255,255,0.35)',
+                color: '#fff',
+                boxShadow: 'none',
+              }}
+            >
+              Wie es funktioniert
+            </Button>
+          </div>
 
           {/* Trust badges */}
           <div
@@ -112,9 +131,8 @@ export default function HeroSection() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: 'clamp(16px, 4vw, 40px)',
+              gap: 'clamp(20px, 4vw, 48px)',
               flexWrap: 'wrap',
-              marginBottom: '48px',
             }}
           >
             {trustBadges.map((badge) => (
@@ -125,7 +143,7 @@ export default function HeroSection() {
                   alignItems: 'center',
                   gap: '8px',
                   fontSize: '14px',
-                  color: 'rgba(255,255,255,0.75)',
+                  color: 'rgba(255,255,255,0.88)',
                   fontWeight: 500,
                 }}
               >
@@ -134,28 +152,18 @@ export default function HeroSection() {
               </div>
             ))}
           </div>
-
-          {/* CTA buttons */}
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Button href="/finder" size="lg">
-              Traumreise finden ✈️
-            </Button>
-            <Button href="#so-funktionierts" variant="secondary" size="lg">
-              Wie es funktioniert
-            </Button>
-          </div>
         </div>
       </Container>
 
-      {/* Subtle bottom fade into next section */}
+      {/* Bottom fade into white */}
       <div
         style={{
           position: 'absolute',
           bottom: 0,
           left: 0,
           right: 0,
-          height: '120px',
-          background: 'linear-gradient(to bottom, transparent, #07070f)',
+          height: '80px',
+          background: 'linear-gradient(to bottom, transparent, #FFFFFF)',
           zIndex: 2,
         }}
       />
