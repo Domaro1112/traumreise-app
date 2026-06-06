@@ -207,3 +207,85 @@ input::placeholder { color: var(--color-text-muted); }
   transition: all .15s;
 }
 .finder-example-pill:hover { background: #DBEAFE; border-color: #93C5FD; }
+
+/* ── Blog: responsive grids ──────────────────────────────────────────────── */
+
+/* Featured article: stacked on mobile, side-by-side from md */
+.featured-article-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .featured-article-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Blog article grid: 1 → 2 → 3 columns */
+.blog-article-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+@media (min-width: 640px) {
+  .blog-article-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .blog-article-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Popular destinations: 2 → 3 → 6 columns */
+.blog-destinations {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (min-width: 640px) {
+  .blog-destinations { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1024px) {
+  .blog-destinations { grid-template-columns: repeat(6, 1fr); }
+}
+
+/* Destination card image zoom on hover */
+.blog-destination-card:hover img {
+  transform: scale(1.08);
+}
+.blog-destination-card {
+  transition: box-shadow 0.3s ease;
+}
+.blog-destination-card:hover {
+  box-shadow: 0 16px 48px rgba(14,165,233,0.22) !important;
+}
+
+/* Community tips: 1 → 2 → 4 columns */
+.community-tips {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 640px) {
+  .community-tips { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .community-tips { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Community tip card hover */
+.community-tip-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.community-tip-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(15,23,42,0.10) !important;
+  border-color: #BAE6FD !important;
+}
+
+/* Blog category chips: horizontal scroll on mobile */
+.blog-category-chips {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 10px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.blog-category-chips::-webkit-scrollbar { display: none; }
