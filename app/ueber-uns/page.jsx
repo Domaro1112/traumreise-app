@@ -50,14 +50,14 @@ export default function UeberUns() {
               </p>
               <p style={{ fontSize: '16px', color: '#475569', lineHeight: 1.8, marginBottom: '20px' }}>
                 Wir nutzen modernste KI-Technologie, um deine Persönlichkeit, deine Wünsche und deinen Stil
-                zu verstehen – und finden dann das Reiseziel, das wirklich zu dir passt. Inkl. Hotels,
-                Flügen und Aktivitäten.
+                zu verstehen – und finden dann das Reiseziel, das wirklich zu dir passt. 
+                Inkl. Hotels, Flügen und Aktivitäten - ganz so wie du es dir wünschst.
               </p>
               <p style={{ fontSize: '16px', color: '#475569', lineHeight: 1.8 }}>
                 Das alles{' '}
                 <strong style={{ color: '#0EA5E9', fontWeight: 700 }}>100% kostenlos</strong> und ohne
                 versteckte Gebühren. Wir verdienen durch Partner-Provisionen, wenn du über unsere Links
-                buchst – ohne Mehrkosten für dich.
+                deinen Urlaub buchst – natürlich ohne Mehrkosten für dich.
               </p>
             </div>
 
@@ -107,7 +107,7 @@ export default function UeberUns() {
 
             <div style={{ textAlign: 'center' }}>
               <Button href="/finder" size="lg">
-                Jetzt deine Traumreise finden ✈️
+                Finde jetzt deine Traumreise
               </Button>
             </div>
           </Container>

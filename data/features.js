@@ -1,25 +1,25 @@
 export const features = [
   {
     id: 'ai',
-    icon: '🧠',
+    icon: 'Bot',
     title: 'KI-gestützte Empfehlung',
-    description: 'Unsere KI analysiert deine Wünsche und findet dein perfektes Reiseziel.',
+    description: 'Wir analysieren deine Wünsche und finden dein perfektes Reiseziel.',
   },
   {
     id: 'allinone',
-    icon: '🌐',
+    icon: 'Globe',
     title: 'Alles an einem Ort',
     description: 'Flüge, Hotels, Aktivitäten & Tipps – alles passend zu dir zusammengestellt.',
   },
   {
     id: 'prices',
-    icon: '💎',
+    icon: 'Wallet',
     title: 'Beste Preise finden',
     description: 'Vergleich von Top-Plattformen für die besten Angebote.',
   },
   {
     id: 'personal',
-    icon: '❤️',
+    icon: 'UserCheck',
     title: 'Für dich gemacht',
     description: 'Keine Standardvorschläge – nur Reisen, die wirklich zu dir passen.',
   },
@@ -28,21 +28,21 @@ export const features = [
 export const howItWorksSteps = [
   {
     step: 1,
-    icon: '✍️',
+    icon: 'PenLine',
     title: 'Erzähl uns von dir',
     description:
       'Beantworte ein paar Fragen zu deinen Wünschen, Interessen und deinem Reisestil.',
   },
   {
     step: 2,
-    icon: '🧠',
+    icon: 'Cpu',
     title: 'Wir finden dein perfektes Ziel',
     description:
       'Wir analysieren deine Angaben und finden das Reiseziel, das wirklich zu dir passt.',
   },
   {
     step: 3,
-    icon: '🧳',
+    icon: 'Map',
     title: 'Erhalte deine persönliche Reise',
     description:
       'Du bekommst eine komplette Auswahl inkl. Hotels, Flügen, Aktivitäten & Insider-Tipps.',
@@ -58,7 +58,7 @@ export const partners = [
 ];
 
 export const trustBadges = [
-  { icon: '🎁', label: '100% kostenlos' },
-  { icon: '🧠', label: 'KI-gestützt' },
-  { icon: '🔒', label: 'Datenschutz garantiert' },
+  { icon: 'Gift', label: '100% kostenlos' },
+  { icon: 'Bot', label: 'KI-gestützt' },
+  { icon: 'ShieldCheck', label: 'Datenschutz garantiert' },
 ];

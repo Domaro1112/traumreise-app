@@ -1,6 +1,9 @@
+import { Gift, Bot, ShieldCheck, Plane, Sparkles } from 'lucide-react';
 import Container from '@/components/layout/Container';
 import Button from '@/components/ui/Button';
 import { trustBadges } from '@/data/features';
+
+const TRUST_ICON_MAP = { Gift, Bot, ShieldCheck };
 
 export default function HeroSection() {
   return (
@@ -27,7 +30,7 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Light gradient overlay — lets the photo breathe */}
+      {/* Gradient overlay */}
       <div
         style={{
           position: 'absolute',
@@ -60,7 +63,8 @@ export default function HeroSection() {
               fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
             }}
           >
-            ✨ Deine Reiseplanung — kostenlos &amp; sofort
+            <Sparkles size={14} strokeWidth={2} />
+            Deine Reiseplanung — kostenlos &amp; sofort verfügbar
           </div>
 
           {/* Main heading */}
@@ -108,7 +112,10 @@ export default function HeroSection() {
           {/* CTA buttons */}
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '48px' }}>
             <Button href="/finder" size="lg">
-              Traumreise finden ✈️
+              <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Plane size={18} strokeWidth={2} />
+                Traumreise finden
+              </span>
             </Button>
             <Button
               href="#so-funktionierts"
@@ -135,22 +142,25 @@ export default function HeroSection() {
               flexWrap: 'wrap',
             }}
           >
-            {trustBadges.map((badge) => (
-              <div
-                key={badge.label}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  fontSize: '14px',
-                  color: 'rgba(255,255,255,0.88)',
-                  fontWeight: 500,
-                }}
-              >
-                <span style={{ fontSize: '18px' }}>{badge.icon}</span>
-                {badge.label}
-              </div>
-            ))}
+            {trustBadges.map((badge) => {
+              const Icon = TRUST_ICON_MAP[badge.icon];
+              return (
+                <div
+                  key={badge.label}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    fontSize: '14px',
+                    color: 'rgba(255,255,255,0.88)',
+                    fontWeight: 500,
+                  }}
+                >
+                  {Icon && <Icon size={17} strokeWidth={2} color="rgba(255,255,255,0.88)" />}
+                  {badge.label}
+                </div>
+              );
+            })}
           </div>
         </div>
       </Container>

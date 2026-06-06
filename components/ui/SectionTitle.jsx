@@ -29,7 +29,7 @@ export default function SectionTitle({
             marginBottom: '20px',
           }}
         >
-          ✦ {label}
+          {label}
         </div>
       )}
       <h2

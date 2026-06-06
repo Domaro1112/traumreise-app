@@ -1,5 +1,6 @@
 'use client';
 
+import { Plane, CheckCircle2, ShieldCheck, Mail } from 'lucide-react';
 import Container from '@/components/layout/Container';
 import Button from '@/components/ui/Button';
 import { useNewsletter } from '@/hooks/useNewsletter';
@@ -68,13 +69,19 @@ export default function NewsletterSection() {
                 color: '#0F172A',
                 fontWeight: 600,
                 boxShadow: '0 8px 24px rgba(15,23,42,0.12)',
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '10px',
               }}
             >
-              ✈️ Exklusive Tipps
-              <br />
-              <span style={{ color: '#64748B', fontWeight: 400, fontSize: '12px' }}>
-                nur für Abonnenten
-              </span>
+              <Plane size={16} strokeWidth={2} color="#0EA5E9" style={{ marginTop: '1px', flexShrink: 0 }} />
+              <div>
+                Exklusive Tipps
+                <br />
+                <span style={{ color: '#64748B', fontWeight: 400, fontSize: '12px' }}>
+                  nur für Abonnenten
+                </span>
+              </div>
             </div>
           </div>
 
@@ -146,9 +153,13 @@ export default function NewsletterSection() {
                   color: '#15803D',
                   fontWeight: 600,
                   fontSize: '15px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
                 }}
               >
-                🎉 Fast geschafft! Bestätige deine E-Mail — dann bist du dabei.
+                <CheckCircle2 size={20} strokeWidth={2} color="#15803D" />
+                Fast geschafft! Bestätige deine E-Mail — dann bist du dabei.
               </div>
             ) : (
               <form action={formAction}>
@@ -188,7 +199,10 @@ export default function NewsletterSection() {
                     size="md"
                     style={{ padding: '14px 28px', borderRadius: '12px', whiteSpace: 'nowrap' }}
                   >
-                    {isPending ? 'Wird angemeldet…' : '✈️ Jetzt anmelden'}
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
+                      <Plane size={16} strokeWidth={2} />
+                      {isPending ? 'Wird angemeldet…' : 'Jetzt anmelden'}
+                    </span>
                   </Button>
                 </div>
 
@@ -198,8 +212,9 @@ export default function NewsletterSection() {
                   </p>
                 )}
 
-                <p style={{ fontSize: '12px', color: '#94A3B8' }}>
-                  🔒 Kein Spam. Jederzeit abbestellbar. DSGVO-konform.
+                <p style={{ fontSize: '12px', color: '#94A3B8', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  <ShieldCheck size={13} strokeWidth={2} color="#94A3B8" />
+                  Kein Spam. Jederzeit abbestellbar. DSGVO-konform.
                 </p>
               </form>
             )}

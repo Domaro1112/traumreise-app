@@ -263,7 +263,7 @@ export default function DestinationCards() {
 
         <div style={{ textAlign: 'center' }}>
           <Button href="/inspiration" variant="secondary" size="lg">
-            Mehr Inspiration entdecken ✈️
+            Zeig mir mehr Inspiration →
           </Button>
         </div>
       </Container>

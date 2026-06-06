@@ -2,27 +2,33 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import {
+  Flower2, Sun, Leaf, Snowflake,
+  CalendarDays, Calendar, Globe, Briefcase,
+  Wallet, Plane, Crown,
+  Sparkles, Edit3, Lightbulb, ShieldCheck,
+} from 'lucide-react';
 import Container from '@/components/layout/Container';
 import Button from '@/components/ui/Button';
 
 const SEASONS = [
-  { id: 'spring', label: '🌸 Frühling' },
-  { id: 'summer', label: '☀️ Sommer' },
-  { id: 'autumn', label: '🍂 Herbst' },
-  { id: 'winter', label: '❄️ Winter' },
+  { id: 'spring', icon: Flower2,   label: 'Frühling' },
+  { id: 'summer', icon: Sun,       label: 'Sommer' },
+  { id: 'autumn', icon: Leaf,      label: 'Herbst' },
+  { id: 'winter', icon: Snowflake, label: 'Winter' },
 ];
 
 const DURATIONS = [
-  { id: 'weekend', label: '🗓️ Wochenende' },
-  { id: 'week', label: '📅 1 Woche' },
-  { id: 'twoweeks', label: '🌍 2 Wochen' },
-  { id: 'long', label: '🧳 Länger' },
+  { id: 'weekend',  icon: CalendarDays, label: 'Wochenende' },
+  { id: 'week',     icon: Calendar,     label: '1 Woche' },
+  { id: 'twoweeks', icon: Globe,        label: '2 Wochen' },
+  { id: 'long',     icon: Briefcase,    label: 'Länger' },
 ];
 
 const BUDGETS = [
-  { id: 'low', label: '💸 Budget', desc: 'bis 500 €' },
-  { id: 'mid', label: '✈️ Mittel', desc: '500–1500 €' },
-  { id: 'high', label: '💎 Premium', desc: '1500 €+' },
+  { id: 'low',  icon: Wallet, label: 'Budget',  desc: 'bis 500 €' },
+  { id: 'mid',  icon: Plane,  label: 'Mittel',  desc: '500–1500 €' },
+  { id: 'high', icon: Crown,  label: 'Premium', desc: '1500 €+' },
 ];
 
 const EXAMPLES = [
@@ -31,7 +37,7 @@ const EXAMPLES = [
   'Ich will Essen probieren, das ich zuhause nie finden würde…',
 ];
 
-function ToggleChip({ label, desc, selected, onClick }) {
+function ToggleChip({ label, icon: Icon, desc, selected, onClick }) {
   return (
     <button
       onClick={onClick}
@@ -52,9 +58,12 @@ function ToggleChip({ label, desc, selected, onClick }) {
         fontFamily: 'inherit',
       }}
     >
-      <div>{label}</div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+        {Icon && <Icon size={13} strokeWidth={2} />}
+        <span>{label}</span>
+      </div>
       {desc && (
-        <div style={{ fontSize: '11px', opacity: 0.65, marginTop: '2px' }}>{desc}</div>
+        <div style={{ fontSize: '11px', opacity: 0.65, marginTop: '2px', paddingLeft: '19px' }}>{desc}</div>
       )}
     </button>
   );
@@ -139,7 +148,8 @@ export default function TravelFinderBox() {
                 fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
               }}
             >
-              ✨ Finde deine Traumreise in 2 Minuten
+              <Sparkles size={13} strokeWidth={2} />
+              Finde deine Traumreise in 2 Minuten
             </div>
             <h2
               style={{
@@ -154,7 +164,7 @@ export default function TravelFinderBox() {
             </h2>
           </div>
 
-          {/* Main grid: textarea left, options right */}
+          {/* Main grid */}
           <div
             style={{
               display: 'grid',
@@ -203,7 +213,6 @@ export default function TravelFinderBox() {
                 </div>
               </div>
 
-              {/* Examples toggle */}
               <button
                 onClick={() => setShowExamples((v) => !v)}
                 style={{
@@ -221,7 +230,7 @@ export default function TravelFinderBox() {
                   fontWeight: 500,
                 }}
               >
-                <span style={{ fontSize: '15px' }}>✏️</span>
+                <Edit3 size={14} strokeWidth={2} />
                 Beispiele ansehen {showExamples ? '▲' : '▼'}
               </button>
 
@@ -243,6 +252,9 @@ export default function TravelFinderBox() {
                         fontFamily: 'inherit',
                         lineHeight: 1.5,
                         transition: 'all 0.2s',
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        gap: '8px',
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.borderColor = '#0EA5E9';
@@ -255,7 +267,8 @@ export default function TravelFinderBox() {
                         e.currentTarget.style.background = '#F8FAFF';
                       }}
                     >
-                      💡 {ex}
+                      <Lightbulb size={14} strokeWidth={2} style={{ flexShrink: 0, marginTop: '1px' }} />
+                      {ex}
                     </button>
                   ))}
                 </div>
@@ -271,6 +284,7 @@ export default function TravelFinderBox() {
                     <ToggleChip
                       key={s.id}
                       label={s.label}
+                      icon={s.icon}
                       selected={season === s.id}
                       onClick={() => setSeason(season === s.id ? '' : s.id)}
                     />
@@ -285,6 +299,7 @@ export default function TravelFinderBox() {
                     <ToggleChip
                       key={d.id}
                       label={d.label}
+                      icon={d.icon}
                       selected={duration === d.id}
                       onClick={() => setDuration(duration === d.id ? '' : d.id)}
                     />
@@ -299,6 +314,7 @@ export default function TravelFinderBox() {
                     <ToggleChip
                       key={b.id}
                       label={b.label}
+                      icon={b.icon}
                       desc={b.desc}
                       selected={budget === b.id}
                       onClick={() => setBudget(budget === b.id ? '' : b.id)}
@@ -324,10 +340,14 @@ export default function TravelFinderBox() {
                 opacity: canSubmit ? 1 : 0.45,
               }}
             >
-              ✈️ Traumreise finden
+              <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                <Plane size={18} strokeWidth={2} />
+                Traumreise finden
+              </span>
             </Button>
-            <p style={{ marginTop: '12px', fontSize: '13px', color: '#94A3B8' }}>
-              🔒 100% kostenlos &amp; unverbindlich
+            <p style={{ marginTop: '12px', fontSize: '13px', color: '#94A3B8', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
+              <ShieldCheck size={13} strokeWidth={2} color="#94A3B8" />
+              100% kostenlos &amp; unverbindlich
             </p>
           </div>
         </div>

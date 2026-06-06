@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { Compass, Plane } from 'lucide-react';
 import { mainNav } from '@/data/navigation';
 import Button from '@/components/ui/Button';
 import Container from '@/components/layout/Container';
@@ -52,11 +53,10 @@ export default function Header() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '18px',
                   boxShadow: '0 4px 12px rgba(14,165,233,0.35)',
                 }}
               >
-                🌍
+                <Compass size={20} strokeWidth={2} color="#FFFFFF" />
               </div>
               <span
                 style={{
@@ -105,7 +105,10 @@ export default function Header() {
             {/* CTA + Hamburger */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <Button href="/finder" size="sm" className="hide-mobile">
-                ✈️ Jetzt starten
+                <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <Plane size={15} strokeWidth={2} />
+                  Jetzt starten
+                </span>
               </Button>
 
               {/* Mobile hamburger */}
@@ -193,7 +196,10 @@ export default function Header() {
             </Link>
           ))}
           <Button href="/finder" fullWidth size="lg" style={{ marginTop: '16px' }} onClick={() => setMobileOpen(false)}>
-            ✈️ Jetzt starten
+            <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+              <Plane size={18} strokeWidth={2} />
+              Jetzt starten
+            </span>
           </Button>
         </div>
       )}

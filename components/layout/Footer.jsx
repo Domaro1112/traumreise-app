@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { Compass, Heart } from 'lucide-react';
 import Container from '@/components/layout/Container';
 import { footerNav, socialLinks } from '@/data/navigation';
 
@@ -59,10 +60,9 @@ export default function Footer() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '18px',
                 }}
               >
-                🌍
+                <Compass size={20} strokeWidth={2} color="#FFFFFF" />
               </div>
               <span
                 style={{
@@ -168,8 +168,10 @@ export default function Footer() {
           <p style={{ fontSize: '13px', color: '#94A3B8' }}>
             © 2024 Traumreise. Alle Rechte vorbehalten.
           </p>
-          <p style={{ fontSize: '13px', color: '#94A3B8' }}>
-            Gemacht mit ❤️ für Reisebegeisterte
+          <p style={{ fontSize: '13px', color: '#94A3B8', display: 'flex', alignItems: 'center', gap: '5px' }}>
+            Gemacht mit{' '}
+            <Heart size={13} strokeWidth={2} color="#F43F5E" fill="#F43F5E" />
+            {' '}für Reisebegeisterte
           </p>
         </div>
       </Container>
