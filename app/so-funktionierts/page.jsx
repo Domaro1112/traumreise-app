@@ -17,9 +17,9 @@ export default function SoFunktionierts() {
         <div style={{ paddingTop: '80px', paddingBottom: '40px' }}>
           <Container>
             <SectionTitle
-              label="Die Traumreise wartet"
+              label="Deine Traumreise wartet"
               title="So funktioniert's"
-              subtitle="Unser Reiseplaner findet in wenigen Minuten dein perfektes Reiseziel – ganz persönlich und kostenlos."
+              subtitle="Unser Reiseplaner findet in wenigen Minuten dein perfektes Reiseziel – ganz persönlich und natürlich kostenlos."
             />
           </Container>
         </div>
