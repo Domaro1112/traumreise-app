@@ -39,16 +39,6 @@ export const destinations = [
     imageUrl: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80',
     slug: 'tokio',
   },
-  {
-    id: 'marrakesch',
-    name: 'Marrakesch',
-    country: 'Marokko',
-    description: 'Exotische Kultur, Farben & kulinarische Highlights',
-    priceFrom: 599,
-    badge: 'Exotisch',
-    imageUrl: 'https://images.unsplash.com/photo-1531250001450-91a2f02c9ece?w=600&q=80',
-    slug: 'marrakesch',
-  },
 ];
 
 export const heroImages = [

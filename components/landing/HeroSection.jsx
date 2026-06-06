@@ -60,7 +60,7 @@ export default function HeroSection() {
               fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
             }}
           >
-            ✨ KI-Reiseplanung — kostenlos &amp; sofort
+            ✨ Deine Reiseplanung — kostenlos &amp; sofort
           </div>
 
           {/* Main heading */}
@@ -101,7 +101,7 @@ export default function HeroSection() {
               margin: '0 auto 44px',
             }}
           >
-            Unsere KI findet in wenigen Minuten Reiseziele, Hotels und Erlebnisse,
+            Wir finden in wenigen Minuten deine Reiseziele, Hotels und Erlebnisse,
             die wirklich zu dir passen.
           </p>
 
