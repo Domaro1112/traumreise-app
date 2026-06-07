@@ -42,10 +42,15 @@ export default function ArticleSidebar({ tableOfContents, destination }) {
 
           <nav>
             <ol style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '2px' }}>
-              {tableOfContents.map((item, i) => (
-                <li key={item.id}>
+              {tableOfContents.map((item, i) => {
+                const isString = typeof item === 'string';
+                const label = isString ? item : item.label;
+                const id = isString ? `section-${i + 1}` : item.id;
+                if (!label) return null;
+                return (
+                <li key={id || i}>
                   <a
-                    href={`#${item.id}`}
+                    href={`#${id}`}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -86,10 +91,11 @@ export default function ArticleSidebar({ tableOfContents, destination }) {
                     >
                       {i + 1}
                     </span>
-                    {item.label}
+                    {label}
                   </a>
                 </li>
-              ))}
+                );
+              })}
             </ol>
           </nav>
         </div>

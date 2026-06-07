@@ -1,14 +1,17 @@
 import { Globe, Coins, Languages, Clock4, Plane, Calendar, Wallet, MapPin, Thermometer } from 'lucide-react';
 
 const FACT_ROWS = [
-  { key: 'country',            icon: Globe,        label: 'Land' },
-  { key: 'region',             icon: MapPin,        label: 'Region' },
-  { key: 'currency',           icon: Coins,         label: 'Währung' },
-  { key: 'language',           icon: Languages,     label: 'Sprache' },
-  { key: 'timezone',           icon: Clock4,        label: 'Zeitzone' },
-  { key: 'airport',            icon: Plane,         label: 'Flughafen' },
+  { key: 'country',               icon: Globe,      label: 'Land' },
+  { key: 'region',                icon: MapPin,     label: 'Region' },
+  { key: 'capital',               icon: MapPin,     label: 'Hauptstadt' },
+  { key: 'currency',              icon: Coins,      label: 'Währung' },
+  { key: 'language',              icon: Languages,  label: 'Sprache' },
+  { key: 'timezone',              icon: Clock4,     label: 'Zeitzone' },
+  { key: 'airport',               icon: Plane,      label: 'Flughafen' },
   { key: 'flightTimeFromGermany', icon: Plane,      label: 'Flugzeit ab DE' },
-  { key: 'averageDailyBudget', icon: Wallet,        label: 'Tagesbudget' },
+  { key: 'flightTime',            icon: Plane,      label: 'Flugzeit ab DE' },
+  { key: 'averageDailyBudget',    icon: Wallet,     label: 'Tagesbudget' },
+  { key: 'bestTime',              icon: Calendar,   label: 'Beste Reisezeit' },
 ];
 
 export default function ArticleDestinationFacts({ facts, airportInfo, destination }) {
@@ -251,11 +254,17 @@ export default function ArticleDestinationFacts({ facts, airportInfo, destinatio
             </span>
           </div>
           <div style={{ fontSize: '14px', color: '#334155', lineHeight: 1.6 }}>
-            <div style={{ fontWeight: 600, color: '#0F172A', marginBottom: '4px' }}>
-              {airportInfo.name} ({airportInfo.iata})
-            </div>
-            <div style={{ color: '#64748B' }}>{airportInfo.distanceToCity}</div>
-            <div style={{ color: '#64748B' }}>Transfer: {airportInfo.transferTime}</div>
+            {typeof airportInfo === 'string' ? (
+              <div style={{ color: '#475569' }}>{airportInfo}</div>
+            ) : (
+              <>
+                <div style={{ fontWeight: 600, color: '#0F172A', marginBottom: '4px' }}>
+                  {airportInfo.name} ({airportInfo.iata})
+                </div>
+                <div style={{ color: '#64748B' }}>{airportInfo.distanceToCity}</div>
+                <div style={{ color: '#64748B' }}>Transfer: {airportInfo.transferTime}</div>
+              </>
+            )}
           </div>
         </div>
       )}

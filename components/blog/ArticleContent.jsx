@@ -6,8 +6,10 @@ export default function ArticleContent({ sections, internalLinks }) {
 
   return (
     <article className="article-prose">
-      {sections.map((section) => (
-        <section key={section.id} id={section.id} style={{ marginBottom: '48px' }}>
+      {sections.map((section, sectionIndex) => {
+        const sectionId = section.id || `section-${sectionIndex + 1}`;
+        return (
+        <section key={sectionId} id={sectionId} style={{ marginBottom: '48px' }}>
           <h2
             style={{
               fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
@@ -69,7 +71,8 @@ export default function ArticleContent({ sections, internalLinks }) {
             </div>
           )}
         </section>
-      ))}
+        );
+      })}
 
       {/* ── Interne Links ──────────────────────────────────────────────────────── */}
       {internalLinks?.length > 0 && (

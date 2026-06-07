@@ -62,41 +62,49 @@ export default function ArticleKeyTakeaways({ takeaways, destination }) {
           gap: '12px',
         }}
       >
-        {takeaways.map((item) => (
-          <div
-            key={item.label}
-            style={{
-              background: '#FFFFFF',
-              border: '1px solid #BAE6FD',
-              borderRadius: '14px',
-              padding: '14px 16px',
-            }}
-          >
+        {takeaways.map((item, i) => {
+          const isString = typeof item === 'string';
+          const label = isString ? null : item.label;
+          const value = isString ? item : item.value;
+          if (!value) return null;
+          return (
             <div
+              key={label || i}
               style={{
-                fontSize: '11px',
-                fontWeight: 700,
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-                color: '#0EA5E9',
-                marginBottom: '5px',
-                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                background: '#FFFFFF',
+                border: '1px solid #BAE6FD',
+                borderRadius: '14px',
+                padding: '14px 16px',
               }}
             >
-              {item.label}
+              {label && (
+                <div
+                  style={{
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase',
+                    color: '#0EA5E9',
+                    marginBottom: '5px',
+                    fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                  }}
+                >
+                  {label}
+                </div>
+              )}
+              <div
+                style={{
+                  fontSize: '14px',
+                  fontWeight: label ? 600 : 500,
+                  color: '#0F172A',
+                  lineHeight: 1.5,
+                }}
+              >
+                {value}
+              </div>
             </div>
-            <div
-              style={{
-                fontSize: '14px',
-                fontWeight: 600,
-                color: '#0F172A',
-                lineHeight: 1.4,
-              }}
-            >
-              {item.value}
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
