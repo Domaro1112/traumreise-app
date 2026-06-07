@@ -10,6 +10,8 @@ import {
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import VisualTravelWizard from "@/components/finder/VisualTravelWizard";
+import FinderStartHero from "@/components/finder/FinderStartHero";
+import FinderModeCard from "@/components/finder/FinderModeCard";
 import { moodOptions, seasonOptions, durationOptions, budgetOptions } from "@/data/finderOptions";
 
 // ── Data constants ────────────────────────────────────────────────────────────
@@ -175,43 +177,36 @@ function EmailPopup({ destination = "", onClose }) {
 // ── Home screen ───────────────────────────────────────────────────────────────
 function Home({ onSelect }) {
   return (
-    <div style={{ textAlign: "center", animation: "fadeUp .55s ease both" }}>
-      <div style={{ marginBottom: "40px" }}>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "6px 18px", borderRadius: "20px", background: "#EFF6FF", border: "1px solid #BFDBFE", fontSize: "12px", fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "#0284C7", marginBottom: "16px", fontFamily: "var(--font-heading)" }}>
-          <Compass size={13} strokeWidth={2} />
-          Dein persönlicher Reise-Kompass
-        </div>
-        <h1 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(26px,5vw,44px)", fontWeight: 800, margin: "0 0 14px", lineHeight: 1.1, color: "#0F172A", letterSpacing: "-0.02em" }}>
-          Finde deine persönliche{" "}
-          <span style={{ background: "linear-gradient(135deg,#0EA5E9,#06B6D4)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            Traumreise
-          </span>
-        </h1>
-        <p style={{ color: "#64748B", fontSize: "16px", fontWeight: 400, lineHeight: 1.7, maxWidth: "500px", margin: "0 auto" }}>
-          Beantworte ein paar kurze Fragen und erhalte Reiseziele, die wirklich zu dir passen.
+    <div style={{ animation: "fadeUp .55s ease both", padding: "clamp(16px,3vw,32px) 0" }}>
+      <div style={{ textAlign: "center", marginBottom: "clamp(24px,4vw,36px)" }}>
+        <p style={{ fontSize: "clamp(12px,1.5vw,14px)", fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", color: "#0284C7", marginBottom: "8px", fontFamily: "var(--font-heading)", margin: "0 0 8px" }}>
+          Wähle dein Erlebnis
         </p>
+        <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(20px,3vw,28px)", fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em", margin: 0 }}>
+          Wie möchtest du starten?
+        </h2>
       </div>
-
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", maxWidth: "580px", margin: "0 auto" }}>
-        {[
-          { id: "classic", Icon: Map,      title: "Reiseziel-Finder",         desc: "Schritt für Schritt zum perfekten Reiseziel — mit Interessen, Budget & Affiliate-Links", color: "#0EA5E9", badge: null },
-          { id: "zukunft", Icon: Sparkles, title: "Dein Reise-Zukunfts-Ich",  desc: "Sieh wie dein Leben aussieht wenn du diesen Trip machst — emotional & viral", color: "#A78BFA", badge: "Neu" },
-        ].map(m => {
-          const ModeIcon = m.Icon;
-          return (
-            <button key={m.id} onClick={() => onSelect(m.id)}
-              style={{ padding: "28px 22px", borderRadius: "20px", textAlign: "left", border: "2px solid #E2E8F0", background: "#FFFFFF", cursor: "pointer", transition: "all .25s", position: "relative", fontFamily: "inherit", boxShadow: "0 2px 12px rgba(15,23,42,0.06)" }}
-              onMouseEnter={e => { e.currentTarget.style.border = `2px solid ${m.color}`; e.currentTarget.style.boxShadow = `0 8px 32px ${m.color}40`; e.currentTarget.style.transform = "translateY(-3px)"; }}
-              onMouseLeave={e => { e.currentTarget.style.border = "2px solid #E2E8F0"; e.currentTarget.style.boxShadow = "0 2px 12px rgba(15,23,42,0.06)"; e.currentTarget.style.transform = "translateY(0)"; }}>
-              {m.badge && <div style={{ position: "absolute", top: 12, right: 12, fontSize: "10px", background: `${m.color}18`, border: `1px solid ${m.color}44`, color: m.color, padding: "3px 10px", borderRadius: 20, fontWeight: 700 }}>{m.badge}</div>}
-              <div style={{ width: "52px", height: "52px", borderRadius: "16px", background: `${m.color}15`, border: `1.5px solid ${m.color}30`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "16px" }}>
-                <ModeIcon size={24} strokeWidth={1.5} color={m.color} />
-              </div>
-              <div style={{ fontSize: "16px", fontWeight: 700, color: "#0F172A", marginBottom: "8px", fontFamily: "var(--font-heading)" }}>{m.title}</div>
-              <div style={{ fontSize: "13px", color: "#64748B", lineHeight: 1.6 }}>{m.desc}</div>
-            </button>
-          );
-        })}
+      <div className="finder-mode-grid">
+        <FinderModeCard
+          imageUrl="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=600&q=80"
+          Icon={Map}
+          color="#0EA5E9"
+          badge="Beliebt"
+          title="Reiseziel-Finder"
+          description="Beantworte ein paar Fragen zu Stimmung, Reisezeit, Dauer und Budget — unsere KI findet deine 3 perfekten Reiseziele mit Hotels & Flügen."
+          ctaLabel="Jetzt starten"
+          onClick={() => onSelect("classic")}
+        />
+        <FinderModeCard
+          imageUrl="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80"
+          Icon={Sparkles}
+          color="#A78BFA"
+          badge="Neu"
+          title="Dein Reise-Zukunfts-Ich"
+          description="Entdecke, wie sich dein Leben anfühlt, wenn du diese Reise wirklich machst — emotional, persönlich und unvergesslich."
+          ctaLabel="Erlebe dich"
+          onClick={() => onSelect("zukunft")}
+        />
       </div>
     </div>
   );
@@ -617,6 +612,7 @@ function Zukunft({ onBack }) {
 export default function FinderPage() {
   const [page, setPage] = useState("home");
   const isClassic = page === "classic";
+  const isHome = page === "home";
 
   // Auto-open Classic when arriving from the homepage wizard
   useEffect(() => {
@@ -638,23 +634,29 @@ export default function FinderPage() {
           overflowX: "hidden",
         }}
       >
+        {/* Hero — only visible on home selection screen */}
+        {isHome && <FinderStartHero />}
+
         <div style={{
           maxWidth: isClassic ? "1320px" : "860px",
           margin: "0 auto",
-          padding: `${isClassic ? "40px" : "60px"} clamp(16px,4vw,40px) 80px`,
+          padding: `${isClassic ? "40px" : "40px"} clamp(16px,4vw,40px) 80px`,
           transition: "max-width 0.4s ease",
         }}>
-          <div style={{
-            background: "#FFFFFF",
-            borderRadius: "28px",
-            border: "1px solid #E2E8F0",
-            boxShadow: "0 8px 48px rgba(15,23,42,0.08)",
-            padding: isClassic ? "clamp(24px,4vw,40px)" : "clamp(28px,5vw,48px)",
-          }}>
-            {page === "home"    && <Home onSelect={setPage} />}
-            {page === "classic" && <Classic onBack={() => setPage("home")} />}
-            {page === "zukunft" && <Zukunft onBack={() => setPage("home")} />}
-          </div>
+          {isHome ? (
+            <Home onSelect={setPage} />
+          ) : (
+            <div style={{
+              background: "#FFFFFF",
+              borderRadius: "28px",
+              border: "1px solid #E2E8F0",
+              boxShadow: "0 8px 48px rgba(15,23,42,0.08)",
+              padding: isClassic ? "clamp(24px,4vw,40px)" : "clamp(28px,5vw,48px)",
+            }}>
+              {page === "classic" && <Classic onBack={() => setPage("home")} />}
+              {page === "zukunft" && <Zukunft onBack={() => setPage("home")} />}
+            </div>
+          )}
         </div>
       </main>
       <Footer />

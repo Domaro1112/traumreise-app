@@ -675,7 +675,7 @@ export const blogArticles = [
     ],
     relatedArticles: ['bali-unter-1000-euro', 'malediven-familienurlaub', 'tokio-erstbesucher-guide'],
     internalLinks: [
-      { href: '/finder', text: 'jetzt den KI-Reisefinder kostenlos ausprobieren' },
+      { href: '/finder', text: 'jetzt den Reisefinder kostenlos ausprobieren' },
       { href: '/so-funktionierts', text: 'so funktioniert die KI-Reiseplanung im Detail' },
       { href: '/inspiration', text: 'Reiseinspiration für alle Ziele entdecken' },
     ],

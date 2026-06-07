@@ -208,6 +208,18 @@ input::placeholder { color: var(--color-text-muted); }
 }
 .finder-example-pill:hover { background: #DBEAFE; border-color: #93C5FD; }
 
+/* 2-column mode-card grid on /finder home screen */
+.finder-mode-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 820px;
+  margin: 0 auto;
+}
+@media (max-width: 640px) {
+  .finder-mode-grid { grid-template-columns: 1fr; }
+}
+
 /* ── Blog: responsive grids ──────────────────────────────────────────────── */
 
 /* Featured article: stacked on mobile, side-by-side from md */

@@ -138,7 +138,7 @@ export default function HomeTravelWizard() {
                 margin: '0 auto',
               }}
             >
-              Wähle aus was zu dir passt – unsere KI findet deine 3 perfekten Reiseziele
+              Wähle aus was zu dir passt – unsere Analyse findet deine 3 perfekten Reiseziele
               inkl. Hotels &amp; Flügen.
             </p>
           </div>
