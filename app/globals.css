@@ -337,3 +337,90 @@ details[open] > summary span:last-child {
 }
 details > summary::-webkit-details-marker { display: none; }
 details > summary::marker { display: none; }
+
+/* ── Finder Visual Wizard ────────────────────────────────────────────────── */
+
+/* 2-column layout: content + sticky sidebar */
+.finder-wizard-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 36px;
+  align-items: start;
+}
+@media (max-width: 1024px) {
+  .finder-wizard-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Desktop sidebar: sticky */
+.finder-wizard-sidebar {
+  display: none;
+}
+@media (min-width: 1025px) {
+  .finder-wizard-sidebar {
+    display: block;
+    position: sticky;
+    top: 96px;
+  }
+}
+
+/* Mobile summary: shown only below 1024px */
+.finder-mobile-summary {
+  display: block;
+  margin-top: 28px;
+}
+@media (min-width: 1025px) {
+  .finder-mobile-summary { display: none; }
+}
+
+/* Option grids */
+.finder-grid-6 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+@media (max-width: 860px) {
+  .finder-grid-6 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .finder-grid-6 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+}
+
+.finder-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+@media (max-width: 860px) {
+  .finder-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+.finder-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+@media (max-width: 640px) {
+  .finder-grid-3 {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+/* Wizard progress scrollable on narrow screens */
+.wizard-progress-scroll {
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.wizard-progress-scroll::-webkit-scrollbar { display: none; }

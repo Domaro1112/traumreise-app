@@ -1,45 +1,18 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import {
-  Waves, Mountain, Building2, Zap, Landmark, UtensilsCrossed, Leaf, Car,
-  Wallet, Plane, Crown,
-  CalendarDays, Calendar, Globe, Briefcase,
-  Flower2, Sun, Snowflake,
-  Compass, Map, Sparkles, Bot,
+  Waves, Mountain, Building2, Landmark, UtensilsCrossed, Leaf,
+  Globe, Flower2, Music,
+  Plane, Compass, Map, Sparkles,
   MapPin, Mail, ShieldCheck, CheckCircle2,
-  Share2, RotateCcw, Music, Heart,
+  Share2, RotateCcw,
 } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import VisualTravelWizard from "@/components/finder/VisualTravelWizard";
+import { moodOptions, seasonOptions, durationOptions, budgetOptions } from "@/data/finderOptions";
 
 // ── Data constants ────────────────────────────────────────────────────────────
-const INTERESTS = [
-  { id: "beach",     Icon: Waves,           label: "Strand & Meer",      desc: "Sonne, Sand, Wellen" },
-  { id: "mountains", Icon: Mountain,        label: "Berge & Natur",      desc: "Wandern, Frische Luft" },
-  { id: "city",      Icon: Building2,       label: "Städtetrip",         desc: "Kultur, Essen, Nightlife" },
-  { id: "adventure", Icon: Zap,             label: "Abenteuer",          desc: "Extrem, Action, Thrill" },
-  { id: "culture",   Icon: Landmark,        label: "Kultur & Geschichte", desc: "Museen, Sehenswürdigkeiten" },
-  { id: "food",      Icon: UtensilsCrossed, label: "Kulinarik",          desc: "Genuss, lokale Küche" },
-  { id: "wellness",  Icon: Heart,           label: "Wellness & Spa",     desc: "Entspannung, Erholung" },
-  { id: "roadtrip",  Icon: Car,             label: "Roadtrip",           desc: "Freiheit auf der Straße" },
-];
-const BUDGETS = [
-  { id: "low",  Icon: Wallet, label: "Budget",  desc: "bis 500€ p.P." },
-  { id: "mid",  Icon: Plane,  label: "Mittel",  desc: "500–1500€ p.P." },
-  { id: "high", Icon: Crown,  label: "Premium", desc: "1500€+ p.P." },
-];
-const DURATIONS = [
-  { id: "weekend",  Icon: CalendarDays, label: "Wochenende",    desc: "2–4 Tage" },
-  { id: "week",     Icon: Calendar,     label: "1 Woche",       desc: "5–8 Tage" },
-  { id: "twoweeks", Icon: Globe,        label: "2 Wochen",      desc: "9–16 Tage" },
-  { id: "long",     Icon: Briefcase,    label: "Längere Reise", desc: "17+ Tage" },
-];
-const SEASONS = [
-  { id: "spring", Icon: Flower2,   label: "Frühling" },
-  { id: "summer", Icon: Sun,       label: "Sommer" },
-  { id: "autumn", Icon: Leaf,      label: "Herbst" },
-  { id: "winter", Icon: Snowflake, label: "Winter" },
-];
 const VIBES = [
   { id: "relax",     Icon: Waves,           label: "Entspannung", color: "#00C9A7" },
   { id: "adventure", Icon: Mountain,        label: "Abenteuer",   color: "#FF6B35" },
@@ -56,34 +29,6 @@ const LOADING_MSGS = [
   "Wir schreiben deine Geschichte…",
   "Fast fertig — dein Reise-Ich erwacht…",
 ];
-const EXAMPLES = [
-  "Ich liebe es morgens früh aufzustehen wenn noch niemand am Strand ist…",
-  "Städte, in denen man sich verlaufen kann und es gut ist…",
-  "Ich will Essen probieren, das ich zuhause nie finden würde…",
-];
-
-// ── Chip (icon + label, light design) ────────────────────────────────────────
-function Chip({ label, icon: Icon, desc, selected, onClick }) {
-  return (
-    <button onClick={onClick} style={{
-      padding: desc ? "12px 16px" : "10px 18px",
-      borderRadius: "12px",
-      border: `2px solid ${selected ? "#0EA5E9" : "#E2E8F0"}`,
-      background: selected ? "#EFF6FF" : "#FFFFFF",
-      color: selected ? "#0284C7" : "#475569",
-      cursor: "pointer", transition: "all .2s", textAlign: "left",
-      fontSize: "14px", fontWeight: selected ? 600 : 500, lineHeight: 1.3,
-      boxShadow: selected ? "0 0 0 3px rgba(14,165,233,0.12)" : "0 1px 4px rgba(15,23,42,0.06)",
-      fontFamily: "inherit",
-    }}>
-      <div style={{ display: "flex", alignItems: "center", gap: "7px" }}>
-        {Icon && <Icon size={13} strokeWidth={2} />}
-        <span>{label}</span>
-      </div>
-      {desc && <div style={{ fontSize: "11px", opacity: .7, marginTop: "2px", paddingLeft: "20px" }}>{desc}</div>}
-    </button>
-  );
-}
 
 // ── TypewriterText (logic unchanged) ─────────────────────────────────────────
 function TypewriterText({ text, speed = 22, onDone }) {
@@ -272,33 +217,40 @@ function Home({ onSelect }) {
   );
 }
 
-// ── Classic (light design, ALL logic unchanged) ───────────────────────────────
+// ── Classic (visual wizard, ALL affiliate/API logic unchanged) ────────────────
 function Classic({ onBack }) {
-  const [step, setStep] = useState(0);
   const [freeText, setFreeText] = useState("");
   const [interests, setInterests] = useState([]);
   const [budget, setBudget] = useState("");
   const [duration, setDuration] = useState("");
   const [season, setSeason] = useState("");
-  const [adults, setAdults] = useState(2);
-  const [children, setChildren] = useState(0);
-  const [checkin, setCheckin] = useState("");
-  const [checkout, setCheckout] = useState("");
-  const [departure, setDeparture] = useState("");
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState(null);
   const [personality, setPersonality] = useState(null);
   const [error, setError] = useState("");
   const [showEmail, setShowEmail] = useState(false);
 
-  const toggle = id => setInterests(p => p.includes(id) ? p.filter(i => i !== id) : [...p, id]);
-  const canGo = () => {
-    if (step === 0) return freeText.trim().length >= 20;
-    if (step === 1) return interests.length > 0;
-    if (step === 2) return budget && duration && season;
-    return true;
+  // Immutable defaults for affiliate URL building (no UI in new wizard)
+  const adults = 2;
+  const children = 0;
+  const checkin = "";
+  const checkout = "";
+  const departure = "";
+
+  const toggleMood = id =>
+    setInterests(prev =>
+      prev.includes(id) ? prev.filter(i => i !== id) : prev.length >= 3 ? prev : [...prev, id]
+    );
+
+  const canSubmit = interests.length > 0 && !!season && !!duration && !!budget;
+
+  const currentStep = !interests.length ? 1 : !season ? 2 : !duration ? 3 : !budget ? 4 : 5;
+
+  const reset = () => {
+    setFreeText(""); setInterests([]); setBudget("");
+    setDuration(""); setSeason("");
+    setResults(null); setPersonality(null); setError("");
   };
-  const reset = () => { setStep(0); setFreeText(""); setInterests([]); setBudget(""); setDuration(""); setSeason(""); setAdults(2); setChildren(0); setCheckin(""); setCheckout(""); setDeparture(""); setResults(null); setPersonality(null); setError(""); };
 
   const getDefaultDates = () => {
     const now = new Date();
@@ -337,150 +289,29 @@ function Classic({ onBack }) {
   const fetch_ = async () => {
     setLoading(true); setError("");
     try {
-      const iL = interests.map(id => INTERESTS.find(i => i.id === id)?.label).join(", ");
-      const prompt = `Du bist ein einfuehlsamer Reise-Experte. Schlage genau 3 Reiseziele vor:\nPERSOENLICHE BESCHREIBUNG: "${freeText}"\nInteressen: ${iL} | Budget: ${BUDGETS.find(b => b.id === budget)?.label} | Dauer: ${DURATIONS.find(d => d.id === duration)?.label} | Reisezeit: ${SEASONS.find(s => s.id === season)?.label} | Reisende: ${adults} Erwachsene${children > 0 ? `, ${children} Kinder` : ""}\nAntworte NUR als JSON ohne Markdown:\n{"personality":{"types":["Emoji Text","Emoji Text","Emoji Text"],"summary":"Poetischer Satz"},"destinations":[{"destination":"Stadtname","country":"Land","tagline":"kurzer Satz max 10 Woerter","highlights":["1","2","3"],"skySearch":"Stadtname englisch","iata":"IATA-Code des naechsten Flughafens zB LIS MUC BCN"}]}`;
+      const iL = interests.map(id => moodOptions.find(m => m.id === id)?.label).filter(Boolean).join(", ");
+      const prompt = `Du bist ein einfuehlsamer Reise-Experte. Schlage genau 3 Reiseziele vor:\nPERSOENLICHE BESCHREIBUNG: "${freeText}"\nInteressen: ${iL} | Budget: ${budgetOptions.find(b => b.id === budget)?.label} | Dauer: ${durationOptions.find(d => d.id === duration)?.label} | Reisezeit: ${seasonOptions.find(s => s.id === season)?.label} | Reisende: ${adults} Erwachsene${children > 0 ? `, ${children} Kinder` : ""}\nAntworte NUR als JSON ohne Markdown:\n{"personality":{"types":["Emoji Text","Emoji Text","Emoji Text"],"summary":"Poetischer Satz"},"destinations":[{"destination":"Stadtname","country":"Land","tagline":"kurzer Satz max 10 Woerter","highlights":["1","2","3"],"skySearch":"Stadtname englisch","iata":"IATA-Code des naechsten Flughafens zB LIS MUC BCN"}]}`;
       const res = await fetch("https://api.anthropic.com/v1/messages", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 1200, messages: [{ role: "user", content: prompt }] }) });
       const data = await res.json();
       const parsed = JSON.parse(data.content?.map(b => b.text || "").join("").replace(/```json|```/g, "").trim());
       setPersonality(parsed.personality);
       setResults(parsed.destinations.map(d => ({ ...d, ...buildAffiliateUrls(d) })));
-      setStep(4);
     } catch { setError("Fehler. Bitte nochmal versuchen."); }
     setLoading(false);
   };
 
   return (
     <>
-      {/* Progress bar */}
-      {step < 4 && (
-        <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginBottom: "36px" }}>
-          {[0, 1, 2, 3].map(i => (
-            <div key={i} style={{ height: "4px", width: "48px", borderRadius: "2px", background: i <= step ? "#0EA5E9" : "#E2E8F0", transition: "background .4s" }} />
-          ))}
+      {/* Loading */}
+      {loading && (
+        <div style={{ textAlign: "center", padding: "60px 0" }}>
+          <div style={{ width: "48px", height: "48px", border: "3px solid #BAE6FD", borderTopColor: "#0EA5E9", borderRadius: "50%", animation: "spin .8s linear infinite", margin: "0 auto 18px" }} />
+          <div style={{ color: "#64748B", fontSize: "15px", fontWeight: 500 }}>Deine Traumreise wird vorbereitet…</div>
         </div>
       )}
 
-      {/* Step 0 — Freitext */}
-      {step === 0 && (
-        <div style={{ animation: "fadeUp .55s ease both" }}>
-          <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "22px", marginBottom: "6px", fontWeight: 700, color: "#0F172A" }}>Erzähl uns von dir</h2>
-          <p style={{ color: "#64748B", fontSize: "14px", marginBottom: "20px", lineHeight: 1.7 }}>Was macht deinen Traumurlaub aus? Schreib einfach drauf los.</p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "14px" }}>
-            {EXAMPLES.map((ex, i) => (
-              <button key={i} onClick={() => setFreeText(ex)} className="finder-example-pill">
-                {ex.length > 42 ? ex.slice(0, 42) + "…" : ex}
-              </button>
-            ))}
-          </div>
-          <div style={{ position: "relative" }}>
-            <textarea value={freeText} onChange={e => setFreeText(e.target.value)} rows={5}
-              placeholder="Ich träume von einem Ort, wo morgens die Gassen noch leer sind…"
-              style={{ width: "100%", boxSizing: "border-box", background: "#F8FAFF", border: `2px solid ${freeText.length >= 20 ? "#0EA5E9" : "#E2E8F0"}`, borderRadius: "14px", padding: "16px 18px 36px", color: "#0F172A", fontSize: "15px", lineHeight: 1.75, fontFamily: "inherit", fontWeight: 400, resize: "none", outline: "none", transition: "border-color .2s, box-shadow .2s", boxShadow: freeText.length >= 20 ? "0 0 0 3px rgba(14,165,233,0.12)" : "none" }} />
-            <div style={{ position: "absolute", bottom: "12px", right: "14px", fontSize: "12px", color: freeText.length >= 20 ? "#0EA5E9" : "#94A3B8", fontWeight: 500 }}>
-              {freeText.length}{freeText.length < 20 ? ` (noch ${20 - freeText.length})` : " ✓"}
-            </div>
-          </div>
-          {freeText.length >= 20 && (
-            <div style={{ marginTop: "12px", padding: "12px 16px", background: "#EFF6FF", border: "1px solid #BFDBFE", borderRadius: "12px", display: "flex", alignItems: "center", gap: "10px" }}>
-              <Sparkles size={14} strokeWidth={2} color="#0284C7" />
-              <span style={{ fontSize: "13px", color: "#0284C7", fontStyle: "italic" }}>Die KI erkennt deinen Reisetyp.</span>
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* Step 1 — Interessen */}
-      {step === 1 && (
-        <div style={{ animation: "fadeUp .55s ease both" }}>
-          <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "22px", marginBottom: "6px", fontWeight: 700, color: "#0F172A" }}>Was liebst du an Reisen?</h2>
-          <p style={{ color: "#64748B", fontSize: "14px", marginBottom: "20px" }}>Mehrfachauswahl möglich</p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(160px,1fr))", gap: "12px" }}>
-            {INTERESTS.map(i => <Chip key={i.id} label={i.label} icon={i.Icon} desc={i.desc} selected={interests.includes(i.id)} onClick={() => toggle(i.id)} />)}
-          </div>
-        </div>
-      )}
-
-      {/* Step 2 — Rahmenbedingungen */}
-      {step === 2 && (
-        <div style={{ animation: "fadeUp .55s ease both" }}>
-          <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "22px", marginBottom: "22px", fontWeight: 700, color: "#0F172A" }}>Rahmenbedingungen</h2>
-          {[
-            { label: "Budget", items: BUDGETS, val: budget, set: setBudget },
-            { label: "Reisedauer", items: DURATIONS, val: duration, set: setDuration },
-            { label: "Reisezeit", items: SEASONS, val: season, set: setSeason },
-          ].map(({ label, items, val, set }) => (
-            <div key={label} style={{ marginBottom: "24px" }}>
-              <div className="finder-step-label">{label}</div>
-              <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-                {items.map(it => <Chip key={it.id} label={it.label} icon={it.Icon} desc={it.desc} selected={val === it.id} onClick={() => set(it.id)} />)}
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Step 3 — Reisende */}
-      {step === 3 && (
-        <div style={{ animation: "fadeUp .55s ease both" }}>
-          <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "22px", marginBottom: "6px", fontWeight: 700, color: "#0F172A" }}>Wer reist mit?</h2>
-          <p style={{ color: "#64748B", fontSize: "14px", marginBottom: "24px" }}>Anzahl der Reisenden festlegen</p>
-          {[
-            { label: "Erwachsene", sub: "18+ Jahre",      val: adults,   set: setAdults,   min: 1 },
-            { label: "Kinder",     sub: "unter 18 Jahre", val: children, set: setChildren, min: 0 },
-          ].map(({ label, sub, val, set, min }) => (
-            <div key={label} className="finder-traveler-row">
-              <div>
-                <div style={{ fontSize: "16px", fontWeight: 600, color: "#0F172A" }}>{label}</div>
-                <div style={{ fontSize: "12px", color: "#94A3B8", marginTop: "2px" }}>{sub}</div>
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-                <button onClick={() => set(v => Math.max(min, v - 1))} style={{ width: "36px", height: "36px", borderRadius: "50%", border: "2px solid #E2E8F0", background: "#FFFFFF", color: "#475569", fontSize: "20px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "inherit", boxShadow: "0 1px 4px rgba(15,23,42,0.08)" }}>−</button>
-                <span style={{ fontSize: "22px", fontWeight: 700, minWidth: "28px", textAlign: "center", color: "#0F172A" }}>{val}</span>
-                <button onClick={() => set(v => v + 1)} style={{ width: "36px", height: "36px", borderRadius: "50%", border: "2px solid #0EA5E9", background: "#EFF6FF", color: "#0284C7", fontSize: "20px", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "inherit" }}>+</button>
-              </div>
-            </div>
-          ))}
-
-          {/* Reisedaten */}
-          <div style={{ marginTop: "16px" }}>
-            <div className="finder-step-label">
-              Reisedaten{" "}
-              <span style={{ color: "#94A3B8", fontSize: "11px", textTransform: "none", fontWeight: 400, letterSpacing: 0 }}>(optional)</span>
-            </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
-              {[{ label: "Anreise", val: checkin, set: setCheckin }, { label: "Abreise", val: checkout, set: setCheckout }].map(({ label, val, set }) => (
-                <div key={label}>
-                  <div style={{ fontSize: "12px", color: "#64748B", marginBottom: "6px", fontWeight: 500 }}>{label}</div>
-                  <input type="date" value={val} min={new Date().toISOString().split("T")[0]} onChange={e => set(e.target.value)}
-                    style={{ width: "100%", boxSizing: "border-box", background: "#F8FAFF", border: `2px solid ${val ? "#0EA5E9" : "#E2E8F0"}`, borderRadius: "10px", padding: "10px 14px", color: val ? "#0F172A" : "#94A3B8", fontSize: "14px", outline: "none", fontFamily: "inherit", transition: "border-color .2s" }} />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Abflughafen */}
-          <div style={{ marginTop: "22px" }}>
-            <div className="finder-step-label">Dein Abflughafen</div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(110px,1fr))", gap: "8px" }}>
-              {[
-                { code: "FRA", label: "Frankfurt" }, { code: "MUC", label: "München" },
-                { code: "BER", label: "Berlin" },    { code: "DUS", label: "Düsseldorf" },
-                { code: "HAM", label: "Hamburg" },   { code: "STR", label: "Stuttgart" },
-                { code: "CGN", label: "Köln" },      { code: "VIE", label: "Wien" },
-                { code: "ZRH", label: "Zürich" },
-              ].map(ap => (
-                <button key={ap.code} onClick={() => setDeparture(d => d === ap.code ? "" : ap.code)}
-                  style={{ padding: "10px 6px", borderRadius: "10px", border: `2px solid ${departure === ap.code ? "#0EA5E9" : "#E2E8F0"}`, background: departure === ap.code ? "#EFF6FF" : "#FFFFFF", color: departure === ap.code ? "#0284C7" : "#475569", cursor: "pointer", fontSize: "12px", fontWeight: departure === ap.code ? 700 : 500, transition: "all .2s", textAlign: "center", lineHeight: 1.5, fontFamily: "inherit", boxShadow: departure === ap.code ? "0 0 0 3px rgba(14,165,233,0.12)" : "0 1px 3px rgba(15,23,42,0.06)" }}>
-                  {ap.label}<br /><span style={{ fontSize: "11px", opacity: .65 }}>{ap.code}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Step 4 — Ergebnisse */}
-      {step === 4 && results && (
+      {/* Results */}
+      {!loading && results && (
         <div style={{ animation: "fadeIn .5s ease" }}>
           {personality && (
             <div style={{ marginBottom: "32px", background: "linear-gradient(135deg,#EFF6FF,#ECFEFF)", border: "1px solid #BFDBFE", borderRadius: "20px", padding: "26px 28px" }}>
@@ -532,38 +363,28 @@ function Classic({ onBack }) {
         </div>
       )}
 
-      {/* Loading */}
-      {loading && (
-        <div style={{ textAlign: "center", padding: "60px 0" }}>
-          <div style={{ width: "48px", height: "48px", border: "3px solid #BAE6FD", borderTopColor: "#0EA5E9", borderRadius: "50%", animation: "spin .8s linear infinite", margin: "0 auto 18px" }} />
-          <div style={{ color: "#64748B", fontSize: "15px", fontWeight: 500 }}>Deine Traumreise wird vorbereitet…</div>
-        </div>
-      )}
-
-      {/* Error */}
-      {error && (
-        <div style={{ color: "#DC2626", textAlign: "center", padding: "16px", background: "#FEF2F2", border: "1px solid #FECACA", borderRadius: "12px", fontSize: "14px" }}>{error}</div>
+      {/* Visual wizard form */}
+      {!loading && !results && (
+        <VisualTravelWizard
+          freeText={freeText}
+          onFreeTextChange={setFreeText}
+          interests={interests}
+          onToggleMood={toggleMood}
+          season={season}
+          onSeasonChange={setSeason}
+          duration={duration}
+          onDurationChange={setDuration}
+          budget={budget}
+          onBudgetChange={setBudget}
+          currentStep={currentStep}
+          canSubmit={canSubmit}
+          onSubmit={fetch_}
+          onBack={onBack}
+          error={error}
+        />
       )}
 
       {showEmail && <EmailPopup destination={results?.[0]?.destination || ""} onClose={() => setShowEmail(false)} />}
-
-      {/* Navigation */}
-      {step < 4 && !loading && (
-        <div style={{ display: "flex", justifyContent: "space-between", marginTop: "28px" }}>
-          <button onClick={() => step === 0 ? onBack() : setStep(s => s - 1)}
-            style={{ padding: "13px 24px", borderRadius: "12px", border: "2px solid #E2E8F0", background: "#FFFFFF", color: "#475569", cursor: "pointer", fontSize: "15px", fontWeight: 500, fontFamily: "inherit" }}>
-            ← Zurück
-          </button>
-          <button onClick={() => step < 3 ? setStep(s => s + 1) : fetch_()} disabled={!canGo()}
-            style={{ padding: "13px 32px", borderRadius: "12px", border: "none", fontSize: "15px", fontWeight: 700, background: canGo() ? "linear-gradient(135deg,#0EA5E9,#06B6D4)" : "#F1F5F9", color: canGo() ? "#fff" : "#94A3B8", cursor: canGo() ? "pointer" : "not-allowed", boxShadow: canGo() ? "0 4px 20px rgba(14,165,233,0.35)" : "none", fontFamily: "inherit", display: "flex", alignItems: "center", gap: "8px" }}>
-            {step === 3 ? (
-              <><Sparkles size={16} strokeWidth={2} /> Reiseziele finden</>
-            ) : (
-              <>Weiter →</>
-            )}
-          </button>
-        </div>
-      )}
     </>
   );
 }
@@ -779,6 +600,7 @@ function Zukunft({ onBack }) {
 // ── FinderPage wrapper ────────────────────────────────────────────────────────
 export default function FinderPage() {
   const [page, setPage] = useState("home");
+  const isClassic = page === "classic";
 
   return (
     <>
@@ -791,8 +613,19 @@ export default function FinderPage() {
           overflowX: "hidden",
         }}
       >
-        <div style={{ maxWidth: "860px", margin: "0 auto", padding: "60px clamp(16px,4vw,40px) 80px" }}>
-          <div style={{ background: "#FFFFFF", borderRadius: "28px", border: "1px solid #E2E8F0", boxShadow: "0 8px 48px rgba(15,23,42,0.08)", padding: "clamp(28px,5vw,48px)" }}>
+        <div style={{
+          maxWidth: isClassic ? "1320px" : "860px",
+          margin: "0 auto",
+          padding: `${isClassic ? "40px" : "60px"} clamp(16px,4vw,40px) 80px`,
+          transition: "max-width 0.4s ease",
+        }}>
+          <div style={{
+            background: "#FFFFFF",
+            borderRadius: "28px",
+            border: "1px solid #E2E8F0",
+            boxShadow: "0 8px 48px rgba(15,23,42,0.08)",
+            padding: isClassic ? "clamp(24px,4vw,40px)" : "clamp(28px,5vw,48px)",
+          }}>
             {page === "home"    && <Home onSelect={setPage} />}
             {page === "classic" && <Classic onBack={() => setPage("home")} />}
             {page === "zukunft" && <Zukunft onBack={() => setPage("home")} />}
