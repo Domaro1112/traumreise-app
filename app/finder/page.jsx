@@ -271,7 +271,7 @@ function Classic({ onBack }) {
   const getDefaultDates = () => {
     const now = new Date();
     const year = now.getFullYear();
-    const nights = { weekend: 3, week: 7, twoweeks: 14, long: 21 }[duration] || 7;
+    const nights = { weekend: 4, week: 7, twoweeks: 14, long: 21 }[duration] || 7;
     const seasonStart = {
       spring: new Date(year, 3, 15),
       summer: new Date(year, 6, 10),

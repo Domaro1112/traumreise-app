@@ -19,10 +19,10 @@ const SEASONS = [
 ];
 
 const DURATIONS = [
-  { id: 'weekend',  icon: CalendarDays, label: 'Wochenende' },
-  { id: 'week',     icon: Calendar,     label: '1 Woche' },
-  { id: 'twoweeks', icon: Globe,        label: '2 Wochen' },
-  { id: 'long',     icon: Briefcase,    label: 'Länger' },
+  { id: 'weekend',  icon: CalendarDays, label: 'Kurztrip' },
+  { id: 'week',     icon: Calendar,     label: 'Urlaubswoche' },
+  { id: 'twoweeks', icon: Globe,        label: 'Zwei Wochen' },
+  { id: 'long',     icon: Briefcase,    label: 'Langzeitreise' },
 ];
 
 const BUDGETS = [
