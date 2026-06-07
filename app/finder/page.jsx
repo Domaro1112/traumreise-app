@@ -224,6 +224,22 @@ function Classic({ onBack }) {
   const [budget, setBudget] = useState("");
   const [duration, setDuration] = useState("");
   const [season, setSeason] = useState("");
+
+  // Restore state pre-filled from homepage wizard (via sessionStorage)
+  useEffect(() => {
+    try {
+      const stored = sessionStorage.getItem("traumreise_finder_state");
+      if (stored) {
+        const s = JSON.parse(stored);
+        if (Array.isArray(s.interests) && s.interests.length) setInterests(s.interests);
+        if (s.season) setSeason(s.season);
+        if (s.duration) setDuration(s.duration);
+        if (s.budget) setBudget(s.budget);
+        if (s.freeText) setFreeText(s.freeText);
+        sessionStorage.removeItem("traumreise_finder_state");
+      }
+    } catch {}
+  }, []);
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState(null);
   const [personality, setPersonality] = useState(null);
@@ -601,6 +617,15 @@ function Zukunft({ onBack }) {
 export default function FinderPage() {
   const [page, setPage] = useState("home");
   const isClassic = page === "classic";
+
+  // Auto-open Classic when arriving from the homepage wizard
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem("traumreise_finder_state")) {
+        setPage("classic");
+      }
+    } catch {}
+  }, []);
 
   return (
     <>

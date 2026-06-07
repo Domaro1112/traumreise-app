@@ -1,7 +1,7 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/landing/HeroSection';
-import TravelFinderBox from '@/components/landing/TravelFinderBox';
+import HomeTravelWizard from '@/components/landing/HomeTravelWizard';
 import FeatureStrip from '@/components/landing/FeatureStrip';
 import DestinationCards from '@/components/landing/DestinationCards';
 import PartnerTrustSection from '@/components/landing/PartnerTrustSection';
@@ -20,7 +20,7 @@ export default function LandingPage() {
       <Header />
       <main>
         <HeroSection />
-        <TravelFinderBox />
+        <HomeTravelWizard />
         <FeatureStrip />
         <DestinationCards />
         <PartnerTrustSection />
