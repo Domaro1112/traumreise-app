@@ -226,7 +226,7 @@ export default function VisualTravelWizard({
           }}
         >
           <Sparkles size={12} strokeWidth={2} />
-          KI-Reisefinder
+          Dein Reisefinder
         </div>
 
         <h1

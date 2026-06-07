@@ -207,7 +207,7 @@ export default async function ArticlePage({ params }) {
                   fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
                 }}
               >
-                KI-Reisefinder
+                Dein Reisefinder
               </div>
 
               <h2

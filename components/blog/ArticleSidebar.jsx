@@ -142,7 +142,7 @@ export default function ArticleSidebar({ tableOfContents, destination }) {
             marginBottom: '20px',
           }}
         >
-          Lass unsere KI in 2 Minuten ein personalisiertes Reisepaket für dich zusammenstellen.
+          Lass unsere Analyse in 2 Minuten ein personalisiertes Reisepaket für dich zusammenstellen.
         </p>
 
         <Link
@@ -164,7 +164,7 @@ export default function ArticleSidebar({ tableOfContents, destination }) {
           }}
         >
           <Plane size={15} strokeWidth={2.5} />
-          KI-Finder starten
+          Analyse starten
           <ArrowRight size={14} strokeWidth={2.5} />
         </Link>
 

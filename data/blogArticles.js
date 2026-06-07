@@ -120,7 +120,7 @@ export const blogArticles = [
     ],
     relatedArticles: ['malediven-familienurlaub', 'albanien-geheimtipp-europa', 'ki-reiseplanung-anfaenger'],
     internalLinks: [
-      { href: '/finder', text: 'deine personalisierte Traumreise mit KI planen' },
+      { href: '/finder', text: 'deine personalisierte Traumreise mit jetzt planen' },
       { href: '/inspiration', text: 'weitere Reiseideen für Südostasien entdecken' },
       { href: '/so-funktionierts', text: 'so funktioniert der kostenlose Traumreise-Finder' },
     ],
@@ -902,6 +902,1170 @@ export const blogArticles = [
       { href: '/inspiration', text: 'weitere europäische Geheimtipps entdecken' },
     ],
   },
+
+  // ── Mallorca ──────────────────────────────────────────────────────────────────
+  {
+    slug: 'mallorca-ohne-massentourismus',
+    title: 'Mallorca abseits der Massen: Die 10 schönsten Geheimtipps',
+    excerpt: 'Mallorca ist mehr als Ballermann und Überfüllung. Wir zeigen dir die verborgene Insel mit einsamen Buchten, authentischen Dörfern und Naturerlebnissen abseits der Touristenmassen.',
+    category: 'Geheimtipps',
+    destination: 'Mallorca',
+    country: 'Spanien',
+    imageUrl: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=80',
+    date: '2025-02-10',
+    lastUpdated: '2025-06-01',
+    readingTime: '10 min',
+    author: 'Traumreise Redaktion',
+    authorBio: 'Das Traumreise-Team recherchiert und testet die besten Reiseziele für deutschsprachige Urlauber.',
+    tags: ['Mallorca', 'Balearen', 'Spanien', 'Geheimtipps', 'Strand', 'Natur'],
+    featured: false,
+    seoTitle: 'Mallorca Geheimtipps 2025: Abseits des Massentourismus | Traumreise',
+    seoDescription: 'Entdecke Mallorca abseits der Touristenpfade: einsame Strände, versteckte Dörfer und Naturabenteuer. Die besten Geheimtipps für dein Mallorca-Erlebnis 2025.',
+    keyTakeaways: [
+      'Die Serra de Tramuntana im Nordwesten bietet spektakuläre Wanderwege fern vom Touristenstrom.',
+      'Kleinstädte wie Deià, Fornalutx und Valldemossa sind weltberühmt für ihre Authentizität.',
+      'Außerhalb Juli/August sind die meisten Strände kaum überfüllt – Schulterschaison Mai/Juni optimal.',
+      'Mit Mietrad oder Vespa lassen sich abgelegene Buchten wie Cala Deià oder Sa Calobra erreichen.',
+      'Fincas im Landesinneren bieten ruhigere und oft günstigere Unterkunftsalternativen zu Hotelketten.',
+    ],
+    destinationFacts: {
+      capital: 'Palma de Mallorca',
+      language: 'Katalanisch, Spanisch',
+      currency: 'Euro (EUR)',
+      timezone: 'CEST (UTC+2)',
+      flightTime: 'ca. 2,5 Std. ab Frankfurt',
+      bestTime: 'April–Juni, September–Oktober',
+    },
+    airportInfo: 'Flughafen Palma de Mallorca (PMI) ist einer der meistfrequentierten Spaniens. Zahlreiche Direktflüge aus allen deutschen Großstädten, auch Charterverbindungen. Mietwagen direkt am Airport empfohlen.',
+    tableOfContents: [
+      'Warum Mallorca mehr ist als Ballermann',
+      'Die Serra de Tramuntana: Wanderparadies UNESCO',
+      'Versteckte Buchten und einsame Strände',
+      'Authentische Dörfer abseits der Touristenpfade',
+      'Beste Reisezeit und Unterkunftstipps',
+      'Kulinarische Geheimtipps: Wo Einheimische essen',
+    ],
+    contentSections: [
+      {
+        heading: 'Warum Mallorca mehr ist als Ballermann',
+        content: 'Mallorca leidet unter seinem Image – dabei ist die Baleareninsel landschaftlich eine der schönsten Europas. Während der Süden tatsächlich überlaufen ist, bietet der Norden und Westen unberührte Natur, dramatische Klippen und ein authentisches Dorfleben, das man so kaum noch in Mittelmeereuropa findet. Mit 550 km Küstenlinie und dem UNESCO-Welterbe Serra de Tramuntana hat Mallorca für Naturliebhaber weit mehr zu bieten als Strandliegen und Sangria-Eimer.',
+      },
+      {
+        heading: 'Die Serra de Tramuntana: Wanderparadies UNESCO',
+        content: 'Das Tramuntana-Gebirge im Nordwesten der Insel wurde 2011 zum UNESCO-Weltkulturerbe erklärt. Hier verlaufen über 1.000 Kilometer markierter Wanderwege durch Olivenhaine, Zitronenterrassen und über 1.000 Meter hohe Gipfel. Der GR 221 (Ruta de Pedra en Sec) führt in 8 Etappen von Andratx nach Pollença und gilt als einer der schönsten Fernwanderwege Südeuropas. Übernachtungen in Refugios (Berghütten) entlang der Route kosten ca. 20–25 Euro pro Nacht.',
+      },
+      {
+        heading: 'Versteckte Buchten und einsame Strände',
+        content: 'Cala Deià im Nordwesten ist nur über schmale Gebirgsstraßen erreichbar – ein winziger Naturhafen mit kristallklarem Wasser, umgeben von Felsen. Sa Calobra gilt als eine der dramatischsten Küstenstraßen Europas; der Torrent de Pareis mündet hier ins Meer. Cala Varques im Osten ist nur zu Fuß erreichbar (ca. 20 Min.) und bleibt dadurch auch im Sommer angenehm ruhig. Wer frühmorgens startet, hat diese Paradiese oft für sich alleine.',
+      },
+      {
+        heading: 'Authentische Dörfer abseits der Touristenpfade',
+        content: 'Deià ist das Künstlerdorf Mallorcas – Robert Graves lebte hier jahrzehntelang, und die terrassierten Häuschen hängen malerisch am Berghang. Fornalutx wurde mehrfach zum schönsten Dorf Spaniens gewählt. Sineu im Zentrum hält jeden Mittwoch einen lebhaften Bauernmarkt ab, der von Einheimischen besucht wird. Campos und Santanyí im Süden bieten mallorquinische Lebensart ohne Touristenrummel, mit hervorragenden lokalen Tapas-Bars und Weingütern.',
+      },
+      {
+        heading: 'Beste Reisezeit und Unterkunftstipps',
+        content: 'April bis Mitte Juni und September bis Oktober sind ideal: angenehme Temperaturen (20–27°C), geringere Überfüllung und bis zu 40% günstigere Preise gegenüber Juli/August. Für Wanderungen in der Tramuntana eignen sich März bis Mai besonders gut. Statt Hotelketten an der Playa empfehlen wir Fincas und Boutique-Agrotourismus im Landesinneren – viele bieten Pools, Olivengärten und mallorquinische Atmosphäre zu ähnlichen oder günstigeren Preisen.',
+      },
+      {
+        heading: 'Kulinarische Geheimtipps: Wo Einheimische essen',
+        content: 'Die Ensaimada (Blätterteigschnecke mit Puderzucker) zum Frühstück in einer lokalen Confitería – das ist Mallorca authentisch. Pa amb oli (Brot mit Olivenöl und Tomate) als mallorquinisches Grundnahrungsmittel findet sich in einfachen Bars für 3–5 Euro. Sobrasada (gewürzte Rohwurst) und Tumbet (mallorquinisches Gemüsegericht) sind Spezialitäten, die man in den Cellers – traditionellen Weinkellern als Restaurants – probieren muss. Bodegas können in Binissalem und Porreres besichtigt werden.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Wann ist die beste Reisezeit für Mallorca ohne Massen?',
+        answer: 'April bis Juni und September bis Oktober. Temperaturen von 20–27°C, deutlich weniger Touristen, günstigere Preise. Juli und August sind Hauptsaison mit höchsten Temperaturen und voller Auslastung.',
+      },
+      {
+        question: 'Welche Regionen Mallorcas sind am ruhigsten?',
+        answer: 'Der Nordwesten (Serra de Tramuntana) und das Zentrum (Es Pla) sind deutlich ruhiger als Süden und Osten. Dörfer wie Deià, Fornalutx, Sineu und Artà bieten authentisches Mallorca ohne Tourismusrummel.',
+      },
+      {
+        question: 'Brauche ich ein Mietauto auf Mallorca?',
+        answer: 'Für Erkundungen abseits der Touristenpfade ist ein Mietauto empfohlen. Preise ab 25 Euro/Tag in der Nebensaison. Alternativ bieten E-Bikes und Vespa-Verleih gute Möglichkeiten für kürzere Touren in der Tramuntana.',
+      },
+      {
+        question: 'Gibt es auf Mallorca Wanderwege für Anfänger?',
+        answer: 'Ja, der küstennahe Weg von Port de Sóller nach Deià ist einfach und landschaftlich spektakulär. Auch der Camí de Cavalls an der Küste ist gut ausgeschildert und für alle Fitnesslevel geeignet.',
+      },
+      {
+        question: 'Was kostet eine Woche Mallorca in der Nebensaison?',
+        answer: 'Flug-Hotel-Kombi ab Deutschland: 450–900 Euro pro Person in der Schulterschaison. Fincas und Agrotourismus: 80–150 Euro/Nacht. Essen und Trinken: 30–50 Euro/Tag pro Person in lokalen Restaurants.',
+      },
+    ],
+    relatedArticles: ['albanien-geheimtipp-europa', 'santorini-september-geheimtipp', 'lissabon-versteckte-perle'],
+    internalLinks: [
+      { href: '/finder', text: 'deinen Mallorca-Urlaub mit KI planen' },
+      { href: '/reiseblog', text: 'weitere Mittelmeer-Geheimtipps entdecken' },
+    ],
+  },
+
+  // ── Madeira ───────────────────────────────────────────────────────────────────
+  {
+    slug: 'madeira-7-tage-reiseroute',
+    title: 'Madeira in 7 Tagen: Die perfekte Reiseroute für Naturliebhaber',
+    excerpt: 'Vulkanische Landschaften, tropische Vegetation und dramatische Küstencliffs: Madeira ist Europas grünstes Geheimnis. Unsere 7-Tage-Reiseroute zeigt dir das Beste der Blumeninsel.',
+    category: 'Natur & Abenteuer',
+    destination: 'Madeira',
+    country: 'Portugal',
+    imageUrl: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1200&q=80',
+    date: '2025-02-20',
+    lastUpdated: '2025-06-01',
+    readingTime: '11 min',
+    author: 'Traumreise Redaktion',
+    authorBio: 'Das Traumreise-Team recherchiert und testet die besten Reiseziele für deutschsprachige Urlauber.',
+    tags: ['Madeira', 'Portugal', 'Wandern', 'Natur', 'Levada', 'Insel'],
+    featured: false,
+    seoTitle: 'Madeira 7 Tage Reiseroute 2025: Der ultimative Reiseplan | Traumreise',
+    seoDescription: 'Madeira in 7 Tagen entdecken: Levada-Wanderungen, Pico Ruivo, Funchal und die dramatische Nordküste. Komplette Reiseroute mit Tipps für Unterkunft, Transport und Highlights.',
+    keyTakeaways: [
+      'Die Levada-Wanderpfade (Bewässerungskanäle) sind Madeiras einzigartigste Attraktion – über 2.000 km Gesamtnetz.',
+      'Pico Ruivo (1.861 m) ist der höchste Punkt Madeiras und für geübte Wanderer in ca. 3 Std. begehbar.',
+      'Funchal bietet einen der faszinierendsten Stadtmärkte Europas mit tropischen Früchten und lokalen Spezialitäten.',
+      'Madeira ist ganzjährig bereisbar – mildes Klima zwischen 17°C (Winter) und 26°C (Sommer).',
+      'Mietwagen unverzichtbar: Öffentlicher Nahverkehr zu den Highlights nur eingeschränkt verfügbar.',
+    ],
+    destinationFacts: {
+      capital: 'Funchal',
+      language: 'Portugiesisch',
+      currency: 'Euro (EUR)',
+      timezone: 'WET (UTC+0) / WEST (UTC+1)',
+      flightTime: 'ca. 3,5 Std. ab Frankfurt',
+      bestTime: 'April–Oktober (ganzjährig möglich)',
+    },
+    airportInfo: 'Flughafen Madeira (FNC / Cristiano Ronaldo International) liegt 22 km östlich von Funchal. Die dramatische Landebahn ragt ins Meer. Direktflüge aus Frankfurt, München, Köln. Mietwagen direkt am Flughafen empfohlen.',
+    tableOfContents: [
+      'Warum Madeira das grüne Juwel Europas ist',
+      'Tag 1–2: Funchal und die Südküste entdecken',
+      'Tag 3–4: Levada-Wanderungen im Zentrum',
+      'Tag 5: Pico Ruivo – Dach der Insel',
+      'Tag 6: Die wilde Nordküste erkunden',
+      'Tag 7: Porto Santo oder letzter Genusstag',
+    ],
+    contentSections: [
+      {
+        heading: 'Warum Madeira das grüne Juwel Europas ist',
+        content: 'Im Atlantik, 1.400 km von Lissabon entfernt, liegt eine der faszinierendsten Inseln Europas. Madeira ist das Ergebnis jahrmillionenalter Vulkantätigkeit – mit dramatischen Steilklippen, üppigen Lorbeerwäldern (UNESCO-Weltnaturerbe) und über 800 Pflanzenarten, von denen viele nirgendwo sonst vorkommen. Kein Wunder, dass Madeira als Blumeninsel bekannt ist. Und während andere europäische Inseln im Sommer überquellen, bleibt Madeira das ganze Jahr über vergleichsweise ruhig und authentisch.',
+      },
+      {
+        heading: 'Tag 1–2: Funchal und die Südküste entdecken',
+        content: 'Beginne deinen Aufenthalt in Funchal. Der Mercado dos Lavradores ist ein Pflichtbesuch: Exotische Früchte wie Bananas, Maracuja und Pitanga laden zum Probieren ein. Die Altstadt (Zona Velha) mit ihrer bunten Street-Art ist abends besonders schön. Nimm die historische Seilbahn zum Monte-Viertel. Am zweiten Tag erkundest du die Südküste: Cabo Girão (580 m hohe Glasbodenplattform) und die kleinen Dörfer zwischen Câmara de Lobos und Ribeira Brava.',
+      },
+      {
+        heading: 'Tag 3–4: Levada-Wanderungen im Zentrum',
+        content: 'Die Levadas sind Madeiras hydraulisches Meisterwerk – ein 2.000 km langes Netz von Bewässerungskanälen aus dem 16. Jahrhundert, begleitet von Wanderpfaden durch tropische Wälder. Levada do Caldeirão Verde: Durch vier Tunnel hindurch, umgeben von 300 m hohen Steilwänden – einer der dramatischsten Wanderwege Europas. Levada das 25 Fontes führt zu einem beeindruckenden Wasserfall. Beide Wanderungen sind mittelschwer (4–5 Std.) und erfordern festes Schuhwerk sowie eine Stirnlampe für die Tunnel.',
+      },
+      {
+        heading: 'Tag 5: Pico Ruivo – Dach der Insel',
+        content: 'Der Aufstieg zum Pico Ruivo (1.861 m) ist Madeiras Königsetappe. Starte früh (6–7 Uhr) von Achada do Teixeira aus – dieser Zugang verkürzt den Aufstieg auf etwa 1,5 Stunden (Hin und Zurück ca. 3 Std.). Bei guten Bedingungen siehst du über das Wolkenmeer hinweg bis zum Pico do Areeiro und bei außergewöhnlicher Klarsicht sogar die Kanaren am Horizont. Der Übergang vom Pico do Areeiro zum Pico Ruivo ist anspruchsvoller (5–6 Std., Trittsicherheit erforderlich).',
+      },
+      {
+        heading: 'Tag 6: Die wilde Nordküste erkunden',
+        content: 'Die Nordküste Madeiras ist das Gegenstück zum sonnenreichen Süden: rauer, grüner, dramatischer. São Vicente bietet beeindruckende Basalthöhlen (Grutas de São Vicente, ca. 6 Euro) und eine wilde Küstenlandschaft. Das Dorf Seixal mit seinem schwarzen Lavastrand und dem natürlichen Meerwasserpool ist ein echter Geheimtipp. Die Küstenstraße Via Litoral Nordeste (ER101) gehört zu den schönsten Panoramastraßen Europas.',
+      },
+      {
+        heading: 'Tag 7: Porto Santo oder letzter Genusstag',
+        content: 'Porto Santo, Madeiras Schwesterinsel, ist 45 Minuten per Fähre entfernt. Die 9 km lange Goldstrand-Bahn ist der einzige feine Sandstrand Madeiras. Wer lieber auf Madeira bleibt: Eine letzte Levada-Wanderung, Besuch des Jardim Botânico und ein Poncha-Abschlusstrunk am Hafen von Funchal runden die Reise ab. Poncha ist das lokale Getränk aus Aguardente, Honig und Zitronensaft für 2–4 Euro.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Braucht man auf Madeira ein Mietauto?',
+        answer: 'Ja, unbedingt. Der öffentliche Bus ist für Touristen wenig praktikabel. Mietwagen ab 25 Euro/Tag; Kleinst-SUV für die Bergstraßen empfohlen. Frühzeitig buchen, besonders in der Hauptsaison.',
+      },
+      {
+        question: 'Welche Levada-Wanderung ist für Anfänger geeignet?',
+        answer: 'Levada das 25 Fontes (ca. 11 km, leicht bis mittel) ist ideal für Einsteiger. Die Levada do Risco (kurze Variante, 5 km) ist noch einfacher. Levada do Caldeirão Verde erfordert Stirnlampe für 4 Tunnel – besser für Geübte.',
+      },
+      {
+        question: 'Wann ist das Wetter auf Madeira am besten?',
+        answer: 'Madeira hat ein mildes Klima ganzjährig (17–26°C). April bis Oktober sind optimal für Wanderungen. November bis März kann bewölkt und regnerisch sein, besonders im Norden. Funchal und der Süden sind immer milder.',
+      },
+      {
+        question: 'Wie teuer ist eine Woche Madeira?',
+        answer: 'Flug ab Deutschland: 150–350 Euro. Hotel in Funchal Mittelklasse: 70–120 Euro/Nacht. Mietwagen: 25–40 Euro/Tag. Essen: 20–40 Euro/Tag. Gesamtbudget für 7 Tage: ca. 700–1.400 Euro pro Person alles inklusive.',
+      },
+      {
+        question: 'Ist Madeira gut für Wanderer und Naturliebhaber?',
+        answer: 'Madeira ist eines der besten Wanderziele Europas. Über 2.000 km Levada-Wanderwege, UNESCO-Lorbeerwald, Gipfelwanderungen bis 1.861 m und spektakuläre Küstenlandschaften machen die Insel zu einem Paradies für Outdoor-Enthusiasten.',
+      },
+    ],
+    relatedArticles: ['albanien-geheimtipp-europa', 'lissabon-versteckte-perle', 'bali-unter-1000-euro'],
+    internalLinks: [
+      { href: '/finder', text: 'deine Madeira-Reise mit KI planen' },
+      { href: '/reiseblog', text: 'weitere Insel-Reiseguides entdecken' },
+    ],
+  },
+
+  // ── Island ────────────────────────────────────────────────────────────────────
+  {
+    slug: 'island-rundreise-anfaenger',
+    title: 'Island Rundreise für Anfänger: Der komplette Ring Road Guide',
+    excerpt: 'Die Ring Road (Route 1) führt einmal um Island herum – durch Lavafelder, Gletscher, Geysire und Wasserfälle. Unser Anfänger-Guide zeigt dir, wie du Islands Naturwunder in 10–14 Tagen erlebst.',
+    category: 'Natur & Abenteuer',
+    destination: 'Island',
+    country: 'Island',
+    imageUrl: 'https://images.unsplash.com/photo-1520769945061-0a448c463865?auto=format&fit=crop&w=1200&q=80',
+    date: '2025-03-05',
+    lastUpdated: '2025-06-01',
+    readingTime: '13 min',
+    author: 'Traumreise Redaktion',
+    authorBio: 'Das Traumreise-Team recherchiert und testet die besten Reiseziele für deutschsprachige Urlauber.',
+    tags: ['Island', 'Ring Road', 'Rundreise', 'Nordlichter', 'Geysir', 'Gletscher'],
+    featured: false,
+    seoTitle: 'Island Rundreise 2025: Ring Road Guide für Anfänger | Traumreise',
+    seoDescription: 'Island in 10–14 Tagen entdecken: Kompletter Ring Road Guide mit Route, Highlights, Tipps für Nordlichter, Gletscherwanderungen und Budgetplanung. Alles für Erstbesucher.',
+    keyTakeaways: [
+      'Die Ring Road (Route 1, 1.332 km) führt einmal um Island und ist in 7–14 Tagen fahrbar.',
+      'Mietwagen ist Pflicht – am besten ein 4WD/SUV, besonders für Hochlandrouten auf F-Straßen.',
+      'Beste Zeit für Nordlichter: Oktober bis März, weit weg von Reykjavik (Lichtverschmutzung).',
+      'Island ist teuer: 100–180 Euro pro Person/Tag für Mietwagen, Unterkunft und Essen realistisch.',
+      'Buchung weit im Voraus notwendig: Guesthouses und Hostels in der Hochsaison schnell ausgebucht.',
+    ],
+    destinationFacts: {
+      capital: 'Reykjavik',
+      language: 'Isländisch',
+      currency: 'Isländische Krone (ISK)',
+      timezone: 'GMT (UTC+0) ganzjährig',
+      flightTime: 'ca. 3 Std. ab Frankfurt/München',
+      bestTime: 'Juni–August (Mitternachtssonne), Oktober–März (Nordlichter)',
+    },
+    airportInfo: 'Keflavik International Airport (KEF) liegt 50 km westlich von Reykjavik. Flybus-Transfer in die Stadt (45 Min., ca. 25 Euro). Direktflüge mit Icelandair aus mehreren deutschen Städten. Mietauto direkt am Flughafen.',
+    tableOfContents: [
+      'Die Ring Road: Islands Haupt-Reiseroute verstehen',
+      'Der Goldene Kreis: Einstieg für Erstbesucher',
+      'Südküste: Gletscherlagunen und schwarze Sandstrände',
+      'Ostfjorde und Nordküste: Abseits der Touristenpfade',
+      'Westfjorde und Snæfellsnes: Inselmagie pur',
+      'Nordlichter, Budgetplanung und Sicherheitstipps',
+    ],
+    contentSections: [
+      {
+        heading: 'Die Ring Road: Islands Haupt-Reiseroute verstehen',
+        content: 'Die Route 1 umfährt Island auf einer Gesamtlänge von 1.332 km und verbindet alle wichtigen Regionen. Für Erstbesucher empfiehlt sich eine Fahrzeit von 10–14 Tagen, um an den wichtigsten Sehenswürdigkeiten auch zu wandern und nicht nur im Auto zu sitzen. Die Straße ist asphaltiert und das ganze Jahr befahrbar – jedoch können im Winter Schneestürme kurzfristig zu Straßensperrungen führen. Immer das isländische Wetterportal vedur.is prüfen und die App 112 Iceland installieren.',
+      },
+      {
+        heading: 'Der Goldene Kreis: Einstieg für Erstbesucher',
+        content: 'Der Goldene Kreis umfasst drei Ikonen auf ca. 300 km: Thingvellir (UNESCO-Welterbe, hier driften eurasische und nordamerikanische Erdplatten auseinander), Geysir (der aktive Strokkur spuckt alle 5–10 Min. bis 30 m hoch) und Gullfoss (zweistufiger Wasserfall, einer der mächtigsten Islands). Der Goldene Kreis ist ideal als Ersttag nach Ankunft in Reykjavik – alle drei Highlights an einem Tag machbar. Danach Richtung Süden zur Küste.',
+      },
+      {
+        heading: 'Südküste: Gletscherlagunen und schwarze Sandstrände',
+        content: 'Die Südküste zwischen Vík und Höfn ist Islands spektakulärster Abschnitt der Ring Road. Seljalandsfoss (Wasserfall, den man hinterlaufen kann), Skógafoss und die Gletscherlagune Jökulsárlón mit schwimmenden Eisbergen und Diamantstrand sind die Highlights. Der schwarze Strand Reynisfjara bei Vík ist berühmt für seine Basaltprismasäulen – aber Achtung vor gefährlichen Wellen. Vatnajökull (Europas größter Gletscher) bietet geführte Gletscherwanderungen ab 60 Euro.',
+      },
+      {
+        heading: 'Ostfjorde und Nordküste: Abseits der Touristenpfade',
+        content: 'Die Ostfjorde sind Geheimtipp für Individualreisende: enge Fjorde, spiegelnde Seen und ursprüngliche Natur. Egilsstaðir ist die Hauptstadt des Ostens. Die Nordküste mit dem Wasserfall Godafoss ("Wasserfall der Götter") und Akureyri (Islands zweitgrößte Stadt) ist das kulturelle Zentrum des Nordens. Mývatn-See mit seinen grünen Pseudokratern und den Námaskarð-Schlammtöpfen ist ein geologisches Wunderwerk – die geothermalen Aktivitäten sind hier besonders intensiv.',
+      },
+      {
+        heading: 'Westfjorde und Snæfellsnes: Inselmagie pur',
+        content: 'Die Westfjorde sind Islands entlegenste Region – wenige Besucher, dramatische Klippen, riesige Vogelkolonien. Latrabjarg (die westlichste Klippe Europas) beherbergt Millionen von Tordalken und Papageitauchern. Snæfellsnes-Halbinsel ist zugänglicher: Der Gletscher Snæfellsjökull (bekannt aus Jules Vernes "Reise zum Mittelpunkt der Erde") ragt 1.446 m auf und ist bei gutem Wetter sogar von Reykjavik aus sichtbar.',
+      },
+      {
+        heading: 'Nordlichter, Budgetplanung und Sicherheitstipps',
+        content: 'Nordlichter (Aurora Borealis) sind von September bis März bei klarem Himmel sichtbar. App-Empfehlung: Aurora Forecast oder vedur.is. Budget für 10 Tage: Mietwagen (SUV) ca. 600–900 Euro, Guesthouses 60–120 Euro/Nacht. Essen im Supermarkt (Bónus) spart erheblich. Gesamtbudget: 1.500–2.500 Euro pro Person für 10 Tage. Sicherheit: Nie von befestigter Straße abweichen ohne 4WD, Wetterwarnungen ernst nehmen.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Brauche ich einen 4WD für die Ring Road auf Island?',
+        answer: 'Für die normale Ring Road (Route 1) reicht ein normaler PKW aus. Für F-Straßen (Hochlandpisten) ist ein 4WD Pflicht – F-Straßen dürfen nur von zugelassenen Fahrzeugen befahren werden, sonst drohen hohe Bußgelder.',
+      },
+      {
+        question: 'Wie lange braucht man für eine Island-Rundreise?',
+        answer: 'Minimum 7 Tage für die Highlights entlang der Ring Road (sehr stressig). Ideal 10–14 Tage für eine entspannte Runde. Bei 14 Tagen kommt man auch auf F-Straßen und abgelegenere Regionen wie die Westfjorde.',
+      },
+      {
+        question: 'Kann man auf Island im Winter eine Rundreise machen?',
+        answer: 'Ja, aber nur mit erfahrenen Fahrern und einem geländetauglichen Fahrzeug mit Winterreifen. Manche Abschnitte können wegen Schnee gesperrt sein. Dafür: Nordlichter, weniger Touristen, spektakuläre Winterlandschaft.',
+      },
+      {
+        question: 'Wie teuer ist ein Urlaub auf Island?',
+        answer: 'Island zählt zu den teuersten Reisezielen Europas. Mietwagen, Unterkunft und Essen können schnell 150–200 Euro/Tag pro Person erreichen. Camping und Supermarkt-Verpflegung senken das Budget auf ca. 80–120 Euro/Tag.',
+      },
+      {
+        question: 'Welche Reiseversicherung brauche ich für Island?',
+        answer: 'Reiseabbruchversicherung und Mietwagenversicherung (SCDW/SAAP gegen Schäden durch Sand und Schlamm) sind dringend empfohlen. Die Standard-Kasko der Mietwagenfirma deckt keine Sturmschäden oder Wasserfahrten ab.',
+      },
+    ],
+    relatedArticles: ['madeira-7-tage-reiseroute', 'norwegen-fjorde-reiseguide', 'albanien-geheimtipp-europa'],
+    internalLinks: [
+      { href: '/finder', text: 'dein Island-Abenteuer mit KI entdecken' },
+      { href: '/inspiration', text: 'weitere Nordeuropa-Reiseguides lesen' },
+    ],
+  },
+
+  // ── Thailand Inselhopping ─────────────────────────────────────────────────────
+  {
+    slug: 'thailand-inselhopping-2-wochen',
+    title: 'Thailand Inselhopping in 2 Wochen: Die perfekte Südthailand-Route',
+    excerpt: 'Ko Samui, Ko Tao, Ko Pha-Ngan, Ko Lanta und Krabi in einer Reise verbinden – unser Inselhopping-Guide zeigt dir die beste Route für 14 Tage Südthailand mit Tipps für jede Insel.',
+    category: 'Routen & Roadtrips',
+    destination: 'Südthailand',
+    country: 'Thailand',
+    imageUrl: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1200&q=80',
+    date: '2025-03-15',
+    lastUpdated: '2025-06-01',
+    readingTime: '12 min',
+    author: 'Traumreise Redaktion',
+    authorBio: 'Das Traumreise-Team recherchiert und testet die besten Reiseziele für deutschsprachige Urlauber.',
+    tags: ['Thailand', 'Inselhopping', 'Ko Samui', 'Ko Tao', 'Krabi', 'Strand'],
+    featured: false,
+    seoTitle: 'Thailand Inselhopping 2 Wochen: Südthailand-Route 2025 | Traumreise',
+    seoDescription: 'Thailand Inselhopping in 14 Tagen: Optimale Route durch Ko Samui, Ko Pha-Ngan, Ko Tao, Ko Lanta und Krabi mit Tipps für Transport, Unterkunft und die besten Strände.',
+    keyTakeaways: [
+      'Ko Tao ist eine der weltbesten Tauchdestinationen für Einsteiger: PADI Open Water ab 250 Euro in 3–4 Tagen.',
+      'Fähren zwischen den Inseln kosten 300–800 Baht (8–22 Euro) und fahren täglich mehrfach.',
+      'High Season für Golfküste (Ko Samui): November–März; Andamanensee (Krabi, Ko Lanta): April–Oktober.',
+      'Full Moon Party auf Ko Pha-Ngan – monatlich; Tickets 500–700 Baht. Einmonatige Vorausplanung empfohlen.',
+      'Günstigstes Inselhopping: Nachtbus plus Fähre statt Inlandsflüge – spart 50–70% der Transportkosten.',
+    ],
+    destinationFacts: {
+      capital: 'Bangkok (Einstiegsstadt)',
+      language: 'Thailändisch',
+      currency: 'Baht (THB) – 1 Euro ca. 38 Baht',
+      timezone: 'ICT (UTC+7)',
+      flightTime: 'ca. 10–11 Std. ab Frankfurt nach Bangkok, 1,5 Std. Inlandsflug nach Ko Samui',
+      bestTime: 'November–März (Golfküste), April–Oktober (Andamanensee)',
+    },
+    airportInfo: 'Einstieg über Bangkok Suvarnabhumi (BKK) oder direkt nach Ko Samui (USM) mit Bangkok Airways. Krabi (KBV) und Phuket (HKT) als Ausstiegsflughäfen für die Andamanensee-Inseln. Inlandsflüge mit Air Asia sehr günstig (10–40 Euro).',
+    tableOfContents: [
+      'Südthailand: Golfküste vs. Andamanensee verstehen',
+      'Ko Samui: Luxus trifft Tropenidylle (3 Nächte)',
+      'Ko Pha-Ngan und Ko Tao: Party und Tauchen (4 Nächte)',
+      'Krabi: Kalksteinfelsen und Kajak-Abenteuer (3 Nächte)',
+      'Ko Lanta: Entspannung am Ende der Route (3 Nächte)',
+      'Transport, Budget und praktische Tipps',
+    ],
+    contentSections: [
+      {
+        heading: 'Südthailand: Golfküste vs. Andamanensee verstehen',
+        content: 'Thailand hat zwei Küsten mit unterschiedlichen Reisezeiten. Die Golfküste (Ko Samui, Ko Pha-Ngan, Ko Tao) ist von November bis März am besten – die Andamanenseeseite (Krabi, Ko Lanta, Ko Phi Phi) von April bis Oktober. Eine Kombinationsroute über beide Küsten ist von November bis März optimal buchbar – dann sind beide Seiten in guten Bedingungen. Unsere 2-Wochen-Route startet auf Ko Samui und endet in Krabi.',
+      },
+      {
+        heading: 'Ko Samui: Luxus trifft Tropenidylle (3 Nächte)',
+        content: 'Ko Samui ist die entwickeltste der drei Schwesterninseln – mit internationalem Flughafen, Luxusresorts und allem Komfort. Die Strände Chaweng (lebendig, mit Nightlife) und Maenam (ruhig, für Familien) repräsentieren die zwei Gesichter der Insel. Ein Besuch der Big Buddha-Statue und des Erawan-Schreins ist kostenlos und kulturell lohnenswert. Tagestour zu den Ang Thong Marine National Park-Inseln (ca. 1.500–2.500 Baht): unvergessliche Kalkstein-Karst-Inseln im Archipelmeer.',
+      },
+      {
+        heading: 'Ko Pha-Ngan und Ko Tao: Party und Tauchen (4 Nächte)',
+        content: 'Ko Pha-Ngan ist berühmt für die monatliche Full Moon Party am Haad Rin Beach – aber die Insel bietet auch Yoga-Retreats in Thong Sala für Ruhesuchende. Ko Tao (45 Min. Fähre) ist global bekannt für günstiges Tauchen: PADI Open Water Kurs inklusive 4 Tauchgänge ab ca. 250 Euro in 3 Tagen. Die Unterwasserwelt mit Walhaien (saisonal) und Korallengärten ist selbst für Schnorchler beeindruckend.',
+      },
+      {
+        heading: 'Krabi: Kalksteinfelsen und Kajak-Abenteuer (3 Nächte)',
+        content: 'Krabi ist das Tor zur Andamanensee-Welt. Die Kalksteinfelsen-Kulisse um Railay Beach (nur per Boot erreichbar) gehört zu den fotografiertesten Südostasiens. Klettern an den Limestone-Walls von Railay ist ein Weltzentrum des Sportkletterns mit geführten Kursen ab 800 Baht. Four Islands Tour (1.200–1.500 Baht) führt zu kristallklaren Lagunen. Ao Nang ist die Touristenbasis, von der Longtailboote alle Strände anfahren.',
+      },
+      {
+        heading: 'Ko Lanta: Entspannung am Ende der Route (3 Nächte)',
+        content: 'Ko Lanta ist der ruhige Abschluss der Route: weniger überlaufen als Ko Phi Phi oder Phuket, mit langen Naturstränden und einem entspannten Flair. Klong Dao Beach im Norden ist sauber und ideal für Familien. Der alte Holzsteg-Pier Lanta Old Town lädt zum Flanieren und Fischessen ein. Mit Moped (100–200 Baht/Tag) lässt sich die ganze Insel in einem Tag erkunden. Ko Lanta Marine National Park: Schnorcheln über Korallenriffen (Tagestour ca. 1.200 Baht).',
+      },
+      {
+        heading: 'Transport, Budget und praktische Tipps',
+        content: 'Transport: Nachtbus Bangkok–Surat Thani plus Fähre nach Ko Samui ist die günstigste Option (ca. 600–900 Baht). Fähren zwischen Inseln: 300–800 Baht pro Strecke. Budget: 50–80 Euro pro Person/Tag bei mittlerem Komfort. Günstig: 25–40 Euro/Tag (Hostel, Streetfood). Gesundheit: Dengue-Stichschutz wichtig. Reisekrankenversicherung Pflicht. Beste SIM-Karte: AIS oder DTAC am Flughafen (ca. 300 Baht für 30 Tage).',
+      },
+    ],
+    faq: [
+      {
+        question: 'Wann ist die beste Reisezeit für Südthailand?',
+        answer: 'Golfküste (Ko Samui): November–März trocken. Andamanensee (Krabi, Ko Lanta): April–Oktober beste Bedingungen. November–März eignet sich für eine Kombinations-Route über beide Küsten.',
+      },
+      {
+        question: 'Brauche ich ein Visum für Thailand?',
+        answer: 'Nein – Deutsche, Österreicher und Schweizer können visumfrei für 30 Tage einreisen (Visa on Arrival). Bei längeren Aufenthalten: Tourist Visa über die Botschaft beantragen.',
+      },
+      {
+        question: 'Wie viel Geld brauche ich für 2 Wochen Thailand?',
+        answer: 'Budget ca. 800–1.200 Euro für 2 Wochen (ohne Flug). Inklusive Flüge aus Deutschland (350–600 Euro bei Frühbuchung) kommt man auf ca. 1.200–1.800 Euro. Mit Luxusresort-Option eher 2.500–4.000 Euro.',
+      },
+      {
+        question: 'Ist Thailand sicher für Alleinreisende?',
+        answer: 'Thailand gilt als eines der sichersten Reiseziele Südostasiens für Alleinreisende. Taschendiebstahl in Touristenbereichen ist mögliches Risiko. Medizinische Versorgung in Städten und Touristenzentren ist ausgezeichnet.',
+      },
+      {
+        question: 'Welche Inseln sollte ich bei 2 Wochen priorisieren?',
+        answer: 'Ko Tao (Tauchen), Ko Pha-Ngan (Full Moon oder Entspannung) und Krabi (Kalksteinfelsen, Railay) sind die Top-3. Ko Samui als Einstieg, Ko Lanta als Ausklang. Ko Phi Phi nur als Tagesausflug (überfüllt aber fotografisch beeindruckend).',
+      },
+    ],
+    relatedArticles: ['bali-unter-1000-euro', 'albanien-geheimtipp-europa', 'santorini-september-geheimtipp'],
+    internalLinks: [
+      { href: '/finder', text: 'dein Thailand-Urlaub mit KI planen' },
+      { href: '/reiseblog', text: 'weitere Asien-Reiseguides entdecken' },
+    ],
+  },
+
+  // ── Portugal Roadtrip ─────────────────────────────────────────────────────────
+  {
+    slug: 'portugal-roadtrip-porto-lissabon',
+    title: 'Portugal Roadtrip: Porto bis Lissabon in 10 Tagen',
+    excerpt: 'Entlang der atlantischen Küste von Porto nach Lissabon: Azulejos, Fado, Pastéis de Nata und wilde Atlantikstrände. Unser Roadtrip-Guide führt dich durch das Beste Portugals in 10 Tagen.',
+    category: 'Routen & Roadtrips',
+    destination: 'Porto & Lissabon',
+    country: 'Portugal',
+    imageUrl: 'https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&fit=crop&w=1200&q=80',
+    date: '2025-03-25',
+    lastUpdated: '2025-06-01',
+    readingTime: '11 min',
+    author: 'Traumreise Redaktion',
+    authorBio: 'Das Traumreise-Team recherchiert und testet die besten Reiseziele für deutschsprachige Urlauber.',
+    tags: ['Portugal', 'Porto', 'Lissabon', 'Roadtrip', 'Atlantik', 'Kultur'],
+    featured: false,
+    seoTitle: 'Portugal Roadtrip Porto–Lissabon 2025: 10 Tage Guide | Traumreise',
+    seoDescription: 'Portugal Roadtrip von Porto nach Lissabon in 10 Tagen: Beste Route, Highlights, Strände und Geheimtipps entlang der Atlantikküste. Inklusive Kosten und Unterkunftsempfehlungen.',
+    keyTakeaways: [
+      'Die Küstenroute N13 / IC1 von Porto nach Lissabon ist landschaftlich weit schöner als die Autobahn.',
+      'Porto ist Europas beste Städtereise-Destination laut mehrfacher Auszeichnung – 3 Tage Minimum.',
+      'Die Alentejo-Küste (Costa Vicentina) ist Europas letzte wilde Atlantikküste mit kaum berührten Stränden.',
+      'Obidos, Nazaré und Óbidos sind perfekte Zwischenstopps mit hohem Fotopotenzial.',
+      'Mietwagen oder Campervan ideal – Strecke ca. 400 km auf direktem Weg, bei Küstenroute 600+ km.',
+    ],
+    destinationFacts: {
+      capital: 'Lissabon',
+      language: 'Portugiesisch',
+      currency: 'Euro (EUR)',
+      timezone: 'WET (UTC+0) / WEST (UTC+1)',
+      flightTime: 'ca. 2,5 Std. nach Porto, 2,5 Std. nach Lissabon ab Frankfurt',
+      bestTime: 'April–Juni, September–Oktober',
+    },
+    airportInfo: 'Flughafen Porto (OPO): gut verbunden mit deutschen Städten via TAP, Ryanair, Eurowings. Lissabon (LIS) als Rückflughafen ideal. Mietauto in Porto aufnehmen, in Lissabon abgeben (One-Way-Miete, kleiner Aufpreis).',
+    tableOfContents: [
+      'Warum Portugal der perfekte Roadtrip-Destination ist',
+      'Porto: Fado, Francesinha und fliegende Möwen (3 Tage)',
+      'Viana do Castelo bis Aveiro: Atlantikküste und Kanäle',
+      'Coimbra und Óbidos: Universitätsstadt und Märchenschloss',
+      'Nazaré und Peniche: Weltrekordwellen und Surfer-Idyll',
+      'Lissabon: Tram 28, Pastéis und Fado-Abend (3 Tage)',
+    ],
+    contentSections: [
+      {
+        heading: 'Warum Portugal der perfekte Roadtrip-Destination ist',
+        content: 'Portugal bietet auf kleinstem Raum eine erstaunliche Vielfalt: mittelalterliche Städte, wilde Atlantikstrände, üppige Weingärten und eine kulinarische Kultur, die gerade die Welt für sich entdeckt. Dazu kommt: Im Vergleich zu Spanien, Frankreich oder Italien ist Portugal noch immer deutlich günstiger und weniger überlaufen. Der Roadtrip von Porto nach Lissabon verbindet die beiden wichtigsten Städte des Landes über eine Küstenroute, die zu den schönsten Europas gehört.',
+      },
+      {
+        heading: 'Porto: Fado, Francesinha und fliegende Möwen (3 Tage)',
+        content: 'Porto ist mehrfach zur besten europäischen Städtereise-Destination gewählt worden – und das zu Recht. Das Ribeira-Viertel (UNESCO-Welterbe) mit seinen bunten Häuserfassaden direkt am Douro, die historische Buchhandlung Livraria Lello (3 Euro Eintritt), die Portwein-Keller in Vila Nova de Gaia und der Strandvorort Foz do Douro sind Pflicht. Francesinha – das legendäre Toastbrot-Sandwich mit Fleisch und Käse unter scharfer Biersauce (8–12 Euro) – ist Portos kulinarisches Markenzeichen.',
+      },
+      {
+        heading: 'Viana do Castelo bis Aveiro: Atlantikküste und Kanäle',
+        content: 'Nördlich von Porto wartet Viana do Castelo mit einer atemberaubenden Basilika auf dem Hügel Santa Luzia (Seilbahn 3 Euro). Aveiro, das "Venedig Portugals", begeistert mit bunten Moliceiro-Booten auf den Kanälen und dem lokalen Spezialität Ovos Moles (Süßigkeit aus Eigelb und Zucker). Die Atlantikstrände entlang der Costa Nova mit ihren gestreiften Strandhäuschen (Palheiros) sind ein beliebtes Fotomotiv.',
+      },
+      {
+        heading: 'Coimbra und Óbidos: Universitätsstadt und Märchenschloss',
+        content: 'Coimbra beherbergt eine der ältesten Universitäten Europas (gegründet 1290) – die Bibliothek Biblioteca Joanina ist eines der schönsten Rokokogebäude der Welt (Besichtigung mit Ticket ca. 12 Euro). Óbidos ist eine vollständig erhaltene mittelalterliche Stadt innerhalb von Stadtmauern – man kann auf den Mauern entlanglaufen. Das lokale Getränk Ginjinha de Óbidos (Sauerkirschlikör in Schokoladenbecher) ist das süßeste Souvenir der Reise.',
+      },
+      {
+        heading: 'Nazaré und Peniche: Weltrekordwellen und Surfer-Idyll',
+        content: 'Nazaré ist weltberühmt für die größten Wellen der Welt (bis 30 m hoch, November–Februar) am Praia do Norte. Das Fischerdorf selbst ist authentisch und günstiger als andere Küstenorte. Peniche mit der vorgelagerten Insel Baleal ist das Surfer-Herz Portugals – Surfkurse ab 30 Euro/Tag. Die Festung Fortaleza de Peniche und der geschützte Naturpark Berlengas-Inseln (Fähre 17 Euro) sind lohnenswerte Ausflüge.',
+      },
+      {
+        heading: 'Lissabon: Tram 28, Pastéis und Fado-Abend (3 Tage)',
+        content: 'Lissabon als Endpunkt des Roadtrips: Die historische Tram 28 durch das Alfama-Viertel ist das Symbol der Stadt. Pastéis de Belém (das Original-Pastei de Nata in der Fábrica dos Pastéis de Belém, 1,40 Euro) nicht verpassen. Der Torre de Belém (UNESCO), das Mosteiro dos Jerónimos und der Bairro Alto für Fado-Abende sind Pflicht. Für ruhigere Ecken: Mouraria und Príncipe Real bieten neues Lissabon mit lokalen Bars und Concept Stores.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Wie lange sollte der Portugal Roadtrip dauern?',
+        answer: 'Mindestens 10 Tage für Porto–Lissabon mit Zwischenstopps. Mit 14 Tagen hat man mehr Zeit für Strände, Tagesausflüge nach Sintra (von Lissabon) und Geheimtipps der Alentejo-Küste.',
+      },
+      {
+        question: 'Ist Portugal teuer für einen Roadtrip?',
+        answer: 'Portugal ist im Vergleich zu Westeuropa noch günstig. Mietwagen ab 25 Euro/Tag, gute Restaurants 15–30 Euro/Person, Unterkunft in mittlerer Kategorie 60–100 Euro/Nacht. Gesamtbudget 70–120 Euro/Person/Tag.',
+      },
+      {
+        question: 'Kann man Portugal ohne Auto bereisen?',
+        answer: 'Porto und Lissabon sind ausgezeichnet mit Bahn und Bus verbunden (Comboios de Portugal, FlixBus). Für Küstenorte und abgelegenere Stopps wie Óbidos oder Nazaré ist ein Mietwagen jedoch praktischer.',
+      },
+      {
+        question: 'Welche Regionen Portugals sollte ich auf dem Roadtrip nicht verpassen?',
+        answer: 'Porto Ribeira, Aveiro, Óbidos, Nazaré, Peniche und die Alentejo-Küste zwischen Sines und Sagres. Für Weinliebhaber ist auch ein Abstecher ins Douro-Tal (Portwein-Heimat) lohnenswert.',
+      },
+      {
+        question: 'Wann ist die beste Reisezeit für Portugal?',
+        answer: 'April bis Juni und September bis Oktober sind ideal: angenehme Temperaturen (18–25°C), weniger Touristen als im Sommer, grüne Landschaft nach dem Winter. Juli und August sind heiß (35°C+) und touristisch am stärksten besucht.',
+      },
+    ],
+    relatedArticles: ['lissabon-versteckte-perle', 'albanien-geheimtipp-europa', 'mallorca-ohne-massentourismus'],
+    internalLinks: [
+      { href: '/finder', text: 'deinen Portugal-Roadtrip mit KI planen' },
+      { href: '/reiseblog', text: 'weitere Europa-Roadtrip-Guides lesen' },
+    ],
+  },
+
+  // ── Griechenland Inselhopping ─────────────────────────────────────────────────
+  {
+    slug: 'griechenland-inselhopping-einsteiger',
+    title: 'Griechenland Inselhopping für Einsteiger: Die 5 besten Inseln im Überblick',
+    excerpt: 'Kreta, Santorini, Mykonos, Rhodos oder Korfu – welche griechischen Inseln passen zu dir? Unser Einsteiger-Guide zeigt die 5 besten Inseln und wie du sie optimal kombinierst.',
+    category: 'Geheimtipps',
+    destination: 'Griechenland',
+    country: 'Griechenland',
+    imageUrl: 'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?auto=format&fit=crop&w=1200&q=80',
+    date: '2025-04-01',
+    lastUpdated: '2025-06-01',
+    readingTime: '10 min',
+    author: 'Traumreise Redaktion',
+    authorBio: 'Das Traumreise-Team recherchiert und testet die besten Reiseziele für deutschsprachige Urlauber.',
+    tags: ['Griechenland', 'Inselhopping', 'Santorini', 'Kreta', 'Mykonos', 'Ägäis'],
+    featured: false,
+    seoTitle: 'Griechenland Inselhopping 2025: Die 5 besten Inseln für Einsteiger | Traumreise',
+    seoDescription: 'Griechenland Inselhopping für Einsteiger: Kreta, Santorini, Mykonos, Rhodos und Naxos im Vergleich. Welche Insel passt zu dir? Tipps für Fähren, Unterkunft und Reisezeit.',
+    keyTakeaways: [
+      'Fähren verbinden die meisten griechischen Inseln – buche über ferries.gr frühzeitig in der Hochsaison.',
+      'Santorini ist magisch, aber überlaufen – eine Nacht reicht für Oia-Sonnenuntergang und Caldera-Blick.',
+      'Naxos ist das günstigere, authentischere Alternativziel zu Mykonos mit längsten Stränden der Kykladen.',
+      'Kreta ist die größte und vielseitigste Insel: eine ganze Woche füllt sie mühelos.',
+      'August ist teuerster und vollster Monat – Mai, Juni und September sind deutlich angenehmer.',
+    ],
+    destinationFacts: {
+      capital: 'Athen',
+      language: 'Griechisch',
+      currency: 'Euro (EUR)',
+      timezone: 'EET (UTC+2) / EEST (UTC+3)',
+      flightTime: 'ca. 3–3,5 Std. ab Frankfurt (direkter nach Kreta, Rhodos, Korfu)',
+      bestTime: 'Mai–Juni, September–Oktober',
+    },
+    airportInfo: 'Direktflüge nach Heraklion/Kreta (HER), Rhodos (RHO), Korfu (CFU), Santorini (JTR) und Mykonos (JMK) aus allen deutschen Hauptstädten. Athen (ATH) als Hub für alle Inseln per Fähre oder Inlandsflug. Aegean Airlines und Ryanair mit günstigen Verbindungen.',
+    tableOfContents: [
+      'Das griechische Inselmeer: Orientierung für Einsteiger',
+      'Santorini: Magie der Caldera und spektakuläre Sonnenuntergänge',
+      'Kreta: Die Insel für alle – Strand, Berge und Kultur',
+      'Naxos: Das authentische Kykladen-Geheimnis',
+      'Rhodos: Mittelalter trifft Strandurlaub',
+      'Tipps für die perfekte Insel-Kombination',
+    ],
+    contentSections: [
+      {
+        heading: 'Das griechische Inselmeer: Orientierung für Einsteiger',
+        content: 'Griechenland hat über 6.000 Inseln, von denen etwa 230 bewohnt sind. Die wichtigsten Gruppen: Kykladen (Santorini, Mykonos, Naxos, Paros), Dodekanes (Rhodos, Kos), Ionische Inseln (Korfu, Zakynthos, Kefalonia) und Kreta. Für Inselhopping-Einsteiger empfehlen sich die Kykladen, da die Fährverbindungen gut ausgebaut sind und die Inseln nah beieinander liegen. Kreta und Rhodos haben internationale Flughäfen und eignen sich als Solo-Ziel für eine Woche.',
+      },
+      {
+        heading: 'Santorini: Magie der Caldera und spektakuläre Sonnenuntergänge',
+        content: 'Santorini ist eine der meistfotografierten Inseln der Welt – und das aus gutem Grund. Die weißen Häuser mit blauen Kuppeln über der Caldera, der vulkanischen Lagune, sind einzigartig. Oia mit seinem legendären Sonnenuntergang ist Pflicht, aber buche die Unterkunft weit im Voraus (Juni–September ausgebucht). Tipp: Imerovigli (ruhiger, günstigere Preise) oder Firostefani als Alternative zu Oia. Schwarze Strände (Kamari, Perissa) und Weinverkostungen auf der Insel komplettieren das Erlebnis.',
+      },
+      {
+        heading: 'Kreta: Die Insel für alle – Strand, Berge und Kultur',
+        content: 'Kreta ist Griechenlands größte Insel und bietet eine erstaunliche Vielfalt: die Schluchten Samaria (16 km, anspruchsvoll) und Imbros (8 km, einfacher), den Venezianischen Hafen in Chania (eines der schönsten Griechenlands), Minoan-Palast Knossos (16 Euro) und die Strände von Elafonisi (pinker Sand) und Balos (türkisblaue Lagune). Für Badeorte: Südküste Sfakia und Paleochora sind ruhiger und authentischer als die überfüllte Nordküste.',
+      },
+      {
+        heading: 'Naxos: Das authentische Kykladen-Geheimnis',
+        content: 'Naxos ist das Geheimtipp der Kykladen: die größte der Gruppe, mit dem längsten Strand (Agios Prokopios, 8 km), einer lebendigen Altstadt (Chora) und dem gigantischen unvollendeten Apollontempel (Portara) am Hafen. Im Gegensatz zu Mykonos und Santorini ist Naxos noch verhältnismäßig günstig und von Einheimischen bewohnt – man findet hier noch authentische Tavernen ohne Tourist-Preise. Das Bergdorf Apiranthos gilt als eines der schönsten Griechenlands.',
+      },
+      {
+        heading: 'Rhodos: Mittelalter trifft Strandurlaub',
+        content: 'Rhodos kombiniert weltklasse Altstadt (UNESCO-Welterbe, mittelalterliche Ritterburg) mit hervorragenden Stränden an der Ost- und Westküste. Lindos mit seiner Akropolis über dem Dorf ist das spektakulärste Tagesziel. Die Altstadt von Rhodos-Stadt mit dem Weg der Ritter ist eine der besterhaltenen mittelalterlichen Stadtanlagen Europas. Faliraki (Jugendtourismus) und Prasonisi (Wind- und Kitesurfen) sprechen unterschiedliche Reistypen an.',
+      },
+      {
+        heading: 'Tipps für die perfekte Insel-Kombination',
+        content: 'Klassiker für 2 Wochen: Athen (2 Tage) – Santorini (3 Tage) – Naxos (3 Tage) – Paros (2 Tage) – Mykonos (3 Tage) – Rückflug. Für Ruhesuchende: Kreta (7 Tage, viel zu entdecken) plus Santorin als kurzer Abstecher (3 Tage). Fähren buchen: ferries.gr für Überblick, Sea Jets und Blue Star Ferries für Kykladen. Frühbuchung im Sommer essentiell: Kabinen und Sitzplätze auf beliebten Routen früh ausgebucht.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Wann ist die beste Reisezeit für Griechenland?',
+        answer: 'Mai–Juni und September–Oktober sind ideal: Temperaturen 22–28°C, wenig Gedränge, günstigere Preise. Juli–August sind heiß (35°C+) und touristisch überlaufen. Meltemi-Winde im August können Fähren beeinflussen.',
+      },
+      {
+        question: 'Wie buche ich Fähren zwischen griechischen Inseln?',
+        answer: 'Über ferries.gr (Übersicht aller Betreiber) oder direkt bei Blue Star Ferries und SeaJets. Im Sommer frühzeitig buchen (besonders Kabinen). Einfache Sitzplätze sind meist verfügbar, aber auf beliebten Routen auch schnell weg.',
+      },
+      {
+        question: 'Wie teuer ist ein Griechenland-Urlaub?',
+        answer: 'Günstiger als viele denken (außer Santorini und Mykonos im Juli/August). Auf Naxos, Kreta und Rhodos: 60–120 Euro/Nacht Unterkunft, 15–25 Euro/Mahlzeit. Gesamtbudget 80–150 Euro/Person/Tag alles inklusive.',
+      },
+      {
+        question: 'Welche Insel ist am besten für Familien mit Kindern?',
+        answer: 'Kreta (Vielfalt, ruhige Buchten, Kinderattraktionen), Naxos (flache, sichere Strände, kein Partytourismus) und Korfu (grün, abwechslungsreich) sind beste Familienziele. Mykonos und Santorini eher für Paare und junge Erwachsene.',
+      },
+      {
+        question: 'Ist Santorini für einen Erstbesuch in Griechenland geeignet?',
+        answer: 'Ja, aber als alleiniges Ziel kann Santorini enttäuschen: überfüllt, teuer und wenig Strand. Besser als Teil einer Rundreise mit Naxos oder Paros kombinieren. Mindestens 2 Nächte für die Highlights einplanen.',
+      },
+    ],
+    relatedArticles: ['santorini-september-geheimtipp', 'lissabon-versteckte-perle', 'albanien-geheimtipp-europa'],
+    internalLinks: [
+      { href: '/finder', text: 'dein Griechenland-Urlaub mit KI planen' },
+      { href: '/inspiration', text: 'weitere Mittelmeer-Urlaubsziele entdecken' },
+    ],
+  },
+
+  // ── Norwegen Fjorde ───────────────────────────────────────────────────────────
+  {
+    slug: 'norwegen-fjorde-reiseguide',
+    title: 'Norwegen Fjorde: Der ultimative Reiseguide für Fjordland und Nordlichter',
+    excerpt: 'Geiranger, Nærøy, Hardanger – Norwegens Fjorde sind UNESCO-Welterbe und zählen zu den schönsten Landschaften der Erde. Unser Guide zeigt dir die beste Route, Aktivitäten und Reisetipps.',
+    category: 'Natur & Abenteuer',
+    destination: 'Norwegen',
+    country: 'Norwegen',
+    imageUrl: 'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=1200&q=80',
+    date: '2025-04-10',
+    lastUpdated: '2025-06-01',
+    readingTime: '12 min',
+    author: 'Traumreise Redaktion',
+    authorBio: 'Das Traumreise-Team recherchiert und testet die besten Reiseziele für deutschsprachige Urlauber.',
+    tags: ['Norwegen', 'Fjorde', 'Geiranger', 'Nordlichter', 'Wandern', 'Skandinavien'],
+    featured: false,
+    seoTitle: 'Norwegen Fjorde Reiseguide 2025: Geiranger, Nordlichter & mehr | Traumreise',
+    seoDescription: 'Norwegen Fjorde entdecken: Geirangerfjord, Nærøyfjord, Preikestolen und Trolltunga. Kompletter Reiseguide mit Route, Tipps für Nordlichter, Kosten und beste Reisezeit.',
+    keyTakeaways: [
+      'Geirangerfjord und Nærøyfjord sind UNESCO-Welterbe – die spektakulärsten Fjorde Norwegens.',
+      'Preikestolen (Kanzelstein) und Trolltunga sind Norwegens bekannteste Wanderziele, buchbar ohne Guide.',
+      'Norwegen ist teuer: 150–250 Euro pro Person/Tag realistisches Budget für Unterkunft, Essen und Transport.',
+      'Mietwagen ist ideal für Fjordland – Fähren zwischen Fjorden sind malerisch und günstig (20–40 Euro).',
+      'Nordlichter: September bis März in Nordnorwegen (Tromsø, Lofoten) am zuverlässigsten.',
+    ],
+    destinationFacts: {
+      capital: 'Oslo',
+      language: 'Norwegisch',
+      currency: 'Norwegische Krone (NOK) – 1 Euro ca. 11,5 NOK',
+      timezone: 'CET (UTC+1) / CEST (UTC+2)',
+      flightTime: 'ca. 2 Std. ab Frankfurt nach Bergen oder Oslo',
+      bestTime: 'Juni–August (Fjorde), September–März (Nordlichter)',
+    },
+    airportInfo: 'Bergen (BGO) ist das Tor zu den Westfjorden – Direktflüge ab Frankfurt und München. Oslo (OSL) als Hub für ganz Norwegen. Inlandsflüge mit Norwegian sehr günstig. Fähren von Kiel und Hamburg nach Oslo (DFDS, Color Line) als romantische Anreisealternative.',
+    tableOfContents: [
+      'Warum die Norwegischen Fjorde einzigartig sind',
+      'Bergen: Das Tor zu den Fjorden (2 Tage)',
+      'Geirangerfjord: Der bekannteste Fjord der Welt',
+      'Nærøyfjord und Sognefjord: UNESCO-Wildnis erleben',
+      'Preikestolen und Trolltunga: Norwegens Wanderikonen',
+      'Nordlichter in Tromsø und den Lofoten',
+    ],
+    contentSections: [
+      {
+        heading: 'Warum die Norwegischen Fjorde einzigartig sind',
+        content: 'Fjorde entstehen, wenn das Meer in von Gletschern ausgefräste Täler eindringt – in Norwegen mit spektakulären Dimensionen: bis zu 200 km lang, bis zu 1.300 m tief, mit senkrechten Felswänden, die direkt aus dem Wasser aufragen. Der Geirangerfjord und der Nærøyfjord stehen gemeinsam auf der UNESCO-Welterbeliste. Wer einmal am Rand eines Fjords gestanden hat, versteht sofort, warum Norwegen zu den meistgesuchten Reisezielen der Welt gehört.',
+      },
+      {
+        heading: 'Bergen: Das Tor zu den Fjorden (2 Tage)',
+        content: 'Bergen ist Ausgangspunkt für die meisten Fjord-Touren. Die historische Hansebryggen-Pier (UNESCO) mit ihren bunten Holzhäusern ist das Wahrzeichen der Stadt. Der Fischmarkt, die Seilbahn auf den Fløyen (50 NOK, ca. 4 Euro) mit Panoramablick und das Kode-Kunstmuseum füllen zwei Tage mühelos. Die Bahn Bergen–Oslo (Bergensbanen) gilt als eine der schönsten Zugstrecken der Welt – als Alternative zur Rückfahrt buchbar.',
+      },
+      {
+        heading: 'Geirangerfjord: Der bekannteste Fjord der Welt',
+        content: 'Der Geirangerfjord im Nordwesten Norwegens gilt als der schönste Fjord der Welt. Das Dorf Geiranger liegt am Ende des Fjords, umgeben von schneebedeckten Gipfeln und Wasserfällen wie den Sieben Schwestern und dem Freier. Eine Kreuzfahrt auf dem Fjord (ab 200 NOK/Person für kurze Fahrten) ist unvergesslich. Der Dalsnibba-Berg (1.476 m) bietet einen der besten Aussichtspunkte Europas mit Blick auf das Fjordsystem.',
+      },
+      {
+        heading: 'Nærøyfjord und Sognefjord: UNESCO-Wildnis erleben',
+        content: 'Der Sognefjord ist mit 204 km Länge und 1.308 m Tiefe der längste und tiefste Fjord Norwegens. Sein Nebenarm, der Nærøyfjord (nur 250 m breit an der schmalsten Stelle), ist UNESCO-Welterbe und bietet eines der eindrucksvollsten Naturschauspiele Europas. Flåm am Ende des Aurlandsfjords ist Ausgangspunkt der weltberühmten Flåmsbana (Bahnstrecke, 21 km, 900 Höhenmeter). Die Stegastein-Aussichtsplattform (630 m über dem Fjord) bietet freischwebende Blicke.',
+      },
+      {
+        heading: 'Preikestolen und Trolltunga: Norwegens Wanderikonen',
+        content: 'Preikestolen (Kanzelstein, 604 m) ist eine flache Felsplatte, die 604 m senkrecht über dem Lysefjord thront – einer der fotogeniertesten Orte Europas. Wanderung: 8 km Hin-und-Zurück, ca. 4 Std., mittleres Niveau. Keine Absperrung am Rand – Schwindelfrei sollte man sein. Trolltunga (Trollzunge, 700 m) ist anspruchsvoller: 27 km, 8–10 Std., Höhenunterschied 800 m. Beide sind ohne Führer begehbar, aber festes Schuhwerk und Wettercheck obligatorisch.',
+      },
+      {
+        heading: 'Nordlichter in Tromsø und den Lofoten',
+        content: 'Tromsø (69. Breitengrad) gilt als Welthauptstadt der Nordlichter – von September bis März sind Aurora-Borealis-Sichtungen sehr wahrscheinlich. Geführte Nordlicht-Touren ab 100 Euro pro Person. Die Lofoten-Inseln (5 Stunden Fahrt nördlich von Oslo) bieten dramatischste Kulissen für Nordlichter: rote Holzhütten (Rorbuer) vor schneebedeckten Bergen und im Spiegelbild der Fjorde. Beste Nordlichtnächte: klarer Himmel, KP-Index 3+, weit weg von Lichtverschmutzung.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Wann ist die beste Reisezeit für Norwegens Fjorde?',
+        answer: 'Juni bis August für Wanderungen, Fjordkreuzfahrten und maximales Tageslicht (Mitternachtssonne im hohen Norden). September bis Oktober für Herbstfarben und erste Nordlichter. März für Nordlichter plus Schnee.',
+      },
+      {
+        question: 'Brauche ich ein Auto in Norwegen?',
+        answer: 'Für Fjordland sehr empfohlen – die schönsten Aussichtspunkte sind nur mit Auto erreichbar. Mietwagen ab 40 Euro/Tag. Alternativ: Norway in a Nutshell (organisiertes Bahn/Bus/Fähre-Kombiticket) für eine Tagestour ohne Auto.',
+      },
+      {
+        question: 'Wie teuer ist Norwegen als Reiseziel?',
+        answer: 'Norwegen ist eines der teuersten Reiseziele Europas. Mahlzeit im Restaurant: 200–350 NOK (17–30 Euro). Hotel: 1.000–2.000 NOK/Nacht (85–175 Euro). Supermarkt und Selbstkochen spart erheblich. Gesamtbudget: 150–250 Euro/Person/Tag.',
+      },
+      {
+        question: 'Ist der Preikestolen für Kinder und ältere Reisende machbar?',
+        answer: 'Preikestolen ist für sportliche Erwachsene und ältere Kinder gut machbar (8 km, 4 Std., festes Schuhwerk nötig). Trolltunga ist deutlich anspruchsvoller und für Kinder oder ungeübte Wanderer nicht empfohlen. Im Sommer ist der Weg gut besucht.',
+      },
+      {
+        question: 'Wie organisiere ich Nordlichter-Touren in Tromsø?',
+        answer: 'Buche Nordlicht-Touren direkt in Tromsø (ca. 100–150 Euro pro Person, 4–6 Std.) – Guides fahren nach dem Wetter dahin, wo die Chancen am besten sind. Alternativ: eigenes Auto und Nordlicht-Forecast-Apps nutzen. Januar und Februar sind statistisch beste Monate.',
+      },
+    ],
+    relatedArticles: ['island-rundreise-anfaenger', 'madeira-7-tage-reiseroute', 'albanien-geheimtipp-europa'],
+    internalLinks: [
+      { href: '/finder', text: 'dein Norwegen-Abenteuer mit KI planen' },
+      { href: '/reiseblog', text: 'weitere Skandinavien-Reiseguides lesen' },
+    ],
+  },
+
+  // ── Japan Rundreise ───────────────────────────────────────────────────────────
+  {
+    slug: 'japan-rundreise-14-tage',
+    title: 'Japan Rundreise in 14 Tagen: Tokio, Kyoto, Osaka und mehr',
+    excerpt: 'Japan in 2 Wochen entdecken: Von Tokios Neon-Schluchten über Kyotos Tempelanlagen bis zu Osakas Streetfood-Paradies. Die perfekte 14-Tage-Route für Erstbesucher mit JR-Pass-Tipps.',
+    category: 'Städtereisen',
+    destination: 'Japan',
+    country: 'Japan',
+    imageUrl: 'https://images.unsplash.com/photo-1554797589-7241bb691973?auto=format&fit=crop&w=1200&q=80',
+    date: '2025-04-20',
+    lastUpdated: '2025-06-01',
+    readingTime: '14 min',
+    author: 'Traumreise Redaktion',
+    authorBio: 'Das Traumreise-Team recherchiert und testet die besten Reiseziele für deutschsprachige Urlauber.',
+    tags: ['Japan', 'Tokio', 'Kyoto', 'Osaka', 'JR-Pass', 'Erstbesucher', 'Asien'],
+    featured: true,
+    seoTitle: 'Japan Rundreise 14 Tage 2025: Tokio, Kyoto, Osaka Route | Traumreise',
+    seoDescription: 'Japan in 14 Tagen: Perfekte Rundreise-Route für Erstbesucher mit JR-Pass-Anleitung, Unterkunftstipps, Budgetplanung und den besten Erlebnissen in Tokio, Kyoto, Nara und Osaka.',
+    keyTakeaways: [
+      'Der JR-Pass (14 Tage: ca. 500 Euro) ist für eine Japan-Rundreise mit Shinkansen unverzichtbar und spart viel Geld.',
+      'Kyoto hat über 1.600 Tempel und Schreine – 3 Tage Minimum für die Top-Highlights.',
+      'Osaka gilt als Japans Streetfood-Hauptstadt: Takoyaki, Okonomiyaki und Ramen für 5–15 Euro pro Gericht.',
+      'Japan ist teurer als erwartet, aber günstiger als sein Ruf: ca. 100–150 Euro/Tag inklusive Transport.',
+      'Kirschblüte (Ende März bis Anfang April) und Herbstlaub (November) sind schönste Reisezeiten, aber am stärksten besucht.',
+    ],
+    destinationFacts: {
+      capital: 'Tokio',
+      language: 'Japanisch',
+      currency: 'Japanischer Yen (JPY) – 1 Euro ca. 160 JPY',
+      timezone: 'JST (UTC+9)',
+      flightTime: 'ca. 11–12 Std. ab Frankfurt (Direktflug Lufthansa)',
+      bestTime: 'März–Mai (Kirschblüte), September–November (Herbstlaub)',
+    },
+    airportInfo: 'Tokio Narita (NRT) oder Haneda (HND): Direktflüge mit Lufthansa und ANA ab Frankfurt. Haneda ist näher an der Innenstadt (Monorail 20 Min.). Osaka Kansai (KIX) als alternativer Einstieg für Kansai-Region. JR-Pass am besten vor Abreise in Deutschland kaufen.',
+    tableOfContents: [
+      'Japan für Erstbesucher: Praktische Grundlagen',
+      'Tokio (4 Tage): Megacity zwischen Tradition und Zukunft',
+      'Nikko und Hakone: Tagesausflüge aus Tokio',
+      'Kyoto (3 Tage): Tempel, Geishas und Bambuswälder',
+      'Nara und Hiroshima: Zwischenstopps auf dem Weg nach Osaka',
+      'Osaka (2 Tage): Streetfood, Dotonbori und Nachtleben',
+    ],
+    contentSections: [
+      {
+        heading: 'Japan für Erstbesucher: Praktische Grundlagen',
+        content: 'Japan ist eines der faszinierendsten Reiseziele der Welt – und mit etwas Vorbereitung auch für Erstbesucher gut bewältigbar. Wichtigste Vorbereitungen: JR-Pass vor Abreise kaufen (14-Tage-Pass ca. 500 Euro), Pocket WiFi oder SIM-Karte am Flughafen mieten (ca. 5 Euro/Tag), Google Maps funktioniert zuverlässig für alle Züge und Busse. Bargeld ist wichtig – viele Restaurants und kleine Läden akzeptieren nur Yen. IC-Card (Suica/Pasmo) am Flughafen aufladen für U-Bahnen und Busse.',
+      },
+      {
+        heading: 'Tokio (4 Tage): Megacity zwischen Tradition und Zukunft',
+        content: 'Tokio ist mit 14 Millionen Einwohnern eine der größten Städte der Welt – aber erstaunlich sauber, sicher und gut organisiert. Pflicht: Shibuya Crossing (verrückteste Kreuzung der Welt), Shinjuku (Neon-Viertel und Goldener Gai für Tiny-Bars), Asakusa (Senso-ji Tempel, der älteste Tokios), Harajuku (Takeshita Street für Jugendkultur) und Akihabara (Electronics und Anime). Das Teamlab Planets (immersives Kunstmuseum, 3.200 Yen) ist eines der beeindruckendsten Erlebnisse in Tokio.',
+      },
+      {
+        heading: 'Nikko und Hakone: Tagesausflüge aus Tokio',
+        content: 'Nikko (2 Std. per Shinkansen) ist Heimat des opulentesten Schreinkomplexes Japans (Tosho-gu, UNESCO). Hakone bietet bei klarem Wetter spektakuläre Fujisanblicke, Ryokan-Erlebnisse (traditionelles japanisches Inn mit Onsen-Bädern, ab 150 Euro/Nacht) und die Hakone Open Air Museum. Der Fuji-san selbst: Besteigung nur von Juli bis September möglich (ca. 6–8 Std. Aufstieg), ab 2024 sind Besucherzahlen reguliert.',
+      },
+      {
+        heading: 'Kyoto (3 Tage): Tempel, Geishas und Bambuswälder',
+        content: 'Kyoto war 1.000 Jahre Japans Hauptstadt und ist heute die kulturelle Seele des Landes. Mit über 1.600 Tempeln und Schreinen braucht man mindestens 3 Tage. Absolut nicht verpassen: Fushimi Inari (tausende orangene Torii-Tore, kostenlos, nachts am schönsten), Arashiyama Bambushain (früh morgens vor den Touristenmassen), Kinkaku-ji (Goldener Pavillon, 500 Yen) und Gion-Viertel am Abend für Geisha-Sichtungen. Nishiki Market (Kyotos Küche) für Streetfood-Verkostungen.',
+      },
+      {
+        heading: 'Nara und Hiroshima: Zwischenstopps auf dem Weg nach Osaka',
+        content: 'Nara (45 Min. von Kyoto): Hier laufen zahme Hirsche frei durch den Stadtpark – eines der beliebtesten Fotomotive Japans. Der Todai-ji Tempel mit der größten bronzenen Buddha-Statue der Welt ist beeindruckend (600 Yen Eintritt). Hiroshima und Miyajima (1,5 Std. von Kyoto per Shinkansen): Der Peace Memorial Park und das A-Bomb Dome sind emotionale Pflichtbesuche. Die schwimmende Torii-Pforte auf der Insel Miyajima gehört zu den drei Panorama-Ikonen Japans.',
+      },
+      {
+        heading: 'Osaka (2 Tage): Streetfood, Dotonbori und Nachtleben',
+        content: 'Osaka ist Japans Streetfood-Hauptstadt – "Kuidaore" (essen bis man umfällt) ist das lokale Lebensmotto. Dotonbori-Viertel mit dem riesigen leuchtenden Kani Doraku-Krebsschild ist das Herz von Osakas Nachtleben. Takoyaki (Oktopus-Bällchen, 500 Yen), Okonomiyaki (japanische Pfannkuchen, 800 Yen) und Kushikatsu (frittierte Spieße) sind Pflicht. Osaka Castle (600 Yen) und Shinsekai-Viertel (nostalgisches altes Osaka) sind kulturelle Geheimtipps.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Lohnt sich der JR-Pass für eine Japan-Rundreise?',
+        answer: 'Ja, für eine Route Tokio–Kyoto–Osaka definitiv. Der 14-Tage-JR-Pass (ca. 500 Euro) amortisiert sich ab 2–3 Shinkansen-Fahrten. Eine Einzelfahrt Tokio–Kyoto kostet ca. 150 Euro – bereits zwei Hin-und-Rückfahrten decken den Pass-Preis.',
+      },
+      {
+        question: 'Wie viel Geld brauche ich für 2 Wochen Japan?',
+        answer: 'Ca. 1.500–2.500 Euro pro Person (ohne Flug). Günstiger Reisestil (Hostels, Supermarkt, Budget-Restaurants): ca. 80–100 Euro/Tag. Komfort-Reise (Hotels, Restaurants): 150–250 Euro/Tag. Flüge ab Deutschland: 600–1.200 Euro.',
+      },
+      {
+        question: 'Muss ich Japanisch sprechen, um Japan zu bereisen?',
+        answer: 'Nein. In touristischen Bereichen und großen Städten ist Englisch gut verbreitet. Google Translate mit Kamerafunktion ist unverzichtbar für Speisekarten und Schilder. Google Maps funktioniert zuverlässig für alle Züge, U-Bahnen und Busse.',
+      },
+      {
+        question: 'Wann ist die beste Reisezeit für Japan?',
+        answer: 'Kirschblüte (Ende März bis Anfang April) und Herbstlaub (Mitte November) sind die schönsten Zeiten, aber auch am stärksten besucht und teurer. Mai–Juni und September–Oktober sind ruhiger und angenehm warm (20–28°C). Juli–August ist heiß und schwül.',
+      },
+      {
+        question: 'Ist Japan sicher für Alleinreisende und Frauen?',
+        answer: 'Japan gilt als eines der sichersten Reiseziele der Welt mit extrem niedriger Kriminalitätsrate. Frauen reisen hier besonders sicher alleine. Damen-Abteile in U-Bahnen in Stoßzeiten vorhanden. Nachtlich alleine unterwegs zu sein ist in fast allen Städten kein Problem.',
+      },
+    ],
+    relatedArticles: ['tokio-erstbesucher-guide', 'bali-unter-1000-euro', 'thailand-inselhopping-2-wochen'],
+    internalLinks: [
+      { href: '/finder', text: 'deine Japan-Traumreise mit KI planen' },
+      { href: '/reiseblog', text: 'weitere Asien-Reiseguides entdecken' },
+    ],
+  },
+
+  // ── Kroatien Roadtrip ─────────────────────────────────────────────────────────
+  {
+    slug: 'kroatien-roadtrip-adriakueste',
+    title: 'Kroatien Roadtrip: Die Adriaküste von Istrien bis Dubrovnik',
+    excerpt: 'Von Istrien über Split bis Dubrovnik – Kroatiens Adriaküste ist eine der schönsten Europas. Unser Roadtrip-Guide führt dich in 14 Tagen durch Nationalparks, Altstadte und türkisblaues Wasser.',
+    category: 'Routen & Roadtrips',
+    destination: 'Kroatien',
+    country: 'Kroatien',
+    imageUrl: 'https://images.unsplash.com/photo-1574791608613-39c31eca0d71?auto=format&fit=crop&w=1200&q=80',
+    date: '2025-05-01',
+    lastUpdated: '2025-06-01',
+    readingTime: '11 min',
+    author: 'Traumreise Redaktion',
+    authorBio: 'Das Traumreise-Team recherchiert und testet die besten Reiseziele für deutschsprachige Urlauber.',
+    tags: ['Kroatien', 'Roadtrip', 'Dubrovnik', 'Split', 'Plitvice', 'Adria'],
+    featured: false,
+    seoTitle: 'Kroatien Roadtrip 2025: Adriaküste Istrien–Dubrovnik Guide | Traumreise',
+    seoDescription: 'Kroatien Roadtrip von Istrien bis Dubrovnik in 14 Tagen: Route, Highlights wie Plitvice, Split und Dubrovnik, Tipps für Fähren zu den Inseln und günstige Reisezeit.',
+    keyTakeaways: [
+      'Die Fahrt von Istrien nach Dubrovnik entlang der Adriaküste ist ca. 600 km – 14 Tage sind ideal.',
+      'Plitvice-Nationalpark (UNESCO) mit seinen 16 Terrassenseen und Wasserfällen ist unverzichtbar.',
+      'Dubrovnik ist schön, aber überlaufen – in der Altstadt kostet ein Bier 6–8 Euro. Früh morgens besuchen.',
+      'Die Inseln Hvar, Brač und Korčula per Fähre sind einfach erreichbar und weniger überfüllt als Dubrovnik.',
+      'Mai, Juni und September sind die besten Monate: Wasser warm genug, aber ohne August-Gedränge.',
+    ],
+    destinationFacts: {
+      capital: 'Zagreb',
+      language: 'Kroatisch',
+      currency: 'Euro (EUR, seit 2023)',
+      timezone: 'CET (UTC+1) / CEST (UTC+2)',
+      flightTime: 'ca. 1,5–2 Std. ab Frankfurt (nach Split oder Dubrovnik)',
+      bestTime: 'Mai–Juni, September',
+    },
+    airportInfo: 'Split (SPU) und Dubrovnik (DBV) haben internationale Flughäfen mit Direktverbindungen aus Deutschland. Pula (Istrien, PUY) ist weiterer Einstiegspunkt. Mietauto in Pula aufnehmen, in Dubrovnik abgeben (One-Way-Miete verfügbar).',
+    tableOfContents: [
+      'Warum Kroatiens Adriaküste begeistert',
+      'Istrien: Trüffel, Rotwein und venezianische Altstädte',
+      'Plitvice-Nationalpark: Türkisblauer Wasserfall-Traum',
+      'Split: Diokletianpalast und Insel-Fähren',
+      'Die Inseln: Hvar, Brač und Korčula',
+      'Dubrovnik: Die Perle der Adria',
+    ],
+    contentSections: [
+      {
+        heading: 'Warum Kroatiens Adriaküste begeistert',
+        content: 'Über 1.700 km Küstenlinie, mehr als 1.200 Inseln, sieben UNESCO-Stätten und Wasser in einem Blauton, der fast unwirklich erscheint – Kroatien hat alles, was man sich von einem Mittelmeerurlaub wünscht. Und seit dem Euro-Beitritt 2023 ist auch das Bezahlen einfacher geworden. Der Roadtrip von Istrien bis Dubrovnik verbindet in 14 Tagen die schönsten Regionen des Landes: von venezianisch geprägten Hafenstädten im Norden über spektakuläre Nationalparks bis zur Perle der Adria im Süden.',
+      },
+      {
+        heading: 'Istrien: Trüffel, Rotwein und venezianische Altstädte',
+        content: 'Istrien, die herzförmige Halbinsel im Norden, ist das kulinarische Juwel Kroatiens. Rovinj mit seiner pittoresken Altstadt auf einer Halbinsel ist einer der schönsten Orte der Adria. Poreč (UNESCO-Welterbe Euphrasius-Basilika) und die Küstenstadt Pula mit dem beeindruckenden römischen Amphitheater (2.000 Jahre alt) sind weitere Highlights. Die istrischen Wälder liefern einige der teuersten Trüffel der Welt – Verkostung in Buzet oder Grožnjan.',
+      },
+      {
+        heading: 'Plitvice-Nationalpark: Türkisblauer Wasserfall-Traum',
+        content: 'Plitvice (UNESCO) ist der meistbesuchte Nationalpark Kroatiens – und das zu Recht. 16 türkisfarbene Terrassenseen sind durch über 90 Wasserfälle miteinander verbunden, umgeben von Buchenwäldern. Ticketpreise je nach Saison: 10–40 Euro. Empfehlung: Frühmorgens (Einlass ab 7 Uhr) und mindestens 4–5 Stunden einplanen für die untere und obere Seengruppe. Im August bis 14 Uhr täglich ausverkauft – Online-Tickets im Voraus kaufen.',
+      },
+      {
+        heading: 'Split: Diokletianpalast und Insel-Fähren',
+        content: 'Split ist Kroatiens zweitgrößte Stadt und lebt – buchstäblich – in einem römischen Kaiserpalast. Der Diokletianpalast (295 n. Chr.) wurde nie verlassen; heute wohnen und handeln Menschen darin (UNESCO). Das Viertel Varoš außerhalb der Mauern ist das authentische Wohnviertel. Von Split fahren Fähren zu den beliebtesten Inseln: Hvar (1 Std., täglich mehrfach), Brač (50 Min.) und Korčula (2,5 Std.).',
+      },
+      {
+        heading: 'Die Inseln: Hvar, Brač und Korčula',
+        content: 'Hvar ist die sonnigste Insel Kroatiens – und die bekannteste. Hvar-Stadt hat lebhaftes Nachtleben und Luxusjachten im Hafen, Stari Grad ist ruhiger und kulturreicher. Brač lockt mit dem berühmten Zlatni Rat-Strand ("Goldenes Horn", einzigartiger Kiesstrand mit wechselnder Spitze). Korčula ist das ruhigere Geheimtipp: Geburtsort Marco Polos (angeblich), mittelalterliche Altstadt und exzellente Mollweine (Pošip, Grk).',
+      },
+      {
+        heading: 'Dubrovnik: Die Perle der Adria',
+        content: 'Dubrovnik ist zweifellos einer der schönsten Orte Europas – und einer der überfülltesten im Juli/August. Die Altstadtmauern (22 Euro) bieten den besten Rundblick über die roten Dächer und das türkisblaue Meer. Game-of-Thrones-Fans erkennen überall Kings Landing. Tipp: Mietwagen vor der Stadt parken (Parkgebühren explodieren), Seilbahn auf den Berg Srđ (65 Euro Hin/Rück für Familien) für den Panoramablick. Für Ruhe und günstigere Preise: Cavtat als Basis (12 km südlich).',
+      },
+    ],
+    faq: [
+      {
+        question: 'Wann ist die beste Reisezeit für einen Kroatien-Roadtrip?',
+        answer: 'Mai und Juni oder September sind ideal: Meer warm genug (22–25°C), deutlich weniger Touristenandrang als im Juli/August, günstigere Preise. August ist touristisch am stärksten und auch am teuersten.',
+      },
+      {
+        question: 'Brauche ich ein Mietauto für Kroatien?',
+        answer: 'Für den Roadtrip unbedingt. Öffentliche Busse verbinden Küstenorte, aber Nationalparks wie Plitvice und das istrische Hinterland sind ohne Auto kaum erreichbar. Mietwagen ab 30 Euro/Tag in der Nebensaison.',
+      },
+      {
+        question: 'Ist Kroatien seit dem Euro-Beitritt teurer geworden?',
+        answer: 'Ja, seit dem Euro-Beitritt 2023 sind die Preise merklich gestiegen. Dubrovnik und Hvar sind mit westeuropäischem Preisniveau vergleichbar. Das Landesinnere (Istrien, Plitvice-Region) ist noch günstiger.',
+      },
+      {
+        question: 'Wie vermeide ich die Überfüllung in Dubrovnik?',
+        answer: 'Stadtmauern früh morgens (6–8 Uhr vor Kreuzfahrtschiffen) oder spätnachmittags besuchen. Cavtat als günstigere und ruhigere Unterkunftsbasis wählen. Dubrovnik-Karte buchen für günstigeren Eintritt zu Sehenswürdigkeiten.',
+      },
+      {
+        question: 'Welche kroatischen Inseln sind die schönsten?',
+        answer: 'Hvar (beliebt, lebendig), Brač (Zlatni Rat Strand), Korčula (authentisch, Wein), Vis (ruhig, abgelegen), Mljet (Nationalpark, fast keine Touristen) und Elafiti-Inseln (Tagesausflug von Dubrovnik) sind die empfehlenswertesten.',
+      },
+    ],
+    relatedArticles: ['albanien-geheimtipp-europa', 'santorini-september-geheimtipp', 'griechenland-inselhopping-einsteiger'],
+    internalLinks: [
+      { href: '/finder', text: 'deinen Kroatien-Roadtrip mit KI planen' },
+      { href: '/reiseblog', text: 'weitere Adria-Reiseguides entdecken' },
+    ],
+  },
+
+  // ── Südtirol ──────────────────────────────────────────────────────────────────
+  {
+    slug: 'suedtirol-urlaub-berge-wellness',
+    title: 'Südtirol: Berge, Wellness und Weinkultur – der perfekte Erholungsurlaub',
+    excerpt: 'Südtirol vereint die Schönheit der Dolomiten mit italienischer Lebensart und österreichischer Gemütlichkeit. Unser Guide zeigt die schönsten Täler, besten Wanderrouten und Wellnesshotels.',
+    category: 'Natur & Abenteuer',
+    destination: 'Südtirol',
+    country: 'Italien',
+    imageUrl: 'https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=1200&q=80',
+    date: '2025-05-05',
+    lastUpdated: '2025-06-01',
+    readingTime: '10 min',
+    author: 'Traumreise Redaktion',
+    authorBio: 'Das Traumreise-Team recherchiert und testet die besten Reiseziele für deutschsprachige Urlauber.',
+    tags: ['Südtirol', 'Dolomiten', 'Wandern', 'Wellness', 'Italien', 'Berge'],
+    featured: false,
+    seoTitle: 'Südtirol Urlaub 2025: Dolomiten, Wellness und Weinkultur | Traumreise',
+    seoDescription: 'Südtirol entdecken: Die schönsten Wanderrouten in den Dolomiten, Wellness-Hotels im Vinschgau, Weinkultur im Etschtal und Geheimtipps für Familien und Paare.',
+    keyTakeaways: [
+      'Die Dolomiten (UNESCO-Weltnaturerbe) bieten mit über 350 Hütten eines der dichtesten Wandernetze Europas.',
+      'Südtirol hat die höchste Michelin-Sterne-Dichte Italiens – Kulinarik auf Weltklasseniveau.',
+      'Meran und Brixen sind ideale Wellness-Basen: Thermalquellen, Spas und historische Promenaden.',
+      'Mit der Südtirol Guest Card (in vielen Hotels inklusive) sind ÖPNV und viele Attraktionen kostenlos.',
+      'Beste Wanderzeit: Juni bis Oktober. Winter: Skigebiete wie Seiser Alm, Kronplatz, Carezza.',
+    ],
+    destinationFacts: {
+      capital: 'Bozen',
+      language: 'Deutsch (71%), Italienisch, Ladinisch',
+      currency: 'Euro (EUR)',
+      timezone: 'CET (UTC+1) / CEST (UTC+2)',
+      flightTime: 'ca. 4–5 Std. Autofahrt ab München, kein Direktflug nötig',
+      bestTime: 'Juni–Oktober (Wandern), Dezember–März (Ski)',
+    },
+    airportInfo: 'Flughafen Bozen (BZO) hat begrenzte Verbindungen. Besser: Innsbruck (INN, 80 km), Verona (VRN, 100 km) oder München (MUC, 230 km). Auto oder Zug empfohlen – Brennerbahn München–Bozen in ca. 3,5 Std.',
+    tableOfContents: [
+      'Warum Südtirol das perfekte Ganzjahresziel ist',
+      'Dolomiten: Wandern im UNESCO-Weltnaturerbe',
+      'Meran und das Etschtal: Wellness und Kultur',
+      'Vinschgau: Apfelblüte und einsame Bergtäler',
+      'Südtiroler Küche: Zwischen Speck und Stern-Restaurant',
+      'Praktische Reisetipps und Unterkunftsempfehlungen',
+    ],
+    contentSections: [
+      {
+        heading: 'Warum Südtirol das perfekte Ganzjahresziel ist',
+        content: 'Südtirol ist eine der beliebtesten Ferienregionen des deutschen Sprachraums – und das zu Recht. Die autonome Provinz im Nordosten Italiens vereint das Beste zweier Kulturen: deutsche Gründlichkeit und Gastfreundschaft mit südlichem Flair und exzellenter Küche. Die Dolomiten (UNESCO-Weltnaturerbe) ragen mit bis zu 3.343 m Höhe (Marmolada) aus dem Tal, während im Etschtal Weinreben bis auf 1.000 m Meereshöhe wachsen.',
+      },
+      {
+        heading: 'Dolomiten: Wandern im UNESCO-Weltnaturerbe',
+        content: 'Die Dolomiten bieten über 350 Schutzhütten und tausende von Kilometern markierter Wanderwege. Drei Zinnen (Hochpustertal) sind das bekannteste Südtiroler Panoramabild: die Rundwanderung um die drei Felsen dauert ca. 4 Std. und bietet atemberaubende Kulissen. Seiser Alm (die größte Hochalm Europas) ist per Seilbahn von Seis erreichbar und bietet sanfte Wanderungen für alle Fitnesslevel. Für Fortgeschrittene: Rosengarten und die Langkofelgruppe mit Klettersteigen Grad A–D.',
+      },
+      {
+        heading: 'Meran und das Etschtal: Wellness und Kultur',
+        content: 'Meran ist Südtirols eleganteste Kurstadt: Die historische Promenade an der Passer, mediterrane Vegetation trotz alpiner Lage (bis zu 300 Sonnentage/Jahr) und die weltberühmten Therme Meran (Tagesticket ca. 35 Euro) machen die Stadt zum perfekten Wellnessurlaub. Die Obstanbauregion Meran–Bozen ist vom Frühling (Apfelblüte April/Mai) bis Herbst (Weinlese September/Oktober) landschaftlich ein Traum.',
+      },
+      {
+        heading: 'Vinschgau: Apfelblüte und einsame Bergtäler',
+        content: 'Der Vinschgau im westlichen Südtirol ist breiter und unberührter als das Etschtal. Die Vinschgauer Sonnenseite mit über 300 Sonnentagen ist die trockenste Region der Alpen. Stilfserjoch (2.757 m) ist einer der spektakulärsten Passübergänge Europas – in der Hochsaison per Bike erlebbar. Das Ortler-Massiv bietet Gletschereis bis in den Sommer. Schloss Churburg bei Schluderns gilt als besterhaltene Ritterburg Tirols.',
+      },
+      {
+        heading: 'Südtiroler Küche: Zwischen Speck und Stern-Restaurant',
+        content: 'Südtirol hat mehr Michelin-Sterne pro Einwohner als jede andere Region Italiens. Basis-Kulinarik: Speck (geräucherter Schinken, geschützte Herkunftsbezeichnung), Schlutzkrapfen (Pasta-Halbmonde mit Spinat und Ricotta), Graukas (kräftiger Bergkäse) und Apfelstrudel. Die Weinregion ist bekannt für Weißburgunder, Vernatsch und Lagrein. Im Herbst laden Buschenschänken (Törggelen) zur Weinverkostung mit Most und Kastanien ein.',
+      },
+      {
+        heading: 'Praktische Reisetipps und Unterkunftsempfehlungen',
+        content: 'Die Südtirol Guest Card (in vielen Hotels inklusive) bietet kostenlosen ÖPNV, viele Seilbahnen und Eintrittsermäßigungen. Hauptsaison Juli/August und Weihnachten/Ostern sind die teuersten Zeiten – Mai/Juni und September/Oktober bieten oft bessere Verfügbarkeit und Preise. Unterkunft: Agriturismo (Urlaub auf dem Bauernhof) ab 60 Euro/Nacht mit Halbpension – authentischste Südtirol-Erfahrung. Wellnesshotels ab 150 Euro/Nacht.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Wann ist die beste Reisezeit für Südtirol?',
+        answer: 'Juni bis Oktober für Wandern und Outdoor. Dezember bis März für Skiurlaub. April/Mai für Apfelblüte (Etschtal) und erste Frühlingswanderungen. September/Oktober für Weinlese, Törggelen und goldene Herbstfarben in den Tälern.',
+      },
+      {
+        question: 'Ist Südtirol teuer?',
+        answer: 'Im Vergleich zu den Alpen insgesamt: mittleres Preisniveau. Gute Restaurants 30–60 Euro/Person. Hotels Mittelklasse: 80–150 Euro/Nacht. Mit Südtirol Guest Card (in Hotelpaketen oft inklusive) sparen Gäste erheblich bei Transport und Seilbahnen.',
+      },
+      {
+        question: 'Welche Sprache wird in Südtirol gesprochen?',
+        answer: 'Deutsch ist Erstsprache von ca. 71% der Bevölkerung. Alle öffentlichen Einrichtungen, Schilder und Speisekarten sind zweisprachig (Deutsch und Italienisch). Deutsche Reisende kommunizieren problemlos auf Deutsch.',
+      },
+      {
+        question: 'Kann man in Südtirol ohne Auto Urlaub machen?',
+        answer: 'Ja – das ÖPNV-Netz ist mit Bussen und Zügen sehr gut ausgebaut. Mit der Südtirol Guest Card ist ÖPNV kostenlos. Für abgelegene Almhütten und Hochpässe ist ein Auto jedoch praktisch.',
+      },
+      {
+        question: 'Welche Wanderungen in Südtirol sind für Anfänger geeignet?',
+        answer: 'Seiser Alm (sanfte Hochalmwanderungen, 1–3 Std.), Meraner Höhenweg (Abschnitte zwischen 2–4 Std.) und die Drei-Zinnen-Rundwanderung (4 Std., moderat) sind gut für Einsteiger. Für Kinder besonders geeignet: Almwanderungen mit Hüttenstation.',
+      },
+    ],
+    relatedArticles: ['albanien-geheimtipp-europa', 'madeira-7-tage-reiseroute', 'norwegen-fjorde-reiseguide'],
+    internalLinks: [
+      { href: '/finder', text: 'deinen Südtirol-Urlaub mit KI planen' },
+      { href: '/inspiration', text: 'weitere Alpen-Reiseziele entdecken' },
+    ],
+  },
+
+  // ── Dubai Stopover ────────────────────────────────────────────────────────────
+  {
+    slug: 'dubai-stopover-guide',
+    title: 'Dubai Stopover Guide: Das Beste in 24 bis 72 Stunden erleben',
+    excerpt: 'Layover in Dubai? Nutze die Zeit optimal mit unserem Stopover-Guide: Burj Khalifa, Gold Souk, Wüstensafari und die beste Skyline-Aussicht – je nach verfügbarer Zeit.',
+    category: 'Städtereisen',
+    destination: 'Dubai',
+    country: 'Vereinigte Arabische Emirate',
+    imageUrl: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80',
+    date: '2025-05-10',
+    lastUpdated: '2025-06-01',
+    readingTime: '9 min',
+    author: 'Traumreise Redaktion',
+    authorBio: 'Das Traumreise-Team recherchiert und testet die besten Reiseziele für deutschsprachige Urlauber.',
+    tags: ['Dubai', 'Stopover', 'VAE', 'Burj Khalifa', 'Wüste', 'Luxus'],
+    featured: false,
+    seoTitle: 'Dubai Stopover Guide 2025: 24, 48 oder 72 Stunden optimal nutzen | Traumreise',
+    seoDescription: 'Dubai Stopover clever planen: Was kann man in 24, 48 oder 72 Stunden sehen? Burj Khalifa, Wüstensafari, Old Dubai und Skyline-Tipps für deinen Emirates/Flydubai-Layover.',
+    keyTakeaways: [
+      'Emirates und Flydubai bieten kostenlose Stopover-Hotels für qualifizierende Buchungen an – immer prüfen.',
+      'Das Dubai Metro Red Line verbindet Flughafen, Downtown und Mall of Emirates kostenlos mit Dubai Pass.',
+      'Besten Burj Khalifa-Tickets: Oberes Deck (154. Stock) für 149 AED (ca. 37 Euro) – Abendtickets teurer.',
+      'Old Dubai (Bastakiya-Viertel, Gold Souk, Spice Souk) kostenlos erkundbar – komplett anderes Dubai.',
+      'Wüstensafari (Halbtagestour ab 200 AED) lohnt sich auch bei kurzem Aufenthalt – unvergessliches Erlebnis.',
+    ],
+    destinationFacts: {
+      capital: 'Abu Dhabi (Emirate), Dubai ist Stadtstaat',
+      language: 'Arabisch (offiziell), Englisch (allgegenwärtig)',
+      currency: 'Dirham (AED) – 1 Euro ca. 4 AED',
+      timezone: 'GST (UTC+4)',
+      flightTime: 'ca. 6,5 Std. ab Frankfurt (Emirates, Flydubai)',
+      bestTime: 'Oktober–April (angenehme Temperaturen 20–30°C)',
+    },
+    airportInfo: 'Dubai International Airport (DXB) ist einer der meistfrequentierten der Welt. Terminal 1, 2 und 3 (Emirates). Metro-Verbindung in Downtown Dubai: ca. 45 Min., ca. 8 AED. Taxi ca. 80–100 AED (20–25 Euro). 24h geöffnet, Shoppingmalls im Terminal.',
+    tableOfContents: [
+      'Dubai Stopover: Wie viel Zeit nutzt du optimal?',
+      '24 Stunden: Das Beste auf einen Blick',
+      '48 Stunden: Downtown, Strand und Old Dubai',
+      '72 Stunden: Vollständiges Dubai-Erlebnis',
+      'Praktische Tipps: Visum, Kleidung, Kosten',
+      'Geheimtipps für Stopover-Reisende',
+    ],
+    contentSections: [
+      {
+        heading: 'Dubai Stopover: Wie viel Zeit nutzt du optimal?',
+        content: 'Dubai eignet sich hervorragend für einen Stopover auf dem Weg nach Südostasien, Australien oder Afrika. Mit Emirates oder Flydubai gibt es oft günstige oder sogar kostenlose Stopover-Optionen. Wichtig: Bei manchen Buchungen ist ein kostenloses Hotel im Stopover-Paket inkludiert – auf emirates.com prüfen. Selbst mit 6 Stunden Layover kann man mit dem Metro in die Stadt fahren und etwas erleben. Die Stadt ist 24/7 aktiv.',
+      },
+      {
+        heading: '24 Stunden: Das Beste auf einen Blick',
+        content: 'Mit 24 Stunden: Burj Khalifa (At the Top, Tickets online buchen, 149–249 AED), Dubai Mall (größte Mall der Welt, kostenlos, Dubai Aquarium 100 AED), Dubai Fountain Show (kostenlos, abends stündlich am Burj-Khalifa-See). Abendessen auf der Dubai Mall-Terrasse mit Blick auf Burj und Fountain. Metro vom Flughafen: Red Line bis Burj Khalifa/Dubai Mall Station. Rücktransfer ca. 45 Min. Gesamtkosten inkl. Metro und Burj Khalifa ca. 80–100 Euro.',
+      },
+      {
+        heading: '48 Stunden: Downtown, Strand und Old Dubai',
+        content: 'Tag 1: Downtown Dubai (Burj Khalifa, Dubai Mall, Fountain) plus JBR Beach und Dubai Marina bei Sonnenuntergang (Metro: Jumeirah Lakes Towers). Tag 2: Old Dubai entdecken – Bastakiya-Viertel (kostenlose historische Altstadt), Abra-Fähre über den Creek (1 AED), Gold Souk (freier Eintritt, Handeln erlaubt) und Spice Souk. Mittagessen im lokalen Restaurant im Deira-Viertel für 20–30 AED.',
+      },
+      {
+        heading: '72 Stunden: Vollständiges Dubai-Erlebnis',
+        content: 'Ergänze die 48-Stunden-Route um: Halbtags-Wüstensafari (Dünenfahrt, Kamelreiten, Sandboarding, Abendessen im Beduinenlager, ab 200 AED). Palm Jumeirah-Ausflug (Monorail, Atlantis Hotel-Aquaventure Wasserpark oder einfach der Blick auf das Stadtbild). Dubai Frame (50 AED) – neues Wahrzeichen als Bilderrahmen mit Blick auf Alt- und Neu-Dubai. Museum of the Future (149 AED) – futuristisches, torus-förmiges Gebäude mit immersiven Ausstellungen.',
+      },
+      {
+        heading: 'Praktische Tipps: Visum, Kleidung, Kosten',
+        content: 'Visum: Deutsche, Österreicher und Schweizer erhalten bei Einreise 30 Tage Touristenvisum kostenlos. Kleidung: Öffentliche Bereiche erfordern bedeckte Schultern und Knie (besonders in Moscheen und traditionellen Souks). Bikini nur am Strand und am Pool. Alkohol nur in lizenzierten Hotels und Bars. Trinkgeld: 10–15% in Restaurants, nicht verpflichtend. Kosten insgesamt: Mittelklasse-Hotel ab 100 Euro/Nacht, Essen im Restaurant 25–60 Euro/Person.',
+      },
+      {
+        heading: 'Geheimtipps für Stopover-Reisende',
+        content: 'Al Quoz-Viertel ist Dubais kreative Kunstszene mit Galerien und Coffee Shops in alten Industriehallen – authentisches Gegenprogramm zu Luxus-Malls. La Mer Beach (Jumeirah) ist der hipste Strandbereich mit coolen Restaurants und weniger touristisch als JBR. Souk Madinat Jumeirah (Burj Al Arab-Nähe) ist ein künstliches Wasserkanal-Souk mit tollen Burj-Al-Arab-Blicken beim Sundowner-Drink. Beste Skyline-Aussicht kostenlos: vom Roof-Restaurant Atmosphere-Aussichtsplattform (oder einfach vom Creek).',
+      },
+    ],
+    faq: [
+      {
+        question: 'Brauche ich ein Visum für Dubai als Deutscher?',
+        answer: 'Nein, Deutsche, Österreicher und Schweizer erhalten bei Einreise 30 Tage Touristenvisum kostenlos (Visa on Arrival). Gültiger Reisepass erforderlich (mindestens 6 Monate Gültigkeit).',
+      },
+      {
+        question: 'Wie komme ich günstig vom Flughafen Dubai in die Stadt?',
+        answer: 'Dubai Metro Red Line: ca. 8 AED (2 Euro) bis Downtown Dubai/Burj Khalifa. Schnell (45 Min.), sauber, klimatisiert. Taxi: ca. 80–100 AED (20–25 Euro). RTA-App für Taxi-Buchung oder Careem (Uber-Äquivalent in VAE).',
+      },
+      {
+        question: 'Was ist beim Besuch von Dubai cultural zu beachten?',
+        answer: 'In Moscheen Schultern und Knie bedecken. Küssen in der Öffentlichkeit ist zu vermeiden. Ramadan-Zeiten beachten (Essen/Trinken in der Öffentlichkeit tagsüber respektieren). Alkohol nur in lizenzierten Einrichtungen (Hotels, bestimmte Restaurants).',
+      },
+      {
+        question: 'Wann ist Dubai am angenehmsten zu besuchen?',
+        answer: 'Oktober bis April sind ideal: Temperaturen 20–30°C, angenehme Abende. Mai bis September ist es extrem heiß (40–45°C) und schwül. Sommer in Dubai bleibt touristisch ruhiger und Hotels sind günstiger.',
+      },
+      {
+        question: 'Lohnt sich eine Wüstensafari für einen kurzen Aufenthalt?',
+        answer: 'Ja, unbedingt. Halbtagestour (ca. 3–4 Std., ab 200 AED / 50 Euro) bietet Dünenfahrten, Kamelreiten und Sandboarding. Abend-Safari mit Dinner im Beduinenlager (ca. 350 AED) ist das romantischere Erlebnis. Buchung über Hotels oder direkt online.',
+      },
+    ],
+    relatedArticles: ['tokio-erstbesucher-guide', 'japan-rundreise-14-tage', 'bali-unter-1000-euro'],
+    internalLinks: [
+      { href: '/finder', text: 'deinen Dubai-Stopover mit KI planen' },
+      { href: '/reiseblog', text: 'weitere Fernreise-Guides entdecken' },
+    ],
+  },
+
+  // ── Costa Rica ────────────────────────────────────────────────────────────────
+  {
+    slug: 'costa-rica-rundreise',
+    title: 'Costa Rica Rundreise: Regenwald, Vulkane und Traumstrände in 14 Tagen',
+    excerpt: 'Pura Vida! Costa Rica vereint atemberaubende Biodiversität mit traumhaften Stränden. Unsere 14-Tage-Route führt dich von Vulkanen über Regenwald bis zu beiden Küsten.',
+    category: 'Natur & Abenteuer',
+    destination: 'Costa Rica',
+    country: 'Costa Rica',
+    imageUrl: 'https://images.unsplash.com/photo-1518618373-97b6e55e0ee0?auto=format&fit=crop&w=1200&q=80',
+    date: '2025-05-15',
+    lastUpdated: '2025-06-01',
+    readingTime: '12 min',
+    author: 'Traumreise Redaktion',
+    authorBio: 'Das Traumreise-Team recherchiert und testet die besten Reiseziele für deutschsprachige Urlauber.',
+    tags: ['Costa Rica', 'Rundreise', 'Regenwald', 'Vulkan', 'Strand', 'Ökotourismus'],
+    featured: false,
+    seoTitle: 'Costa Rica Rundreise 14 Tage 2025: Vulkane, Regenwald und Strände | Traumreise',
+    seoDescription: 'Costa Rica in 14 Tagen: Perfekte Rundreise mit Arenal-Vulkan, Manuel Antonio, Monteverde Regenwald und der Karibikküste. Tipps für Ökotourismus, Tiersichtungen und Budget.',
+    keyTakeaways: [
+      'Costa Rica besitzt auf 0,03% der Weltfläche 6% aller Tier- und Pflanzenarten weltweit.',
+      'Mietwagen ist unverzichtbar – viele Nationalparks und Lodges sind nur über unbefestigte Straßen erreichbar.',
+      'Beste Tiersichtungen: Faultiere, Aras, Tukane und Brüllaffen – fast überall im Regenwald.',
+      'Costa Rica ist teurer als benachbarte Länder: 100–180 Euro/Person/Tag für Unterkunft, Essen und Ausflüge.',
+      'Trockenzeit (Dezember–April) für Pazifikküste ideal; Regenzeit (Mai–November) für Karibik und günstigere Preise.',
+    ],
+    destinationFacts: {
+      capital: 'San José',
+      language: 'Spanisch',
+      currency: 'Costa-ricanischer Colón (CRC) – 1 Euro ca. 550 CRC; US-Dollar weithin akzeptiert',
+      timezone: 'CST (UTC-6)',
+      flightTime: 'ca. 12–13 Std. ab Frankfurt (meist mit Zwischenstopp Miami oder Atlanta)',
+      bestTime: 'Dezember–April (Pazifikküste), Juni–Oktober (Karibik)',
+    },
+    airportInfo: 'San José Juan Santamaría International Airport (SJO) ist der Hauptflughafen. Liberia (LIR) in der Guanacaste-Region ist besser für Pazifik-Strände (Flamingo, Tamarindo). Verbindungen aus Deutschland meist via Miami, Atlanta oder Amsterdam.',
+    tableOfContents: [
+      'Pura Vida: Warum Costa Rica begeistert',
+      'San José und Ankunft: Erste Eindrücke',
+      'Arenal-Vulkan: Heiße Quellen und Abenteuer',
+      'Monteverde: Nebelwald und Hängebrücken',
+      'Manuel Antonio: Nationalpark mit Traumstrand',
+      'Karibikküste und praktische Reisetipps',
+    ],
+    contentSections: [
+      {
+        heading: 'Pura Vida: Warum Costa Rica begeistert',
+        content: '"Pura Vida" – reines Leben – ist nicht nur Begrüßung, sondern Lebensphilosophie in Costa Rica. Das kleine zentralamerikanische Land hat sein Militär 1948 abgeschafft und investiert seither in Bildung und Umweltschutz. Heute sind 27% der Landfläche Nationalpark oder Naturschutzgebiet. Das Ergebnis: 6% aller weltweiten Tier- und Pflanzenarten auf winziger Fläche. Für Naturliebhaber ist Costa Rica eines der aufregendsten Reiseziele der Welt.',
+      },
+      {
+        heading: 'San José und Ankunft: Erste Eindrücke',
+        content: 'San José ist nicht Hauptziel, aber einen Tag wert: Mercado Central (lokales Essen für 3–5 Dollar), Museo de Jade (präkolumbianische Artefakte, 15 Dollar) und das Nationaltheater (Palacio Nacional, 12 Dollar Führung) bieten kulturellen Einstieg. Von San José sind Arenal und La Fortuna ca. 3,5 Std. entfernt – ideal als erster Fahrttag. Wichtig: Mietwagen mit 4WD buchen – viele Straßen zum Regenwald sind unbefestigt.',
+      },
+      {
+        heading: 'Arenal-Vulkan: Heiße Quellen und Abenteuer',
+        content: 'Der Arenal-Vulkan (1.670 m) ist das Herzstück jeder Costa Rica-Rundreise. La Fortuna als Basisort bietet Hotels mit direktem Vulkanblick und Zugang zu natürlichen heißen Quellen. Tabacón Hot Springs (Tagesticket ca. 85 Dollar) oder günstigere Alternative: kostenlose Quellen am Rio Tabacón. Aktivitäten: Canyoning, Ziplining (ab 60 Dollar), Kajakfahren auf dem Arenal-See und Wanderungen im Vulkan-Nationalpark (18 Dollar Eintritt).',
+      },
+      {
+        heading: 'Monteverde: Nebelwald und Hängebrücken',
+        content: 'Monteverde ist der bekannteste Nebelwaldreservat der Welt – ein dichter, feuchter Dschungel auf 1.440 m Höhe, der von permanenten Wolken eingehüllt wird. Geführte Wanderungen durch das Reservat (20 Dollar Eintritt plus Führung) bieten die besten Tiersichtungen: Quetzal-Vogel (Nationalvogel), Pfeilgiftfrösche und Brüllaffen. Die Sky Walk-Hängebrücken-Tour (25 Dollar) ist die bekannteste Aktivität – über Baumkronenpfade mit Ausblicken über den Regenwald.',
+      },
+      {
+        heading: 'Manuel Antonio: Nationalpark mit Traumstrand',
+        content: 'Manuel Antonio Nationalpark ist der kleinste und meistbesuchte Nationalpark Costa Ricas – und einer der schönsten. Türkisblaue Buchten, weißer Sand und der umgebende Primärregenwald bilden eine fast unwirkliche Kulisse. Faultiere, Kapuzineraffen, Iguanas und Aras sind auf den Wanderpfaden direkt neben den Strandwegen zu sehen. Tickets online im Voraus buchen (18 Dollar), Kapazität begrenzt. Beste Zeit: früh morgens (7–9 Uhr) für die ruhigste Atmosphäre.',
+      },
+      {
+        heading: 'Karibikküste und praktische Reisetipps',
+        content: 'Die Karibikküste (Puerto Viejo, Tortuguero) ist kulturell und klimatisch anders als der Pazifik: Reggae-Atmosphäre, afrokaribische Küche (Rice and Beans, Patí-Teigtaschen) und üppigere Vegetation. Tortuguero Nationalpark (nur per Boot erreichbar, 2 Std.) ist Brutgebiet der Grünen Meeresschildkröten (Eiablage Juli–Oktober, Schlüpfen Oktober–Februar). Budget: Costa Rica kostet 100–150 Euro/Person/Tag für Unterkunft, Essen und Nationalpark-Eintritte. Reiseversicherung und gute Karten-App (Maps.me offline) unverzichtbar.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Wann ist die beste Reisezeit für Costa Rica?',
+        answer: 'Trockenzeit (Dezember–April) für Pazifikküste und Guanacaste ideal. Karibikküste ist von Juni bis Oktober am trockensten. Regenzeit (Mai–November) bietet günstigere Preise und üppigere Natur, aber tägliche Schauer nachmittags.',
+      },
+      {
+        question: 'Brauche ich einen 4WD in Costa Rica?',
+        answer: 'Für viele Nationalparks und Eco-Lodges unbedingt empfohlen. Normale Straßen zwischen Hauptorten sind gut befestigt. Für abgelegene Gebiete wie Osa-Halbinsel, Corcovado und manche Caribe-Lodges ist ein 4WD Pflicht.',
+      },
+      {
+        question: 'Ist Costa Rica sicher für Touristen?',
+        answer: 'Costa Rica gilt als sicherstes Land Zentralamerikas. Taschendiebstahl in San José und touristischen Stränden möglich – Wertsachen im Mietauto nie liegen lassen. Nationalpärke und Eco-Lodges sind sicher. Krankenversicherung mit guter Deckung wichtig.',
+      },
+      {
+        question: 'Welche Tiere kann ich in Costa Rica sehen?',
+        answer: 'Faultiere (fast überall), Kapuziner- und Brüllaffen, Tukane, Aras, Quetzal (Monteverde), Pfeilgiftfrösche, Krokodile (Rio Tárcoles), Meeresschildkröten (Karibikküste) und Walhaie (Cocos Island). Costa Rica gehört zu den artenreichsten Ländern der Welt.',
+      },
+      {
+        question: 'Wie teuer ist Costa Rica im Vergleich zu anderen Mittelamerika-Ländern?',
+        answer: 'Costa Rica ist das teuerste Land Mittelamerikas – Preise vergleichbar mit Südeuropa. Budget-Reisende (Hostels, lokale Sodas-Restaurants): 60–80 Euro/Tag. Komfort mit Eco-Lodges und geführten Touren: 150–250 Euro/Tag pro Person.',
+      },
+    ],
+    relatedArticles: ['bali-unter-1000-euro', 'thailand-inselhopping-2-wochen', 'albanien-geheimtipp-europa'],
+    internalLinks: [
+      { href: '/finder', text: 'deine Costa Rica-Reise mit KI planen' },
+      { href: '/inspiration', text: 'weitere Regenwald-Abenteuer entdecken' },
+    ],
+  },
 ];
 
 // ─── Kategorien ───────────────────────────────────────────────────────────────
@@ -913,6 +2077,7 @@ export const blogCategories = [
   { id: 'Natur & Abenteuer', label: 'Natur & Abenteuer', icon: 'Mountain' },
   { id: 'Familienurlaub',    label: 'Familienurlaub',    icon: 'Heart' },
   { id: 'KI-Reiseplanung',   label: 'KI-Reiseplanung',   icon: 'Bot' },
+  { id: 'Routen & Roadtrips', label: 'Routen & Roadtrips', icon: 'Map' },
 ];
 
 // ─── Community Tipps ──────────────────────────────────────────────────────────
