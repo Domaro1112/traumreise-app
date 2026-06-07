@@ -220,6 +220,27 @@ input::placeholder { color: var(--color-text-muted); }
   .finder-mode-grid { grid-template-columns: 1fr; }
 }
 
+/* 4-column vibe card grid for Zukunfts-Ich wizard */
+.future-vibe-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 4px;
+}
+@media (max-width: 900px) {
+  .future-vibe-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; }
+}
+@media (max-width: 640px) {
+  .future-vibe-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+
+/* 2-column affiliate links grid inside FutureStoryResult */
+.future-affiliate-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
 /* ── Blog: responsive grids ──────────────────────────────────────────────── */
 
 /* Featured article: stacked on mobile, side-by-side from md */

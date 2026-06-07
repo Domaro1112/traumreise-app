@@ -3,6 +3,7 @@ import {
   Flower2, Sun, Leaf, Snowflake,
   CalendarDays, Calendar, Globe, Briefcase,
   Wallet, Plane, Crown,
+  Landmark, Music,
 } from 'lucide-react';
 
 export const moodOptions = [
@@ -129,5 +130,72 @@ export const budgetOptions = [
     subtitle: '1.500 €+ pro Person',
     imageUrl: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?w=600&q=80',
     Icon: Crown,
+  },
+];
+
+export const zukunftVibeOptions = [
+  {
+    id: 'relax',
+    label: 'Entspannung',
+    subtitle: 'Durchatmen & loslassen',
+    imageUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80',
+    Icon: Waves,
+    color: '#00C9A7',
+  },
+  {
+    id: 'adventure',
+    label: 'Abenteuer',
+    subtitle: 'Grenzen neu entdecken',
+    imageUrl: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80',
+    Icon: Mountain,
+    color: '#FF6B35',
+  },
+  {
+    id: 'city',
+    label: 'Städtetrip',
+    subtitle: 'Metropolen erleben',
+    imageUrl: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80',
+    Icon: Building2,
+    color: '#A78BFA',
+  },
+  {
+    id: 'culture',
+    label: 'Kultur',
+    subtitle: 'Geschichte spüren',
+    imageUrl: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&q=80',
+    Icon: Landmark,
+    color: '#F59E0B',
+  },
+  {
+    id: 'food',
+    label: 'Kulinarik',
+    subtitle: 'Geschmack der Welt',
+    imageUrl: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80',
+    Icon: UtensilsCrossed,
+    color: '#F472B6',
+  },
+  {
+    id: 'nature',
+    label: 'Natur',
+    subtitle: 'Ursprünglichkeit spüren',
+    imageUrl: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80',
+    Icon: Leaf,
+    color: '#22C55E',
+  },
+  {
+    id: 'wellness',
+    label: 'Wellness',
+    subtitle: 'Körper & Geist erholen',
+    imageUrl: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80',
+    Icon: Flower2,
+    color: '#06B6D4',
+  },
+  {
+    id: 'party',
+    label: 'Nightlife',
+    subtitle: 'Die Nacht wird lebendig',
+    imageUrl: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=600&q=80',
+    Icon: Music,
+    color: '#FB923C',
   },
 ];

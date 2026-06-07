@@ -1,36 +1,21 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import {
-  Waves, Mountain, Building2, Landmark, UtensilsCrossed, Leaf,
-  Globe, Flower2, Music,
-  Plane, Compass, Map, Sparkles,
+  Globe,
+  Plane, Map, Sparkles,
   MapPin, Mail, ShieldCheck, CheckCircle2,
-  Share2, RotateCcw,
+  Share2,
 } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import VisualTravelWizard from "@/components/finder/VisualTravelWizard";
 import FinderStartHero from "@/components/finder/FinderStartHero";
 import FinderModeCard from "@/components/finder/FinderModeCard";
-import { moodOptions, seasonOptions, durationOptions, budgetOptions } from "@/data/finderOptions";
+import FutureSelfWizard from "@/components/finder/FutureSelfWizard";
+import FutureLoadingState from "@/components/finder/FutureLoadingState";
+import FutureStoryResult from "@/components/finder/FutureStoryResult";
+import { moodOptions, seasonOptions, durationOptions, budgetOptions, zukunftVibeOptions } from "@/data/finderOptions";
 
-// ── Data constants ────────────────────────────────────────────────────────────
-const VIBES = [
-  { id: "relax",     Icon: Waves,           label: "Entspannung", color: "#00C9A7" },
-  { id: "adventure", Icon: Mountain,        label: "Abenteuer",   color: "#FF6B35" },
-  { id: "city",      Icon: Building2,       label: "Städtetrip",  color: "#A78BFA" },
-  { id: "culture",   Icon: Landmark,        label: "Kultur",      color: "#F59E0B" },
-  { id: "food",      Icon: UtensilsCrossed, label: "Kulinarik",   color: "#F472B6" },
-  { id: "nature",    Icon: Leaf,            label: "Natur",       color: "#22C55E" },
-  { id: "wellness",  Icon: Flower2,         label: "Wellness",    color: "#06B6D4" },
-  { id: "party",     Icon: Music,           label: "Nightlife",   color: "#FB923C" },
-];
-const LOADING_MSGS = [
-  "KI analysiert deine Persönlichkeit…",
-  "Dein alternatives Leben wird berechnet…",
-  "Wir schreiben deine Geschichte…",
-  "Fast fertig — dein Reise-Ich erwacht…",
-];
 
 // ── TypewriterText (logic unchanged) ─────────────────────────────────────────
 function TypewriterText({ text, speed = 22, onDone }) {
@@ -187,27 +172,72 @@ function Home({ onSelect }) {
         </h2>
       </div>
       <div className="finder-mode-grid">
-        <FinderModeCard
-          imageUrl="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=600&q=80"
-          Icon={Map}
-          color="#0EA5E9"
-          badge="Beliebt"
-          title="Reiseziel-Finder"
-          description="Beantworte ein paar Fragen zu Stimmung, Reisezeit, Dauer und Budget — unsere KI findet deine 3 perfekten Reiseziele mit Hotels & Flügen."
-          ctaLabel="Jetzt starten"
-          onClick={() => onSelect("classic")}
-        />
-        <FinderModeCard
-          imageUrl="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80"
-          Icon={Sparkles}
-          color="#A78BFA"
-          badge="Neu"
-          title="Dein Reise-Zukunfts-Ich"
-          description="Entdecke, wie sich dein Leben anfühlt, wenn du diese Reise wirklich machst — emotional, persönlich und unvergesslich."
-          ctaLabel="Erlebe dich"
-          onClick={() => onSelect("zukunft")}
-        />
+        <article>
+          <FinderModeCard
+            imageUrl="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=600&q=80"
+            Icon={Map}
+            color="#0EA5E9"
+            badge="Beliebt"
+            title="Reiseziel-Finder"
+            description="Beantworte ein paar Fragen zu Stimmung, Reisezeit, Dauer und Budget — unsere KI findet deine 3 perfekten Reiseziele mit Hotels & Flügen."
+            ctaLabel="Jetzt starten"
+            onClick={() => onSelect("classic")}
+          />
+        </article>
+        <article>
+          <FinderModeCard
+            imageUrl="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80"
+            Icon={Sparkles}
+            color="#A78BFA"
+            badge="Neu"
+            title="Dein Reise-Zukunfts-Ich"
+            description="Entdecke, wie sich dein Leben anfühlt, wenn du diese Reise wirklich machst — emotional, persönlich und unvergesslich."
+            ctaLabel="Erlebe dich"
+            onClick={() => onSelect("zukunft")}
+          />
+        </article>
       </div>
+
+      {/* Semantic nav links for SEO/GEO/AEO — visually subtle */}
+      <nav
+        aria-label="Weitere Angebote"
+        style={{
+          marginTop: "clamp(28px,4vw,44px)",
+          paddingTop: "22px",
+          borderTop: "1px solid #F1F5F9",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexWrap: "wrap",
+          gap: "6px 20px",
+        }}
+      >
+        <span style={{ fontSize: "12px", color: "#94A3B8", fontWeight: 500 }}>
+          Mehr entdecken:
+        </span>
+        {[
+          { href: "/reiseblog", label: "Reise-Inspiration im Blog" },
+          { href: "/inspiration", label: "Reiseideen" },
+          { href: "/so-funktionierts", label: "So funktioniert's" },
+        ].map(({ href, label }) => (
+          <a
+            key={href}
+            href={href}
+            style={{
+              fontSize: "12px",
+              color: "#64748B",
+              textDecoration: "none",
+              fontWeight: 500,
+              borderBottom: "1px solid #CBD5E1",
+              transition: "color 0.15s",
+            }}
+            onMouseEnter={e => (e.currentTarget.style.color = "#0EA5E9")}
+            onMouseLeave={e => (e.currentTarget.style.color = "#64748B")}
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
     </div>
   );
 }
@@ -400,34 +430,25 @@ function Classic({ onBack }) {
   );
 }
 
-// ── Zukunft (light design, ALL logic unchanged) ───────────────────────────────
+// ── Zukunft (premium visual, ALL API/affiliate logic unchanged) ──────────────
 function Zukunft({ onBack }) {
   const [vibes, setVibes] = useState([]);
   const [text, setText] = useState("");
   const [zStep, setZStep] = useState(0);
   const [results, setResults] = useState([]);
   const [idx, setIdx] = useState(0);
-  const [textDone, setTextDone] = useState(false);
-  const [showBtns, setShowBtns] = useState(false);
   const [showShare, setShowShare] = useState(false);
   const [showEmail, setShowEmail] = useState(false);
   const [err, setErr] = useState("");
-  const [msgIdx, setMsgIdx] = useState(0);
-
-  useEffect(() => {
-    if (zStep !== 1) return;
-    const iv = setInterval(() => setMsgIdx(m => (m + 1) % LOADING_MSGS.length), 1800);
-    return () => clearInterval(iv);
-  }, [zStep]);
 
   const toggle = id => setVibes(p => p.includes(id) ? p.filter(v => v !== id) : [...p, id]);
-  const reset = () => { setZStep(0); setVibes([]); setText(""); setResults([]); setIdx(0); setTextDone(false); setShowBtns(false); };
-  const next = () => { const n = (idx + 1) % results.length; setIdx(n); setTextDone(false); setShowBtns(false); };
+  const reset = () => { setZStep(0); setVibes([]); setText(""); setResults([]); setIdx(0); };
+  const next = () => setIdx(n => (n + 1) % results.length);
 
   const fetch_ = async () => {
-    setZStep(1); setErr(""); setTextDone(false); setShowBtns(false); setIdx(0);
+    setZStep(1); setErr(""); setIdx(0);
     try {
-      const vL = vibes.map(id => VIBES.find(v => v.id === id)?.label).join(", ");
+      const vL = vibes.map(id => zukunftVibeOptions.find(v => v.id === id)?.label).join(", ");
       const prompt = `Du bist ein poetischer Reise-Storyteller. Erstelle 3 verschiedene Reise-Ich Szenarien.\nBESCHREIBUNG: "${text || "keine"}"\nVIBES: ${vL}\nNUR JSON-Array:\n[{"destination":"Stadt","country":"Land","vibe":"${vibes[0] || "relax"}","identity_title":"Titel","teaser":"1 Satz","story":"3-4 Saetze du-Form Gegenwart emotional","moment":"1 magischer Moment","bookingCity":"englisch","skyCity":"englisch"}]`;
       const res = await fetch("https://api.anthropic.com/v1/messages", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 2000, messages: [{ role: "user", content: prompt }] }) });
       const data = await res.json();
@@ -445,143 +466,40 @@ function Zukunft({ onBack }) {
   };
 
   const cur = results[idx];
-  const color = cur ? (VIBES.find(v => v.id === cur.vibe)?.color || "#0EA5E9") : "#0EA5E9";
-  const VibeIcon = cur ? (VIBES.find(v => v.id === cur.vibe)?.Icon || Globe) : Globe;
+  const color = cur ? (zukunftVibeOptions.find(v => v.id === cur.vibe)?.color || "#A78BFA") : "#A78BFA";
+  const VibeIcon = cur ? (zukunftVibeOptions.find(v => v.id === cur.vibe)?.Icon || Globe) : Globe;
 
   return (
     <>
-      {/* Step 0 — Vibe-Auswahl */}
       {zStep === 0 && (
-        <div style={{ animation: "fadeUp .55s ease .15s both" }}>
-          <div style={{ textAlign: "center", marginBottom: "28px" }}>
-            <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(20px,4vw,26px)", fontWeight: 700, marginBottom: "8px", color: "#0F172A" }}>
-              Wie sieht dein Leben aus,<br />wenn du fährst?
-            </h2>
-            <p style={{ color: "#64748B", fontSize: "14px", fontWeight: 400 }}>Keine Hotellisten. Nur du — und dein alternatives Leben.</p>
-          </div>
-
-          <div style={{ fontSize: "12px", color: "#64748B", letterSpacing: "2px", textTransform: "uppercase", marginBottom: "14px", fontWeight: 700, fontFamily: "var(--font-heading)", textAlign: "center" }}>
-            Welches Gefühl rufst du?
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "10px", marginBottom: "24px" }}>
-            {VIBES.map(v => {
-              const sel = vibes.includes(v.id);
-              const VIcon = v.Icon;
-              return (
-                <button key={v.id} onClick={() => toggle(v.id)}
-                  style={{ padding: "14px 8px", borderRadius: "16px", border: `2px solid ${sel ? v.color : "#E2E8F0"}`, background: sel ? `${v.color}15` : "#FFFFFF", cursor: "pointer", transition: "all .25s", display: "flex", flexDirection: "column", alignItems: "center", gap: "8px", boxShadow: sel ? `0 4px 16px ${v.color}44` : "0 1px 4px rgba(15,23,42,0.06)", fontFamily: "inherit" }}>
-                  <VIcon size={22} strokeWidth={1.5} color={sel ? v.color : "#94A3B8"} />
-                  <span style={{ fontSize: "11px", color: sel ? v.color : "#64748B", fontWeight: sel ? 700 : 500 }}>{v.label}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          <textarea value={text} onChange={e => setText(e.target.value)} rows={3}
-            placeholder="Ich brauche Abstand… oder ich will endlich wieder richtig leben…"
-            style={{ width: "100%", boxSizing: "border-box", background: "#F8FAFF", border: "2px solid #E2E8F0", borderRadius: "14px", padding: "14px 18px", color: "#0F172A", fontSize: "14px", lineHeight: 1.7, fontFamily: "inherit", fontWeight: 400, resize: "none", outline: "none", marginBottom: "24px", transition: "border-color .2s" }}
-            onFocus={e => e.target.style.borderColor = "#A78BFA"} onBlur={e => e.target.style.borderColor = "#E2E8F0"} />
-
-          {err && <div style={{ color: "#DC2626", textAlign: "center", marginBottom: 16, fontSize: "14px" }}>{err}</div>}
-
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <button onClick={onBack} style={{ padding: "13px 24px", borderRadius: "12px", border: "2px solid #E2E8F0", background: "#FFFFFF", color: "#475569", cursor: "pointer", fontSize: "15px", fontWeight: 500, fontFamily: "inherit" }}>← Zurück</button>
-            <button onClick={fetch_} disabled={vibes.length === 0}
-              style={{ padding: "16px 40px", borderRadius: "14px", border: "none", fontSize: "16px", fontWeight: 700, background: vibes.length > 0 ? "linear-gradient(135deg,#A78BFA,#7C3AED)" : "#F1F5F9", color: vibes.length > 0 ? "#fff" : "#94A3B8", cursor: vibes.length > 0 ? "pointer" : "not-allowed", boxShadow: vibes.length > 0 ? "0 6px 28px rgba(167,139,250,.4)" : "none", fontFamily: "inherit", display: "flex", alignItems: "center", gap: "8px" }}>
-              <Sparkles size={16} strokeWidth={2} />
-              Zeig mir mein Reise-Ich
-            </button>
-          </div>
-        </div>
+        <FutureSelfWizard
+          vibes={vibes}
+          onToggleVibe={toggle}
+          text={text}
+          onTextChange={setText}
+          onSubmit={fetch_}
+          onBack={onBack}
+          error={err}
+        />
       )}
 
-      {/* Step 1 — Loading */}
-      {zStep === 1 && (
-        <div style={{ textAlign: "center", padding: "90px 0", animation: "fadeIn .4s ease" }}>
-          <div style={{ position: "relative", width: 80, height: 80, margin: "0 auto 28px" }}>
-            <div style={{ width: 80, height: 80, border: "3px solid #EDE9FE", borderTopColor: "#A78BFA", borderRadius: "50%", animation: "spin 1s linear infinite" }} />
-            <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <Sparkles size={28} strokeWidth={1.5} color="#A78BFA" />
-            </div>
-          </div>
-          <div style={{ fontSize: 15, color: "#64748B", fontStyle: "italic", fontWeight: 500 }}>{LOADING_MSGS[msgIdx]}</div>
-        </div>
-      )}
+      {zStep === 1 && <FutureLoadingState />}
 
-      {/* Step 2 — Story */}
       {zStep === 2 && cur && (
-        <div style={{ animation: "fadeIn .5s ease" }}>
-          <div style={{ position: "relative", borderRadius: "24px", overflow: "hidden", backgroundColor: "#FFFFFF", background: `linear-gradient(160deg, ${color}14, ${color}07, transparent)`, border: `2px solid ${color}40`, padding: "36px 28px 28px", marginBottom: "24px", boxShadow: `0 8px 32px ${color}22, 0 2px 8px rgba(15,23,42,0.06)` }}>
-            <div style={{ position: "relative", zIndex: 1 }}>
-              <div style={{ fontSize: "11px", color, letterSpacing: "3px", textTransform: "uppercase", marginBottom: "10px", fontWeight: 700, fontFamily: "var(--font-heading)" }}>
-                Dein Reise-Ich · #{idx + 1} von {results.length}
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "14px" }}>
-                <div style={{ width: "56px", height: "56px", borderRadius: "18px", background: `${color}18`, border: `1.5px solid ${color}44`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <VibeIcon size={26} strokeWidth={1.5} color={color} />
-                </div>
-                <div>
-                  <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(20px,4vw,30px)", fontWeight: 700, margin: 0, color: "#0F172A" }}>{cur.destination}</h2>
-                  <div style={{ fontSize: "13px", color, letterSpacing: "1px", textTransform: "uppercase", marginTop: "2px", fontWeight: 600 }}>{cur.country}</div>
-                </div>
-              </div>
-              <div style={{ fontSize: "16px", fontStyle: "italic", color: "#475569", lineHeight: 1.5, marginBottom: "18px", borderLeft: `3px solid ${color}`, paddingLeft: "14px" }}>
-                „{cur.identity_title}"
-              </div>
-              <div style={{ fontSize: "16px", lineHeight: 1.85, color: "#1E293B", marginBottom: "20px", minHeight: "90px" }}>
-                <TypewriterText text={cur.story} speed={18} onDone={() => { setTextDone(true); setTimeout(() => setShowBtns(true), 400); }} />
-              </div>
-              {textDone && (
-                <div style={{ background: `${color}12`, border: `1px solid ${color}30`, borderRadius: "14px", padding: "14px 18px", display: "flex", alignItems: "flex-start", gap: "10px", animation: "fadeUp .5s ease" }}>
-                  <Sparkles size={15} strokeWidth={2} color={color} style={{ flexShrink: 0, marginTop: "2px" }} />
-                  <span style={{ fontSize: "15px", color, fontStyle: "italic", fontWeight: 600 }}>{cur.moment}</span>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {showBtns && (
-            <div style={{ animation: "fadeUp .5s ease" }}>
-              <div style={{ textAlign: "center", fontSize: "11px", color: "#94A3B8", marginBottom: "14px", letterSpacing: "1.5px", textTransform: "uppercase", fontWeight: 700, fontFamily: "var(--font-heading)" }}>
-                Erlebe dieses Leben jetzt
-              </div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginBottom: "14px" }}>
-                {[
-                  { href: cur.trivagoUrl, bg: "linear-gradient(90deg,#d00e17,#ff4d57)", label: "Hotels Trivago" },
-                  { href: cur.bookingUrl, bg: "linear-gradient(90deg,#003580,#0057b8)", label: "Booking.com" },
-                  { href: cur.skyUrl,     bg: "linear-gradient(90deg,#0770e3,#00a0de)", label: "Flug finden" },
-                  { href: cur.gygUrl,     bg: "linear-gradient(90deg,#FF5533,#FF8C00)", label: "Erlebnisse" },
-                  { href: cur.check24Url, bg: "linear-gradient(90deg,#003399,#e30613)", label: "CHECK24" },
-                ].map(btn => (
-                  <a key={btn.label} href={btn.href} target="_blank" rel="noopener noreferrer"
-                    style={{ display: "block", textAlign: "center", padding: "13px 6px", background: btn.bg, color: "#fff", borderRadius: "12px", textDecoration: "none", fontSize: "13px", fontWeight: 600 }}
-                    onMouseEnter={e => e.currentTarget.style.opacity = ".85"} onMouseLeave={e => e.currentTarget.style.opacity = "1"}>
-                    {btn.label}
-                  </a>
-                ))}
-              </div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginBottom: "14px" }}>
-                <button onClick={next} style={{ padding: "13px", borderRadius: "12px", border: `2px solid ${color}44`, background: `${color}10`, color, fontWeight: 700, fontSize: "14px", cursor: "pointer", fontFamily: "inherit", display: "flex", alignItems: "center", justifyContent: "center", gap: "7px" }}>
-                  <RotateCcw size={14} strokeWidth={2} />
-                  Alternatives Leben
-                </button>
-                <button onClick={() => setShowShare(true)} style={{ padding: "13px", borderRadius: "12px", border: "2px solid #E2E8F0", background: "#FFFFFF", color: "#475569", fontWeight: 700, fontSize: "14px", cursor: "pointer", fontFamily: "inherit", display: "flex", alignItems: "center", justifyContent: "center", gap: "7px" }}>
-                  <Share2 size={14} strokeWidth={2} />
-                  Teilen
-                </button>
-              </div>
-              <div style={{ textAlign: "center", marginBottom: "16px" }}>
-                <button onClick={reset} style={{ background: "none", border: "none", color: "#94A3B8", fontSize: "13px", cursor: "pointer", textDecoration: "underline", fontFamily: "inherit" }}>
-                  ← Neu starten
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
+        <FutureStoryResult
+          key={idx}
+          cur={cur}
+          idx={idx}
+          total={results.length}
+          color={color}
+          VibeIcon={VibeIcon}
+          onNext={next}
+          onReset={reset}
+          onShare={() => setShowShare(true)}
+        />
       )}
 
-      {/* Share modal */}
+      {/* Share modal — unchanged logic */}
       {showShare && cur && (
         <div style={{ position: "fixed", inset: 0, background: "rgba(15,23,42,0.72)", zIndex: 200, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px" }}>
           <div style={{ background: "#FFFFFF", border: `2px solid ${color}44`, borderRadius: "24px", boxShadow: "0 24px 80px rgba(15,23,42,0.20)", padding: "40px 32px", maxWidth: "380px", width: "100%", textAlign: "center", position: "relative" }}>
