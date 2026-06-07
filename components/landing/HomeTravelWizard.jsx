@@ -259,7 +259,7 @@ export default function HomeTravelWizard() {
                   }}
                 >
                   <MessageSquare size={14} strokeWidth={2} color="#94A3B8" />
-                  Zusätzliche Wünsche ergänzen (optional)
+                  Zusätzliche Wünsche ergänzen <b>(optional)</b>
                   <ChevronDown
                     size={14}
                     strokeWidth={2}
