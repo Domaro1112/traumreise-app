@@ -54,8 +54,11 @@ export default function FutureStoryResult({
   const vibeFallback = (vibe?.imageUrl || 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80')
     .replace('w=600', 'w=1400')
     .replace('q=80', 'q=88');
-  // Destination-specific image first; vibe image as fallback for unknown destinations
-  const heroUrl = getDestinationImage(cur.destination, vibeFallback, cur.country);
+  // Destination-specific image first; vibe image as last-resort fallback
+  const heroUrl = getDestinationImage(cur.destination, vibeFallback, cur.country, {
+    vibe: cur.vibe,
+    resultType: 'future-self',
+  });
   const vibeLabel = vibe?.label || '';
 
   const affiliateLinks = [
