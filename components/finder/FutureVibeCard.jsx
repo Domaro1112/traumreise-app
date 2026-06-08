@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 
-export default function FutureVibeCard({ imageUrl, Icon, label, subtitle, color, selected, onClick }) {
+export default function FutureVibeCard({ imageUrl, label, subtitle, color, selected, onClick }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -88,71 +88,46 @@ export default function FutureVibeCard({ imageUrl, Icon, label, subtitle, color,
         </div>
       )}
 
-      {/* Label + icon (bottom) */}
+      {/* Label (bottom) */}
       <div
         style={{
           position: 'absolute',
           bottom: 0,
           left: 0,
           right: 0,
-          padding: '10px 12px',
-          display: 'flex',
-          alignItems: 'flex-end',
-          gap: '9px',
+          padding: '10px 13px 12px',
         }}
       >
-        {/* Icon bubble */}
         <div
           style={{
-            width: '34px',
-            height: '34px',
-            borderRadius: '10px',
-            background: selected ? color : 'rgba(255,255,255,0.18)',
-            backdropFilter: 'blur(6px)',
-            WebkitBackdropFilter: 'blur(6px)',
-            border: '1px solid rgba(255,255,255,0.28)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexShrink: 0,
-            transition: 'background 0.25s ease',
+            fontSize: '13px',
+            fontWeight: 700,
+            color: '#FFFFFF',
+            fontFamily: 'var(--font-heading)',
+            textShadow: '0 1px 5px rgba(0,0,0,0.5)',
+            lineHeight: 1.2,
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
           }}
         >
-          {Icon && <Icon size={17} strokeWidth={1.5} color="#FFFFFF" />}
+          {label}
         </div>
-
-        <div style={{ textAlign: 'left', minWidth: 0 }}>
+        {subtitle && (
           <div
             style={{
-              fontSize: '13px',
-              fontWeight: 700,
-              color: '#FFFFFF',
-              fontFamily: 'var(--font-heading)',
-              textShadow: '0 1px 5px rgba(0,0,0,0.5)',
-              lineHeight: 1.2,
+              fontSize: '10px',
+              color: 'rgba(255,255,255,0.78)',
+              fontWeight: 500,
+              marginTop: '2px',
               whiteSpace: 'nowrap',
               overflow: 'hidden',
               textOverflow: 'ellipsis',
             }}
           >
-            {label}
+            {subtitle}
           </div>
-          {subtitle && (
-            <div
-              style={{
-                fontSize: '10px',
-                color: 'rgba(255,255,255,0.78)',
-                fontWeight: 500,
-                marginTop: '1px',
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-              }}
-            >
-              {subtitle}
-            </div>
-          )}
-        </div>
+        )}
       </div>
     </button>
   );

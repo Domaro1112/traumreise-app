@@ -162,7 +162,7 @@ export default function HomeTravelWizard() {
                     <VisualOptionCard
                       key={opt.id}
                       imageUrl={opt.imageUrl}
-                      Icon={opt.Icon}
+
                       label={opt.label}
                       subtitle={opt.subtitle}
                       selected={interests.includes(opt.id)}
@@ -185,7 +185,7 @@ export default function HomeTravelWizard() {
                     <VisualOptionCard
                       key={opt.id}
                       imageUrl={opt.imageUrl}
-                      Icon={opt.Icon}
+
                       label={opt.label}
                       selected={season === opt.id}
                       onClick={() => setSeason(season === opt.id ? '' : opt.id)}
@@ -207,7 +207,7 @@ export default function HomeTravelWizard() {
                     <VisualOptionCard
                       key={opt.id}
                       imageUrl={opt.imageUrl}
-                      Icon={opt.Icon}
+
                       label={opt.label}
                       subtitle={opt.subtitle}
                       selected={duration === opt.id}
@@ -230,7 +230,7 @@ export default function HomeTravelWizard() {
                     <VisualOptionCard
                       key={opt.id}
                       imageUrl={opt.imageUrl}
-                      Icon={opt.Icon}
+
                       label={opt.label}
                       subtitle={opt.subtitle}
                       selected={budget === opt.id}

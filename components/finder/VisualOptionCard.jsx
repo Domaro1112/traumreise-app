@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Check } from 'lucide-react';
 
-export default function VisualOptionCard({ imageUrl, Icon, label, subtitle, selected, onClick }) {
+export default function VisualOptionCard({ imageUrl, label, subtitle, selected, onClick }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -64,30 +64,6 @@ export default function VisualOptionCard({ imageUrl, Icon, label, subtitle, sele
             background: 'rgba(14,165,233,0.12)',
           }}
         />
-      )}
-
-      {/* Icon badge – top left */}
-      {Icon && (
-        <div
-          style={{
-            position: 'absolute',
-            top: '12px',
-            left: '12px',
-            width: '34px',
-            height: '34px',
-            borderRadius: '9px',
-            background: selected ? '#0EA5E9' : 'rgba(255,255,255,0.92)',
-            backdropFilter: 'blur(4px)',
-            WebkitBackdropFilter: 'blur(4px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.18)',
-            transition: 'background 0.2s',
-          }}
-        >
-          <Icon size={17} strokeWidth={2} color={selected ? '#FFFFFF' : '#374151'} />
-        </div>
       )}
 
       {/* Checkmark – top right (only when selected) */}

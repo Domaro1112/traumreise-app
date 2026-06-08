@@ -109,7 +109,7 @@ export default function FutureSelfWizard({
           <FutureVibeCard
             key={opt.id}
             imageUrl={opt.imageUrl}
-            Icon={opt.Icon}
+
             label={opt.label}
             subtitle={opt.subtitle}
             color={opt.color}
