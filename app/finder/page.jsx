@@ -262,21 +262,55 @@ function Classic({ onBack }) {
     return { ci: fmt(seasonStart), co: fmt(end) };
   };
 
-  const buildAffiliateUrls = (d) => {
+  const buildAffiliateUrls = (dest) => {
     const { ci: defaultCi, co: defaultCo } = getDefaultDates();
     const ci = checkin || defaultCi;
     const co = checkout || defaultCo;
-    const trivagoUrl = `https://www.trivago.de/?sQuery=${encodeURIComponent(d.skySearch)}&aDateRange%5Barr%5D=${ci}&aDateRange%5Bdep%5D=${co}&adults=${adults}&children=${children}&iRoomType=7`;
-    const BOOKING_ORDER = { low: "price", mid: "popularity", high: "class_asc" };
-    const bookingUrl = `https://www.booking.com/searchresults.de.html?ss=${encodeURIComponent(d.skySearch)}&checkin=${ci}&checkout=${co}&group_adults=${adults}&group_children=${children}&no_rooms=1&order=${BOOKING_ORDER[budget] || "popularity"}&lang=de`;
-    const dateStr = ci.replace(/-/g, "").slice(2);
-    const skySlug = d.skySearch.toLowerCase().replace(/\s+/g, "-");
-    const skyClass = budget === "high" ? "business" : "economy";
-    const skyUrl = departure
-      ? `https://www.skyscanner.de/transport/fluge/${departure}/${d.iata || skySlug}/${dateStr}/?adults=${adults}&children=${children}&cabinclass=${skyClass}`
-      : `https://www.skyscanner.de/fluge-nach/${skySlug}/?adults=${adults}&children=${children}&cabinclass=${skyClass}`;
-    const gygUrl = `https://www.getyourguide.de/s/?q=${encodeURIComponent(d.destination)}&date_from=${ci}&date_to=${co}`;
-    const check24Url = `https://www.check24.de/urlaub/ergebnisse/?reiseziel=${encodeURIComponent(d.destination)}&abreise=${ci}&rueckreise=${co}&erwachsene=${adults}&kinder=${children}`;
+
+    // dest.skySearch is the AI-provided English city name for booking queries.
+    // Fall back to dest.destination so a missing/null skySearch never produces
+    // "undefined" in URLs or silently points to the wrong country.
+    const searchCity = dest.skySearch || dest.destination;
+    const iata = (dest.iata || '').toUpperCase().trim();
+    const skyClass = budget === 'high' ? 'business' : 'economy';
+    const dateStr = ci.replace(/-/g, '').slice(2);
+    // ASCII-safe slug: strip diacritics, collapse non-alphanumerics to hyphens
+    const toSlug = (s) =>
+      s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+
+    const BOOKING_ORDER = { low: 'price', mid: 'popularity', high: 'class_asc' };
+    const trivagoUrl = `https://www.trivago.de/?sQuery=${encodeURIComponent(searchCity)}&aDateRange%5Barr%5D=${ci}&aDateRange%5Bdep%5D=${co}&adults=${adults}&children=${children}&iRoomType=7`;
+    const bookingUrl = `https://www.booking.com/searchresults.de.html?ss=${encodeURIComponent(searchCity)}&checkin=${ci}&checkout=${co}&group_adults=${adults}&group_children=${children}&no_rooms=1&order=${BOOKING_ORDER[budget] || 'popularity'}&lang=de`;
+
+    // Skyscanner: IATA is the most reliable destination identifier.
+    // With departure city: route search. Without departure: fluge-nach/{IATA}.
+    // Fallback to ASCII slug when IATA is absent.
+    let skyUrl;
+    if (departure && iata) {
+      skyUrl = `https://www.skyscanner.de/transport/fluge/${encodeURIComponent(departure.toLowerCase())}/${iata.toLowerCase()}/${dateStr}/?adults=${adults}&children=${children}&cabinclass=${skyClass}`;
+    } else if (iata) {
+      skyUrl = `https://www.skyscanner.de/fluge-nach/${iata}/?adults=${adults}&children=${children}&cabinclass=${skyClass}`;
+    } else {
+      skyUrl = `https://www.skyscanner.de/fluge-nach/${toSlug(searchCity)}/?adults=${adults}&children=${children}&cabinclass=${skyClass}`;
+    }
+
+    const gygUrl = `https://www.getyourguide.de/s/?q=${encodeURIComponent(dest.destination)}&date_from=${ci}&date_to=${co}`;
+    const check24Url = `https://www.check24.de/urlaub/ergebnisse/?reiseziel=${encodeURIComponent(dest.destination)}&abreise=${ci}&rueckreise=${co}&erwachsene=${adults}&kinder=${children}`;
+
+    if (process.env.NODE_ENV !== 'production') {
+      console.info('[affiliate-links]', {
+        destination: dest.destination,
+        country: dest.country,
+        searchCity,
+        iata: iata || '(none)',
+        trivagoUrl,
+        bookingUrl,
+        skyUrl,
+        gygUrl,
+        check24Url,
+      });
+    }
+
     return { trivagoUrl, bookingUrl, skyUrl, gygUrl, check24Url };
   };
 
@@ -363,14 +397,40 @@ function Zukunft({ onBack }) {
       const res = await fetch("/api/ai/future-self", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ vibes, text }) });
       if (!res.ok) throw new Error();
       const parsed = await res.json();
-      setResults(parsed.map(d => ({
-        ...d,
-        trivagoUrl: `https://www.trivago.de/?sQuery=${encodeURIComponent(d.bookingCity)}&iRoomType=7`,
-        bookingUrl: `https://www.booking.com/searchresults.de.html?ss=${encodeURIComponent(d.bookingCity)}&lang=de`,
-        skyUrl: `https://www.skyscanner.de/fluge-nach/${d.skyCity.toLowerCase().replace(/\s+/g, "-")}/`,
-        gygUrl: `https://www.getyourguide.de/s/?q=${encodeURIComponent(d.bookingCity)}`,
-        check24Url: `https://www.check24.de/urlaub/ergebnisse/?reiseziel=${encodeURIComponent(d.bookingCity)}`,
-      })));
+      setResults(parsed.map(d => {
+        // Defensive fallbacks: AI may occasionally omit bookingCity / skyCity
+        const bookingCity = d.bookingCity || d.destination;
+        const skyCity = d.skyCity || d.bookingCity || d.destination;
+        // ASCII-safe slug for Skyscanner path (ú → u, ô → o, etc.)
+        const skySlug = skyCity
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[̀-ͯ]/g, '')
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '');
+
+        const trivagoUrl = `https://www.trivago.de/?sQuery=${encodeURIComponent(bookingCity)}&iRoomType=7`;
+        const bookingUrl = `https://www.booking.com/searchresults.de.html?ss=${encodeURIComponent(bookingCity)}&lang=de`;
+        const skyUrl = `https://www.skyscanner.de/fluge-nach/${skySlug}/`;
+        const gygUrl = `https://www.getyourguide.de/s/?q=${encodeURIComponent(bookingCity)}`;
+        const check24Url = `https://www.check24.de/urlaub/ergebnisse/?reiseziel=${encodeURIComponent(bookingCity)}`;
+
+        if (process.env.NODE_ENV !== 'production') {
+          console.info('[affiliate-links]', {
+            destination: d.destination,
+            country: d.country,
+            bookingCity,
+            skyCity,
+            trivagoUrl,
+            bookingUrl,
+            skyUrl,
+            gygUrl,
+            check24Url,
+          });
+        }
+
+        return { ...d, trivagoUrl, bookingUrl, skyUrl, gygUrl, check24Url };
+      }));
       setZStep(2);
     } catch { setErr("Fehler. Bitte nochmal versuchen."); setZStep(0); }
   };

@@ -61,6 +61,20 @@ export default function FutureStoryResult({
   });
   const vibeLabel = vibe?.label || '';
 
+  useEffect(() => {
+    if (process.env.NODE_ENV !== 'production') {
+      console.info('[affiliate-links]', {
+        destination: cur.destination,
+        country: cur.country,
+        bookingUrl: cur.bookingUrl,
+        trivagoUrl: cur.trivagoUrl,
+        skyscannerUrl: cur.skyUrl,
+        getYourGuideUrl: cur.gygUrl,
+        check24Url: cur.check24Url,
+      });
+    }
+  }, []);
+
   const affiliateLinks = [
     { href: cur.trivagoUrl,  label: 'Hotels auf Trivago',        bg: 'linear-gradient(90deg,#d00e17,#ff4d57)' },
     { href: cur.bookingUrl,  label: 'Hotel auf Booking.com',     bg: 'linear-gradient(90deg,#003580,#0057b8)' },

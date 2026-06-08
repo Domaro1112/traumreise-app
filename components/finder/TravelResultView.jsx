@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   ArrowLeft, ArrowRight, Sparkles, Share2, CheckCircle2,
   MapPin, Mail, RotateCcw, Plane, Building2, Compass, Briefcase,
@@ -71,6 +71,20 @@ export default function TravelResultView({ results, personality, interests, onRe
   const prev = () => setIdx(n => Math.max(n - 1, 0));
   const next = () => setIdx(n => Math.min(n + 1, total - 1));
   const goTo = i => setIdx(i);
+
+  useEffect(() => {
+    if (process.env.NODE_ENV !== 'production') {
+      console.info('[affiliate-links]', {
+        destination: cur.destination,
+        country: cur.country,
+        bookingUrl: cur.bookingUrl,
+        trivagoUrl: cur.trivagoUrl,
+        skyscannerUrl: cur.skyUrl,
+        getYourGuideUrl: cur.gygUrl,
+        check24Url: cur.check24Url,
+      });
+    }
+  }, [idx]);
 
   // Hero image: destination → country → region → interest-safe → mood fallback
   const moodId = interests[idx % Math.max(interests.length, 1)];
