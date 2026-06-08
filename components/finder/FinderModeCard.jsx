@@ -5,7 +5,6 @@ import { ArrowRight } from 'lucide-react';
 
 export default function FinderModeCard({
   imageUrl,
-  Icon,
   color,
   badge,
   title,
@@ -104,28 +103,7 @@ export default function FinderModeCard({
           </div>
         )}
 
-        {/* Icon (bottom-left) */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '16px',
-            left: '16px',
-            width: '46px',
-            height: '46px',
-            borderRadius: '14px',
-            background: 'rgba(255,255,255,0.95)',
-            backdropFilter: 'blur(6px)',
-            WebkitBackdropFilter: 'blur(6px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '0 4px 18px rgba(0,0,0,0.18)',
-            transition: 'transform 0.25s ease',
-            transform: hovered ? 'scale(1.08)' : 'scale(1)',
-          }}
-        >
-          {Icon && <Icon size={22} strokeWidth={1.5} color={color} />}
-        </div>
+
       </div>
 
       {/* Content */}

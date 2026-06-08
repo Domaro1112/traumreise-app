@@ -18,7 +18,7 @@ export default function SoFunktionierts() {
           <Container>
             <SectionTitle
               label="Deine Traumreise wartet"
-              title="So funktioniert's"
+              title="Dein Weg zur Traumreise"
               subtitle="Unser Reiseplaner findet in wenigen Minuten dein perfektes Reiseziel – ganz persönlich und natürlich kostenlos."
             />
           </Container>

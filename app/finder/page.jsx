@@ -175,7 +175,6 @@ function Home({ onSelect }) {
         <article>
           <FinderModeCard
             imageUrl="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=600&q=80"
-            Icon={Map}
             color="#0EA5E9"
             badge="Beliebt"
             title="Reiseziel-Finder"
@@ -187,7 +186,6 @@ function Home({ onSelect }) {
         <article>
           <FinderModeCard
             imageUrl="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80"
-            Icon={Sparkles}
             color="#A78BFA"
             badge="Neu"
             title="Dein Reise-Zukunfts-Ich"
