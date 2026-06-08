@@ -1,6 +1,6 @@
 export const mainNav = [
   { label: "Dein Weg zur Traumreise", href: '/so-funktionierts' },
-  { label: 'Inspiration', href: '/inspiration' },
+  { label: 'Reise Inspiration', href: '/inspiration' },
   { label: 'Über uns', href: '/ueber-uns' },
   { label: 'Reiseblog', href: '/reiseblog' },
 ];
@@ -10,7 +10,7 @@ export const footerNav = {
     { label: "Dein Weg zur Traumreise", href: '/so-funktionierts' },
     { label: 'Reiseziele', href: '/inspiration' },
     { label: 'Reiseblog', href: '/reiseblog' },
-    { label: 'Inspiration', href: '/inspiration' },
+    { label: 'Reise Inspiration', href: '/inspiration' },
   ],
   rechtliches: [
     { label: 'Datenschutz', href: '/datenschutz' },
