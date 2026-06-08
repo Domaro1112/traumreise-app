@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Sparkles, Share2, MapPin, ArrowLeft, ArrowRight } from 'lucide-react';
 import { zukunftVibeOptions } from '@/data/finderOptions';
+import { getDestinationImage } from '@/data/destinationImages';
 
 function TypewriterText({ text, speed = 16, onDone }) {
   const [shown, setShown] = useState('');
@@ -50,9 +51,11 @@ export default function FutureStoryResult({
   const [shareHovered, setShareHovered] = useState(false);
 
   const vibe = zukunftVibeOptions.find(v => v.id === cur.vibe);
-  const heroUrl = (vibe?.imageUrl || 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80')
+  const vibeFallback = (vibe?.imageUrl || 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=600&q=80')
     .replace('w=600', 'w=1400')
     .replace('q=80', 'q=88');
+  // Destination-specific image first; vibe image as fallback for unknown destinations
+  const heroUrl = getDestinationImage(cur.destination, vibeFallback, cur.country);
   const vibeLabel = vibe?.label || '';
 
   const affiliateLinks = [

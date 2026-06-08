@@ -76,7 +76,7 @@ export default function TravelResultView({ results, personality, interests, onRe
   const moodId = interests[idx % Math.max(interests.length, 1)];
   const heroMood = moodOptions.find(m => m.id === moodId) || moodOptions[0];
   const moodFallback = heroMood.imageUrl.replace('w=600', 'w=1400').replace('q=80', 'q=88');
-  const heroUrl = getDestinationImage(cur.destination, moodFallback);
+  const heroUrl = getDestinationImage(cur.destination, moodFallback, cur.country);
 
   return (
     <div style={{ animation: 'fadeUp .4s cubic-bezier(0.16, 1, 0.3, 1) both' }}>
