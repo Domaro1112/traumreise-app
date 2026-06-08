@@ -174,59 +174,18 @@ input::placeholder { color: var(--color-text-muted); }
 ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
 
-/* ── Hero split layout ────────────────────────────────────────────────────── */
-.hero-split {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  align-items: stretch;
+/* ── Hero fullwidth ───────────────────────────────────────────────────────── */
+.hero-fullwidth {
+  position: relative;
+  overflow: hidden;
   width: 100%;
-}
-.hero-image-col {
-  order: -1;
-  width: 100%;
-}
-.hero-text-col {
-  width: 100%;
-  text-align: center;
-  padding-top: 28px;
-}
-.hero-text-col .hero-subtitle {
-  margin: 0 auto 44px;
-  max-width: 560px;
-}
-.hero-text-col .hero-ctas {
-  justify-content: center;
-}
-.hero-text-col .hero-trust {
-  justify-content: center;
+  height: 560px; /* mobile */
 }
 @media (min-width: 769px) {
-  .hero-split {
-    flex-direction: row;
-    gap: 52px;
-    align-items: center;
-  }
-  .hero-image-col {
-    order: 0;
-    width: 50%;
-    flex-shrink: 0;
-  }
-  .hero-text-col {
-    flex: 1;
-    text-align: left;
-    padding-top: 0;
-  }
-  .hero-text-col .hero-subtitle {
-    margin: 0 0 44px;
-    max-width: none;
-  }
-  .hero-text-col .hero-ctas {
-    justify-content: flex-start;
-  }
-  .hero-text-col .hero-trust {
-    justify-content: flex-start;
-  }
+  .hero-fullwidth { height: 650px; } /* tablet */
+}
+@media (min-width: 1025px) {
+  .hero-fullwidth { height: 820px; } /* desktop */
 }
 
 /* ── Finder: utility classes ─────────────────────────────────────────────── */
