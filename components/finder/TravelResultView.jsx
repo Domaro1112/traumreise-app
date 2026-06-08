@@ -6,6 +6,7 @@ import {
   MapPin, Mail, RotateCcw, Plane, Building2, Compass, Briefcase,
 } from 'lucide-react';
 import { moodOptions } from '@/data/finderOptions';
+import { getDestinationImage } from '@/data/destinationImages';
 
 // ── Static match config per result position ───────────────────────────────────
 const MATCHES = [
@@ -71,10 +72,11 @@ export default function TravelResultView({ results, personality, interests, onRe
   const next = () => setIdx(n => Math.min(n + 1, total - 1));
   const goTo = i => setIdx(i);
 
-  // Hero image: cycle through the user's selected interest images
+  // Hero image: destination-specific first, mood-based as fallback
   const moodId = interests[idx % Math.max(interests.length, 1)];
   const heroMood = moodOptions.find(m => m.id === moodId) || moodOptions[0];
-  const heroUrl = heroMood.imageUrl.replace('w=600', 'w=1400').replace('q=80', 'q=88');
+  const moodFallback = heroMood.imageUrl.replace('w=600', 'w=1400').replace('q=80', 'q=88');
+  const heroUrl = getDestinationImage(cur.destination, moodFallback);
 
   return (
     <div style={{ animation: 'fadeUp .4s cubic-bezier(0.16, 1, 0.3, 1) both' }}>
