@@ -252,6 +252,13 @@ export const DESTINATION_IMAGES = {
   athens:         'https://images.unsplash.com/photo-1603565816030-6b389eeb23cb?w=1400&q=88',
   zakynthos:      'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1400&q=88', // → Greece
   zante:          'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1400&q=88',
+  heraklion:      'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1400&q=88', // Balos/Crete
+  iraklio:        'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1400&q=88',
+  iraklion:       'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1400&q=88',
+  chania:         'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1400&q=88',
+  rethymno:       'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1400&q=88',
+  heraklionkreta: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1400&q=88',
+  heraklioncrete: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1400&q=88',
 
   // ── Croatia & Balkans ────────────────────────────────────────────────────────
   kroatien:       'https://images.unsplash.com/photo-1555990538-97a36e22c7bf?w=1400&q=88', // confirmed Dubrovnik
@@ -421,50 +428,147 @@ export function normalizeDestinationKey(value) {
   return s;
 }
 
+// ── Mediterranean guard terms ─────────────────────────────────────────────────
+// Any compound country string containing one of these must never fall through
+// to cityeurope (Amsterdam) — always use Mediterranean or island fallback.
+const MEDITERRANEAN_GUARD_TERMS = new Set([
+  'kreta', 'crete', 'griechenland', 'greece', 'greek',
+  'santorini', 'mykonos', 'rhodos', 'rhodes', 'korfu', 'corfu',
+  'athen', 'athens', 'heraklion', 'iraklio', 'iraklion',
+  'chania', 'rethymno', 'zakynthos', 'zante', 'paros', 'naxos',
+  'kefalonia', 'zypern', 'cyprus', 'malta',
+  'sizilien', 'sicily', 'sardinien', 'sardinia',
+  'mallorca', 'ibiza', 'menorca',
+  'malediven', 'maldives', 'seychellen', 'seychelles',
+  'bali', 'phuket', 'mediterranean',
+]);
+
+function hasMediterraneanTerm(raw) {
+  if (!raw) return false;
+  const n = normalizeDestinationKey(raw).replace(/[\s-]+/g, '');
+  for (const term of MEDITERRANEAN_GUARD_TERMS) {
+    if (n.includes(term)) return true;
+  }
+  return false;
+}
+
 // ── Main lookup ───────────────────────────────────────────────────────────────
 
 export function getDestinationImage(destination, fallbackUrl, country = null, options = {}) {
+  let selectedKey = null;
+  let selectedSource = null;
 
   function lookup(raw) {
     if (!raw) return null;
     const base = normalizeDestinationKey(raw);
-    const compact = base.replace(/[\s-]+/g, '');       // "New York City" → "newyorkcity"
-    const hyphenated = base.replace(/\s+/g, '-');       // "New York City" → "new-york-city"
+    const compact = base.replace(/[\s-]+/g, '');
+    const hyphenated = base.replace(/\s+/g, '-');
     for (const key of [compact, base, hyphenated]) {
-      if (key && DESTINATION_IMAGES[key]) return DESTINATION_IMAGES[key];
+      if (key && DESTINATION_IMAGES[key]) return { img: DESTINATION_IMAGES[key], key };
+    }
+    return null;
+  }
+
+  // Splits on em dash, en dash, hyphen, comma, slash and tries each part
+  // in reverse order (most-specific last segment first, e.g. "Kreta" from "Griechenland – Kreta")
+  function lookupWithSplit(raw) {
+    const direct = lookup(raw);
+    if (direct) return direct;
+    if (!raw) return null;
+    const parts = raw.split(/\s*[–—\-,\/]\s*/).map(p => p.trim()).filter(Boolean);
+    if (parts.length <= 1) return null;
+    for (let i = parts.length - 1; i >= 0; i--) {
+      const result = lookup(parts[i]);
+      if (result) return result;
     }
     return null;
   }
 
   function getRegionKey(raw) {
     if (!raw) return null;
-    const compact = normalizeDestinationKey(raw).replace(/[\s-]+/g, '');
-    return COUNTRY_TO_REGION[compact] || null;
+    // Try each split part (most specific last)
+    const parts = raw.split(/\s*[–—\-,\/]\s*/).map(p => p.trim()).filter(Boolean);
+    for (let i = parts.length - 1; i >= 0; i--) {
+      const compact = normalizeDestinationKey(parts[i]).replace(/[\s-]+/g, '');
+      const region = COUNTRY_TO_REGION[compact];
+      if (region) return region;
+    }
+    return null;
   }
 
-  // 1. Exact destination lookup
-  const destImg = lookup(destination);
-  if (destImg) return destImg;
+  // 1. Exact destination lookup (with compound splitting)
+  const destResult = lookupWithSplit(destination);
+  if (destResult) {
+    selectedKey = destResult.key;
+    selectedSource = 'destination';
+    if (process.env.NODE_ENV !== 'production') {
+      console.info('[image-lookup]', { destination, country, selectedKey, selectedSource });
+    }
+    return destResult.img;
+  }
 
-  // 2. Country lookup
-  const countryImg = country ? lookup(country) : null;
-  if (countryImg) return countryImg;
+  // 2. Country lookup (with compound splitting)
+  const countryResult = country ? lookupWithSplit(country) : null;
+  if (countryResult) {
+    selectedKey = countryResult.key;
+    selectedSource = 'country';
+    if (process.env.NODE_ENV !== 'production') {
+      console.info('[image-lookup]', { destination, country, selectedKey, selectedSource });
+    }
+    return countryResult.img;
+  }
 
-  // 3. Country → Region cascade (e.g. "Schweiz" → "alps" → mountain lake)
+  // 3. Country → Region cascade
   const region = getRegionKey(country) || getRegionKey(destination);
-  if (region && REGION_IMAGES[region]) return REGION_IMAGES[region];
-
-  // 4. Interest / Vibe override — prevents wrong mood image
-  //    e.g. interest="city" → cityeurope (Amsterdam), not city-mood (US skyline)
-  const interestKey = options.interest || options.vibe;
-  if (interestKey) {
-    const interestRegion = INTEREST_TO_REGION[interestKey];
-    if (interestRegion && REGION_IMAGES[interestRegion]) return REGION_IMAGES[interestRegion];
+  if (region && REGION_IMAGES[region]) {
+    selectedKey = region;
+    selectedSource = 'region';
+    if (process.env.NODE_ENV !== 'production') {
+      console.info('[image-lookup]', { destination, country, selectedKey, selectedSource });
+    }
+    return REGION_IMAGES[region];
   }
 
-  // 5. Dev warning, then passed fallback
+  // 4. Interest / Vibe override — but Mediterranean guard prevents cityeurope for Greek/island destinations
+  const interestKey = options.interest || options.vibe;
+  const isMediterranean = hasMediterraneanTerm(destination) || hasMediterraneanTerm(country);
+  if (interestKey) {
+    let interestRegion = INTEREST_TO_REGION[interestKey];
+    if (isMediterranean && interestRegion === 'cityeurope') {
+      interestRegion = 'mediterranean';
+    }
+    if (interestRegion && REGION_IMAGES[interestRegion]) {
+      selectedKey = interestRegion;
+      selectedSource = `interest(${interestKey})${isMediterranean ? '+med-guard' : ''}`;
+      if (process.env.NODE_ENV !== 'production') {
+        console.info('[image-lookup]', { destination, country, selectedKey, selectedSource });
+      }
+      return REGION_IMAGES[interestRegion];
+    }
+  }
+
+  // 5. Mediterranean guard on final fallback
+  if (isMediterranean) {
+    selectedKey = 'mediterranean';
+    selectedSource = 'med-guard-final';
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn('[image-lookup] Mediterranean guard triggered for unmatched destination', {
+        destination, country, selectedKey, selectedSource,
+      });
+    }
+    return REGION_IMAGES.mediterranean;
+  }
+
+  // 6. Dev warning, then passed fallback
   if (process.env.NODE_ENV !== 'production') {
-    console.warn(`[traumreise] No image found for: "${destination}" (country: "${country}") — using mood fallback`);
+    console.warn('[image-lookup] No image found — using mood fallback', {
+      destination,
+      country,
+      normalizedDestination: normalizeDestinationKey(destination || ''),
+      normalizedCountry: normalizeDestinationKey(country || ''),
+      selectedKey,
+      selectedSource,
+    });
   }
 
   return fallbackUrl || REGION_IMAGES.nature;
