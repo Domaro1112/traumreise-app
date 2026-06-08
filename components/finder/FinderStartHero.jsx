@@ -2,7 +2,7 @@ import { Compass, ShieldCheck, Sparkles, Zap } from 'lucide-react';
 
 const TRUST = [
   { Icon: ShieldCheck, label: '100% kostenlos' },
-  { Icon: Sparkles,    label: 'kostenlose Analyse' },
+  { Icon: Sparkles,    label: 'persönliche Analyse' },
   { Icon: Zap,         label: 'Keine Anmeldung nötig' },
 ];
 

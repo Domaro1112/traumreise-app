@@ -14,6 +14,7 @@ import FinderModeCard from "@/components/finder/FinderModeCard";
 import FutureSelfWizard from "@/components/finder/FutureSelfWizard";
 import FutureLoadingState from "@/components/finder/FutureLoadingState";
 import FutureStoryResult from "@/components/finder/FutureStoryResult";
+import TravelResultView from "@/components/finder/TravelResultView";
 import { moodOptions, seasonOptions, durationOptions, budgetOptions, zukunftVibeOptions } from "@/data/finderOptions";
 
 
@@ -34,52 +35,6 @@ function TypewriterText({ text, speed = 22, onDone }) {
   return <span>{shown}{!done && <span style={{ animation: "blink 1s step-end infinite" }}>|</span>}</span>;
 }
 
-// ── AffiliateCard (light design, links/logic unchanged) ───────────────────────
-function AffiliateCard({ destination, country, tagline, highlights, bookingUrl, trivagoUrl, skyUrl, gygUrl, check24Url }) {
-  const btns = [
-    { href: trivagoUrl,  bg: "linear-gradient(90deg,#d00e17,#ff4d57)",  label: "Hotels auf Trivago" },
-    { href: bookingUrl,  bg: "linear-gradient(90deg,#003580,#0057b8)",  label: "Hotel auf Booking.com" },
-    { href: skyUrl,      bg: "linear-gradient(90deg,#0770e3,#00a0de)",  label: "Flüge auf Skyscanner" },
-    { href: gygUrl,      bg: "linear-gradient(90deg,#FF5533,#FF8C00)",  label: "Aktivitäten GetYourGuide" },
-    { href: check24Url,  bg: "linear-gradient(90deg,#003399,#e30613)",  label: "Pauschalreise CHECK24" },
-  ];
-  return (
-    <div
-      style={{ background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: "20px", overflow: "hidden", boxShadow: "0 2px 16px rgba(15,23,42,0.06)", transition: "transform .3s, box-shadow .3s" }}
-      onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-6px)"; e.currentTarget.style.boxShadow = "0 20px 60px rgba(14,165,233,0.16)"; }}
-      onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 2px 16px rgba(15,23,42,0.06)"; }}
-    >
-      <div style={{ background: "linear-gradient(135deg, #EFF6FF 0%, #ECFEFF 100%)", padding: "28px 24px 20px", textAlign: "center", borderBottom: "1px solid #E2E8F0" }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "10px" }}>
-          <div style={{ width: "52px", height: "52px", borderRadius: "16px", background: "#FFFFFF", border: "1.5px solid #BFDBFE", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <MapPin size={24} strokeWidth={1.5} color="#0EA5E9" />
-          </div>
-        </div>
-        <div style={{ fontSize: "22px", fontFamily: "var(--font-heading)", fontWeight: 700, color: "#0F172A" }}>{destination}</div>
-        <div style={{ fontSize: "13px", color: "#0EA5E9", marginTop: "4px", fontWeight: 600, letterSpacing: "1px", textTransform: "uppercase" }}>{country}</div>
-        <div style={{ fontSize: "14px", color: "#64748B", marginTop: "8px", fontStyle: "italic" }}>{tagline}</div>
-      </div>
-      <div style={{ padding: "16px 24px" }}>
-        {highlights.map((h, i) => (
-          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "10px", marginBottom: "8px" }}>
-            <CheckCircle2 size={14} strokeWidth={2} color="#0EA5E9" style={{ flexShrink: 0, marginTop: "2px" }} />
-            <span style={{ color: "#475569", fontSize: "13px" }}>{h}</span>
-          </div>
-        ))}
-      </div>
-      <div style={{ padding: "0 24px 24px", display: "flex", flexDirection: "column", gap: "10px" }}>
-        {btns.map(b => (
-          <a key={b.label} href={b.href} target="_blank" rel="noopener noreferrer"
-            style={{ display: "block", textAlign: "center", padding: "11px", background: b.bg, color: "#fff", borderRadius: "10px", textDecoration: "none", fontSize: "13px", fontWeight: 600 }}
-            onMouseEnter={e => e.currentTarget.style.opacity = ".85"}
-            onMouseLeave={e => e.currentTarget.style.opacity = "1"}>
-            {b.label}
-          </a>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 // ── EmailPopup (light design, logic unchanged) ────────────────────────────────
 function EmailPopup({ destination = "", onClose }) {
@@ -350,55 +305,13 @@ function Classic({ onBack }) {
 
       {/* Results */}
       {!loading && results && (
-        <div style={{ animation: "fadeIn .5s ease" }}>
-          {personality && (
-            <div style={{ marginBottom: "32px", background: "linear-gradient(135deg,#EFF6FF,#ECFEFF)", border: "1px solid #BFDBFE", borderRadius: "20px", padding: "26px 28px" }}>
-              <div style={{ fontSize: "11px", color: "#0284C7", letterSpacing: "3px", textTransform: "uppercase", marginBottom: "12px", fontWeight: 700, fontFamily: "var(--font-heading)" }}>Du bist der Typ für</div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "14px" }}>
-                {personality.types.map((t, i) => (
-                  <span key={i} style={{ padding: "6px 14px", borderRadius: "20px", background: "#FFFFFF", border: "1px solid #BFDBFE", fontSize: "13px", color: "#0284C7", fontWeight: 600 }}>{t}</span>
-                ))}
-              </div>
-              <div style={{ fontSize: "17px", fontStyle: "italic", color: "#334155", lineHeight: 1.5 }}>„{personality.summary}"</div>
-            </div>
-          )}
-
-          <div style={{ textAlign: "center", marginBottom: "24px" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", fontSize: "11px", color: "#0284C7", letterSpacing: "3px", textTransform: "uppercase", marginBottom: "8px", fontWeight: 700, fontFamily: "var(--font-heading)" }}>
-              <Sparkles size={13} strokeWidth={2} />
-              Deine Empfehlungen
-            </div>
-            <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "26px", fontWeight: 700, margin: 0, color: "#0F172A" }}>3 perfekte Reiseziele</h2>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(240px,1fr))", gap: "18px", marginBottom: "24px" }}>
-            {results.map((d, i) => <AffiliateCard key={i} {...d} />)}
-          </div>
-
-          <div style={{ background: "linear-gradient(135deg,#EFF6FF,#ECFEFF)", border: "1px solid #BAE6FD", borderRadius: "16px", padding: "20px 24px", marginBottom: "20px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px", flexWrap: "wrap" }}>
-            <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
-              <Mail size={20} strokeWidth={1.5} color="#0EA5E9" style={{ marginTop: "2px", flexShrink: 0 }} />
-              <div>
-                <div style={{ fontSize: "15px", fontWeight: 600, color: "#0F172A", marginBottom: "4px" }}>Reiseplan per Mail erhalten</div>
-                <div style={{ fontSize: "13px", color: "#64748B" }}>Wöchentliche Deals & Inspiration</div>
-              </div>
-            </div>
-            <button onClick={() => setShowEmail(true)} style={{ padding: "11px 22px", borderRadius: "12px", border: "none", background: "linear-gradient(135deg,#0EA5E9,#06B6D4)", color: "#fff", fontWeight: 700, fontSize: "14px", cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 16px rgba(14,165,233,0.35)", whiteSpace: "nowrap" }}>Kostenlos anmelden →</button>
-          </div>
-
-          <div style={{ textAlign: "center", fontSize: "11px", color: "#94A3B8", marginBottom: "16px" }}>
-            * Affiliate-Links — für dich entstehen keine Mehrkosten
-          </div>
-          <div style={{ textAlign: "center" }}>
-            <button onClick={reset}
-              style={{ padding: "11px 26px", borderRadius: "10px", border: "2px solid #E2E8F0", background: "#FFFFFF", color: "#475569", cursor: "pointer", fontSize: "14px", fontFamily: "inherit", boxShadow: "0 1px 4px rgba(15,23,42,0.06)", transition: "all .2s", display: "inline-flex", alignItems: "center", gap: "7px" }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = "#0EA5E9"; e.currentTarget.style.color = "#0EA5E9"; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = "#E2E8F0"; e.currentTarget.style.color = "#475569"; }}>
-              <RotateCcw size={14} strokeWidth={2} />
-              Neue Suche
-            </button>
-          </div>
-        </div>
+        <TravelResultView
+          results={results}
+          personality={personality}
+          interests={interests}
+          onReset={reset}
+          onEmail={() => setShowEmail(true)}
+        />
       )}
 
       {/* Visual wizard form */}

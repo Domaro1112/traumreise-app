@@ -60,7 +60,7 @@ export default function FutureSelfWizard({
             lineHeight: 1.12,
           }}
         >
-          Wie fühlt sich dein nächstes{' '}
+          Wie würde sich dein nächstes{' '}
           <span
             style={{
               background: 'linear-gradient(135deg, #A78BFA 0%, #7C3AED 100%)',
@@ -71,7 +71,7 @@ export default function FutureSelfWizard({
           >
             Reise-Ich
           </span>{' '}
-          an?
+          anfühlen?
         </h2>
 
         <p
