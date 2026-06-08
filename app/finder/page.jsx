@@ -380,10 +380,10 @@ function Classic({ onBack }) {
               <Mail size={20} strokeWidth={1.5} color="#0EA5E9" style={{ marginTop: "2px", flexShrink: 0 }} />
               <div>
                 <div style={{ fontSize: "15px", fontWeight: 600, color: "#0F172A", marginBottom: "4px" }}>Reiseplan per Mail erhalten</div>
-                <div style={{ fontSize: "13px", color: "#64748B" }}>Wöchentlich Deals & Inspiration</div>
+                <div style={{ fontSize: "13px", color: "#64748B" }}>Wöchentliche Deals & Inspiration</div>
               </div>
             </div>
-            <button onClick={() => setShowEmail(true)} style={{ padding: "11px 22px", borderRadius: "12px", border: "none", background: "linear-gradient(135deg,#0EA5E9,#06B6D4)", color: "#fff", fontWeight: 700, fontSize: "14px", cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 16px rgba(14,165,233,0.35)", whiteSpace: "nowrap" }}>Kostenlos →</button>
+            <button onClick={() => setShowEmail(true)} style={{ padding: "11px 22px", borderRadius: "12px", border: "none", background: "linear-gradient(135deg,#0EA5E9,#06B6D4)", color: "#fff", fontWeight: 700, fontSize: "14px", cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 16px rgba(14,165,233,0.35)", whiteSpace: "nowrap" }}>Kostenlos anmelden →</button>
           </div>
 
           <div style={{ textAlign: "center", fontSize: "11px", color: "#94A3B8", marginBottom: "16px" }}>
@@ -440,7 +440,9 @@ function Zukunft({ onBack }) {
 
   const toggle = id => setVibes(p => p.includes(id) ? p.filter(v => v !== id) : [...p, id]);
   const reset = () => { setZStep(0); setVibes([]); setText(""); setResults([]); setIdx(0); };
-  const next = () => setIdx(n => (n + 1) % results.length);
+  const next = () => setIdx(n => Math.min(n + 1, results.length - 1));
+  const prev = () => setIdx(n => Math.max(n - 1, 0));
+  const goTo = i => setIdx(i);
 
   const fetch_ = async () => {
     setZStep(1); setErr(""); setIdx(0);
@@ -489,6 +491,8 @@ function Zukunft({ onBack }) {
           color={color}
           VibeIcon={VibeIcon}
           onNext={next}
+          onPrev={prev}
+          onNavigate={goTo}
           onReset={reset}
           onShare={() => setShowShare(true)}
         />

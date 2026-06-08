@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react';
 import {
-  Sparkles, RotateCcw, Share2, CheckCircle2, MapPin,
+  Sparkles, Share2, CheckCircle2, MapPin,
+  ArrowLeft, ArrowRight,
 } from 'lucide-react';
 
 function TypewriterText({ text, speed = 18, onDone }) {
@@ -43,13 +44,14 @@ export default function FutureStoryResult({
   color,
   VibeIcon,
   onNext,
+  onPrev,
+  onNavigate,
   onReset,
   onShare,
 }) {
   const [textDone, setTextDone] = useState(false);
   const [showBtns, setShowBtns] = useState(false);
   const [shareHovered, setShareHovered] = useState(false);
-  const [nextHovered, setNextHovered] = useState(false);
 
   const affiliateLinks = [
     {
@@ -88,7 +90,7 @@ export default function FutureStoryResult({
           overflow: 'hidden',
           border: `1.5px solid ${color}30`,
           boxShadow: `0 8px 48px ${color}1a, 0 2px 12px rgba(15,23,42,0.06)`,
-          marginBottom: '24px',
+          marginBottom: '20px',
           background: '#FFFFFF',
         }}
       >
@@ -263,6 +265,125 @@ export default function FutureStoryResult({
         </div>
       </div>
 
+      {/* ── Result navigation (always visible when multiple results) ──────── */}
+      {total > 1 && (
+        <div
+          style={{
+            background: '#FFFFFF',
+            border: '1px solid #E2E8F0',
+            borderRadius: '16px',
+            padding: '16px 20px',
+            marginBottom: '20px',
+          }}
+        >
+          {/* Dot indicators */}
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '10px',
+              marginBottom: '14px',
+            }}
+          >
+            {Array.from({ length: total }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => onNavigate(i)}
+                title={`Reise-Ich ${i + 1}`}
+                style={{
+                  width: i === idx ? '28px' : '10px',
+                  height: '10px',
+                  borderRadius: '5px',
+                  border: 'none',
+                  background: i === idx ? color : '#CBD5E1',
+                  cursor: 'pointer',
+                  padding: 0,
+                  transition: 'all 0.25s ease',
+                  flexShrink: 0,
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Prev / counter / Next row */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+            }}
+          >
+            <button
+              onClick={idx > 0 ? onPrev : undefined}
+              disabled={idx === 0}
+              style={{
+                flex: 1,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '7px',
+                padding: '11px 14px',
+                borderRadius: '12px',
+                border: `1.5px solid ${idx === 0 ? '#E2E8F0' : `${color}44`}`,
+                background: idx === 0 ? '#F8FAFF' : `${color}08`,
+                color: idx === 0 ? '#CBD5E1' : color,
+                fontWeight: 700,
+                fontSize: '13px',
+                cursor: idx === 0 ? 'not-allowed' : 'pointer',
+                fontFamily: 'inherit',
+                transition: 'all 0.2s',
+                opacity: idx === 0 ? 0.5 : 1,
+              }}
+            >
+              <ArrowLeft size={15} strokeWidth={2.5} />
+              Vorheriges
+            </button>
+
+            <div
+              style={{
+                flexShrink: 0,
+                fontSize: '12px',
+                fontWeight: 700,
+                color: '#64748B',
+                textAlign: 'center',
+                whiteSpace: 'nowrap',
+                fontFamily: 'var(--font-heading)',
+                letterSpacing: '0.5px',
+              }}
+            >
+              {idx + 1} / {total}
+            </div>
+
+            <button
+              onClick={idx < total - 1 ? onNext : undefined}
+              disabled={idx === total - 1}
+              style={{
+                flex: 1,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '7px',
+                padding: '11px 14px',
+                borderRadius: '12px',
+                border: `1.5px solid ${idx === total - 1 ? '#E2E8F0' : `${color}44`}`,
+                background: idx === total - 1 ? '#F8FAFF' : `${color}08`,
+                color: idx === total - 1 ? '#CBD5E1' : color,
+                fontWeight: 700,
+                fontSize: '13px',
+                cursor: idx === total - 1 ? 'not-allowed' : 'pointer',
+                fontFamily: 'inherit',
+                transition: 'all 0.2s',
+                opacity: idx === total - 1 ? 0.5 : 1,
+              }}
+            >
+              Nächstes
+              <ArrowRight size={15} strokeWidth={2.5} />
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Booking section */}
       {showBtns && (
         <div style={{ animation: 'fadeUp .5s ease' }}>
@@ -355,42 +476,19 @@ export default function FutureStoryResult({
           {/* Action row */}
           <div
             style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
               gap: '10px',
               marginBottom: '14px',
             }}
           >
             <button
-              onClick={onNext}
-              onMouseEnter={() => setNextHovered(true)}
-              onMouseLeave={() => setNextHovered(false)}
-              style={{
-                padding: '13px',
-                borderRadius: '12px',
-                border: `2px solid ${nextHovered ? color : `${color}44`}`,
-                background: nextHovered ? `${color}12` : `${color}08`,
-                color,
-                fontWeight: 700,
-                fontSize: '14px',
-                cursor: 'pointer',
-                fontFamily: 'inherit',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '7px',
-                transition: 'all 0.2s',
-              }}
-            >
-              <RotateCcw size={14} strokeWidth={2} />
-              Alternatives Leben
-            </button>
-
-            <button
               onClick={onShare}
               onMouseEnter={() => setShareHovered(true)}
               onMouseLeave={() => setShareHovered(false)}
               style={{
+                flex: 1,
                 padding: '13px',
                 borderRadius: '12px',
                 border: `2px solid ${shareHovered ? '#CBD5E1' : '#E2E8F0'}`,
