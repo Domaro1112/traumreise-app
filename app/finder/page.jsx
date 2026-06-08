@@ -4,7 +4,7 @@ import {
   Globe,
   Plane, Map, Sparkles,
   MapPin, Mail, ShieldCheck, CheckCircle2,
-  Share2,
+  Share2, RotateCcw,
 } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -328,11 +328,10 @@ function Classic({ onBack }) {
   const fetch_ = async () => {
     setLoading(true); setError("");
     try {
-      const iL = interests.map(id => moodOptions.find(m => m.id === id)?.label).filter(Boolean).join(", ");
-      const prompt = `Du bist ein einfuehlsamer Reise-Experte. Schlage genau 3 Reiseziele vor:\nPERSOENLICHE BESCHREIBUNG: "${freeText}"\nInteressen: ${iL} | Budget: ${budgetOptions.find(b => b.id === budget)?.label} | Dauer: ${durationOptions.find(d => d.id === duration)?.label} | Reisezeit: ${seasonOptions.find(s => s.id === season)?.label} | Reisende: ${adults} Erwachsene${children > 0 ? `, ${children} Kinder` : ""}\nAntworte NUR als JSON ohne Markdown:\n{"personality":{"types":["Emoji Text","Emoji Text","Emoji Text"],"summary":"Poetischer Satz"},"destinations":[{"destination":"Stadtname","country":"Land","tagline":"kurzer Satz max 10 Woerter","highlights":["1","2","3"],"skySearch":"Stadtname englisch","iata":"IATA-Code des naechsten Flughafens zB LIS MUC BCN"}]}`;
-      const res = await fetch("https://api.anthropic.com/v1/messages", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 1200, messages: [{ role: "user", content: prompt }] }) });
-      const data = await res.json();
-      const parsed = JSON.parse(data.content?.map(b => b.text || "").join("").replace(/```json|```/g, "").trim());
+      const iL = interests.map(id => moodOptions.find(m => m.id === id)?.label).filter(Boolean);
+      const res = await fetch("/api/ai/travel", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ freeText, interests: iL, budget, duration, season, adults, children }) });
+      if (!res.ok) throw new Error();
+      const parsed = await res.json();
       setPersonality(parsed.personality);
       setResults(parsed.destinations.map(d => ({ ...d, ...buildAffiliateUrls(d) })));
     } catch { setError("Fehler. Bitte nochmal versuchen."); }
@@ -446,11 +445,9 @@ function Zukunft({ onBack }) {
   const fetch_ = async () => {
     setZStep(1); setErr(""); setIdx(0);
     try {
-      const vL = vibes.map(id => zukunftVibeOptions.find(v => v.id === id)?.label).join(", ");
-      const prompt = `Du bist ein poetischer Reise-Storyteller. Erstelle 3 verschiedene Reise-Ich Szenarien.\nBESCHREIBUNG: "${text || "keine"}"\nVIBES: ${vL}\nNUR JSON-Array:\n[{"destination":"Stadt","country":"Land","vibe":"${vibes[0] || "relax"}","identity_title":"Titel","teaser":"1 Satz","story":"3-4 Saetze du-Form Gegenwart emotional","moment":"1 magischer Moment","bookingCity":"englisch","skyCity":"englisch"}]`;
-      const res = await fetch("https://api.anthropic.com/v1/messages", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 2000, messages: [{ role: "user", content: prompt }] }) });
-      const data = await res.json();
-      const parsed = JSON.parse(data.content?.map(b => b.text || "").join("").replace(/```json|```/g, "").trim());
+      const res = await fetch("/api/ai/future-self", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ vibes, text }) });
+      if (!res.ok) throw new Error();
+      const parsed = await res.json();
       setResults(parsed.map(d => ({
         ...d,
         trivagoUrl: `https://www.trivago.de/?sQuery=${encodeURIComponent(d.bookingCity)}&iRoomType=7`,

@@ -3,13 +3,13 @@ export const features = [
     id: 'ai',
     icon: 'Bot',
     title: 'KI-gestützte Empfehlung',
-    description: 'Wir analysieren deine Wünsche und finden dein perfektes Reiseziel.',
+    description: 'Wir analysieren DEINE Wünsche und finden DEIN perfektes Reiseziel.',
   },
   {
     id: 'allinone',
     icon: 'Globe',
     title: 'Alles an einem Ort',
-    description: 'Flüge, Hotels, Aktivitäten & Tipps – alles passend zu dir zusammengestellt.',
+    description: 'Flüge, Hotels, Aktivitäten & Tipps – alles passend für DICH zusammengestellt.',
   },
   {
     id: 'prices',
@@ -21,7 +21,7 @@ export const features = [
     id: 'personal',
     icon: 'UserCheck',
     title: 'Für dich gemacht',
-    description: 'Keine Standardvorschläge – nur Reisen, die wirklich zu dir passen.',
+    description: 'Keine Standardvorschläge – nur Reisen, die wirklich zu DIR passen.',
   },
 ];
 

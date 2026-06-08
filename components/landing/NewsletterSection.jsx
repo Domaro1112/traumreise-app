@@ -140,7 +140,7 @@ export default function NewsletterSection() {
               }}
             >
               Erhalte regelmäßig handverlesene Reiseideen, Tipps &amp; exklusive Angebote
-              nur für unsere Community.
+              die dich sprachlos machen.
             </p>
 
             {state.success ? (
@@ -214,7 +214,7 @@ export default function NewsletterSection() {
 
                 <p style={{ fontSize: '12px', color: '#94A3B8', display: 'flex', alignItems: 'center', gap: '5px' }}>
                   <ShieldCheck size={13} strokeWidth={2} color="#94A3B8" />
-                  Kein Spam. Jederzeit abbestellbar. DSGVO-konform.
+                  Kein Spam. Jederzeit kündbar. DSGVO-konform.
                 </p>
               </form>
             )}

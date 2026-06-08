@@ -28,6 +28,5 @@ export const footerNav = {
 export const socialLinks = [
   { label: 'Instagram', href: '#', icon: 'instagram' },
   { label: 'Facebook', href: '#', icon: 'facebook' },
-  { label: 'YouTube', href: '#', icon: 'youtube' },
   { label: 'TikTok', href: '#', icon: 'tiktok' },
 ];
