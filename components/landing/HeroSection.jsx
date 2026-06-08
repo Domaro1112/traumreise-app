@@ -151,7 +151,7 @@ export default function HeroSection() {
                 boxShadow: 'none',
               }}
             >
-              Wie es funktioniert
+              Dein Weg zur Traumreise
             </Button>
           </div>
 
