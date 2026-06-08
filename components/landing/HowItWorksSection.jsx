@@ -20,7 +20,7 @@ export default function HowItWorksSection() {
     >
       <Container>
         <SectionTitle
-          label="So funktioniert's"
+          label="Dein Weg zur Traumreise"
           title="In 3 einfachen Schritten"
           titleHighlight="zu deiner Traumreise"
           subtitle="Keine langen Formulare, kein Stress. Einfach erzählen, Analyse starten, ...Traumreise finden."

@@ -1,5 +1,5 @@
 export const mainNav = [
-  { label: "So funktioniert's", href: '/so-funktionierts' },
+  { label: "Dein Weg zur Traumreise", href: '/so-funktionierts' },
   { label: 'Inspiration', href: '/inspiration' },
   { label: 'Über uns', href: '/ueber-uns' },
   { label: 'Reiseblog', href: '/reiseblog' },
@@ -7,7 +7,7 @@ export const mainNav = [
 
 export const footerNav = {
   entdecken: [
-    { label: "So funktioniert's", href: '/so-funktionierts' },
+    { label: "Dein Weg zur Traumreise", href: '/so-funktionierts' },
     { label: 'Reiseziele', href: '/inspiration' },
     { label: 'Reiseblog', href: '/reiseblog' },
     { label: 'Inspiration', href: '/inspiration' },

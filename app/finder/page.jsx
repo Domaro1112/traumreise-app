@@ -216,7 +216,7 @@ function Home({ onSelect }) {
         {[
           { href: "/reiseblog", label: "Reise-Inspiration im Blog" },
           { href: "/inspiration", label: "Reiseideen" },
-          { href: "/so-funktionierts", label: "So funktioniert's" },
+          { href: "/so-funktionierts", label: "Dein Weg zur Traumreise" },
         ].map(({ href, label }) => (
           <a
             key={href}
