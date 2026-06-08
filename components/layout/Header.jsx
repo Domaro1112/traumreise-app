@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Compass, Plane } from 'lucide-react';
+import Image from 'next/image';
+import { Plane } from 'lucide-react';
 import { mainNav } from '@/data/navigation';
 import Button from '@/components/ui/Button';
 import Container from '@/components/layout/Container';
@@ -39,36 +40,31 @@ export default function Header() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              height: '68px',
+              minHeight: '72px',
+              padding: '6px 0',
             }}
           >
             {/* Logo */}
-            <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', flexShrink: 0 }}>
-              <div
+            <Link
+              href="/"
+              aria-label="Zur Startseite"
+              style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}
+            >
+              <Image
+                src="/images/logo/reisemonkey-logo.png"
+                alt="Reisemonkey.de – Deine Reise. Dein Abenteuer."
+                width={1536}
+                height={1024}
+                loading="eager"
+                fetchPriority="high"
                 style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '10px',
-                  background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: '0 4px 12px rgba(14,165,233,0.35)',
+                  height: 'clamp(42px, 6.5vw, 60px)',
+                  width: 'auto',
+                  display: 'block',
+                  maxHeight: '60px',
+                  objectFit: 'contain',
                 }}
-              >
-                <Compass size={20} strokeWidth={2} color="#FFFFFF" />
-              </div>
-              <span
-                style={{
-                  fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-                  fontSize: '20px',
-                  fontWeight: 700,
-                  color: '#0F172A',
-                  letterSpacing: '-0.02em',
-                }}
-              >
-                Traumreise
-              </span>
+              />
             </Link>
 
             {/* Desktop Nav */}
