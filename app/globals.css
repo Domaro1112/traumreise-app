@@ -188,7 +188,7 @@ input::placeholder { color: var(--color-text-muted); }
   .hero-fullwidth { height: 820px; } /* desktop */
 }
 @media (max-width: 768px) {
-  .hero-bg-img { object-position: 25% 65% !important; }
+  .hero-bg-img { object-position: 75% 65% !important; }
 }
 
 /* ── Newsletter board overlay ─────────────────────────────────────────────── */
