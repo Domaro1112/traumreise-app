@@ -250,7 +250,7 @@ input::placeholder { color: var(--color-text-muted); }
   /* E-Mail Feld */
   .newsletter-board-content input {
     width: 100%;
-    max-width: 200px;
+    max-width: 190px;
     margin: 0 auto;
     display: block;
   }
@@ -258,7 +258,7 @@ input::placeholder { color: var(--color-text-muted); }
   /* Button */
   .newsletter-board-content button {
     width: 100%;
-    max-width: 200px;
+    max-width: 190px;
     margin: 12px auto 0;
     display: block;
   }
