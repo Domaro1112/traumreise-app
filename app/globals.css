@@ -243,6 +243,7 @@ input::placeholder { color: var(--color-text-muted); }
   /* Newsletter-Badge */
   .newsletter-board-content > div:first-child {
     margin-left: 12px;
+    margin-top: 15px;
   }
 
   .newsletter-board-content h2 {
