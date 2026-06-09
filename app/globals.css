@@ -240,12 +240,19 @@ input::placeholder { color: var(--color-text-muted); }
     padding: 6px 12px 20px;
   }
 
+  /* Newsletter-Badge */
+  .newsletter-board-content > div:first-child {
+    margin-left: 12px;
+  }
+
   .newsletter-board-content h2 {
     margin-top: 8px;
+    margin-left: 12px;
   }
 
   .newsletter-board-content p {
     margin-bottom: 22px;
+    margin-left: 12px;
   }
 
   /* Formular etwas nach rechts */
