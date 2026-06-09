@@ -18,21 +18,27 @@ export default function NewsletterSection() {
     >
       <Container>
         <div className="newsletter-card">
-          {/* ── Background image – monkey + wooden board ── */}
-          <img
-            src="/images/newsletter/newsletter-image.png"
-            alt=""
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              inset: 0,
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'right center',
-              display: 'block',
-            }}
-          />
+          {/* ── Background: desktop landscape / mobile portrait ── */}
+          <picture style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
+            <source
+              media="(max-width: 768px)"
+              srcSet="/images/newsletter/newsletter-image-mobile.png"
+            />
+            <img
+              src="/images/newsletter/newsletter-image.png"
+              alt=""
+              aria-hidden="true"
+              className="newsletter-bg-img"
+              style={{
+                position: 'absolute',
+                inset: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                display: 'block',
+              }}
+            />
+          </picture>
 
           {/* ── Content on the wooden board (right ~55% of image) ── */}
           <div className="newsletter-board-content">
@@ -70,7 +76,7 @@ export default function NewsletterSection() {
                 marginBottom: '12px',
               }}
             >
-              Reise-Inspiration &amp; exklusive Deals{' '}
+              Reise-Inspirationen &amp; exklusive Deals{' '}
               <span
                 style={{
                   background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
@@ -179,7 +185,7 @@ export default function NewsletterSection() {
                   }}
                 >
                   <ShieldCheck size={12} strokeWidth={2} color="#5a3010" />
-                  Kein Spam. Jederzeit kündbar. DSGVO-konform.
+                  <b>Kein Spam. Jederzeit kündbar. DSGVO-konform.</b>
                 </p>
               </form>
             )}

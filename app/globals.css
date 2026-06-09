@@ -224,15 +224,24 @@ input::placeholder { color: var(--color-text-muted); }
   }
 }
 
-/* Mobile */
-@media (max-width: 640px) {
+/* Mobile: uses portrait image – center content on board */
+@media (max-width: 768px) {
+  .newsletter-card { min-height: 560px; }
   .newsletter-board-content {
-    top: 43%;
-    right: 5%;
-    width: 72%;
+    top: 62%;
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
+    width: 76%;
     max-width: none;
-    padding: 12px;
+    padding: 12px 14px;
   }
+}
+
+/* Background image: desktop right-anchor, mobile top-center */
+.newsletter-bg-img { object-position: right center; }
+@media (max-width: 768px) {
+  .newsletter-bg-img { object-position: center top; }
 }
 
 /* ── Finder: utility classes ─────────────────────────────────────────────── */
