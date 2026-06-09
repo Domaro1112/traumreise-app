@@ -226,15 +226,26 @@ input::placeholder { color: var(--color-text-muted); }
 
 /* Mobile: uses portrait image – center content on board */
 @media (max-width: 640px) {
-  .newsletter-card { min-height: 700px; }
+  .newsletter-card {
+    min-height: 820px;
+  }
+
   .newsletter-board-content {
-    top: 62%;
+    top: 64%;
     left: 50%;
     right: auto;
     transform: translate(-50%, -50%);
     width: 84%;
     max-width: none;
-    padding: 12px 14px;
+    padding: 6px 14px 20px;
+  }
+
+  .newsletter-board-content h2 {
+    margin-top: 8px;
+  }
+
+  .newsletter-board-content p {
+    margin-bottom: 22px;
   }
 }
 
