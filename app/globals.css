@@ -225,10 +225,10 @@ input::placeholder { color: var(--color-text-muted); }
 }
 
 /* Mobile: uses portrait image – center content on board */
-@media (max-width: 768px) {
-  .newsletter-card { min-height: 560px; }
+@media (max-width: 640px) {
+  .newsletter-card { min-height: 700px; }
   .newsletter-board-content {
-    top: 62%;
+    top: 68%;
     left: 50%;
     right: auto;
     transform: translate(-50%, -50%);
