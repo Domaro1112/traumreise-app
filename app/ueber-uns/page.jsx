@@ -116,7 +116,7 @@ export default function UeberUns() {
 
         {/* ── 1. HERO ─────────────────────────────────────────────────────── */}
         <section
-          className="about-hero-section"
+          className="about-hero"
           style={{
             background: 'linear-gradient(160deg, #F8FAFF 0%, #EFF6FF 40%, #ECFEFF 100%)',
             paddingTop: '80px',
@@ -215,11 +215,11 @@ export default function UeberUns() {
               </div>
 
               {/* Image */}
-              <div className="about-hero-img">
+              <div className="about-hero-img-wrap">
                 <Image
                   src="/images/about/reisemonkey-founders.png"
                   alt="Die Gründer von Reisemonkey als Reiseaffen"
-                  className="about-founders-img"
+                  className="about-hero-img"
                   width={1672}
                   height={941}
                   loading="eager"
