@@ -188,6 +188,46 @@ input::placeholder { color: var(--color-text-muted); }
   .hero-fullwidth { height: 820px; } /* desktop */
 }
 
+/* ── Newsletter board overlay ─────────────────────────────────────────────── */
+.newsletter-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  box-shadow: 0 24px 80px rgba(15,23,42,0.18);
+  min-height: 440px;
+  background: #1a0e05; /* fallback while image loads */
+}
+@media (min-width: 641px) {
+  .newsletter-card { min-height: 480px; }
+}
+@media (min-width: 1025px) {
+  .newsletter-card { min-height: 520px; }
+}
+
+/* Content overlay – sits on the wooden board (right portion of image) */
+.newsletter-board-content {
+  position: absolute;
+  top: 50%;
+  right: 3%;
+  transform: translateY(-50%);
+  width: 54%;
+  max-width: 520px;
+  padding: 32px 40px 32px 24px;
+}
+@media (max-width: 900px) {
+  .newsletter-board-content {
+    width: 58%;
+    padding: 24px 28px 24px 18px;
+  }
+}
+@media (max-width: 640px) {
+  .newsletter-board-content {
+    width: 91%;
+    right: 2%;
+    padding: 18px 20px 18px 14px;
+  }
+}
+
 /* ── Finder: utility classes ─────────────────────────────────────────────── */
 .finder-step-label {
   font-size: 12px;
