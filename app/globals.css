@@ -228,11 +228,11 @@ input::placeholder { color: var(--color-text-muted); }
 @media (max-width: 640px) {
   .newsletter-card { min-height: 700px; }
   .newsletter-board-content {
-    top: 68%;
+    top: 62%;
     left: 50%;
     right: auto;
     transform: translate(-50%, -50%);
-    width: 76%;
+    width: 84%;
     max-width: none;
     padding: 12px 14px;
   }
