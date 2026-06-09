@@ -207,24 +207,31 @@ input::placeholder { color: var(--color-text-muted); }
 /* Content overlay – sits on the wooden board (right portion of image) */
 .newsletter-board-content {
   position: absolute;
-  top: 50%;
-  right: 3%;
+  top: 48%;
+  right: 5%;
   transform: translateY(-50%);
-  width: 54%;
-  max-width: 520px;
-  padding: 32px 40px 32px 24px;
+  width: 44%;
+  max-width: 480px;
+  padding: 28px 34px 28px 20px;
 }
+
+/* Tablet */
 @media (max-width: 900px) {
   .newsletter-board-content {
-    width: 58%;
-    padding: 24px 28px 24px 18px;
+    width: 56%;
+    right: 4%;
+    padding: 22px 24px;
   }
 }
+
+/* Mobile */
 @media (max-width: 640px) {
   .newsletter-board-content {
-    width: 91%;
-    right: 2%;
-    padding: 18px 20px 18px 14px;
+    top: 43%;
+    right: 5%;
+    width: 72%;
+    max-width: none;
+    padding: 12px;
   }
 }
 
