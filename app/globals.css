@@ -284,6 +284,67 @@ input::placeholder { color: var(--color-text-muted); }
   .newsletter-bg-img { object-position: center top; }
 }
 
+/* ── About page layouts ───────────────────────────────────────────────────── */
+.about-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.about-hero-img { order: -1; }
+@media (min-width: 769px) {
+  .about-hero-grid {
+    grid-template-columns: 55% 43%;
+    gap: 64px;
+  }
+  .about-hero-img { order: 0; }
+}
+
+.about-values-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 640px) {
+  .about-values-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.about-links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+@media (min-width: 769px) {
+  .about-links-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.about-founders-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 40px;
+}
+@media (min-width: 640px) {
+  .about-founders-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.about-link-card {
+  background: #fff;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 20px;
+  padding: 28px 24px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.about-link-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(14,165,233,0.14);
+  border-color: #BAE6FD;
+}
+
 /* ── Finder: utility classes ─────────────────────────────────────────────── */
 .finder-step-label {
   font-size: 12px;
