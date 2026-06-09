@@ -16,6 +16,7 @@ export default function HeroSection() {
         fill
         loading="eager"
         fetchPriority="high"
+        className="hero-bg-img"
         style={{
           objectFit: 'cover',
           objectPosition: 'center 65%',
