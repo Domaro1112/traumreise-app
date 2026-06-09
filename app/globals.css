@@ -231,13 +231,13 @@ input::placeholder { color: var(--color-text-muted); }
   }
 
   .newsletter-board-content {
-    top: 64%;
-    left: 50%;
+    top: 60%;
+    left: 55%;
     right: auto;
     transform: translate(-50%, -50%);
-    width: 84%;
+    width: 72%;
     max-width: none;
-    padding: 6px 14px 20px;
+    padding: 6px 12px 20px;
   }
 
   .newsletter-board-content h2 {
