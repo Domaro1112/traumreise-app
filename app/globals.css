@@ -230,7 +230,7 @@ input::placeholder { color: var(--color-text-muted); }
   }
 
   .newsletter-board-content {
-    top: 60%;
+    top: 62%;
     left: 66%;
     right: auto;
     transform: translate(-50%, -50%);
