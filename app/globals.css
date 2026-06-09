@@ -232,7 +232,7 @@ input::placeholder { color: var(--color-text-muted); }
 
   .newsletter-board-content {
     top: 61%;
-    left: 66%;
+    left: 56%;
     right: auto;
     transform: translate(-50%, -50%);
     width: 72%;
