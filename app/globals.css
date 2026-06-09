@@ -224,7 +224,6 @@ input::placeholder { color: var(--color-text-muted); }
   }
 }
 
-/* Mobile: uses portrait image – center content on board */
 @media (max-width: 640px) {
   .newsletter-card {
     min-height: 800px;
@@ -246,6 +245,22 @@ input::placeholder { color: var(--color-text-muted); }
 
   .newsletter-board-content p {
     margin-bottom: 22px;
+  }
+
+  /* E-Mail Feld */
+  .newsletter-board-content input {
+    width: 100%;
+    max-width: 240px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* Button */
+  .newsletter-board-content button {
+    width: 100%;
+    max-width: 240px;
+    margin: 12px auto 0;
+    display: block;
   }
 }
 
