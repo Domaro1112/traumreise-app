@@ -116,6 +116,7 @@ export default function UeberUns() {
 
         {/* ── 1. HERO ─────────────────────────────────────────────────────── */}
         <section
+          className="about-hero-section"
           style={{
             background: 'linear-gradient(160deg, #F8FAFF 0%, #EFF6FF 40%, #ECFEFF 100%)',
             paddingTop: '80px',
@@ -218,6 +219,7 @@ export default function UeberUns() {
                 <Image
                   src="/images/about/reisemonkey-founders.png"
                   alt="Die Gründer von Reisemonkey als Reiseaffen"
+                  className="about-founders-img"
                   width={1672}
                   height={941}
                   loading="eager"
@@ -670,7 +672,7 @@ export default function UeberUns() {
                 <Button href="/finder" size="lg">
                   <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <Plane size={17} strokeWidth={2} />
-                    Traumreise finden — kostenlos
+                    Traumreise finden
                   </span>
                 </Button>
               </div>

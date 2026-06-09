@@ -303,6 +303,28 @@ input::placeholder { color: var(--color-text-muted); }
   .about-hero-img { order: 0; }
 }
 
+/* Mobile: Founders-Bild bricht aus dem Container aus → volle Breite, kein Card-Look */
+@media (max-width: 768px) {
+  .about-hero-section {
+    overflow: visible !important;
+    padding-top: 0 !important;
+    padding-bottom: 40px !important;
+  }
+  .about-hero-img {
+    margin-left: calc(-1 * clamp(16px, 4vw, 40px));
+    margin-right: calc(-1 * clamp(16px, 4vw, 40px));
+    width: 100vw;
+  }
+  .about-founders-img {
+    width: 100vw !important;
+    height: clamp(320px, 75vw, 420px) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+}
+
 .about-values-grid {
   display: grid;
   grid-template-columns: 1fr;
