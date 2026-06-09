@@ -227,12 +227,12 @@ input::placeholder { color: var(--color-text-muted); }
 /* Mobile: uses portrait image – center content on board */
 @media (max-width: 640px) {
   .newsletter-card {
-    min-height: 820px;
+    min-height: 800px;
   }
 
   .newsletter-board-content {
     top: 60%;
-    left: 60%;
+    left: 63%;
     right: auto;
     transform: translate(-50%, -50%);
     width: 72%;
