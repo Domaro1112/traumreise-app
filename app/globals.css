@@ -207,8 +207,8 @@ input::placeholder { color: var(--color-text-muted); }
 /* Content overlay – sits on the wooden board (right portion of image) */
 .newsletter-board-content {
   position: absolute;
-  top: 48%;
-  right: 5%;
+  top: 55%;
+  right: 9%;
   transform: translateY(-50%);
   width: 44%;
   max-width: 480px;
