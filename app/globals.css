@@ -250,7 +250,7 @@ input::placeholder { color: var(--color-text-muted); }
 
   /* Formular etwas nach rechts */
   .newsletter-board-content form {
-    margin-left: -10px;
+    margin-left: 10px;
   }
 
   /* E-Mail Feld */
