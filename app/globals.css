@@ -303,23 +303,23 @@ input::placeholder { color: var(--color-text-muted); }
   .about-hero-img-wrap { order: 0; }
 }
 
-/* Mobile: volle Breite, cover, beide Affen sichtbar, Verlauf unten */
+/* Mobile: bündig am Viewport, kein Card-Look, weicher Verlauf */
 @media (max-width: 768px) {
   .about-hero {
     position: relative;
-    overflow: hidden !important;
     padding-top: 0 !important;
+    overflow: hidden !important;
   }
   .about-hero-img {
     width: 100vw !important;
-    height: 420px !important;
-    object-fit: cover !important;
-    object-position: center 35% !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    display: block !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    margin: 0 !important;
-    transform: none !important;
-    display: block !important;
+    object-fit: cover !important;
+    object-position: center center !important;
   }
   .about-hero::after {
     content: "";
@@ -327,14 +327,16 @@ input::placeholder { color: var(--color-text-muted); }
     left: 0;
     right: 0;
     bottom: 0;
-    height: 140px;
+    height: 180px;
     background: linear-gradient(
       to bottom,
       rgba(248,250,255,0) 0%,
+      rgba(248,250,255,0.35) 45%,
+      rgba(248,250,255,0.75) 75%,
       rgba(248,250,255,1) 100%
     );
     pointer-events: none;
-    z-index: 2;
+    z-index: 10;
   }
 }
 
