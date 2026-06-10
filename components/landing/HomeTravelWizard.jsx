@@ -81,20 +81,16 @@ const STEPS = [
 ];
 
 // ── Visual card ───────────────────────────────────────────────────────────────
-// Uses CSS background-image so a missing local file shows only the gradient
-// (silent failure — never a broken icon). No external URLs.
+// Image and overlay live in separate absolutely-positioned divs (inset: -1px)
+// so overflow:hidden clips them perfectly at the border — zero gap guaranteed.
 function VisualCard({ selected, disabled, onClick, img, bg, label, sublabel }) {
-  // Dev-only: warn once per card if the local image is missing
+  // Dev-only: warn once if the local image file is missing
   useEffect(() => {
     if (process.env.NODE_ENV !== 'development' || !img) return;
     const probe = new window.Image();
     probe.onerror = () => console.warn(`Missing funnel card image: ${img}`);
     probe.src = img;
   }, [img]);
-
-  const backgroundImage = img
-    ? `${OVERLAY}, url(${img})`
-    : OVERLAY;
 
   return (
     <button
@@ -106,15 +102,10 @@ function VisualCard({ selected, disabled, onClick, img, bg, label, sublabel }) {
         borderRadius: '16px',
         border: selected ? '2.5px solid #0EA5E9' : '2.5px solid transparent',
         padding: 0,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
+        display: 'block',
         width: '100%',
         cursor: disabled ? 'not-allowed' : 'pointer',
         backgroundColor: bg,
-        backgroundImage,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
         boxShadow: selected
           ? '0 0 0 3px rgba(14,165,233,0.50), 0 0 0 6px rgba(14,165,233,0.14), 0 10px 28px rgba(0,0,0,0.22)'
           : '0 3px 14px rgba(0,0,0,0.18)',
@@ -122,8 +113,44 @@ function VisualCard({ selected, disabled, onClick, img, bg, label, sublabel }) {
         fontFamily: 'inherit',
       }}
     >
-      {/* Label — centered at bottom, no emoji */}
-      <div style={{ padding: sublabel ? '10px 12px 13px' : '8px 12px 12px', textAlign: 'center' }}>
+      {/* Photo layer — inset: -1px bleeds past the border edge by 1px on each
+          side so overflow:hidden clips it flush. background-size:cover on a
+          single-image background is unambiguous and always fills the layer. */}
+      {img && (
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: '-1px',
+            backgroundImage: `url(${img})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        />
+      )}
+
+      {/* Gradient overlay — same -1px bleed, pointer-events off */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: '-1px',
+          background: OVERLAY,
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Label — pinned to bottom, centered, above overlay */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 0, left: 0, right: 0,
+          padding: sublabel ? '10px 12px 13px' : '8px 12px 12px',
+          textAlign: 'center',
+          zIndex: 1,
+        }}
+      >
         <div style={{
           fontSize: '13px', fontWeight: 700, color: '#fff',
           textShadow: '0 1px 6px rgba(0,0,0,0.9)',
@@ -150,6 +177,7 @@ function VisualCard({ selected, disabled, onClick, img, bg, label, sublabel }) {
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           boxShadow: '0 2px 10px rgba(14,165,233,0.65)',
           fontSize: '12px', color: '#fff', fontWeight: 800,
+          zIndex: 2,
         }}>
           ✓
         </div>
@@ -157,7 +185,7 @@ function VisualCard({ selected, disabled, onClick, img, bg, label, sublabel }) {
 
       {/* Disabled veil */}
       {disabled && (
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(255,255,255,0.42)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(255,255,255,0.42)', zIndex: 3 }} />
       )}
     </button>
   );
