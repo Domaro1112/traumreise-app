@@ -2,44 +2,45 @@
 
 import { useState, useCallback } from 'react';
 import {
-  Sparkles, Plane, ChevronRight, ChevronLeft, RotateCcw,
-  ShieldCheck,
+  Sparkles, Plane, ChevronRight, ChevronLeft, RotateCcw, ShieldCheck,
 } from 'lucide-react';
 import Container from '@/components/layout/Container';
 import TravelFunnelLoading from '@/components/funnel/TravelFunnelLoading';
 import TravelResultCard    from '@/components/funnel/TravelResultCard';
 import TravelFunnelOptin   from '@/components/funnel/TravelFunnelOptin';
 
-// ── Funnel option data ────────────────────────────────────────────────────────
+// ── Option data ───────────────────────────────────────────────────────────────
+// Images: add photos to public/images/moods/{id}.jpg and public/images/seasons/{id}.jpg
+// Gradient bg = fallback colour shown when image is missing
 const MOODS = [
-  { id: 'relax',     label: 'Entspannung', emoji: '🌊' },
-  { id: 'adventure', label: 'Abenteuer',   emoji: '🏔️' },
-  { id: 'luxury',    label: 'Luxus',       emoji: '✨' },
-  { id: 'family',    label: 'Familie',     emoji: '👨‍👩‍👧' },
-  { id: 'romance',   label: 'Romantik',    emoji: '💕' },
-  { id: 'culture',   label: 'Kultur',      emoji: '🏛️' },
-  { id: 'nature',    label: 'Natur',       emoji: '🌿' },
-  { id: 'party',     label: 'Party',       emoji: '🎉' },
-  { id: 'beach',     label: 'Strand',      emoji: '🏖️' },
-  { id: 'wellness',  label: 'Wellness',    emoji: '🧘' },
-  { id: 'city',      label: 'Städtetrip',  emoji: '🏙️' },
-  { id: 'active',    label: 'Aktivurlaub', emoji: '🚴' },
+  { id: 'relax',     label: 'Entspannung', emoji: '🌊', bg: '#0369A1' },
+  { id: 'adventure', label: 'Abenteuer',   emoji: '🏔️', bg: '#166534' },
+  { id: 'luxury',    label: 'Luxus',       emoji: '✨', bg: '#92400E' },
+  { id: 'family',    label: 'Familie',     emoji: '👨‍👩‍👧', bg: '#9A3412' },
+  { id: 'romance',   label: 'Romantik',    emoji: '💕', bg: '#9D174D' },
+  { id: 'culture',   label: 'Kultur',      emoji: '🏛️', bg: '#7C2D12' },
+  { id: 'nature',    label: 'Natur',       emoji: '🌿', bg: '#064E3B' },
+  { id: 'party',     label: 'Party',       emoji: '🎉', bg: '#4C1D95' },
+  { id: 'beach',     label: 'Strand',      emoji: '🏖️', bg: '#0C4A6E' },
+  { id: 'wellness',  label: 'Wellness',    emoji: '🧘', bg: '#1E3A5F' },
+  { id: 'city',      label: 'Städtetrip',  emoji: '🏙️', bg: '#1E293B' },
+  { id: 'active',    label: 'Aktivurlaub', emoji: '🚴', bg: '#7F1D1D' },
 ];
 
 const SEASONS = [
-  { id: 'spring', label: 'Frühling', emoji: '🌸' },
-  { id: 'summer', label: 'Sommer',   emoji: '☀️' },
-  { id: 'autumn', label: 'Herbst',   emoji: '🍂' },
-  { id: 'winter', label: 'Winter',   emoji: '❄️' },
-  { id: 'flex',   label: 'Flexibel', emoji: '🗓️' },
+  { id: 'spring', label: 'Frühling', emoji: '🌸', bg: '#14532D' },
+  { id: 'summer', label: 'Sommer',   emoji: '☀️', bg: '#0C4A6E' },
+  { id: 'autumn', label: 'Herbst',   emoji: '🍂', bg: '#78350F' },
+  { id: 'winter', label: 'Winter',   emoji: '❄️', bg: '#1E3A5F' },
+  { id: 'flex',   label: 'Flexibel', emoji: '🗺️', bg: '#312E81' },
 ];
 
 const BUDGETS = [
-  { id: 'budget',  label: 'Sparsam',      sub: 'Backpacker-Style' },
-  { id: 'mid',     label: 'Mittelklasse', sub: 'Bestes Preis-Leistungs-Verhältnis' },
-  { id: 'comfort', label: 'Komfort',      sub: 'Gehobener Standard' },
-  { id: 'luxury',  label: 'Luxus',        sub: 'Premium pur' },
-  { id: 'open',    label: 'Noch offen',   sub: 'Budget ist zweitrangig' },
+  { id: 'budget',  label: 'Sparsam',      sub: 'ca. 100–500 €',      emoji: '🎒', bg: '#14532D' },
+  { id: 'mid',     label: 'Mittelklasse', sub: 'ca. 500–1.500 €',    emoji: '🧳', bg: '#0369A1' },
+  { id: 'comfort', label: 'Komfort',      sub: 'ca. 1.500–5.000 €',  emoji: '⭐', bg: '#5B21B6' },
+  { id: 'luxury',  label: 'Luxus',        sub: 'ab 5.000 €',         emoji: '💎', bg: '#78350F' },
+  { id: 'open',    label: 'Flexibel',     sub: 'Budget offen',       emoji: '🗺️', bg: '#0C4A6E' },
 ];
 
 const STEPS = [
@@ -48,7 +49,93 @@ const STEPS = [
   { num: 3, label: 'Budget' },
 ];
 
-// ── Progress indicator ────────────────────────────────────────────────────────
+// ── Visual card (mood / season / budget) ──────────────────────────────────────
+function VisualCard({
+  selected, disabled, onClick,
+  imageSrc, bg, emoji, label, sublabel,
+  height = 'clamp(130px, 22vw, 165px)',
+}) {
+  return (
+    <button
+      onClick={disabled ? undefined : onClick}
+      className="funnel-visual-card"
+      style={{
+        position: 'relative',
+        overflow: 'hidden',
+        borderRadius: '16px',
+        border: selected ? '2.5px solid #0EA5E9' : '2.5px solid rgba(255,255,255,0.12)',
+        padding: 0,
+        display: 'block',
+        width: '100%',
+        height,
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.62) 100%), url('${imageSrc}')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundColor: bg,
+        boxShadow: selected
+          ? '0 0 0 3px rgba(14,165,233,0.28), 0 10px 28px rgba(0,0,0,0.22)'
+          : '0 3px 14px rgba(0,0,0,0.18)',
+        transition: 'border-color 0.18s ease, box-shadow 0.18s ease',
+        fontFamily: 'inherit',
+      }}
+    >
+      {/* Decorative emoji — centered, acts as placeholder illustration */}
+      <div
+        style={{
+          position: 'absolute', inset: 0,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          paddingBottom: sublabel ? '28px' : '22px',
+        }}
+      >
+        <span style={{ fontSize: '52px', lineHeight: 1, filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.5))' }}>
+          {emoji}
+        </span>
+      </div>
+
+      {/* Bottom label band */}
+      <div
+        style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0,
+          padding: sublabel ? '10px 10px 11px' : '8px 10px 10px',
+          background: 'linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%)',
+        }}
+      >
+        <div style={{ fontSize: '12px', fontWeight: 700, color: '#fff', textShadow: '0 1px 3px rgba(0,0,0,0.6)', lineHeight: 1.3 }}>
+          {label}
+        </div>
+        {sublabel && (
+          <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.82)', marginTop: '2px', lineHeight: 1.2 }}>
+            {sublabel}
+          </div>
+        )}
+      </div>
+
+      {/* Selected checkmark badge */}
+      {selected && (
+        <div
+          style={{
+            position: 'absolute', top: '8px', right: '8px',
+            width: '22px', height: '22px', borderRadius: '50%',
+            background: '#0EA5E9',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: '0 2px 10px rgba(14,165,233,0.55)',
+            fontSize: '12px', color: '#fff', fontWeight: 800,
+          }}
+        >
+          ✓
+        </div>
+      )}
+
+      {/* Disabled overlay */}
+      {disabled && (
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(255,255,255,0.45)' }} />
+      )}
+    </button>
+  );
+}
+
+// ── Step progress indicator ───────────────────────────────────────────────────
 function StepProgress({ current }) {
   return (
     <div
@@ -62,23 +149,18 @@ function StepProgress({ current }) {
           <div key={s.num} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <div
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '7px',
-                padding: '5px 13px',
-                borderRadius: '20px',
+                display: 'flex', alignItems: 'center', gap: '7px',
+                padding: '5px 13px', borderRadius: '20px',
                 background: active
                   ? 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)'
                   : done ? '#EFF6FF' : '#F8FAFF',
                 border: active ? 'none' : done ? '1px solid #BFDBFE' : '1px solid #E2E8F0',
-                transition: 'all 0.3s ease',
-                flexShrink: 0,
+                transition: 'all 0.3s ease', flexShrink: 0,
               }}
             >
               <span
                 style={{
-                  width: '17px', height: '17px',
-                  borderRadius: '50%',
+                  width: '17px', height: '17px', borderRadius: '50%',
                   background: active ? 'rgba(255,255,255,0.28)' : done ? '#0EA5E9' : '#E2E8F0',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontSize: '10px', fontWeight: 700,
@@ -90,9 +172,8 @@ function StepProgress({ current }) {
               </span>
               <span
                 style={{
-                  fontSize: '12px', fontWeight: 600,
+                  fontSize: '12px', fontWeight: 600, whiteSpace: 'nowrap',
                   color: active ? '#fff' : done ? '#0284C7' : '#94A3B8',
-                  whiteSpace: 'nowrap',
                 }}
               >
                 {s.label}
@@ -101,10 +182,8 @@ function StepProgress({ current }) {
             {i < STEPS.length - 1 && (
               <div
                 style={{
-                  width: '18px', height: '2px',
+                  width: '18px', height: '2px', borderRadius: '1px', flexShrink: 0,
                   background: done ? '#BFDBFE' : '#E2E8F0',
-                  borderRadius: '1px',
-                  flexShrink: 0,
                 }}
               />
             )}
@@ -115,38 +194,9 @@ function StepProgress({ current }) {
   );
 }
 
-// ── Option pill button ────────────────────────────────────────────────────────
-function OptionPill({ selected, disabled, onClick, children, vertical = false }) {
-  return (
-    <button
-      onClick={disabled ? undefined : onClick}
-      style={{
-        display: 'flex',
-        flexDirection: vertical ? 'column' : 'row',
-        alignItems: 'center',
-        justifyContent: vertical ? 'center' : 'flex-start',
-        gap: vertical ? '6px' : '10px',
-        padding: vertical ? '14px 8px' : '13px 18px',
-        borderRadius: '14px',
-        border: selected ? '2px solid #0EA5E9' : '1.5px solid #E2E8F0',
-        background: selected ? 'linear-gradient(135deg, #EFF6FF 0%, #ECFEFF 100%)' : '#FAFBFF',
-        cursor: disabled ? 'not-allowed' : 'pointer',
-        opacity: disabled ? 0.42 : 1,
-        fontFamily: 'inherit',
-        boxShadow: selected ? '0 0 0 3px rgba(14,165,233,0.12)' : 'none',
-        transition: 'all 0.16s ease',
-        width: '100%',
-        textAlign: vertical ? 'center' : 'left',
-      }}
-    >
-      {children}
-    </button>
-  );
-}
-
 // ── Main component ────────────────────────────────────────────────────────────
 export default function HomeTravelWizard() {
-  const [phase,     setPhase]     = useState('form');  // 'form'|'loading'|'results'|'error'
+  const [phase,     setPhase]     = useState('form');
   const [step,      setStep]      = useState(1);
   const [moods,     setMoods]     = useState([]);
   const [season,    setSeason]    = useState('');
@@ -164,7 +214,6 @@ export default function HomeTravelWizard() {
 
   const handleSelectSeason = (id) => {
     setSeason(id);
-    // Auto-advance to step 3
     setStep(3);
   };
 
@@ -179,8 +228,7 @@ export default function HomeTravelWizard() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ moodSelection: moods }),
       });
-      const sData = await sRes.json();
-      sid = sData.sessionId ?? null;
+      sid = (await sRes.json()).sessionId ?? null;
       setSessionId(sid);
     } catch {}
 
@@ -194,8 +242,7 @@ export default function HomeTravelWizard() {
         const err = await gRes.json();
         throw new Error(err.error || 'KI-Fehler');
       }
-      const data = await gRes.json();
-      setResults(data.destinations ?? []);
+      setResults((await gRes.json()).destinations ?? []);
       setPhase('results');
     } catch (err) {
       setApiError(err.message || 'Ein Fehler ist aufgetreten.');
@@ -217,7 +264,6 @@ export default function HomeTravelWizard() {
     setBudget(''); setResults(null); setSessionId(null); setApiError('');
   };
 
-  // ── Shared card shell ───────────────────────────────────────────
   return (
     <section id="wizard" style={{ background: '#FFFFFF', paddingBottom: '80px' }}>
       <Container>
@@ -234,10 +280,10 @@ export default function HomeTravelWizard() {
           }}
         >
 
-          {/* ── LOADING ──────────────────────────────────────────── */}
+          {/* ── LOADING ─────────────────────────────────────────────────── */}
           {phase === 'loading' && <TravelFunnelLoading />}
 
-          {/* ── ERROR ────────────────────────────────────────────── */}
+          {/* ── ERROR ───────────────────────────────────────────────────── */}
           {phase === 'error' && (
             <div style={{ textAlign: 'center', padding: '40px 20px' }}>
               <p style={{ fontSize: '16px', color: '#DC2626', marginBottom: '20px', lineHeight: 1.6 }}>
@@ -259,10 +305,9 @@ export default function HomeTravelWizard() {
             </div>
           )}
 
-          {/* ── RESULTS ──────────────────────────────────────────── */}
+          {/* ── RESULTS ─────────────────────────────────────────────────── */}
           {phase === 'results' && results && (
             <div>
-              {/* Header */}
               <div style={{ textAlign: 'center', marginBottom: '28px' }}>
                 <div
                   style={{
@@ -291,40 +336,25 @@ export default function HomeTravelWizard() {
                 </p>
               </div>
 
-              {/* Opt-in above results */}
               <TravelFunnelOptin
-                destinations={results}
-                moods={moods}
-                season={season}
-                budget={budget}
-                sessionId={sessionId}
+                destinations={results} moods={moods}
+                season={season} budget={budget} sessionId={sessionId}
               />
 
-              {/* Cards */}
               <div className="funnel-results-grid">
                 {results.map((dest, i) => (
                   <TravelResultCard
-                    key={i}
-                    destination={dest}
-                    index={i}
-                    sessionId={sessionId}
-                    onAffiliateClick={handleAffiliateClick}
+                    key={i} destination={dest} index={i}
+                    sessionId={sessionId} onAffiliateClick={handleAffiliateClick}
                   />
                 ))}
               </div>
 
-              {/* Affiliate disclaimer */}
-              <p
-                style={{
-                  fontSize: '12px', color: '#94A3B8', textAlign: 'center',
-                  marginTop: '20px', lineHeight: 1.6,
-                }}
-              >
+              <p style={{ fontSize: '12px', color: '#94A3B8', textAlign: 'center', marginTop: '20px', lineHeight: 1.6 }}>
                 * Einige Links können Affiliate-Links sein. Wenn du darüber buchst, erhalten wir
                 eventuell eine Provision. Für dich entstehen keine Mehrkosten.
               </p>
 
-              {/* Reset */}
               <div style={{ textAlign: 'center', marginTop: '20px' }}>
                 <button
                   onClick={handleReset}
@@ -343,10 +373,9 @@ export default function HomeTravelWizard() {
             </div>
           )}
 
-          {/* ── FORM ─────────────────────────────────────────────── */}
+          {/* ── FORM ────────────────────────────────────────────────────── */}
           {phase === 'form' && (
             <div>
-              {/* Header */}
               <div style={{ textAlign: 'center', marginBottom: '24px' }}>
                 <div
                   style={{
@@ -375,10 +404,9 @@ export default function HomeTravelWizard() {
                 </p>
               </div>
 
-              {/* Progress */}
               <StepProgress current={step} />
 
-              {/* ─── STEP 1: MOODS ─────────────────────────────── */}
+              {/* ── STEP 1: MOODS ──────────────────────────────────────── */}
               {step === 1 && (
                 <div>
                   <div style={{ marginBottom: '16px' }}>
@@ -403,36 +431,26 @@ export default function HomeTravelWizard() {
 
                   <div className="funnel-mood-grid" style={{ marginBottom: '28px' }}>
                     {MOODS.map(m => {
-                      const sel    = moods.includes(m.id);
-                      const maxed  = !sel && moods.length >= 3;
+                      const sel   = moods.includes(m.id);
+                      const maxed = !sel && moods.length >= 3;
                       return (
-                        <OptionPill
+                        <VisualCard
                           key={m.id}
                           selected={sel}
                           disabled={maxed}
                           onClick={() => toggleMood(m.id)}
-                          vertical
-                        >
-                          <span style={{ fontSize: '22px', lineHeight: 1 }}>{m.emoji}</span>
-                          <span
-                            style={{
-                              fontSize: '12px',
-                              fontWeight: sel ? 700 : 500,
-                              color: sel ? '#0284C7' : '#475569',
-                              textAlign: 'center',
-                              lineHeight: 1.3,
-                            }}
-                          >
-                            {m.label}
-                          </span>
-                        </OptionPill>
+                          imageSrc={`/images/moods/${m.id}.jpg`}
+                          bg={m.bg}
+                          emoji={m.emoji}
+                          label={m.label}
+                        />
                       );
                     })}
                   </div>
                 </div>
               )}
 
-              {/* ─── STEP 2: SEASON ────────────────────────────── */}
+              {/* ── STEP 2: SEASONS ────────────────────────────────────── */}
               {step === 2 && (
                 <div>
                   <div style={{ marginBottom: '16px' }}>
@@ -452,29 +470,21 @@ export default function HomeTravelWizard() {
 
                   <div className="funnel-season-grid" style={{ marginBottom: '28px' }}>
                     {SEASONS.map(s => (
-                      <OptionPill
+                      <VisualCard
                         key={s.id}
                         selected={season === s.id}
                         onClick={() => handleSelectSeason(s.id)}
-                        vertical
-                      >
-                        <span style={{ fontSize: '24px', lineHeight: 1 }}>{s.emoji}</span>
-                        <span
-                          style={{
-                            fontSize: '12px',
-                            fontWeight: season === s.id ? 700 : 500,
-                            color: season === s.id ? '#0284C7' : '#475569',
-                          }}
-                        >
-                          {s.label}
-                        </span>
-                      </OptionPill>
+                        imageSrc={`/images/seasons/${s.id}.jpg`}
+                        bg={s.bg}
+                        emoji={s.emoji}
+                        label={s.label}
+                      />
                     ))}
                   </div>
                 </div>
               )}
 
-              {/* ─── STEP 3: BUDGET ────────────────────────────── */}
+              {/* ── STEP 3: BUDGET ─────────────────────────────────────── */}
               {step === 3 && (
                 <div>
                   <div style={{ marginBottom: '16px' }}>
@@ -492,51 +502,25 @@ export default function HomeTravelWizard() {
                     </p>
                   </div>
 
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '28px' }}>
+                  <div className="funnel-budget-grid" style={{ marginBottom: '28px' }}>
                     {BUDGETS.map(b => (
-                      <button
+                      <VisualCard
                         key={b.id}
+                        selected={budget === b.id}
                         onClick={() => setBudget(b.id)}
-                        style={{
-                          display: 'flex', alignItems: 'center', gap: '14px',
-                          padding: '15px 20px', borderRadius: '14px',
-                          border: budget === b.id ? '2px solid #0EA5E9' : '1.5px solid #E2E8F0',
-                          background: budget === b.id
-                            ? 'linear-gradient(135deg, #EFF6FF 0%, #ECFEFF 100%)'
-                            : '#FAFBFF',
-                          cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left',
-                          boxShadow: budget === b.id ? '0 0 0 3px rgba(14,165,233,0.12)' : 'none',
-                          transition: 'all 0.16s ease',
-                        }}
-                      >
-                        <div
-                          style={{
-                            width: '20px', height: '20px', borderRadius: '50%',
-                            border: budget === b.id ? '6px solid #0EA5E9' : '2px solid #CBD5E1',
-                            background: '#fff', transition: 'all 0.16s ease', flexShrink: 0,
-                          }}
-                        />
-                        <div>
-                          <div
-                            style={{
-                              fontSize: '14px',
-                              fontWeight: budget === b.id ? 700 : 600,
-                              color: budget === b.id ? '#0284C7' : '#0F172A',
-                            }}
-                          >
-                            {b.label}
-                          </div>
-                          <div style={{ fontSize: '12px', color: '#64748B', marginTop: '2px' }}>
-                            {b.sub}
-                          </div>
-                        </div>
-                      </button>
+                        imageSrc={`/images/budget/${b.id}.jpg`}
+                        bg={b.bg}
+                        emoji={b.emoji}
+                        label={b.label}
+                        sublabel={b.sub}
+                        height="clamp(120px, 20vw, 155px)"
+                      />
                     ))}
                   </div>
                 </div>
               )}
 
-              {/* ─── NAVIGATION ────────────────────────────────── */}
+              {/* ── NAVIGATION ─────────────────────────────────────────── */}
               <div
                 style={{
                   paddingTop: '22px',
@@ -547,7 +531,6 @@ export default function HomeTravelWizard() {
                   gap: '12px',
                 }}
               >
-                {/* Back */}
                 <div>
                   {step > 1 && (
                     <button
@@ -566,7 +549,6 @@ export default function HomeTravelWizard() {
                   )}
                 </div>
 
-                {/* Forward / Submit */}
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '8px' }}>
                   {step === 1 && (
                     <button

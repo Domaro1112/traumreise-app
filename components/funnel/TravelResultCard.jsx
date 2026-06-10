@@ -3,13 +3,32 @@
 import { MapPin, Clock, Wallet, CheckCircle2, ExternalLink, Plane, Hotel } from 'lucide-react';
 import { getPrimaryProviders } from '@/lib/affiliate-config';
 
-const CARD_GRADIENTS = [
-  'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
-  'linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%)',
-  'linear-gradient(135deg, #059669 0%, #34D399 100%)',
+const CARD_THEMES = [
+  {
+    gradient: 'linear-gradient(160deg, #0369A1 0%, #0EA5E9 55%, #38BDF8 100%)',
+    accent: '#0EA5E9',
+    accentBg: '#EFF6FF',
+    accentBorder: '#BFDBFE',
+    accentText: '#0284C7',
+  },
+  {
+    gradient: 'linear-gradient(160deg, #5B21B6 0%, #7C3AED 55%, #A78BFA 100%)',
+    accent: '#7C3AED',
+    accentBg: '#F5F3FF',
+    accentBorder: '#DDD6FE',
+    accentText: '#6D28D9',
+  },
+  {
+    gradient: 'linear-gradient(160deg, #064E3B 0%, #059669 55%, #34D399 100%)',
+    accent: '#059669',
+    accentBg: '#ECFDF5',
+    accentBorder: '#A7F3D0',
+    accentText: '#065F46',
+  },
 ];
 
 export default function TravelResultCard({ destination, index, sessionId, onAffiliateClick }) {
+  const theme     = CARD_THEMES[index % 3];
   const providers = getPrimaryProviders(
     destination.affiliateSearchIntent || destination.name,
     destination.country
@@ -20,24 +39,62 @@ export default function TravelResultCard({ destination, index, sessionId, onAffi
       style={{
         background: '#FFFFFF',
         border: '1.5px solid #E2E8F0',
-        borderRadius: '20px',
+        borderRadius: '22px',
         overflow: 'hidden',
         boxShadow: '0 4px 24px rgba(15,23,42,0.08)',
         display: 'flex',
         flexDirection: 'column',
+        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+      }}
+      onMouseEnter={e => {
+        e.currentTarget.style.transform = 'translateY(-4px)';
+        e.currentTarget.style.boxShadow = '0 16px 48px rgba(15,23,42,0.14)';
+      }}
+      onMouseLeave={e => {
+        e.currentTarget.style.transform = 'none';
+        e.currentTarget.style.boxShadow = '0 4px 24px rgba(15,23,42,0.08)';
       }}
     >
-      {/* ── Header ── */}
+      {/* ── Hero banner ── */}
       <div
         style={{
-          background: CARD_GRADIENTS[index % 3],
-          padding: '24px 24px 20px',
+          background: theme.gradient,
+          padding: '32px 26px 24px',
+          minHeight: '180px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
+        {/* Decorative circle accent */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '-40px', right: '-40px',
+            width: '180px', height: '180px',
+            borderRadius: '50%',
+            background: 'rgba(255,255,255,0.08)',
+            pointerEvents: 'none',
+          }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '-20px', left: '-20px',
+            width: '100px', height: '100px',
+            borderRadius: '50%',
+            background: 'rgba(255,255,255,0.06)',
+            pointerEvents: 'none',
+          }}
+        />
+
         <div
           style={{
             display: 'inline-block',
-            background: 'rgba(255,255,255,0.2)',
+            background: 'rgba(255,255,255,0.18)',
+            backdropFilter: 'blur(4px)',
             borderRadius: '8px',
             padding: '3px 10px',
             fontSize: '10px',
@@ -45,7 +102,8 @@ export default function TravelResultCard({ destination, index, sessionId, onAffi
             color: 'rgba(255,255,255,0.9)',
             letterSpacing: '1.5px',
             textTransform: 'uppercase',
-            marginBottom: '10px',
+            marginBottom: '12px',
+            alignSelf: 'flex-start',
           }}
         >
           Vorschlag {index + 1}
@@ -53,18 +111,19 @@ export default function TravelResultCard({ destination, index, sessionId, onAffi
         <h3
           style={{
             fontFamily: 'var(--font-heading)',
-            fontSize: 'clamp(20px, 3.5vw, 26px)',
+            fontSize: 'clamp(22px, 4vw, 30px)',
             fontWeight: 800,
             color: '#FFFFFF',
-            margin: '0 0 6px',
+            margin: '0 0 8px',
             letterSpacing: '-0.02em',
+            textShadow: '0 2px 12px rgba(0,0,0,0.2)',
           }}
         >
           {destination.name}
         </h3>
         <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-          <MapPin size={12} strokeWidth={2} color="rgba(255,255,255,0.8)" />
-          <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.85)', fontWeight: 500 }}>
+          <MapPin size={13} strokeWidth={2} color="rgba(255,255,255,0.85)" />
+          <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.9)', fontWeight: 500 }}>
             {destination.country}
             {destination.region ? ` · ${destination.region}` : ''}
           </span>
@@ -72,24 +131,24 @@ export default function TravelResultCard({ destination, index, sessionId, onAffi
       </div>
 
       {/* ── Body ── */}
-      <div style={{ padding: '20px 24px', flex: 1, display: 'flex', flexDirection: 'column', gap: '14px' }}>
+      <div style={{ padding: '22px 24px', flex: 1, display: 'flex', flexDirection: 'column', gap: '16px' }}>
 
         {/* Why it fits */}
         <div
           style={{
-            background: '#F8FAFF',
+            background: theme.accentBg,
             borderRadius: '12px',
-            padding: '12px 16px',
-            borderLeft: '3px solid #0EA5E9',
+            padding: '13px 16px',
+            borderLeft: `3px solid ${theme.accent}`,
           }}
         >
-          <p style={{ fontSize: '13px', color: '#334155', lineHeight: 1.7, margin: 0, fontWeight: 500 }}>
+          <p style={{ fontSize: '13px', color: '#334155', lineHeight: 1.75, margin: 0, fontWeight: 500 }}>
             {destination.fitReason}
           </p>
         </div>
 
         {/* Story */}
-        <p style={{ fontSize: '14px', color: '#475569', lineHeight: 1.8, margin: 0 }}>
+        <p style={{ fontSize: '14px', color: '#475569', lineHeight: 1.85, margin: 0 }}>
           {destination.story}
         </p>
 
@@ -98,34 +157,25 @@ export default function TravelResultCard({ destination, index, sessionId, onAffi
           <div>
             <p
               style={{
-                fontSize: '10px',
-                fontWeight: 700,
-                color: '#94A3B8',
-                letterSpacing: '1.2px',
-                textTransform: 'uppercase',
-                marginBottom: '8px',
+                fontSize: '10px', fontWeight: 700, color: '#94A3B8',
+                letterSpacing: '1.2px', textTransform: 'uppercase', marginBottom: '8px',
               }}
             >
               Highlights
             </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '7px' }}>
               {destination.highlights.map((h, i) => (
                 <span
                   key={i}
                   style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '5px',
-                    padding: '4px 11px',
-                    borderRadius: '20px',
-                    background: '#EFF6FF',
-                    border: '1px solid #BFDBFE',
-                    fontSize: '12px',
-                    color: '#0284C7',
-                    fontWeight: 500,
+                    display: 'inline-flex', alignItems: 'center', gap: '5px',
+                    padding: '5px 12px', borderRadius: '20px',
+                    background: theme.accentBg,
+                    border: `1px solid ${theme.accentBorder}`,
+                    fontSize: '12px', color: theme.accentText, fontWeight: 500,
                   }}
                 >
-                  <CheckCircle2 size={10} strokeWidth={2.5} color="#0EA5E9" />
+                  <CheckCircle2 size={10} strokeWidth={2.5} color={theme.accent} />
                   {h}
                 </span>
               ))}
@@ -134,7 +184,7 @@ export default function TravelResultCard({ destination, index, sessionId, onAffi
         )}
 
         {/* Meta */}
-        <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
           {destination.bestTravelTime && (
             <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
               <Clock size={12} strokeWidth={2} color="#94A3B8" />
@@ -152,15 +202,10 @@ export default function TravelResultCard({ destination, index, sessionId, onAffi
           )}
         </div>
 
-        {/* Affiliate disclaimer */}
         <p
           style={{
-            fontSize: '10px',
-            color: '#CBD5E1',
-            marginTop: 'auto',
-            paddingTop: '12px',
-            borderTop: '1px solid #F1F5F9',
-            lineHeight: 1.5,
+            fontSize: '10px', color: '#CBD5E1', marginTop: 'auto',
+            paddingTop: '12px', borderTop: '1px solid #F1F5F9', lineHeight: 1.5,
           }}
         >
           Einige Links können Affiliate-Links sein. Für dich entstehen keine Mehrkosten.
@@ -168,35 +213,38 @@ export default function TravelResultCard({ destination, index, sessionId, onAffi
       </div>
 
       {/* ── CTAs ── */}
-      <div style={{ padding: '0 24px 24px', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+      <div style={{ padding: '0 20px 22px', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
         {providers.map(p => (
           <button
             key={p.id}
             onClick={() => onAffiliateClick(p.id, destination.name, p.url)}
             style={{
               flex: 1,
-              minWidth: '110px',
+              minWidth: '120px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '6px',
-              padding: '11px 14px',
-              borderRadius: '12px',
-              border: `1.5px solid ${p.color}33`,
-              background: p.bgColor,
-              color: p.color,
-              fontSize: '13px',
+              gap: '7px',
+              padding: '14px 16px',
+              borderRadius: '14px',
+              border: 'none',
+              background: p.id === 'booking'
+                ? 'linear-gradient(135deg, #003580 0%, #0052CC 100%)'
+                : 'linear-gradient(135deg, #0C4A6E 0%, #0369A1 100%)',
+              color: '#fff',
+              fontSize: '14px',
               fontWeight: 700,
               cursor: 'pointer',
               fontFamily: 'inherit',
+              boxShadow: '0 4px 14px rgba(0,0,0,0.18)',
               transition: 'filter 0.15s, transform 0.15s',
             }}
-            onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(0.94)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+            onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(1.12)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
             onMouseLeave={e => { e.currentTarget.style.filter = 'none'; e.currentTarget.style.transform = 'none'; }}
           >
-            {p.id === 'booking' ? <Hotel size={13} strokeWidth={2} /> : <Plane size={13} strokeWidth={2} />}
+            {p.id === 'booking' ? <Hotel size={15} strokeWidth={2} /> : <Plane size={15} strokeWidth={2} />}
             {p.label}
-            <ExternalLink size={11} strokeWidth={2} />
+            <ExternalLink size={12} strokeWidth={2} />
           </button>
         ))}
       </div>

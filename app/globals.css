@@ -679,28 +679,59 @@ details > summary::marker { display: none; }
   .funnel-results-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* Mood-pill grid: 4 columns desktop, 3 tablet, 2 mobile */
+/* Visual card grids */
 .funnel-mood-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
 }
-@media (max-width: 860px) {
-  .funnel-mood-grid { grid-template-columns: repeat(3, 1fr); }
+@media (min-width: 480px) {
+  .funnel-mood-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
 }
-@media (max-width: 480px) {
-  .funnel-mood-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+@media (min-width: 860px) {
+  .funnel-mood-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
 }
 
-/* Season grid: 5 columns desktop, 3 tablet, wrap mobile */
 .funnel-season-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
 }
-@media (max-width: 640px) {
-  .funnel-season-grid { grid-template-columns: repeat(3, 1fr); }
+@media (min-width: 640px) {
+  .funnel-season-grid { grid-template-columns: repeat(5, 1fr); gap: 14px; }
 }
-@media (max-width: 360px) {
-  .funnel-season-grid { grid-template-columns: repeat(2, 1fr); }
+
+.funnel-budget-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+@media (min-width: 640px) {
+  .funnel-budget-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+}
+.funnel-budget-grid .funnel-visual-card:last-child:nth-child(odd) {
+  grid-column: span 2;
+}
+@media (min-width: 640px) {
+  .funnel-budget-grid .funnel-visual-card:last-child:nth-child(odd) {
+    grid-column: span 1;
+  }
+}
+
+/* Visual card hover / tap states */
+.funnel-visual-card {
+  -webkit-tap-highlight-color: transparent;
+}
+.funnel-visual-card:hover:not(:disabled) {
+  transform: translateY(-4px) scale(1.01) !important;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.28) !important;
+}
+.funnel-visual-card:active:not(:disabled) {
+  transform: translateY(-1px) scale(0.99) !important;
+}
+
+/* Loading image atmospheric fade */
+.funnel-loading-img {
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 45%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 45%, transparent 100%);
 }
