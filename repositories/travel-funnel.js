@@ -15,12 +15,13 @@ export async function createSession({ moodSelection, userAgent, referrer }) {
   return data;
 }
 
-export async function updateSession(sessionId, { moodSelection, season, budget, generatedDestinations }) {
+export async function updateSession(sessionId, { moodSelection, season, budget, duration, generatedDestinations }) {
   const supabase = createServerClient();
   const patch = {};
   if (moodSelection)          patch.mood_selection         = moodSelection;
   if (season)                 patch.season                 = season;
   if (budget)                 patch.budget                 = budget;
+  if (duration)               patch.duration               = duration;
   if (generatedDestinations)  patch.generated_destinations = generatedDestinations;
   const { error } = await supabase
     .from('travel_funnel_sessions')
@@ -32,7 +33,7 @@ export async function updateSession(sessionId, { moodSelection, season, budget, 
 export async function createLead({
   email, consent, consentText,
   sessionId, selectedDestinations,
-  moodSelection, season, budget,
+  moodSelection, season, budget, duration,
 }) {
   const supabase = createServerClient();
   const { data, error } = await supabase
@@ -46,6 +47,7 @@ export async function createLead({
       mood_selection: moodSelection ?? [],
       season: season ?? null,
       budget: budget ?? null,
+      duration: duration ?? null,
     })
     .select('id')
     .single();

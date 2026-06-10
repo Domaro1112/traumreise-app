@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Bell, ShieldCheck, CheckCircle2, Loader2 } from 'lucide-react';
 
-export default function TravelFunnelOptin({ destinations, moods, season, budget, sessionId }) {
+export default function TravelFunnelOptin({ destinations, moods, season, budget, duration, sessionId }) {
   const [email,       setEmail]       = useState('');
   const [consent,     setConsent]     = useState(false);
   const [submitting,  setSubmitting]  = useState(false);
@@ -22,7 +22,7 @@ export default function TravelFunnelOptin({ destinations, moods, season, budget,
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({
           email, consent, sessionId,
-          destinations, moods, season, budget,
+          destinations, moods, season, budget, duration,
         }),
       });
       const json = await res.json();
@@ -83,14 +83,9 @@ export default function TravelFunnelOptin({ destinations, moods, season, budget,
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', flexWrap: 'wrap', marginBottom: '18px' }}>
         <div
           style={{
-            width: '44px',
-            height: '44px',
-            borderRadius: '12px',
+            width: '44px', height: '44px', borderRadius: '12px',
             background: 'rgba(255,255,255,0.2)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexShrink: 0,
+            display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
           }}
         >
           <Bell size={20} strokeWidth={2} color="#fff" />
@@ -99,10 +94,8 @@ export default function TravelFunnelOptin({ destinations, moods, season, budget,
           <h3
             style={{
               fontFamily: 'var(--font-heading)',
-              fontSize: 'clamp(15px, 2.5vw, 19px)',
-              fontWeight: 700,
-              color: '#fff',
-              margin: '0 0 5px',
+              fontSize: 'clamp(15px, 2.5vw, 19px)', fontWeight: 700,
+              color: '#fff', margin: '0 0 5px',
             }}
           >
             Willst du wissen, wann deine Traumziele am günstigsten sind?
@@ -124,35 +117,24 @@ export default function TravelFunnelOptin({ destinations, moods, season, budget,
             placeholder="deine@email.de"
             required
             style={{
-              flex: 1,
-              minWidth: '190px',
-              padding: '12px 16px',
-              borderRadius: '12px',
+              flex: 1, minWidth: '190px',
+              padding: '12px 16px', borderRadius: '12px',
               border: '1.5px solid rgba(255,255,255,0.35)',
-              background: 'rgba(255,255,255,0.96)',
-              color: '#0F172A',
-              fontSize: '14px',
-              fontFamily: 'inherit',
-              outline: 'none',
+              background: 'rgba(255,255,255,0.96)', color: '#0F172A',
+              fontSize: '14px', fontFamily: 'inherit', outline: 'none',
             }}
           />
           <button
             type="submit"
             disabled={!email || !consent || submitting}
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '7px',
-              padding: '12px 22px',
-              borderRadius: '12px',
-              border: 'none',
+              display: 'flex', alignItems: 'center', gap: '7px',
+              padding: '12px 22px', borderRadius: '12px', border: 'none',
               background: (!email || !consent || submitting) ? 'rgba(255,255,255,0.35)' : '#FFFFFF',
               color: (!email || !consent || submitting) ? 'rgba(255,255,255,0.55)' : '#0284C7',
-              fontSize: '14px',
-              fontWeight: 700,
+              fontSize: '14px', fontWeight: 700,
               cursor: (!email || !consent || submitting) ? 'not-allowed' : 'pointer',
-              fontFamily: 'var(--font-heading)',
-              whiteSpace: 'nowrap',
+              fontFamily: 'var(--font-heading)', whiteSpace: 'nowrap',
               transition: 'background 0.2s',
             }}
           >
@@ -180,7 +162,7 @@ export default function TravelFunnelOptin({ destinations, moods, season, budget,
         </label>
 
         {error && (
-          <p style={{ fontSize: '13px', color: '#FEF08A', marginTop: '8px', margin: '8px 0 0' }}>
+          <p style={{ fontSize: '13px', color: '#FEF08A', margin: '8px 0 0' }}>
             {error}
           </p>
         )}

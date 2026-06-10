@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
   try {
     const {
       email, consent,
-      sessionId, moods, season, budget, destinations,
+      sessionId, moods, season, budget, duration, destinations,
     } = (await request.json()) as {
       email:        string;
       consent:      boolean;
@@ -18,6 +18,7 @@ export async function POST(request: NextRequest) {
       moods?:       string[];
       season?:      string;
       budget?:      string;
+      duration?:    string;
       destinations?: unknown[];
     };
 
@@ -42,8 +43,9 @@ export async function POST(request: NextRequest) {
       sessionId:            sessionId ?? null,
       selectedDestinations: destinations ?? [],
       moodSelection:        Array.isArray(moods) ? moods : [],
-      season:               season  ?? null,
-      budget:               budget  ?? null,
+      season:               season    ?? null,
+      budget:               budget    ?? null,
+      duration:             duration  ?? null,
     });
 
     return NextResponse.json({ success: true, leadId: lead.id });
