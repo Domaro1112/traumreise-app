@@ -668,3 +668,39 @@ details > summary::marker { display: none; }
   -ms-overflow-style: none;
 }
 .wizard-progress-scroll::-webkit-scrollbar { display: none; }
+
+/* ── Travel Funnel Inline Results ─────────────────────────────────────────── */
+.funnel-results-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 860px) {
+  .funnel-results-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Mood-pill grid: 4 columns desktop, 3 tablet, 2 mobile */
+.funnel-mood-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+@media (max-width: 860px) {
+  .funnel-mood-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 480px) {
+  .funnel-mood-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+}
+
+/* Season grid: 5 columns desktop, 3 tablet, wrap mobile */
+.funnel-season-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+@media (max-width: 640px) {
+  .funnel-season-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 360px) {
+  .funnel-season-grid { grid-template-columns: repeat(2, 1fr); }
+}
