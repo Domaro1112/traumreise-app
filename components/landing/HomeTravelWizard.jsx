@@ -10,64 +10,64 @@ import TravelResultCard    from '@/components/funnel/TravelResultCard';
 import TravelFunnelOptin   from '@/components/funnel/TravelFunnelOptin';
 
 // ── Image library ─────────────────────────────────────────────────────────────
-// local: path under public/ — add your own photos here to override
-// ext:   Unsplash fallback shown until local files are uploaded
+// local: path under public/ — drop your own photos here to override Unsplash
+// ext:   stable Unsplash CDN URLs used until local files exist
 const IMG = {
-  beach:    { local: '/images/funnel/cards/beach.jpg',    ext: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80&fit=crop' },
-  mountain: { local: '/images/funnel/cards/mountain.jpg', ext: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80&fit=crop' },
-  luxury:   { local: '/images/funnel/cards/luxury.jpg',   ext: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80&fit=crop' },
-  city:     { local: '/images/funnel/cards/city.jpg',     ext: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80&fit=crop' },
-  culture:  { local: '/images/funnel/cards/culture.jpg',  ext: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&q=80&fit=crop' },
-  family:   { local: '/images/funnel/cards/family.jpg',   ext: 'https://images.unsplash.com/photo-1537365587684-f490102e1225?w=600&q=80&fit=crop' },
-  romance:  { local: '/images/funnel/cards/romance.jpg',  ext: 'https://images.unsplash.com/photo-1516589091380-5d8e87df6999?w=600&q=80&fit=crop' },
-  party:    { local: '/images/funnel/cards/party.jpg',    ext: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80&fit=crop' },
-  spring:   { local: '/images/funnel/cards/spring.jpg',   ext: 'https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=600&q=80&fit=crop' },
-  autumn:   { local: '/images/funnel/cards/autumn.jpg',   ext: 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=600&q=80&fit=crop' },
-  winter:   { local: '/images/funnel/cards/winter.jpg',   ext: 'https://images.unsplash.com/photo-1418985991508-e47386d96a71?w=600&q=80&fit=crop' },
-  world:    { local: '/images/funnel/cards/world.jpg',    ext: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80&fit=crop' },
-  backpack: { local: '/images/funnel/cards/backpack.jpg', ext: 'https://images.unsplash.com/photo-1501554728187-ce583db33af7?w=600&q=80&fit=crop' },
-  hotel:    { local: '/images/funnel/cards/hotel.jpg',    ext: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80&fit=crop' },
-  resort:   { local: '/images/funnel/cards/resort.jpg',   ext: 'https://images.unsplash.com/photo-1540541338537-50c90e0e64a5?w=600&q=80&fit=crop' },
+  beach:    { local: '/images/funnel/cards/beach.jpg',    ext: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80&fit=crop&auto=format' },
+  mountain: { local: '/images/funnel/cards/mountain.jpg', ext: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80&fit=crop&auto=format' },
+  luxury:   { local: '/images/funnel/cards/luxury.jpg',   ext: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80&fit=crop&auto=format' },
+  city:     { local: '/images/funnel/cards/city.jpg',     ext: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80&fit=crop&auto=format' },
+  culture:  { local: '/images/funnel/cards/culture.jpg',  ext: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&q=80&fit=crop&auto=format' },
+  family:   { local: '/images/funnel/cards/family.jpg',   ext: 'https://images.unsplash.com/photo-1537365587684-f490102e1225?w=600&q=80&fit=crop&auto=format' },
+  romance:  { local: '/images/funnel/cards/romance.jpg',  ext: 'https://images.unsplash.com/photo-1516589091380-5d8e87df6999?w=600&q=80&fit=crop&auto=format' },
+  party:    { local: '/images/funnel/cards/party.jpg',    ext: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80&fit=crop&auto=format' },
+  spring:   { local: '/images/funnel/cards/spring.jpg',   ext: 'https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=600&q=80&fit=crop&auto=format' },
+  autumn:   { local: '/images/funnel/cards/autumn.jpg',   ext: 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=600&q=80&fit=crop&auto=format' },
+  winter:   { local: '/images/funnel/cards/winter.jpg',   ext: 'https://images.unsplash.com/photo-1418985991508-e47386d96a71?w=600&q=80&fit=crop&auto=format' },
+  world:    { local: '/images/funnel/cards/world.jpg',    ext: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80&fit=crop&auto=format' },
+  backpack: { local: '/images/funnel/cards/backpack.jpg', ext: 'https://images.unsplash.com/photo-1501554728187-ce583db33af7?w=600&q=80&fit=crop&auto=format' },
+  hotel:    { local: '/images/funnel/cards/hotel.jpg',    ext: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80&fit=crop&auto=format' },
+  resort:   { local: '/images/funnel/cards/resort.jpg',   ext: 'https://images.unsplash.com/photo-1540541338537-50c90e0e64a5?w=600&q=80&fit=crop&auto=format' },
 };
 
 // ── Option data ───────────────────────────────────────────────────────────────
 const MOODS = [
-  { id: 'relax',     label: 'Entspannung', emoji: '🌊', bg: '#0369A1', img: IMG.beach },
-  { id: 'adventure', label: 'Abenteuer',   emoji: '🏔️', bg: '#166534', img: IMG.mountain },
-  { id: 'luxury',    label: 'Luxus',       emoji: '✨', bg: '#92400E', img: IMG.luxury },
-  { id: 'family',    label: 'Familie',     emoji: '👨‍👩‍👧', bg: '#9A3412', img: IMG.family },
-  { id: 'romance',   label: 'Romantik',    emoji: '💕', bg: '#9D174D', img: IMG.romance },
-  { id: 'culture',   label: 'Kultur',      emoji: '🏛️', bg: '#7C2D12', img: IMG.culture },
-  { id: 'nature',    label: 'Natur',       emoji: '🌿', bg: '#064E3B', img: IMG.mountain },
-  { id: 'party',     label: 'Party',       emoji: '🎉', bg: '#4C1D95', img: IMG.party },
-  { id: 'beach',     label: 'Strand',      emoji: '🏖️', bg: '#0C4A6E', img: IMG.beach },
-  { id: 'wellness',  label: 'Wellness',    emoji: '🧘', bg: '#1E3A5F', img: IMG.luxury },
-  { id: 'city',      label: 'Städtetrip',  emoji: '🏙️', bg: '#1E293B', img: IMG.city },
-  { id: 'active',    label: 'Aktivurlaub', emoji: '🚴', bg: '#7F1D1D', img: IMG.mountain },
+  { id: 'relax',     label: 'Entspannung', bg: '#0369A1', img: IMG.beach },
+  { id: 'adventure', label: 'Abenteuer',   bg: '#166534', img: IMG.mountain },
+  { id: 'luxury',    label: 'Luxus',       bg: '#92400E', img: IMG.luxury },
+  { id: 'family',    label: 'Familie',     bg: '#9A3412', img: IMG.family },
+  { id: 'romance',   label: 'Romantik',    bg: '#9D174D', img: IMG.romance },
+  { id: 'culture',   label: 'Kultur',      bg: '#7C2D12', img: IMG.culture },
+  { id: 'nature',    label: 'Natur',       bg: '#064E3B', img: IMG.mountain },
+  { id: 'party',     label: 'Party',       bg: '#4C1D95', img: IMG.party },
+  { id: 'beach',     label: 'Strand',      bg: '#0C4A6E', img: IMG.beach },
+  { id: 'wellness',  label: 'Wellness',    bg: '#1E3A5F', img: IMG.luxury },
+  { id: 'city',      label: 'Städtetrip',  bg: '#1E293B', img: IMG.city },
+  { id: 'active',    label: 'Aktivurlaub', bg: '#7F1D1D', img: IMG.mountain },
 ];
 
 const SEASONS = [
-  { id: 'spring', label: 'Frühling', emoji: '🌸', bg: '#14532D', img: IMG.spring },
-  { id: 'summer', label: 'Sommer',   emoji: '☀️', bg: '#0C4A6E', img: IMG.beach },
-  { id: 'autumn', label: 'Herbst',   emoji: '🍂', bg: '#78350F', img: IMG.autumn },
-  { id: 'winter', label: 'Winter',   emoji: '❄️', bg: '#1E3A5F', img: IMG.winter },
-  { id: 'flex',   label: 'Flexibel', emoji: '🗺️', bg: '#312E81', img: IMG.world },
+  { id: 'spring', label: 'Frühling', bg: '#14532D', img: IMG.spring },
+  { id: 'summer', label: 'Sommer',   bg: '#0C4A6E', img: IMG.beach },
+  { id: 'autumn', label: 'Herbst',   bg: '#78350F', img: IMG.autumn },
+  { id: 'winter', label: 'Winter',   bg: '#1E3A5F', img: IMG.winter },
+  { id: 'flex',   label: 'Flexibel', bg: '#312E81', img: IMG.world },
 ];
 
 const BUDGETS = [
-  { id: 'budget',  label: 'Sparsam',      sub: 'ca. 100–500 €',      emoji: '🎒', bg: '#14532D', img: IMG.backpack },
-  { id: 'mid',     label: 'Mittelklasse', sub: 'ca. 500–1.500 €',    emoji: '🧳', bg: '#0369A1', img: IMG.hotel },
-  { id: 'comfort', label: 'Komfort',      sub: 'ca. 1.500–5.000 €',  emoji: '⭐', bg: '#5B21B6', img: IMG.resort },
-  { id: 'luxury',  label: 'Luxus',        sub: 'ab 5.000 €',         emoji: '💎', bg: '#78350F', img: IMG.luxury },
-  { id: 'open',    label: 'Flexibel',     sub: 'Budget offen',       emoji: '🗺️', bg: '#0C4A6E', img: IMG.world },
+  { id: 'budget',  label: 'Sparsam',      sub: 'ca. 100–500 €',      bg: '#14532D', img: IMG.backpack },
+  { id: 'mid',     label: 'Mittelklasse', sub: 'ca. 500–1.500 €',    bg: '#0369A1', img: IMG.hotel },
+  { id: 'comfort', label: 'Komfort',      sub: 'ca. 1.500–5.000 €',  bg: '#5B21B6', img: IMG.resort },
+  { id: 'luxury',  label: 'Luxus',        sub: 'ab 5.000 €',         bg: '#78350F', img: IMG.luxury },
+  { id: 'open',    label: 'Flexibel',     sub: 'Budget offen',       bg: '#0C4A6E', img: IMG.world },
 ];
 
 const DURATIONS = [
-  { id: 'short_trip', label: 'Kurztrip',       sub: '2–4 Tage',      emoji: '🏙️', bg: '#1E293B', img: IMG.city },
-  { id: 'one_week',   label: 'Eine Woche',      sub: '5–8 Tage',      emoji: '✈️', bg: '#0369A1', img: IMG.beach },
-  { id: 'two_weeks',  label: 'Zwei Wochen',     sub: '9–15 Tage',     emoji: '🌴', bg: '#064E3B', img: IMG.resort },
-  { id: 'long_trip',  label: 'Drei Wochen+',    sub: '16+ Tage',      emoji: '🌍', bg: '#312E81', img: IMG.world },
-  { id: 'flexible',   label: 'Flexibel',        sub: 'Ich bin offen', emoji: '🤷', bg: '#0C4A6E', img: IMG.world },
+  { id: 'short_trip', label: 'Kurztrip',    sub: '2–4 Tage',      bg: '#1E293B', img: IMG.city },
+  { id: 'one_week',   label: 'Eine Woche',  sub: '5–8 Tage',      bg: '#0369A1', img: IMG.beach },
+  { id: 'two_weeks',  label: 'Zwei Wochen', sub: '9–15 Tage',     bg: '#064E3B', img: IMG.resort },
+  { id: 'long_trip',  label: 'Drei Wochen+',sub: '16+ Tage',      bg: '#312E81', img: IMG.world },
+  { id: 'flexible',   label: 'Flexibel',    sub: 'Ich bin offen', bg: '#0C4A6E', img: IMG.world },
 ];
 
 const STEPS = [
@@ -78,12 +78,18 @@ const STEPS = [
 ];
 
 // ── Visual card ───────────────────────────────────────────────────────────────
-// Fallback chain: local file → external Unsplash URL → backgroundColor (gradient)
-function VisualCard({ selected, disabled, onClick, img, bg, emoji, label, sublabel }) {
+// Fallback chain: local file → Unsplash ext URL → solid bg colour (never broken icon)
+function VisualCard({ selected, disabled, onClick, img, bg, label, sublabel }) {
   const [imgSrc, setImgSrc] = useState(img.local);
+  const [failed, setFailed] = useState(false);
 
   const handleError = () => {
-    if (imgSrc !== img.ext) setImgSrc(img.ext);
+    if (imgSrc === img.local && img.ext) {
+      setImgSrc(img.ext);
+    } else {
+      // Both sources failed — hide img so browser broken-icon never shows
+      setFailed(true);
+    }
   };
 
   return (
@@ -107,58 +113,74 @@ function VisualCard({ selected, disabled, onClick, img, bg, emoji, label, sublab
         fontFamily: 'inherit',
       }}
     >
-      {/* Travel photo — tries local, falls back to external Unsplash URL */}
-      <img
-        src={imgSrc}
-        alt=""
-        aria-hidden="true"
-        draggable="false"
-        onError={handleError}
-        style={{
-          position: 'absolute', inset: 0,
-          width: '100%', height: '100%',
-          objectFit: 'cover', objectPosition: 'center',
-        }}
-      />
+      {/* Travel photo — hidden when both local + ext fail to prevent broken icon */}
+      {!failed && (
+        <img
+          src={imgSrc}
+          alt=""
+          aria-hidden="true"
+          draggable="false"
+          onError={handleError}
+          style={{
+            position: 'absolute', inset: 0,
+            width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: 'center',
+            zIndex: 0,
+          }}
+        />
+      )}
 
-      {/* Soft bottom gradient — keeps top of photo fully visible */}
+      {/* Gradient overlay — photo visible top, readable text at bottom */}
       <div
         style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,0.52) 100%)',
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.65) 100%)',
           pointerEvents: 'none',
+          zIndex: 1,
         }}
       />
 
-      {/* Label — emoji small + text at bottom */}
+      {/* Label — centered at bottom, no emoji */}
       <div
         style={{
           position: 'absolute', bottom: 0, left: 0, right: 0,
-          padding: sublabel ? '8px 10px 11px' : '7px 10px 9px',
+          padding: sublabel ? '10px 12px 13px' : '8px 12px 12px',
           zIndex: 2,
+          textAlign: 'center',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-          <span style={{ fontSize: '14px', lineHeight: 1, flexShrink: 0 }}>{emoji}</span>
-          <span style={{ fontSize: '12px', fontWeight: 700, color: '#fff', textShadow: '0 1px 4px rgba(0,0,0,0.8)', lineHeight: 1.2 }}>
-            {label}
-          </span>
+        <div style={{
+          fontSize: '13px', fontWeight: 700, color: '#fff',
+          textShadow: '0 1px 6px rgba(0,0,0,0.9)',
+          lineHeight: 1.2, letterSpacing: '0.01em',
+        }}>
+          {label}
         </div>
         {sublabel && (
-          <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.88)', marginTop: '2px', lineHeight: 1.2, paddingLeft: '19px' }}>
+          <div style={{
+            fontSize: '10px', color: 'rgba(255,255,255,0.85)',
+            marginTop: '3px', lineHeight: 1.2,
+          }}>
             {sublabel}
           </div>
         )}
       </div>
 
-      {/* Selected checkmark badge */}
+      {/* Selected badge */}
       {selected && (
-        <div style={{ position: 'absolute', top: '8px', right: '8px', width: '22px', height: '22px', borderRadius: '50%', background: '#0EA5E9', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 2px 10px rgba(14,165,233,0.65)', fontSize: '12px', color: '#fff', fontWeight: 800, zIndex: 3 }}>
+        <div style={{
+          position: 'absolute', top: '8px', right: '8px',
+          width: '22px', height: '22px', borderRadius: '50%',
+          background: '#0EA5E9',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          boxShadow: '0 2px 10px rgba(14,165,233,0.65)',
+          fontSize: '12px', color: '#fff', fontWeight: 800, zIndex: 3,
+        }}>
           ✓
         </div>
       )}
 
-      {/* Disabled overlay */}
+      {/* Disabled veil */}
       {disabled && (
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(255,255,255,0.42)', zIndex: 4 }} />
       )}
@@ -462,7 +484,7 @@ export default function HomeTravelWizard() {
                       return (
                         <VisualCard key={m.id} selected={sel} disabled={maxed}
                           onClick={() => toggleMood(m.id)}
-                          img={m.img} bg={m.bg} emoji={m.emoji} label={m.label} />
+                          img={m.img} bg={m.bg} label={m.label} />
                       );
                     })}
                   </div>
@@ -479,7 +501,7 @@ export default function HomeTravelWizard() {
                     {SEASONS.map(s => (
                       <VisualCard key={s.id} selected={season === s.id}
                         onClick={() => handleSelectSeason(s.id)}
-                        img={s.img} bg={s.bg} emoji={s.emoji} label={s.label} />
+                        img={s.img} bg={s.bg} label={s.label} />
                     ))}
                   </div>
                 </div>
@@ -492,7 +514,7 @@ export default function HomeTravelWizard() {
                     {BUDGETS.map(b => (
                       <VisualCard key={b.id} selected={budget === b.id}
                         onClick={() => setBudget(b.id)}
-                        img={b.img} bg={b.bg} emoji={b.emoji}
+                        img={b.img} bg={b.bg}
                         label={b.label} sublabel={b.sub} />
                     ))}
                   </div>
@@ -506,7 +528,7 @@ export default function HomeTravelWizard() {
                     {DURATIONS.map(d => (
                       <VisualCard key={d.id} selected={duration === d.id}
                         onClick={() => setDuration(d.id)}
-                        img={d.img} bg={d.bg} emoji={d.emoji}
+                        img={d.img} bg={d.bg}
                         label={d.label} sublabel={d.sub} />
                     ))}
                   </div>
