@@ -28,6 +28,9 @@ const IMG = {
   backpack: '/images/funnel/cards/backpack.jpg',
   hotel:    '/images/funnel/cards/hotel.jpg',
   resort:   '/images/funnel/cards/resort.jpg',
+  relax:    '/images/funnel/cards/relax.jpg',
+  wellness: '/images/funnel/cards/wellness.jpg',
+  active:   '/images/funnel/cards/active.jpg',
 };
 
 // ── Gradient shown when image file is absent ──────────────────────────────────
@@ -35,7 +38,7 @@ const OVERLAY = 'linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15
 
 // ── Option data ───────────────────────────────────────────────────────────────
 const MOODS = [
-  { id: 'relax',     label: 'Entspannung', bg: '#0369A1', img: IMG.beach },
+  { id: 'relax',     label: 'Entspannung', bg: '#0369A1', img: IMG.relax },
   { id: 'adventure', label: 'Abenteuer',   bg: '#166534', img: IMG.mountain },
   { id: 'luxury',    label: 'Luxus',       bg: '#92400E', img: IMG.luxury },
   { id: 'family',    label: 'Familie',     bg: '#9A3412', img: IMG.family },
@@ -44,9 +47,9 @@ const MOODS = [
   { id: 'nature',    label: 'Natur',       bg: '#064E3B', img: IMG.mountain },
   { id: 'party',     label: 'Party',       bg: '#4C1D95', img: IMG.party },
   { id: 'beach',     label: 'Strand',      bg: '#0C4A6E', img: IMG.beach },
-  { id: 'wellness',  label: 'Wellness',    bg: '#1E3A5F', img: IMG.luxury },
+  { id: 'wellness',  label: 'Wellness',    bg: '#1E3A5F', img: IMG.wellness },
   { id: 'city',      label: 'Städtetrip',  bg: '#1E293B', img: IMG.city },
-  { id: 'active',    label: 'Aktivurlaub', bg: '#7F1D1D', img: IMG.mountain },
+  { id: 'active',    label: 'Aktivurlaub', bg: '#7F1D1D', img: IMG.active },
 ];
 
 const SEASONS = [
