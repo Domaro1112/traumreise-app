@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import {
   Sparkles, Plane, ChevronRight, ChevronLeft, RotateCcw, ShieldCheck,
 } from 'lucide-react';
@@ -9,26 +9,29 @@ import TravelFunnelLoading from '@/components/funnel/TravelFunnelLoading';
 import TravelResultCard    from '@/components/funnel/TravelResultCard';
 import TravelFunnelOptin   from '@/components/funnel/TravelFunnelOptin';
 
-// ── Image library ─────────────────────────────────────────────────────────────
-// local: path under public/ — drop your own photos here to override Unsplash
-// ext:   stable Unsplash CDN URLs used until local files exist
+// ── Local image paths ─────────────────────────────────────────────────────────
+// All 15 files must live in public/images/funnel/cards/
+// Missing files → gradient fallback only (no broken icon, no external load)
 const IMG = {
-  beach:    { local: '/images/funnel/cards/beach.jpg',    ext: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80&fit=crop&auto=format' },
-  mountain: { local: '/images/funnel/cards/mountain.jpg', ext: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80&fit=crop&auto=format' },
-  luxury:   { local: '/images/funnel/cards/luxury.jpg',   ext: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80&fit=crop&auto=format' },
-  city:     { local: '/images/funnel/cards/city.jpg',     ext: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80&fit=crop&auto=format' },
-  culture:  { local: '/images/funnel/cards/culture.jpg',  ext: 'https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=600&q=80&fit=crop&auto=format' },
-  family:   { local: '/images/funnel/cards/family.jpg',   ext: 'https://images.unsplash.com/photo-1537365587684-f490102e1225?w=600&q=80&fit=crop&auto=format' },
-  romance:  { local: '/images/funnel/cards/romance.jpg',  ext: 'https://images.unsplash.com/photo-1516589091380-5d8e87df6999?w=600&q=80&fit=crop&auto=format' },
-  party:    { local: '/images/funnel/cards/party.jpg',    ext: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&q=80&fit=crop&auto=format' },
-  spring:   { local: '/images/funnel/cards/spring.jpg',   ext: 'https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=600&q=80&fit=crop&auto=format' },
-  autumn:   { local: '/images/funnel/cards/autumn.jpg',   ext: 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=600&q=80&fit=crop&auto=format' },
-  winter:   { local: '/images/funnel/cards/winter.jpg',   ext: 'https://images.unsplash.com/photo-1418985991508-e47386d96a71?w=600&q=80&fit=crop&auto=format' },
-  world:    { local: '/images/funnel/cards/world.jpg',    ext: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80&fit=crop&auto=format' },
-  backpack: { local: '/images/funnel/cards/backpack.jpg', ext: 'https://images.unsplash.com/photo-1501554728187-ce583db33af7?w=600&q=80&fit=crop&auto=format' },
-  hotel:    { local: '/images/funnel/cards/hotel.jpg',    ext: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80&fit=crop&auto=format' },
-  resort:   { local: '/images/funnel/cards/resort.jpg',   ext: 'https://images.unsplash.com/photo-1540541338537-50c90e0e64a5?w=600&q=80&fit=crop&auto=format' },
+  beach:    '/images/funnel/cards/beach.jpg',
+  mountain: '/images/funnel/cards/mountain.jpg',
+  luxury:   '/images/funnel/cards/luxury.jpg',
+  city:     '/images/funnel/cards/city.jpg',
+  culture:  '/images/funnel/cards/culture.jpg',
+  family:   '/images/funnel/cards/family.jpg',
+  romance:  '/images/funnel/cards/romance.jpg',
+  party:    '/images/funnel/cards/party.jpg',
+  spring:   '/images/funnel/cards/spring.jpg',
+  autumn:   '/images/funnel/cards/autumn.jpg',
+  winter:   '/images/funnel/cards/winter.jpg',
+  world:    '/images/funnel/cards/world.jpg',
+  backpack: '/images/funnel/cards/backpack.jpg',
+  hotel:    '/images/funnel/cards/hotel.jpg',
+  resort:   '/images/funnel/cards/resort.jpg',
 };
+
+// ── Gradient shown when image file is absent ──────────────────────────────────
+const OVERLAY = 'linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.65) 100%)';
 
 // ── Option data ───────────────────────────────────────────────────────────────
 const MOODS = [
@@ -55,18 +58,18 @@ const SEASONS = [
 ];
 
 const BUDGETS = [
-  { id: 'budget',  label: 'Sparsam',      sub: 'ca. 100–500 €',      bg: '#14532D', img: IMG.backpack },
-  { id: 'mid',     label: 'Mittelklasse', sub: 'ca. 500–1.500 €',    bg: '#0369A1', img: IMG.hotel },
-  { id: 'comfort', label: 'Komfort',      sub: 'ca. 1.500–5.000 €',  bg: '#5B21B6', img: IMG.resort },
-  { id: 'luxury',  label: 'Luxus',        sub: 'ab 5.000 €',         bg: '#78350F', img: IMG.luxury },
-  { id: 'open',    label: 'Flexibel',     sub: 'Budget offen',       bg: '#0C4A6E', img: IMG.world },
+  { id: 'budget',  label: 'Sparsam',      sub: 'ca. 100–500 €',     bg: '#14532D', img: IMG.backpack },
+  { id: 'mid',     label: 'Mittelklasse', sub: 'ca. 500–1.500 €',   bg: '#0369A1', img: IMG.hotel },
+  { id: 'comfort', label: 'Komfort',      sub: 'ca. 1.500–5.000 €', bg: '#5B21B6', img: IMG.resort },
+  { id: 'luxury',  label: 'Luxus',        sub: 'ab 5.000 €',        bg: '#78350F', img: IMG.luxury },
+  { id: 'open',    label: 'Flexibel',     sub: 'Budget offen',      bg: '#0C4A6E', img: IMG.world },
 ];
 
 const DURATIONS = [
   { id: 'short_trip', label: 'Kurztrip',    sub: '2–4 Tage',      bg: '#1E293B', img: IMG.city },
   { id: 'one_week',   label: 'Eine Woche',  sub: '5–8 Tage',      bg: '#0369A1', img: IMG.beach },
   { id: 'two_weeks',  label: 'Zwei Wochen', sub: '9–15 Tage',     bg: '#064E3B', img: IMG.resort },
-  { id: 'long_trip',  label: 'Drei Wochen+',sub: '16+ Tage',      bg: '#312E81', img: IMG.world },
+  { id: 'long_trip',  label: 'Drei Wochen+',sub: '16+ Tage',      bg: '#312E81', img: IMG.mountain },
   { id: 'flexible',   label: 'Flexibel',    sub: 'Ich bin offen', bg: '#0C4A6E', img: IMG.world },
 ];
 
@@ -78,19 +81,20 @@ const STEPS = [
 ];
 
 // ── Visual card ───────────────────────────────────────────────────────────────
-// Fallback chain: local file → Unsplash ext URL → solid bg colour (never broken icon)
+// Uses CSS background-image so a missing local file shows only the gradient
+// (silent failure — never a broken icon). No external URLs.
 function VisualCard({ selected, disabled, onClick, img, bg, label, sublabel }) {
-  const [imgSrc, setImgSrc] = useState(img.local);
-  const [failed, setFailed] = useState(false);
+  // Dev-only: warn once per card if the local image is missing
+  useEffect(() => {
+    if (process.env.NODE_ENV !== 'development' || !img) return;
+    const probe = new window.Image();
+    probe.onerror = () => console.warn(`Missing funnel card image: ${img}`);
+    probe.src = img;
+  }, [img]);
 
-  const handleError = () => {
-    if (imgSrc === img.local && img.ext) {
-      setImgSrc(img.ext);
-    } else {
-      // Both sources failed — hide img so browser broken-icon never shows
-      setFailed(true);
-    }
-  };
+  const backgroundImage = img
+    ? `${OVERLAY}, url(${img})`
+    : OVERLAY;
 
   return (
     <button
@@ -102,10 +106,15 @@ function VisualCard({ selected, disabled, onClick, img, bg, label, sublabel }) {
         borderRadius: '16px',
         border: selected ? '2.5px solid #0EA5E9' : '2.5px solid transparent',
         padding: 0,
-        display: 'block',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
         width: '100%',
         cursor: disabled ? 'not-allowed' : 'pointer',
         backgroundColor: bg,
+        backgroundImage,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
         boxShadow: selected
           ? '0 0 0 3px rgba(14,165,233,0.50), 0 0 0 6px rgba(14,165,233,0.14), 0 10px 28px rgba(0,0,0,0.22)'
           : '0 3px 14px rgba(0,0,0,0.18)',
@@ -113,42 +122,8 @@ function VisualCard({ selected, disabled, onClick, img, bg, label, sublabel }) {
         fontFamily: 'inherit',
       }}
     >
-      {/* Travel photo — hidden when both local + ext fail to prevent broken icon */}
-      {!failed && (
-        <img
-          src={imgSrc}
-          alt=""
-          aria-hidden="true"
-          draggable="false"
-          onError={handleError}
-          style={{
-            position: 'absolute', inset: 0,
-            width: '100%', height: '100%',
-            objectFit: 'cover', objectPosition: 'center',
-            zIndex: 0,
-          }}
-        />
-      )}
-
-      {/* Gradient overlay — photo visible top, readable text at bottom */}
-      <div
-        style={{
-          position: 'absolute', inset: 0,
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.15) 45%, rgba(0,0,0,0.65) 100%)',
-          pointerEvents: 'none',
-          zIndex: 1,
-        }}
-      />
-
       {/* Label — centered at bottom, no emoji */}
-      <div
-        style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0,
-          padding: sublabel ? '10px 12px 13px' : '8px 12px 12px',
-          zIndex: 2,
-          textAlign: 'center',
-        }}
-      >
+      <div style={{ padding: sublabel ? '10px 12px 13px' : '8px 12px 12px', textAlign: 'center' }}>
         <div style={{
           fontSize: '13px', fontWeight: 700, color: '#fff',
           textShadow: '0 1px 6px rgba(0,0,0,0.9)',
@@ -174,7 +149,7 @@ function VisualCard({ selected, disabled, onClick, img, bg, label, sublabel }) {
           background: '#0EA5E9',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           boxShadow: '0 2px 10px rgba(14,165,233,0.65)',
-          fontSize: '12px', color: '#fff', fontWeight: 800, zIndex: 3,
+          fontSize: '12px', color: '#fff', fontWeight: 800,
         }}>
           ✓
         </div>
@@ -182,7 +157,7 @@ function VisualCard({ selected, disabled, onClick, img, bg, label, sublabel }) {
 
       {/* Disabled veil */}
       {disabled && (
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(255,255,255,0.42)', zIndex: 4 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(255,255,255,0.42)' }} />
       )}
     </button>
   );
