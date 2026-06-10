@@ -24,13 +24,14 @@ const IMAGES = [
 export default function TravelFunnelLoading() {
   const [msgIdx,    setMsgIdx]    = useState(0);
   const [imgIdx,    setImgIdx]    = useState(0);
-  const [progress,  setProgress]  = useState(8);
+  const [progress,  setProgress]  = useState(0);
   const [imgErrors, setImgErrors] = useState({});
 
   useEffect(() => {
     const mi = setInterval(() => setMsgIdx(i => (i + 1) % MESSAGES.length), 1800);
-    const ii = setInterval(() => setImgIdx(i => (i + 1) % IMAGES.length), 2200);
-    const pi = setInterval(() => setProgress(p => Math.min(p + Math.random() * 10, 92)), 450);
+    const ii = setInterval(() => setImgIdx(i => (i + 1) % IMAGES.length), 2400);
+    // Linear progress: reaches ~92% in ~18 s (1.28 per 250 ms)
+    const pi = setInterval(() => setProgress(p => Math.min(p + 1.28, 92)), 250);
     return () => { clearInterval(mi); clearInterval(ii); clearInterval(pi); };
   }, []);
 
@@ -68,7 +69,7 @@ export default function TravelFunnelLoading() {
                 objectFit: 'cover',
                 objectPosition: 'center',
                 opacity: i === imgIdx && !imgErrors[i] ? 1 : 0,
-                transition: 'opacity 0.9s ease',
+                transition: 'opacity 0.65s ease-in-out',
                 display: imgErrors[i] ? 'none' : 'block',
               }}
             />
@@ -96,7 +97,6 @@ export default function TravelFunnelLoading() {
           fontFamily: 'var(--font-heading)',
           fontSize: 'clamp(15px, 2.5vw, 19px)', fontWeight: 700,
           color: '#0F172A', margin: '0 0 5px', minHeight: '28px',
-          transition: 'opacity 0.3s ease',
         }}
       >
         {MESSAGES[msgIdx]}
@@ -105,7 +105,7 @@ export default function TravelFunnelLoading() {
         Das dauert nur einen Moment.
       </p>
 
-      {/* Progress bar */}
+      {/* Linear progress bar */}
       <div
         style={{
           width: '100%', maxWidth: '280px', margin: '0 auto',
@@ -117,7 +117,7 @@ export default function TravelFunnelLoading() {
             height: '100%', borderRadius: '3px',
             width: `${progress}%`,
             background: 'linear-gradient(90deg, #0EA5E9 0%, #06B6D4 100%)',
-            transition: 'width 0.45s ease',
+            transition: 'width 0.25s linear',
           }}
         />
       </div>

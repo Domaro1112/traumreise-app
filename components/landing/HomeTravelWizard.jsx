@@ -9,38 +9,57 @@ import TravelFunnelLoading from '@/components/funnel/TravelFunnelLoading';
 import TravelResultCard    from '@/components/funnel/TravelResultCard';
 import TravelFunnelOptin   from '@/components/funnel/TravelFunnelOptin';
 
+// ── Shared image library ──────────────────────────────────────────────────────
+// Add up to 15 images to public/images/funnel/cards/ to replace gradients.
+// Multiple moods/seasons/budgets reuse the same file — no need for 22 separate images.
+const IMG = {
+  beach:    '/images/funnel/cards/beach.jpg',
+  mountain: '/images/funnel/cards/mountain.jpg',
+  luxury:   '/images/funnel/cards/luxury.jpg',
+  city:     '/images/funnel/cards/city.jpg',
+  culture:  '/images/funnel/cards/culture.jpg',
+  family:   '/images/funnel/cards/family.jpg',
+  romance:  '/images/funnel/cards/romance.jpg',
+  party:    '/images/funnel/cards/party.jpg',
+  spring:   '/images/funnel/cards/spring.jpg',
+  autumn:   '/images/funnel/cards/autumn.jpg',
+  winter:   '/images/funnel/cards/winter.jpg',
+  world:    '/images/funnel/cards/world.jpg',
+  backpack: '/images/funnel/cards/backpack.jpg',
+  hotel:    '/images/funnel/cards/hotel.jpg',
+  resort:   '/images/funnel/cards/resort.jpg',
+};
+
 // ── Option data ───────────────────────────────────────────────────────────────
-// Images: add photos to public/images/moods/{id}.jpg and public/images/seasons/{id}.jpg
-// Gradient bg = fallback colour shown when image is missing
 const MOODS = [
-  { id: 'relax',     label: 'Entspannung', emoji: '🌊', bg: '#0369A1' },
-  { id: 'adventure', label: 'Abenteuer',   emoji: '🏔️', bg: '#166534' },
-  { id: 'luxury',    label: 'Luxus',       emoji: '✨', bg: '#92400E' },
-  { id: 'family',    label: 'Familie',     emoji: '👨‍👩‍👧', bg: '#9A3412' },
-  { id: 'romance',   label: 'Romantik',    emoji: '💕', bg: '#9D174D' },
-  { id: 'culture',   label: 'Kultur',      emoji: '🏛️', bg: '#7C2D12' },
-  { id: 'nature',    label: 'Natur',       emoji: '🌿', bg: '#064E3B' },
-  { id: 'party',     label: 'Party',       emoji: '🎉', bg: '#4C1D95' },
-  { id: 'beach',     label: 'Strand',      emoji: '🏖️', bg: '#0C4A6E' },
-  { id: 'wellness',  label: 'Wellness',    emoji: '🧘', bg: '#1E3A5F' },
-  { id: 'city',      label: 'Städtetrip',  emoji: '🏙️', bg: '#1E293B' },
-  { id: 'active',    label: 'Aktivurlaub', emoji: '🚴', bg: '#7F1D1D' },
+  { id: 'relax',     label: 'Entspannung', emoji: '🌊', bg: '#0369A1', img: IMG.beach },
+  { id: 'adventure', label: 'Abenteuer',   emoji: '🏔️', bg: '#166534', img: IMG.mountain },
+  { id: 'luxury',    label: 'Luxus',       emoji: '✨', bg: '#92400E', img: IMG.luxury },
+  { id: 'family',    label: 'Familie',     emoji: '👨‍👩‍👧', bg: '#9A3412', img: IMG.family },
+  { id: 'romance',   label: 'Romantik',    emoji: '💕', bg: '#9D174D', img: IMG.romance },
+  { id: 'culture',   label: 'Kultur',      emoji: '🏛️', bg: '#7C2D12', img: IMG.culture },
+  { id: 'nature',    label: 'Natur',       emoji: '🌿', bg: '#064E3B', img: IMG.mountain },
+  { id: 'party',     label: 'Party',       emoji: '🎉', bg: '#4C1D95', img: IMG.party },
+  { id: 'beach',     label: 'Strand',      emoji: '🏖️', bg: '#0C4A6E', img: IMG.beach },
+  { id: 'wellness',  label: 'Wellness',    emoji: '🧘', bg: '#1E3A5F', img: IMG.luxury },
+  { id: 'city',      label: 'Städtetrip',  emoji: '🏙️', bg: '#1E293B', img: IMG.city },
+  { id: 'active',    label: 'Aktivurlaub', emoji: '🚴', bg: '#7F1D1D', img: IMG.mountain },
 ];
 
 const SEASONS = [
-  { id: 'spring', label: 'Frühling', emoji: '🌸', bg: '#14532D' },
-  { id: 'summer', label: 'Sommer',   emoji: '☀️', bg: '#0C4A6E' },
-  { id: 'autumn', label: 'Herbst',   emoji: '🍂', bg: '#78350F' },
-  { id: 'winter', label: 'Winter',   emoji: '❄️', bg: '#1E3A5F' },
-  { id: 'flex',   label: 'Flexibel', emoji: '🗺️', bg: '#312E81' },
+  { id: 'spring', label: 'Frühling', emoji: '🌸', bg: '#14532D', img: IMG.spring },
+  { id: 'summer', label: 'Sommer',   emoji: '☀️', bg: '#0C4A6E', img: IMG.beach },
+  { id: 'autumn', label: 'Herbst',   emoji: '🍂', bg: '#78350F', img: IMG.autumn },
+  { id: 'winter', label: 'Winter',   emoji: '❄️', bg: '#1E3A5F', img: IMG.winter },
+  { id: 'flex',   label: 'Flexibel', emoji: '🗺️', bg: '#312E81', img: IMG.world },
 ];
 
 const BUDGETS = [
-  { id: 'budget',  label: 'Sparsam',      sub: 'ca. 100–500 €',      emoji: '🎒', bg: '#14532D' },
-  { id: 'mid',     label: 'Mittelklasse', sub: 'ca. 500–1.500 €',    emoji: '🧳', bg: '#0369A1' },
-  { id: 'comfort', label: 'Komfort',      sub: 'ca. 1.500–5.000 €',  emoji: '⭐', bg: '#5B21B6' },
-  { id: 'luxury',  label: 'Luxus',        sub: 'ab 5.000 €',         emoji: '💎', bg: '#78350F' },
-  { id: 'open',    label: 'Flexibel',     sub: 'Budget offen',       emoji: '🗺️', bg: '#0C4A6E' },
+  { id: 'budget',  label: 'Sparsam',      sub: 'ca. 100–500 €',      emoji: '🎒', bg: '#14532D', img: IMG.backpack },
+  { id: 'mid',     label: 'Mittelklasse', sub: 'ca. 500–1.500 €',    emoji: '🧳', bg: '#0369A1', img: IMG.hotel },
+  { id: 'comfort', label: 'Komfort',      sub: 'ca. 1.500–5.000 €',  emoji: '⭐', bg: '#5B21B6', img: IMG.resort },
+  { id: 'luxury',  label: 'Luxus',        sub: 'ab 5.000 €',         emoji: '💎', bg: '#78350F', img: IMG.luxury },
+  { id: 'open',    label: 'Flexibel',     sub: 'Budget offen',       emoji: '🗺️', bg: '#0C4A6E', img: IMG.world },
 ];
 
 const STEPS = [
@@ -49,12 +68,10 @@ const STEPS = [
   { num: 3, label: 'Budget' },
 ];
 
-// ── Visual card (mood / season / budget) ──────────────────────────────────────
-function VisualCard({
-  selected, disabled, onClick,
-  imageSrc, bg, emoji, label, sublabel,
-  height = 'clamp(130px, 22vw, 165px)',
-}) {
+// ── Visual card ───────────────────────────────────────────────────────────────
+// Height is controlled by .funnel-visual-card CSS class (140/160/180px responsive).
+// Gradient bg is the fallback when the image file doesn't exist yet.
+function VisualCard({ selected, disabled, onClick, imageSrc, bg, emoji, label, sublabel }) {
   return (
     <button
       onClick={disabled ? undefined : onClick}
@@ -67,20 +84,19 @@ function VisualCard({
         padding: 0,
         display: 'block',
         width: '100%',
-        height,
         cursor: disabled ? 'not-allowed' : 'pointer',
         backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.62) 100%), url('${imageSrc}')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundColor: bg,
         boxShadow: selected
-          ? '0 0 0 3px rgba(14,165,233,0.28), 0 10px 28px rgba(0,0,0,0.22)'
+          ? '0 0 0 3px rgba(14,165,233,0.50), 0 0 0 6px rgba(14,165,233,0.14), 0 10px 28px rgba(0,0,0,0.22)'
           : '0 3px 14px rgba(0,0,0,0.18)',
         transition: 'border-color 0.18s ease, box-shadow 0.18s ease',
         fontFamily: 'inherit',
       }}
     >
-      {/* Decorative emoji — centered, acts as placeholder illustration */}
+      {/* Decorative emoji — centered */}
       <div
         style={{
           position: 'absolute', inset: 0,
@@ -119,7 +135,7 @@ function VisualCard({
             width: '22px', height: '22px', borderRadius: '50%',
             background: '#0EA5E9',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: '0 2px 10px rgba(14,165,233,0.55)',
+            boxShadow: '0 2px 10px rgba(14,165,233,0.65)',
             fontSize: '12px', color: '#fff', fontWeight: 800,
           }}
         >
@@ -305,9 +321,9 @@ export default function HomeTravelWizard() {
             </div>
           )}
 
-          {/* ── RESULTS ─────────────────────────────────────────────────── */}
+          {/* ── RESULTS — fade-in on mount ───────────────────────────────── */}
           {phase === 'results' && results && (
-            <div>
+            <div className="funnel-results-fade">
               <div style={{ textAlign: 'center', marginBottom: '28px' }}>
                 <div
                   style={{
@@ -439,7 +455,7 @@ export default function HomeTravelWizard() {
                           selected={sel}
                           disabled={maxed}
                           onClick={() => toggleMood(m.id)}
-                          imageSrc={`/images/moods/${m.id}.jpg`}
+                          imageSrc={m.img}
                           bg={m.bg}
                           emoji={m.emoji}
                           label={m.label}
@@ -474,7 +490,7 @@ export default function HomeTravelWizard() {
                         key={s.id}
                         selected={season === s.id}
                         onClick={() => handleSelectSeason(s.id)}
-                        imageSrc={`/images/seasons/${s.id}.jpg`}
+                        imageSrc={s.img}
                         bg={s.bg}
                         emoji={s.emoji}
                         label={s.label}
@@ -508,12 +524,11 @@ export default function HomeTravelWizard() {
                         key={b.id}
                         selected={budget === b.id}
                         onClick={() => setBudget(b.id)}
-                        imageSrc={`/images/budget/${b.id}.jpg`}
+                        imageSrc={b.img}
                         bg={b.bg}
                         emoji={b.emoji}
                         label={b.label}
                         sublabel={b.sub}
-                        height="clamp(120px, 20vw, 155px)"
                       />
                     ))}
                   </div>

@@ -721,17 +721,29 @@ details > summary::marker { display: none; }
 /* Visual card hover / tap states */
 .funnel-visual-card {
   -webkit-tap-highlight-color: transparent;
+  height: 140px;
 }
+@media (min-width: 640px) { .funnel-visual-card { height: 160px; } }
+@media (min-width: 860px) { .funnel-visual-card { height: 180px; } }
 .funnel-visual-card:hover:not(:disabled) {
-  transform: translateY(-4px) scale(1.01) !important;
-  box-shadow: 0 14px 40px rgba(0,0,0,0.28) !important;
+  transform: translateY(-3px) scale(1.03) !important;
+  box-shadow: 0 16px 44px rgba(0,0,0,0.30) !important;
 }
 .funnel-visual-card:active:not(:disabled) {
-  transform: translateY(-1px) scale(0.99) !important;
+  transform: translateY(-1px) scale(0.98) !important;
 }
 
 /* Loading image atmospheric fade */
 .funnel-loading-img {
   -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 45%, transparent 100%);
   mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 45%, transparent 100%);
+}
+
+/* Results fade-in */
+@keyframes funnelFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.funnel-results-fade {
+  animation: funnelFadeIn 0.55s ease-out forwards;
 }
