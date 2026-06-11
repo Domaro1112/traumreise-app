@@ -1,15 +1,32 @@
 import { createServerClient } from '@/lib/supabase/server';
 
-export async function createSession({ moodSelection, userAgent, referrer }) {
+export async function createSession({ moodSelection, season, budget, duration, userAgent, referrer }) {
+  const supabase = createServerClient();
+  const patch = {
+    mood_selection: moodSelection ?? [],
+    user_agent:     userAgent ?? null,
+    referrer:       referrer  ?? null,
+  };
+  if (season)   patch.season   = season;
+  if (budget)   patch.budget   = budget;
+  if (duration) patch.duration = duration;
+
+  const { data, error } = await supabase
+    .from('travel_funnel_sessions')
+    .insert(patch)
+    .select('id')
+    .single();
+  if (error) throw new Error(error.message);
+  return data;
+}
+
+// Returns only the fields needed to generate or display results — no lead data.
+export async function getSession(sessionId) {
   const supabase = createServerClient();
   const { data, error } = await supabase
     .from('travel_funnel_sessions')
-    .insert({
-      mood_selection: moodSelection ?? [],
-      user_agent: userAgent ?? null,
-      referrer: referrer ?? null,
-    })
-    .select('id')
+    .select('id, mood_selection, season, budget, duration, generated_destinations')
+    .eq('id', sessionId)
     .single();
   if (error) throw new Error(error.message);
   return data;
@@ -41,13 +58,13 @@ export async function createLead({
     .insert({
       email,
       consent,
-      consent_text: consentText ?? null,
-      session_id: sessionId ?? null,
+      consent_text:          consentText ?? null,
+      session_id:            sessionId ?? null,
       selected_destinations: selectedDestinations ?? [],
-      mood_selection: moodSelection ?? [],
-      season: season ?? null,
-      budget: budget ?? null,
-      duration: duration ?? null,
+      mood_selection:        moodSelection ?? [],
+      season:                season   ?? null,
+      budget:                budget   ?? null,
+      duration:              duration ?? null,
     })
     .select('id')
     .single();
@@ -64,11 +81,11 @@ export async function trackAffiliateClick({
     .from('affiliate_clicks')
     .insert({
       session_id:       sessionId ?? null,
-      lead_id:          leadId ?? null,
+      lead_id:          leadId    ?? null,
       destination_name: destinationName,
       provider,
       affiliate_url:    affiliateUrl,
-      referrer:         referrer ?? null,
+      referrer:         referrer  ?? null,
     });
   if (error) console.error('[affiliate_clicks] tracking error:', error.message);
 }
