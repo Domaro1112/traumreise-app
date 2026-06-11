@@ -202,7 +202,7 @@ export default function TravelResultCard({ destination, index, sessionId, onAffi
             marginBottom: '10px',
           }}
         >
-          Passende Angebote suchen bei:
+          Passende Angebote anzeigen:
         </p>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '7px' }}>

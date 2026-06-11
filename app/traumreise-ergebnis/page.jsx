@@ -12,7 +12,8 @@ export default function Page() {
   return (
     <>
       <Header />
-      <main>
+      {/* padding-top clears the fixed header (minHeight 72px + 16px breathing room) */}
+      <main style={{ paddingTop: '88px', minHeight: '100vh' }}>
         <Suspense>
           <TravelResultsPage />
         </Suspense>
