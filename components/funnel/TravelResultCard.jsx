@@ -290,7 +290,8 @@ export default function TravelResultCard({ destination, index, sessionId }) {
         </div>
 
         <p style={{ fontSize: '10px', color: '#CBD5E1', marginTop: '12px', lineHeight: 1.5 }}>
-          Einige Links können Affiliate-Links sein. Für dich entstehen keine Mehrkosten.
+          Einige Links sind Affiliate-Links. Wenn du darüber buchst, erhalten wir möglicherweise eine Provision – für dich entstehen keine zusätzlichen Kosten.{' '}
+          <a href="/affiliate-hinweis" style={{ color: '#CBD5E1', textDecoration: 'underline' }}>Mehr erfahren</a>
         </p>
       </div>
 

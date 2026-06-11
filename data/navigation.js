@@ -17,6 +17,7 @@ export const footerNav = {
     { label: 'Datenschutz', href: '/datenschutz' },
     { label: 'Impressum', href: '/impressum' },
     { label: 'AGB', href: '/agb' },
+    { label: 'Affiliate-Hinweis', href: '/affiliate-hinweis' },
     { label: 'Cookie-Einstellungen', href: '#cookies' },
   ],
   unternehmen: [

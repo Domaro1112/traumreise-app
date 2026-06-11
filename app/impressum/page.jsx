@@ -37,7 +37,7 @@ export default function Impressum() {
             >
               {[
                 { label: 'Angaben gemäß § 5 TMG', value: 'Traumreise\n[Vorname Nachname]\n[Straße Hausnummer]\n[PLZ Stadt]' },
-                { label: 'Kontakt', value: 'E-Mail: kontakt@traumreise.de\nTelefon: +49 (0) XXX XXXXXXXX' },
+                { label: 'Kontakt', value: 'E-Mail: kontakt@reisemonkey.de\nTelefon: +49 (0) XXX XXXXXXXX' },
                 { label: 'Umsatzsteuer-ID', value: 'USt-IdNr.: DE XXXXXXXXX' },
                 { label: 'Verantwortlich für den Inhalt', value: '[Vorname Nachname]\n[Adresse wie oben]' },
                 { label: 'Streitschlichtung', value: 'Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: https://ec.europa.eu/consumers/odr. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.' },

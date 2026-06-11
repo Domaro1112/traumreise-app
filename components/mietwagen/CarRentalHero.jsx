@@ -218,8 +218,9 @@ export default function CarRentalHero() {
             Jetzt Mietwagen finden
           </button>
 
-          <p style={{ textAlign: 'center', fontSize: '11px', color: '#94A3B8', marginTop: '12px', marginBottom: 0 }}>
-            Weiterleitung zu CHECK24 Mietwagen · Für dich kostenlos
+          <p style={{ textAlign: 'center', fontSize: '11px', color: '#94A3B8', marginTop: '12px', marginBottom: 0, lineHeight: 1.6 }}>
+            Hinweis: Bei einer Weiterleitung zu CHECK24 kann Reisemonkey eine Provision erhalten. Für dich entstehen keine zusätzlichen Kosten.{' '}
+            <a href="/affiliate-hinweis" style={{ color: '#94A3B8', textDecoration: 'underline' }}>Mehr erfahren</a>
           </p>
         </form>
 
