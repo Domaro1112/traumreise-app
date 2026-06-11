@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { MapPin, Clock, Wallet, CheckCircle2, ExternalLink, Loader2, Car } from 'lucide-react';
+import { MapPin, Clock, Wallet, CheckCircle2, ExternalLink, Loader2, Car, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 import { getProviderDisplayList } from '@/lib/affiliate-config';
 import { isCarRentalEligible } from '@/lib/car-rental-config';
+import { getDestinationSlugByName } from '@/data/destinations-seo';
 
 const CARD_THEMES = [
   {
@@ -39,6 +41,7 @@ export default function TravelResultCard({ destination, index, sessionId }) {
   const [carRentalLoading, setCarRentalLoading] = useState(false);
 
   const showCarRental = !!(destination.carRentalRecommended || isCarRentalEligible(destination.name));
+  const seoSlug = getDestinationSlugByName(destination.name);
 
   const handleChipClick = async (providerId) => {
     if (loadingProvider) return;
@@ -201,6 +204,25 @@ export default function TravelResultCard({ destination, index, sessionId }) {
             {destination.fitReason}
           </p>
         </div>
+
+        {seoSlug && (
+          <Link
+            href={`/reiseziele/${seoSlug}`}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '5px',
+              fontSize: '12px',
+              fontWeight: 700,
+              color: theme.accentText,
+              textDecoration: 'none',
+              padding: '5px 0',
+            }}
+          >
+            Mehr über {destination.name} erfahren
+            <ArrowRight size={11} strokeWidth={2.5} />
+          </Link>
+        )}
 
         <p style={{ fontSize: '14px', color: '#475569', lineHeight: 1.85, margin: 0 }}>
           {destination.story}

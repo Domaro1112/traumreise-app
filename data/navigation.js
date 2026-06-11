@@ -1,14 +1,14 @@
 export const mainNav = [
   { label: "Dein Weg zur Traumreise", href: '/so-funktionierts' },
-  { label: 'Reise Inspiration', href: '/inspiration' },
-  { label: 'Über uns', href: '/ueber-uns' },
+  { label: 'Reiseziele', href: '/reiseziele' },
   { label: 'Reiseblog', href: '/reiseblog' },
+  { label: 'Über uns', href: '/ueber-uns' },
 ];
 
 export const footerNav = {
   entdecken: [
     { label: "Dein Weg zur Traumreise", href: '/so-funktionierts' },
-    { label: 'Reiseziele', href: '/inspiration' },
+    { label: 'Reiseziele', href: '/reiseziele' },
     { label: 'Reiseblog', href: '/reiseblog' },
     { label: 'Reise Inspiration', href: '/inspiration' },
     { label: 'Mietwagen vergleichen', href: '/mietwagen' },
