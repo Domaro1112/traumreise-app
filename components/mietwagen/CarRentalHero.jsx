@@ -12,10 +12,10 @@ const DRIVER_AGE_OPTIONS = [
 ];
 
 const TRUST_BADGES = [
-  { Icon: CheckCircle, text: 'Über 500 Anbieter' },
-  { Icon: Tag,         text: 'Bestpreis-Garantie' },
-  { Icon: Shield,      text: 'Keine versteckten Kosten' },
-  { Icon: Car,         text: 'Kostenlose Stornierung' },
+  { Icon: CheckCircle, text: 'Über 500 Anbieter weltweit' },
+  { Icon: Tag,         text: 'Kostenloser Vergleich' },
+  { Icon: Shield,      text: 'Keine Buchungsgebühren' },
+  { Icon: Car,         text: 'Powered by CHECK24' },
 ];
 
 const inputBase = {
@@ -97,7 +97,7 @@ export default function CarRentalHero() {
         </h1>
 
         <p style={{ fontSize: 'clamp(15px, 1.5vw, 18px)', color: 'rgba(255,255,255,0.75)', margin: '0 0 36px', maxWidth: '540px', lineHeight: 1.65 }}>
-          Vergleiche hunderte Mietwagen-Anbieter weltweit. Finde das perfekte Fahrzeug für deine Reise – schnell, einfach und ohne versteckte Kosten.
+          Mietwagen-Angebote für deinen Urlaub suchen und vergleichen. Gib deinen Abholort und Zeitraum an und sieh dir passende Fahrzeuge bei CHECK24 an.
         </p>
 
         {/* Search card */}

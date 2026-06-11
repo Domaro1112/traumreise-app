@@ -75,15 +75,17 @@ Wichtige Regeln:
 - fitReason: soll auf die Reisedauer eingehen (z.B. "Perfekt für einen Kurztrip" oder "Ideal für zwei Wochen Entspannung")
 - budgetHint: kurze Einschätzung ohne exakte Zahlen (z.B. "Für das mittlere Budget gut geeignet")
 - affiliateSearchIntent: englischer Suchbegriff für Buchungsportale
+- carRentalRecommended: true wenn ein Mietwagen vor Ort wirklich sinnvoll ist – typisch bei Inseln (Mallorca, Kreta, Teneriffa, Sardinien, Madeira, Island, Zypern, Fuerteventura), Küstenregionen (Algarve, Andalusien, Amalfiküste), Nationalparks, ländlichen Gebieten und weitläufigen Ländern (Florida, Costa Rica, Südafrika, Schottland, Norwegen, Australien). false bei reinen Städtereisen (New York, Paris, Tokyo, Amsterdam, London, Singapur, Venedig, Barcelona Städtetrip).
+- carRentalReason: ein kurzer inspirierender Satz, warum ein Mietwagen empfohlen wird (nur wenn carRentalRecommended true, sonst exakt leerer String "").
 
 Antworte NUR als valides JSON-Objekt (kein Markdown, keine Erklärungen davor oder danach):
-{"destinations":[{"name":"","country":"","region":"","fitReason":"","story":"","highlights":["","","",""],"bestTravelTime":"","budgetHint":"","affiliateSearchIntent":""}]}`;
+{"destinations":[{"name":"","country":"","region":"","fitReason":"","story":"","highlights":["","","",""],"bestTravelTime":"","budgetHint":"","affiliateSearchIntent":"","carRentalRecommended":false,"carRentalReason":""}]}`;
 
   try {
     const client  = new Anthropic({ apiKey });
     const message = await client.messages.create({
       model:      'claude-sonnet-4-6',
-      max_tokens: 2000,
+      max_tokens: 2500,
       messages:   [{ role: 'user', content: prompt }],
     });
 

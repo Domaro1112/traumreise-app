@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { MapPin, Clock, Wallet, CheckCircle2, ExternalLink, Loader2 } from 'lucide-react';
+import { MapPin, Clock, Wallet, CheckCircle2, ExternalLink, Loader2, Car } from 'lucide-react';
 import { getProviderDisplayList } from '@/lib/affiliate-config';
+import { isCarRentalEligible } from '@/lib/car-rental-config';
 
 const CARD_THEMES = [
   {
@@ -22,17 +23,22 @@ const CARD_THEMES = [
 // Provider display data only — no URLs on the client
 const PROVIDERS = getProviderDisplayList();
 
+const CAR_RENTAL_FALLBACK_REASON = 'Mit einem Mietwagen kannst du die Region flexibler erkunden und erreichst auch ruhigere Orte abseits der typischen Touristenrouten.';
+
 function track(event, params = {}) {
   try {
     if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
       window.gtag('event', event, params);
     }
-  } catch {}
+  } catch { /* analytics failure must never break the UI */ }
 }
 
 export default function TravelResultCard({ destination, index, sessionId }) {
   const theme = CARD_THEMES[index % 3];
-  const [loadingProvider, setLoadingProvider] = useState(null);
+  const [loadingProvider,  setLoadingProvider]  = useState(null);
+  const [carRentalLoading, setCarRentalLoading] = useState(false);
+
+  const showCarRental = !!(destination.carRentalRecommended || isCarRentalEligible(destination.name));
 
   const handleChipClick = async (providerId) => {
     if (loadingProvider) return;
@@ -100,6 +106,50 @@ export default function TravelResultCard({ destination, index, sessionId }) {
       if (win) win.close();
     } finally {
       setLoadingProvider(null);
+    }
+  };
+
+  const handleCarRentalClick = async () => {
+    if (carRentalLoading) return;
+    setCarRentalLoading(true);
+
+    const win = window.open('', '_blank');
+    if (win) { try { win.opener = null; } catch (_) {} }
+
+    track('car_rental_click', {
+      destination: destination.name,
+      country:     destination.country,
+      session_id:  sessionId,
+    });
+
+    try {
+      const res = await fetch('/api/travel-finder/affiliate-click', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({
+          provider:    'check24_car_rental',
+          destination: {
+            name:    destination.name,
+            country: destination.country,
+            region:  destination.region,
+          },
+          sessionId: sessionId ?? undefined,
+        }),
+      });
+
+      if (!res.ok) { if (win) win.close(); return; }
+
+      const data = await res.json();
+      if (data.redirectUrl && win) {
+        win.location.href = data.redirectUrl;
+      } else {
+        if (win) win.close();
+      }
+    } catch (err) {
+      console.error('[car-rental] fetch error', err);
+      if (win) win.close();
+    } finally {
+      setCarRentalLoading(false);
     }
   };
 
@@ -192,7 +242,7 @@ export default function TravelResultCard({ destination, index, sessionId }) {
       </div>
 
       {/* ── Provider CTAs ── */}
-      <div style={{ padding: '16px 20px 22px', borderTop: '1px solid #F1F5F9' }}>
+      <div style={{ padding: '16px 20px 20px', borderTop: '1px solid #F1F5F9' }}>
         <p style={{ fontSize: '10px', fontWeight: 700, color: '#94A3B8', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: '10px' }}>
           Passende Angebote suchen bei:
         </p>
@@ -243,6 +293,72 @@ export default function TravelResultCard({ destination, index, sessionId }) {
           Einige Links können Affiliate-Links sein. Für dich entstehen keine Mehrkosten.
         </p>
       </div>
+
+      {/* ── Car rental recommendation ── */}
+      {showCarRental && (
+        <div style={{ padding: '0 16px 16px' }}>
+          <div style={{
+            background: 'linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%)',
+            borderRadius: '12px',
+            border: '1px solid #BAE6FD',
+            padding: '14px 15px',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '12px' }}>
+              <div style={{
+                width: '32px',
+                height: '32px',
+                borderRadius: '8px',
+                background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+                boxShadow: '0 3px 8px rgba(14,165,233,0.28)',
+              }}>
+                <Car size={16} strokeWidth={2} color="#FFFFFF" />
+              </div>
+              <div>
+                <p style={{ margin: '0 0 3px', fontSize: '13px', fontWeight: 700, color: '#0F172A', fontFamily: 'var(--font-heading)' }}>
+                  Mietwagen empfohlen
+                </p>
+                <p style={{ margin: 0, fontSize: '12px', color: '#475569', lineHeight: 1.6 }}>
+                  {destination.carRentalReason || CAR_RENTAL_FALLBACK_REASON}
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={handleCarRentalClick}
+              disabled={carRentalLoading}
+              style={{
+                width: '100%',
+                padding: '9px 14px',
+                borderRadius: '9px',
+                border: 'none',
+                background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
+                color: '#FFFFFF',
+                fontSize: '12px',
+                fontWeight: 700,
+                fontFamily: 'inherit',
+                cursor: carRentalLoading ? 'wait' : 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
+                boxShadow: '0 3px 10px rgba(14,165,233,0.28)',
+                transition: 'filter 0.15s ease',
+              }}
+              onMouseEnter={e => { if (!carRentalLoading) e.currentTarget.style.filter = 'brightness(1.08)'; }}
+              onMouseLeave={e => { e.currentTarget.style.filter = 'none'; }}
+            >
+              {carRentalLoading
+                ? <Loader2 size={12} strokeWidth={2} style={{ animation: 'spin 0.8s linear infinite' }} />
+                : <Car size={12} strokeWidth={2} />
+              }
+              Mietwagen für {destination.name} vergleichen
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

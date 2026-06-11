@@ -2,16 +2,18 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CarRentalHero from '@/components/mietwagen/CarRentalHero';
 import CarRentalDestinations from '@/components/mietwagen/CarRentalDestinations';
+import CarRentalProsCons from '@/components/mietwagen/CarRentalProsCons';
 import CarRentalTips from '@/components/mietwagen/CarRentalTips';
+import CarRentalBookingHints from '@/components/mietwagen/CarRentalBookingHints';
 import CarRentalFAQ from '@/components/mietwagen/CarRentalFAQ';
 import { CAR_RENTAL_FAQ } from '@/lib/car-rental-config';
 
 export const metadata = {
-  title: 'Mietwagen vergleichen – günstige Angebote für deinen Urlaub | Reisemonkey',
-  description: 'Vergleiche Mietwagen weltweit und finde das beste Angebot für deinen Urlaub. Mallorca, Kreta, USA und mehr – jetzt günstig buchen über CHECK24.',
+  title: 'Mietwagen vergleichen – Angebote für deinen Urlaub | Reisemonkey',
+  description: 'Mietwagen für deinen Urlaub finden und vergleichen. Mallorca, Kreta, Island, Florida und mehr – mit Tipps zu Versicherung, Tankregelung und Buchung.',
   openGraph: {
-    title: 'Mietwagen vergleichen – günstige Angebote | Reisemonkey',
-    description: 'Finde den besten Mietwagen für deinen nächsten Urlaub – einfach vergleichen und sofort buchen.',
+    title: 'Mietwagen vergleichen – Angebote für deinen Urlaub | Reisemonkey',
+    description: 'Mietwagen für deinen nächsten Urlaub finden – mit Tipps, Hinweisen und den beliebtesten Reisezielen.',
     type: 'website',
   },
 };
@@ -30,8 +32,8 @@ export default function MietwagenPage() {
   const webPageJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: 'Mietwagen vergleichen – günstige Angebote für deinen Urlaub | Reisemonkey',
-    description: 'Vergleiche Mietwagen für deinen Urlaub – Mallorca, Kreta, USA und viele weitere Ziele.',
+    name: 'Mietwagen vergleichen – Angebote für deinen Urlaub | Reisemonkey',
+    description: 'Mietwagen für deinen Urlaub finden – mit Tipps, Hinweisen und den beliebtesten Reisezielen.',
     url: 'https://www.reisemonkey.de/mietwagen',
     breadcrumb: {
       '@type': 'BreadcrumbList',
@@ -52,7 +54,9 @@ export default function MietwagenPage() {
       <main style={{ minHeight: '100vh', paddingTop: '72px', background: '#FFFFFF' }}>
         <CarRentalHero />
         <CarRentalDestinations />
+        <CarRentalProsCons />
         <CarRentalTips />
+        <CarRentalBookingHints />
         <CarRentalFAQ />
       </main>
       <Footer />
