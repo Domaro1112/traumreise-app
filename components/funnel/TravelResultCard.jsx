@@ -1,7 +1,7 @@
 'use client';
 
-import { MapPin, Clock, Wallet, CheckCircle2, ExternalLink, Plane, Hotel } from 'lucide-react';
-import { getPrimaryProviders } from '@/lib/affiliate-config';
+import { MapPin, Clock, Wallet, CheckCircle2, ExternalLink } from 'lucide-react';
+import { getAllProviders } from '@/lib/affiliate-config';
 
 const CARD_THEMES = [
   {
@@ -29,7 +29,7 @@ const CARD_THEMES = [
 
 export default function TravelResultCard({ destination, index, sessionId, onAffiliateClick }) {
   const theme     = CARD_THEMES[index % 3];
-  const providers = getPrimaryProviders(
+  const providers = getAllProviders(
     destination.affiliateSearchIntent || destination.name,
     destination.country
   );
@@ -68,25 +68,18 @@ export default function TravelResultCard({ destination, index, sessionId, onAffi
           overflow: 'hidden',
         }}
       >
-        {/* Decorative circle accent */}
         <div
           style={{
-            position: 'absolute',
-            top: '-40px', right: '-40px',
-            width: '180px', height: '180px',
-            borderRadius: '50%',
-            background: 'rgba(255,255,255,0.08)',
-            pointerEvents: 'none',
+            position: 'absolute', top: '-40px', right: '-40px',
+            width: '180px', height: '180px', borderRadius: '50%',
+            background: 'rgba(255,255,255,0.08)', pointerEvents: 'none',
           }}
         />
         <div
           style={{
-            position: 'absolute',
-            bottom: '-20px', left: '-20px',
-            width: '100px', height: '100px',
-            borderRadius: '50%',
-            background: 'rgba(255,255,255,0.06)',
-            pointerEvents: 'none',
+            position: 'absolute', bottom: '-20px', left: '-20px',
+            width: '100px', height: '100px', borderRadius: '50%',
+            background: 'rgba(255,255,255,0.06)', pointerEvents: 'none',
           }}
         />
 
@@ -97,13 +90,10 @@ export default function TravelResultCard({ destination, index, sessionId, onAffi
             backdropFilter: 'blur(4px)',
             borderRadius: '8px',
             padding: '3px 10px',
-            fontSize: '10px',
-            fontWeight: 700,
+            fontSize: '10px', fontWeight: 700,
             color: 'rgba(255,255,255,0.9)',
-            letterSpacing: '1.5px',
-            textTransform: 'uppercase',
-            marginBottom: '12px',
-            alignSelf: 'flex-start',
+            letterSpacing: '1.5px', textTransform: 'uppercase',
+            marginBottom: '12px', alignSelf: 'flex-start',
           }}
         >
           Vorschlag {index + 1}
@@ -112,10 +102,8 @@ export default function TravelResultCard({ destination, index, sessionId, onAffi
           style={{
             fontFamily: 'var(--font-heading)',
             fontSize: 'clamp(22px, 4vw, 30px)',
-            fontWeight: 800,
-            color: '#FFFFFF',
-            margin: '0 0 8px',
-            letterSpacing: '-0.02em',
+            fontWeight: 800, color: '#FFFFFF',
+            margin: '0 0 8px', letterSpacing: '-0.02em',
             textShadow: '0 2px 12px rgba(0,0,0,0.2)',
           }}
         >
@@ -136,10 +124,8 @@ export default function TravelResultCard({ destination, index, sessionId, onAffi
         {/* Why it fits */}
         <div
           style={{
-            background: theme.accentBg,
-            borderRadius: '12px',
-            padding: '13px 16px',
-            borderLeft: `3px solid ${theme.accent}`,
+            background: theme.accentBg, borderRadius: '12px',
+            padding: '13px 16px', borderLeft: `3px solid ${theme.accent}`,
           }}
         >
           <p style={{ fontSize: '13px', color: '#334155', lineHeight: 1.75, margin: 0, fontWeight: 500 }}>
@@ -170,8 +156,7 @@ export default function TravelResultCard({ destination, index, sessionId, onAffi
                   style={{
                     display: 'inline-flex', alignItems: 'center', gap: '5px',
                     padding: '5px 12px', borderRadius: '20px',
-                    background: theme.accentBg,
-                    border: `1px solid ${theme.accentBorder}`,
+                    background: theme.accentBg, border: `1px solid ${theme.accentBorder}`,
                     fontSize: '12px', color: theme.accentText, fontWeight: 500,
                   }}
                 >
@@ -201,52 +186,66 @@ export default function TravelResultCard({ destination, index, sessionId, onAffi
             </div>
           )}
         </div>
-
-        <p
-          style={{
-            fontSize: '10px', color: '#CBD5E1', marginTop: 'auto',
-            paddingTop: '12px', borderTop: '1px solid #F1F5F9', lineHeight: 1.5,
-          }}
-        >
-          Einige Links können Affiliate-Links sein. Für dich entstehen keine Mehrkosten.
-        </p>
       </div>
 
-      {/* ── CTAs ── */}
-      <div style={{ padding: '0 20px 22px', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-        {providers.map(p => (
-          <button
-            key={p.id}
-            onClick={() => onAffiliateClick(p.id, destination.name, p.url)}
-            style={{
-              flex: 1,
-              minWidth: '120px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '7px',
-              padding: '14px 16px',
-              borderRadius: '14px',
-              border: 'none',
-              background: p.id === 'booking'
-                ? 'linear-gradient(135deg, #003580 0%, #0052CC 100%)'
-                : 'linear-gradient(135deg, #0C4A6E 0%, #0369A1 100%)',
-              color: '#fff',
-              fontSize: '14px',
-              fontWeight: 700,
-              cursor: 'pointer',
-              fontFamily: 'inherit',
-              boxShadow: '0 4px 14px rgba(0,0,0,0.18)',
-              transition: 'filter 0.15s, transform 0.15s',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(1.12)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-            onMouseLeave={e => { e.currentTarget.style.filter = 'none'; e.currentTarget.style.transform = 'none'; }}
-          >
-            {p.id === 'booking' ? <Hotel size={15} strokeWidth={2} /> : <Plane size={15} strokeWidth={2} />}
-            {p.label}
-            <ExternalLink size={12} strokeWidth={2} />
-          </button>
-        ))}
+      {/* ── Provider CTAs ── */}
+      <div
+        style={{
+          padding: '16px 20px 22px',
+          borderTop: '1px solid #F1F5F9',
+        }}
+      >
+        <p
+          style={{
+            fontSize: '10px', fontWeight: 700, color: '#94A3B8',
+            letterSpacing: '1px', textTransform: 'uppercase',
+            marginBottom: '10px',
+          }}
+        >
+          Passende Angebote suchen bei:
+        </p>
+
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '7px' }}>
+          {providers.map(p => (
+            <button
+              key={p.id}
+              onClick={() => onAffiliateClick(p.id, destination.name, p.url)}
+              title={p.label}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '5px',
+                padding: '7px 13px',
+                borderRadius: '8px',
+                border: '1px solid rgba(0,0,0,0.07)',
+                background: p.bgColor,
+                color: p.color,
+                fontSize: '12px',
+                fontWeight: 700,
+                cursor: 'pointer',
+                fontFamily: 'inherit',
+                whiteSpace: 'nowrap',
+                transition: 'filter 0.15s ease, transform 0.15s ease',
+                lineHeight: 1,
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.filter = 'brightness(0.93)';
+                e.currentTarget.style.transform = 'translateY(-1px)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.filter = 'none';
+                e.currentTarget.style.transform = 'none';
+              }}
+            >
+              {p.name}
+              <ExternalLink size={10} strokeWidth={2.5} />
+            </button>
+          ))}
+        </div>
+
+        <p style={{ fontSize: '10px', color: '#CBD5E1', marginTop: '12px', lineHeight: 1.5 }}>
+          Einige Links können Affiliate-Links sein. Für dich entstehen keine Mehrkosten.
+        </p>
       </div>
     </div>
   );
