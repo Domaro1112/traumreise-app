@@ -38,9 +38,14 @@ export default function TravelResultCard({ destination, index, sessionId }) {
     if (loadingProvider) return;
     setLoadingProvider(providerId);
 
-    // Open blank tab immediately on user gesture — avoids popup blocker.
-    // The tab is redirected once the server responds with the correct URL.
-    const win = window.open('', '_blank', 'noopener,noreferrer');
+    // Open blank tab immediately on user gesture to avoid popup blockers.
+    // IMPORTANT: do NOT pass 'noopener' or 'noreferrer' as window.open features —
+    // those make win.location inaccessible from the opener, so the redirect silently fails.
+    // We break the back-reference manually below for equivalent security.
+    const win = window.open('', '_blank');
+    if (win) {
+      try { win.opener = null; } catch (_) { /* read-only in some browsers, safe to ignore */ }
+    }
 
     track('affiliate_click', {
       provider:    providerId,
@@ -49,28 +54,49 @@ export default function TravelResultCard({ destination, index, sessionId }) {
       session_id:  sessionId,
     });
 
+    const payload = {
+      provider:    providerId,
+      destination: {
+        name:                  destination.name,
+        country:               destination.country,
+        region:                destination.region,
+        affiliateSearchIntent: destination.affiliateSearchIntent,
+      },
+      sessionId: sessionId ?? undefined,
+    };
+
+    if (process.env.NODE_ENV === 'development') {
+      console.log('[affiliate] click payload', payload);
+    }
+
     try {
       const res = await fetch('/api/travel-finder/affiliate-click', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({
-          provider:    providerId,
-          destination: {
-            name:                  destination.name,
-            country:               destination.country,
-            region:                destination.region,
-            affiliateSearchIntent: destination.affiliateSearchIntent,
-          },
-          sessionId: sessionId ?? undefined,
-        }),
+        body:    JSON.stringify(payload),
       });
+
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        console.error('[affiliate] API error', res.status, errData);
+        if (win) win.close();
+        return;
+      }
+
       const data = await res.json();
+
+      if (process.env.NODE_ENV === 'development') {
+        console.log('[affiliate] redirect url', data.redirectUrl);
+      }
+
       if (data.redirectUrl && win) {
         win.location.href = data.redirectUrl;
-      } else if (win) {
-        win.close();
+      } else {
+        console.error('[affiliate] missing redirectUrl in response', data);
+        if (win) win.close();
       }
-    } catch {
+    } catch (err) {
+      console.error('[affiliate] fetch error', err);
       if (win) win.close();
     } finally {
       setLoadingProvider(null);
