@@ -54,7 +54,7 @@ export default function Footer() {
             <Link
               href="/"
               aria-label="Zur Startseite"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', textDecoration: 'none', marginBottom: '16px' }}
+              style={{ display: 'inline-block', textDecoration: 'none', marginBottom: '16px' }}
             >
               <Image
                 src="/images/logo/reisemonkey-logo.png"
@@ -63,18 +63,6 @@ export default function Footer() {
                 height={1024}
                 style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }}
               />
-              <span
-                style={{
-                  fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-                  fontSize: '20px',
-                  fontWeight: 700,
-                  color: '#0F172A',
-                  letterSpacing: '-0.02em',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                Reisemonkey
-              </span>
             </Link>
             <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.7, marginBottom: '24px' }}>
               Reisemonkey hilft dir dabei, passende Reiseziele, Hotels, Flüge, Mietwagen und Aktivitäten für deinen nächsten Traumurlaub zu entdecken.
