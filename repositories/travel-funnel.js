@@ -76,18 +76,22 @@ export async function createLead({
 
 export async function trackAffiliateClick({
   sessionId, leadId,
-  destinationName, provider, affiliateUrl, referrer,
+  destinationName, destinationCountry, destinationRegion,
+  provider, affiliateUrl, searchQuery, referrer,
 }) {
   const supabase = createServerClient();
   const { error } = await supabase
     .from('affiliate_clicks')
     .insert({
-      session_id:       sessionId ?? null,
-      lead_id:          leadId    ?? null,
-      destination_name: destinationName,
+      session_id:          sessionId          ?? null,
+      lead_id:             leadId             ?? null,
+      destination_name:    destinationName,
+      destination_country: destinationCountry ?? null,
+      destination_region:  destinationRegion  ?? null,
       provider,
-      affiliate_url:    affiliateUrl,
-      referrer:         referrer  ?? null,
+      affiliate_url:       affiliateUrl,
+      search_query:        searchQuery        ?? null,
+      referrer:            referrer           ?? null,
     });
   if (error) console.error('[affiliate_clicks] tracking error:', error.message);
 }

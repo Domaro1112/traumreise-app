@@ -1,32 +1,63 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { trackAffiliateClick } from '@/repositories/travel-funnel';
+import { buildProviderUrl, buildDestinationSearchQuery, AFFILIATE_PROVIDERS } from '@/lib/affiliate-config';
+
+interface DestinationPayload {
+  name:                  string;
+  country?:              string;
+  region?:               string;
+  affiliateSearchIntent?: string;
+}
+
+interface RequestBody {
+  provider:    string;
+  destination: DestinationPayload;
+  sessionId?:  string;
+  leadId?:     string;
+}
 
 export async function POST(request: NextRequest) {
   try {
-    const { sessionId, leadId, destinationName, provider, affiliateUrl } =
-      (await request.json()) as {
-        sessionId?:      string;
-        leadId?:         string;
-        destinationName: string;
-        provider:        string;
-        affiliateUrl:    string;
-      };
+    const body = (await request.json()) as RequestBody;
+    const { provider, destination, sessionId, leadId } = body;
+
+    // Validate provider
+    const isValidProvider = (id: string): id is keyof typeof AFFILIATE_PROVIDERS =>
+      Object.prototype.hasOwnProperty.call(AFFILIATE_PROVIDERS, id);
+    if (!provider || !isValidProvider(provider)) {
+      return NextResponse.json({ error: 'Ungültiger Anbieter.' }, { status: 400 });
+    }
+    if (!destination?.name) {
+      return NextResponse.json({ error: 'Zielname fehlt.' }, { status: 400 });
+    }
+
+    // Build URL and search query server-side — client never constructs these
+    const searchQuery = buildDestinationSearchQuery(destination);
+    const redirectUrl = buildProviderUrl(provider, destination);
+
+    if (!redirectUrl) {
+      return NextResponse.json({ error: 'URL konnte nicht gebaut werden.' }, { status: 500 });
+    }
 
     const referrer = request.headers.get('referer') ?? undefined;
 
-    await trackAffiliateClick({
-      sessionId:       sessionId  ?? null,
-      leadId:          leadId     ?? null,
-      destinationName,
+    // Fire-and-forget tracking (non-blocking)
+    trackAffiliateClick({
+      sessionId:          sessionId           ?? null,
+      leadId:             leadId              ?? null,
+      destinationName:    destination.name,
+      destinationCountry: destination.country ?? undefined,
+      destinationRegion:  destination.region  ?? undefined,
       provider,
-      affiliateUrl,
+      affiliateUrl:       redirectUrl,
+      searchQuery,
       referrer,
-    });
+    }).catch(e => console.error('[affiliate-click] tracking error:', e));
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ redirectUrl });
   } catch (err) {
     console.error('[travel-finder/affiliate-click]', err);
-    // Non-blocking: always return success so the user redirect is not blocked
-    return NextResponse.json({ success: true });
+    // Never block a user redirect due to tracking failures
+    return NextResponse.json({ error: 'Fehler beim Verarbeiten des Klicks.' }, { status: 500 });
   }
 }

@@ -166,15 +166,7 @@ export default function TravelResultsPage() {
 
   useEffect(() => { load(); }, [load]);
 
-  const handleAffiliateClick = useCallback((provider, destinationName, url) => {
-    track('affiliate_click', { provider, destination: destinationName, session_id: sessionId });
-    fetch('/api/travel-finder/affiliate-click', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ sessionId, destinationName, provider, affiliateUrl: url }),
-    }).catch(() => {});
-    window.open(url, '_blank', 'noopener,noreferrer');
-  }, [sessionId]);
+  // Affiliate clicks are now handled entirely inside TravelResultCard.
 
   // ── Loading — NO hero, just the card with carousel ───────────────────────
   if (phase === 'loading') {
@@ -308,7 +300,7 @@ export default function TravelResultsPage() {
             </p>
           </div>
 
-          {/* 3. Result cards */}
+          {/* 3. Result cards — affiliate clicks handled inside TravelResultCard */}
           <div className="funnel-results-grid funnel-results-fade">
             {results.map((dest, i) => (
               <TravelResultCard
@@ -316,7 +308,6 @@ export default function TravelResultsPage() {
                 destination={dest}
                 index={i}
                 sessionId={sessionId}
-                onAffiliateClick={handleAffiliateClick}
               />
             ))}
           </div>
