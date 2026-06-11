@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { MapPin, Calendar, Car, ChevronDown, Shield, CheckCircle, Tag } from 'lucide-react';
 import { buildCheck24CarRentalUrl } from '@/lib/car-rental-config';
 
+const HERO_IMAGE = '/images/mietwagen/mietwagen-hero.jpg';
+
 const DRIVER_AGE_OPTIONS = [
   { value: '25', label: '25+ Jahre (Standard)' },
   { value: '21', label: '21–24 Jahre' },
@@ -65,7 +67,11 @@ export default function CarRentalHero() {
 
   return (
     <section style={{
-      background: 'linear-gradient(140deg, #0F172A 0%, #1E3A5F 45%, #0369A1 100%)',
+      backgroundImage: `linear-gradient(rgba(15,23,42,0.78), rgba(15,23,42,0.55)), url(${HERO_IMAGE})`,
+      backgroundSize:     'cover',
+      backgroundPosition: 'center center',
+      backgroundRepeat:   'no-repeat',
+      minHeight:          'clamp(560px, 50vw, 720px)',
       paddingTop:    'clamp(48px, 7vw, 88px)',
       paddingBottom: 'clamp(48px, 7vw, 80px)',
       position: 'relative',
