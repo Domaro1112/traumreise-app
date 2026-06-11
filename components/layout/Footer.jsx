@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { Compass, Heart } from 'lucide-react';
+import Image from 'next/image';
+import { Heart } from 'lucide-react';
 import Container from '@/components/layout/Container';
 import { footerNav, socialLinks } from '@/data/navigation';
 
@@ -50,20 +51,18 @@ export default function Footer() {
         >
           {/* Brand column */}
           <div style={{ maxWidth: '260px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-              <div
-                style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '10px',
-                  background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <Compass size={20} strokeWidth={2} color="#FFFFFF" />
-              </div>
+            <Link
+              href="/"
+              aria-label="Zur Startseite"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', textDecoration: 'none', marginBottom: '16px' }}
+            >
+              <Image
+                src="/images/logo/reisemonkey-logo.png"
+                alt="Reisemonkey"
+                width={1536}
+                height={1024}
+                style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }}
+              />
               <span
                 style={{
                   fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
@@ -71,13 +70,14 @@ export default function Footer() {
                   fontWeight: 700,
                   color: '#0F172A',
                   letterSpacing: '-0.02em',
+                  whiteSpace: 'nowrap',
                 }}
               >
-                Traumreise
+                Reisemonkey
               </span>
-            </div>
+            </Link>
             <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.7, marginBottom: '24px' }}>
-              Dein Reisekompass für persönliche Urlaubsideen. Kostenlos & sofort verfügbar.
+              Reisemonkey hilft dir dabei, passende Reiseziele, Hotels, Flüge, Mietwagen und Aktivitäten für deinen nächsten Traumurlaub zu entdecken.
             </p>
             <div style={{ display: 'flex', gap: '10px' }}>
               {socialLinks.map((s) => (
@@ -166,7 +166,7 @@ export default function Footer() {
           }}
         >
           <p style={{ fontSize: '13px', color: '#94A3B8' }}>
-            © 2024 Traumreise. Alle Rechte vorbehalten.
+            © 2025 Reisemonkey. Alle Rechte vorbehalten.
           </p>
           <p style={{ fontSize: '13px', color: '#94A3B8', display: 'flex', alignItems: 'center', gap: '5px' }}>
             Gemacht mit{' '}
