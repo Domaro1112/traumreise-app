@@ -67,9 +67,9 @@ export default function CarRentalHero() {
 
   return (
     <section style={{
-      backgroundImage: `linear-gradient(rgba(15,23,42,0.78), rgba(15,23,42,0.55)), url(${HERO_IMAGE})`,
+      backgroundImage:    `url(${HERO_IMAGE})`,
       backgroundSize:     'cover',
-      backgroundPosition: 'center center',
+      backgroundPosition: 'right center',
       backgroundRepeat:   'no-repeat',
       minHeight:          'clamp(560px, 50vw, 720px)',
       paddingTop:    'clamp(48px, 7vw, 88px)',
@@ -77,8 +77,7 @@ export default function CarRentalHero() {
       position: 'relative',
       overflow: 'hidden',
     }}>
-      <div aria-hidden="true" style={{ position: 'absolute', top: '-80px', right: '-120px', width: '500px', height: '500px', borderRadius: '50%', background: 'rgba(14,165,233,0.10)', pointerEvents: 'none' }} />
-      <div aria-hidden="true" style={{ position: 'absolute', bottom: '-100px', left: '-80px', width: '400px', height: '400px', borderRadius: '50%', background: 'rgba(249,115,22,0.08)', pointerEvents: 'none' }} />
+      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'rgba(15,23,42,0.35)', pointerEvents: 'none' }} />
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(16px, 4vw, 40px)', position: 'relative', zIndex: 1 }}>
         {/* Badge */}
