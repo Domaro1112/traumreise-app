@@ -16,7 +16,6 @@ const DRIVER_AGE_OPTIONS = [
 const TRUST_BADGES = [
   { Icon: CheckCircle, text: 'Über 500 Anbieter weltweit' },
   { Icon: Tag,         text: 'Kostenloser Vergleich' },
-  { Icon: Shield,      text: 'Keine Buchungsgebühren' },
   { Icon: Car,         text: 'Powered by CHECK24' },
 ];
 
