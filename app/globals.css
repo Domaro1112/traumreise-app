@@ -747,3 +747,14 @@ details > summary::marker { display: none; }
 .funnel-results-fade {
   animation: funnelFadeIn 0.55s ease-out forwards;
 }
+
+/* Results page hero — responsive min-height */
+.results-hero {
+  min-height: 280px;
+}
+@media (min-width: 640px) {
+  .results-hero { min-height: 360px; }
+}
+@media (min-width: 1025px) {
+  .results-hero { min-height: 420px; }
+}
