@@ -1,15 +1,16 @@
 import { createServerClient } from '@/lib/supabase/server';
 
-export async function createSession({ moodSelection, season, budget, duration, userAgent, referrer }) {
+export async function createSession({ moodSelection, season, budget, duration, personalNote, userAgent, referrer }) {
   const supabase = createServerClient();
   const patch = {
     mood_selection: moodSelection ?? [],
     user_agent:     userAgent ?? null,
     referrer:       referrer  ?? null,
   };
-  if (season)   patch.season   = season;
-  if (budget)   patch.budget   = budget;
-  if (duration) patch.duration = duration;
+  if (season)       patch.season        = season;
+  if (budget)       patch.budget        = budget;
+  if (duration)     patch.duration      = duration;
+  if (personalNote) patch.personal_note = personalNote;
 
   const { data, error } = await supabase
     .from('travel_funnel_sessions')
@@ -25,7 +26,7 @@ export async function getSession(sessionId) {
   const supabase = createServerClient();
   const { data, error } = await supabase
     .from('travel_funnel_sessions')
-    .select('id, mood_selection, season, budget, duration, generated_destinations')
+    .select('id, mood_selection, season, budget, duration, personal_note, generated_destinations')
     .eq('id', sessionId)
     .single();
   if (error) throw new Error(error.message);
@@ -50,7 +51,7 @@ export async function updateSession(sessionId, { moodSelection, season, budget, 
 export async function createLead({
   email, consent, consentText,
   sessionId, selectedDestinations,
-  moodSelection, season, budget, duration,
+  moodSelection, season, budget, duration, personalNote,
 }) {
   const supabase = createServerClient();
   const { data, error } = await supabase
@@ -62,9 +63,10 @@ export async function createLead({
       session_id:            sessionId ?? null,
       selected_destinations: selectedDestinations ?? [],
       mood_selection:        moodSelection ?? [],
-      season:                season   ?? null,
-      budget:                budget   ?? null,
-      duration:              duration ?? null,
+      season:                season        ?? null,
+      budget:                budget        ?? null,
+      duration:              duration      ?? null,
+      personal_note:         personalNote  ?? null,
     })
     .select('id')
     .single();

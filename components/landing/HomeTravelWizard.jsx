@@ -213,8 +213,9 @@ export default function HomeTravelWizard() {
   const [moods,      setMoods]      = useState([]);
   const [season,     setSeason]     = useState('');
   const [budget,     setBudget]     = useState('');
-  const [duration,   setDuration]   = useState('');
-  const [submitting, setSubmitting] = useState(false);
+  const [duration,     setDuration]     = useState('');
+  const [personalNote, setPersonalNote] = useState('');
+  const [submitting,   setSubmitting]   = useState(false);
 
   const toggleMood = useCallback(
     id => setMoods(prev =>
@@ -232,7 +233,10 @@ export default function HomeTravelWizard() {
       const res = await fetch('/api/travel-finder/session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ moodSelection: moods, season, budget, duration }),
+        body: JSON.stringify({
+            moodSelection: moods, season, budget, duration,
+            personalNote: personalNote.trim() || undefined,
+          }),
       });
       const { sessionId } = await res.json();
       router.push(`/traumreise-ergebnis?session_id=${encodeURIComponent(sessionId)}`);
@@ -336,7 +340,7 @@ export default function HomeTravelWizard() {
             </div>
           )}
 
-          {/* Step 4 — Dauer */}
+          {/* Step 4 — Dauer + persönliche Notiz */}
           {step === 4 && (
             <div>
               <StepHeading title="Wie lange möchtest du verreisen?" hint="Wähle eine Option" />
@@ -346,6 +350,44 @@ export default function HomeTravelWizard() {
                     onClick={() => setDuration(d.id)}
                     img={d.img} bg={d.bg} label={d.label} sublabel={d.sub} />
                 ))}
+              </div>
+
+              {/* Optional free-text field */}
+              <div style={{ marginBottom: '8px' }}>
+                <label style={{
+                  display: 'block', fontSize: '14px', fontWeight: 600,
+                  color: '#374151', marginBottom: '8px',
+                }}>
+                  Was ist dir bei deiner Traumreise besonders wichtig?
+                  <span style={{ fontWeight: 400, color: '#94A3B8', marginLeft: '6px' }}>
+                    (optional)
+                  </span>
+                </label>
+                <textarea
+                  value={personalNote}
+                  onChange={e => setPersonalNote(e.target.value.slice(0, 500))}
+                  maxLength={500}
+                  rows={3}
+                  placeholder="Zum Beispiel: ruhiges Hotel, wenig Touristen, gutes Essen, kurze Flugzeit, kinderfreundlich, viel Natur …"
+                  style={{
+                    width: '100%', padding: '12px 14px', borderRadius: '14px',
+                    border: '1.5px solid #E2E8F0', background: '#FAFBFF',
+                    fontSize: '14px', color: '#0F172A', lineHeight: 1.65,
+                    fontFamily: 'inherit', resize: 'vertical',
+                    transition: 'border-color 0.2s',
+                    outline: 'none',
+                  }}
+                  onFocus={e => { e.currentTarget.style.borderColor = '#0EA5E9'; e.currentTarget.style.background = '#fff'; }}
+                  onBlur={e => { e.currentTarget.style.borderColor = '#E2E8F0'; e.currentTarget.style.background = '#FAFBFF'; }}
+                />
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '5px' }}>
+                  <span style={{ fontSize: '11px', color: '#94A3B8' }}>
+                    Optional – wir berücksichtigen nur Angaben, die zu deiner Reise passen.
+                  </span>
+                  <span style={{ fontSize: '11px', color: personalNote.length > 450 ? '#F97316' : '#94A3B8' }}>
+                    {personalNote.length}/500
+                  </span>
+                </div>
               </div>
             </div>
           )}

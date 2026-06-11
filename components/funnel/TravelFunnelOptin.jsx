@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Bell, ShieldCheck, CheckCircle2, Loader2 } from 'lucide-react';
 
-export default function TravelFunnelOptin({ destinations, moods, season, budget, duration, sessionId }) {
+export default function TravelFunnelOptin({ destinations, moods, season, budget, duration, sessionId, personalNote }) {
   const [email,       setEmail]       = useState('');
   const [consent,     setConsent]     = useState(false);
   const [submitting,  setSubmitting]  = useState(false);
@@ -23,6 +23,7 @@ export default function TravelFunnelOptin({ destinations, moods, season, budget,
         body:    JSON.stringify({
           email, consent, sessionId,
           destinations, moods, season, budget, duration,
+          personalNote: personalNote ?? undefined,
         }),
       });
       const json = await res.json();

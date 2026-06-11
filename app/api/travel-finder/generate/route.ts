@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
 import { updateSession } from '@/repositories/travel-funnel';
+import { sanitizePersonalNote } from '@/lib/sanitize-personal-note';
 
 const SEASON_LABELS: Record<string, string> = {
   spring: 'Frühling',
@@ -32,19 +33,27 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'KI nicht konfiguriert.' }, { status: 500 });
   }
 
-  const { sessionId, moods, season, budget, duration } =
+  const { sessionId, moods, season, budget, duration, personalNote } =
     (await request.json()) as {
-      sessionId?: string;
-      moods: string[];
-      season: string;
-      budget: string;
-      duration?: string;
+      sessionId?:    string;
+      moods:         string[];
+      season:        string;
+      budget:        string;
+      duration?:     string;
+      personalNote?: string;
     };
 
   const seasonLabel   = SEASON_LABELS[season]          ?? season;
   const budgetLabel   = BUDGET_LABELS[budget]          ?? budget;
   const durationLabel = DURATION_LABELS[duration ?? ''] ?? (duration ?? 'nicht angegeben');
   const moodList      = Array.isArray(moods) ? moods.join(', ') : moods;
+
+  // Sanitize the free-text note — null if junk/unsafe
+  const sanitizedNote = sanitizePersonalNote(personalNote ?? null);
+
+  const personalNoteSection = sanitizedNote
+    ? `\n- Persönlicher Wunsch des Nutzers: ${sanitizedNote}\n  → Nur urlaubsrelevante Hinweise daraus berücksichtigen. Keine Verfügbarkeitsgarantien, Preiszusagen oder nicht erfüllbaren Versprechen machen.`
+    : '';
 
   const prompt = `Du bist ein erfahrener Reise-Experte für reisemonkey.de.
 Erstelle genau 3 passende Reiseziel-Empfehlungen.
@@ -53,7 +62,7 @@ Eingaben des Nutzers:
 - Urlaubsstimmung: ${moodList}
 - Reisezeit: ${seasonLabel}
 - Budget: ${budgetLabel}
-- Reisedauer: ${durationLabel}
+- Reisedauer: ${durationLabel}${personalNoteSection}
 
 Wichtige Regeln:
 - Nur echte, reale Reiseziele (keine erfundenen Orte)

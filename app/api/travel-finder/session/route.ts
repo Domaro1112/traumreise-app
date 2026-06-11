@@ -27,6 +27,7 @@ export async function POST(request: NextRequest) {
       season?:        string;
       budget?:        string;
       duration?:      string;
+      personalNote?:  string;
     };
     const userAgent = request.headers.get('user-agent') ?? undefined;
     const referrer  = request.headers.get('referer')   ?? undefined;
@@ -36,6 +37,7 @@ export async function POST(request: NextRequest) {
       season:        body.season,
       budget:        body.budget,
       duration:      body.duration,
+      personalNote:  body.personalNote,
       userAgent,
       referrer,
     });

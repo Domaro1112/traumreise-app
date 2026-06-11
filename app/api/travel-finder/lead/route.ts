@@ -10,16 +10,17 @@ export async function POST(request: NextRequest) {
   try {
     const {
       email, consent,
-      sessionId, moods, season, budget, duration, destinations,
+      sessionId, moods, season, budget, duration, destinations, personalNote,
     } = (await request.json()) as {
-      email:        string;
-      consent:      boolean;
-      sessionId?:   string;
-      moods?:       string[];
-      season?:      string;
-      budget?:      string;
-      duration?:    string;
-      destinations?: unknown[];
+      email:          string;
+      consent:        boolean;
+      sessionId?:     string;
+      moods?:         string[];
+      season?:        string;
+      budget?:        string;
+      duration?:      string;
+      destinations?:  unknown[];
+      personalNote?:  string;
     };
 
     if (!email || !isValidEmail(email)) {
@@ -40,12 +41,13 @@ export async function POST(request: NextRequest) {
       email,
       consent: true,
       consentText:          CONSENT_TEXT,
-      sessionId:            sessionId ?? null,
+      sessionId:            sessionId    ?? null,
       selectedDestinations: destinations ?? [],
       moodSelection:        Array.isArray(moods) ? moods : [],
-      season:               season    ?? null,
-      budget:               budget    ?? null,
-      duration:             duration  ?? null,
+      season:               season       ?? null,
+      budget:               budget       ?? null,
+      duration:             duration     ?? null,
+      personalNote:         personalNote ?? null,
     });
 
     return NextResponse.json({ success: true, leadId: lead.id });
