@@ -7,6 +7,7 @@ import Container from '@/components/layout/Container';
 import TravelFunnelLoading from '@/components/funnel/TravelFunnelLoading';
 import TravelFunnelOptin from '@/components/funnel/TravelFunnelOptin';
 import TravelResultCard from '@/components/funnel/TravelResultCard';
+import CarRentalHint from '@/components/mietwagen/CarRentalHint';
 
 // ── Hero image ────────────────────────────────────────────────────────────────
 // File: public/images/results/reiseinspiration-hero.jpg
@@ -311,6 +312,9 @@ export default function TravelResultsPage() {
               />
             ))}
           </div>
+
+          {/* 4. Car rental hint for eligible destinations */}
+          <CarRentalHint destinations={results} />
         </OverlapPanel>
       </div>
     </Container>

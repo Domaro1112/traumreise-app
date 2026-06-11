@@ -82,7 +82,7 @@ export default function HeroSection() {
             }}
           >
             <Sparkles size={14} strokeWidth={2} />
-            Deine Reiseplanung — kostenlos &amp; sofort buchbar
+            Deine Reiseplanung beginnt hier — kostenlos &amp; sofort buchbar
           </div>
 
           {/* Main heading */}

@@ -11,6 +11,7 @@ export const footerNav = {
     { label: 'Reiseziele', href: '/inspiration' },
     { label: 'Reiseblog', href: '/reiseblog' },
     { label: 'Reise Inspiration', href: '/inspiration' },
+    { label: 'Mietwagen vergleichen', href: '/mietwagen' },
   ],
   rechtliches: [
     { label: 'Datenschutz', href: '/datenschutz' },
