@@ -7,24 +7,39 @@ import Container from '@/components/layout/Container';
 import DestinationAffiliateSection from '@/components/destinations/DestinationAffiliateSection';
 import DestinationFAQ from '@/components/destinations/DestinationFAQ';
 import { SEO_DESTINATIONS, getDestinationBySlug } from '@/data/destinations-seo';
+import { getDestinationBySlugPublic, listPublishedSlugs } from '@/repositories/destinations-cms';
 
 const BASE_URL = 'https://www.reisemonkey.de';
 
-// ── Static params ────────────────────────────────────────────────────────────
-export function generateStaticParams() {
-  return SEO_DESTINATIONS.map(d => ({ slug: d.slug }));
+// ── Resolve: Supabase-first, static fallback ─────────────────────────────────
+async function resolveDestination(slug) {
+  const dbDest = await getDestinationBySlugPublic(slug);
+  if (dbDest) return dbDest;
+  return getDestinationBySlug(slug);
+}
+
+// ── Static params ─────────────────────────────────────────────────────────────
+export async function generateStaticParams() {
+  const staticSlugs = SEO_DESTINATIONS.map(d => ({ slug: d.slug }));
+  try {
+    const dbSlugs = await listPublishedSlugs();
+    for (const slug of dbSlugs) {
+      if (!staticSlugs.find(s => s.slug === slug)) staticSlugs.push({ slug });
+    }
+  } catch { /* Supabase not available at build time – use static only */ }
+  return staticSlugs;
 }
 
 // ── Metadata ─────────────────────────────────────────────────────────────────
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const dest = getDestinationBySlug(slug);
+  const dest = await resolveDestination(slug);
   if (!dest) return {};
 
-  const title = `${dest.name} Urlaub – Tipps, beste Reisezeit & Angebote | Reisemonkey`;
-  const description = `Entdecke ${dest.name}: beste Reisezeit, Highlights, Hotels, Flüge, Mietwagen und Aktivitäten für deinen Urlaub in ${dest.country}.`;
-  const canonical = `${BASE_URL}/reiseziele/${dest.slug}`;
-  const ogImage = dest.heroImage;
+  const title = dest.seoTitle ?? `${dest.name} Urlaub – Tipps, beste Reisezeit & Angebote | Reisemonkey`;
+  const description = dest.seoDescription ?? `Entdecke ${dest.name}: beste Reisezeit, Highlights, Hotels, Flüge, Mietwagen und Aktivitäten für deinen Urlaub in ${dest.country}.`;
+  const canonical = dest.canonicalUrl ?? `${BASE_URL}/reiseziele/${dest.slug}`;
+  const ogImage = dest.openGraphImage ?? dest.heroImage;
 
   return {
     title,
@@ -150,7 +165,7 @@ function SectionHeading({ children }) {
 // ── Page ─────────────────────────────────────────────────────────────────────
 export default async function DestinationPage({ params }) {
   const { slug } = await params;
-  const dest = getDestinationBySlug(slug);
+  const dest = await resolveDestination(slug);
   if (!dest) notFound();
 
   const schemas = buildJsonLd(dest);

@@ -1,22 +1,31 @@
-import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
+import { createAuthClient } from '@/lib/supabase/auth-server';
+import { isAdminUser } from '@/lib/admin-auth';
 import AdminShell from '@/components/admin/AdminShell';
+import AdminAccessDenied from '@/components/admin/AdminAccessDenied';
 
-// This layout wraps all protected admin routes.
-// Unauthenticated requests are redirected to /admin/login.
+// This layout wraps all protected /admin/** routes.
+// Unauthenticated users → /admin/login
+// Authenticated but non-admin users → inline 403 page
 //
-// TODO: When Supabase Auth is integrated, replace the cookie check with:
-//   const supabase = createServerClient(...);
-//   const { data: { user } } = await supabase.auth.getUser();
-//   if (!user || user.user_metadata?.role !== 'admin') redirect('/admin/login');
+// Auth is via Supabase Auth session + user_metadata.role === 'admin'.
+// The middleware (middleware.ts) keeps the session token refreshed.
 
 export default async function ProtectedAdminLayout({ children }) {
-  const cookieStore   = await cookies();
-  const adminSession  = cookieStore.get('admin_session');
+  const supabase = await createAuthClient();
+  const { data: { user } } = await supabase.auth.getUser();
 
-  if (!adminSession || adminSession.value !== 'granted') {
+  if (!user) {
     redirect('/admin/login');
   }
 
-  return <AdminShell>{children}</AdminShell>;
+  if (!isAdminUser(user)) {
+    return <AdminAccessDenied email={user.email} />;
+  }
+
+  return (
+    <AdminShell userEmail={user.email}>
+      {children}
+    </AdminShell>
+  );
 }

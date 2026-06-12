@@ -3,6 +3,7 @@ import Footer from '@/components/layout/Footer';
 import Container from '@/components/layout/Container';
 import DestinationsOverviewGrid from '@/components/destinations/DestinationsOverviewGrid';
 import { SEO_DESTINATIONS } from '@/data/destinations-seo';
+import { listPublishedDestinations } from '@/repositories/destinations-cms';
 import { Globe, MapPin } from 'lucide-react';
 
 export const metadata = {
@@ -43,7 +44,19 @@ const STATS = [
   { value: '100%', label: 'Kostenlos' },
 ];
 
-export default function ReisezielePage() {
+export default async function ReisezielePage() {
+  // Try Supabase-published destinations first; fall back to static data
+  let destinations = SEO_DESTINATIONS;
+  try {
+    const dbDests = await listPublishedDestinations();
+    if (dbDests.length > 0) {
+      // Merge: DB destinations override static ones with the same slug
+      const dbSlugs = new Set(dbDests.map(d => d.slug));
+      const staticOnly = SEO_DESTINATIONS.filter(d => !dbSlugs.has(d.slug));
+      destinations = [...dbDests, ...staticOnly];
+    }
+  } catch { /* Supabase not available – use static data */ }
+
   return (
     <>
       <script
@@ -123,13 +136,13 @@ export default function ReisezielePage() {
                 letterSpacing: '-0.02em',
               }}
             >
-              {SEO_DESTINATIONS.length} Reiseziele weltweit
+              {destinations.length} Reiseziele weltweit
             </h2>
             <p style={{ fontSize: '15px', color: '#64748B', marginBottom: '32px', lineHeight: 1.65 }}>
               Filtere nach Reisetyp und finde dein nächstes Ziel.
             </p>
 
-            <DestinationsOverviewGrid destinations={SEO_DESTINATIONS} />
+            <DestinationsOverviewGrid destinations={destinations} />
           </Container>
         </section>
 

@@ -1,14 +1,30 @@
+import Link from 'next/link';
 import { MapPin } from 'lucide-react';
-import AdminSectionPlaceholder from '@/components/admin/AdminSectionPlaceholder';
+import DestinationsListClient from '@/components/admin/destinations/DestinationsListClient';
+import { listDestinationsAdmin } from '@/repositories/destinations-cms';
 
 export const metadata = {
   title: 'Reiseziele verwalten | Reisemonkey Admin',
 };
 
-export default function AdminReisezielePage() {
+export default async function AdminReisezielePage() {
+  let destinations = [];
+  try {
+    destinations = await listDestinationsAdmin();
+  } catch {
+    // Supabase not yet set up or table doesn't exist yet – show empty state
+  }
+
   return (
     <div>
+      {/* Page header */}
       <div style={{ marginBottom: '28px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+          <MapPin size={16} strokeWidth={2} color="#0EA5E9" />
+          <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: '#0EA5E9' }}>
+            CMS
+          </span>
+        </div>
         <h2 style={{
           fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
           fontSize: 'clamp(18px, 2.5vw, 24px)',
@@ -20,25 +36,12 @@ export default function AdminReisezielePage() {
           Reiseziele verwalten
         </h2>
         <p style={{ fontSize: '14px', color: '#64748B', margin: 0 }}>
-          SEO-, AEO- und LLMO-optimierte Reisezielseiten pflegen und veröffentlichen.
+          SEO-, AEO- und LLMO-optimierte Reisezielseiten erstellen und pflegen.
+          Statische Fallback-Ziele aus <code style={{ fontSize: '12px', background: '#F1F5F9', padding: '1px 5px', borderRadius: '4px' }}>data/destinations-seo.js</code> bleiben weiterhin aktiv.
         </p>
       </div>
 
-      <AdminSectionPlaceholder
-        icon={MapPin}
-        title="Reiseziele verwalten"
-        description="Hier werden später SEO-, AEO- und LLMO-optimierte Reisezielseiten gepflegt. Du kannst neue Reiseziele erstellen, Entwürfe bearbeiten und veröffentlichte Seiten verwalten."
-        features={[
-          'Neues Reiseziel erstellen',
-          'Entwürfe bearbeiten',
-          'Veröffentlichte Reiseziele',
-          'Platzhalter-Tabelle',
-          'SEO-Felder & Metadaten',
-          'LLMO / AEO Felder',
-          'Hero-Bild hochladen',
-          'FAQ-Editor',
-        ]}
-      />
+      <DestinationsListClient initialData={destinations} />
     </div>
   );
 }

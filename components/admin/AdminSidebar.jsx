@@ -7,6 +7,7 @@ import {
   LayoutDashboard, MapPin, FileText, Image as ImageIcon,
   Users, TrendingUp, Search, Settings, LogOut, X, ExternalLink,
 } from 'lucide-react';
+import { createClient } from '@/lib/supabase/client';
 
 const NAV_ITEMS = [
   { label: 'Dashboard',    href: '/admin',               icon: LayoutDashboard, exact: true },
@@ -27,7 +28,8 @@ export default function AdminSidebar({ isOpen, onClose }) {
     item.exact ? pathname === item.href : pathname.startsWith(item.href);
 
   const handleLogout = async () => {
-    await fetch('/api/admin/logout', { method: 'POST' });
+    const supabase = createClient();
+    await supabase.auth.signOut();
     router.push('/admin/login');
     router.refresh();
   };

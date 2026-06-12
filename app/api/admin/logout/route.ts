@@ -1,13 +1,12 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { createAuthClientFromRequest } from '@/lib/supabase/auth-server';
 
-export async function POST() {
+// POST /api/admin/logout
+// Calls supabase.auth.signOut() server-side so the session is revoked on
+// Supabase's servers and the auth cookies are cleared in the response.
+export async function POST(request: NextRequest) {
   const response = NextResponse.json({ success: true });
-  response.cookies.set('admin_session', '', {
-    httpOnly: true,
-    secure:   process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
-    maxAge:   0,
-    path:     '/',
-  });
+  const supabase = createAuthClientFromRequest(request, response);
+  await supabase.auth.signOut();
   return response;
 }

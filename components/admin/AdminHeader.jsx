@@ -1,7 +1,8 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
-import { Menu, Bell } from 'lucide-react';
+import { usePathname, useRouter } from 'next/navigation';
+import { Menu, Bell, LogOut } from 'lucide-react';
+import { createClient } from '@/lib/supabase/client';
 
 const PAGE_TITLES = {
   '/admin':              'Dashboard',
@@ -14,9 +15,25 @@ const PAGE_TITLES = {
   '/admin/einstellungen':'Einstellungen',
 };
 
-export default function AdminHeader({ onMenuToggle }) {
+export default function AdminHeader({ onMenuToggle, userEmail }) {
   const pathname = usePathname();
-  const title = PAGE_TITLES[pathname] ?? 'Admin';
+  const router   = useRouter();
+
+  // Match exact or prefix (for sub-routes like /admin/reiseziele/[id])
+  const title = PAGE_TITLES[pathname]
+    ?? Object.entries(PAGE_TITLES).find(([path]) => path !== '/admin' && pathname.startsWith(path))?.[1]
+    ?? 'Admin';
+
+  const displayName = userEmail
+    ? userEmail.split('@')[0]
+    : 'Admin';
+
+  async function handleLogout() {
+    const supabase = createClient();
+    await supabase.auth.signOut();
+    router.push('/admin/login');
+    router.refresh();
+  }
 
   return (
     <header style={{
@@ -80,17 +97,52 @@ export default function AdminHeader({ onMenuToggle }) {
           <Bell size={16} strokeWidth={2} />
         </button>
 
-        {/* Admin badge */}
+        {/* User badge with email + logout */}
         <div style={{
-          background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
-          borderRadius: '8px',
-          padding: '5px 12px',
-          fontSize: '12px',
-          fontWeight: 700,
-          color: '#FFFFFF',
-          letterSpacing: '0.03em',
+          display: 'flex', alignItems: 'center', gap: '0',
+          border: '1.5px solid #E2E8F0',
+          borderRadius: '10px',
+          overflow: 'hidden',
         }}>
-          Admin
+          <div style={{
+            padding: '5px 12px',
+            background: '#F8FAFF',
+            fontSize: '12px',
+            fontWeight: 600,
+            color: '#334155',
+            display: 'flex', alignItems: 'center', gap: '6px',
+          }}>
+            <div style={{
+              width: '20px', height: '20px',
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: '10px', fontWeight: 800, color: '#FFFFFF',
+              flexShrink: 0,
+            }}>
+              {(displayName[0] ?? 'A').toUpperCase()}
+            </div>
+            <span style={{ maxWidth: '120px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              {displayName}
+            </span>
+          </div>
+
+          <button
+            onClick={handleLogout}
+            title="Abmelden"
+            aria-label="Abmelden"
+            style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              padding: '5px 10px',
+              background: 'none',
+              border: 'none',
+              borderLeft: '1px solid #E2E8F0',
+              cursor: 'pointer',
+              color: '#94A3B8',
+            }}
+          >
+            <LogOut size={14} strokeWidth={2} />
+          </button>
         </div>
       </div>
     </header>

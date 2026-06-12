@@ -3,17 +3,18 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { Lock, Eye, EyeOff, ShieldCheck, AlertCircle } from 'lucide-react';
+import { Lock, Eye, EyeOff, Mail, ShieldCheck, AlertCircle } from 'lucide-react';
+import { createClient } from '@/lib/supabase/client';
 
 // metadata is inherited from app/admin/layout.jsx (noindex).
-// Title is intentionally not set (admin login page should not be indexed).
 
 export default function AdminLoginPage() {
   const router = useRouter();
-  const [password,     setPassword]     = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [error,        setError]        = useState('');
-  const [loading,      setLoading]      = useState(false);
+  const [email,       setEmail]       = useState('');
+  const [password,    setPassword]    = useState('');
+  const [showPassword,setShowPassword]= useState(false);
+  const [error,       setError]       = useState('');
+  const [loading,     setLoading]     = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -21,26 +22,45 @@ export default function AdminLoginPage() {
     setLoading(true);
 
     try {
-      const res = await fetch('/api/admin/auth', {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ password }),
+      const supabase = createClient();
+      const { data, error: authError } = await supabase.auth.signInWithPassword({
+        email:    email.trim(),
+        password,
       });
 
-      if (res.ok) {
-        router.push('/admin');
-        router.refresh();
-      } else {
-        const data = await res.json().catch(() => ({}));
-        setError(data.error ?? 'Falsches Passwort. Bitte erneut versuchen.');
+      if (authError) {
+        setError(mapAuthError(authError.message));
         setPassword('');
+        return;
       }
+
+      // Check admin role before entering the admin area
+      const role = data.user?.user_metadata?.role;
+      if (role !== 'admin') {
+        // Sign out immediately — authenticated but not admin
+        await supabase.auth.signOut();
+        setError('Kein Admin-Zugang. Dein Account hat keine Administrator-Berechtigung.');
+        setPassword('');
+        return;
+      }
+
+      router.push('/admin');
+      router.refresh();
     } catch {
       setError('Verbindungsfehler. Bitte Seite neu laden.');
     } finally {
       setLoading(false);
     }
   }
+
+  function mapAuthError(msg) {
+    if (msg.includes('Invalid login credentials')) return 'E-Mail oder Passwort falsch.';
+    if (msg.includes('Email not confirmed'))       return 'E-Mail-Adresse noch nicht bestätigt.';
+    if (msg.includes('Too many requests'))         return 'Zu viele Versuche. Bitte kurz warten.';
+    return msg;
+  }
+
+  const canSubmit = email.trim() && password && !loading;
 
   return (
     <div style={{
@@ -106,21 +126,56 @@ export default function AdminLoginPage() {
             </p>
           </div>
 
-          {/* TODO: Der Login wird im nächsten Schritt mit Supabase Auth verbunden.
-              Dann: E-Mail + Passwort → supabase.auth.signInWithPassword()
-                    → Prüfung: user.user_metadata.role === 'admin'
-                    → Session-Cookie via SSR-Client */}
-
           <form onSubmit={handleSubmit}>
+            {/* E-Mail */}
+            <div style={{ marginBottom: '14px' }}>
+              <label
+                htmlFor="admin-email"
+                style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#374151', marginBottom: '7px' }}
+              >
+                E-Mail-Adresse
+              </label>
+              <div style={{ position: 'relative' }}>
+                <Mail
+                  size={14}
+                  strokeWidth={2}
+                  color="#94A3B8"
+                  style={{ position: 'absolute', left: '13px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }}
+                />
+                <input
+                  id="admin-email"
+                  type="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  placeholder="admin@example.com"
+                  required
+                  autoFocus
+                  autoComplete="email"
+                  style={{
+                    width: '100%',
+                    padding: '11px 14px 11px 36px',
+                    borderRadius: '12px',
+                    border: error ? '1.5px solid #EF4444' : '1.5px solid #E2E8F0',
+                    fontSize: '14px',
+                    color: '#0F172A',
+                    background: '#FAFAFA',
+                    outline: 'none',
+                    boxSizing: 'border-box',
+                    fontFamily: 'inherit',
+                  }}
+                  onFocus={e => { if (!error) e.target.style.borderColor = '#0EA5E9'; e.target.style.background = '#FFFFFF'; }}
+                  onBlur={e  => { if (!error) e.target.style.borderColor = '#E2E8F0'; }}
+                />
+              </div>
+            </div>
+
+            {/* Passwort */}
             <div style={{ marginBottom: '16px' }}>
               <label
                 htmlFor="admin-password"
-                style={{
-                  display: 'block', fontSize: '13px', fontWeight: 600,
-                  color: '#374151', marginBottom: '7px',
-                }}
+                style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#374151', marginBottom: '7px' }}
               >
-                Admin-Passwort
+                Passwort
               </label>
               <div style={{ position: 'relative' }}>
                 <input
@@ -128,22 +183,20 @@ export default function AdminLoginPage() {
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={e => setPassword(e.target.value)}
-                  placeholder="Admin-Passwort eingeben"
+                  placeholder="Passwort eingeben"
                   required
-                  autoFocus
                   autoComplete="current-password"
                   style={{
                     width: '100%',
-                    padding: '12px 44px 12px 14px',
+                    padding: '11px 44px 11px 14px',
                     borderRadius: '12px',
                     border: error ? '1.5px solid #EF4444' : '1.5px solid #E2E8F0',
-                    fontSize: '15px',
+                    fontSize: '14px',
                     color: '#0F172A',
                     background: '#FAFAFA',
                     outline: 'none',
                     boxSizing: 'border-box',
                     fontFamily: 'inherit',
-                    transition: 'border-color 0.15s',
                   }}
                   onFocus={e => { if (!error) e.target.style.borderColor = '#0EA5E9'; e.target.style.background = '#FFFFFF'; }}
                   onBlur={e  => { if (!error) e.target.style.borderColor = '#E2E8F0'; }}
@@ -163,6 +216,7 @@ export default function AdminLoginPage() {
               </div>
             </div>
 
+            {/* Error */}
             {error && (
               <div style={{
                 marginBottom: '16px', padding: '10px 14px',
@@ -177,23 +231,23 @@ export default function AdminLoginPage() {
 
             <button
               type="submit"
-              disabled={loading || !password}
+              disabled={!canSubmit}
               style={{
                 width: '100%', padding: '13px',
                 borderRadius: '12px', border: 'none',
-                background: loading || !password
+                background: !canSubmit
                   ? '#CBD5E1'
                   : 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
                 color: '#FFFFFF',
                 fontSize: '15px', fontWeight: 700,
                 fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-                cursor: loading || !password ? 'not-allowed' : 'pointer',
-                boxShadow: loading || !password ? 'none' : '0 4px 16px rgba(14,165,233,0.35)',
+                cursor: !canSubmit ? 'not-allowed' : 'pointer',
+                boxShadow: !canSubmit ? 'none' : '0 4px 16px rgba(14,165,233,0.35)',
                 letterSpacing: '0.01em',
                 transition: 'all 0.15s',
               }}
             >
-              {loading ? 'Überprüfe...' : 'Anmelden'}
+              {loading ? 'Anmeldung läuft…' : 'Anmelden'}
             </button>
           </form>
         </div>

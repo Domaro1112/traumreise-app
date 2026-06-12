@@ -15,7 +15,7 @@ export const blogArticles = [
     date: '12. Mai 2025',
     lastUpdated: '2025-05-20',
     readingTime: '6 min',
-    author: 'Traumreise Team',
+    author: 'Dominik Markus Rothke',
     authorBio:
       'Das Traumreise-Redaktionsteam besteht aus erfahrenen Reisejournalisten und KI-Experten, die gemeinsam die besten Reiseziele der Welt erkunden und aufbereiten.',
     tags: ['Bali', 'Budget', 'Südostasien', 'Indonesien'],
@@ -251,7 +251,7 @@ export const blogArticles = [
     date: '18. März 2025',
     lastUpdated: '2025-03-25',
     readingTime: '7 min',
-    author: 'Traumreise Team',
+    author: 'Dominik Markus Rothke',
     authorBio:
       'Das Traumreise-Team hat den Banff National Park im Sommer und Herbst erkundet und alle wichtigen Wanderungen selbst getestet.',
     tags: ['Kanada', 'Natur', 'Wandern', 'Abenteuer', 'Nordamerika'],
@@ -584,7 +584,7 @@ export const blogArticles = [
     date: '22. Januar 2025',
     lastUpdated: '2025-05-01',
     readingTime: '4 min',
-    author: 'Traumreise Team',
+    author: 'Dominik Markus Rothke',
     authorBio:
       'Das Traumreise-Team entwickelt und verbessert fortlaufend die KI-Reiseplanung und gibt hier Einblicke in die Technologie dahinter.',
     tags: ['KI', 'Reiseplanung', 'Technologie', 'Urlaub', 'Personalisierung'],
@@ -806,7 +806,7 @@ export const blogArticles = [
     date: '14. Oktober 2024',
     lastUpdated: '2025-01-10',
     readingTime: '5 min',
-    author: 'Traumreise Team',
+    author: 'Dominik Markus Rothke',
     authorBio:
       'Das Traumreise-Team hat die albanische Küste und die Berge der Albanischen Alpen erkundet und diesen Geheimtipp aus erster Hand entdeckt.',
     tags: ['Albanien', 'Europa', 'Geheimtipp', 'Budget', 'Strand'],

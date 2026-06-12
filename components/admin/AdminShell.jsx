@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import AdminSidebar from '@/components/admin/AdminSidebar';
 import AdminHeader  from '@/components/admin/AdminHeader';
 
-export default function AdminShell({ children }) {
+export default function AdminShell({ children, userEmail }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Close sidebar on route change (mobile)
@@ -29,7 +29,7 @@ export default function AdminShell({ children }) {
           minWidth: 0,
         }}
       >
-        <AdminHeader onMenuToggle={() => setSidebarOpen(v => !v)} />
+        <AdminHeader onMenuToggle={() => setSidebarOpen(v => !v)} userEmail={userEmail} />
         <main style={{
           flex: 1,
           padding: 'clamp(20px, 3vw, 36px)',
