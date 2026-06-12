@@ -557,6 +557,18 @@ export default function DestinationEditorClient({ initialData, isNew }) {
 
     return (
       <div>
+        {isNew && !form.slug && (
+          <div style={{ marginBottom: '20px', padding: '14px 16px', borderRadius: '12px', background: '#F0F9FF', border: '1.5px solid #BAE6FD', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+            <AlertCircle size={15} strokeWidth={2} color="#0284C7" style={{ flexShrink: 0, marginTop: '1px' }} />
+            <div>
+              <p style={{ fontSize: '13px', fontWeight: 700, color: '#0C4A6E', margin: '0 0 3px' }}>Slug erforderlich für Bild-Upload</p>
+              <p style={{ fontSize: '12px', color: '#0369A1', margin: 0 }}>
+                Trage im Tab <strong>Basis</strong> einen Slug ein. Sobald der Slug gesetzt ist, kannst du hier Bilder hochladen.
+                Die Bilder werden beim Speichern zusammen mit dem Reiseziel angelegt.
+              </p>
+            </div>
+          </div>
+        )}
         {/* ── Hero Bild ─────────────────────────────────────────────────────── */}
         <SectionDivider label="Hero Bild" />
         <ImageUploader
