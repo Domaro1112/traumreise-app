@@ -180,9 +180,17 @@ export async function getDestinationBySlugPublic(slug) {
       .eq('slug', slug)
       .eq('status', 'published')
       .single();
-    if (error || !data) return null;
+    if (error) {
+      // PGRST116 = "no rows returned" → destination not found or not published; not an error worth logging.
+      if (error.code !== 'PGRST116') {
+        console.error('[destinations-cms] getDestinationBySlugPublic error:', error.message, { slug });
+      }
+      return null;
+    }
+    if (!data) return null;
     return dbToPublic(data);
-  } catch {
+  } catch (err) {
+    console.error('[destinations-cms] getDestinationBySlugPublic threw:', err instanceof Error ? err.message : err, { slug });
     return null;
   }
 }

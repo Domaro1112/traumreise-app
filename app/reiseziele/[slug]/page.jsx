@@ -11,6 +11,15 @@ import { getDestinationBySlugPublic, listPublishedSlugs } from '@/repositories/d
 
 const BASE_URL = 'https://www.reisemonkey.de';
 
+// Allow on-demand rendering for slugs not yet in generateStaticParams()
+// (destinations published after the last build). Without this, Next.js 16.x
+// returns 404 for any slug that wasn't pre-built.
+export const dynamicParams = true;
+
+// ISR: re-generate pre-built pages from fresh DB data every 60 seconds so
+// content updates appear without a full redeployment.
+export const revalidate = 60;
+
 // ── Resolve: Supabase-first, static fallback ─────────────────────────────────
 async function resolveDestination(slug) {
   const dbDest = await getDestinationBySlugPublic(slug);

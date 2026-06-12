@@ -6,6 +6,10 @@ import { SEO_DESTINATIONS } from '@/data/destinations-seo';
 import { listPublishedDestinations } from '@/repositories/destinations-cms';
 import { Globe, MapPin } from 'lucide-react';
 
+// ISR: re-render from DB every 60 seconds so newly published destinations
+// appear in the overview without a full redeployment.
+export const revalidate = 60;
+
 export const metadata = {
   title: 'Reiseziele entdecken – Urlaubsideen & Inspirationen | Reisemonkey',
   description:
