@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
-import { Save, Globe, ChevronDown, ChevronUp, Plus, Trash2, AlertCircle } from 'lucide-react';
+import { Save, Globe, ChevronDown, ChevronUp, Plus, Trash2, AlertCircle, Sparkles } from 'lucide-react';
+import { buildAutoValues } from '@/lib/validate-destination-import';
 
 // ── Predefined options ────────────────────────────────────────────────────────
 const TRAVEL_TYPES   = ['Strand', 'Stadt', 'Natur', 'Abenteuer', 'Familie', 'Luxus', 'Kultur', 'Wandern', 'Roadtrip'];
@@ -23,8 +24,14 @@ const EMPTY_FORM = {
   highlights: [],
   insider_tips: [],
   faq: [],                  // [{question, answer}]
-  hero_image: '', open_graph_image: '', gallery_images: [],
+  hero_image: '', gallery_images: [],
+  // SEO
   seo_title: '', seo_description: '', canonical_url: '',
+  // Open Graph
+  open_graph_image: '', open_graph_title: '', open_graph_description: '',
+  // Twitter / X
+  twitter_image: '', twitter_title: '', twitter_description: '',
+  // LLMO
   llmo_quick_answer: '', llmo_answer_block: '', llmo_entities: [],
   internal_links: [],       // [{text, url}]
   car_rental_recommended: false, car_rental_reason: '', affiliate_search_intent: '',
@@ -41,11 +48,17 @@ function dbToForm(row) {
     highlights:  (row.highlights  ?? []).map(h => typeof h === 'string' ? h : h?.text ?? ''),
     insider_tips:(row.insider_tips ?? []).map(t => typeof t === 'string' ? t : t?.text ?? ''),
     faq:         (row.faq         ?? []).map(f => ({ question: f.question ?? '', answer: f.answer ?? '' })),
-    gallery_images: row.gallery_images ?? [],
-    travel_type: row.travel_type ?? [],
-    suitable_for: row.suitable_for ?? [],
-    not_suitable_for: row.not_suitable_for ?? [],
-    llmo_entities: row.llmo_entities ?? [],
+    gallery_images:          row.gallery_images          ?? [],
+    travel_type:             row.travel_type             ?? [],
+    suitable_for:            row.suitable_for            ?? [],
+    not_suitable_for:        row.not_suitable_for        ?? [],
+    open_graph_image:        row.open_graph_image        ?? '',
+    open_graph_title:        row.open_graph_title        ?? '',
+    open_graph_description:  row.open_graph_description  ?? '',
+    twitter_image:           row.twitter_image           ?? '',
+    twitter_title:           row.twitter_title           ?? '',
+    twitter_description:     row.twitter_description     ?? '',
+    llmo_entities:           row.llmo_entities           ?? [],
     internal_links: (row.internal_links ?? []).map(l => ({
       text: l.text ?? '', url: l.url ?? '',
     })),
@@ -287,6 +300,22 @@ function CheckboxGroup({ options, value = [], onChange }) {
   );
 }
 
+function AutoBadge() {
+  return (
+    <span style={{
+      display: 'inline-flex', alignItems: 'center', gap: '3px',
+      fontSize: '9px', fontWeight: 700, letterSpacing: '0.04em',
+      color: '#7C3AED', background: '#F5F3FF',
+      border: '1px solid #DDD6FE',
+      borderRadius: '4px', padding: '1px 6px',
+      marginLeft: '6px', verticalAlign: 'middle',
+    }}>
+      <Sparkles size={8} strokeWidth={2.5} />
+      AUTO
+    </span>
+  );
+}
+
 const btnDanger = {
   display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
   width: '30px', height: '30px', minWidth: '30px',
@@ -324,6 +353,15 @@ export default function DestinationEditorClient({ initialData, isNew }) {
 
   const set = useCallback((field, value) =>
     setForm(prev => ({ ...prev, [field]: value })), []);
+
+  // Detect which fields currently match their auto-generated formula
+  const autoValues = useMemo(() => buildAutoValues({
+    slug:            form.slug,
+    seo_title:       form.seo_title,
+    seo_description: form.seo_description,
+  }), [form.slug, form.seo_title, form.seo_description]);
+
+  const isAuto = (field) => !!form[field] && form[field] === autoValues[field];
 
   // Auto-generate slug from name for new destinations
   function handleNameChange(val) {
@@ -491,9 +529,29 @@ export default function DestinationEditorClient({ initialData, isNew }) {
         <Field label="Hero Image URL" hint="Vollständiger Pfad, z.B. /images/destinations/mallorca.jpg">
           <TextInput value={form.hero_image} onChange={v => set('hero_image', v)} placeholder="/images/destinations/mallorca.jpg" monospace />
         </Field>
-        <Field label="OpenGraph Image URL" hint="Für Social-Previews. Leer = Hero Image wird verwendet.">
-          <TextInput value={form.open_graph_image} onChange={v => set('open_graph_image', v)} placeholder="/images/destinations/mallorca-og.jpg" monospace />
-        </Field>
+
+        <div style={{ borderTop: '1px solid #F1F5F9', paddingTop: '18px', marginTop: '4px', marginBottom: '18px' }}>
+          <p style={{ fontSize: '11px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.05em', textTransform: 'uppercase', margin: '0 0 14px' }}>
+            Open Graph (Facebook, LinkedIn, WhatsApp)
+          </p>
+          <Field label={<>OG Bild URL{isAuto('open_graph_image') && <AutoBadge />}</>}
+            hint="Leer = Hero Image wird als Fallback verwendet."
+          >
+            <TextInput value={form.open_graph_image} onChange={v => set('open_graph_image', v)} placeholder={autoValues.open_graph_image} monospace />
+          </Field>
+        </div>
+
+        <div style={{ borderTop: '1px solid #F1F5F9', paddingTop: '18px', marginTop: '4px', marginBottom: '18px' }}>
+          <p style={{ fontSize: '11px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.05em', textTransform: 'uppercase', margin: '0 0 14px' }}>
+            Twitter / X
+          </p>
+          <Field label={<>Twitter Bild URL{isAuto('twitter_image') && <AutoBadge />}</>}
+            hint="Leer = OG-Bild wird verwendet."
+          >
+            <TextInput value={form.twitter_image} onChange={v => set('twitter_image', v)} placeholder={autoValues.twitter_image} monospace />
+          </Field>
+        </div>
+
         <Field label="Galerie-Bilder" hint="Weitere Bild-URLs für die Galerie.">
           <SimpleListEditor value={form.gallery_images} onChange={v => set('gallery_images', v)} placeholder="/images/destinations/mallorca-strand.jpg" monospace />
         </Field>
@@ -502,29 +560,74 @@ export default function DestinationEditorClient({ initialData, isNew }) {
   }
 
   function renderTabSeo() {
+    const slug = form.slug || 'reiseziel';
     return (
       <div>
+        {/* ── Core SEO ── */}
         <Field label="SEO Titel" hint="Leer = wird automatisch aus Name generiert.">
           <TextInput value={form.seo_title} onChange={v => set('seo_title', v)} placeholder={`${form.name || 'Reiseziel'} Urlaub – Tipps & Angebote | Reisemonkey`} />
         </Field>
         <Field label="Meta Description" hint="Leer = wird automatisch aus Kurzbeschreibung generiert.">
           <TextArea value={form.seo_description} onChange={v => set('seo_description', v)} rows={2} placeholder="Max. 155 Zeichen…" />
         </Field>
-        <Field label="Canonical URL" hint="Leer = Standard-URL /reiseziele/[slug] wird verwendet.">
-          <TextInput value={form.canonical_url} onChange={v => set('canonical_url', v)} placeholder="https://www.reisemonkey.de/reiseziele/mallorca" monospace />
+        <Field label={<>Canonical URL{isAuto('canonical_url') && <AutoBadge />}</>}
+          hint={`Leer = Standard-URL wird verwendet: https://www.reisemonkey.de/reiseziele/${slug}`}
+        >
+          <TextInput value={form.canonical_url} onChange={v => set('canonical_url', v)} placeholder={autoValues.canonical_url} monospace />
         </Field>
-        <Field label="AI Quick Answer" hint="Kurze, zitierbare Antwort für KI-Systeme (1–3 Sätze). Erscheint im AI Summary Block.">
-          <TextArea value={form.llmo_quick_answer} onChange={v => set('llmo_quick_answer', v)} rows={3} placeholder="Mallorca ist die größte Baleareninsel Spaniens…" />
-        </Field>
-        <Field label="LLMO Answer Block" hint="Ausführlicherer Antwortblock für Perplexity, ChatGPT, Gemini etc.">
-          <TextArea value={form.llmo_answer_block} onChange={v => set('llmo_answer_block', v)} rows={5} placeholder="Ausführliche strukturierte Antwort für KI-Systeme…" />
-        </Field>
-        <Field label="Entitäten" hint="Wichtige Named Entities für LLMO (Orte, Attraktionen, Personen).">
-          <SimpleListEditor value={form.llmo_entities} onChange={v => set('llmo_entities', v)} placeholder="z.B. Tramuntana-Gebirge" />
-        </Field>
-        <Field label="Interne Links" hint="Links zu verwandten Seiten – strukturiert für SEO und LLMO.">
-          <LinksEditor value={form.internal_links} onChange={v => set('internal_links', v)} />
-        </Field>
+
+        {/* ── Open Graph ── */}
+        <div style={{ borderTop: '1px solid #F1F5F9', paddingTop: '18px', marginTop: '8px' }}>
+          <p style={{ fontSize: '11px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.05em', textTransform: 'uppercase', margin: '0 0 14px' }}>
+            Open Graph (Social Sharing)
+          </p>
+          <Field label={<>OG Titel{isAuto('open_graph_title') && <AutoBadge />}</>}
+            hint="Leer = SEO-Titel wird verwendet."
+          >
+            <TextInput value={form.open_graph_title} onChange={v => set('open_graph_title', v)} placeholder={autoValues.open_graph_title || form.seo_title || 'OG Titel…'} />
+          </Field>
+          <Field label={<>OG Beschreibung{isAuto('open_graph_description') && <AutoBadge />}</>}
+            hint="Leer = Meta Description wird verwendet."
+          >
+            <TextArea value={form.open_graph_description} onChange={v => set('open_graph_description', v)} rows={2} placeholder={autoValues.open_graph_description || 'OG Beschreibung…'} />
+          </Field>
+        </div>
+
+        {/* ── Twitter / X ── */}
+        <div style={{ borderTop: '1px solid #F1F5F9', paddingTop: '18px', marginTop: '8px' }}>
+          <p style={{ fontSize: '11px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.05em', textTransform: 'uppercase', margin: '0 0 14px' }}>
+            Twitter / X
+          </p>
+          <Field label={<>Twitter Titel{isAuto('twitter_title') && <AutoBadge />}</>}
+            hint="Leer = OG-Titel / SEO-Titel wird verwendet."
+          >
+            <TextInput value={form.twitter_title} onChange={v => set('twitter_title', v)} placeholder={autoValues.twitter_title || form.seo_title || 'Twitter Titel…'} />
+          </Field>
+          <Field label={<>Twitter Beschreibung{isAuto('twitter_description') && <AutoBadge />}</>}
+            hint="Leer = OG-Beschreibung / Meta Description wird verwendet."
+          >
+            <TextArea value={form.twitter_description} onChange={v => set('twitter_description', v)} rows={2} placeholder={autoValues.twitter_description || 'Twitter Beschreibung…'} />
+          </Field>
+        </div>
+
+        {/* ── LLMO / AEO ── */}
+        <div style={{ borderTop: '1px solid #F1F5F9', paddingTop: '18px', marginTop: '8px' }}>
+          <p style={{ fontSize: '11px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.05em', textTransform: 'uppercase', margin: '0 0 14px' }}>
+            LLMO / AEO (KI-Suchmaschinen)
+          </p>
+          <Field label="AI Quick Answer" hint="Kurze, zitierbare Antwort für KI-Systeme (1–3 Sätze). Erscheint im AI Summary Block.">
+            <TextArea value={form.llmo_quick_answer} onChange={v => set('llmo_quick_answer', v)} rows={3} placeholder="Mallorca ist die größte Baleareninsel Spaniens…" />
+          </Field>
+          <Field label="LLMO Answer Block" hint="Ausführlicherer Antwortblock für Perplexity, ChatGPT, Gemini etc.">
+            <TextArea value={form.llmo_answer_block} onChange={v => set('llmo_answer_block', v)} rows={5} placeholder="Ausführliche strukturierte Antwort für KI-Systeme…" />
+          </Field>
+          <Field label="Entitäten" hint="Wichtige Named Entities für LLMO (Orte, Attraktionen, Personen).">
+            <SimpleListEditor value={form.llmo_entities} onChange={v => set('llmo_entities', v)} placeholder="z.B. Tramuntana-Gebirge" />
+          </Field>
+          <Field label="Interne Links" hint="Links zu verwandten Seiten – strukturiert für SEO und LLMO.">
+            <LinksEditor value={form.internal_links} onChange={v => set('internal_links', v)} />
+          </Field>
+        </div>
       </div>
     );
   }

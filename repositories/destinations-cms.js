@@ -38,12 +38,20 @@ function dbToPublic(row) {
     isPlaceholder:  false,
     status:         row.status,
     // SEO extras (used by metadata generator)
-    seoTitle:        row.seo_title        ?? null,
-    seoDescription:  row.seo_description  ?? null,
-    openGraphImage:  row.open_graph_image  ?? row.hero_image ?? null,
-    canonicalUrl:    row.canonical_url    ?? null,
-    llmoQuickAnswer: row.llmo_quick_answer ?? null,
-    llmoAnswerBlock: row.llmo_answer_block ?? null,
+    seoTitle:             row.seo_title              ?? null,
+    seoDescription:       row.seo_description        ?? null,
+    canonicalUrl:         row.canonical_url          ?? null,
+    // Open Graph — fall back chain: explicit → hero_image
+    openGraphImage:       row.open_graph_image       ?? row.hero_image ?? null,
+    openGraphTitle:       row.open_graph_title       ?? row.seo_title  ?? null,
+    openGraphDescription: row.open_graph_description ?? row.seo_description ?? null,
+    // Twitter / X — fall back chain: explicit → OG → SEO
+    twitterImage:         row.twitter_image          ?? row.open_graph_image ?? row.hero_image ?? null,
+    twitterTitle:         row.twitter_title          ?? row.open_graph_title ?? row.seo_title  ?? null,
+    twitterDescription:   row.twitter_description    ?? row.open_graph_description ?? row.seo_description ?? null,
+    // LLMO
+    llmoQuickAnswer:      row.llmo_quick_answer      ?? null,
+    llmoAnswerBlock:      row.llmo_answer_block       ?? null,
   };
 }
 
