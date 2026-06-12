@@ -175,9 +175,18 @@ export default async function DestinationPage({ params }) {
 
   const schemas = buildJsonLd(dest);
 
-  const similarDests = dest.similarDestinations
-    ?.map(s => SEO_DESTINATIONS.find(d => d.slug === s))
-    .filter(Boolean) ?? [];
+  // Resolve similar destination slugs → {slug, name} objects.
+  // Tries static SEO_DESTINATIONS first; falls back to a slug-derived display name.
+  const similarDests = (dest.similarDestinations ?? [])
+    .map(slug => {
+      const static_ = SEO_DESTINATIONS.find(d => d.slug === slug);
+      if (static_) return static_;
+      if (!slug) return null;
+      // Format slug as readable name: "kap-verde" → "Kap Verde"
+      const name = slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      return { slug, name };
+    })
+    .filter(Boolean);
 
   return (
     <>

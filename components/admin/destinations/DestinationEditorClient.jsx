@@ -38,6 +38,7 @@ const EMPTY_FORM = {
   // LLMO
   llmo_quick_answer: '', llmo_answer_block: '', llmo_entities: [],
   internal_links: [],       // [{text, url}]
+  similar_destinations: [], // string[] of slugs
   car_rental_recommended: false, car_rental_reason: '', affiliate_search_intent: '',
 };
 
@@ -68,6 +69,7 @@ function dbToForm(row) {
     twitter_title:           row.twitter_title           ?? '',
     twitter_description:     row.twitter_description     ?? '',
     llmo_entities:           row.llmo_entities           ?? [],
+    similar_destinations:    Array.isArray(row.similar_destinations) ? row.similar_destinations : [],
     internal_links: (row.internal_links ?? []).map(l => ({
       text: l.text ?? '', url: l.url ?? '',
     })),
@@ -744,6 +746,9 @@ export default function DestinationEditorClient({ initialData, isNew }) {
           </Field>
           <Field label="Interne Links" hint="Links zu verwandten Seiten – strukturiert für SEO und LLMO.">
             <LinksEditor value={form.internal_links} onChange={v => set('internal_links', v)} />
+          </Field>
+          <Field label="Ähnliche Reiseziele" hint="Slugs ähnlicher Ziele für SEO-Verlinkung und LLMO-Kontext, z.B. mallorca, ibiza.">
+            <SimpleListEditor value={form.similar_destinations} onChange={v => set('similar_destinations', v)} placeholder="z.B. mallorca" monospace />
           </Field>
         </div>
       </div>

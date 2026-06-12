@@ -30,8 +30,9 @@ function dbToPublic(row) {
     highlights:  normaliseStringArray(row.highlights),
     insiderTips: normaliseStringArray(row.insider_tips),
     faq:         row.faq ?? [],
+    // relations / internal linking
+    similarDestinations:   Array.isArray(row.similar_destinations) ? row.similar_destinations : [],
     // affiliate
-    similarDestinations:   [],
     carRentalRecommended:  row.car_rental_recommended  ?? false,
     affiliateSearchIntent: row.affiliate_search_intent ?? row.name,
     // status / cms
@@ -227,9 +228,43 @@ export async function listPublishedSlugs() {
 // Helpers
 // ─────────────────────────────────────────────────────────────────────────────
 
-/** Strip undefined fields so Supabase doesn't write null over existing data. */
+/**
+ * Exact set of writable columns in the destinations table.
+ * Any field NOT in this set is silently dropped before INSERT / UPDATE,
+ * preventing "column not found in schema cache" errors when the form sends
+ * editor-only state (e.g. gallery_items) or a new field before its migration runs.
+ */
+const DB_COLUMNS = new Set([
+  // identity / status
+  'name', 'slug', 'country', 'region', 'continent', 'status', 'published_at',
+  // content
+  'short_description', 'long_description', 'ai_summary',
+  'quick_facts', 'best_travel_time', 'ideal_duration',
+  'travel_type', 'suitable_for', 'not_suitable_for',
+  'highlights', 'insider_tips', 'faq',
+  // media
+  'hero_image', 'gallery_images', 'image_alt_texts',
+  // affiliate / planning
+  'car_rental_recommended', 'car_rental_reason', 'affiliate_search_intent',
+  // SEO
+  'seo_title', 'seo_description', 'canonical_url',
+  // Open Graph
+  'open_graph_image', 'open_graph_title', 'open_graph_description',
+  // Twitter / X
+  'twitter_image', 'twitter_title', 'twitter_description',
+  // LLMO / AEO
+  'llmo_entities', 'llmo_answer_block', 'llmo_quick_answer',
+  // internal linking
+  'internal_links', 'similar_destinations',
+]);
+
+/**
+ * Keep only known DB columns and drop undefined values.
+ * Unknown fields are silently ignored — this prevents Supabase schema-cache
+ * errors when the client sends fields that don't (yet) exist in the table.
+ */
 function sanitise(fields) {
   return Object.fromEntries(
-    Object.entries(fields).filter(([, v]) => v !== undefined)
+    Object.entries(fields).filter(([k, v]) => DB_COLUMNS.has(k) && v !== undefined)
   );
 }
