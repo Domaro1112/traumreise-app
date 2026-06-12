@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
   Plus, Search, Edit3, Eye, Globe, CheckCircle,
-  Archive, Trash2, RefreshCw,
+  Archive, Trash2, RefreshCw, FileJson,
 } from 'lucide-react';
 
 const STATUS_CONFIG = {
@@ -161,6 +161,25 @@ export default function DestinationsListClient({ initialData }) {
             <RefreshCw size={13} strokeWidth={2} style={{ transform: isPending ? 'rotate(360deg)' : 'none', transition: 'transform 0.5s' }} />
             Aktualisieren
           </button>
+
+          <Link
+            href="/admin/reiseziele/import"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: '6px',
+              padding: '9px 16px',
+              borderRadius: '10px',
+              background: '#F8FAFF',
+              color: '#334155',
+              textDecoration: 'none',
+              fontSize: '13px',
+              fontWeight: 600,
+              fontFamily: 'inherit',
+              border: '1.5px solid #E2E8F0',
+            }}
+          >
+            <FileJson size={14} strokeWidth={2} />
+            JSON importieren
+          </Link>
 
           <Link
             href="/admin/reiseziele/neu"
