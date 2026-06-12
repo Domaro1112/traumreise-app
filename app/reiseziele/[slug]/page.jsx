@@ -6,7 +6,6 @@ import Footer from '@/components/layout/Footer';
 import Container from '@/components/layout/Container';
 import DestinationAffiliateSection from '@/components/destinations/DestinationAffiliateSection';
 import DestinationFAQ from '@/components/destinations/DestinationFAQ';
-import { SEO_DESTINATIONS, getDestinationBySlug } from '@/data/destinations-seo';
 import { getDestinationBySlugPublic, listPublishedSlugs } from '@/repositories/destinations-cms';
 
 const BASE_URL = 'https://www.reisemonkey.de';
@@ -20,32 +19,25 @@ export const dynamicParams = true;
 // content updates appear without a full redeployment.
 export const revalidate = 60;
 
-// ── Resolve: Supabase-first, static fallback ─────────────────────────────────
+// ── Resolve: Supabase-only (no static fallback) ──────────────────────────────
 async function resolveDestination(slug) {
-  const dbDest = await getDestinationBySlugPublic(slug);
-  if (dbDest) {
-    console.info(`[page] resolveDestination: DB hit for "${slug}" (${dbDest.name})`);
-    return dbDest;
+  const dest = await getDestinationBySlugPublic(slug);
+  if (dest) {
+    console.info(`[page] resolveDestination: DB hit for "${slug}" (${dest.name})`);
+    return dest;
   }
-  const staticDest = getDestinationBySlug(slug);
-  if (staticDest) {
-    console.info(`[page] resolveDestination: static hit for "${slug}"`);
-    return staticDest;
-  }
-  console.warn(`[page] resolveDestination: not found for slug="${slug}" → will call notFound()`);
+  console.warn(`[page] resolveDestination: "${slug}" not found or not published → notFound()`);
   return null;
 }
 
 // ── Static params ─────────────────────────────────────────────────────────────
 export async function generateStaticParams() {
-  const staticSlugs = SEO_DESTINATIONS.map(d => ({ slug: d.slug }));
   try {
-    const dbSlugs = await listPublishedSlugs();
-    for (const slug of dbSlugs) {
-      if (!staticSlugs.find(s => s.slug === slug)) staticSlugs.push({ slug });
-    }
-  } catch { /* Supabase not available at build time – use static only */ }
-  return staticSlugs;
+    const slugs = await listPublishedSlugs();
+    return slugs.map(slug => ({ slug }));
+  } catch {
+    return [];
+  }
 }
 
 // ── Metadata ─────────────────────────────────────────────────────────────────
@@ -194,17 +186,14 @@ export default async function DestinationPage({ params }) {
   const schemas = buildJsonLd(dest);
 
   // Resolve similar destination slugs → {slug, name} objects.
-  // Tries static SEO_DESTINATIONS first; falls back to a slug-derived display name.
+  // Only uses slug-to-name formatting; the link will 404 if the slug isn't published,
+  // which is correct behaviour — unlinked slugs simply show no card.
   const similarDests = (dest.similarDestinations ?? [])
-    .map(slug => {
-      const static_ = SEO_DESTINATIONS.find(d => d.slug === slug);
-      if (static_) return static_;
-      if (!slug) return null;
-      // Format slug as readable name: "kap-verde" → "Kap Verde"
-      const name = slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-      return { slug, name };
-    })
-    .filter(Boolean);
+    .filter(Boolean)
+    .map(s => ({
+      slug: s,
+      name: s.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+    }));
 
   return (
     <>

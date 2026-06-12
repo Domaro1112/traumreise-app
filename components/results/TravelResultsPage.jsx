@@ -104,14 +104,35 @@ function track(event, params = {}) {
   } catch { /* analytics failure must never break the UI */ }
 }
 
+function slugify(str) {
+  return (str ?? '').toLowerCase().trim()
+    .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
 export default function TravelResultsPage() {
   const searchParams = useSearchParams();
   const sessionId    = searchParams.get('session_id');
 
-  const [phase,    setPhase]    = useState('loading');
-  const [session,  setSession]  = useState(null);
-  const [results,  setResults]  = useState([]);
-  const [errorMsg, setErrorMsg] = useState('');
+  const [phase,          setPhase]          = useState('loading');
+  const [session,        setSession]        = useState(null);
+  const [results,        setResults]        = useState([]);
+  const [errorMsg,       setErrorMsg]       = useState('');
+  const [publishedSlugs, setPublishedSlugs] = useState(new Set());
+
+  // Fetch published slugs once so each result card can conditionally link
+  // to /reiseziele/[slug] only when the page actually exists.
+  useEffect(() => {
+    fetch('/api/destinations/published-slugs')
+      .then(r => r.ok ? r.json() : { slugs: [] })
+      .then(d => setPublishedSlugs(new Set(d.slugs ?? [])))
+      .catch(() => {});
+  }, []);
+
+  function getDestinationSlug(name) {
+    const slug = slugify(name);
+    return publishedSlugs.has(slug) ? slug : null;
+  }
 
   const generate = useCallback(async (sess) => {
     const res = await fetch('/api/travel-finder/generate', {
@@ -309,6 +330,7 @@ export default function TravelResultsPage() {
                 destination={dest}
                 index={i}
                 sessionId={sessionId}
+                destinationSlug={getDestinationSlug(dest.name)}
               />
             ))}
           </div>

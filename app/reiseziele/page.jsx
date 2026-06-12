@@ -2,7 +2,6 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Container from '@/components/layout/Container';
 import DestinationsOverviewGrid from '@/components/destinations/DestinationsOverviewGrid';
-import { SEO_DESTINATIONS } from '@/data/destinations-seo';
 import { listPublishedDestinations } from '@/repositories/destinations-cms';
 import { Globe, MapPin } from 'lucide-react';
 
@@ -42,24 +41,17 @@ const jsonLd = {
   },
 };
 
-const STATS = [
-  { value: '20', label: 'Reiseziele' },
-  { value: '4', label: 'Kontinente' },
-  { value: '100%', label: 'Kostenlos' },
-];
-
 export default async function ReisezielePage() {
-  // Try Supabase-published destinations first; fall back to static data
-  let destinations = SEO_DESTINATIONS;
+  let destinations = [];
   try {
-    const dbDests = await listPublishedDestinations();
-    if (dbDests.length > 0) {
-      // Merge: DB destinations override static ones with the same slug
-      const dbSlugs = new Set(dbDests.map(d => d.slug));
-      const staticOnly = SEO_DESTINATIONS.filter(d => !dbSlugs.has(d.slug));
-      destinations = [...dbDests, ...staticOnly];
-    }
-  } catch { /* Supabase not available – use static data */ }
+    destinations = await listPublishedDestinations();
+  } catch { /* Supabase not available */ }
+
+  const STATS = [
+    { value: String(destinations.length || '–'), label: 'Reiseziele' },
+    { value: '4', label: 'Kontinente' },
+    { value: '100%', label: 'Kostenlos' },
+  ];
 
   return (
     <>
@@ -146,7 +138,19 @@ export default async function ReisezielePage() {
               Filtere nach Reisetyp und finde dein nächstes Ziel.
             </p>
 
-            <DestinationsOverviewGrid destinations={destinations} />
+            {destinations.length > 0 ? (
+              <DestinationsOverviewGrid destinations={destinations} />
+            ) : (
+              <div style={{ textAlign: 'center', padding: '64px 20px', background: '#F8FAFF', borderRadius: '20px', border: '1.5px solid #E2E8F0' }}>
+                <Globe size={36} strokeWidth={1.2} color="#CBD5E1" style={{ marginBottom: '16px' }} />
+                <p style={{ fontSize: '17px', fontWeight: 700, color: '#64748B', margin: '0 0 8px' }}>
+                  Aktuell werden neue Reiseziele vorbereitet.
+                </p>
+                <p style={{ fontSize: '14px', color: '#94A3B8', margin: 0 }}>
+                  Schau bald wieder vorbei – wir erweitern laufend unser Angebot.
+                </p>
+              </div>
+            )}
           </Container>
         </section>
 

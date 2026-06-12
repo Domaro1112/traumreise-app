@@ -5,7 +5,6 @@ import { MapPin, Clock, Wallet, CheckCircle2, ExternalLink, Loader2, Car, ArrowR
 import Link from 'next/link';
 import { getProviderDisplayList } from '@/lib/affiliate-config';
 import { isCarRentalEligible } from '@/lib/car-rental-config';
-import { getDestinationSlugByName } from '@/data/destinations-seo';
 
 const CARD_THEMES = [
   {
@@ -35,13 +34,14 @@ function track(event, params = {}) {
   } catch { /* analytics failure must never break the UI */ }
 }
 
-export default function TravelResultCard({ destination, index, sessionId }) {
+// destinationSlug: passed from parent if a published /reiseziele/[slug] page exists.
+// When null/undefined the "Mehr über X erfahren" link is hidden.
+export default function TravelResultCard({ destination, index, sessionId, destinationSlug }) {
   const theme = CARD_THEMES[index % 3];
   const [loadingProvider,  setLoadingProvider]  = useState(null);
   const [carRentalLoading, setCarRentalLoading] = useState(false);
 
   const showCarRental = !!(destination.carRentalRecommended || isCarRentalEligible(destination.name));
-  const seoSlug = getDestinationSlugByName(destination.name);
 
   const handleChipClick = async (providerId) => {
     if (loadingProvider) return;
@@ -205,9 +205,9 @@ export default function TravelResultCard({ destination, index, sessionId }) {
           </p>
         </div>
 
-        {seoSlug && (
+        {destinationSlug && (
           <Link
-            href={`/reiseziele/${seoSlug}`}
+            href={`/reiseziele/${destinationSlug}`}
             style={{
               display: 'inline-flex',
               alignItems: 'center',

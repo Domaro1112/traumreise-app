@@ -37,7 +37,7 @@ export default async function AdminReisezielePage() {
         </h2>
         <p style={{ fontSize: '14px', color: '#64748B', margin: 0 }}>
           SEO-, AEO- und LLMO-optimierte Reisezielseiten erstellen und pflegen.
-          Statische Fallback-Ziele aus <code style={{ fontSize: '12px', background: '#F1F5F9', padding: '1px 5px', borderRadius: '4px' }}>data/destinations-seo.js</code> bleiben weiterhin aktiv.
+          Alle öffentlichen Reisezielseiten werden ausschließlich aus dem CMS geladen.
         </p>
       </div>
 

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { MapPin, ArrowRight } from 'lucide-react';
-import { TRAVEL_TYPES } from '@/data/destinations-seo';
+const TRAVEL_TYPES = ['Strand', 'Stadt', 'Natur', 'Abenteuer', 'Familie', 'Luxus'];
 
 function DestinationCard({ dest }) {
   const [hovered, setHovered] = useState(false);
