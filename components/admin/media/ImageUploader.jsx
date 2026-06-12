@@ -36,13 +36,27 @@ export default function ImageUploader({ value, alt = '', onChange, onDelete, slu
     if (!canUpload) { setError('Bitte zuerst Slug/Basis-Daten speichern.'); return; }
     setError(''); setUploading(true);
     try {
+      if (process.env.NODE_ENV === 'development') {
+        console.log('image upload start', { type, slug, fileName: file.name, fileSize: file.size, fileType: file.type });
+      }
       const fd = new FormData();
       fd.append('file', file);
       fd.append('slug', slug);
       fd.append('type', type);
       const res = await fetch('/api/admin/media/upload', { method: 'POST', body: fd });
-      const json = await res.json();
-      if (!res.ok) throw new Error(json.error ?? 'Upload fehlgeschlagen.');
+      const text = await res.text();
+      if (process.env.NODE_ENV === 'development') {
+        console.log('image upload response', { status: res.status, body: text.slice(0, 200) });
+      }
+      let json;
+      try { json = JSON.parse(text); } catch {
+        throw new Error(
+          res.status === 413
+            ? 'Die Datei ist zu groß für den Upload. Bitte kleineres Bild verwenden.'
+            : `Upload fehlgeschlagen (${res.status}).`
+        );
+      }
+      if (!res.ok) throw new Error(json.error ?? `Upload fehlgeschlagen (${res.status}).`);
       const newAlt = localAlt || altDefault || '';
       onChange(json.url, newAlt);
     } catch (e) {

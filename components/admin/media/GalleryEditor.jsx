@@ -5,6 +5,10 @@ import { Upload, X, ChevronUp, ChevronDown, Image as ImageIcon, AlertCircle, Ref
 
 const ACCEPTED = '.jpg,.jpeg,.png,.webp';
 
+function uid() {
+  try { return crypto.randomUUID(); } catch { return `${Date.now()}-${Math.random().toString(36).slice(2)}`; }
+}
+
 const inp = {
   width: '100%', padding: '7px 10px', border: '1.5px solid #E2E8F0', borderRadius: '8px',
   fontSize: '11.5px', color: '#0F172A', background: '#FAFAFA', outline: 'none',
@@ -28,16 +32,38 @@ export default function GalleryEditor({ items = [], onChange, slug, destName = '
 
   const canUpload = !!slug?.trim();
 
-  async function uploadFile(file, index) {
+  async function uploadFile(file, galleryIndex) {
+    if (process.env.NODE_ENV === 'development') {
+      const ext = file.name.split('.').pop()?.toLowerCase() ?? 'jpg';
+      const n = String(galleryIndex + 1).padStart(2, '0');
+      console.log('gallery upload item', {
+        galleryIndex,
+        fileName: file.name,
+        fileSize: file.size,
+        lastModified: file.lastModified,
+        targetPath: `destinations/${slug}/gallery-${n}.${ext}`,
+      });
+    }
     const fd = new FormData();
     fd.append('file', file);
     fd.append('slug', slug);
     fd.append('type', 'gallery');
-    fd.append('galleryIndex', String(index));
+    fd.append('galleryIndex', String(galleryIndex));
     const res = await fetch('/api/admin/media/upload', { method: 'POST', body: fd });
-    const json = await res.json();
-    if (!res.ok) throw new Error(json.error ?? 'Upload fehlgeschlagen.');
-    return { url: json.url, alt: `${destName} Reisebild ${index + 1}`.trim() };
+    const text = await res.text();
+    if (process.env.NODE_ENV === 'development') {
+      console.log('gallery upload response', { status: res.status, body: text.slice(0, 200) });
+    }
+    let json;
+    try { json = JSON.parse(text); } catch {
+      throw new Error(
+        res.status === 413
+          ? 'Die Datei ist zu groß für den Upload. Bitte kleineres Bild verwenden.'
+          : `Upload fehlgeschlagen (${res.status}).`
+      );
+    }
+    if (!res.ok) throw new Error(json.error ?? `Upload fehlgeschlagen (${res.status}).`);
+    return json;
   }
 
   async function handleFiles(files) {
@@ -52,8 +78,18 @@ export default function GalleryEditor({ items = [], onChange, slug, destName = '
       if (!valid.length) { setError('Keine gültigen Bilder (JPG/PNG/WebP, max. 10 MB).'); return; }
 
       const startIdx = items.length;
-      const uploaded = await Promise.all(valid.map((f, i) => uploadFile(f, startIdx + i)));
-      onChange([...items, ...uploaded]);
+      const newItems = [];
+      // Sequential — each file gets its own request so no race condition on path assignment
+      for (let i = 0; i < valid.length; i++) {
+        const galleryIndex = startIdx + i;
+        const result = await uploadFile(valid[i], galleryIndex);
+        newItems.push({
+          localId: uid(),
+          url: result.url,
+          alt: `${destName} Reisebild ${galleryIndex + 1}`.trim(),
+        });
+      }
+      onChange([...items, ...newItems]);
     } catch (e) {
       setError(e.message);
     } finally {
@@ -144,13 +180,15 @@ export default function GalleryEditor({ items = [], onChange, slug, destName = '
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '12px' }}>
           {items.map((item, i) => (
             <div
-              key={`${item.url}-${i}`}
+              key={item.localId ?? item.url ?? `idx-${i}`}
               style={{ border: '1.5px solid #E2E8F0', borderRadius: '12px', overflow: 'hidden', background: '#FFFFFF' }}
             >
               {/* Thumbnail */}
               <div style={{ position: 'relative', background: '#F1F5F9', aspectRatio: '4/3' }}>
                 {item.url ? (
-                  <img src={item.url} alt={item.alt || `Galerie ${i + 1}`}
+                  <img
+                    src={item.localId ? `${item.url}?v=${item.localId}` : item.url}
+                    alt={item.alt || `Galerie ${i + 1}`}
                     style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   />
                 ) : (

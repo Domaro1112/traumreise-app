@@ -290,6 +290,7 @@ function LocalGalleryPicker({ items, onChange, destName }) {
     const valid = Array.from(files).filter(f => ACCEPTED_MIME.has(f.type) && f.size <= MAX_BYTES);
     if (!valid.length) { setErr('Keine gültigen Bilder (JPG/PNG/WebP, max. 10 MB).'); return; }
     const next = [...items, ...valid.map((f, i) => ({
+      localId: `${Date.now()}-${i}-${f.name}-${f.size}`,
       file: f,
       preview: URL.createObjectURL(f),
       alt: `${destName || 'Reiseziel'} Reisebild ${items.length + i + 1}`,
@@ -336,7 +337,7 @@ function LocalGalleryPicker({ items, onChange, destName }) {
       {items.length > 0 && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '10px' }}>
           {items.map((item, i) => (
-            <div key={item.preview} style={{ border: '1.5px solid #E2E8F0', borderRadius: '10px', overflow: 'hidden', background: '#FFFFFF' }}>
+            <div key={item.localId ?? item.preview} style={{ border: '1.5px solid #E2E8F0', borderRadius: '10px', overflow: 'hidden', background: '#FFFFFF' }}>
               <div style={{ position: 'relative', background: '#F1F5F9', aspectRatio: '4/3' }}>
                 <img src={item.preview} alt={item.alt} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                 <span style={{ position: 'absolute', top: '5px', left: '5px', background: 'rgba(0,0,0,0.55)', color: '#fff', fontSize: '10px', fontWeight: 700, padding: '2px 6px', borderRadius: '4px' }}>{i + 1}</span>
@@ -424,14 +425,28 @@ export default function DestinationImportClient() {
   }
 
   async function uploadFile(file, slug, type, galleryIndex) {
+    if (process.env.NODE_ENV === 'development') {
+      console.log('import uploadFile', { type, galleryIndex, fileName: file.name, fileSize: file.size });
+    }
     const fd = new FormData();
     fd.append('file', file);
     fd.append('slug', slug);
     fd.append('type', type);
     if (typeof galleryIndex === 'number') fd.append('galleryIndex', String(galleryIndex));
     const res  = await fetch('/api/admin/media/upload', { method: 'POST', body: fd });
-    const json = await res.json();
-    if (!res.ok) throw new Error(json.error ?? 'Upload fehlgeschlagen.');
+    const text = await res.text();
+    if (process.env.NODE_ENV === 'development') {
+      console.log('import upload response', { status: res.status, body: text.slice(0, 200) });
+    }
+    let json;
+    try { json = JSON.parse(text); } catch {
+      throw new Error(
+        res.status === 413
+          ? 'Die Datei ist zu groß für den Upload. Bitte kleineres Bild verwenden.'
+          : `Upload fehlgeschlagen (${res.status}).`
+      );
+    }
+    if (!res.ok) throw new Error(json.error ?? `Upload fehlgeschlagen (${res.status}).`);
     return json;
   }
 
