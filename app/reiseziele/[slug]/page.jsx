@@ -23,8 +23,17 @@ export const revalidate = 60;
 // ── Resolve: Supabase-first, static fallback ─────────────────────────────────
 async function resolveDestination(slug) {
   const dbDest = await getDestinationBySlugPublic(slug);
-  if (dbDest) return dbDest;
-  return getDestinationBySlug(slug);
+  if (dbDest) {
+    console.info(`[page] resolveDestination: DB hit for "${slug}" (${dbDest.name})`);
+    return dbDest;
+  }
+  const staticDest = getDestinationBySlug(slug);
+  if (staticDest) {
+    console.info(`[page] resolveDestination: static hit for "${slug}"`);
+    return staticDest;
+  }
+  console.warn(`[page] resolveDestination: not found for slug="${slug}" → will call notFound()`);
+  return null;
 }
 
 // ── Static params ─────────────────────────────────────────────────────────────

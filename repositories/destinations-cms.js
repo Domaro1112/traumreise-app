@@ -170,6 +170,12 @@ export async function deleteDestination(id) {
 /**
  * Load a published destination by slug.
  * Returns the camelCase public shape, or null if not found / not published.
+ *
+ * Diagnostic logging distinguishes three cases:
+ *   A) Found & published   → returns data
+ *   B) Exists but draft    → logs a warning (→ 404 because not published)
+ *   C) Not in DB at all    → logs info     (→ 404 because slug doesn't exist)
+ *   D) Real Supabase error → logs error    (→ 404 because of DB issue)
  */
 export async function getDestinationBySlugPublic(slug) {
   try {
@@ -180,13 +186,30 @@ export async function getDestinationBySlugPublic(slug) {
       .eq('slug', slug)
       .eq('status', 'published')
       .single();
+
     if (error) {
-      // PGRST116 = "no rows returned" → destination not found or not published; not an error worth logging.
-      if (error.code !== 'PGRST116') {
-        console.error('[destinations-cms] getDestinationBySlugPublic error:', error.message, { slug });
+      if (error.code === 'PGRST116') {
+        // No published row for this slug. Check whether it exists at all.
+        const { data: anyRow } = await supabase
+          .from('destinations')
+          .select('id, slug, status')
+          .eq('slug', slug)
+          .maybeSingle();
+
+        if (anyRow) {
+          // Row exists but is not published → most common cause of 404 for new destinations
+          console.warn(
+            `[destinations-cms] Destination "${slug}" exists in DB but status="${anyRow.status}" (must be "published" to appear publicly)`
+          );
+        } else {
+          console.info(`[destinations-cms] Destination "${slug}" not found in DB at all`);
+        }
+      } else {
+        console.error('[destinations-cms] getDestinationBySlugPublic Supabase error:', error.message, { slug, code: error.code });
       }
       return null;
     }
+
     if (!data) return null;
     return dbToPublic(data);
   } catch (err) {
