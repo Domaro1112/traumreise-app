@@ -115,6 +115,9 @@ export default function ImageUploader({ value, alt = '', onChange, onDelete, slu
                 <p style={{ fontSize: '11px', color: '#94A3B8', margin: 0 }}>
                   JPG, PNG, WebP · max. 10 MB · Empfohlen: 1920×1080 px
                 </p>
+                <p style={{ fontSize: '10px', color: '#CBD5E1', margin: '4px 0 0', fontStyle: 'italic' }}>
+                  Dateinamen werden automatisch optimiert. Du musst die Bilder vorher nicht umbenennen.
+                </p>
               </div>
             </div>
           )}

@@ -18,6 +18,11 @@ export async function POST(request: NextRequest) {
     const slug = (form.get('slug') as string | null)?.trim().toLowerCase();
     const type = (form.get('type') as string | null)?.trim() ?? 'gallery';
 
+    const galleryIndexRaw = (form.get('galleryIndex') as string | null)?.trim();
+    const galleryIndex = galleryIndexRaw != null && /^\d+$/.test(galleryIndexRaw)
+      ? parseInt(galleryIndexRaw, 10)
+      : 0;
+
     if (!file)                     return NextResponse.json({ error: 'Keine Datei übermittelt.' }, { status: 400 });
     if (!slug)                     return NextResponse.json({ error: 'Slug fehlt.' },               { status: 400 });
     if (!/^[a-z0-9-]+$/.test(slug)) return NextResponse.json({ error: 'Ungültiger Slug.' },         { status: 400 });
@@ -27,7 +32,7 @@ export async function POST(request: NextRequest) {
     if (file.size > MAX_BYTES)
       return NextResponse.json({ error: 'Datei zu groß (max. 10 MB).' }, { status: 413 });
 
-    const result = await uploadDestinationImage(file, slug, type as 'hero' | 'og' | 'twitter' | 'gallery');
+    const result = await uploadDestinationImage(file, slug, type as 'hero' | 'og' | 'twitter' | 'gallery', galleryIndex);
     return NextResponse.json(result);
   } catch (err) {
     const msg = err instanceof Error ? err.message : 'Upload fehlgeschlagen.';

@@ -549,7 +549,7 @@ export default function DestinationEditorClient({ initialData, isNew }) {
   function renderTabMedien() {
     const altTexts    = form.image_alt_texts ?? {};
     const destName    = form.name || 'Reiseziel';
-    const heroAlt     = altTexts.hero    ?? `${destName} – Hero Bild`;
+    const heroAlt     = altTexts.hero    ?? `${destName} Urlaub – Titelbild`;
     const ogAlt       = altTexts.og      ?? `${destName} – Open Graph`;
     const twitterAlt  = altTexts.twitter ?? `${destName} – Twitter`;
 
@@ -579,7 +579,7 @@ export default function DestinationEditorClient({ initialData, isNew }) {
           slug={form.slug}
           type="hero"
           label="Hero Bild"
-          altDefault={`${destName} Urlaub`}
+          altDefault={`${destName} Urlaub – Titelbild`}
           onChange={(url, alt) => {
             set('hero_image', url);
             set('image_alt_texts', { ...altTexts, hero: alt });

@@ -65,7 +65,7 @@ export default function Footer() {
               />
             </Link>
             <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.7, marginBottom: '24px' }}>
-              Reisemonkey hilft dir dabei, passende Reiseziele, Hotels, Flüge, Mietwagen und Aktivitäten für deinen nächsten Traumurlaub zu entdecken.
+              ApeAround hilft dir dabei, passende Reiseziele, Hotels, Flüge, Mietwagen und Aktivitäten für deinen nächsten Traumurlaub zu entdecken.
             </p>
             <div style={{ display: 'flex', gap: '10px' }}>
               {socialLinks.map((s) => (

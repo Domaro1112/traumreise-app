@@ -33,10 +33,11 @@ export default function GalleryEditor({ items = [], onChange, slug, destName = '
     fd.append('file', file);
     fd.append('slug', slug);
     fd.append('type', 'gallery');
+    fd.append('galleryIndex', String(index));
     const res = await fetch('/api/admin/media/upload', { method: 'POST', body: fd });
     const json = await res.json();
     if (!res.ok) throw new Error(json.error ?? 'Upload fehlgeschlagen.');
-    return { url: json.url, alt: `${destName} Urlaub ${index + 1}`.trim() };
+    return { url: json.url, alt: `${destName} Reisebild ${index + 1}`.trim() };
   }
 
   async function handleFiles(files) {
@@ -123,6 +124,9 @@ export default function GalleryEditor({ items = [], onChange, slug, destName = '
             </p>
             <p style={{ fontSize: '11px', color: '#94A3B8', margin: '3px 0 0' }}>
               JPG, PNG, WebP · max. 10 MB pro Bild
+            </p>
+            <p style={{ fontSize: '10px', color: '#CBD5E1', margin: '4px 0 0', fontStyle: 'italic' }}>
+              Dateinamen werden automatisch optimiert (gallery-01.jpg, gallery-02.jpg …)
             </p>
           </>
         )}

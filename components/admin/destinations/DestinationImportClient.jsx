@@ -269,6 +269,7 @@ function LocalFilePicker({ file, preview, alt, onPick, onAlt, onRemove, label, a
           </div>
           <p style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A', margin: 0 }}>Bild hierher ziehen oder klicken</p>
           <p style={{ fontSize: '11px', color: '#94A3B8', margin: 0 }}>JPG, PNG, WebP · max. 10 MB · Empfohlen: 1920×1080 px</p>
+          <p style={{ fontSize: '10px', color: '#CBD5E1', margin: '4px 0 0', fontStyle: 'italic' }}>Dateinamen werden automatisch optimiert.</p>
         </div>
       </div>
       <input ref={inputRef} type="file" accept=".jpg,.jpeg,.png,.webp" style={{ display: 'none' }} onChange={e => pickFiles(e.target.files)} />
@@ -422,11 +423,12 @@ export default function DestinationImportClient() {
     setGalleryItems([]);
   }
 
-  async function uploadFile(file, slug, type) {
+  async function uploadFile(file, slug, type, galleryIndex) {
     const fd = new FormData();
     fd.append('file', file);
     fd.append('slug', slug);
     fd.append('type', type);
+    if (typeof galleryIndex === 'number') fd.append('galleryIndex', String(galleryIndex));
     const res  = await fetch('/api/admin/media/upload', { method: 'POST', body: fd });
     const json = await res.json();
     if (!res.ok) throw new Error(json.error ?? 'Upload fehlgeschlagen.');
@@ -480,14 +482,14 @@ export default function DestinationImportClient() {
             setSavingStep('Hero-Bild wird hochgeladen…');
             const r = await uploadFile(heroFile, slug, 'hero');
             imageUpdates.hero_image = r.url;
-            altTexts.hero = heroAlt.trim() || `${destName} Urlaub`;
+            altTexts.hero = heroAlt.trim() || `${destName} Urlaub – Titelbild`;
           }
 
           if (useHeroAsOg) {
             if (imageUpdates.hero_image) imageUpdates.open_graph_image = imageUpdates.hero_image;
           } else if (ogFile) {
             setSavingStep('OG-Bild wird hochgeladen…');
-            const r = await uploadFile(ogFile, slug, 'og');
+            const r = await uploadFile(ogFile, slug, 'og', undefined);
             imageUpdates.open_graph_image = r.url;
           }
 
@@ -496,7 +498,7 @@ export default function DestinationImportClient() {
             if (twitterFallback) imageUpdates.twitter_image = twitterFallback;
           } else if (twitterFile) {
             setSavingStep('Twitter-Bild wird hochgeladen…');
-            const r = await uploadFile(twitterFile, slug, 'twitter');
+            const r = await uploadFile(twitterFile, slug, 'twitter', undefined);
             imageUpdates.twitter_image = r.url;
           }
 
@@ -504,7 +506,7 @@ export default function DestinationImportClient() {
             const galleryUrls = [];
             for (let i = 0; i < galleryItems.length; i++) {
               setSavingStep(`Galerie-Bilder werden hochgeladen (${i + 1}/${galleryItems.length})…`);
-              const r = await uploadFile(galleryItems[i].file, slug, 'gallery');
+              const r = await uploadFile(galleryItems[i].file, slug, 'gallery', i);
               galleryUrls.push(r.url);
               altTexts[`gallery_${i}`] = galleryItems[i].alt.trim() || `${destName} Reisebild ${i + 1}`;
             }
@@ -619,6 +621,9 @@ export default function DestinationImportClient() {
             <span style={{ fontSize: '15px', fontWeight: 700, color: '#0F172A' }}>Bilder hinzufügen</span>
             <span style={{ fontSize: '11px', color: '#94A3B8', fontWeight: 500, marginLeft: '4px' }}>optional – kann auch später im Editor ergänzt werden</span>
           </div>
+          <p style={{ fontSize: '11px', color: '#94A3B8', margin: '0 0 4px', fontStyle: 'italic' }}>
+            Dateinamen werden automatisch optimiert. Du musst die Bilder vorher nicht umbenennen.
+          </p>
 
           {/* Hero */}
           <SDiv label="Hero-Bild" />
@@ -628,7 +633,7 @@ export default function DestinationImportClient() {
             onAlt={setHeroAlt}
             onRemove={() => { setHeroFile(null); setHeroPreview(''); setHeroAlt(''); }}
             label="Hero-Bild"
-            altPlaceholder={`${destName} Urlaub`}
+            altPlaceholder={`${destName} Urlaub – Titelbild`}
           />
 
           {/* Open Graph */}
