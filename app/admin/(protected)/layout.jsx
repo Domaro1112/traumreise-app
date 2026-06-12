@@ -12,8 +12,17 @@ import AdminAccessDenied from '@/components/admin/AdminAccessDenied';
 // The middleware (middleware.ts) keeps the session token refreshed.
 
 export default async function ProtectedAdminLayout({ children }) {
-  const supabase = await createAuthClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  let user = null;
+  try {
+    const supabase = await createAuthClient();
+    const { data } = await supabase.auth.getUser();
+    user = data.user ?? null;
+  } catch (err) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.error('[AdminLayout] Supabase auth error:', err);
+    }
+    redirect('/admin/login');
+  }
 
   if (!user) {
     redirect('/admin/login');
