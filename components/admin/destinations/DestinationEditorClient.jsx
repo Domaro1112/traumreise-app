@@ -4,6 +4,8 @@ import { useState, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { Save, Globe, ChevronDown, ChevronUp, Plus, Trash2, AlertCircle, Sparkles } from 'lucide-react';
 import { buildAutoValues } from '@/lib/validate-destination-import';
+import ImageUploader from '@/components/admin/media/ImageUploader';
+import GalleryEditor from '@/components/admin/media/GalleryEditor';
 
 // ── Predefined options ────────────────────────────────────────────────────────
 const TRAVEL_TYPES   = ['Strand', 'Stadt', 'Natur', 'Abenteuer', 'Familie', 'Luxus', 'Kultur', 'Wandern', 'Roadtrip'];
@@ -24,7 +26,9 @@ const EMPTY_FORM = {
   highlights: [],
   insider_tips: [],
   faq: [],                  // [{question, answer}]
-  hero_image: '', gallery_images: [],
+  hero_image: '',
+  gallery_items: [],       // [{url, alt}] – local only, converted on save
+  image_alt_texts: {},     // { hero, og, twitter, gallery_0, ... }
   // SEO
   seo_title: '', seo_description: '', canonical_url: '',
   // Open Graph
@@ -48,7 +52,12 @@ function dbToForm(row) {
     highlights:  (row.highlights  ?? []).map(h => typeof h === 'string' ? h : h?.text ?? ''),
     insider_tips:(row.insider_tips ?? []).map(t => typeof t === 'string' ? t : t?.text ?? ''),
     faq:         (row.faq         ?? []).map(f => ({ question: f.question ?? '', answer: f.answer ?? '' })),
-    gallery_images:          row.gallery_images          ?? [],
+    // Convert gallery_images (string[]) + image_alt_texts → gallery_items [{url, alt}]
+    gallery_items: (row.gallery_images ?? []).map((url, i) => ({
+      url,
+      alt: (row.image_alt_texts ?? {})[`gallery_${i}`] ?? '',
+    })),
+    image_alt_texts: row.image_alt_texts ?? {},
     travel_type:             row.travel_type             ?? [],
     suitable_for:            row.suitable_for            ?? [],
     not_suitable_for:        row.not_suitable_for        ?? [],
@@ -66,12 +75,24 @@ function dbToForm(row) {
 }
 
 function formToPayload(form) {
+  // Build image_alt_texts from gallery_items + existing non-gallery keys
+  const galleryAltTexts = Object.fromEntries(
+    (form.gallery_items ?? []).map((item, i) => [`gallery_${i}`, item.alt ?? ''])
+  );
+  const existingAltTexts = Object.fromEntries(
+    Object.entries(form.image_alt_texts ?? {}).filter(([k]) => !k.startsWith('gallery_'))
+  );
+  const { gallery_items: _gi, ...rest } = form;
   return {
-    ...form,
+    ...rest,
     // Convert [{key,value}] → object
     quick_facts: Object.fromEntries(
       (form.quick_facts ?? []).filter(p => p.key?.trim()).map(p => [p.key.trim(), p.value])
     ),
+    // gallery_images as string array
+    gallery_images: (form.gallery_items ?? []).map(i => i.url).filter(Boolean),
+    // merged alt texts
+    image_alt_texts: { ...existingAltTexts, ...galleryAltTexts },
   };
 }
 
@@ -524,37 +545,122 @@ export default function DestinationEditorClient({ initialData, isNew }) {
   }
 
   function renderTabMedien() {
+    const altTexts    = form.image_alt_texts ?? {};
+    const destName    = form.name || 'Reiseziel';
+    const heroAlt     = altTexts.hero    ?? `${destName} – Hero Bild`;
+    const ogAlt       = altTexts.og      ?? `${destName} – Open Graph`;
+    const twitterAlt  = altTexts.twitter ?? `${destName} – Twitter`;
+
+    // OG / Twitter sync checkboxes (detected from current values)
+    const heroAsOg    = !form.open_graph_image || form.open_graph_image === form.hero_image;
+    const ogAsTwitter = !form.twitter_image   || form.twitter_image   === (form.open_graph_image || form.hero_image);
+
     return (
       <div>
-        <Field label="Hero Image URL" hint="Vollständiger Pfad, z.B. /images/destinations/mallorca.jpg">
-          <TextInput value={form.hero_image} onChange={v => set('hero_image', v)} placeholder="/images/destinations/mallorca.jpg" monospace />
-        </Field>
+        {/* ── Hero Bild ─────────────────────────────────────────────────────── */}
+        <SectionDivider label="Hero Bild" />
+        <ImageUploader
+          value={form.hero_image}
+          alt={heroAlt}
+          slug={form.slug}
+          type="hero"
+          label="Hero Bild"
+          altDefault={`${destName} Urlaub`}
+          onChange={(url, alt) => {
+            set('hero_image', url);
+            set('image_alt_texts', { ...altTexts, hero: alt });
+          }}
+          onDelete={() => {
+            set('hero_image', '');
+            set('image_alt_texts', { ...altTexts, hero: '' });
+          }}
+        />
 
-        <div style={{ borderTop: '1px solid #F1F5F9', paddingTop: '18px', marginTop: '4px', marginBottom: '18px' }}>
-          <p style={{ fontSize: '11px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.05em', textTransform: 'uppercase', margin: '0 0 14px' }}>
-            Open Graph (Facebook, LinkedIn, WhatsApp)
-          </p>
-          <Field label={<>OG Bild URL{isAuto('open_graph_image') && <AutoBadge />}</>}
-            hint="Leer = Hero Image wird als Fallback verwendet."
-          >
-            <TextInput value={form.open_graph_image} onChange={v => set('open_graph_image', v)} placeholder={autoValues.open_graph_image} monospace />
-          </Field>
-        </div>
+        {/* ── Open Graph Bild ───────────────────────────────────────────────── */}
+        <SectionDivider label={<>Open Graph Bild{isAuto('open_graph_image') && <AutoBadge />}</>} style={{ marginTop: '24px' }} />
+        <label style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', cursor: 'pointer', marginBottom: '12px', fontSize: '13px', color: '#374151', fontWeight: 600 }}>
+          <input
+            type="checkbox"
+            checked={heroAsOg}
+            onChange={e => {
+              if (e.target.checked) {
+                set('open_graph_image', form.hero_image);
+                set('image_alt_texts', { ...altTexts, og: heroAlt });
+              } else {
+                set('open_graph_image', '');
+              }
+            }}
+            style={{ width: '15px', height: '15px' }}
+          />
+          Hero-Bild als Open Graph Bild verwenden
+        </label>
+        {!heroAsOg && (
+          <ImageUploader
+            value={form.open_graph_image}
+            alt={ogAlt}
+            slug={form.slug}
+            type="og"
+            label="OG Bild"
+            altDefault={`${destName} – Open Graph`}
+            onChange={(url, alt) => {
+              set('open_graph_image', url);
+              set('image_alt_texts', { ...altTexts, og: alt });
+            }}
+            onDelete={() => {
+              set('open_graph_image', '');
+              set('image_alt_texts', { ...altTexts, og: '' });
+            }}
+          />
+        )}
 
-        <div style={{ borderTop: '1px solid #F1F5F9', paddingTop: '18px', marginTop: '4px', marginBottom: '18px' }}>
-          <p style={{ fontSize: '11px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.05em', textTransform: 'uppercase', margin: '0 0 14px' }}>
-            Twitter / X
-          </p>
-          <Field label={<>Twitter Bild URL{isAuto('twitter_image') && <AutoBadge />}</>}
-            hint="Leer = OG-Bild wird verwendet."
-          >
-            <TextInput value={form.twitter_image} onChange={v => set('twitter_image', v)} placeholder={autoValues.twitter_image} monospace />
-          </Field>
-        </div>
+        {/* ── Twitter / X Bild ─────────────────────────────────────────────── */}
+        <SectionDivider label={<>Twitter / X Bild{isAuto('twitter_image') && <AutoBadge />}</>} style={{ marginTop: '24px' }} />
+        <label style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', cursor: 'pointer', marginBottom: '12px', fontSize: '13px', color: '#374151', fontWeight: 600 }}>
+          <input
+            type="checkbox"
+            checked={ogAsTwitter}
+            onChange={e => {
+              if (e.target.checked) {
+                set('twitter_image', form.open_graph_image || form.hero_image);
+                set('image_alt_texts', { ...altTexts, twitter: ogAlt });
+              } else {
+                set('twitter_image', '');
+              }
+            }}
+            style={{ width: '15px', height: '15px' }}
+          />
+          Open Graph Bild als Twitter / X Bild verwenden
+        </label>
+        {!ogAsTwitter && (
+          <ImageUploader
+            value={form.twitter_image}
+            alt={twitterAlt}
+            slug={form.slug}
+            type="twitter"
+            label="Twitter Bild"
+            altDefault={`${destName} – Twitter`}
+            onChange={(url, alt) => {
+              set('twitter_image', url);
+              set('image_alt_texts', { ...altTexts, twitter: alt });
+            }}
+            onDelete={() => {
+              set('twitter_image', '');
+              set('image_alt_texts', { ...altTexts, twitter: '' });
+            }}
+          />
+        )}
 
-        <Field label="Galerie-Bilder" hint="Weitere Bild-URLs für die Galerie.">
-          <SimpleListEditor value={form.gallery_images} onChange={v => set('gallery_images', v)} placeholder="/images/destinations/mallorca-strand.jpg" monospace />
-        </Field>
+        {/* ── Galerie ───────────────────────────────────────────────────────── */}
+        <SectionDivider label="Galerie" style={{ marginTop: '24px' }} />
+        <p style={{ fontSize: '12px', color: '#94A3B8', margin: '0 0 12px' }}>
+          Mehrere Bilder hochladen – erscheinen im Abschnitt „Bilder aus {destName}" auf der Seite.
+        </p>
+        <GalleryEditor
+          items={form.gallery_items}
+          slug={form.slug}
+          destName={destName}
+          onChange={items => set('gallery_items', items)}
+        />
       </div>
     );
   }
@@ -801,6 +907,17 @@ export default function DestinationEditorClient({ initialData, isNew }) {
       }}>
         {(tabContent[activeTab] ?? (() => null))()}
       </div>
+    </div>
+  );
+}
+
+function SectionDivider({ label, style }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: '0 0 14px', ...style }}>
+      <p style={{ fontSize: '11px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.05em', textTransform: 'uppercase', margin: 0, whiteSpace: 'nowrap' }}>
+        {label}
+      </p>
+      <div style={{ flex: 1, height: '1px', background: '#F1F5F9' }} />
     </div>
   );
 }

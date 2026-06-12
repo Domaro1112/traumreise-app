@@ -1,8 +1,8 @@
-import { Image } from 'lucide-react';
-import AdminSectionPlaceholder from '@/components/admin/AdminSectionPlaceholder';
+import MediaLibraryClient from '@/components/admin/media/MediaLibraryClient';
 
 export const metadata = {
   title: 'Medienverwaltung | Reisemonkey Admin',
+  robots: { index: false, follow: false },
 };
 
 export default function AdminMedienPage() {
@@ -20,25 +20,11 @@ export default function AdminMedienPage() {
           Medienverwaltung
         </h2>
         <p style={{ fontSize: '14px', color: '#64748B', margin: 0 }}>
-          Bilder, Hero-Fotos und Mediendateien hochladen und verwalten.
+          Bilder für Reiseziele anzeigen und verwalten. Hochladen per Reiseziel-Editor (Tab Medien).
         </p>
       </div>
 
-      <AdminSectionPlaceholder
-        icon={Image}
-        title="Medienverwaltung"
-        description="Hier werden später alle Mediendateien verwaltet. Du kannst Bilder für Reiseziele, Blogartikel und Hero-Bereiche hochladen, organisieren und optimieren."
-        features={[
-          'Bilder hochladen',
-          'Medienbibliothek',
-          'Hero-Bilder verwalten',
-          'Bildoptimierung',
-          'Alt-Texte pflegen',
-          'Ordner & Tags',
-          'Supabase Storage',
-          'CDN-Integration',
-        ]}
-      />
+      <MediaLibraryClient />
     </div>
   );
 }

@@ -39,7 +39,12 @@ export async function generateMetadata({ params }) {
   const title = dest.seoTitle ?? `${dest.name} Urlaub – Tipps, beste Reisezeit & Angebote | Reisemonkey`;
   const description = dest.seoDescription ?? `Entdecke ${dest.name}: beste Reisezeit, Highlights, Hotels, Flüge, Mietwagen und Aktivitäten für deinen Urlaub in ${dest.country}.`;
   const canonical = dest.canonicalUrl ?? `${BASE_URL}/reiseziele/${dest.slug}`;
-  const ogImage = dest.openGraphImage ?? dest.heroImage;
+  const ogImage   = dest.openGraphImage ?? dest.heroImage;
+  const ogTitle   = dest.openGraphTitle ?? title;
+  const ogDesc    = dest.openGraphDescription ?? description;
+  const twImage   = dest.twitterImage ?? ogImage;
+  const twTitle   = dest.twitterTitle ?? ogTitle;
+  const twDesc    = dest.twitterDescription ?? ogDesc;
 
   return {
     title,
@@ -47,17 +52,17 @@ export async function generateMetadata({ params }) {
     keywords: [dest.name, dest.country, dest.region, 'Urlaub', 'Reiseziel', 'Tipps', 'Hotels', 'Flüge', 'Reisemonkey'].filter(Boolean),
     robots: { index: true, follow: true },
     openGraph: {
-      title,
-      description,
-      url: canonical,
-      type: 'website',
+      title:       ogTitle,
+      description: ogDesc,
+      url:         canonical,
+      type:        'website',
       images: [{ url: ogImage, width: 1200, height: 800, alt: `${dest.name} Urlaub` }],
     },
     twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [ogImage],
+      card:        'summary_large_image',
+      title:       twTitle,
+      description: twDesc,
+      images:      [twImage],
     },
     alternates: {
       canonical,
@@ -452,6 +457,32 @@ export default async function DestinationPage({ params }) {
                           <p style={{ fontSize: '14px', color: '#374151', lineHeight: 1.65, margin: 0 }}>{tip}</p>
                         </div>
                       ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Gallery */}
+                {dest.galleryImages?.length > 0 && (
+                  <div style={{ marginBottom: '40px' }}>
+                    <SectionLabel>Bilder</SectionLabel>
+                    <SectionHeading>Bilder aus {dest.name}</SectionHeading>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '10px' }}>
+                      {dest.galleryImages.map((url, i) => {
+                        const alt = dest.imageAltTexts?.[`gallery_${i}`] || `${dest.name} ${i + 1}`;
+                        return (
+                          <div
+                            key={url}
+                            style={{ borderRadius: '12px', overflow: 'hidden', background: '#F1F5F9', aspectRatio: '4/3' }}
+                          >
+                            <img
+                              src={url}
+                              alt={alt}
+                              loading="lazy"
+                              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                            />
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 )}

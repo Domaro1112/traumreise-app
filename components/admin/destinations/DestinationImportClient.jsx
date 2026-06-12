@@ -413,14 +413,23 @@ export default function DestinationImportClient() {
                   <div style={{ fontSize: '13px', fontWeight: 700, color: '#065F46' }}>
                     {savedStatus === 'published' ? 'Reiseziel veröffentlicht!' : 'Entwurf gespeichert!'}
                   </div>
-                  <div style={{ fontSize: '12px', color: '#059669', marginTop: '2px' }}>
-                    <Link href={`/admin/reiseziele/${savedId}`} style={{ color: '#0EA5E9', textDecoration: 'none', fontWeight: 600 }}>
-                      Im Editor öffnen →
+                  <div style={{ fontSize: '12px', color: '#059669', marginTop: '4px', display: 'flex', flexWrap: 'wrap', gap: '10px', alignItems: 'center' }}>
+                    <Link
+                      href={`/admin/reiseziele/${savedId}?tab=medien`}
+                      style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '6px 12px', borderRadius: '8px', background: '#F0FDF4', border: '1px solid #A7F3D0', color: '#059669', textDecoration: 'none', fontWeight: 700, fontSize: '12px' }}
+                    >
+                      Bilder hinzufügen →
                     </Link>
-                    &nbsp;&nbsp;
+                    <Link href={`/admin/reiseziele/${savedId}`} style={{ color: '#0EA5E9', textDecoration: 'none', fontWeight: 600 }}>
+                      Im Editor öffnen
+                    </Link>
                     <Link href="/admin/reiseziele" style={{ color: '#64748B', textDecoration: 'none' }}>
                       Zur Liste
                     </Link>
+                  </div>
+                  <div style={{ marginTop: '10px', padding: '8px 12px', borderRadius: '8px', background: '#FFF7ED', border: '1px solid #FED7AA', display: 'flex', alignItems: 'center', gap: '7px', fontSize: '12px', color: '#92400E' }}>
+                    <AlertTriangle size={12} strokeWidth={2.5} color="#D97706" />
+                    Es wurden noch keine Bilder hochgeladen. Füge jetzt Hero-Bild und Galerie hinzu.
                   </div>
                 </div>
               </div>

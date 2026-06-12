@@ -52,6 +52,9 @@ function dbToPublic(row) {
     // LLMO
     llmoQuickAnswer:      row.llmo_quick_answer      ?? null,
     llmoAnswerBlock:      row.llmo_answer_block       ?? null,
+    // media gallery
+    galleryImages:        Array.isArray(row.gallery_images)  ? row.gallery_images  : [],
+    imageAltTexts:        row.image_alt_texts ?? {},
   };
 }
 
