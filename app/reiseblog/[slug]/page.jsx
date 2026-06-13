@@ -9,6 +9,7 @@ import ArticleContent from '@/components/blog/ArticleContent';
 import ArticleFAQ from '@/components/blog/ArticleFAQ';
 import ArticleSidebar from '@/components/blog/ArticleSidebar';
 import RelatedArticles from '@/components/blog/RelatedArticles';
+import ArticleFeedback from '@/components/blog/ArticleFeedback';
 import {
   getBlogArticleBySlugPublic,
   listPublishedBlogSlugs,
@@ -116,6 +117,11 @@ export default async function ArticlePage({ params }) {
                 <RelatedArticles
                   relatedSlugs={article.relatedArticles}
                   currentSlug={article.slug}
+                />
+                <ArticleFeedback
+                  slug={article.slug}
+                  initialHelpfulCount={article.helpfulCount}
+                  initialNotHelpfulCount={article.notHelpfulCount}
                 />
               </div>
 

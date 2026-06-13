@@ -37,8 +37,15 @@ export default async function AdminDashboard() {
   const draftBlog          = blogAvailable ? articles.filter(a => a.status === 'draft').length : null;
   const archivedBlog       = blogAvailable ? articles.filter(a => a.status === 'archived').length : null;
 
+  const totalFeedbacks     = blogAvailable ? articles.reduce((s, a) => s + (a.helpful_count ?? 0) + (a.not_helpful_count ?? 0), 0) : 0;
+  const totalHelpful       = blogAvailable ? articles.reduce((s, a) => s + (a.helpful_count ?? 0), 0) : 0;
+  const avgScore           = totalFeedbacks > 0 ? Math.round((totalHelpful / totalFeedbacks) * 100) : null;
+
   const blogSubtitle = blogAvailable
-    ? `${publishedBlog} veröffentlicht · ${draftBlog} Entwürfe · ${archivedBlog} archiviert`
+    ? [
+        `${publishedBlog} veröffentlicht · ${draftBlog} Entwürfe · ${archivedBlog} archiviert`,
+        totalFeedbacks > 0 ? `${totalFeedbacks} Feedbacks · Ø ${avgScore} % hilfreich` : null,
+      ].filter(Boolean).join(' · ')
     : 'Daten nicht verfügbar';
 
   const STAT_CARDS = [

@@ -307,7 +307,7 @@ export default function BlogListClient({ initialArticles }) {
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
               <tr style={{ background: '#F8FAFC', borderBottom: '1.5px solid #E2E8F0' }}>
-                {['Titel', 'Kategorie', 'Status', 'Erstellt', 'Veröffentlicht', 'Aktionen'].map(h => (
+                {['Titel', 'Kategorie', 'Status', 'Feedback', 'Erstellt', 'Veröffentlicht', 'Aktionen'].map(h => (
                   <th key={h} style={{ padding: '12px 16px', textAlign: 'left', fontSize: '12px', fontWeight: 700, color: '#64748B', letterSpacing: '0.5px', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
                     {h}
                   </th>
@@ -331,6 +331,14 @@ export default function BlogListClient({ initialArticles }) {
                   </td>
                   <td style={{ padding: '14px 16px', whiteSpace: 'nowrap' }}>
                     <StatusBadge status={article.status} />
+                  </td>
+                  <td style={{ padding: '14px 16px', fontSize: '13px', color: '#64748B', whiteSpace: 'nowrap' }}>
+                    {(() => {
+                      const h = article.helpful_count ?? 0;
+                      const n = article.not_helpful_count ?? 0;
+                      if (h + n === 0) return <span style={{ color: '#CBD5E1' }}>–</span>;
+                      return <span>{h} 👍 | {n} 👎</span>;
+                    })()}
                   </td>
                   <td style={{ padding: '14px 16px', fontSize: '13px', color: '#64748B', whiteSpace: 'nowrap' }}>
                     {fmtDate(article.created_at)}

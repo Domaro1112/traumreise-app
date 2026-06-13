@@ -634,6 +634,40 @@ export default function BlogEditorClient({ isNew, initialData }) {
               Featured Artikel (erscheint als Hauptartikel auf der Blogseite)
             </label>
           </div>
+
+          {/* Leserfeedback */}
+          {!isNew && (initialData?.helpful_count > 0 || initialData?.not_helpful_count > 0) && (() => {
+            const h = initialData.helpful_count ?? 0;
+            const n = initialData.not_helpful_count ?? 0;
+            const total = h + n;
+            const score = total > 0 ? Math.round((h / total) * 100) : null;
+            return (
+              <div style={{
+                gridColumn: '1 / -1',
+                padding: '20px 24px',
+                borderRadius: '12px',
+                background: '#F0FDF4',
+                border: '1.5px solid #A7F3D0',
+                marginBottom: '20px',
+              }}>
+                <p style={{ fontSize: '13px', fontWeight: 700, color: '#065F46', marginBottom: '12px', letterSpacing: '0.03em', textTransform: 'uppercase' }}>
+                  Leserfeedback
+                </p>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
+                  {[
+                    { label: 'Hilfreich', value: `${h} 👍` },
+                    { label: 'Nicht hilfreich', value: `${n} 👎` },
+                    { label: 'Hilfreichkeitsquote', value: score !== null ? `${score} %` : '–' },
+                  ].map(item => (
+                    <div key={item.label} style={{ background: '#FFFFFF', borderRadius: '8px', padding: '12px 14px', border: '1px solid #D1FAE5' }}>
+                      <div style={{ fontSize: '11px', color: '#6B7280', fontWeight: 600, marginBottom: '4px' }}>{item.label}</div>
+                      <div style={{ fontSize: '18px', fontWeight: 800, color: '#065F46' }}>{item.value}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
         </div>
       )}
 

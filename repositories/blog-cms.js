@@ -49,6 +49,9 @@ function dbToPublic(row) {
     openGraphImage: row.open_graph_image ?? row.cover_image_url ?? null,
     // gallery
     galleryImages: Array.isArray(row.gallery_images) ? row.gallery_images : [],
+    // feedback
+    helpfulCount:    row.helpful_count    ?? 0,
+    notHelpfulCount: row.not_helpful_count ?? 0,
   };
 }
 
@@ -61,7 +64,7 @@ export async function listBlogAdmin() {
   const supabase = createServerClient();
   const { data, error } = await supabase
     .from('blog_articles')
-    .select('id, slug, title, category, status, featured, published_at, created_at, updated_at')
+    .select('id, slug, title, category, status, featured, published_at, created_at, updated_at, helpful_count, not_helpful_count')
     .order('created_at', { ascending: false });
   if (error) throw new Error(error.message);
   return data ?? [];
@@ -229,4 +232,22 @@ function sanitise(fields) {
   return Object.fromEntries(
     Object.entries(fields).filter(([k, v]) => DB_COLUMNS.has(k) && v !== undefined)
   );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Public feedback – atomic vote increment via Postgres RPC
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Atomically increments helpful_count or not_helpful_count for a published article.
+ * Uses a SECURITY DEFINER Postgres function so no RLS bypass is needed at the
+ * application layer; the function itself validates the vote string.
+ */
+export async function incrementBlogFeedback(slug, vote) {
+  const supabase = createServerClient();
+  const { error } = await supabase.rpc('increment_blog_feedback', {
+    p_slug: slug,
+    p_vote: vote,
+  });
+  if (error) throw new Error(error.message);
 }
