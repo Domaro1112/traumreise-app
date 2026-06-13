@@ -61,7 +61,7 @@ export default function Header() {
                   height: 'clamp(42px, 6.5vw, 60px)',
                   width: 'auto',
                   display: 'block',
-                  maxHeight: '72px',
+                  maxHeight: '32px',
                   objectFit: 'contain',
                 }}
               />
@@ -78,7 +78,7 @@ export default function Header() {
                     borderRadius: '10px',
                     fontSize: '14px',
                     fontWeight: 500,
-                    color: '#475569',
+                    color: '#ffffff',
                     textDecoration: 'none',
                     transition: 'color 0.2s, background 0.2s',
                     whiteSpace: 'nowrap',
