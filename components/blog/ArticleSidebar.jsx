@@ -255,7 +255,6 @@ export default function ArticleSidebar({ tableOfContents, destination, galleryIm
                 fontSize: '12px',
                 fontWeight: 700,
                 letterSpacing: '0.8px',
-                textTransform: 'uppercase',
                 color: '#92400E',
               }}
             >
