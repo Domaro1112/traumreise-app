@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { generateAffiliateUrl, isAllowedAffiliateUrl } from '@/lib/affiliate';
 import { createServerClient } from '@/lib/supabase/server';
 
-// Affiliate-Redirects nicht indexieren — Route Handler liefern HTTP 302,
-// was Crawler normalerweise nicht verfolgen. Explizit via robots.js gesteuert.
 export const dynamic = 'force-dynamic';
 
 export async function GET(
@@ -18,32 +16,37 @@ export async function GET(
     return NextResponse.redirect(new URL('/', request.url));
   }
 
-  // Sicherheit: nur erlaubte Domains durchlassen (kein Open Redirect)
+  // Sicherheit: nur erlaubte Domains — kein Open Redirect
   if (!isAllowedAffiliateUrl(targetUrl)) {
     return NextResponse.redirect(new URL('/', request.url));
   }
 
-  // Affiliate-ID injizieren (gecacht, non-blocking bei Fehler)
+  // Affiliate-ID injizieren (gecacht, niemals blockierend)
   let finalUrl = targetUrl;
   try {
     finalUrl = await generateAffiliateUrl(provider, targetUrl);
   } catch {
-    // Weiterleitung ohne Affiliate-ID im Fehlerfall
+    // Weiterleitung ohne ID im Fehlerfall — kein Abbruch
   }
 
-  // Klick-Tracking (fire-and-forget — blockiert die Weiterleitung nicht)
-  try {
-    const supabase = createServerClient();
-    void supabase.from('affiliate_clicks').insert({
-      provider,
-      affiliate_url: finalUrl,
-      referrer:      request.headers.get('referer') ?? null,
-    });
-  } catch { /* non-blocking */ }
+  // Klick-Tracking: echter Fire-and-Forget via async IIFE mit try/catch
+  // Fehler im async-Pfad werden vollständig abgefangen — Redirect schlägt nie fehl.
+  void (async () => {
+    try {
+      await createServerClient()
+        .from('affiliate_clicks')
+        .insert({
+          provider,
+          affiliate_url: finalUrl,
+          user_agent:    request.headers.get('user-agent') ?? null,
+          referrer:      request.headers.get('referer')    ?? null,
+          // destination_name: null — /go/ hat keinen Destination-Kontext (nullable seit Migration)
+        });
+    } catch { /* non-blocking — Tracking-Fehler dürfen Redirect nie stoppen */ }
+  })();
 
-  // HTTP 302 Weiterleitung
+  // HTTP 302 — Redirect darf niemals am Tracking scheitern
   const response = NextResponse.redirect(finalUrl, { status: 302 });
-  // Keine Cache-Header — jeder Klick soll getrackt werden
   response.headers.set('Cache-Control', 'no-store');
   return response;
 }
