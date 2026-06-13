@@ -75,12 +75,15 @@ export default function FutureStoryResult({
     }
   }, []);
 
+  const goUrl = (provider, rawUrl) =>
+    rawUrl ? `/go/${provider}?url=${encodeURIComponent(rawUrl)}` : '#';
+
   const affiliateLinks = [
-    { href: cur.trivagoUrl,  label: 'Hotels auf Trivago',        bg: 'linear-gradient(90deg,#d00e17,#ff4d57)' },
-    { href: cur.bookingUrl,  label: 'Hotel auf Booking.com',     bg: 'linear-gradient(90deg,#003580,#0057b8)' },
-    { href: cur.skyUrl,      label: 'Flüge auf Skyscanner',      bg: 'linear-gradient(90deg,#0770e3,#00a0de)' },
-    { href: cur.gygUrl,      label: 'Aktivitäten GetYourGuide',  bg: 'linear-gradient(90deg,#FF5533,#FF8C00)' },
-    { href: cur.check24Url,  label: 'Pauschalreise CHECK24',     bg: 'linear-gradient(90deg,#003399,#e30613)' },
+    { href: goUrl('trivago',      cur.trivagoUrl), label: 'Hotels auf Trivago',        bg: 'linear-gradient(90deg,#d00e17,#ff4d57)' },
+    { href: goUrl('booking',      cur.bookingUrl), label: 'Hotel auf Booking.com',     bg: 'linear-gradient(90deg,#003580,#0057b8)' },
+    { href: goUrl('skyscanner',   cur.skyUrl),     label: 'Flüge auf Skyscanner',      bg: 'linear-gradient(90deg,#0770e3,#00a0de)' },
+    { href: goUrl('getyourguide', cur.gygUrl),     label: 'Aktivitäten GetYourGuide',  bg: 'linear-gradient(90deg,#FF5533,#FF8C00)' },
+    { href: goUrl('check24',      cur.check24Url), label: 'Pauschalreise CHECK24',     bg: 'linear-gradient(90deg,#003399,#e30613)' },
   ];
 
   return (

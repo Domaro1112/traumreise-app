@@ -18,13 +18,18 @@ const MATCHES = [
 const ACCENT = '#0EA5E9';
 
 // ── Affiliate card definitions ────────────────────────────────────────────────
+function goUrl(provider, rawUrl) {
+  if (!rawUrl) return '#';
+  return `/go/${provider}?url=${encodeURIComponent(rawUrl)}`;
+}
+
 function buildAffiliateCards(cur) {
   return [
-    { href: cur.skyUrl,     label: 'Flüge finden',    sub: 'Skyscanner',   bg: 'linear-gradient(135deg,#0770e3,#00a0de)', Icon: Plane },
-    { href: cur.trivagoUrl, label: 'Hotels entdecken', sub: 'Trivago',      bg: 'linear-gradient(135deg,#d00e17,#ff4d57)', Icon: Building2 },
-    { href: cur.bookingUrl, label: 'Hotel buchen',     sub: 'Booking.com',  bg: 'linear-gradient(135deg,#003580,#0057b8)', Icon: Building2 },
-    { href: cur.gygUrl,     label: 'Aktivitäten',      sub: 'GetYourGuide', bg: 'linear-gradient(135deg,#FF5533,#FF8C00)', Icon: Compass },
-    { href: cur.check24Url, label: 'Pauschalreise',    sub: 'CHECK24',      bg: 'linear-gradient(135deg,#003399,#e30613)', Icon: Briefcase },
+    { href: goUrl('skyscanner',   cur.skyUrl),     label: 'Flüge finden',    sub: 'Skyscanner',   bg: 'linear-gradient(135deg,#0770e3,#00a0de)', Icon: Plane },
+    { href: goUrl('trivago',      cur.trivagoUrl), label: 'Hotels entdecken', sub: 'Trivago',      bg: 'linear-gradient(135deg,#d00e17,#ff4d57)', Icon: Building2 },
+    { href: goUrl('booking',      cur.bookingUrl), label: 'Hotel buchen',     sub: 'Booking.com',  bg: 'linear-gradient(135deg,#003580,#0057b8)', Icon: Building2 },
+    { href: goUrl('getyourguide', cur.gygUrl),     label: 'Aktivitäten',      sub: 'GetYourGuide', bg: 'linear-gradient(135deg,#FF5533,#FF8C00)', Icon: Compass },
+    { href: goUrl('check24',      cur.check24Url), label: 'Pauschalreise',    sub: 'CHECK24',      bg: 'linear-gradient(135deg,#003399,#e30613)', Icon: Briefcase },
   ];
 }
 

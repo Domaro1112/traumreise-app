@@ -54,12 +54,13 @@ export default function CarRentalHero() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const url = buildCheck24CarRentalUrl({
+    const carUrl = buildCheck24CarRentalUrl({
       pickupLocation: pickupLocation.trim() || undefined,
       pickupDate:     pickupDate  || undefined,
       returnDate:     returnDate  || undefined,
       driverAge:      driverAge   || undefined,
     });
+    const url = `/go/check24?url=${encodeURIComponent(carUrl)}`;
     const win = window.open(url, '_blank');
     if (win) { try { win.opener = null; } catch (_) {} }
   };
