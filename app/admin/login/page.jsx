@@ -91,9 +91,9 @@ export default function AdminLoginPage() {
             <Image
               src="/images/logo/reisemonkey-logo.png"
               alt="Reisemonkey"
-              width={1836}
-              height={1324}
-              style={{ height: '32px', width: 'auto', objectFit: 'contain' }}
+              width={1536}
+              height={1024}
+              style={{ height: '64px', width: 'auto', objectFit: 'contain' }}
             />
           </div>
           <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.55)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', margin: 0 }}>
