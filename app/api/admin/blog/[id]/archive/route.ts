@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { isAdminRequest } from '@/lib/admin-auth';
 import { archiveBlogArticle } from '@/repositories/blog-cms';
 
@@ -14,6 +15,7 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
   try {
     const { id } = await params;
     const article = await archiveBlogArticle(id);
+    revalidatePath('/reiseblog');
     return NextResponse.json({ article });
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Unbekannter Fehler.';

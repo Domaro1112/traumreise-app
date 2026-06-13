@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { isAdminRequest } from '@/lib/admin-auth';
 import { getBlogAdmin, updateBlogArticle, deleteBlogArticle } from '@/repositories/blog-cms';
 
@@ -30,6 +31,11 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
     const { id } = await params;
     const body = await request.json();
     const article = await updateBlogArticle(id, body);
+    // Revalidate whenever status could have changed (slug or status update).
+    revalidatePath('/reiseblog');
+    if (article.slug) {
+      revalidatePath(`/reiseblog/${article.slug}`);
+    }
     return NextResponse.json({ article });
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Unbekannter Fehler.';

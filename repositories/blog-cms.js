@@ -111,7 +111,7 @@ export async function publishBlogArticle(id) {
     .from('blog_articles')
     .update({ status: 'published', published_at: new Date().toISOString(), updated_at: new Date().toISOString() })
     .eq('id', id)
-    .select('id, status, published_at')
+    .select('id, slug, status, published_at')
     .single();
   if (error) throw new Error(error.message);
   return data;

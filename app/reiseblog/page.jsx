@@ -14,6 +14,9 @@ import {
 import { listPublishedBlogArticles } from '@/repositories/blog-cms';
 import { MapPin, ArrowRight } from 'lucide-react';
 
+// Always render server-side so newly published articles appear immediately.
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Reiseblog – Guides, Geheimtipps & Inspiration | Traumreise',
   description:
