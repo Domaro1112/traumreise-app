@@ -283,7 +283,7 @@ export default function HomeTravelWizard() {
           {step === 1 && (
             <div>
               <StepHeading
-                title="Was ist deine Urlaubsstimmung?"
+                title="Welche Reise passt gerade zu dir?"
                 hint={
                   <>
                     Wähle bis zu 3 Optionen
