@@ -5,6 +5,7 @@ import Link from 'next/link';
 import AdminStatCard from '@/components/admin/AdminStatCard';
 import QuickLinksSection from '@/components/admin/QuickLinksSection';
 import { listDestinationsAdmin } from '@/repositories/destinations-cms';
+import { listBlogAdmin } from '@/repositories/blog-cms';
 
 export const metadata = {
   title: 'Dashboard | Reisemonkey Admin',
@@ -18,13 +19,27 @@ const STATUS_BADGE = {
 
 export default async function AdminDashboard() {
   let destinations = [];
+  let articles = null; // null = Fehlerfall, [] = erfolgreich aber leer
   try {
     destinations = await listDestinationsAdmin();
   } catch { /* Supabase not yet available */ }
+  try {
+    articles = await listBlogAdmin();
+  } catch { /* Supabase not yet available */ }
 
-  const totalDests     = destinations.length;
-  const publishedCount = destinations.filter(d => d.status === 'published').length;
-  const draftCount     = destinations.filter(d => d.status === 'draft').length;
+  const totalDests         = destinations.length;
+  const publishedCount     = destinations.filter(d => d.status === 'published').length;
+  const draftCount         = destinations.filter(d => d.status === 'draft').length;
+
+  const blogAvailable      = articles !== null;
+  const totalBlog          = blogAvailable ? articles.length : null;
+  const publishedBlog      = blogAvailable ? articles.filter(a => a.status === 'published').length : null;
+  const draftBlog          = blogAvailable ? articles.filter(a => a.status === 'draft').length : null;
+  const archivedBlog       = blogAvailable ? articles.filter(a => a.status === 'archived').length : null;
+
+  const blogSubtitle = blogAvailable
+    ? `${publishedBlog} veröffentlicht · ${draftBlog} Entwürfe · ${archivedBlog} archiviert`
+    : 'Daten nicht verfügbar';
 
   const STAT_CARDS = [
     {
@@ -37,8 +52,8 @@ export default async function AdminDashboard() {
     },
     {
       title:    'Blogartikel',
-      value:    '20',
-      subtitle: 'Alle veröffentlicht',
+      value:    blogAvailable ? String(totalBlog) : '–',
+      subtitle: blogSubtitle,
       icon:     FileText,
       color:    '#7C3AED',
       bgColor:  '#F5F3FF',
