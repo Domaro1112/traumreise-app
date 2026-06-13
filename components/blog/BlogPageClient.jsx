@@ -348,7 +348,7 @@ export default function BlogPageClient({ articles, categories: _ignored }) {
             <div style={{ display: 'flex', gap: '28px', marginTop: '24px', flexWrap: 'wrap' }}>
               {[
                 { v: String(articles.length) || '0', l: 'Artikel' },
-                { v: '12.500+', l: 'Leser' },
+                { v: 'Ehrliche', l: 'Tips' },
                 { v: '100%', l: 'Kostenlos' },
               ].map(s => (
                 <div key={s.l}>
