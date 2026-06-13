@@ -1,4 +1,4 @@
-import Image from 'next/image';
+﻿import Image from 'next/image';
 import Link from 'next/link';
 import {
   Zap, UserCheck, Sparkles,
@@ -112,7 +112,7 @@ export default function UeberUns() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Header />
-      <main style={{ paddingTop: '72px', background: '#FFFFFF', minHeight: '100vh' }}>
+      <main style={{ paddingTop: '80px', background: '#FFFFFF', minHeight: '100vh' }}>
 
         {/* ── 1. HERO ─────────────────────────────────────────────────────── */}
         <section

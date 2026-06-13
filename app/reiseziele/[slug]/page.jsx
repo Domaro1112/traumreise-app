@@ -205,7 +205,7 @@ export default async function DestinationPage({ params }) {
         />
       ))}
       <Header />
-      <main style={{ paddingTop: '72px', background: '#FFFFFF', minHeight: '100vh' }}>
+      <main style={{ paddingTop: '80px', background: '#FFFFFF', minHeight: '100vh' }}>
 
         {/* ── HERO ── */}
         <section

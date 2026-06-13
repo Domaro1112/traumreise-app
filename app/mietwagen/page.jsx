@@ -1,4 +1,4 @@
-import Header from '@/components/layout/Header';
+﻿import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CarRentalHero from '@/components/mietwagen/CarRentalHero';
 import CarRentalDestinations from '@/components/mietwagen/CarRentalDestinations';
@@ -51,7 +51,7 @@ export default function MietwagenPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify([faqJsonLd, webPageJsonLd]) }}
       />
       <Header />
-      <main style={{ minHeight: '100vh', paddingTop: '72px', background: '#FFFFFF' }}>
+      <main style={{ minHeight: '100vh', paddingTop: '80px', background: '#FFFFFF' }}>
         <CarRentalHero />
         <CarRentalDestinations />
         <CarRentalProsCons />

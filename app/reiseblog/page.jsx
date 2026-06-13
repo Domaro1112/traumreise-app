@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Container from '@/components/layout/Container';
@@ -117,7 +117,7 @@ export default function Reiseblog() {
 
       <Header />
 
-      <main style={{ paddingTop: '72px', background: '#FFFFFF', minHeight: '100vh' }}>
+      <main style={{ paddingTop: '80px', background: '#FFFFFF', minHeight: '100vh' }}>
         {/* Hero + Category Filter + Featured + Blog Grid (client-interactive) */}
         <BlogPageClient articles={blogArticles} categories={blogCategories} />
 

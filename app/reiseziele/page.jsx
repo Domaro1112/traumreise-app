@@ -1,4 +1,4 @@
-import Header from '@/components/layout/Header';
+﻿import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ReisezielePageClient from '@/components/destinations/ReisezielePageClient';
 import { listPublishedDestinations } from '@/repositories/destinations-cms';
@@ -51,7 +51,7 @@ export default async function ReisezielePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Header />
-      <main style={{ paddingTop: '72px', background: '#FFFFFF', minHeight: '100vh' }}>
+      <main style={{ paddingTop: '80px', background: '#FFFFFF', minHeight: '100vh' }}>
         <ReisezielePageClient destinations={destinations} />
       </main>
       <Footer />

@@ -41,8 +41,8 @@ export default function Header() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              minHeight: '72px',
-              padding: '6px 0',
+              minHeight: '80px',
+              padding: '7px 0',
             }}
           >
             {/* Logo */}
@@ -59,10 +59,9 @@ export default function Header() {
                 loading="eager"
                 fetchPriority="high"
                 style={{
-                  height: 'clamp(42px, 6.5vw, 60px)',
+                  height: 'clamp(44px, 5.5vw, 66px)',
                   width: 'auto',
                   display: 'block',
-                  maxHeight: '32px',
                   objectFit: 'contain',
                 }}
               />

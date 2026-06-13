@@ -1,4 +1,4 @@
-import Header from '@/components/layout/Header';
+﻿import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Container from '@/components/layout/Container';
 
@@ -11,7 +11,7 @@ export default function Datenschutz() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '72px', background: '#FFFFFF', minHeight: '100vh' }}>
+      <main style={{ paddingTop: '80px', background: '#FFFFFF', minHeight: '100vh' }}>
         <div style={{ paddingTop: '80px', paddingBottom: '100px' }}>
           <Container size="sm">
             <h1

@@ -1,4 +1,4 @@
-import Header from '@/components/layout/Header';
+﻿import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Container from '@/components/layout/Container';
 import SectionTitle from '@/components/ui/SectionTitle';
@@ -13,7 +13,7 @@ export default function SoFunktionierts() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: '72px', background: '#FFFFFF', minHeight: '100vh' }}>
+      <main style={{ paddingTop: '80px', background: '#FFFFFF', minHeight: '100vh' }}>
         <div style={{ paddingTop: '80px', paddingBottom: '40px' }}>
           <Container>
             <SectionTitle

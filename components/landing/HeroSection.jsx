@@ -1,4 +1,4 @@
-import Image from 'next/image';
+﻿import Image from 'next/image';
 import { Gift, Bot, ShieldCheck, Plane, Sparkles } from 'lucide-react';
 import Container from '@/components/layout/Container';
 import Button from '@/components/ui/Button';
@@ -58,7 +58,7 @@ export default function HeroSection() {
           height: '100%',
           display: 'flex',
           alignItems: 'center',
-          paddingTop: '72px',
+          paddingTop: '80px',
         }}
       >
         <div style={{ maxWidth: '600px', width: '100%' }}>

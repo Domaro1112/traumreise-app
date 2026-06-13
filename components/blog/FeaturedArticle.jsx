@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { Clock, CalendarDays, ArrowRight, Crown, MapPin, User } from 'lucide-react';
@@ -22,7 +22,7 @@ export default function FeaturedArticle({ article }) {
     <section
       style={{
         background: '#F8FAFF',
-        paddingTop: '72px',
+        paddingTop: '80px',
         paddingBottom: '72px',
       }}
     >

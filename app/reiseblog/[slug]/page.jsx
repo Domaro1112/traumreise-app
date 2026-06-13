@@ -80,7 +80,7 @@ export default async function ArticlePage({ params }) {
       <ArticleJsonLd article={article} />
       <Header />
 
-      <main style={{ paddingTop: '72px', background: '#FFFFFF', minHeight: '100vh' }}>
+      <main style={{ paddingTop: '80px', background: '#FFFFFF', minHeight: '100vh' }}>
         {/* Hero (breadcrumb + image + excerpt) */}
         <ArticleHero article={article} />
 

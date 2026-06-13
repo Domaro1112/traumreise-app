@@ -1,4 +1,4 @@
-import { Bot, Globe, Wallet, UserCheck } from 'lucide-react';
+﻿import { Bot, Globe, Wallet, UserCheck } from 'lucide-react';
 import Container from '@/components/layout/Container';
 import { features } from '@/data/features';
 
@@ -9,7 +9,7 @@ export default function FeatureStrip() {
     <section
       style={{
         background: '#F8FAFF',
-        paddingTop: '72px',
+        paddingTop: '80px',
         paddingBottom: '72px',
         borderTop: '1px solid #E2E8F0',
         borderBottom: '1px solid #E2E8F0',
