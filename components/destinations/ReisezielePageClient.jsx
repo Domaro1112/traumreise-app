@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Container from '@/components/layout/Container';
 import { blogArticles } from '@/data/blogArticles';
 import {
@@ -145,11 +146,23 @@ export default function ReisezielePageClient({ destinations = [] }) {
     <>
       {/* ══ HERO ══════════════════════════════════════════════════════════════ */}
       <section style={{
-        background: 'linear-gradient(160deg, #0C1A3A 0%, #0B3D6B 50%, #0EA5E9 100%)',
+        position: 'relative',
+        overflow: 'hidden',
         paddingTop: 'clamp(56px, 8vw, 96px)',
         paddingBottom: 'clamp(44px, 6vw, 72px)',
       }}>
-        <Container>
+        {/* Hero image */}
+        <Image
+          src="/images/reiseziele/hero.jpg"
+          alt="Reisemonkey – Reiseziele weltweit entdecken"
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', objectPosition: 'center 35%' }}
+        />
+        {/* Gradient overlay – keeps text readable without losing the image */}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(100deg, rgba(10,22,50,0.82) 0%, rgba(11,61,107,0.65) 45%, rgba(14,165,233,0.30) 100%)' }} />
+        <Container style={{ position: 'relative', zIndex: 1 }}>
           {/* Badge */}
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(14,165,233,0.2)', border: '1px solid rgba(14,165,233,0.38)', borderRadius: '20px', padding: '4px 12px', marginBottom: '16px' }}>
             <Globe size={12} strokeWidth={2} color="#38BDF8" />
