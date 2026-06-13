@@ -3,14 +3,16 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { Plane } from 'lucide-react';
 import { mainNav } from '@/data/navigation';
 import Button from '@/components/ui/Button';
 import Container from '@/components/layout/Container';
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled]   = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -27,11 +29,10 @@ export default function Header() {
           left: 0,
           right: 0,
           zIndex: 100,
-          transition: 'background 0.3s ease, box-shadow 0.3s ease',
-          background: scrolled ? '#FFFFFF' : 'rgba(255,255,255,0.85)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-          boxShadow: scrolled ? '0 1px 0 #E2E8F0, 0 4px 20px rgba(15,23,42,0.06)' : 'none',
+          background: '#FFFFFF',
+          borderBottom: '1px solid #E2E8F0',
+          boxShadow: scrolled ? '0 4px 20px rgba(15,23,42,0.06)' : 'none',
+          transition: 'box-shadow 0.3s ease',
         }}
       >
         <Container>
@@ -68,34 +69,42 @@ export default function Header() {
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hide-mobile" style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              {mainNav.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  style={{
-                    padding: '8px 16px',
-                    borderRadius: '10px',
-                    fontSize: '14px',
-                    fontWeight: 500,
-                    color: '#ffffff',
-                    textDecoration: 'none',
-                    transition: 'color 0.2s, background 0.2s',
-                    whiteSpace: 'nowrap',
-                    fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#0EA5E9';
-                    e.currentTarget.style.background = '#EFF6FF';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = '#475569';
-                    e.currentTarget.style.background = 'transparent';
-                  }}
-                >
-                  {item.label}
-                </Link>
-              ))}
+            <nav className="hide-mobile" style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+              {mainNav.map((item) => {
+                const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    style={{
+                      padding: '7px 14px',
+                      borderRadius: '10px',
+                      fontSize: '14px',
+                      fontWeight: isActive ? 700 : 500,
+                      color: isActive ? '#0EA5E9' : '#334155',
+                      background: isActive ? '#EFF6FF' : 'transparent',
+                      textDecoration: 'none',
+                      transition: 'color 0.15s, background 0.15s',
+                      whiteSpace: 'nowrap',
+                      fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!isActive) {
+                        e.currentTarget.style.color = '#0EA5E9';
+                        e.currentTarget.style.background = '#EFF6FF';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isActive) {
+                        e.currentTarget.style.color = '#334155';
+                        e.currentTarget.style.background = 'transparent';
+                      }
+                    }}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* CTA + Hamburger */}
