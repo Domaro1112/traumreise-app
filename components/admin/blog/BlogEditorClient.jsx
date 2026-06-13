@@ -1,19 +1,22 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
   Save, ArrowLeft, CheckCircle, Archive,
-  AlertTriangle, Eye, Loader2, FileJson,
+  AlertTriangle, Eye, Loader2, FileJson, Download, RefreshCw,
 } from 'lucide-react';
-import BlogImportModal from '@/components/admin/blog/BlogImportModal';
+import BlogImportModal  from '@/components/admin/blog/BlogImportModal';
+import BlogSeoScore     from '@/components/admin/blog/BlogSeoScore';
+import BlogExportModal  from '@/components/admin/blog/BlogExportModal';
+import { generateTocFromSections, calcReadingTime } from '@/lib/blog-content-utils';
 
 const TABS = [
-  { key: 'basis',   label: 'Basis' },
-  { key: 'inhalt',  label: 'Inhalt' },
-  { key: 'medien',  label: 'Medien' },
-  { key: 'seo',     label: 'SEO' },
+  { key: 'basis',  label: 'Basis'  },
+  { key: 'inhalt', label: 'Inhalt' },
+  { key: 'medien', label: 'Medien' },
+  { key: 'seo',    label: 'SEO'    },
 ];
 
 const CATEGORIES = [
@@ -21,14 +24,14 @@ const CATEGORIES = [
   'Städtereisen', 'Familienurlaub', 'Budget', 'Roadtrips',
 ];
 
-// ── Reusable field components ────────────────────────────────────────────────
-
-function Field({ label, children, hint }) {
+// ── Field wrapper ─────────────────────────────────────────────────────────────
+function Field({ label, children, hint, action }) {
   return (
     <div style={{ marginBottom: '20px' }}>
-      <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#374151', marginBottom: '6px' }}>
-        {label}
-      </label>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
+        <label style={{ fontSize: '13px', fontWeight: 600, color: '#374151' }}>{label}</label>
+        {action}
+      </div>
       {children}
       {hint && <p style={{ fontSize: '12px', color: '#94A3B8', marginTop: '4px' }}>{hint}</p>}
     </div>
@@ -55,7 +58,15 @@ const textareaStyle = {
   lineHeight: 1.6,
 };
 
-// ── Slug helper ──────────────────────────────────────────────────────────────
+const btnSmall = {
+  display: 'inline-flex', alignItems: 'center', gap: '5px',
+  padding: '5px 11px', borderRadius: '7px',
+  border: '1.5px solid #BAE6FD', background: '#F0F9FF',
+  fontSize: '11px', fontWeight: 600, color: '#0284C7',
+  cursor: 'pointer', whiteSpace: 'nowrap',
+};
+
+// ── Slug helper ───────────────────────────────────────────────────────────────
 function toSlug(str) {
   return str
     .toLowerCase()
@@ -64,32 +75,33 @@ function toSlug(str) {
     .replace(/^-|-$/g, '');
 }
 
-// ── Main component ───────────────────────────────────────────────────────────
+// ── Main component ────────────────────────────────────────────────────────────
 export default function BlogEditorClient({ isNew, initialData }) {
-  const router = useRouter();
+  const router    = useRouter();
   const articleId = initialData?.id ?? null;
 
-  const [tab, setTab] = useState('basis');
-  const [importOpen, setImportOpen] = useState(false);
-  const [isSaving, setIsSaving] = useState(false);
+  const [tab,         setTab]         = useState('basis');
+  const [importOpen,  setImportOpen]  = useState(false);
+  const [exportOpen,  setExportOpen]  = useState(false);
+  const [isSaving,    setIsSaving]    = useState(false);
   const [isPublishing, setIsPublishing] = useState(false);
-  const [isArchiving, setIsArchiving] = useState(false);
-  const [toast, setToast] = useState(null);
-  const [slugManual, setSlugManual] = useState(!isNew);
+  const [isArchiving,  setIsArchiving]  = useState(false);
+  const [toast,       setToast]       = useState(null);
+  const [slugManual,  setSlugManual]  = useState(!isNew);
 
   // ── Form state ────────────────────────────────────────────────────────────
   const [f, setF] = useState({
-    title:          initialData?.title          ?? '',
-    slug:           initialData?.slug           ?? '',
-    category:       initialData?.category       ?? '',
-    tags:           (initialData?.tags ?? []).join(', '),
-    author:         initialData?.author         ?? '',
-    reading_time:   initialData?.reading_time   ?? '',
-    date:           initialData?.date           ?? '',
-    destination:    initialData?.destination    ?? '',
-    country:        initialData?.country        ?? '',
-    featured:       initialData?.featured       ?? false,
-    excerpt:        initialData?.excerpt        ?? '',
+    title:           initialData?.title          ?? '',
+    slug:            initialData?.slug           ?? '',
+    category:        initialData?.category       ?? '',
+    tags:            (initialData?.tags ?? []).join(', '),
+    author:          initialData?.author         ?? '',
+    reading_time:    initialData?.reading_time   ?? '',
+    date:            initialData?.date           ?? '',
+    destination:     initialData?.destination    ?? '',
+    country:         initialData?.country        ?? '',
+    featured:        initialData?.featured       ?? false,
+    excerpt:         initialData?.excerpt        ?? '',
     cover_image_url: initialData?.cover_image_url ?? '',
     hero_image_url:  initialData?.hero_image_url  ?? '',
     seo_title:       initialData?.seo_title       ?? '',
@@ -121,10 +133,58 @@ export default function BlogEditorClient({ isNew, initialData }) {
     setTimeout(() => setToast(null), 3500);
   }
 
-  // ── Handle JSON import ────────────────────────────────────────────────────
+  // ── Auto-generate TOC from content_sections ────────────────────────────────
+  function handleGenerateToc() {
+    try {
+      const sections = JSON.parse(f.content_sections || '[]');
+      const toc = generateTocFromSections(sections);
+      if (!toc.length) {
+        showToast('Keine Abschnitte mit Überschrift gefunden.', 'error');
+        return;
+      }
+      set('table_of_contents', JSON.stringify(toc, null, 2));
+      showToast(`Inhaltsverzeichnis mit ${toc.length} Einträgen erzeugt.`);
+    } catch {
+      showToast('Inhaltsbereiche enthalten kein gültiges JSON.', 'error');
+    }
+  }
+
+  // ── Auto-calculate reading time ────────────────────────────────────────────
+  function handleCalcReadingTime() {
+    const result = calcReadingTime(f);
+    set('reading_time', result);
+    showToast(`Lesedauer berechnet: ${result}`);
+  }
+
+  // ── Handle JSON import ─────────────────────────────────────────────────────
   // `normalized` comes from validateBlogImport(); it matches the f state shape
   // except JSON arrays are stored with _ prefix and need serialising to string.
   function handleImport(normalized) {
+    const sections = normalized._contentSections ?? [];
+    const rawToc   = normalized._tableOfContents ?? [];
+
+    // Auto-generate TOC if import didn't include one
+    let tocStr = '';
+    if (rawToc.length > 0) {
+      tocStr = JSON.stringify(rawToc, null, 2);
+    } else if (sections.length > 0) {
+      const autoToc = generateTocFromSections(sections);
+      if (autoToc.length > 0) {
+        tocStr = JSON.stringify(autoToc, null, 2);
+      }
+    }
+
+    // Auto-calculate reading time if import didn't include one
+    let readingTime = normalized.reading_time || '';
+    if (!readingTime && sections.length > 0) {
+      const tempF = {
+        excerpt:          normalized.excerpt,
+        content_sections: JSON.stringify(sections),
+        faq:              JSON.stringify(normalized._faq ?? []),
+      };
+      readingTime = calcReadingTime(tempF);
+    }
+
     setF(prev => ({
       ...prev,
       title:           normalized.title,
@@ -133,35 +193,32 @@ export default function BlogEditorClient({ isNew, initialData }) {
       category:        normalized.category,
       tags:            normalized.tags,
       author:          normalized.author,
-      reading_time:    normalized.reading_time,
+      reading_time:    readingTime || prev.reading_time,
       date:            normalized.date,
       destination:     normalized.destination,
       country:         normalized.country,
       featured:        normalized.featured,
-      // Images: only overwrite if JSON contains them; keep existing URLs otherwise
       cover_image_url: normalized.cover_image_url || prev.cover_image_url,
       hero_image_url:  normalized.hero_image_url  || prev.hero_image_url,
       seo_title:       normalized.seo_title,
       seo_description: normalized.seo_description,
       canonical_url:   normalized.canonical_url,
-      // JSON arrays → serialize to string for the textarea fields
-      table_of_contents: (normalized._tableOfContents ?? []).length > 0
-        ? JSON.stringify(normalized._tableOfContents, null, 2)
-        : prev.table_of_contents,
-      content_sections: (normalized._contentSections ?? []).length > 0
-        ? JSON.stringify(normalized._contentSections, null, 2)
+      table_of_contents: tocStr || prev.table_of_contents,
+      content_sections: sections.length > 0
+        ? JSON.stringify(sections, null, 2)
         : prev.content_sections,
       faq: (normalized._faq ?? []).length > 0
         ? JSON.stringify(normalized._faq, null, 2)
         : prev.faq,
     }));
+
     setSlugManual(true);
     setImportOpen(false);
     setTab('basis');
     showToast('JSON wurde erfolgreich importiert.');
   }
 
-  // ── Build payload ─────────────────────────────────────────────────────────
+  // ── Build save payload ─────────────────────────────────────────────────────
   function buildPayload() {
     const payload = {
       title:           f.title.trim(),
@@ -177,20 +234,17 @@ export default function BlogEditorClient({ isNew, initialData }) {
       excerpt:         f.excerpt.trim(),
       cover_image_url: f.cover_image_url.trim(),
       hero_image_url:  f.hero_image_url.trim(),
-      seo_title:       f.seo_title.trim() || undefined,
+      seo_title:       f.seo_title.trim()       || undefined,
       seo_description: f.seo_description.trim() || undefined,
-      canonical_url:   f.canonical_url.trim() || undefined,
+      canonical_url:   f.canonical_url.trim()   || undefined,
     };
-
-    // Parse optional JSON fields – ignore invalid JSON silently
     try { if (f.table_of_contents.trim()) payload.table_of_contents = JSON.parse(f.table_of_contents); } catch {}
     try { if (f.content_sections.trim())  payload.content_sections  = JSON.parse(f.content_sections);  } catch {}
     try { if (f.faq.trim())               payload.faq               = JSON.parse(f.faq);               } catch {}
-
     return payload;
   }
 
-  // ── Save / Create ─────────────────────────────────────────────────────────
+  // ── Save / Create ──────────────────────────────────────────────────────────
   async function handleSave() {
     if (!f.title.trim() || !f.slug.trim()) {
       showToast('Titel und Slug sind Pflichtfelder.', 'error');
@@ -199,24 +253,15 @@ export default function BlogEditorClient({ isNew, initialData }) {
     setIsSaving(true);
     try {
       const payload = buildPayload();
-      let res, json;
-      if (isNew) {
-        res = await fetch('/api/admin/blog', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        });
-      } else {
-        res = await fetch(`/api/admin/blog/${articleId}`, {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        });
-      }
-      const text = await res.text();
-      json = JSON.parse(text);
+      const url  = isNew ? '/api/admin/blog' : `/api/admin/blog/${articleId}`;
+      const meth = isNew ? 'POST' : 'PATCH';
+      const res  = await fetch(url, {
+        method: meth,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const json = JSON.parse(await res.text());
       if (!res.ok) throw new Error(json.error ?? res.statusText);
-
       if (isNew) {
         showToast('Artikel erstellt.');
         router.push(`/admin/blog/${json.article.id}`);
@@ -230,12 +275,12 @@ export default function BlogEditorClient({ isNew, initialData }) {
     }
   }
 
-  // ── Publish ───────────────────────────────────────────────────────────────
+  // ── Publish ────────────────────────────────────────────────────────────────
   async function handlePublish() {
     if (!articleId) { showToast('Bitte zuerst speichern.', 'error'); return; }
     setIsPublishing(true);
     try {
-      const res = await fetch(`/api/admin/blog/${articleId}/publish`, { method: 'POST' });
+      const res  = await fetch(`/api/admin/blog/${articleId}/publish`, { method: 'POST' });
       const json = JSON.parse(await res.text());
       if (!res.ok) throw new Error(json.error ?? res.statusText);
       showToast('Artikel veröffentlicht.');
@@ -247,12 +292,12 @@ export default function BlogEditorClient({ isNew, initialData }) {
     }
   }
 
-  // ── Archive ───────────────────────────────────────────────────────────────
+  // ── Archive ────────────────────────────────────────────────────────────────
   async function handleArchive() {
     if (!articleId) return;
     setIsArchiving(true);
     try {
-      const res = await fetch(`/api/admin/blog/${articleId}/archive`, { method: 'POST' });
+      const res  = await fetch(`/api/admin/blog/${articleId}/archive`, { method: 'POST' });
       const json = JSON.parse(await res.text());
       if (!res.ok) throw new Error(json.error ?? res.statusText);
       showToast('Artikel archiviert.');
@@ -264,10 +309,10 @@ export default function BlogEditorClient({ isNew, initialData }) {
     }
   }
 
-  const busy = isSaving || isPublishing || isArchiving;
+  const busy   = isSaving || isPublishing || isArchiving;
   const status = initialData?.status ?? 'draft';
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  // ── Render ─────────────────────────────────────────────────────────────────
   return (
     <div style={{ padding: '32px', maxWidth: '960px', margin: '0 auto' }}>
 
@@ -275,8 +320,7 @@ export default function BlogEditorClient({ isNew, initialData }) {
       {toast && (
         <div style={{
           position: 'fixed', bottom: '24px', right: '24px', zIndex: 300,
-          padding: '14px 20px',
-          borderRadius: '12px',
+          padding: '14px 20px', borderRadius: '12px',
           background: toast.type === 'error' ? '#FEF2F2' : '#ECFDF5',
           border: `1.5px solid ${toast.type === 'error' ? '#FECACA' : '#A7F3D0'}`,
           color: toast.type === 'error' ? '#DC2626' : '#059669',
@@ -289,19 +333,16 @@ export default function BlogEditorClient({ isNew, initialData }) {
         </div>
       )}
 
-      {/* Header */}
+      {/* ── Header ──────────────────────────────────────────────────────────── */}
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '28px', flexWrap: 'wrap', gap: '16px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <Link
             href="/admin/blog"
             style={{
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-              width: '38px', height: '38px',
-              borderRadius: '10px',
-              border: '1.5px solid #E2E8F0',
-              background: '#FFFFFF',
-              color: '#475569',
-              textDecoration: 'none',
+              width: '38px', height: '38px', borderRadius: '10px',
+              border: '1.5px solid #E2E8F0', background: '#FFFFFF',
+              color: '#475569', textDecoration: 'none',
             }}
           >
             <ArrowLeft size={17} />
@@ -316,7 +357,7 @@ export default function BlogEditorClient({ isNew, initialData }) {
                   display: 'inline-block', padding: '2px 8px', borderRadius: '5px',
                   fontSize: '11px', fontWeight: 700,
                   background: status === 'published' ? '#ECFDF5' : status === 'archived' ? '#F1F5F9' : '#FEF2F2',
-                  color: status === 'published' ? '#059669' : status === 'archived' ? '#64748B' : '#DC2626',
+                  color:      status === 'published' ? '#059669' : status === 'archived' ? '#64748B' : '#DC2626',
                 }}>
                   {status === 'published' ? 'Veröffentlicht' : status === 'archived' ? 'Archiviert' : 'Entwurf'}
                 </span>
@@ -327,24 +368,36 @@ export default function BlogEditorClient({ isNew, initialData }) {
         </div>
 
         {/* Action buttons */}
-        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-          {/* JSON Import button – always visible */}
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
+          {/* JSON Import */}
           <button
             onClick={() => setImportOpen(true)}
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '6px',
-              padding: '9px 16px',
-              borderRadius: '10px',
-              border: '1.5px solid #BAE6FD',
-              background: '#F0F9FF',
-              fontSize: '13px', fontWeight: 600, color: '#0284C7',
-              cursor: 'pointer',
+              padding: '9px 14px', borderRadius: '10px',
+              border: '1.5px solid #BAE6FD', background: '#F0F9FF',
+              fontSize: '13px', fontWeight: 600, color: '#0284C7', cursor: 'pointer',
             }}
           >
             <FileJson size={14} />
-            JSON importieren
+            Importieren
           </button>
 
+          {/* JSON Export */}
+          <button
+            onClick={() => setExportOpen(true)}
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: '6px',
+              padding: '9px 14px', borderRadius: '10px',
+              border: '1.5px solid #D1D5DB', background: '#F9FAFB',
+              fontSize: '13px', fontWeight: 600, color: '#374151', cursor: 'pointer',
+            }}
+          >
+            <Download size={14} />
+            Exportieren
+          </button>
+
+          {/* Preview */}
           {!isNew && status === 'published' && (
             <a
               href={`/reiseblog/${initialData?.slug}`}
@@ -352,10 +405,8 @@ export default function BlogEditorClient({ isNew, initialData }) {
               rel="noopener noreferrer"
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '6px',
-                padding: '9px 16px',
-                borderRadius: '10px',
-                border: '1.5px solid #E2E8F0',
-                background: '#FFFFFF',
+                padding: '9px 14px', borderRadius: '10px',
+                border: '1.5px solid #E2E8F0', background: '#FFFFFF',
                 fontSize: '13px', fontWeight: 600, color: '#475569',
                 textDecoration: 'none',
               }}
@@ -364,16 +415,16 @@ export default function BlogEditorClient({ isNew, initialData }) {
               Vorschau
             </a>
           )}
+
+          {/* Archive */}
           {!isNew && status === 'published' && (
             <button
               onClick={handleArchive}
               disabled={busy}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '6px',
-                padding: '9px 16px',
-                borderRadius: '10px',
-                border: '1.5px solid #E2E8F0',
-                background: '#F1F5F9',
+                padding: '9px 14px', borderRadius: '10px',
+                border: '1.5px solid #E2E8F0', background: '#F1F5F9',
                 fontSize: '13px', fontWeight: 600, color: '#64748B',
                 cursor: busy ? 'not-allowed' : 'pointer',
               }}
@@ -382,16 +433,16 @@ export default function BlogEditorClient({ isNew, initialData }) {
               Archivieren
             </button>
           )}
+
+          {/* Publish */}
           {!isNew && status !== 'published' && (
             <button
               onClick={handlePublish}
               disabled={busy}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '6px',
-                padding: '9px 16px',
-                borderRadius: '10px',
-                border: '1.5px solid #A7F3D0',
-                background: '#ECFDF5',
+                padding: '9px 14px', borderRadius: '10px',
+                border: '1.5px solid #A7F3D0', background: '#ECFDF5',
                 fontSize: '13px', fontWeight: 700, color: '#059669',
                 cursor: busy ? 'not-allowed' : 'pointer',
               }}
@@ -400,14 +451,14 @@ export default function BlogEditorClient({ isNew, initialData }) {
               Veröffentlichen
             </button>
           )}
+
+          {/* Save */}
           <button
             onClick={handleSave}
             disabled={busy}
             style={{
               display: 'inline-flex', alignItems: 'center', gap: '6px',
-              padding: '9px 20px',
-              borderRadius: '10px',
-              border: 'none',
+              padding: '9px 20px', borderRadius: '10px', border: 'none',
               background: busy ? '#94A3B8' : 'linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%)',
               fontSize: '14px', fontWeight: 700, color: '#FFFFFF',
               cursor: busy ? 'not-allowed' : 'pointer',
@@ -420,16 +471,14 @@ export default function BlogEditorClient({ isNew, initialData }) {
         </div>
       </div>
 
-      {/* Tabs */}
+      {/* ── Tabs ────────────────────────────────────────────────────────────── */}
       <div style={{ display: 'flex', gap: '4px', borderBottom: '2px solid #E2E8F0', marginBottom: '32px' }}>
         {TABS.map(t => (
           <button
             key={t.key}
             onClick={() => setTab(t.key)}
             style={{
-              padding: '10px 20px',
-              border: 'none',
-              background: 'transparent',
+              padding: '10px 20px', border: 'none', background: 'transparent',
               fontSize: '14px', fontWeight: 600,
               color: tab === t.key ? '#0284C7' : '#64748B',
               cursor: 'pointer',
@@ -443,7 +492,7 @@ export default function BlogEditorClient({ isNew, initialData }) {
         ))}
       </div>
 
-      {/* ── Tab: Basis ─────────────────────────────────────────────────────── */}
+      {/* ══ Tab: Basis ════════════════════════════════════════════════════════ */}
       {tab === 'basis' && (
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 32px' }}>
           <div style={{ gridColumn: '1 / -1' }}>
@@ -498,8 +547,23 @@ export default function BlogEditorClient({ isNew, initialData }) {
             <input type="text" value={f.author} onChange={e => set('author', e.target.value)} style={inputStyle} placeholder="Name des Autors" />
           </Field>
 
-          <Field label="Lesezeit" hint="z. B. 8 min">
-            <input type="text" value={f.reading_time} onChange={e => set('reading_time', e.target.value)} style={inputStyle} placeholder="8 min" />
+          <Field
+            label="Lesezeit"
+            hint="z. B. 8 Min. Lesezeit"
+            action={
+              <button onClick={handleCalcReadingTime} style={btnSmall}>
+                <RefreshCw size={11} strokeWidth={2.5} />
+                Neu berechnen
+              </button>
+            }
+          >
+            <input
+              type="text"
+              value={f.reading_time}
+              onChange={e => set('reading_time', e.target.value)}
+              style={inputStyle}
+              placeholder="6 Min. Lesezeit"
+            />
           </Field>
 
           <Field label="Veröffentlichungsdatum" hint="ISO-Datum, z. B. 2025-06-01">
@@ -540,17 +604,26 @@ export default function BlogEditorClient({ isNew, initialData }) {
         </div>
       )}
 
-      {/* ── Tab: Inhalt ────────────────────────────────────────────────────── */}
+      {/* ══ Tab: Inhalt ═══════════════════════════════════════════════════════ */}
       {tab === 'inhalt' && (
         <div>
-          <Field label="Inhaltsverzeichnis (JSON)" hint='Array von { "id": "section-id", "label": "Abschnittstitel" }'>
+          <Field
+            label="Inhaltsverzeichnis (JSON)"
+            hint='Array von { "id": "section-id", "label": "Abschnittstitel" }'
+            action={
+              <button onClick={handleGenerateToc} style={btnSmall}>
+                <RefreshCw size={11} strokeWidth={2.5} />
+                Aus Abschnitten erzeugen
+              </button>
+            }
+          >
             <textarea
               value={f.table_of_contents}
               onChange={e => set('table_of_contents', e.target.value)}
               style={{ ...textareaStyle, minHeight: '160px', fontFamily: 'monospace', fontSize: '13px' }}
               placeholder='[
   { "id": "einleitung", "label": "Einleitung" },
-  { "id": "top-strande", "label": "Die besten Strände" }
+  { "id": "top-straende", "label": "Die besten Strände" }
 ]'
             />
           </Field>
@@ -563,7 +636,7 @@ export default function BlogEditorClient({ isNew, initialData }) {
               placeholder='[
   {
     "id": "einleitung",
-    "title": "Einleitung",
+    "heading": "Einleitung",
     "content": "...",
     "highlights": []
   }
@@ -584,7 +657,7 @@ export default function BlogEditorClient({ isNew, initialData }) {
         </div>
       )}
 
-      {/* ── Tab: Medien ────────────────────────────────────────────────────── */}
+      {/* ══ Tab: Medien ═══════════════════════════════════════════════════════ */}
       {tab === 'medien' && (
         <div>
           <Field label="Cover-Bild URL" hint="Wird in Listen und Social-Cards verwendet (Seitenverhältnis 3:2 empfohlen)">
@@ -613,11 +686,20 @@ export default function BlogEditorClient({ isNew, initialData }) {
         </div>
       )}
 
-      {/* ── Tab: SEO ──────────────────────────────────────────────────────── */}
+      {/* ══ Tab: SEO ══════════════════════════════════════════════════════════ */}
       {tab === 'seo' && (
         <div>
+          {/* ── SEO Score Card ───────────────────────────────────────────── */}
+          <BlogSeoScore f={f} />
+
           <Field label="SEO Titel" hint="Wird in <title> und OG:title verwendet. Leer = Artikel-Titel.">
-            <input type="text" value={f.seo_title} onChange={e => set('seo_title', e.target.value)} style={inputStyle} placeholder="z. B. Die 10 besten Strände in Bali | Traumreise" />
+            <input
+              type="text"
+              value={f.seo_title}
+              onChange={e => set('seo_title', e.target.value)}
+              style={inputStyle}
+              placeholder="z. B. Die 10 besten Strände in Bali | Traumreise"
+            />
             <p style={{ fontSize: '12px', color: f.seo_title.length > 60 ? '#DC2626' : '#94A3B8', marginTop: '4px' }}>
               {f.seo_title.length}/60 Zeichen
             </p>
@@ -661,11 +743,18 @@ export default function BlogEditorClient({ isNew, initialData }) {
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
       `}</style>
 
-      {/* JSON Import Modal */}
+      {/* ── Modals ──────────────────────────────────────────────────────────── */}
       <BlogImportModal
         open={importOpen}
         onClose={() => setImportOpen(false)}
         onImport={handleImport}
+      />
+
+      <BlogExportModal
+        open={exportOpen}
+        onClose={() => setExportOpen(false)}
+        f={f}
+        initialData={initialData}
       />
     </div>
   );
