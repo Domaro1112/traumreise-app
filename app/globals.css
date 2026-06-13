@@ -565,20 +565,12 @@ input::placeholder { color: var(--color-text-muted); }
   }
 }
 
-/* Nur das Inhaltsverzeichnis ist sticky */
+/* Inhaltsverzeichnis: normaler Seitenfluss, kein sticky */
 .article-toc-sticky {
-  /* mobile: normaler Flow */
-}
-@media (min-width: 1024px) {
-  .article-toc-sticky {
-    position: sticky;
-    top: 120px;
-    max-height: calc(100vh - 140px);
-    overflow-y: auto;
-    z-index: 1;
-    scrollbar-width: none;
-  }
-  .article-toc-sticky::-webkit-scrollbar { display: none; }
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  margin-bottom: 24px;
 }
 
 /* CTA und Share: kein sticky, scrollen normal mit */
