@@ -84,7 +84,7 @@ export default function AdminLoginPage() {
         {/* Header stripe */}
         <div style={{
           background: 'linear-gradient(135deg, #0C1A3A 0%, #0B3D6B 50%, #0EA5E9 100%)',
-          padding: '28px 32px 24px',
+          padding: '56px 32px 24px',
           textAlign: 'center',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '6px' }}>
@@ -93,7 +93,7 @@ export default function AdminLoginPage() {
               alt="Reisemonkey"
               width={1536}
               height={1024}
-              style={{ height: '100px', width: 'auto', objectFit: 'contain' }}
+              style={{ height: '32px', width: 'auto', objectFit: 'contain' }}
             />
           </div>
           <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.55)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', margin: 0 }}>
