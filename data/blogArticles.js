@@ -55,7 +55,6 @@ export const blogArticles = [
       { id: 'budget-aufstellung', label: 'Realistisches Budget' },
       { id: 'beste-reisezeit', label: 'Beste Reisezeit' },
       { id: 'top-highlights', label: 'Top-Highlights' },
-      { id: 'destination-facts', label: 'Destination Facts' },
       { id: 'faq', label: 'Häufige Fragen' },
     ],
     contentSections: [
@@ -179,7 +178,6 @@ export const blogArticles = [
       { id: 'warum-september', label: 'Warum September?' },
       { id: 'kosten-september', label: 'Kosten & Budget' },
       { id: 'highlights', label: 'Must-See Highlights' },
-      { id: 'destination-facts', label: 'Destination Facts' },
       { id: 'faq', label: 'Häufige Fragen' },
     ],
     contentSections: [
@@ -290,7 +288,6 @@ export const blogArticles = [
       { id: 'warum-banff', label: 'Warum Banff?' },
       { id: 'beste-reisezeit', label: 'Beste Reisezeit' },
       { id: 'top-wanderungen', label: 'Top-Wanderungen' },
-      { id: 'destination-facts', label: 'Destination Facts' },
       { id: 'faq', label: 'Häufige Fragen' },
     ],
     contentSections: [
@@ -401,7 +398,6 @@ export const blogArticles = [
       { id: 'warum-tokio', label: 'Warum Tokio?' },
       { id: 'reiseplanung', label: '7-Tage-Plan' },
       { id: 'essen-trinken', label: 'Essen & Trinken' },
-      { id: 'destination-facts', label: 'Destination Facts' },
       { id: 'faq', label: 'Häufige Fragen' },
     ],
     contentSections: [
@@ -512,7 +508,6 @@ export const blogArticles = [
       { id: 'warum-lissabon', label: 'Warum Lissabon?' },
       { id: 'stadtteile', label: 'Die besten Stadtteile' },
       { id: 'essen', label: 'Essen & Trinken' },
-      { id: 'destination-facts', label: 'Destination Facts' },
       { id: 'faq', label: 'Häufige Fragen' },
     ],
     contentSections: [
@@ -734,7 +729,6 @@ export const blogArticles = [
       { id: 'malediven-mit-kindern', label: 'Malediven mit Kindern – geht das?' },
       { id: 'resort-vs-guesthouse', label: 'Resort vs. Guesthouse' },
       { id: 'aktivitaeten-kinder', label: 'Aktivitäten für Familien' },
-      { id: 'destination-facts', label: 'Destination Facts' },
       { id: 'faq', label: 'Häufige Fragen' },
     ],
     contentSections: [
@@ -845,7 +839,6 @@ export const blogArticles = [
       { id: 'warum-albanien', label: 'Warum gerade Albanien?' },
       { id: 'highlights', label: 'Top-Highlights' },
       { id: 'budget', label: 'Was kostet Albanien wirklich?' },
-      { id: 'destination-facts', label: 'Destination Facts' },
       { id: 'faq', label: 'Häufige Fragen' },
     ],
     contentSections: [
