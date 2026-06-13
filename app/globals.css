@@ -549,17 +549,18 @@ input::placeholder { color: var(--color-text-muted); }
 }
 
 /* Article sidebar: hidden on mobile, shown on desktop */
-/* On desktop the inner aside is position:fixed – this div is only a layout spacer */
 .article-sidebar-desktop {
   display: none;
 }
 @media (min-width: 1024px) {
   .article-sidebar-desktop {
     display: block;
+    /* Must stretch to full grid-row height so the sticky child has room to scroll */
+    align-self: stretch;
   }
 }
 
-/* Fixed sidebar on desktop, flex column on mobile (inside spacer div) */
+/* Sticky sidebar on desktop */
 .article-sidebar-sticky {
   display: flex;
   flex-direction: column;
@@ -567,13 +568,10 @@ input::placeholder { color: var(--color-text-muted); }
 }
 @media (min-width: 1024px) {
   .article-sidebar-sticky {
-    position: fixed;
+    position: sticky;
     top: 120px;
-    right: clamp(24px, 5vw, 96px);
-    width: 360px;
-    max-height: calc(100vh - 150px);
+    max-height: calc(100vh - 140px);
     overflow-y: auto;
-    z-index: 20;
     scrollbar-width: none;
   }
   .article-sidebar-sticky::-webkit-scrollbar { display: none; }
