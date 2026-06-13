@@ -565,21 +565,26 @@ input::placeholder { color: var(--color-text-muted); }
   }
 }
 
-/* Sticky sidebar on desktop */
+/* Sidebar wrapper – nur Layout, kein sticky */
 .article-sidebar-sticky {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
+
+/* Nur das Inhaltsverzeichnis klebt oben – CTA und Share scrollen normal mit */
+.article-toc-sticky {
+  /* mobile: normaler Flow */
+}
 @media (min-width: 1024px) {
-  .article-sidebar-sticky {
+  .article-toc-sticky {
     position: sticky;
     top: 120px;
     max-height: calc(100vh - 140px);
     overflow-y: auto;
     scrollbar-width: none;
   }
-  .article-sidebar-sticky::-webkit-scrollbar { display: none; }
+  .article-toc-sticky::-webkit-scrollbar { display: none; }
 }
 
 /* Article prose: native details/summary styles */

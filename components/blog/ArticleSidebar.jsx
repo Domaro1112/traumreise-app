@@ -6,102 +6,105 @@ import { List, Plane, Sparkles, ArrowRight } from 'lucide-react';
 export default function ArticleSidebar({ tableOfContents, destination }) {
   return (
     <aside className="article-sidebar-sticky">
-      {/* ── Table of Contents ─────────────────────────────────────────────────── */}
+
+      {/* Inhaltsverzeichnis – eigener sticky-Container (article-toc-sticky) */}
       {tableOfContents?.length > 0 && (
-        <div
-          style={{
-            background: '#FFFFFF',
-            border: '1px solid #E2E8F0',
-            borderRadius: '16px',
-            padding: '24px',
-            boxShadow: '0 2px 12px rgba(15,23,42,0.06)',
-          }}
-        >
+        <div className="article-toc-sticky">
           <div
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              marginBottom: '16px',
+              background: '#FFFFFF',
+              border: '1px solid #E2E8F0',
+              borderRadius: '16px',
+              padding: '24px',
+              boxShadow: '0 2px 12px rgba(15,23,42,0.06)',
             }}
           >
-            <List size={16} strokeWidth={2} color="#0EA5E9" />
-            <span
+            <div
               style={{
-                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-                fontSize: '13px',
-                fontWeight: 700,
-                letterSpacing: '1px',
-                textTransform: 'uppercase',
-                color: '#64748B',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                marginBottom: '16px',
               }}
             >
-              Inhaltsverzeichnis
-            </span>
-          </div>
+              <List size={16} strokeWidth={2} color="#0EA5E9" />
+              <span
+                style={{
+                  fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                  fontSize: '13px',
+                  fontWeight: 700,
+                  letterSpacing: '1px',
+                  textTransform: 'uppercase',
+                  color: '#64748B',
+                }}
+              >
+                Inhaltsverzeichnis
+              </span>
+            </div>
 
-          <nav>
-            <ol style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '2px' }}>
-              {tableOfContents.map((item, i) => {
-                const isString = typeof item === 'string';
-                const label = isString ? item : item.label;
-                const id = isString ? `section-${i + 1}` : item.id;
-                if (!label) return null;
-                return (
-                <li key={id || i}>
-                  <a
-                    href={`#${id}`}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '10px',
-                      padding: '8px 10px',
-                      borderRadius: '8px',
-                      fontSize: '13px',
-                      fontWeight: 500,
-                      color: '#475569',
-                      textDecoration: 'none',
-                      transition: 'background 0.15s, color 0.15s',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = '#F0F9FF';
-                      e.currentTarget.style.color = '#0284C7';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = 'transparent';
-                      e.currentTarget.style.color = '#475569';
-                    }}
-                  >
-                    <span
-                      style={{
-                        width: '20px',
-                        height: '20px',
-                        borderRadius: '50%',
-                        background: '#EFF6FF',
-                        border: '1px solid #BFDBFE',
-                        fontSize: '11px',
-                        fontWeight: 700,
-                        color: '#0EA5E9',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        flexShrink: 0,
-                        fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-                      }}
-                    >
-                      {i + 1}
-                    </span>
-                    {label}
-                  </a>
-                </li>
-                );
-              })}
-            </ol>
-          </nav>
+            <nav>
+              <ol style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                {tableOfContents.map((item, i) => {
+                  const isString = typeof item === 'string';
+                  const label = isString ? item : item.label;
+                  const id = isString ? `section-${i + 1}` : item.id;
+                  if (!label) return null;
+                  return (
+                    <li key={id || i}>
+                      <a
+                        href={`#${id}`}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '10px',
+                          padding: '8px 10px',
+                          borderRadius: '8px',
+                          fontSize: '13px',
+                          fontWeight: 500,
+                          color: '#475569',
+                          textDecoration: 'none',
+                          transition: 'background 0.15s, color 0.15s',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = '#F0F9FF';
+                          e.currentTarget.style.color = '#0284C7';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = 'transparent';
+                          e.currentTarget.style.color = '#475569';
+                        }}
+                      >
+                        <span
+                          style={{
+                            width: '20px',
+                            height: '20px',
+                            borderRadius: '50%',
+                            background: '#EFF6FF',
+                            border: '1px solid #BFDBFE',
+                            fontSize: '11px',
+                            fontWeight: 700,
+                            color: '#0EA5E9',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexShrink: 0,
+                            fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                          }}
+                        >
+                          {i + 1}
+                        </span>
+                        {label}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ol>
+            </nav>
+          </div>
         </div>
       )}
 
-      {/* ── KI-Finder CTA ─────────────────────────────────────────────────────── */}
+      {/* KI-Finder CTA – normaler Flow, kein sticky, kein max-height */}
       <div
         style={{
           background: 'linear-gradient(135deg, #0C1A3A 0%, #0B3D6B 50%, #0EA5E9 100%)',
@@ -185,7 +188,7 @@ export default function ArticleSidebar({ tableOfContents, destination }) {
         </p>
       </div>
 
-      {/* ── Share link ────────────────────────────────────────────────────────── */}
+      {/* Guide teilen */}
       <div
         style={{
           background: '#F8FAFF',
@@ -228,6 +231,7 @@ export default function ArticleSidebar({ tableOfContents, destination }) {
           ))}
         </div>
       </div>
+
     </aside>
   );
 }
