@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useMemo, useTransition } from 'react';
+import { useState, useMemo, useTransition, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
   Plus, Search, Edit3, Eye, Globe, CheckCircle,
-  Archive, Trash2, RefreshCw, FileJson,
+  Archive, Trash2, RefreshCw, FileJson, AlertTriangle,
 } from 'lucide-react';
 
 const STATUS_CONFIG = {
@@ -37,6 +37,118 @@ function fmtDate(iso) {
   return new Date(iso).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
 }
 
+// ── Delete confirmation modal ──────────────────────────────────────────────────
+function DeleteModal({ dest, isDeleting, onConfirm, onCancel }) {
+  useEffect(() => {
+    function onKey(e) { if (e.key === 'Escape' && !isDeleting) onCancel(); }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isDeleting, onCancel]);
+
+  const isPublished = dest.status === 'published';
+
+  return (
+    <div
+      style={{
+        position: 'fixed', inset: 0, zIndex: 200,
+        background: 'rgba(15,23,42,0.45)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        padding: '16px',
+      }}
+      onClick={(e) => { if (e.target === e.currentTarget && !isDeleting) onCancel(); }}
+    >
+      <div style={{
+        background: '#FFFFFF',
+        borderRadius: '16px',
+        padding: '32px',
+        maxWidth: '440px',
+        width: '100%',
+        boxShadow: '0 24px 64px rgba(15,23,42,0.18)',
+      }}>
+        {/* Icon */}
+        <div style={{
+          width: '48px', height: '48px',
+          borderRadius: '12px',
+          background: '#FEF2F2',
+          border: '1.5px solid #FECACA',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          marginBottom: '20px',
+        }}>
+          <Trash2 size={22} color="#DC2626" strokeWidth={2} />
+        </div>
+
+        <h2 style={{
+          fontSize: '18px', fontWeight: 700, color: '#0F172A',
+          margin: '0 0 8px',
+          fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+        }}>
+          Reiseziel löschen
+        </h2>
+
+        <p style={{ fontSize: '14px', color: '#475569', lineHeight: 1.6, margin: `0 0 ${isPublished ? '12px' : '24px'}` }}>
+          Möchtest du <strong style={{ color: '#0F172A' }}>{dest.name}</strong> wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.
+        </p>
+
+        {isPublished && (
+          <div style={{
+            display: 'flex', gap: '10px',
+            padding: '12px 14px',
+            borderRadius: '10px',
+            background: '#FFFBEB',
+            border: '1.5px solid #FDE68A',
+            marginBottom: '24px',
+          }}>
+            <AlertTriangle size={16} color="#D97706" strokeWidth={2} style={{ flexShrink: 0, marginTop: '1px' }} />
+            <p style={{ fontSize: '13px', color: '#92400E', margin: 0, lineHeight: 1.5 }}>
+              Dieses Reiseziel ist aktuell veröffentlicht und öffentlich sichtbar. Das Löschen entfernt es sofort von der Website.
+            </p>
+          </div>
+        )}
+
+        <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
+          <button
+            onClick={onCancel}
+            disabled={isDeleting}
+            style={{
+              padding: '9px 18px',
+              borderRadius: '10px',
+              border: '1.5px solid #E2E8F0',
+              background: '#FAFAFA',
+              color: '#64748B',
+              fontSize: '13px',
+              fontWeight: 600,
+              cursor: isDeleting ? 'not-allowed' : 'pointer',
+              fontFamily: 'inherit',
+            }}
+          >
+            Abbrechen
+          </button>
+          <button
+            onClick={onConfirm}
+            disabled={isDeleting}
+            style={{
+              padding: '9px 20px',
+              borderRadius: '10px',
+              border: 'none',
+              background: '#DC2626',
+              color: '#FFFFFF',
+              fontSize: '13px',
+              fontWeight: 700,
+              cursor: isDeleting ? 'not-allowed' : 'pointer',
+              fontFamily: 'inherit',
+              opacity: isDeleting ? 0.7 : 1,
+              minWidth: '140px',
+              transition: 'opacity 0.15s',
+            }}
+          >
+            {isDeleting ? 'Wird gelöscht…' : 'Endgültig löschen'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 export default function DestinationsListClient({ initialData }) {
   const router = useRouter();
@@ -45,6 +157,16 @@ export default function DestinationsListClient({ initialData }) {
   const [statusFilter, setStatusFilter] = useState('all');
   const [isPending, startTransition] = useTransition();
   const [actionError, setActionError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [confirmDelete, setConfirmDelete] = useState(null); // { id, name, status }
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  // Auto-dismiss success message after 4 s
+  useEffect(() => {
+    if (!successMessage) return;
+    const t = setTimeout(() => setSuccessMessage(''), 4000);
+    return () => clearTimeout(t);
+  }, [successMessage]);
 
   // ── Filtered list ──────────────────────────────────────────────────────────
   const filtered = useMemo(() => {
@@ -67,7 +189,7 @@ export default function DestinationsListClient({ initialData }) {
     archived:  rows.filter(d => d.status === 'archived').length,
   }), [rows]);
 
-  // ── Actions ────────────────────────────────────────────────────────────────
+  // ── Generic action helper ──────────────────────────────────────────────────
   async function apiAction(id, path, method = 'POST') {
     setActionError('');
     const res = await fetch(`/api/admin/destinations/${id}${path}`, { method });
@@ -94,10 +216,34 @@ export default function DestinationsListClient({ initialData }) {
     if (json) patchRow(id, { status: 'archived' });
   }
 
-  async function handleDelete(id, name) {
-    if (!confirm(`„${name}" unwiderruflich löschen? (Nur Entwürfe können gelöscht werden.)`)) return;
-    const json = await apiAction(id, '', 'DELETE');
-    if (json) setRows(prev => prev.filter(r => r.id !== id));
+  // ── Delete: open modal ─────────────────────────────────────────────────────
+  function openDeleteModal(dest) {
+    setActionError('');
+    setConfirmDelete({ id: dest.id, name: dest.name, status: dest.status });
+  }
+
+  // ── Delete: execute after modal confirmation ───────────────────────────────
+  async function doDelete() {
+    if (!confirmDelete) return;
+    setIsDeleting(true);
+    setActionError('');
+    try {
+      const res = await fetch(`/api/admin/destinations/${confirmDelete.id}`, { method: 'DELETE' });
+      const text = await res.text();
+      let json;
+      try { json = JSON.parse(text); } catch { json = {}; }
+      if (!res.ok) {
+        setActionError(json.error ?? `Löschen fehlgeschlagen (${res.status}).`);
+        return;
+      }
+      setRows(prev => prev.filter(r => r.id !== confirmDelete.id));
+      setSuccessMessage(`„${confirmDelete.name}" wurde erfolgreich gelöscht.`);
+    } catch {
+      setActionError('Netzwerkfehler beim Löschen. Bitte erneut versuchen.');
+    } finally {
+      setIsDeleting(false);
+      setConfirmDelete(null);
+    }
   }
 
   function handleRefresh() {
@@ -107,6 +253,16 @@ export default function DestinationsListClient({ initialData }) {
   // ─────────────────────────────────────────────────────────────────────────
   return (
     <div>
+      {/* ── Delete confirmation modal ── */}
+      {confirmDelete && (
+        <DeleteModal
+          dest={confirmDelete}
+          isDeleting={isDeleting}
+          onConfirm={doDelete}
+          onCancel={() => setConfirmDelete(null)}
+        />
+      )}
+
       {/* ── Toolbar ── */}
       <div style={{
         display: 'flex', flexWrap: 'wrap', gap: '12px',
@@ -230,6 +386,22 @@ export default function DestinationsListClient({ initialData }) {
           </button>
         ))}
       </div>
+
+      {/* ── Success banner ── */}
+      {successMessage && (
+        <div style={{
+          marginBottom: '14px',
+          padding: '10px 14px',
+          borderRadius: '10px',
+          background: '#F0FDF4',
+          border: '1px solid #BBF7D0',
+          fontSize: '13px',
+          color: '#166534',
+          fontWeight: 500,
+        }}>
+          {successMessage}
+        </div>
+      )}
 
       {/* ── Error banner ── */}
       {actionError && (
@@ -411,24 +583,22 @@ export default function DestinationsListClient({ initialData }) {
                           </button>
                         )}
 
-                        {/* Delete (only drafts) */}
-                        {dest.status === 'draft' && (
-                          <button
-                            onClick={() => handleDelete(dest.id, dest.name)}
-                            title="Löschen"
-                            style={{
-                              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                              width: '30px', height: '30px',
-                              borderRadius: '8px',
-                              border: '1px solid #FECACA',
-                              background: '#FEF2F2',
-                              color: '#DC2626',
-                              cursor: 'pointer',
-                            }}
-                          >
-                            <Trash2 size={13} strokeWidth={2} />
-                          </button>
-                        )}
+                        {/* Delete — visible for all statuses */}
+                        <button
+                          onClick={() => openDeleteModal(dest)}
+                          title="Löschen"
+                          style={{
+                            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                            width: '30px', height: '30px',
+                            borderRadius: '8px',
+                            border: '1px solid #FECACA',
+                            background: '#FEF2F2',
+                            color: '#DC2626',
+                            cursor: 'pointer',
+                          }}
+                        >
+                          <Trash2 size={13} strokeWidth={2} />
+                        </button>
                       </div>
                     </td>
                   </tr>

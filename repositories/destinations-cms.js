@@ -143,19 +143,15 @@ export async function archiveDestination(id) {
   return data;
 }
 
-/** Hard-delete only draft destinations. Refuses to delete published/archived. */
+/** Hard-delete a destination by id. Works for any status. */
 export async function deleteDestination(id) {
   const supabase = createServerClient();
-  // Safety check: only drafts can be deleted
   const { data: existing } = await supabase
     .from('destinations')
     .select('id, status')
     .eq('id', id)
     .single();
   if (!existing) throw new Error('Reiseziel nicht gefunden.');
-  if (existing.status !== 'draft') {
-    throw new Error('Nur Entwürfe können gelöscht werden. Bitte zuerst archivieren.');
-  }
   const { error } = await supabase
     .from('destinations')
     .delete()
