@@ -312,7 +312,7 @@ export default function BlogPageClient({ articles, categories: _ignored }) {
               fontSize: 'clamp(14px, 1.8vw, 17px)', color: 'rgba(255,255,255,0.80)',
               lineHeight: 1.65, marginBottom: '28px', maxWidth: '520px',
             }}>
-              Inspiration, Tipps und ehrliche Guides für deine nächste Reise.
+              Inspirationen, Tipps und ehrliche Guides für deine nächste Reise.
             </p>
 
             {/* Search bar */}

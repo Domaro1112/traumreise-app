@@ -123,7 +123,7 @@ export default function BlogHero({ categories, activeCategory, onCategoryChange,
             >
               {[
                 { value: '8', label: 'Reise-Guides' },
-                { value: '12.500+', label: 'Leser' },
+                { value: 'Ehrliche', label: 'Guides' },
                 { value: '100 %', label: 'Kostenlos' },
               ].map((s) => (
                 <div key={s.label} style={{ textAlign: 'center' }}>
