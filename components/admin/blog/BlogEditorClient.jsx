@@ -5,8 +5,9 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
   Save, ArrowLeft, CheckCircle, Archive,
-  AlertTriangle, Eye, Loader2,
+  AlertTriangle, Eye, Loader2, FileJson,
 } from 'lucide-react';
+import BlogImportModal from '@/components/admin/blog/BlogImportModal';
 
 const TABS = [
   { key: 'basis',   label: 'Basis' },
@@ -69,6 +70,7 @@ export default function BlogEditorClient({ isNew, initialData }) {
   const articleId = initialData?.id ?? null;
 
   const [tab, setTab] = useState('basis');
+  const [importOpen, setImportOpen] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [isPublishing, setIsPublishing] = useState(false);
   const [isArchiving, setIsArchiving] = useState(false);
@@ -117,6 +119,46 @@ export default function BlogEditorClient({ isNew, initialData }) {
   function showToast(msg, type = 'success') {
     setToast({ msg, type });
     setTimeout(() => setToast(null), 3500);
+  }
+
+  // ── Handle JSON import ────────────────────────────────────────────────────
+  // `normalized` comes from validateBlogImport(); it matches the f state shape
+  // except JSON arrays are stored with _ prefix and need serialising to string.
+  function handleImport(normalized) {
+    setF(prev => ({
+      ...prev,
+      title:           normalized.title,
+      slug:            normalized.slug,
+      excerpt:         normalized.excerpt,
+      category:        normalized.category,
+      tags:            normalized.tags,
+      author:          normalized.author,
+      reading_time:    normalized.reading_time,
+      date:            normalized.date,
+      destination:     normalized.destination,
+      country:         normalized.country,
+      featured:        normalized.featured,
+      // Images: only overwrite if JSON contains them; keep existing URLs otherwise
+      cover_image_url: normalized.cover_image_url || prev.cover_image_url,
+      hero_image_url:  normalized.hero_image_url  || prev.hero_image_url,
+      seo_title:       normalized.seo_title,
+      seo_description: normalized.seo_description,
+      canonical_url:   normalized.canonical_url,
+      // JSON arrays → serialize to string for the textarea fields
+      table_of_contents: (normalized._tableOfContents ?? []).length > 0
+        ? JSON.stringify(normalized._tableOfContents, null, 2)
+        : prev.table_of_contents,
+      content_sections: (normalized._contentSections ?? []).length > 0
+        ? JSON.stringify(normalized._contentSections, null, 2)
+        : prev.content_sections,
+      faq: (normalized._faq ?? []).length > 0
+        ? JSON.stringify(normalized._faq, null, 2)
+        : prev.faq,
+    }));
+    setSlugManual(true);
+    setImportOpen(false);
+    setTab('basis');
+    showToast('JSON wurde erfolgreich importiert.');
   }
 
   // ── Build payload ─────────────────────────────────────────────────────────
@@ -286,6 +328,23 @@ export default function BlogEditorClient({ isNew, initialData }) {
 
         {/* Action buttons */}
         <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+          {/* JSON Import button – always visible */}
+          <button
+            onClick={() => setImportOpen(true)}
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: '6px',
+              padding: '9px 16px',
+              borderRadius: '10px',
+              border: '1.5px solid #BAE6FD',
+              background: '#F0F9FF',
+              fontSize: '13px', fontWeight: 600, color: '#0284C7',
+              cursor: 'pointer',
+            }}
+          >
+            <FileJson size={14} />
+            JSON importieren
+          </button>
+
           {!isNew && status === 'published' && (
             <a
               href={`/reiseblog/${initialData?.slug}`}
@@ -601,6 +660,13 @@ export default function BlogEditorClient({ isNew, initialData }) {
       <style>{`
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
       `}</style>
+
+      {/* JSON Import Modal */}
+      <BlogImportModal
+        open={importOpen}
+        onClose={() => setImportOpen(false)}
+        onImport={handleImport}
+      />
     </div>
   );
 }
