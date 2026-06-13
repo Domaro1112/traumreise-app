@@ -253,7 +253,7 @@ export default function BlogPageClient({ articles, categories: _ignored }) {
         style={{
           backgroundImage: `url('/images/blog/reiseblog-hero.jpg'), linear-gradient(135deg, #0C1A3A 0%, #0B3D6B 40%, #0EA5E9 100%)`,
           backgroundSize: 'cover, cover',
-          backgroundPosition: 'center, center',
+          backgroundPosition: 'center 75%, center',
           minHeight: 'clamp(320px, 40vw, 560px)',
           paddingTop: 'clamp(48px, 7vw, 88px)',
           paddingBottom: 'clamp(40px, 5vw, 64px)',
