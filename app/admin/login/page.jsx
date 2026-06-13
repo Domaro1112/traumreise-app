@@ -93,7 +93,7 @@ export default function AdminLoginPage() {
               alt="Reisemonkey"
               width={1536}
               height={1024}
-              style={{ height: '64px', width: 'auto', objectFit: 'contain' }}
+              style={{ height: '72px', width: 'auto', objectFit: 'contain' }}
             />
           </div>
           <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.55)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', margin: 0 }}>
