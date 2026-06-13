@@ -61,7 +61,7 @@ export default function Header() {
                   height: 'clamp(42px, 6.5vw, 60px)',
                   width: 'auto',
                   display: 'block',
-                  maxHeight: '60px',
+                  maxHeight: '72px',
                   objectFit: 'contain',
                 }}
               />
