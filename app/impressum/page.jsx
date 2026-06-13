@@ -36,10 +36,10 @@ export default function Impressum() {
               }}
             >
               {[
-                { label: 'Angaben gemäß § 5 TMG', value: 'Traumreise\n[Vorname Nachname]\n[Straße Hausnummer]\n[PLZ Stadt]' },
-                { label: 'Kontakt', value: 'E-Mail: kontakt@reisemonkey.de\nTelefon: +49 (0) XXX XXXXXXXX' },
+                { label: 'Angaben gemäß § 5 TMG', value: 'ApeAround\nMarkus Rothke\n[Straße Hausnummer]\nFreudenberg' },
+                { label: 'Kontakt', value: 'E-Mail: kontakt@ApeAround.de\nTelefon: +49 (0) XXX XXXXXXXX' },
                 { label: 'Umsatzsteuer-ID', value: 'USt-IdNr.: DE XXXXXXXXX' },
-                { label: 'Verantwortlich für den Inhalt', value: '[Vorname Nachname]\n[Adresse wie oben]' },
+                { label: 'Verantwortlich für den Inhalt', value: 'Markus Rothke\n[Adresse wie oben]' },
                 { label: 'Streitschlichtung', value: 'Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: https://ec.europa.eu/consumers/odr. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.' },
               ].map((item) => (
                 <div key={item.label} style={{ marginBottom: '28px' }}>
