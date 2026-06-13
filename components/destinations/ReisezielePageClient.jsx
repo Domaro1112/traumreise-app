@@ -236,6 +236,7 @@ export default function ReisezielePageClient({ destinations = [] }) {
           fill
           priority
           sizes="100vw"
+          className="rzp-hero-img"
           style={{ objectFit: 'cover', objectPosition: 'center 35%' }}
         />
         {/* Gradient overlay – keeps text readable without losing the image */}
@@ -282,7 +283,7 @@ export default function ReisezielePageClient({ destinations = [] }) {
           </form>
 
           {/* Quick-filter chips */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '7px', marginBottom: '30px' }}>
+          <div className="rzp-filter-chips">
             {TRAVEL_TYPES.map(t => (
               <button key={t} type="button" onClick={() => handleFilterChip(t)}
                 style={{ padding: '6px 14px', borderRadius: '20px', border: activeFilter === t ? '1.5px solid #38BDF8' : '1.5px solid rgba(255,255,255,0.22)', background: activeFilter === t ? 'rgba(56,189,248,0.18)' : 'rgba(255,255,255,0.08)', color: activeFilter === t ? '#38BDF8' : 'rgba(255,255,255,0.78)', fontSize: '13px', fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit', backdropFilter: 'blur(4px)', transition: 'all 0.15s' }}>
@@ -292,7 +293,7 @@ export default function ReisezielePageClient({ destinations = [] }) {
           </div>
 
           {/* Stats */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0' }}>
+          <div className="rzp-stats">
             {[
               { value: String(destinations.length || '–'), label: 'Reiseziele' },
               { value: '4',    label: 'Kontinente' },
@@ -322,7 +323,7 @@ export default function ReisezielePageClient({ destinations = [] }) {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(190px, 1fr))', gap: '14px' }}>
+          <div className="rzp-reisearten-grid">
             {REISEARTEN.map(({ type, label, Icon, desc, img }) => {
               const active = activeFilter === type;
               return (
@@ -349,10 +350,10 @@ export default function ReisezielePageClient({ destinations = [] }) {
       {/* ══ BELIEBTE REISEZIELE + CTA ══════════════════════════════════════════ */}
       <section style={{ padding: 'clamp(44px, 6vw, 68px) 0', background: '#FFFFFF' }}>
         <Container>
-          <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', alignItems: 'flex-start' }}>
+          <div className="rzp-popular-wrap">
 
             {/* Destination cards */}
-            <div style={{ flex: 1, minWidth: '0' }}>
+            <div className="rzp-popular-content">
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '5px' }}>
                 <Star size={13} strokeWidth={2} color="#F59E0B" />
                 <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: '#F59E0B' }}>Empfehlungen</span>
@@ -360,7 +361,7 @@ export default function ReisezielePageClient({ destinations = [] }) {
               <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(17px, 2.5vw, 26px)', fontWeight: 800, color: '#0F172A', margin: '0 0 20px', letterSpacing: '-0.02em' }}>
                 Aktuell beliebte Reiseziele
               </h2>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(210px, 1fr))', gap: '14px' }}>
+              <div className="rzp-popular-grid">
                 {popularPicks.map(pick => (
                   <Link key={pick.slug} href={pick.href} style={{ textDecoration: 'none', display: 'block' }}>
                     <article
@@ -395,8 +396,8 @@ export default function ReisezielePageClient({ destinations = [] }) {
             </div>
 
             {/* CTA card */}
-            <aside style={{ width: 'clamp(220px, 26%, 280px)', flexShrink: 0 }}>
-              <div style={{ background: 'linear-gradient(160deg, #0C1A3A 0%, #0B3D6B 60%, #0EA5E9 100%)', borderRadius: '20px', padding: '26px 20px', color: '#fff', boxShadow: '0 8px 32px rgba(14,165,233,0.22)', position: 'sticky', top: '88px' }}>
+            <aside className="rzp-popular-aside">
+              <div className="rzp-popular-cta" style={{ background: 'linear-gradient(160deg, #0C1A3A 0%, #0B3D6B 60%, #0EA5E9 100%)', borderRadius: '20px', padding: '26px 20px', color: '#fff', boxShadow: '0 8px 32px rgba(14,165,233,0.22)', position: 'sticky', top: '88px' }}>
                 <div style={{ width: '42px', height: '42px', borderRadius: '11px', background: 'rgba(255,255,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '14px' }}>
                   <Zap size={20} strokeWidth={2} color="#38BDF8" />
                 </div>
@@ -474,7 +475,7 @@ export default function ReisezielePageClient({ destinations = [] }) {
             const hasMore = dests.length > 6;
             return (
               <div key={continent} style={{ marginBottom: '48px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+                <div className="rzp-continent-header">
                   <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(15px, 2vw, 20px)', fontWeight: 800, color: '#0F172A', margin: 0, letterSpacing: '-0.01em' }}>
                     {continent}
                     <span style={{ fontSize: '14px', fontWeight: 500, color: '#94A3B8', marginLeft: '7px' }}>({dests.length})</span>
@@ -490,7 +491,7 @@ export default function ReisezielePageClient({ destinations = [] }) {
                   )}
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '16px' }}>
+                <div className="rzp-dest-grid">
                   {shown.map(dest => (
                     <DestCard key={dest.slug} dest={dest} />
                   ))}
@@ -513,7 +514,7 @@ export default function ReisezielePageClient({ destinations = [] }) {
       {/* ══ JAHRESZEITEN + BLOG ════════════════════════════════════════════════ */}
       <section style={{ padding: 'clamp(44px, 6vw, 68px) 0', background: '#FFFFFF' }}>
         <Container>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px' }}>
+          <div className="rzp-content-split">
 
             {/* Seasons */}
             <div>
@@ -521,7 +522,7 @@ export default function ReisezielePageClient({ destinations = [] }) {
                 Wohin zu welcher Jahreszeit?
               </h2>
               <p style={{ fontSize: '14px', color: '#64748B', margin: '0 0 22px' }}>Die besten Reiseziele für jede Saison.</p>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+              <div className="rzp-seasons-grid">
                 {SEASONS.map(s => (
                   <div key={s.label} style={{ background: s.bg, border: `1.5px solid ${s.border}`, borderRadius: '14px', padding: '14px 15px' }}>
                     <div style={{ fontSize: '22px', marginBottom: '6px' }}>{s.emoji}</div>

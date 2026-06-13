@@ -830,6 +830,122 @@ details > summary::marker { display: none; }
   }
 }
 
+/* ── Reiseziele page: responsive layout ──────────────────────────────────── */
+/* Desktop defaults (moved out of inline styles so media queries can override) */
+.rzp-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 30px;
+}
+.rzp-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+.rzp-reisearten-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 14px;
+}
+.rzp-popular-wrap {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.rzp-popular-content {
+  flex: 1;
+  min-width: 0;
+}
+.rzp-popular-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 14px;
+}
+.rzp-popular-aside {
+  width: clamp(220px, 26%, 280px);
+  flex-shrink: 0;
+}
+.rzp-dest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.rzp-continent-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.rzp-content-split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 48px;
+}
+.rzp-seasons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Tablet ≤860px: stack popular aside below content, unlock sticky */
+@media (max-width: 860px) {
+  .rzp-popular-wrap    { flex-direction: column; }
+  .rzp-popular-aside   { width: 100% !important; flex-shrink: unset; }
+  .rzp-popular-cta     { position: static !important; top: auto !important; }
+  .rzp-popular-grid    { grid-template-columns: repeat(2, 1fr); }
+  .rzp-content-split   { gap: 36px; }
+}
+
+/* Phone ≤480px */
+@media (max-width: 480px) {
+  /* Filter chips: horizontal scroll – no wrapping */
+  .rzp-filter-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+  }
+  .rzp-filter-chips::-webkit-scrollbar { display: none; }
+
+  /* Hero image: shift focal point for portrait */
+  .rzp-hero-img { object-position: 40% center !important; }
+
+  /* Reisearten: 2 columns (3 rows instead of 6) */
+  .rzp-reisearten-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  /* Popular picks: single column on phone */
+  .rzp-popular-grid { grid-template-columns: 1fr !important; }
+
+  /* Destination cards: single column */
+  .rzp-dest-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* Seasons: single column on very narrow screens */
+  .rzp-seasons-grid { grid-template-columns: 1fr; }
+
+  /* Content split: tighter gap */
+  .rzp-content-split { gap: 28px; }
+
+  /* Continent header: wrap heading + button */
+  .rzp-continent-header {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  /* Stats row: space out the items */
+  .rzp-stats { gap: 14px; }
+}
+
 /* ── Admin layout ─────────────────────────────────────────────────────────── */
 .admin-sidebar {
   transform: translateX(0);
