@@ -101,12 +101,10 @@ export default async function ArticlePage({ params }) {
               </div>
 
               {/* ── Sidebar ────────────────────────────────────────────────────── */}
-              <div className="article-sidebar-desktop">
-                <ArticleSidebar
-                  tableOfContents={article.tableOfContents}
-                  destination={article.destination}
-                />
-              </div>
+              <ArticleSidebar
+                tableOfContents={article.tableOfContents}
+                destination={article.destination}
+              />
             </div>
 
             {/* ── Back to blog ───────────────────────────────────────────────────── */}
