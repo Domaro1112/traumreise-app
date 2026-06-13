@@ -548,11 +548,12 @@ export default async function DestinationPage({ params }) {
               </div>
 
               {/* ── Sidebar ── */}
-              <aside style={{ position: 'sticky', top: '90px' }}>
+              <aside>
 
-                {/* Quick Facts */}
+                {/* Quick Facts — sticky card */}
                 {dest.quickFacts && Object.keys(dest.quickFacts).length > 0 && (
                   <div
+                    className="article-quickfacts-sticky"
                     style={{
                       background: '#F8FAFF',
                       border: '1.5px solid #E2E8F0',
