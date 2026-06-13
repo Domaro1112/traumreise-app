@@ -248,17 +248,45 @@ export default function BlogPageClient({ articles, categories: _ignored }) {
 
   return (
     <>
-      {/* ══ HERO ══════════════════════════════════════════════════════════════ */}
-      <section style={{ background: 'linear-gradient(180deg, #F0F9FF 0%, #FFFFFF 100%)', padding: 'clamp(48px, 7vw, 80px) 0 clamp(32px, 5vw, 56px)' }}>
-        <Container>
+      {/* ══ HERO IMAGE ════════════════════════════════════════════════════════ */}
+      <section
+        style={{
+          backgroundImage: `url('/images/blog/reiseblog-hero.jpg'), linear-gradient(135deg, #0C1A3A 0%, #0B3D6B 40%, #0EA5E9 100%)`,
+          backgroundSize: 'cover, cover',
+          backgroundPosition: 'center, center',
+          minHeight: 'clamp(320px, 40vw, 560px)',
+          paddingTop: 'clamp(48px, 7vw, 88px)',
+          paddingBottom: 'clamp(40px, 5vw, 64px)',
+          position: 'relative',
+          display: 'flex',
+          alignItems: 'flex-end',
+        }}
+      >
+        {/* Dark overlay for readability */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute', inset: 0,
+            background: 'linear-gradient(to bottom, rgba(10,20,40,0.42) 0%, rgba(10,20,40,0.68) 100%)',
+            pointerEvents: 'none',
+          }}
+        />
+
+        <Container style={{ position: 'relative', zIndex: 1, width: '100%' }}>
           <div style={{ maxWidth: '680px' }}>
             {/* Badge */}
             <div style={{
               display: 'inline-flex', alignItems: 'center', gap: '6px',
-              background: '#EFF6FF', border: '1px solid #BAE6FD', borderRadius: '20px', padding: '5px 14px', marginBottom: '20px',
+              background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.30)',
+              borderRadius: '20px', padding: '5px 14px', marginBottom: '18px',
+              backdropFilter: 'blur(6px)',
             }}>
-              <BookOpen size={12} strokeWidth={2} color="#0284C7" />
-              <span style={{ fontSize: '11px', fontWeight: 700, color: '#0284C7', letterSpacing: '1px', textTransform: 'uppercase', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>
+              <BookOpen size={12} strokeWidth={2} color="#BAE6FD" />
+              <span style={{
+                fontSize: '11px', fontWeight: 700, color: '#BAE6FD',
+                letterSpacing: '1.5px', textTransform: 'uppercase',
+                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+              }}>
                 Reiseblog
               </span>
             </div>
@@ -266,24 +294,35 @@ export default function BlogPageClient({ articles, categories: _ignored }) {
             {/* H1 */}
             <h1 style={{
               fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-              fontSize: 'clamp(30px, 5.5vw, 56px)', fontWeight: 900, color: '#0F172A',
-              lineHeight: 1.08, marginBottom: '16px', letterSpacing: '-0.03em',
+              fontSize: 'clamp(28px, 5vw, 54px)', fontWeight: 900, color: '#FFFFFF',
+              lineHeight: 1.08, marginBottom: '12px', letterSpacing: '-0.03em',
+              textShadow: '0 4px 20px rgba(0,0,0,0.30)',
             }}>
-              Inspiration für deine{' '}
-              <span style={{ background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                nächste Reise
+              Reise-Guides &amp;{' '}
+              <span style={{
+                background: 'linear-gradient(135deg, #67E8F9 0%, #A5F3FC 100%)',
+                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+              }}>
+                Insider-Tipps
               </span>
             </h1>
 
             {/* Subtitle */}
-            <p style={{ fontSize: 'clamp(15px, 1.8vw, 18px)', color: '#64748B', lineHeight: 1.7, marginBottom: '32px', maxWidth: '540px' }}>
-              Inspirationen, Tipps und ehrliche Guides für deine nächste Reise.
+            <p style={{
+              fontSize: 'clamp(14px, 1.8vw, 17px)', color: 'rgba(255,255,255,0.80)',
+              lineHeight: 1.65, marginBottom: '28px', maxWidth: '520px',
+            }}>
+              Inspiration, Tipps und ehrliche Guides für deine nächste Reise.
             </p>
 
             {/* Search bar */}
             <form
               onSubmit={e => e.preventDefault()}
-              style={{ display: 'flex', background: '#FFFFFF', borderRadius: '14px', border: '1.5px solid #E2E8F0', boxShadow: '0 4px 20px rgba(15,23,42,0.10)', overflow: 'hidden', maxWidth: '520px' }}
+              style={{
+                display: 'flex', background: '#FFFFFF', borderRadius: '14px',
+                border: 'none', boxShadow: '0 8px 32px rgba(0,0,0,0.28)',
+                overflow: 'hidden', maxWidth: '520px',
+              }}
             >
               <div style={{ display: 'flex', alignItems: 'center', paddingLeft: '14px', color: '#94A3B8', flexShrink: 0 }}>
                 <Search size={16} strokeWidth={2} />
@@ -306,11 +345,15 @@ export default function BlogPageClient({ articles, categories: _ignored }) {
             </form>
 
             {/* Stats */}
-            <div style={{ display: 'flex', gap: '28px', marginTop: '28px', flexWrap: 'wrap' }}>
-              {[{ v: String(articles.length), l: 'Artikel' }, { v: '12.500+', l: 'Leser' }, { v: '100%', l: 'Kostenlos' }].map(s => (
+            <div style={{ display: 'flex', gap: '28px', marginTop: '24px', flexWrap: 'wrap' }}>
+              {[
+                { v: String(articles.length) || '0', l: 'Artikel' },
+                { v: '12.500+', l: 'Leser' },
+                { v: '100%', l: 'Kostenlos' },
+              ].map(s => (
                 <div key={s.l}>
-                  <div style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: '22px', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em' }}>{s.v}</div>
-                  <div style={{ fontSize: '12px', color: '#94A3B8', fontWeight: 500 }}>{s.l}</div>
+                  <div style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: '22px', fontWeight: 800, color: '#FFFFFF', letterSpacing: '-0.02em', textShadow: '0 2px 8px rgba(0,0,0,0.25)' }}>{s.v}</div>
+                  <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.65)', fontWeight: 500 }}>{s.l}</div>
                 </div>
               ))}
             </div>
