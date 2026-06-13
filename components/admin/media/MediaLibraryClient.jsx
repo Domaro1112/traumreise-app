@@ -120,10 +120,36 @@ export default function MediaLibraryClient() {
                 </div>
                 {/* Meta + actions */}
                 <div style={{ padding: '10px' }}>
-                  <p style={{ fontSize: '11px', fontWeight: 600, color: '#0F172A', margin: '0 0 2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={file.name}>
+                  {/* Display name (from alt text or readable fallback) */}
+                  <p
+                    title={file.displayName ?? file.name}
+                    style={{
+                      fontSize: '12px', fontWeight: 700, color: '#0F172A',
+                      margin: '0 0 3px', overflow: 'hidden',
+                      textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {file.displayName ?? file.name}
+                  </p>
+                  {/* Alt text hint — only if it differs from displayName */}
+                  {file.altText && file.altText !== file.displayName && (
+                    <p style={{
+                      fontSize: '10px', color: '#7C3AED', margin: '0 0 3px',
+                      overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                    }} title={`Alt: ${file.altText}`}>
+                      alt: {file.altText}
+                    </p>
+                  )}
+                  {/* Technical filename */}
+                  <p style={{
+                    fontSize: '10px', color: '#94A3B8', margin: '0 0 3px',
+                    fontFamily: 'monospace', overflow: 'hidden',
+                    textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                  }} title={file.name}>
                     {file.name}
                   </p>
-                  <p style={{ fontSize: '10px', color: '#94A3B8', margin: '0 0 8px' }}>
+                  {/* Size + date */}
+                  <p style={{ fontSize: '10px', color: '#CBD5E1', margin: '0 0 8px' }}>
                     {file.size ? `${Math.round(file.size / 1024)} KB` : '—'}
                     {file.created_at ? ` · ${new Date(file.created_at).toLocaleDateString('de-DE')}` : ''}
                   </p>
