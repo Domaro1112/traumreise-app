@@ -22,7 +22,8 @@ export default function CarRentalDestinations() {
           marginTop: '40px',
         }}>
           {CAR_RENTAL_DESTINATIONS.map((dest) => {
-            const href = buildCheck24CarRentalUrl({ pickupLocation: dest.searchQuery });
+            const carUrl = buildCheck24CarRentalUrl({ pickupLocation: dest.searchQuery });
+            const href = `/go/check24?url=${encodeURIComponent(carUrl)}`;
             return (
               <a
                 key={dest.id}

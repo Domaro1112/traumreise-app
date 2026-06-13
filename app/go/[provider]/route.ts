@@ -29,6 +29,8 @@ export async function GET(
     // Weiterleitung ohne ID im Fehlerfall — kein Abbruch
   }
 
+  console.log('[GO_REDIRECT_HIT]', { provider, targetUrl, finalUrl, changed: finalUrl !== targetUrl });
+
   // Klick-Tracking: echter Fire-and-Forget via async IIFE mit try/catch
   // Fehler im async-Pfad werden vollständig abgefangen — Redirect schlägt nie fehl.
   void (async () => {

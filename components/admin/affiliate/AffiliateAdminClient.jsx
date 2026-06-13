@@ -68,6 +68,26 @@ const PROVIDERS = [
     bg:          '#EFF6FF',
     href:        'https://affiliates.expediagroup.com',
   },
+  {
+    id:          'trivago',
+    name:        'trivago',
+    icon:        Hotel,
+    param:       'ptId',
+    placeholder: 'z.B. 123456',
+    color:       '#007DB8',
+    bg:          '#EEF7FB',
+    href:        'https://www.trivago.de/affiliate',
+  },
+  {
+    id:          'skyscanner',
+    name:        'Skyscanner',
+    icon:        Plane,
+    param:       'associateid',
+    placeholder: 'z.B. skyscannerXXX',
+    color:       '#0770E3',
+    bg:          '#EEF4FF',
+    href:        'https://www.partners.skyscanner.net',
+  },
 ];
 
 const PROVIDER_LABELS = Object.fromEntries(PROVIDERS.map(p => [p.id, p.name]));

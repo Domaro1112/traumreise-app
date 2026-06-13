@@ -75,8 +75,14 @@ export default function FutureStoryResult({
     }
   }, []);
 
-  const goUrl = (provider, rawUrl) =>
-    rawUrl ? `/go/${provider}?url=${encodeURIComponent(rawUrl)}` : '#';
+  const goUrl = (provider, rawUrl) => {
+    if (!rawUrl) return '#';
+    const href = `/go/${provider}?url=${encodeURIComponent(rawUrl)}`;
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('[AFFILIATE_BUTTON_HREF]', { component: 'FutureStoryResult', provider, href });
+    }
+    return href;
+  };
 
   const affiliateLinks = [
     { href: goUrl('trivago',      cur.trivagoUrl), label: 'Hotels auf Trivago',        bg: 'linear-gradient(90deg,#d00e17,#ff4d57)' },

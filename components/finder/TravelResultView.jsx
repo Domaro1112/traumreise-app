@@ -20,7 +20,11 @@ const ACCENT = '#0EA5E9';
 // ── Affiliate card definitions ────────────────────────────────────────────────
 function goUrl(provider, rawUrl) {
   if (!rawUrl) return '#';
-  return `/go/${provider}?url=${encodeURIComponent(rawUrl)}`;
+  const href = `/go/${provider}?url=${encodeURIComponent(rawUrl)}`;
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('[AFFILIATE_BUTTON_HREF]', { component: 'TravelResultView', provider, href });
+  }
+  return href;
 }
 
 function buildAffiliateCards(cur) {

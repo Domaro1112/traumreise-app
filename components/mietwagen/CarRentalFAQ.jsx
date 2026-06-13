@@ -87,7 +87,7 @@ export default function CarRentalFAQ() {
             Bereit für dein nächstes Mietwagen-Abenteuer?
           </p>
           <a
-            href={CHECK24_CAR_RENTAL_AFFILIATE_URL}
+            href={`/go/check24?url=${encodeURIComponent(CHECK24_CAR_RENTAL_AFFILIATE_URL)}`}
             target="_blank"
             rel="noopener noreferrer"
             style={{

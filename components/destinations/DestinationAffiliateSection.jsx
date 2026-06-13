@@ -39,6 +39,7 @@ export default function DestinationAffiliateSection({ destination }) {
     });
 
     try {
+      console.log('[AFFILIATE_BUTTON_HREF]', { component: 'DestinationAffiliateSection', provider: providerId, destination: destination.name });
       const res = await fetch('/api/travel-finder/affiliate-click', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -53,8 +54,12 @@ export default function DestinationAffiliateSection({ destination }) {
         }),
       });
 
-      if (!res.ok) { if (win) win.close(); return; }
+      if (!res.ok) {
+        console.error('[affiliate-seo] API error', res.status);
+        if (win) win.close(); return;
+      }
       const data = await res.json();
+      console.log('[AFFILIATE_REDIRECT_URL]', { provider: providerId, redirectUrl: data.redirectUrl });
       if (data.redirectUrl && win) {
         win.location.href = data.redirectUrl;
       } else {

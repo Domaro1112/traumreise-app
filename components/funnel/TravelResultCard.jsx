@@ -79,6 +79,7 @@ export default function TravelResultCard({ destination, index, sessionId, destin
     }
 
     try {
+      console.log('[AFFILIATE_BUTTON_HREF]', { component: 'TravelResultCard', provider: providerId, destination: destination.name });
       const res = await fetch('/api/travel-finder/affiliate-click', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -93,10 +94,7 @@ export default function TravelResultCard({ destination, index, sessionId, destin
       }
 
       const data = await res.json();
-
-      if (process.env.NODE_ENV === 'development') {
-        console.log('[affiliate] redirect url', data.redirectUrl);
-      }
+      console.log('[AFFILIATE_REDIRECT_URL]', { provider: providerId, redirectUrl: data.redirectUrl });
 
       if (data.redirectUrl && win) {
         win.location.href = data.redirectUrl;
