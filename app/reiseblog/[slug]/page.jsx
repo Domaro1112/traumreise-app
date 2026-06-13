@@ -13,6 +13,11 @@ import {
   getBlogArticleBySlugPublic,
   listPublishedBlogSlugs,
 } from '@/repositories/blog-cms';
+import { getDestinationsBySlugsBatch } from '@/repositories/destinations-cms';
+
+function slugToName(slug) {
+  return slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+}
 import Link from 'next/link';
 import { ArrowLeft, Plane, ArrowRight } from 'lucide-react';
 
@@ -77,6 +82,16 @@ export default async function ArticlePage({ params }) {
 
   if (!article) notFound();
 
+  // Enrich related destination slugs with DB names (published only).
+  // Falls back to slug-derived name for slugs not found in DB.
+  const rawSlugs = (article.relatedArticles ?? []).slice(0, 3);
+  let relatedDestinations = [];
+  if (rawSlugs.length) {
+    const found = await getDestinationsBySlugsBatch(rawSlugs);
+    const nameMap = Object.fromEntries(found.map(d => [d.slug, d.name]));
+    relatedDestinations = rawSlugs.map(s => ({ slug: s, name: nameMap[s] ?? slugToName(s) }));
+  }
+
   return (
     <>
       <ArticleJsonLd article={article} />
@@ -109,6 +124,7 @@ export default async function ArticlePage({ params }) {
                 tableOfContents={article.tableOfContents}
                 destination={article.destination}
                 galleryImages={article.galleryImages}
+                relatedDestinations={relatedDestinations}
               />
             </div>
 

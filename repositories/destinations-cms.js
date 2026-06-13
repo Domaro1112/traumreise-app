@@ -251,6 +251,25 @@ export async function listPublishedSlugs() {
   }
 }
 
+/**
+ * Fetch slug + name for a list of slugs (published only).
+ * Returns only rows that exist; caller is responsible for fallbacks.
+ */
+export async function getDestinationsBySlugsBatch(slugs) {
+  if (!slugs?.length) return [];
+  try {
+    const supabase = createServerClient();
+    const { data } = await supabase
+      .from('destinations')
+      .select('slug, name')
+      .in('slug', slugs)
+      .eq('status', 'published');
+    return data ?? [];
+  } catch {
+    return [];
+  }
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Helpers
 // ─────────────────────────────────────────────────────────────────────────────

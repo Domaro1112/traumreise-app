@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { List, Plane, Sparkles, ArrowRight, Images, X } from 'lucide-react';
 
-export default function ArticleSidebar({ tableOfContents, destination, galleryImages = [] }) {
+export default function ArticleSidebar({ tableOfContents, destination, galleryImages = [], relatedDestinations = [] }) {
   const [lightbox, setLightbox] = useState(null); // { src, alt }
   const visibleImages = galleryImages.slice(0, 6);
 
@@ -237,6 +237,114 @@ export default function ArticleSidebar({ tableOfContents, destination, galleryIm
             ))}
           </div>
         </div>
+
+        {/* ── Tipp von ApeAround ───────────────────────────────────────────── */}
+        <div
+          style={{
+            background: '#FFFBEB',
+            border: '1px solid #FDE68A',
+            borderRadius: '16px',
+            padding: '18px 20px',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '7px', marginBottom: '10px' }}>
+            <span style={{ fontSize: '16px', lineHeight: 1 }}>💡</span>
+            <span
+              style={{
+                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                fontSize: '12px',
+                fontWeight: 700,
+                letterSpacing: '0.8px',
+                textTransform: 'uppercase',
+                color: '#92400E',
+              }}
+            >
+              Tipp von ApeAround
+            </span>
+          </div>
+          <p style={{ fontSize: '13px', color: '#78350F', lineHeight: 1.65, margin: 0 }}>
+            Speichere dir diesen Guide und vergleiche vor der Buchung immer mehrere Angebote.
+          </p>
+        </div>
+
+        {/* ── Passende Reiseziele ──────────────────────────────────────────── */}
+        {relatedDestinations.length > 0 && (
+          <div
+            style={{
+              background: '#FFFFFF',
+              border: '1px solid #E2E8F0',
+              borderRadius: '16px',
+              padding: '20px 24px',
+              boxShadow: '0 2px 12px rgba(15,23,42,0.06)',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
+              <Plane size={15} strokeWidth={2} color="#0EA5E9" />
+              <span
+                style={{
+                  fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                  fontSize: '13px',
+                  fontWeight: 700,
+                  letterSpacing: '1px',
+                  textTransform: 'uppercase',
+                  color: '#64748B',
+                }}
+              >
+                Passende Reiseziele
+              </span>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {relatedDestinations.map(dest => (
+                <div
+                  key={dest.slug}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '10px 14px',
+                    borderRadius: '10px',
+                    background: '#F8FAFF',
+                    border: '1px solid #E2E8F0',
+                    gap: '12px',
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: '13px',
+                      fontWeight: 600,
+                      color: '#0F172A',
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {dest.name}
+                  </span>
+                  <Link
+                    href={`/reiseziele/${dest.slug}`}
+                    style={{
+                      flexShrink: 0,
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      fontSize: '11.5px',
+                      fontWeight: 700,
+                      color: '#0284C7',
+                      textDecoration: 'none',
+                      padding: '5px 10px',
+                      borderRadius: '8px',
+                      background: '#EFF6FF',
+                      border: '1px solid #BFDBFE',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    Ansehen
+                    <ArrowRight size={11} strokeWidth={2.5} />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* ── Bildergalerie ─────────────────────────────────────────────────── */}
         {visibleImages.length > 0 && (
