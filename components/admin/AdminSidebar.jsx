@@ -78,7 +78,7 @@ export default function AdminSidebar({ isOpen, onClose }) {
               alt="Reisemonkey Admin"
               width={1536}
               height={1024}
-              style={{ height: '26px', width: 'auto', objectFit: 'contain' }}
+              style={{ height: '52px', width: 'auto', objectFit: 'contain' }}
             />
             <span style={{
               fontSize: '11px', fontWeight: 700, color: '#475569',
