@@ -810,14 +810,15 @@ details > summary::marker { display: none; }
 /* ── Destination detail: 2-column layout ──────────────────────────────────── */
 .destination-layout {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
+  /* !important overrides the inline gridTemplateColumns on the same div */
+  grid-template-columns: 1fr !important;
+  gap: 40px !important;
   align-items: start;
 }
 @media (min-width: 960px) {
   .destination-layout {
-    grid-template-columns: minmax(0, 1fr) 300px;
-    gap: 48px;
+    grid-template-columns: minmax(0, 1fr) 300px !important;
+    gap: 48px !important;
   }
 }
 .destination-layout > aside {
@@ -827,6 +828,42 @@ details > summary::marker { display: none; }
   .destination-layout > aside {
     display: block;
     align-self: start;
+  }
+}
+
+/* ── Destination detail page: mobile helpers ─────────────────────────────── */
+.dest-hero {
+  min-height: clamp(440px, 45vw, 600px);
+}
+.dest-content-section {
+  padding-top: 56px;
+  padding-bottom: 80px;
+}
+.dest-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+@media (max-width: 640px) {
+  .dest-hero {
+    min-height: 380px;
+  }
+  .dest-content-section {
+    padding-top: 36px;
+    padding-bottom: 48px;
+  }
+}
+@media (max-width: 480px) {
+  .dest-hero {
+    min-height: 320px;
+  }
+  .dest-content-section {
+    padding-top: 24px;
+    padding-bottom: 32px;
+  }
+  .dest-hero-ctas a {
+    flex: 1 1 calc(50% - 5px);
+    justify-content: center;
   }
 }
 

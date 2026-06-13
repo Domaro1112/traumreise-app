@@ -209,11 +209,11 @@ export default async function DestinationPage({ params }) {
 
         {/* ── HERO ── */}
         <section
+          className="dest-hero"
           style={{
             backgroundImage: `url('${dest.heroImage}'), ${dest.heroGradient}`,
             backgroundSize: 'cover, cover',
             backgroundPosition: 'center, center',
-            minHeight: 'clamp(440px, 45vw, 600px)',
             paddingTop: 'clamp(48px, 7vw, 88px)',
             paddingBottom: 'clamp(48px, 6vw, 80px)',
             position: 'relative',
@@ -269,7 +269,7 @@ export default async function DestinationPage({ params }) {
 
             {/* Hero CTAs */}
             {!dest.isPlaceholder && (
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+              <div className="dest-hero-ctas">
                 {[
                   { label: 'Hotels ansehen', href: '#angebote' },
                   { label: 'Flüge suchen', href: '#angebote' },
@@ -306,7 +306,7 @@ export default async function DestinationPage({ params }) {
         </section>
 
         {/* ── CONTENT ── */}
-        <section style={{ paddingTop: '56px', paddingBottom: '80px' }}>
+        <section className="dest-content-section">
           <Container>
             <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 300px', gap: '48px', alignItems: 'start' }}
               className="destination-layout">
