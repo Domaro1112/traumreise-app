@@ -262,12 +262,12 @@ export default function BlogPageClient({ articles, categories: _ignored }) {
           alignItems: 'flex-end',
         }}
       >
-        {/* Dark overlay for readability */}
+        {/* Overlay: darker left (text area) → transparent right */}
         <div
           aria-hidden="true"
           style={{
             position: 'absolute', inset: 0,
-            background: 'linear-gradient(to bottom, rgba(10,20,40,0.42) 0%, rgba(10,20,40,0.68) 100%)',
+            background: 'linear-gradient(90deg, rgba(12,26,58,0.55) 0%, rgba(12,26,58,0.28) 45%, rgba(12,26,58,0.08) 100%)',
             pointerEvents: 'none',
           }}
         />
