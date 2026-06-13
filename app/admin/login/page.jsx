@@ -91,8 +91,8 @@ export default function AdminLoginPage() {
             <Image
               src="/images/logo/reisemonkey-logo.png"
               alt="Reisemonkey"
-              width={1536}
-              height={1024}
+              width={1836}
+              height={1324}
               style={{ height: '32px', width: 'auto', objectFit: 'contain' }}
             />
           </div>
