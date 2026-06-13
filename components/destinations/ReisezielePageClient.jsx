@@ -161,7 +161,7 @@ export default function ReisezielePageClient({ destinations = [] }) {
           style={{ objectFit: 'cover', objectPosition: 'center 35%' }}
         />
         {/* Gradient overlay – keeps text readable without losing the image */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(100deg, rgba(10,22,50,0.82) 0%, rgba(11,61,107,0.65) 45%, rgba(14,165,233,0.30) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(12,26,58,0.55) 0%, rgba(12,26,58,0.25) 45%, rgba(12,26,58,0.05) 100%)' }} />
         <Container style={{ position: 'relative', zIndex: 1 }}>
           {/* Badge */}
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(14,165,233,0.2)', border: '1px solid rgba(14,165,233,0.38)', borderRadius: '20px', padding: '4px 12px', marginBottom: '16px' }}>
