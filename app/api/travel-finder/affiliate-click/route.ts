@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { trackAffiliateClick } from '@/repositories/travel-funnel';
 import { buildProviderUrl, buildDestinationSearchQuery, AFFILIATE_PROVIDERS } from '@/lib/affiliate-config';
+import { generateAffiliateUrl } from '@/lib/affiliate';
 
 interface DestinationPayload {
   name:                  string;
@@ -33,11 +34,14 @@ export async function POST(request: NextRequest) {
 
     // Build URL and search query server-side — client never constructs these
     const searchQuery = buildDestinationSearchQuery(destination);
-    const redirectUrl = buildProviderUrl(provider, destination);
+    const baseUrl = buildProviderUrl(provider, destination);
 
-    if (!redirectUrl) {
+    if (!baseUrl) {
       return NextResponse.json({ error: 'URL konnte nicht gebaut werden.' }, { status: 500 });
     }
+
+    // Inject affiliate ID from central settings (cached, non-blocking on error)
+    const redirectUrl = await generateAffiliateUrl(provider, baseUrl);
 
     const referrer = request.headers.get('referer') ?? undefined;
 

@@ -15,7 +15,7 @@ const NAV_ITEMS = [
   { label: 'Reiseblog',    href: '/admin/blog',          icon: FileText        },
   { label: 'Medien',       href: '/admin/medien',        icon: ImageIcon       },
   { label: 'Leads',        href: '/admin/leads',         icon: Users           },
-  { label: 'Affiliate',    href: '/admin/affiliate',     icon: TrendingUp      },
+  { label: 'Monetarisierung', href: '/admin/affiliate',  icon: TrendingUp      },
   { label: 'SEO & LLMO',   href: '/admin/seo-llmo',      icon: Search          },
   { label: 'Einstellungen',href: '/admin/einstellungen', icon: Settings        },
 ];
