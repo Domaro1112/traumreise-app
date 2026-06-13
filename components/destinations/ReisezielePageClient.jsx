@@ -48,6 +48,45 @@ const TRUST_ITEMS = [
   { Icon: Zap,     label: 'Sicher & transparent',  sub: 'Vertrauen und Sicherheit an erster Stelle' },
 ];
 
+// Normalize a string for robust fuzzy matching:
+// lowercase → strip diacritics (ä→a, ö→o, ü→u) → ß→ss → collapse non-alphanum to space
+function norm(str) {
+  return String(str ?? '')
+    .toLowerCase()
+    .replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u')
+    .replace(/ß/g, 'ss')
+    .replace(/[àáâãåæ]/g, 'a').replace(/[èéêë]/g, 'e').replace(/[ìíîï]/g, 'i')
+    .replace(/[òóôõø]/g, 'o').replace(/[ùúû]/g, 'u').replace(/[ñ]/g, 'n').replace(/[ç]/g, 'c')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+}
+
+// Build a single searchable string from all relevant destination fields
+function makeSearchText(d) {
+  const parts = [
+    d.name,
+    d.slug,
+    d.country,
+    d.continent,
+    d.region,
+    d.shortDescription,
+    d.longDescription,
+    d.aiSummary,
+    d.bestTravelTime,
+    d.idealDuration,
+    d.seoTitle,
+    d.seoDescription,
+    d.affiliateSearchIntent,
+    ...(Array.isArray(d.travelType)   ? d.travelType   : []),
+    ...(Array.isArray(d.highlights)   ? d.highlights   : []),
+    ...(Array.isArray(d.insiderTips)  ? d.insiderTips  : []),
+    d.quickFacts?.language,
+    d.quickFacts?.bestMonths,
+    d.quickFacts?.visa,
+  ];
+  return norm(parts.filter(Boolean).join(' '));
+}
+
 // ── DestCard ──────────────────────────────────────────────────────────────────
 
 function DestCard({ dest }) {
@@ -107,17 +146,23 @@ export default function ReisezielePageClient({ destinations = [] }) {
 
   const scrollToGrid = () => gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
+  // Pre-compute search text once per destination list (not on every keystroke)
+  const searchTexts = useMemo(() => destinations.map(makeSearchText), [destinations]);
+
   const filtered = useMemo(() => {
-    const q = searchQuery.toLowerCase().trim();
-    return destinations.filter(d => {
-      const matchFilter = !activeFilter || (Array.isArray(d.travelType) && d.travelType.includes(activeFilter));
-      const matchSearch = !q
-        || d.name.toLowerCase().includes(q)
-        || d.country.toLowerCase().includes(q)
-        || (d.region && d.region.toLowerCase().includes(q));
+    const q = norm(searchQuery);
+    const normFilter = norm(activeFilter);
+    return destinations.filter((d, i) => {
+      // Filter: partial substring match in both directions, diacritic-insensitive
+      const matchFilter = !activeFilter || (Array.isArray(d.travelType) && d.travelType.some(t => {
+        const nt = norm(t);
+        return nt.includes(normFilter) || normFilter.includes(nt);
+      }));
+      // Search: full-text across all relevant fields
+      const matchSearch = !q || searchTexts[i].includes(q);
       return matchFilter && matchSearch;
     });
-  }, [destinations, activeFilter, searchQuery]);
+  }, [destinations, searchTexts, activeFilter, searchQuery]);
 
   const byContinent = useMemo(() => {
     const map = {};
@@ -381,8 +426,15 @@ export default function ReisezielePageClient({ destinations = [] }) {
           {filtered.length === 0 && (
             <div style={{ textAlign: 'center', padding: '60px 20px', background: '#FFFFFF', borderRadius: '18px', border: '1.5px solid #E2E8F0' }}>
               <Globe size={32} strokeWidth={1.2} color="#CBD5E1" style={{ marginBottom: '12px' }} />
-              <p style={{ fontSize: '16px', fontWeight: 700, color: '#64748B', margin: '0 0 6px' }}>Keine Reiseziele gefunden.</p>
-              <p style={{ fontSize: '13px', color: '#94A3B8', margin: 0 }}>Versuche einen anderen Suchbegriff oder entferne den Filter.</p>
+              <p style={{ fontSize: '16px', fontWeight: 700, color: '#64748B', margin: '0 0 6px' }}>Keine passenden Reiseziele gefunden.</p>
+              <p style={{ fontSize: '13px', color: '#94A3B8', margin: '0 0 20px' }}>Versuche einen anderen Suchbegriff oder entferne den Filter.</p>
+              <button
+                type="button"
+                onClick={() => { setSearchQuery(''); setActiveFilter(''); }}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '9px 20px', borderRadius: '10px', background: '#FFFFFF', border: '1.5px solid #E2E8F0', fontSize: '13px', fontWeight: 600, color: '#334155', cursor: 'pointer', fontFamily: 'inherit' }}
+              >
+                <X size={12} strokeWidth={2.5} /> Filter zurücksetzen
+              </button>
             </div>
           )}
 
