@@ -273,7 +273,7 @@ export default function HomeTravelWizard() {
               Beschreibe deine perfekte Reise
             </h2>
             <p style={{ fontSize: '15px', color: '#64748B', lineHeight: 1.65, maxWidth: '500px', margin: '0 auto' }}>
-              Sag uns, worauf du Lust hast – Reisemonkey findet deine 3 persönlichen Traumziele.
+              Sag uns, worauf du Lust hast – ApeAround findet deine 3 persönlichen Traumziele.
             </p>
           </div>
 

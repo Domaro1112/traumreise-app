@@ -65,7 +65,10 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  /* clip statt hidden: verhindert horizontales Scrollen ohne einen Scroll-Container
+     zu erzeugen – overflow:hidden würde body zum Scroll-Container machen und
+     position:sticky auf allen Unterseiten brechen */
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -543,8 +546,10 @@ input::placeholder { color: var(--color-text-muted); }
 }
 @media (min-width: 1024px) {
   .article-layout {
-    grid-template-columns: minmax(0, 2fr) 320px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
     gap: 56px;
+    align-items: start;
   }
 }
 
@@ -555,8 +560,8 @@ input::placeholder { color: var(--color-text-muted); }
 @media (min-width: 1024px) {
   .article-sidebar-desktop {
     display: block;
-    /* Must stretch to full grid-row height so the sticky child has room to scroll */
-    align-self: stretch;
+    align-self: start;
+    position: relative;
   }
 }
 
