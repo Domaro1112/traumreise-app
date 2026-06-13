@@ -100,7 +100,7 @@ export default function FutureSelfWizard({
           fontFamily: 'var(--font-heading)',
         }}
       >
-        Welches Gefühl rufst du?
+        Welches Gefühl brauchst du?
       </div>
 
       {/* Vibe grid */}

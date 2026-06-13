@@ -173,7 +173,7 @@ export default function TravelFunnelOptin({ destinations, moods, season, budget,
       <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginTop: '14px' }}>
         <ShieldCheck size={12} strokeWidth={2} color="rgba(255,255,255,0.6)" />
         <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.6)' }}>
-          Kein Spam. Jederzeit abbestellbar. DSGVO-konform.
+          Kein Spam. Jederzeit abbestellen. DSGVO-konform.
         </span>
       </div>
     </div>

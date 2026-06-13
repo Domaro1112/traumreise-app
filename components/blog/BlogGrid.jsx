@@ -191,7 +191,7 @@ function BlogCard({ article }) {
             transition: 'color 0.2s',
           }}
         >
-          Weiterlesen
+          Artikel lesen
           <ArrowRight size={14} strokeWidth={2.5} />
         </Link>
       </div>

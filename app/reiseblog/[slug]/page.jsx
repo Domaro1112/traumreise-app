@@ -5,10 +5,8 @@ import Container from '@/components/layout/Container';
 import NewsletterSection from '@/components/landing/NewsletterSection';
 import ArticleJsonLd from '@/components/blog/ArticleJsonLd';
 import ArticleHero from '@/components/blog/ArticleHero';
-import ArticleKeyTakeaways from '@/components/blog/ArticleKeyTakeaways';
 import ArticleContent from '@/components/blog/ArticleContent';
 import ArticleFAQ from '@/components/blog/ArticleFAQ';
-import ArticleDestinationFacts from '@/components/blog/ArticleDestinationFacts';
 import ArticleSidebar from '@/components/blog/ArticleSidebar';
 import RelatedArticles from '@/components/blog/RelatedArticles';
 import { blogArticles } from '@/data/blogArticles';
@@ -87,12 +85,6 @@ export default async function ArticlePage({ params }) {
         {/* ── Main article body ─────────────────────────────────────────────────── */}
         <section style={{ paddingTop: '56px', paddingBottom: '80px' }}>
           <Container>
-            {/* Key Takeaways – full width above 2-col layout */}
-            <ArticleKeyTakeaways
-              takeaways={article.keyTakeaways}
-              destination={article.destination}
-            />
-
             {/* 2-column: content + sidebar */}
             <div className="article-layout">
               {/* ── Content column ─────────────────────────────────────────────── */}
@@ -100,11 +92,6 @@ export default async function ArticlePage({ params }) {
                 <ArticleContent
                   sections={article.contentSections}
                   internalLinks={article.internalLinks}
-                />
-                <ArticleDestinationFacts
-                  facts={article.destinationFacts}
-                  airportInfo={article.airportInfo}
-                  destination={article.destination}
                 />
                 <ArticleFAQ faq={article.faq} destination={article.destination} />
                 <RelatedArticles
