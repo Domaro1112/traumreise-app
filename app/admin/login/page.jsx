@@ -260,7 +260,7 @@ export default function AdminLoginPage() {
         }}>
           <ShieldCheck size={13} strokeWidth={2} color="#94A3B8" />
           <span style={{ fontSize: '12px', color: '#94A3B8' }}>
-            Geschützter Admin-Bereich · Reisemonkey
+            Geschützter Admin-Bereich ·ApeAround
           </span>
         </div>
       </div>

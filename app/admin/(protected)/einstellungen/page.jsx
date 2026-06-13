@@ -2,7 +2,7 @@ import { Settings } from 'lucide-react';
 import AdminSectionPlaceholder from '@/components/admin/AdminSectionPlaceholder';
 
 export const metadata = {
-  title: 'Einstellungen | Reisemonkey Admin',
+  title: 'Einstellungen |ApeAround Admin',
 };
 
 export default function AdminEinstellungenPage() {

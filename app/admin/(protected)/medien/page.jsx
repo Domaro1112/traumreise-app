@@ -1,7 +1,7 @@
 import MediaLibraryClient from '@/components/admin/media/MediaLibraryClient';
 
 export const metadata = {
-  title: 'Medienverwaltung | Reisemonkey Admin',
+  title: 'Medienverwaltung |ApeAround Admin',
   robots: { index: false, follow: false },
 };
 

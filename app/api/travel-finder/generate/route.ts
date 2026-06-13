@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
     ? `\n- Persönlicher Wunsch des Nutzers: ${sanitizedNote}\n  → Nur urlaubsrelevante Hinweise daraus berücksichtigen. Keine Verfügbarkeitsgarantien, Preiszusagen oder nicht erfüllbaren Versprechen machen.`
     : '';
 
-  const prompt = `Du bist ein erfahrener Reise-Experte für reisemonkey.de.
+  const prompt = `Du bist ein erfahrener Reise-Experte für ApeAround.de.
 Erstelle genau 3 passende Reiseziel-Empfehlungen.
 
 Eingaben des Nutzers:

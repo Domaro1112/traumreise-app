@@ -2,7 +2,7 @@ import { Users } from 'lucide-react';
 import AdminSectionPlaceholder from '@/components/admin/AdminSectionPlaceholder';
 
 export const metadata = {
-  title: 'Leads & Anfragen | Reisemonkey Admin',
+  title: 'Leads & Anfragen |ApeAround Admin',
 };
 
 export default function AdminLeadsPage() {

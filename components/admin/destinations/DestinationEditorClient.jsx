@@ -685,7 +685,7 @@ export default function DestinationEditorClient({ initialData, isNew }) {
       <div>
         {/* ── Core SEO ── */}
         <Field label="SEO Titel" hint="Leer = wird automatisch aus Name generiert.">
-          <TextInput value={form.seo_title} onChange={v => set('seo_title', v)} placeholder={`${form.name || 'Reiseziel'} Urlaub – Tipps & Angebote | Reisemonkey`} />
+          <TextInput value={form.seo_title} onChange={v => set('seo_title', v)} placeholder={`${form.name || 'Reiseziel'} Urlaub – Tipps & Angebote |ApeAround`} />
         </Field>
         <Field label="Meta Description" hint="Leer = wird automatisch aus Kurzbeschreibung generiert.">
           <TextArea value={form.seo_description} onChange={v => set('seo_description', v)} rows={2} placeholder="Max. 155 Zeichen…" />

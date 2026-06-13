@@ -2,7 +2,7 @@ import { Search } from 'lucide-react';
 import AdminSectionPlaceholder from '@/components/admin/AdminSectionPlaceholder';
 
 export const metadata = {
-  title: 'SEO & LLMO | Reisemonkey Admin',
+  title: 'SEO & LLMO |ApeAround Admin',
 };
 
 export default function AdminSeoLlmoPage() {

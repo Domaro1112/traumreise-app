@@ -1,5 +1,5 @@
 -- ================================================================
--- Reisemonkey Travel Funnel – Supabase Migration
+--ApeAround Travel Funnel – Supabase Migration
 -- ================================================================
 
 -- 1. travel_funnel_sessions

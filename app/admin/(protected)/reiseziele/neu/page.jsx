@@ -3,7 +3,7 @@ import { ChevronLeft } from 'lucide-react';
 import DestinationEditorClient from '@/components/admin/destinations/DestinationEditorClient';
 
 export const metadata = {
-  title: 'Neues Reiseziel | Reisemonkey Admin',
+  title: 'Neues Reiseziel |ApeAround Admin',
 };
 
 export default function AdminNeuesReisezielPage() {

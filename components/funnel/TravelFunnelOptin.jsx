@@ -62,7 +62,7 @@ export default function TravelFunnelOptin({ destinations, moods, season, budget,
             margin: 0,
           }}
         >
-          Dein Reisemonkey-Wecker ist aktiviert!
+          DeinApeAround-Wecker ist aktiviert!
         </h3>
         <p style={{ fontSize: '14px', color: '#166534', lineHeight: 1.7, margin: 0, maxWidth: '440px' }}>
           Wir melden uns, sobald eines deiner Traumziele besonders interessant wird.

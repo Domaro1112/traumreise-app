@@ -46,7 +46,7 @@ export async function generateMetadata({ params }) {
   const dest = await resolveDestination(slug);
   if (!dest) return {};
 
-  const title = dest.seoTitle ?? `${dest.name} Urlaub – Tipps, beste Reisezeit & Angebote | Reisemonkey`;
+  const title = dest.seoTitle ?? `${dest.name} Urlaub – Tipps, beste Reisezeit & Angebote |ApeAround`;
   const description = dest.seoDescription ?? `Entdecke ${dest.name}: beste Reisezeit, Highlights, Hotels, Flüge, Mietwagen und Aktivitäten für deinen Urlaub in ${dest.country}.`;
   const canonical = dest.canonicalUrl ?? `${BASE_URL}/reiseziele/${dest.slug}`;
   const ogImage   = dest.openGraphImage ?? dest.heroImage;
@@ -356,7 +356,7 @@ export default async function DestinationPage({ params }) {
                         <Star size={13} strokeWidth={2.5} color="#FFFFFF" />
                       </div>
                       <span style={{ fontSize: '11px', fontWeight: 700, color: '#0284C7', letterSpacing: '1.5px', textTransform: 'uppercase' }}>
-                        Reisemonkey Zusammenfassung
+                       ApeAround Zusammenfassung
                       </span>
                     </div>
                     <p itemProp="description" style={{ fontSize: '15px', color: '#0F172A', lineHeight: 1.8, margin: '0 0 16px' }}>

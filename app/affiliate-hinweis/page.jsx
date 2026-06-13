@@ -3,8 +3,8 @@ import Footer from '@/components/layout/Footer';
 import Container from '@/components/layout/Container';
 
 export const metadata = {
-  title: 'Affiliate-Hinweis | Reisemonkey',
-  description: 'Informationen zu Affiliate-Links, Provisionen und Transparenz bei Reisemonkey.',
+  title: 'Affiliate-Hinweis |ApeAround',
+  description: 'Informationen zu Affiliate-Links, Provisionen und Transparenz beiApeAround.',
   robots: { index: true, follow: true },
 };
 
@@ -13,15 +13,15 @@ const SECTIONS = [
     heading: 'Warum dieser Hinweis?',
     items: [
       'Reisemonkey ist eine unabhängige Reise- und Inspirationsplattform. Unser Ziel ist es, passende Reiseideen, Reiseanbieter und Urlaubsempfehlungen bereitzustellen.',
-      'Im Sinne der Transparenz informieren wir dich auf dieser Seite offen darüber, wie Reisemonkey finanziert wird und wie Affiliate-Links auf unserer Plattform funktionieren.',
+      'Im Sinne der Transparenz informieren wir dich auf dieser Seite offen darüber, wieApeAround finanziert wird und wie Affiliate-Links auf unserer Plattform funktionieren.',
     ],
   },
   {
     heading: 'Affiliate-Links',
     items: [
-      'Ein Teil der auf Reisemonkey verwendeten Links sind sogenannte Affiliate-Links. Du erkennst sie daran, dass sie zu externen Anbietern wie Booking.com, Skyscanner, CHECK24 oder GetYourGuide führen.',
-      'Wenn du über einen solchen Link eine Buchung oder einen Kauf tätigst, kann Reisemonkey eine Provision vom jeweiligen Anbieter erhalten.',
-      'Für dich entstehen dadurch keine zusätzlichen Kosten. Der Preis, den du beim Anbieter zahlst, ist derselbe – unabhängig davon, ob du den Link über Reisemonkey oder direkt aufrufst.',
+      'Ein Teil der aufApeAround verwendeten Links sind sogenannte Affiliate-Links. Du erkennst sie daran, dass sie zu externen Anbietern wie Booking.com, Skyscanner, CHECK24 oder GetYourGuide führen.',
+      'Wenn du über einen solchen Link eine Buchung oder einen Kauf tätigst, kannApeAround eine Provision vom jeweiligen Anbieter erhalten.',
+      'Für dich entstehen dadurch keine zusätzlichen Kosten. Der Preis, den du beim Anbieter zahlst, ist derselbe – unabhängig davon, ob du den Link überApeAround oder direkt aufrufst.',
     ],
   },
   {
@@ -34,7 +34,7 @@ const SECTIONS = [
   },
   {
     heading: 'Partner',
-    intro: 'Zu den Partnern, mit denen Reisemonkey Affiliate-Beziehungen unterhält oder unterhalten kann, gehören unter anderem:',
+    intro: 'Zu den Partnern, mit denenApeAround Affiliate-Beziehungen unterhält oder unterhalten kann, gehören unter anderem:',
     list: [
       'Booking.com',
       'Skyscanner',

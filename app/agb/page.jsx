@@ -3,8 +3,8 @@ import Footer from '@/components/layout/Footer';
 import Container from '@/components/layout/Container';
 
 export const metadata = {
-  title: 'AGB | Reisemonkey',
-  description: 'Allgemeine Geschäftsbedingungen von Reisemonkey.',
+  title: 'AGB |ApeAround',
+  description: 'Allgemeine Geschäftsbedingungen vonApeAround.',
   robots: { index: true, follow: true },
 };
 
@@ -14,12 +14,12 @@ const SECTIONS = [
     items: [
       'Reisemonkey (reisemonkey.de) ist eine unabhängige Reise-Inspirations- und Vergleichsplattform.',
       'Reisemonkey vermittelt keine Reisen, Hotels, Flüge, Mietwagen oder Aktivitäten und erbringt selbst keine Reiseleistungen.',
-      'Durch die Nutzung von Reisemonkey kommt kein Reisevertrag zwischen dem Nutzer und Reisemonkey zustande.',
-      'Diese Allgemeinen Geschäftsbedingungen regeln das Nutzungsverhältnis zwischen dem Nutzer und dem Betreiber von Reisemonkey.',
+      'Durch die Nutzung vonApeAround kommt kein Reisevertrag zwischen dem Nutzer undApeAround zustande.',
+      'Diese Allgemeinen Geschäftsbedingungen regeln das Nutzungsverhältnis zwischen dem Nutzer und dem Betreiber vonApeAround.',
     ],
   },
   {
-    heading: '§ 2 Leistungen von Reisemonkey',
+    heading: '§ 2 Leistungen vonApeAround',
     intro: 'Reisemonkey stellt folgende Leistungen kostenlos zur Verfügung:',
     list: [
       'Bereitstellung redaktioneller Reiseinformationen und Reisetipps',
@@ -28,7 +28,7 @@ const SECTIONS = [
       'Vergleich und Gegenüberstellung externer Reiseanbieter',
       'Weiterleitung zu externen Buchungsplattformen über Affiliate-Links',
     ],
-    outro: 'Die Leistungen von Reisemonkey sind unverbindlich und dienen ausschließlich der Inspiration und Orientierung.',
+    outro: 'Die Leistungen vonApeAround sind unverbindlich und dienen ausschließlich der Inspiration und Orientierung.',
   },
   {
     heading: '§ 3 Vertragsverhältnis bei Buchungen',
@@ -41,7 +41,7 @@ const SECTIONS = [
   {
     heading: '§ 4 Preise und Verfügbarkeit',
     items: [
-      'Alle Preis- und Verfügbarkeitsangaben auf Reisemonkey sind unverbindlich und können sich jederzeit ohne vorherige Ankündigung ändern.',
+      'Alle Preis- und Verfügbarkeitsangaben aufApeAround sind unverbindlich und können sich jederzeit ohne vorherige Ankündigung ändern.',
       'Reisemonkey übernimmt keine Gewähr für die Aktualität, Richtigkeit oder Vollständigkeit der angezeigten Preis- und Verfügbarkeitsdaten.',
       'Maßgeblich sind stets die Angaben des jeweiligen Anbieters zum Zeitpunkt der Buchung.',
     ],
@@ -51,16 +51,16 @@ const SECTIONS = [
     items: [
       'Reisemonkey haftet nicht für die Inhalte, Leistungen oder das Verhalten externer Anbieter, zu denen über Affiliate-Links weitergeleitet wird.',
       'Reisemonkey haftet nicht für Schäden, die aus Buchungen, Stornierungen, Leistungsänderungen oder der Nichtdurchführung von Reisen durch externe Anbieter entstehen.',
-      'Eine Haftung von Reisemonkey besteht nur bei vorsätzlichem oder grob fahrlässigem Handeln. Bei leichter Fahrlässigkeit haftet Reisemonkey nur bei Verletzung wesentlicher Vertragspflichten (Kardinalpflichten), und in diesem Fall begrenzt auf den vorhersehbaren vertragstypischen Schaden.',
+      'Eine Haftung vonApeAround besteht nur bei vorsätzlichem oder grob fahrlässigem Handeln. Bei leichter Fahrlässigkeit haftetApeAround nur bei Verletzung wesentlicher Vertragspflichten (Kardinalpflichten), und in diesem Fall begrenzt auf den vorhersehbaren vertragstypischen Schaden.',
       'Die Haftungsbeschränkung gilt nicht für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit sowie für Ansprüche nach dem Produkthaftungsgesetz.',
     ],
   },
   {
     heading: '§ 6 Affiliate-Links und Werbung',
     items: [
-      'Reisemonkey betreibt Affiliate-Partnerschaften mit externen Reiseanbietern. Bei Klicks auf bestimmte Links und daraus resultierenden Buchungen kann Reisemonkey eine Provisionsvergütung erhalten.',
-      'Für den Nutzer entstehen durch die Nutzung von Affiliate-Links keine zusätzlichen Kosten. Der Preis für ein Reiseprodukt ist für den Nutzer identisch, unabhängig davon, ob er den Link über Reisemonkey oder direkt beim Anbieter aufruft.',
-      'Affiliate-Links und kommerzielle Inhalte sind auf Reisemonkey entsprechend gekennzeichnet.',
+      'Reisemonkey betreibt Affiliate-Partnerschaften mit externen Reiseanbietern. Bei Klicks auf bestimmte Links und daraus resultierenden Buchungen kannApeAround eine Provisionsvergütung erhalten.',
+      'Für den Nutzer entstehen durch die Nutzung von Affiliate-Links keine zusätzlichen Kosten. Der Preis für ein Reiseprodukt ist für den Nutzer identisch, unabhängig davon, ob er den Link überApeAround oder direkt beim Anbieter aufruft.',
+      'Affiliate-Links und kommerzielle Inhalte sind aufApeAround entsprechend gekennzeichnet.',
     ],
   },
   {
@@ -75,7 +75,7 @@ const SECTIONS = [
   {
     heading: '§ 8 Datenschutz',
     items: [
-      'Die Erhebung und Verarbeitung personenbezogener Daten erfolgt gemäß der Datenschutzerklärung von Reisemonkey, die jederzeit unter /datenschutz abrufbar ist.',
+      'Die Erhebung und Verarbeitung personenbezogener Daten erfolgt gemäß der Datenschutzerklärung vonApeAround, die jederzeit unter /datenschutz abrufbar ist.',
     ],
   },
   {
@@ -84,7 +84,7 @@ const SECTIONS = [
       'Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts.',
       'Ist der Nutzer Verbraucher mit Wohnsitz in einem anderen EU-Mitgliedstaat, gelten zusätzlich die zwingenden Verbraucherschutzvorschriften seines Heimatlandes.',
       'Sollten einzelne Bestimmungen dieser AGB unwirksam oder undurchführbar sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt (salvatorische Klausel). Die unwirksame Bestimmung ist durch eine wirksame zu ersetzen, die dem wirtschaftlichen Zweck der unwirksamen Bestimmung am nächsten kommt.',
-      'Gerichtsstand für Kaufleute sowie für Personen ohne allgemeinen Gerichtsstand in Deutschland ist der Sitz von Reisemonkey.',
+      'Gerichtsstand für Kaufleute sowie für Personen ohne allgemeinen Gerichtsstand in Deutschland ist der Sitz vonApeAround.',
     ],
   },
 ];

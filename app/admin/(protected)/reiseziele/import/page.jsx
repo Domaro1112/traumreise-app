@@ -1,7 +1,7 @@
 import DestinationImportClient from '@/components/admin/destinations/DestinationImportClient';
 
 export const metadata = {
-  title: 'Reiseziel importieren | Reisemonkey Admin',
+  title: 'Reiseziel importieren |ApeAround Admin',
   robots: { index: false, follow: false },
 };
 
@@ -21,7 +21,7 @@ export default function AdminImportPage() {
           Reiseziel per JSON importieren
         </h2>
         <p style={{ fontSize: '14px', color: '#64748B', margin: 0 }}>
-          Füge hier ein von Claude erstelltes Reiseziel-JSON ein. Reisemonkey prüft die Daten und speichert sie anschließend im CMS.
+          Füge hier ein von Claude erstelltes Reiseziel-JSON ein.ApeAround prüft die Daten und speichert sie anschließend im CMS.
         </p>
       </div>
 

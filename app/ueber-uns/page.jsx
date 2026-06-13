@@ -12,9 +12,9 @@ import Container from '@/components/layout/Container';
 import Button from '@/components/ui/Button';
 
 export const metadata = {
-  title: 'Über Reisemonkey – Wir machen Reiseplanung persönlicher',
+  title: 'ÜberApeAround – Wir machen Reiseplanung persönlicher',
   description:
-    'Erfahre mehr über Reisemonkey.de – KI-gestützte Reiseplanung, kostenlos, persönlich und direkt buchbar. Unsere Mission: weniger Suchen, mehr Vorfreude.',
+    'Erfahre mehr überApeAround.de – KI-gestützte Reiseplanung, kostenlos, persönlich und direkt buchbar. Unsere Mission: weniger Suchen, mehr Vorfreude.',
 };
 
 const jsonLd = {
@@ -37,7 +37,7 @@ const jsonLd = {
       '@type': 'AboutPage',
       '@id': 'https://reisemonkey.de/ueber-uns',
       url: 'https://reisemonkey.de/ueber-uns',
-      name: 'Über Reisemonkey',
+      name: 'ÜberApeAround',
       isPartOf: { '@id': 'https://reisemonkey.de/#organization' },
       description:
         'Wir machen Reiseplanung einfacher, persönlicher und ein bisschen wilder.',
@@ -147,7 +147,7 @@ export default function UeberUns() {
                     marginBottom: '24px',
                   }}
                 >
-                  Über Reisemonkey
+                  ÜberApeAround
                 </div>
 
                 <h1
@@ -184,7 +184,7 @@ export default function UeberUns() {
                     maxWidth: '540px',
                   }}
                 >
-                  Reisemonkey ist entstanden, weil Reiseplanung oft komplizierter ist als die Reise selbst.
+                 ApeAround ist entstanden, weil Reiseplanung oft komplizierter ist als die Reise selbst.
                   Wir wollten einen Ort schaffen, der Inspiration, KI-Unterstützung und echte
                   Buchungsmöglichkeiten verbindet — schnell, verständlich und mit Spaß.
                 </p>
@@ -218,7 +218,7 @@ export default function UeberUns() {
               <div className="about-hero-img-wrap">
                 <Image
                   src="/images/about/reisemonkey-founders.png"
-                  alt="Die Gründer von Reisemonkey als Reiseaffen"
+                  alt="Die Gründer vonApeAround als Reiseaffen"
                   className="about-hero-img"
                   width={1672}
                   height={941}
@@ -237,7 +237,7 @@ export default function UeberUns() {
           </Container>
         </section>
 
-        {/* ── 2. WARUM REISEMONKEY ────────────────────────────────────────── */}
+        {/* ── 2. WARUMApeAround ────────────────────────────────────────── */}
         <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
           <Container size="sm">
             <div
@@ -272,7 +272,7 @@ export default function UeberUns() {
                 letterSpacing: '-0.02em',
               }}
             >
-              Warum wir Reisemonkey{' '}
+              Warum wirApeAround{' '}
               <span
                 style={{
                   background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
@@ -292,7 +292,7 @@ export default function UeberUns() {
                 Unsicherheit als Vorfreude.
               </p>
               <p style={{ marginBottom: '20px' }}>
-                Genau hier setzt Reisemonkey an: Wir möchten Reiseplanung wieder leicht machen. Nicht mit
+                Genau hier setztApeAround an: Wir möchten Reiseplanung wieder leicht machen. Nicht mit
                 endlosen Listen, sondern mit passenden Vorschlägen, klaren Empfehlungen und direktem Zugang
                 zu Flügen, Hotels, Aktivitäten und Pauschalreisen.
               </p>
@@ -444,7 +444,7 @@ export default function UeberUns() {
                   margin: '0 auto',
                 }}
               >
-                Hinter Reisemonkey steht die Idee, Reiseplanung persönlicher und greifbarer zu machen.
+                HinterApeAround steht die Idee, Reiseplanung persönlicher und greifbarer zu machen.
                 Die Plattform verbindet moderne KI mit echter Reisesehnsucht: weniger Suchen, mehr Vorfreude.
               </p>
             </div>
@@ -532,7 +532,7 @@ export default function UeberUns() {
                     backgroundClip: 'text',
                   }}
                 >
-                  Reisemonkey
+                 ApeAround
                 </span>
               </h2>
               <p style={{ fontSize: '16px', color: '#64748B', lineHeight: 1.7 }}>
@@ -619,7 +619,7 @@ export default function UeberUns() {
                   letterSpacing: '-0.02em',
                 }}
               >
-                Was du bei Reisemonkey erwarten kannst
+                Was du beiApeAround erwarten kannst
               </h2>
             </div>
 

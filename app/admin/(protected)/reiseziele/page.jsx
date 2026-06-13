@@ -4,7 +4,7 @@ import DestinationsListClient from '@/components/admin/destinations/Destinations
 import { listDestinationsAdmin } from '@/repositories/destinations-cms';
 
 export const metadata = {
-  title: 'Reiseziele verwalten | Reisemonkey Admin',
+  title: 'Reiseziele verwalten |ApeAround Admin',
 };
 
 export default async function AdminReisezielePage() {

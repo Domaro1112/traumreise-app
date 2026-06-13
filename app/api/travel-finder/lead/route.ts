@@ -4,7 +4,7 @@ import { isValidEmail } from '@/lib/utils';
 
 const CONSENT_TEXT =
   'Ich möchte den kostenlosen Reisezeit- und Preiswecker für meine ausgewählten Traumziele erhalten ' +
-  'und akzeptiere die Datenschutzhinweise von Reisemonkey.de.';
+  'und akzeptiere die Datenschutzhinweise vonApeAround.de.';
 
 export async function POST(request: NextRequest) {
   try {

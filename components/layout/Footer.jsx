@@ -154,7 +154,7 @@ export default function Footer() {
           }}
         >
           <p style={{ fontSize: '13px', color: '#94A3B8' }}>
-            © 2025 Reisemonkey. Alle Rechte vorbehalten.
+            © 2025ApeAround. Alle Rechte vorbehalten.
           </p>
           <p style={{ fontSize: '13px', color: '#94A3B8', display: 'flex', alignItems: 'center', gap: '5px' }}>
             Gemacht mit{' '}

@@ -219,7 +219,7 @@ export default function CarRentalHero() {
           </button>
 
           <p style={{ textAlign: 'center', fontSize: '11px', color: '#94A3B8', marginTop: '12px', marginBottom: 0, lineHeight: 1.6 }}>
-            Hinweis: Bei einer Weiterleitung zu CHECK24 kann Reisemonkey eine Provision erhalten. Für dich entstehen keine zusätzlichen Kosten.{' '}
+            Hinweis: Bei einer Weiterleitung zu CHECK24 kannApeAround eine Provision erhalten. Für dich entstehen keine zusätzlichen Kosten.{' '}
             <a href="/affiliate-hinweis" style={{ color: '#94A3B8', textDecoration: 'underline' }}>Mehr erfahren</a>
           </p>
         </form>

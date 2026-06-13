@@ -7,11 +7,12 @@ import NewsletterSection from '@/components/landing/NewsletterSection';
 import BlogPageClient from '@/components/blog/BlogPageClient';
 import CommunityTips from '@/components/blog/CommunityTips';
 import {
-  blogArticles,
+  blogArticles as staticArticles,
   blogCategories,
   communityTips,
   popularDestinations,
 } from '@/data/blogArticles';
+import { listPublishedBlogArticles } from '@/repositories/blog-cms';
 import { MapPin, ArrowRight } from 'lucide-react';
 
 export const metadata = {
@@ -47,7 +48,11 @@ export const metadata = {
   },
 };
 
-export default function Reiseblog() {
+export default async function Reiseblog() {
+  // Prefer Supabase data; fall back to static articles if table is empty or unavailable
+  const dbArticles = await listPublishedBlogArticles();
+  const blogArticles = dbArticles.length > 0 ? dbArticles : staticArticles;
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [

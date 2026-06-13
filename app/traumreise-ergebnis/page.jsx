@@ -4,7 +4,7 @@ import Footer from '@/components/layout/Footer';
 import TravelResultsPage from '@/components/results/TravelResultsPage';
 
 export const metadata = {
-  title: 'Deine Traumreise | Reisemonkey',
+  title: 'Deine Traumreise |ApeAround',
   robots: { index: false, follow: false },
 };
 

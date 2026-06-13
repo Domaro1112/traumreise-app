@@ -9,10 +9,10 @@ import CarRentalFAQ from '@/components/mietwagen/CarRentalFAQ';
 import { CAR_RENTAL_FAQ } from '@/lib/car-rental-config';
 
 export const metadata = {
-  title: 'Mietwagen vergleichen – Angebote für deinen Urlaub | Reisemonkey',
+  title: 'Mietwagen vergleichen – Angebote für deinen Urlaub |ApeAround',
   description: 'Mietwagen für deinen Urlaub finden und vergleichen. Mallorca, Kreta, Island, Florida und mehr – mit Tipps zu Versicherung, Tankregelung und Buchung.',
   openGraph: {
-    title: 'Mietwagen vergleichen – Angebote für deinen Urlaub | Reisemonkey',
+    title: 'Mietwagen vergleichen – Angebote für deinen Urlaub |ApeAround',
     description: 'Mietwagen für deinen nächsten Urlaub finden – mit Tipps, Hinweisen und den beliebtesten Reisezielen.',
     type: 'website',
   },
@@ -32,7 +32,7 @@ export default function MietwagenPage() {
   const webPageJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: 'Mietwagen vergleichen – Angebote für deinen Urlaub | Reisemonkey',
+    name: 'Mietwagen vergleichen – Angebote für deinen Urlaub |ApeAround',
     description: 'Mietwagen für deinen Urlaub finden – mit Tipps, Hinweisen und den beliebtesten Reisezielen.',
     url: 'https://www.reisemonkey.de/mietwagen',
     breadcrumb: {

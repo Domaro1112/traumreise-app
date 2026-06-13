@@ -2,7 +2,7 @@ export const mainNav = [
   { label: "Dein Weg zur Traumreise", href: '/so-funktionierts' },
   { label: 'Reiseziele', href: '/reiseziele' },
   { label: 'Reiseblog', href: '/reiseblog' },
-  { label: 'Über uns', href: '/ueber-uns' },
+  { label: 'Mietwagen', href: '/mietwagen' },
 ];
 
 export const footerNav = {

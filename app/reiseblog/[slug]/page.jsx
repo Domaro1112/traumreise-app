@@ -10,18 +10,27 @@ import ArticleFAQ from '@/components/blog/ArticleFAQ';
 import ArticleSidebar from '@/components/blog/ArticleSidebar';
 import RelatedArticles from '@/components/blog/RelatedArticles';
 import { blogArticles } from '@/data/blogArticles';
+import {
+  getBlogArticleBySlugPublic,
+  listPublishedBlogSlugs,
+} from '@/repositories/blog-cms';
 import Link from 'next/link';
 import { ArrowLeft, Plane, ArrowRight } from 'lucide-react';
 
 /* ── Static params ─────────────────────────────────────────────────────────── */
 export async function generateStaticParams() {
-  return blogArticles.map((article) => ({ slug: article.slug }));
+  const staticSlugs = blogArticles.map(a => a.slug);
+  const dbSlugs = await listPublishedBlogSlugs();
+  const allSlugs = [...new Set([...staticSlugs, ...dbSlugs])];
+  return allSlugs.map(slug => ({ slug }));
 }
 
 /* ── Metadata per article ──────────────────────────────────────────────────── */
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const article = blogArticles.find((a) => a.slug === slug);
+  const article =
+    (await getBlogArticleBySlugPublic(slug)) ??
+    blogArticles.find((a) => a.slug === slug);
   if (!article) return {};
 
   return {
@@ -69,7 +78,10 @@ export async function generateMetadata({ params }) {
 /* ── Page ──────────────────────────────────────────────────────────────────── */
 export default async function ArticlePage({ params }) {
   const { slug } = await params;
-  const article = blogArticles.find((a) => a.slug === slug);
+  // Prefer Supabase; fall back to static data
+  const article =
+    (await getBlogArticleBySlugPublic(slug)) ??
+    blogArticles.find((a) => a.slug === slug);
 
   if (!article) notFound();
 

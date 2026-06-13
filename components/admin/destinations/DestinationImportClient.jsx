@@ -77,7 +77,7 @@ const ACCEPTED_MIME = new Set(['image/jpeg', 'image/png', 'image/webp']);
 const MAX_BYTES = 10 * 1024 * 1024;
 
 // ── Claude Prompt Block ───────────────────────────────────────────────────────
-const CLAUDE_PROMPT = `Erstelle ein vollständiges Reisemonkey Reiseziel-JSON für [REISEZIEL] im Importformat. Gib ausschließlich gültiges JSON zurück, ohne Markdown, ohne Erklärung.
+const CLAUDE_PROMPT = `Erstelle ein vollständigesApeAround Reiseziel-JSON für [REISEZIEL] im Importformat. Gib ausschließlich gültiges JSON zurück, ohne Markdown, ohne Erklärung.
 
 Pflichtfelder (alle snake_case, alle Texte auf Deutsch):
 name, slug (lowercase, nur Bindestriche), country, region, continent,
