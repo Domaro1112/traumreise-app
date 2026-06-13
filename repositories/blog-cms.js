@@ -47,6 +47,8 @@ function dbToPublic(row) {
     openGraphTitle: row.open_graph_title ?? null,
     openGraphDescription: row.open_graph_description ?? null,
     openGraphImage: row.open_graph_image ?? row.cover_image_url ?? null,
+    // gallery
+    galleryImages: Array.isArray(row.gallery_images) ? row.gallery_images : [],
   };
 }
 
@@ -211,7 +213,7 @@ export async function listPublishedBlogSlugs() {
 
 const DB_COLUMNS = new Set([
   'slug', 'title', 'excerpt', 'category', 'destination', 'country',
-  'cover_image_url', 'hero_image_url',
+  'cover_image_url', 'hero_image_url', 'gallery_images',
   'date', 'last_updated', 'reading_time', 'author', 'author_bio',
   'tags', 'featured',
   'seo_title', 'seo_description', 'canonical_url',

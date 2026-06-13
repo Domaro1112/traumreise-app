@@ -10,7 +10,13 @@ import {
 import BlogImportModal  from '@/components/admin/blog/BlogImportModal';
 import BlogSeoScore     from '@/components/admin/blog/BlogSeoScore';
 import BlogExportModal  from '@/components/admin/blog/BlogExportModal';
+import ImageUploader   from '@/components/admin/media/ImageUploader';
+import GalleryEditor   from '@/components/admin/media/GalleryEditor';
 import { generateTocFromSections, calcReadingTime } from '@/lib/blog-content-utils';
+
+function uid() {
+  try { return crypto.randomUUID(); } catch { return `${Date.now()}-${Math.random().toString(36).slice(2)}`; }
+}
 
 const TABS = [
   { key: 'basis',  label: 'Basis'  },
@@ -104,6 +110,16 @@ export default function BlogEditorClient({ isNew, initialData }) {
     excerpt:         initialData?.excerpt        ?? '',
     cover_image_url: initialData?.cover_image_url ?? '',
     hero_image_url:  initialData?.hero_image_url  ?? '',
+    // gallery – stored as [{ localId, url, alt, title, caption }] in editor state
+    gallery_items: Array.isArray(initialData?.gallery_images)
+      ? initialData.gallery_images.map((g, i) => ({
+          localId: `init-${i}`,
+          url:     typeof g === 'string' ? g : (g.url ?? ''),
+          alt:     typeof g === 'string' ? '' : (g.alt ?? ''),
+          title:   typeof g === 'string' ? '' : (g.title ?? ''),
+          caption: typeof g === 'string' ? '' : (g.caption ?? ''),
+        }))
+      : [],
     seo_title:       initialData?.seo_title       ?? '',
     seo_description: initialData?.seo_description ?? '',
     canonical_url:   initialData?.canonical_url   ?? '',
@@ -210,6 +226,15 @@ export default function BlogEditorClient({ isNew, initialData }) {
       faq: (normalized._faq ?? []).length > 0
         ? JSON.stringify(normalized._faq, null, 2)
         : prev.faq,
+      gallery_items: (normalized._galleryImages ?? []).length > 0
+        ? normalized._galleryImages.map((g, i) => ({
+            localId: uid(),
+            url:     g.url ?? '',
+            alt:     g.alt ?? '',
+            title:   g.title ?? '',
+            caption: g.caption ?? '',
+          }))
+        : prev.gallery_items,
     }));
 
     setSlugManual(true);
@@ -234,6 +259,14 @@ export default function BlogEditorClient({ isNew, initialData }) {
       excerpt:         f.excerpt.trim(),
       cover_image_url: f.cover_image_url.trim(),
       hero_image_url:  f.hero_image_url.trim(),
+      gallery_images:  f.gallery_items.map((item, i) => ({
+        url:      item.url,
+        fileName: item.url.split('/').pop() ?? `gallery-${String(i + 1).padStart(2, '0')}.jpg`,
+        alt:      item.alt ?? '',
+        title:    item.title ?? '',
+        caption:  item.caption ?? '',
+        order:    i,
+      })),
       seo_title:       f.seo_title.trim()       || undefined,
       seo_description: f.seo_description.trim() || undefined,
       canonical_url:   f.canonical_url.trim()   || undefined,
@@ -660,29 +693,80 @@ export default function BlogEditorClient({ isNew, initialData }) {
       {/* ══ Tab: Medien ═══════════════════════════════════════════════════════ */}
       {tab === 'medien' && (
         <div>
-          <Field label="Cover-Bild URL" hint="Wird in Listen und Social-Cards verwendet (Seitenverhältnis 3:2 empfohlen)">
-            <input type="url" value={f.cover_image_url} onChange={e => set('cover_image_url', e.target.value)} style={inputStyle} placeholder="https://…" />
-            {f.cover_image_url && (
-              <img
-                src={f.cover_image_url}
-                alt="Vorschau"
-                style={{ marginTop: '12px', maxWidth: '360px', width: '100%', borderRadius: '10px', border: '1.5px solid #E2E8F0' }}
-                onError={e => { e.target.style.display = 'none'; }}
-              />
-            )}
+          {/* Slug hint */}
+          {!f.slug && (
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: '8px',
+              padding: '12px 16px', borderRadius: '10px',
+              background: '#FFFBEB', border: '1.5px solid #FDE68A',
+              fontSize: '13px', color: '#92400E', marginBottom: '24px',
+            }}>
+              <AlertTriangle size={14} strokeWidth={2} />
+              Bitte zuerst Titel oder Slug eintragen, damit Bilder gespeichert werden können.
+            </div>
+          )}
+
+          {/* ── Cover-Bild ──────────────────────────────────────────────────── */}
+          <Field
+            label="Cover-Bild"
+            hint="Wird in Artikellisten und Social-Cards verwendet (3:2 empfohlen)"
+          >
+            <ImageUploader
+              value={f.cover_image_url}
+              alt=""
+              slug={f.slug}
+              type="cover"
+              context="blog"
+              label="Cover-Bild"
+              altDefault={f.title ? `${f.title} – Cover` : 'Cover-Bild'}
+              onChange={(url) => set('cover_image_url', url)}
+              onDelete={() => set('cover_image_url', '')}
+            />
           </Field>
 
-          <Field label="Hero-Bild URL" hint="Großes Bild oben auf der Artikelseite (Seitenverhältnis 16:9 empfohlen)">
-            <input type="url" value={f.hero_image_url} onChange={e => set('hero_image_url', e.target.value)} style={inputStyle} placeholder="https://…" />
-            {f.hero_image_url && (
-              <img
-                src={f.hero_image_url}
-                alt="Vorschau"
-                style={{ marginTop: '12px', maxWidth: '480px', width: '100%', borderRadius: '10px', border: '1.5px solid #E2E8F0' }}
-                onError={e => { e.target.style.display = 'none'; }}
-              />
-            )}
+          {/* ── Hero-Bild ───────────────────────────────────────────────────── */}
+          <Field
+            label="Hero-Bild"
+            hint="Großes Bild oben auf der Artikelseite (16:9 empfohlen). Leer = Cover-Bild wird als Fallback genutzt."
+          >
+            <ImageUploader
+              value={f.hero_image_url}
+              alt=""
+              slug={f.slug}
+              type="hero"
+              context="blog"
+              label="Hero-Bild"
+              altDefault={f.title ? `${f.title} – Hero` : 'Hero-Bild'}
+              onChange={(url) => set('hero_image_url', url)}
+              onDelete={() => set('hero_image_url', '')}
+            />
           </Field>
+
+          {/* ── Galerie ─────────────────────────────────────────────────────── */}
+          <div style={{ marginBottom: '20px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
+              <label style={{ fontSize: '13px', fontWeight: 600, color: '#374151' }}>
+                Galerie-Bilder
+              </label>
+              {f.gallery_items.length > 0 && (
+                <span style={{ fontSize: '12px', color: '#94A3B8' }}>
+                  {f.gallery_items.length} Bild{f.gallery_items.length !== 1 ? 'er' : ''}
+                </span>
+              )}
+            </div>
+            <p style={{ fontSize: '12px', color: '#94A3B8', marginBottom: '10px', marginTop: 0 }}>
+              Mehrere Bilder hochladen · Reihenfolge per Pfeiltasten ändern · Titel und Alt-Text pro Bild editierbar
+            </p>
+            <GalleryEditor
+              items={f.gallery_items}
+              onChange={(items) => set('gallery_items', items)}
+              slug={f.slug}
+              destName={f.title || f.destination || ''}
+              context="blog"
+              showTitle
+              showCaption
+            />
+          </div>
         </div>
       )}
 

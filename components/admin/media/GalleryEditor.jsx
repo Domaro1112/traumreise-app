@@ -24,7 +24,7 @@ const inp = {
  *   slug        string
  *   destName    string  – used for alt text suggestions
  */
-export default function GalleryEditor({ items = [], onChange, slug, destName = '' }) {
+export default function GalleryEditor({ items = [], onChange, slug, destName = '', context = 'destination', showTitle = false, showCaption = false }) {
   const [dragging, setDragging]   = useState(false);
   const [uploading, setUploading] = useState(false);
   const [error, setError]         = useState('');
@@ -48,6 +48,7 @@ export default function GalleryEditor({ items = [], onChange, slug, destName = '
     fd.append('file', file);
     fd.append('slug', slug);
     fd.append('type', 'gallery');
+    fd.append('context', context);
     fd.append('galleryIndex', String(galleryIndex));
     const res = await fetch('/api/admin/media/upload', { method: 'POST', body: fd });
     const text = await res.text();
@@ -204,13 +205,31 @@ export default function GalleryEditor({ items = [], onChange, slug, destName = '
 
               {/* Controls */}
               <div style={{ padding: '8px' }}>
+                {showTitle && (
+                  <input
+                    type="text"
+                    value={item.title ?? ''}
+                    onChange={e => updateItem(i, 'title', e.target.value)}
+                    placeholder="Titel…"
+                    style={{ ...inp, marginBottom: '4px' }}
+                  />
+                )}
                 <input
                   type="text"
                   value={item.alt ?? ''}
                   onChange={e => updateItem(i, 'alt', e.target.value)}
-                  placeholder={`${destName || 'Bild'} ${i + 1}`}
+                  placeholder={`Alt-Text – ${destName || 'Bild'} ${i + 1}`}
                   style={inp}
                 />
+                {showCaption && (
+                  <input
+                    type="text"
+                    value={item.caption ?? ''}
+                    onChange={e => updateItem(i, 'caption', e.target.value)}
+                    placeholder="Bildunterschrift (optional)…"
+                    style={{ ...inp, marginTop: '4px' }}
+                  />
+                )}
                 <div style={{ display: 'flex', gap: '4px', marginTop: '6px' }}>
                   <button type="button" onClick={() => moveUp(i)} disabled={i === 0}
                     title="Nach oben" style={btnSmall(i === 0)}>

@@ -23,7 +23,7 @@ const inp = {
  *   label       string
  *   altDefault  string  – alt text placeholder / suggestion
  */
-export default function ImageUploader({ value, alt = '', onChange, onDelete, slug, type = 'gallery', label, altDefault = '' }) {
+export default function ImageUploader({ value, alt = '', onChange, onDelete, slug, type = 'gallery', context = 'destination', label, altDefault = '' }) {
   const [dragging, setDragging]   = useState(false);
   const [uploading, setUploading] = useState(false);
   const [error, setError]         = useState('');
@@ -43,6 +43,7 @@ export default function ImageUploader({ value, alt = '', onChange, onDelete, slu
       fd.append('file', file);
       fd.append('slug', slug);
       fd.append('type', type);
+      fd.append('context', context);
       const res = await fetch('/api/admin/media/upload', { method: 'POST', body: fd });
       const text = await res.text();
       if (process.env.NODE_ENV === 'development') {
