@@ -227,7 +227,7 @@ export default async function ArticlePage({ params }) {
                   letterSpacing: '-0.02em',
                 }}
               >
-                Jetzt deine Reise nach{' '}
+                Jetzt deine Reise{' '}
                 <span
                   style={{
                     background: 'linear-gradient(135deg, #67E8F9 0%, #A5F3FC 100%)',

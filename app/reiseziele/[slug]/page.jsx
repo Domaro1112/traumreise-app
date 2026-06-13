@@ -550,10 +550,9 @@ export default async function DestinationPage({ params }) {
               {/* ── Sidebar ── */}
               <aside>
 
-                {/* Quick Facts — sticky card */}
+                {/* Quick Facts */}
                 {dest.quickFacts && Object.keys(dest.quickFacts).length > 0 && (
                   <div
-                    className="article-quickfacts-sticky"
                     style={{
                       background: '#F8FAFF',
                       border: '1.5px solid #E2E8F0',

@@ -786,17 +786,8 @@ details > summary::marker { display: none; }
 @media (min-width: 960px) {
   .destination-layout > aside {
     display: block;
-    /* Stretch to content-column height so the sticky card inside has room to stick */
-    align-self: stretch;
+    align-self: start;
   }
-}
-
-/* Quick-Facts sticky card: sticks at top:120px within the stretched aside column */
-.article-quickfacts-sticky {
-  position: sticky;
-  top: 120px;
-  max-height: calc(100vh - 140px);
-  overflow-y: auto;
 }
 
 /* ── Admin layout ─────────────────────────────────────────────────────────── */
