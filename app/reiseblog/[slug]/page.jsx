@@ -108,6 +108,7 @@ export default async function ArticlePage({ params }) {
               <ArticleSidebar
                 tableOfContents={article.tableOfContents}
                 destination={article.destination}
+                galleryImages={article.galleryImages}
               />
             </div>
 
