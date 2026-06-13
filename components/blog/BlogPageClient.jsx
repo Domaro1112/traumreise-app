@@ -377,14 +377,23 @@ export default function BlogPageClient({ articles, categories: _ignored }) {
           {filtered.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '60px 20px', background: '#F8FAFF', borderRadius: '18px', border: '1.5px solid #E2E8F0' }}>
               <Compass size={32} strokeWidth={1.2} color="#CBD5E1" style={{ marginBottom: '12px' }} />
-              <p style={{ fontSize: '16px', fontWeight: 700, color: '#64748B', margin: '0 0 6px' }}>Keine Artikel gefunden.</p>
-              <p style={{ fontSize: '13px', color: '#94A3B8', margin: '0 0 18px' }}>Versuche einen anderen Suchbegriff oder wähle eine andere Kategorie.</p>
-              <button
-                onClick={() => { setActiveFilter('all'); setSearchQuery(''); }}
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '9px 18px', borderRadius: '10px', border: '1.5px solid #E2E8F0', background: '#FFFFFF', fontSize: '13px', fontWeight: 600, color: '#334155', cursor: 'pointer', fontFamily: 'inherit' }}
-              >
-                <X size={12} strokeWidth={2.5} /> Zurücksetzen
-              </button>
+              {articles.length === 0 ? (
+                <>
+                  <p style={{ fontSize: '16px', fontWeight: 700, color: '#64748B', margin: '0 0 6px' }}>Noch keine Blogartikel vorhanden.</p>
+                  <p style={{ fontSize: '13px', color: '#94A3B8', margin: 0 }}>Neue Artikel erscheinen bald.</p>
+                </>
+              ) : (
+                <>
+                  <p style={{ fontSize: '16px', fontWeight: 700, color: '#64748B', margin: '0 0 6px' }}>Keine Artikel gefunden.</p>
+                  <p style={{ fontSize: '13px', color: '#94A3B8', margin: '0 0 18px' }}>Versuche einen anderen Suchbegriff oder wähle eine andere Kategorie.</p>
+                  <button
+                    onClick={() => { setActiveFilter('all'); setSearchQuery(''); }}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '9px 18px', borderRadius: '10px', border: '1.5px solid #E2E8F0', background: '#FFFFFF', fontSize: '13px', fontWeight: 600, color: '#334155', cursor: 'pointer', fontFamily: 'inherit' }}
+                  >
+                    <X size={12} strokeWidth={2.5} /> Zurücksetzen
+                  </button>
+                </>
+              )}
             </div>
           ) : (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
@@ -395,7 +404,7 @@ export default function BlogPageClient({ articles, categories: _ignored }) {
       </section>
 
       {/* ══ BELIEBTE GUIDES ═══════════════════════════════════════════════════ */}
-      {!isFiltering && (
+      {!isFiltering && popularGuides.length > 0 && (
         <section style={{ background: '#F8FAFF', padding: 'clamp(36px, 5vw, 60px) 0' }}>
           <Container>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '6px' }}>

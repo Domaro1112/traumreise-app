@@ -7,7 +7,6 @@ import NewsletterSection from '@/components/landing/NewsletterSection';
 import BlogPageClient from '@/components/blog/BlogPageClient';
 import CommunityTips from '@/components/blog/CommunityTips';
 import {
-  blogArticles as staticArticles,
   blogCategories,
   communityTips,
   popularDestinations,
@@ -49,9 +48,7 @@ export const metadata = {
 };
 
 export default async function Reiseblog() {
-  // Prefer Supabase data; fall back to static articles if table is empty or unavailable
-  const dbArticles = await listPublishedBlogArticles();
-  const blogArticles = dbArticles.length > 0 ? dbArticles : staticArticles;
+  const blogArticles = await listPublishedBlogArticles();
 
   const jsonLd = {
     '@context': 'https://schema.org',
