@@ -53,7 +53,7 @@ export default function Header() {
             >
               <Image
                 src="/images/logo/reisemonkey-logo.png"
-                alt="Reisemonkey.de – Deine Reise. Dein Abenteuer."
+                alt="apearound.de – Deine Reise. Dein Abenteuer."
                 width={1536}
                 height={1024}
                 loading="eager"

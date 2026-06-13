@@ -12,7 +12,7 @@ const SECTIONS = [
   {
     heading: '§ 1 Geltungsbereich',
     items: [
-      'Reisemonkey (reisemonkey.de) ist eine unabhängige Reise-Inspirations- und Vergleichsplattform.',
+      'Reisemonkey (apearound.de) ist eine unabhängige Reise-Inspirations- und Vergleichsplattform.',
       'Reisemonkey vermittelt keine Reisen, Hotels, Flüge, Mietwagen oder Aktivitäten und erbringt selbst keine Reiseleistungen.',
       'Durch die Nutzung vonApeAround kommt kein Reisevertrag zwischen dem Nutzer undApeAround zustande.',
       'Diese Allgemeinen Geschäftsbedingungen regeln das Nutzungsverhältnis zwischen dem Nutzer und dem Betreiber vonApeAround.',

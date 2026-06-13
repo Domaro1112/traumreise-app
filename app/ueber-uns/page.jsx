@@ -22,23 +22,23 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'Organization',
-      '@id': 'https://reisemonkey.de/#organization',
+      '@id': 'https://apearound.de/#organization',
       name: 'Reisemonkey',
-      url: 'https://reisemonkey.de',
+      url: 'https://apearound.de',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://reisemonkey.de/images/logo/reisemonkey-logo.png',
+        url: 'https://apearound.de/images/logo/reisemonkey-logo.png',
       },
       description:
         'KI-gestützte Reiseplanung – kostenlos, persönlich und direkt buchbar.',
-      sameAs: ['https://reisemonkey.de'],
+      sameAs: ['https://apearound.de'],
     },
     {
       '@type': 'AboutPage',
-      '@id': 'https://reisemonkey.de/ueber-uns',
-      url: 'https://reisemonkey.de/ueber-uns',
+      '@id': 'https://apearound.de/ueber-uns',
+      url: 'https://apearound.de/ueber-uns',
       name: 'ÜberApeAround',
-      isPartOf: { '@id': 'https://reisemonkey.de/#organization' },
+      isPartOf: { '@id': 'https://apearound.de/#organization' },
       description:
         'Wir machen Reiseplanung einfacher, persönlicher und ein bisschen wilder.',
     },

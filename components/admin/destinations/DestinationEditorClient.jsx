@@ -691,7 +691,7 @@ export default function DestinationEditorClient({ initialData, isNew }) {
           <TextArea value={form.seo_description} onChange={v => set('seo_description', v)} rows={2} placeholder="Max. 155 Zeichen…" />
         </Field>
         <Field label={<>Canonical URL{isAuto('canonical_url') && <AutoBadge />}</>}
-          hint={`Leer = Standard-URL wird verwendet: https://www.reisemonkey.de/reiseziele/${slug}`}
+          hint={`Leer = Standard-URL wird verwendet: https://www.apearound.de/reiseziele/${slug}`}
         >
           <TextInput value={form.canonical_url} onChange={v => set('canonical_url', v)} placeholder={autoValues.canonical_url} monospace />
         </Field>

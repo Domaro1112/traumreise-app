@@ -34,12 +34,12 @@ export default function MietwagenPage() {
     '@type': 'WebPage',
     name: 'Mietwagen vergleichen – Angebote für deinen Urlaub |ApeAround',
     description: 'Mietwagen für deinen Urlaub finden – mit Tipps, Hinweisen und den beliebtesten Reisezielen.',
-    url: 'https://www.reisemonkey.de/mietwagen',
+    url: 'https://www.apearound.de/mietwagen',
     breadcrumb: {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home',      item: 'https://www.reisemonkey.de' },
-        { '@type': 'ListItem', position: 2, name: 'Mietwagen', item: 'https://www.reisemonkey.de/mietwagen' },
+        { '@type': 'ListItem', position: 1, name: 'Home',      item: 'https://www.apearound.de' },
+        { '@type': 'ListItem', position: 2, name: 'Mietwagen', item: 'https://www.apearound.de/mietwagen' },
       ],
     },
   };

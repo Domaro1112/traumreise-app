@@ -15,11 +15,11 @@ export const metadata = {
     title: 'Reiseziele entdecken |ApeAround',
     description:
       'Traumhafte Reiseziele weltweit: Mallorca, Bali, Kreta und weitere Destinationen mit Tipps, Highlights und Angeboten.',
-    url: 'https://www.reisemonkey.de/reiseziele',
+    url: 'https://www.apearound.de/reiseziele',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://www.reisemonkey.de/reiseziele',
+    canonical: 'https://www.apearound.de/reiseziele',
   },
 };
 
@@ -28,12 +28,12 @@ const jsonLd = {
   '@type': 'CollectionPage',
   name: 'Reiseziele entdecken –ApeAround',
   description: 'Übersicht über Reiseziele weltweit mit Highlights, Reisetipps und Buchungsangeboten.',
-  url: 'https://www.reisemonkey.de/reiseziele',
+  url: 'https://www.apearound.de/reiseziele',
   breadcrumb: {
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://www.reisemonkey.de' },
-      { '@type': 'ListItem', position: 2, name: 'Reiseziele', item: 'https://www.reisemonkey.de/reiseziele' },
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://www.apearound.de' },
+      { '@type': 'ListItem', position: 2, name: 'Reiseziele', item: 'https://www.apearound.de/reiseziele' },
     ],
   },
 };
