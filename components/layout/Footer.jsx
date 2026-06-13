@@ -61,7 +61,7 @@ export default function Footer() {
                 alt="Reisemonkey"
                 width={1536}
                 height={1024}
-                style={{ height: '36px', width: 'auto', display: 'block', objectFit: 'contain' }}
+                style={{ height: '72px', width: 'auto', display: 'block', objectFit: 'contain' }}
               />
             </Link>
             <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.7, marginBottom: '24px' }}>
