@@ -59,7 +59,7 @@ export default function Header() {
                 loading="eager"
                 fetchPriority="high"
                 style={{
-                  height: 'clamp(52px, 7vw, 66px)',
+                  height: 'clamp(64px, 9vw, 66px)',
                   width: 'auto',
                   display: 'block',
                   objectFit: 'contain',
