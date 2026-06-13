@@ -195,6 +195,26 @@ export default function ReisezielePageClient({ destinations = [] }) {
   const dbSlugs = new Set(destinations.map(d => d.slug));
   const hasFilter = searchQuery.trim() || activeFilter;
 
+  // Derive popular picks: prefer real DB destinations (first 4 published).
+  // Fall back to static POPULAR_PICKS only when DB is empty, and always link
+  // every card — either to /reiseziele/[slug] or to /finder as fallback.
+  const popularPicks = destinations.length > 0
+    ? destinations.slice(0, 4).map(d => ({
+        name:       d.name,
+        country:    d.country,
+        badge:      d.travelType?.[0] ?? 'Reiseziel',
+        badgeBg:    '#EFF6FF',
+        badgeColor: '#0284C7',
+        desc:       d.shortDescription,
+        img:        d.heroImage,
+        slug:       d.slug,
+        href:       `/reiseziele/${d.slug}`,
+      }))
+    : POPULAR_PICKS.map(p => ({
+        ...p,
+        href: dbSlugs.has(p.slug) ? `/reiseziele/${p.slug}` : '/finder',
+      }));
+
   const handleFilterChip = (type) => {
     setActiveFilter(prev => prev === type ? '' : type);
     scrollToGrid();
@@ -341,17 +361,19 @@ export default function ReisezielePageClient({ destinations = [] }) {
                 Aktuell beliebte Reiseziele
               </h2>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(210px, 1fr))', gap: '14px' }}>
-                {POPULAR_PICKS.map(pick => {
-                  const inDB = dbSlugs.has(pick.slug);
-                  const inner = (
-                    <article style={{ borderRadius: '16px', overflow: 'hidden', background: '#FFFFFF', border: '1.5px solid #E2E8F0', boxShadow: '0 3px 16px rgba(15,23,42,0.07)', transition: 'transform 0.2s ease, box-shadow 0.2s ease', height: '100%' }}
+                {popularPicks.map(pick => (
+                  <Link key={pick.slug} href={pick.href} style={{ textDecoration: 'none', display: 'block' }}>
+                    <article
+                      style={{ borderRadius: '16px', overflow: 'hidden', background: '#FFFFFF', border: '1.5px solid #E2E8F0', boxShadow: '0 3px 16px rgba(15,23,42,0.07)', transition: 'transform 0.2s ease, box-shadow 0.2s ease', height: '100%', cursor: 'pointer' }}
                       onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 14px 40px rgba(15,23,42,0.12)'; }}
                       onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '0 3px 16px rgba(15,23,42,0.07)'; }}
                     >
                       <div style={{ height: '155px', position: 'relative', overflow: 'hidden' }}>
-                        <img src={pick.img} alt={`${pick.name} Urlaub`} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                        {pick.img && (
+                          <img src={pick.img} alt={`${pick.name} Urlaub`} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                        )}
                         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 55%)' }} />
-                        <span style={{ position: 'absolute', top: '8px', left: '8px', background: pick.badgeBg, color: pick.badgeColor, fontSize: '10px', fontWeight: 700, borderRadius: '6px', padding: '3px 8px' }}>
+                        <span style={{ position: 'absolute', top: '8px', left: '8px', background: pick.badgeBg ?? '#EFF6FF', color: pick.badgeColor ?? '#0284C7', fontSize: '10px', fontWeight: 700, borderRadius: '6px', padding: '3px 8px' }}>
                           {pick.badge}
                         </span>
                       </div>
@@ -362,20 +384,13 @@ export default function ReisezielePageClient({ destinations = [] }) {
                         </div>
                         <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '15px', fontWeight: 800, color: '#0F172A', margin: '0 0 5px', letterSpacing: '-0.01em' }}>{pick.name}</h3>
                         <p style={{ fontSize: '12px', color: '#64748B', margin: '0 0 9px', lineHeight: 1.55 }}>{pick.desc}</p>
-                        {inDB ? (
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '12px', fontWeight: 700, color: '#0EA5E9' }}>
-                            Ziel entdecken <ArrowRight size={11} strokeWidth={2.5} />
-                          </div>
-                        ) : (
-                          <span style={{ fontSize: '11px', color: '#CBD5E1', fontWeight: 600 }}>Demnächst verfügbar</span>
-                        )}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '12px', fontWeight: 700, color: '#0EA5E9' }}>
+                          Ziel entdecken <ArrowRight size={11} strokeWidth={2.5} />
+                        </div>
                       </div>
                     </article>
-                  );
-                  return inDB
-                    ? <Link key={pick.slug} href={`/reiseziele/${pick.slug}`} style={{ textDecoration: 'none', display: 'block' }}>{inner}</Link>
-                    : <div key={pick.slug}>{inner}</div>;
-                })}
+                  </Link>
+                ))}
               </div>
             </div>
 
