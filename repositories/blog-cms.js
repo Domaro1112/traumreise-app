@@ -174,14 +174,16 @@ export async function getBlogArticleBySlugPublic(slug) {
  * Load all published articles for the /reiseblog overview.
  * Returns camelCase public shapes sorted by published_at desc.
  */
-export async function listPublishedBlogArticles() {
+export async function listPublishedBlogArticles({ limit } = {}) {
   try {
     const supabase = createServerClient();
-    const { data, error } = await supabase
+    let query = supabase
       .from('blog_articles')
       .select('*')
       .eq('status', 'published')
       .order('published_at', { ascending: false });
+    if (limit) query = query.limit(limit);
+    const { data, error } = await query;
     if (error || !data?.length) return [];
     return data.map(dbToPublic);
   } catch {

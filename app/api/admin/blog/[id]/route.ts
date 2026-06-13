@@ -32,6 +32,7 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
     const body = await request.json();
     const article = await updateBlogArticle(id, body);
     // Revalidate whenever status could have changed (slug or status update).
+    revalidatePath('/');
     revalidatePath('/reiseblog');
     if (article.slug) {
       revalidatePath(`/reiseblog/${article.slug}`);

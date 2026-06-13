@@ -16,6 +16,7 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
     const { id } = await params;
     const article = await publishBlogArticle(id);
     // Invalidate public blog pages so the article appears immediately.
+    revalidatePath('/');
     revalidatePath('/reiseblog');
     if (article.slug) {
       revalidatePath(`/reiseblog/${article.slug}`);

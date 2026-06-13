@@ -15,6 +15,7 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
   try {
     const { id } = await params;
     const article = await archiveBlogArticle(id);
+    revalidatePath('/');
     revalidatePath('/reiseblog');
     return NextResponse.json({ article });
   } catch (err) {
