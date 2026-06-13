@@ -277,7 +277,7 @@ export default function BlogPageClient({ articles, categories: _ignored }) {
 
             {/* Subtitle */}
             <p style={{ fontSize: 'clamp(15px, 1.8vw, 18px)', color: '#64748B', lineHeight: 1.7, marginBottom: '32px', maxWidth: '540px' }}>
-              Inspiration, Tipps und ehrliche Guides für deine nächste Reise.
+              Inspirationen, Tipps und ehrliche Guides für deine nächste Reise.
             </p>
 
             {/* Search bar */}

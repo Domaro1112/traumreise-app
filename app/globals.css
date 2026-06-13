@@ -555,6 +555,8 @@ input::placeholder { color: var(--color-text-muted); }
 @media (min-width: 1024px) {
   .article-sidebar-desktop {
     display: block;
+    /* Stretch to full grid-row height so the sticky child has room to scroll */
+    align-self: stretch;
   }
 }
 
@@ -567,7 +569,7 @@ input::placeholder { color: var(--color-text-muted); }
 @media (min-width: 1024px) {
   .article-sidebar-sticky {
     position: sticky;
-    top: 96px;
+    top: 100px;
     max-height: calc(100vh - 120px);
     overflow-y: auto;
     scrollbar-width: none;
