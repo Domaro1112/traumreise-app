@@ -14,6 +14,18 @@ import {
 
 const TRAVEL_TYPES = ['Strand', 'Stadt', 'Natur', 'Abenteuer', 'Familie', 'Luxus'];
 
+// Strict alias lists for filter chips.
+// A destination only appears when at least one of its travelType values
+// EXACTLY matches (after norm) one entry in the list — no substring guessing.
+const FILTER_ALIASES = {
+  Strand:    ['strand', 'strandurlaub', 'beach', 'badeurlaub', 'strandreise'],
+  Stadt:     ['stadt', 'stadtereise', 'stadtreise', 'citytrip', 'city', 'städtereise', 'städtereisen'],
+  Natur:     ['natur', 'natururlaub', 'berge', 'nationalpark', 'wandern', 'wanderurlaub', 'natur und berge'],
+  Abenteuer: ['abenteuer', 'aktivurlaub', 'outdoor', 'adventure', 'aktivreise'],
+  Familie:   ['familie', 'familienurlaub', 'familienreise', 'familienfreundlich'],
+  Luxus:     ['luxus', 'luxusreise', 'luxusurlaub', 'premium'],
+};
+
 const REISEARTEN = [
   { type: 'Strand',    label: 'Strandurlaub',   Icon: Sun,       desc: 'Entspanne an den schönsten Stränden der Welt.',        img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80' },
   { type: 'Stadt',     label: 'Städtereisen',   Icon: Building2, desc: 'Erlebe pulsierende Städte und kulturelle Highlights.',  img: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80' },
@@ -151,14 +163,15 @@ export default function ReisezielePageClient({ destinations = [] }) {
 
   const filtered = useMemo(() => {
     const q = norm(searchQuery);
-    const normFilter = norm(activeFilter);
+    const aliases = activeFilter ? (FILTER_ALIASES[activeFilter] ?? []) : null;
     return destinations.filter((d, i) => {
-      // Filter: partial substring match in both directions, diacritic-insensitive
-      const matchFilter = !activeFilter || (Array.isArray(d.travelType) && d.travelType.some(t => {
-        const nt = norm(t);
-        return nt.includes(normFilter) || normFilter.includes(nt);
-      }));
-      // Search: full-text across all relevant fields
+      // Filter chips: strict exact match against travelType only (no description/SEO)
+      const matchFilter = !activeFilter || (
+        aliases.length > 0 &&
+        Array.isArray(d.travelType) &&
+        d.travelType.some(t => aliases.includes(norm(t)))
+      );
+      // Search bar: full-text across all relevant fields
       const matchSearch = !q || searchTexts[i].includes(q);
       return matchFilter && matchSearch;
     });
