@@ -133,6 +133,65 @@ export async function archiveBlogArticle(id) {
   return data;
 }
 
+/** Duplicate an article as a new draft. Returns the new article row. */
+export async function duplicateBlogArticle(id) {
+  const supabase = createServerClient();
+
+  const { data: original, error: fetchError } = await supabase
+    .from('blog_articles')
+    .select('*')
+    .eq('id', id)
+    .single();
+  if (fetchError || !original) throw new Error('Artikel nicht gefunden.');
+
+  // Find a unique slug
+  const baseSlug = (original.slug ?? 'artikel');
+  let newSlug = baseSlug + '-kopie';
+  let counter = 1;
+  for (;;) {
+    const { data: conflict } = await supabase
+      .from('blog_articles')
+      .select('id')
+      .eq('slug', newSlug)
+      .maybeSingle();
+    if (!conflict) break;
+    counter++;
+    newSlug = baseSlug + '-kopie-' + counter;
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  const { id: _id, created_at: _c, updated_at: _u, published_at: _p, ...rest } = original;
+  const copy = sanitise({
+    ...rest,
+    title: (original.title ?? 'Artikel') + ' Kopie',
+    slug: newSlug,
+    status: 'draft',
+    published_at: null,
+    sort_order: null,
+  });
+
+  const { data, error } = await supabase
+    .from('blog_articles')
+    .insert(copy)
+    .select('*')
+    .single();
+  if (error) throw new Error(error.message);
+  return data;
+}
+
+/** Restore an archived article back to draft status. */
+export async function restoreBlogArticle(id) {
+  const supabase = createServerClient();
+  const { data, error } = await supabase
+    .from('blog_articles')
+    .update({ status: 'draft', updated_at: new Date().toISOString() })
+    .eq('id', id)
+    .select('id, status')
+    .single();
+  if (error) throw new Error(error.message);
+  return data;
+}
+
 /** Hard-delete an article by id. Works for any status. */
 export async function deleteBlogArticle(id) {
   const supabase = createServerClient();

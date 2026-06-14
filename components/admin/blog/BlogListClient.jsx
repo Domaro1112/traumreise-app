@@ -6,12 +6,19 @@ import { useRouter } from 'next/navigation';
 import {
   Plus, Search, Edit3, CheckCircle,
   Archive, Trash2, RefreshCw, AlertTriangle,
+  Eye, Copy, RotateCcw,
 } from 'lucide-react';
 
 const STATUS_CONFIG = {
   published: { label: 'Veröffentlicht', bg: '#ECFDF5', color: '#059669' },
   draft:     { label: 'Entwurf',        bg: '#FEF2F2', color: '#DC2626' },
   archived:  { label: 'Archiviert',     bg: '#F1F5F9', color: '#64748B' },
+};
+
+const TOAST_MSG = {
+  publish: 'Artikel veröffentlicht.',
+  archive: 'Artikel archiviert.',
+  restore: 'Artikel wiederhergestellt.',
 };
 
 function StatusBadge({ status }) {
@@ -117,6 +124,30 @@ function DeleteModal({ article, isDeleting, onConfirm, onCancel }) {
   );
 }
 
+// Small icon-button with tooltip
+function IconBtn({ onClick, title, disabled, color = '#475569', borderColor = '#E2E8F0', bg = '#FFFFFF', children }) {
+  return (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      title={title}
+      style={{
+        display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+        width: '32px', height: '32px',
+        borderRadius: '8px',
+        border: `1.5px solid ${disabled ? '#E2E8F0' : borderColor}`,
+        background: disabled ? '#F8FAFC' : bg,
+        color: disabled ? '#CBD5E1' : color,
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        flexShrink: 0,
+        transition: 'opacity 0.15s',
+      }}
+    >
+      {children}
+    </button>
+  );
+}
+
 export default function BlogListClient({ initialArticles }) {
   const router = useRouter();
   const [articles, setArticles] = useState(initialArticles ?? []);
@@ -129,7 +160,7 @@ export default function BlogListClient({ initialArticles }) {
 
   function showToast(msg, type = 'success') {
     setToast({ msg, type });
-    setTimeout(() => setToast(null), 3000);
+    setTimeout(() => setToast(null), 3500);
   }
 
   const filtered = useMemo(() => {
@@ -146,18 +177,35 @@ export default function BlogListClient({ initialArticles }) {
     return list;
   }, [articles, search, statusFilter]);
 
+  // Generic status-change action (publish / archive / restore)
   async function doAction(id, action) {
     setActionBusy(id + action);
     try {
       const res = await fetch(`/api/admin/blog/${id}/${action}`, { method: 'POST' });
-      const text = await res.text();
-      const json = JSON.parse(text);
+      const json = await res.json();
       if (!res.ok) throw new Error(json.error ?? res.statusText);
       setArticles(prev => prev.map(a => a.id === id ? { ...a, ...json.article } : a));
-      showToast(action === 'publish' ? 'Artikel veröffentlicht.' : 'Artikel archiviert.');
+      showToast(TOAST_MSG[action] ?? 'Aktion erfolgreich.');
     } catch (err) {
       showToast(err.message, 'error');
     } finally {
+      setActionBusy(null);
+    }
+  }
+
+  // Duplicate → redirect to new article editor
+  async function doDuplicate(id) {
+    setActionBusy(id + 'duplicate');
+    try {
+      const res = await fetch(`/api/admin/blog/${id}/duplicate`, { method: 'POST' });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error ?? res.statusText);
+      showToast(`Artikel dupliziert als Entwurf: „${json.article.title}"`);
+      // Add the new article to the top of the list, then navigate
+      setArticles(prev => [json.article, ...prev]);
+      setTimeout(() => router.push(`/admin/blog/${json.article.id}`), 800);
+    } catch (err) {
+      showToast(err.message, 'error');
       setActionBusy(null);
     }
   }
@@ -167,8 +215,7 @@ export default function BlogListClient({ initialArticles }) {
     setIsDeleting(true);
     try {
       const res = await fetch(`/api/admin/blog/${deleteTarget.id}`, { method: 'DELETE' });
-      const text = await res.text();
-      const json = JSON.parse(text);
+      const json = await res.json();
       if (!res.ok) throw new Error(json.error ?? res.statusText);
       setArticles(prev => prev.filter(a => a.id !== deleteTarget.id));
       showToast('Artikel gelöscht.');
@@ -181,10 +228,10 @@ export default function BlogListClient({ initialArticles }) {
   }
 
   const counts = useMemo(() => ({
-    all: articles.length,
+    all:       articles.length,
     published: articles.filter(a => a.status === 'published').length,
-    draft: articles.filter(a => a.status === 'draft').length,
-    archived: articles.filter(a => a.status === 'archived').length,
+    draft:     articles.filter(a => a.status === 'draft').length,
+    archived:  articles.filter(a => a.status === 'archived').length,
   }), [articles]);
 
   return (
@@ -202,6 +249,7 @@ export default function BlogListClient({ initialArticles }) {
           fontSize: '14px', fontWeight: 600,
           boxShadow: '0 8px 24px rgba(15,23,42,0.12)',
           display: 'flex', alignItems: 'center', gap: '10px',
+          maxWidth: '420px',
         }}>
           {toast.type === 'error' ? <AlertTriangle size={16} /> : <CheckCircle size={16} />}
           {toast.msg}
@@ -216,7 +264,7 @@ export default function BlogListClient({ initialArticles }) {
         </div>
         <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
           <button
-            onClick={() => { router.refresh(); }}
+            onClick={() => router.refresh()}
             title="Aktualisieren"
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -298,17 +346,21 @@ export default function BlogListClient({ initialArticles }) {
       </div>
 
       {/* Table */}
-      <div style={{ background: '#FFFFFF', borderRadius: '16px', border: '1.5px solid #E2E8F0', overflow: 'hidden', boxShadow: '0 2px 8px rgba(15,23,42,0.04)' }}>
+      <div style={{ background: '#FFFFFF', borderRadius: '16px', border: '1.5px solid #E2E8F0', overflow: 'auto', boxShadow: '0 2px 8px rgba(15,23,42,0.04)' }}>
         {filtered.length === 0 ? (
           <div style={{ padding: '60px 32px', textAlign: 'center', color: '#94A3B8', fontSize: '15px' }}>
             Keine Artikel gefunden.
           </div>
         ) : (
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '700px' }}>
             <thead>
               <tr style={{ background: '#F8FAFC', borderBottom: '1.5px solid #E2E8F0' }}>
                 {['Titel', 'Kategorie', 'Status', 'Feedback', 'Erstellt', 'Veröffentlicht', 'Aktionen'].map(h => (
-                  <th key={h} style={{ padding: '12px 16px', textAlign: 'left', fontSize: '12px', fontWeight: 700, color: '#64748B', letterSpacing: '0.5px', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
+                  <th key={h} style={{
+                    padding: '12px 14px', textAlign: 'left',
+                    fontSize: '11px', fontWeight: 700, color: '#64748B',
+                    letterSpacing: '0.5px', textTransform: 'uppercase', whiteSpace: 'nowrap',
+                  }}>
                     {h}
                   </th>
                 ))}
@@ -320,35 +372,51 @@ export default function BlogListClient({ initialArticles }) {
                   key={article.id}
                   style={{ borderBottom: i < filtered.length - 1 ? '1px solid #F1F5F9' : 'none' }}
                 >
-                  <td style={{ padding: '14px 16px', maxWidth: '320px' }}>
+                  {/* Titel */}
+                  <td style={{ padding: '14px 14px', maxWidth: '280px' }}>
                     <div style={{ fontWeight: 600, fontSize: '14px', color: '#0F172A', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                       {article.title}
                     </div>
-                    <div style={{ fontSize: '12px', color: '#94A3B8', marginTop: '2px' }}>{article.slug}</div>
+                    <div style={{ fontSize: '11px', color: '#94A3B8', marginTop: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      /{article.slug}
+                    </div>
                   </td>
-                  <td style={{ padding: '14px 16px', fontSize: '13px', color: '#475569', whiteSpace: 'nowrap' }}>
+
+                  {/* Kategorie */}
+                  <td style={{ padding: '14px 14px', fontSize: '13px', color: '#475569', whiteSpace: 'nowrap' }}>
                     {article.category || '–'}
                   </td>
-                  <td style={{ padding: '14px 16px', whiteSpace: 'nowrap' }}>
+
+                  {/* Status */}
+                  <td style={{ padding: '14px 14px', whiteSpace: 'nowrap' }}>
                     <StatusBadge status={article.status} />
                   </td>
-                  <td style={{ padding: '14px 16px', fontSize: '13px', color: '#64748B', whiteSpace: 'nowrap' }}>
+
+                  {/* Feedback */}
+                  <td style={{ padding: '14px 14px', fontSize: '13px', color: '#64748B', whiteSpace: 'nowrap' }}>
                     {(() => {
                       const h = article.helpful_count ?? 0;
                       const n = article.not_helpful_count ?? 0;
                       if (h + n === 0) return <span style={{ color: '#CBD5E1' }}>–</span>;
-                      return <span>{h} 👍 | {n} 👎</span>;
+                      return <span>{h} 👍 · {n} 👎</span>;
                     })()}
                   </td>
-                  <td style={{ padding: '14px 16px', fontSize: '13px', color: '#64748B', whiteSpace: 'nowrap' }}>
+
+                  {/* Erstellt */}
+                  <td style={{ padding: '14px 14px', fontSize: '13px', color: '#64748B', whiteSpace: 'nowrap' }}>
                     {fmtDate(article.created_at)}
                   </td>
-                  <td style={{ padding: '14px 16px', fontSize: '13px', color: '#64748B', whiteSpace: 'nowrap' }}>
+
+                  {/* Veröffentlicht */}
+                  <td style={{ padding: '14px 14px', fontSize: '13px', color: '#64748B', whiteSpace: 'nowrap' }}>
                     {fmtDate(article.published_at)}
                   </td>
-                  <td style={{ padding: '14px 16px', whiteSpace: 'nowrap' }}>
-                    <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
-                      {/* Edit */}
+
+                  {/* Aktionen */}
+                  <td style={{ padding: '14px 14px', whiteSpace: 'nowrap' }}>
+                    <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
+
+                      {/* Bearbeiten */}
                       <Link
                         href={`/admin/blog/${article.id}`}
                         title="Bearbeiten"
@@ -360,67 +428,96 @@ export default function BlogListClient({ initialArticles }) {
                           background: '#FFFFFF',
                           color: '#475569',
                           textDecoration: 'none',
+                          flexShrink: 0,
                         }}
                       >
                         <Edit3 size={14} />
                       </Link>
 
-                      {/* Publish */}
-                      {article.status === 'draft' && (
-                        <button
-                          onClick={() => doAction(article.id, 'publish')}
-                          disabled={actionBusy === article.id + 'publish'}
-                          title="Veröffentlichen"
-                          style={{
-                            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                            width: '32px', height: '32px',
-                            borderRadius: '8px',
-                            border: '1.5px solid #A7F3D0',
-                            background: '#ECFDF5',
-                            color: '#059669',
-                            cursor: 'pointer',
-                          }}
-                        >
-                          <CheckCircle size={14} />
-                        </button>
-                      )}
-
-                      {/* Archive */}
-                      {article.status === 'published' && (
-                        <button
-                          onClick={() => doAction(article.id, 'archive')}
-                          disabled={actionBusy === article.id + 'archive'}
-                          title="Archivieren"
-                          style={{
-                            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                            width: '32px', height: '32px',
-                            borderRadius: '8px',
-                            border: '1.5px solid #E2E8F0',
-                            background: '#F1F5F9',
-                            color: '#64748B',
-                            cursor: 'pointer',
-                          }}
-                        >
-                          <Archive size={14} />
-                        </button>
-                      )}
-
-                      {/* Delete */}
-                      <button
-                        onClick={() => setDeleteTarget(article)}
-                        title="Löschen"
+                      {/* Vorschau */}
+                      <Link
+                        href={`/admin/blog/${article.id}/preview`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Vorschau"
                         style={{
                           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                           width: '32px', height: '32px',
                           borderRadius: '8px',
-                          border: '1.5px solid #FECACA',
-                          background: '#FEF2F2',
-                          color: '#DC2626',
-                          cursor: 'pointer',
+                          border: '1.5px solid #BAE6FD',
+                          background: '#F0F9FF',
+                          color: '#0284C7',
+                          textDecoration: 'none',
+                          flexShrink: 0,
                         }}
                       >
+                        <Eye size={14} />
+                      </Link>
+
+                      {/* Duplizieren */}
+                      <IconBtn
+                        onClick={() => doDuplicate(article.id)}
+                        disabled={actionBusy === article.id + 'duplicate'}
+                        title="Duplizieren"
+                        color="#7C3AED"
+                        borderColor="#DDD6FE"
+                        bg="#F5F3FF"
+                      >
+                        <Copy size={14} />
+                      </IconBtn>
+
+                      {/* Veröffentlichen (nur Entwurf) */}
+                      {article.status === 'draft' && (
+                        <IconBtn
+                          onClick={() => doAction(article.id, 'publish')}
+                          disabled={actionBusy === article.id + 'publish'}
+                          title="Veröffentlichen"
+                          color="#059669"
+                          borderColor="#A7F3D0"
+                          bg="#ECFDF5"
+                        >
+                          <CheckCircle size={14} />
+                        </IconBtn>
+                      )}
+
+                      {/* Archivieren (nur Veröffentlicht) */}
+                      {article.status === 'published' && (
+                        <IconBtn
+                          onClick={() => doAction(article.id, 'archive')}
+                          disabled={actionBusy === article.id + 'archive'}
+                          title="Archivieren"
+                          color="#64748B"
+                          borderColor="#E2E8F0"
+                          bg="#F1F5F9"
+                        >
+                          <Archive size={14} />
+                        </IconBtn>
+                      )}
+
+                      {/* Wiederherstellen (nur Archiviert) */}
+                      {article.status === 'archived' && (
+                        <IconBtn
+                          onClick={() => doAction(article.id, 'restore')}
+                          disabled={actionBusy === article.id + 'restore'}
+                          title="Wiederherstellen (→ Entwurf)"
+                          color="#D97706"
+                          borderColor="#FDE68A"
+                          bg="#FFFBEB"
+                        >
+                          <RotateCcw size={14} />
+                        </IconBtn>
+                      )}
+
+                      {/* Löschen */}
+                      <IconBtn
+                        onClick={() => setDeleteTarget(article)}
+                        title="Löschen"
+                        color="#DC2626"
+                        borderColor="#FECACA"
+                        bg="#FEF2F2"
+                      >
                         <Trash2 size={14} />
-                      </button>
+                      </IconBtn>
                     </div>
                   </td>
                 </tr>
@@ -428,6 +525,17 @@ export default function BlogListClient({ initialArticles }) {
             </tbody>
           </table>
         )}
+      </div>
+
+      {/* Aktionen-Legende */}
+      <div style={{ marginTop: '16px', display: 'flex', gap: '16px', flexWrap: 'wrap', fontSize: '11px', color: '#94A3B8' }}>
+        <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><Edit3 size={11} /> Bearbeiten</span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><Eye size={11} color="#0284C7" /> Vorschau</span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><Copy size={11} color="#7C3AED" /> Duplizieren</span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><CheckCircle size={11} color="#059669" /> Veröffentlichen</span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><Archive size={11} color="#64748B" /> Archivieren</span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><RotateCcw size={11} color="#D97706" /> Wiederherstellen</span>
+        <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><Trash2 size={11} color="#DC2626" /> Löschen</span>
       </div>
 
       {/* Delete modal */}
