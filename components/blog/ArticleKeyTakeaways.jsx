@@ -1,15 +1,13 @@
-import { Zap } from 'lucide-react';
-
-export default function ArticleKeyTakeaways({ takeaways, destination }) {
-  if (!takeaways?.length) return null;
+export default function ArticleKeyTakeaways({ takeaways }) {
+  if (!Array.isArray(takeaways) || takeaways.length === 0) return null;
 
   return (
     <div
       style={{
-        background: 'linear-gradient(135deg, #EFF6FF 0%, #ECFEFF 100%)',
-        border: '1px solid #BFDBFE',
+        background: 'linear-gradient(135deg, #F0F9FF 0%, #F0FDFF 100%)',
+        border: '1.5px solid #BAE6FD',
         borderRadius: '20px',
-        padding: 'clamp(24px, 3vw, 36px)',
+        padding: 'clamp(20px, 3vw, 32px)',
         marginBottom: '40px',
       }}
     >
@@ -20,92 +18,99 @@ export default function ArticleKeyTakeaways({ takeaways, destination }) {
           alignItems: 'center',
           gap: '10px',
           marginBottom: '20px',
+          paddingBottom: '16px',
+          borderBottom: '1px solid #E0F2FE',
         }}
       >
         <div
           style={{
-            width: '36px',
-            height: '36px',
-            borderRadius: '10px',
+            width: '32px',
+            height: '32px',
+            borderRadius: '9px',
             background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             flexShrink: 0,
-            boxShadow: '0 4px 12px rgba(14,165,233,0.30)',
+            boxShadow: '0 3px 10px rgba(14,165,233,0.28)',
+            fontSize: '15px',
+            color: '#FFFFFF',
+            fontWeight: 800,
+            lineHeight: 1,
           }}
         >
-          <Zap size={18} strokeWidth={2.5} color="#FFFFFF" />
+          ✓
         </div>
-        <div>
-          <div
-            style={{
-              fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-              fontSize: '16px',
-              fontWeight: 700,
-              color: '#0F172A',
-            }}
-          >
-            Das Wichtigste auf einen Blick
-          </div>
-          <div style={{ fontSize: '12px', color: '#64748B', fontWeight: 500 }}>
-            {destination} – Schnellantworten für deine Planung
-          </div>
-        </div>
+        <span
+          style={{
+            fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+            fontSize: 'clamp(14px, 1.6vw, 16px)',
+            fontWeight: 700,
+            color: '#0F172A',
+          }}
+        >
+          Das Wichtigste auf einen Blick
+        </span>
       </div>
 
-      {/* Grid of takeaways */}
-      <div
+      {/* Checklist */}
+      <ul
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+          listStyle: 'none',
+          padding: 0,
+          margin: 0,
+          display: 'flex',
+          flexDirection: 'column',
           gap: '12px',
         }}
       >
         {takeaways.map((item, i) => {
-          const isString = typeof item === 'string';
-          const label = isString ? null : item.label;
-          const value = isString ? item : item.value;
-          if (!value) return null;
+          const text = typeof item === 'string' ? item : (item?.value ?? item?.text ?? '');
+          if (!text) return null;
           return (
-            <div
-              key={label || i}
+            <li
+              key={i}
               style={{
-                background: '#FFFFFF',
-                border: '1px solid #BAE6FD',
-                borderRadius: '14px',
-                padding: '14px 16px',
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '12px',
               }}
             >
-              {label && (
-                <div
-                  style={{
-                    fontSize: '11px',
-                    fontWeight: 700,
-                    letterSpacing: '0.06em',
-                    textTransform: 'uppercase',
-                    color: '#0EA5E9',
-                    marginBottom: '5px',
-                    fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-                  }}
-                >
-                  {label}
-                </div>
-              )}
-              <div
+              <span
+                aria-hidden="true"
                 style={{
-                  fontSize: '14px',
-                  fontWeight: label ? 600 : 500,
-                  color: '#0F172A',
-                  lineHeight: 1.5,
+                  flexShrink: 0,
+                  marginTop: '1px',
+                  width: '22px',
+                  height: '22px',
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '12px',
+                  color: '#FFFFFF',
+                  fontWeight: 800,
+                  lineHeight: 1,
+                  boxShadow: '0 2px 6px rgba(14,165,233,0.22)',
                 }}
               >
-                {value}
-              </div>
-            </div>
+                ✓
+              </span>
+              <span
+                style={{
+                  fontSize: 'clamp(13px, 1.5vw, 15px)',
+                  color: '#1E293B',
+                  lineHeight: 1.65,
+                  fontWeight: 450,
+                }}
+              >
+                {text}
+              </span>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </div>
   );
 }

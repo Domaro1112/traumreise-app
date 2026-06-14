@@ -6,6 +6,7 @@ import NewsletterSection from '@/components/landing/NewsletterSection';
 import ArticleJsonLd from '@/components/blog/ArticleJsonLd';
 import ArticleHero from '@/components/blog/ArticleHero';
 import ArticleContent from '@/components/blog/ArticleContent';
+import ArticleKeyTakeaways from '@/components/blog/ArticleKeyTakeaways';
 import ArticleFAQ from '@/components/blog/ArticleFAQ';
 import ArticleSidebar from '@/components/blog/ArticleSidebar';
 import RelatedArticles from '@/components/blog/RelatedArticles';
@@ -111,6 +112,7 @@ export default async function ArticlePage({ params }) {
             <div className="article-layout">
               {/* ── Content column ─────────────────────────────────────────────── */}
               <div>
+                <ArticleKeyTakeaways takeaways={article.keyTakeaways} />
                 <ArticleContent
                   sections={article.contentSections}
                   internalLinks={article.internalLinks}
