@@ -2,11 +2,12 @@
 
 import { useState, useCallback, useEffect } from 'react';
 import {
-  Sparkles, Plane, ChevronRight, ChevronLeft, ShieldCheck, Loader2,
+  Sparkles, Plane, ChevronRight, ChevronLeft, ShieldCheck,
   Mail, CheckCircle2,
 } from 'lucide-react';
 import Container from '@/components/layout/Container';
 import TravelResultView from '@/components/finder/TravelResultView';
+import TravelFunnelLoading from '@/components/funnel/TravelFunnelLoading';
 
 // ── Image library ─────────────────────────────────────────────────────────────
 // All files must live in public/images/funnel/cards/
@@ -392,12 +393,7 @@ export default function HomeTravelWizard() {
         }}>
 
           {/* ── Loading ────────────────────────────────────────────────────── */}
-          {submitting && (
-            <div style={{ textAlign: 'center', padding: '60px 0' }}>
-              <div style={{ width: '48px', height: '48px', border: '3px solid #BAE6FD', borderTopColor: '#0EA5E9', borderRadius: '50%', animation: 'spin .8s linear infinite', margin: '0 auto 18px' }} />
-              <div style={{ color: '#64748B', fontSize: '15px', fontWeight: 500 }}>Deine Traumreise wird vorbereitet…</div>
-            </div>
-          )}
+          {submitting && <TravelFunnelLoading />}
 
           {/* ── Results ────────────────────────────────────────────────────── */}
           {!submitting && results && (
@@ -605,18 +601,9 @@ export default function HomeTravelWizard() {
                         transition: 'all 0.22s ease',
                       }}
                     >
-                      {submitting ? (
-                        <>
-                          <Loader2 size={18} strokeWidth={2} style={{ animation: 'spin 1s linear infinite' }} />
-                          Wird geladen…
-                        </>
-                      ) : (
-                        <>
-                          <Plane size={18} strokeWidth={2.5} />
-                          Meine Traumreise finden
-                          <Sparkles size={16} strokeWidth={2} />
-                        </>
-                      )}
+                      <Plane size={18} strokeWidth={2.5} />
+                      Meine Traumreise finden
+                      <Sparkles size={16} strokeWidth={2} />
                     </button>
                   )}
 
