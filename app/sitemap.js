@@ -8,8 +8,9 @@ export default function sitemap() {
 /*
 // ── Vollständige Sitemap – reaktivieren wenn Website öffentlich geht ─────────
 import { blogArticles } from '@/data/blogArticles';
+import { SITE_URL } from '@/lib/site-config';
 
-const BASE_URL = 'https://traumreise.de';
+const BASE_URL = SITE_URL;
 
 export default function sitemap() {
   const staticRoutes = [

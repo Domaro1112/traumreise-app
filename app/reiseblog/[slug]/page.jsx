@@ -15,6 +15,7 @@ import {
   getBlogArticleBySlugPublic,
   listPublishedBlogSlugs,
 } from '@/repositories/blog-cms';
+import { SITE_URL } from '@/lib/site-config';
 import { getDestinationsBySlugsBatch } from '@/repositories/destinations-cms';
 import BlogArticleViewTracker from '@/components/blog/BlogArticleViewTracker';
 
@@ -48,7 +49,7 @@ export async function generateMetadata({ params }) {
       title: article.seoTitle,
       description: article.seoDescription,
       type: 'article',
-      url: `https://traumreise.de/reiseblog/${slug}`,
+      url: `${SITE_URL}/reiseblog/${slug}`,
       publishedTime: article.date,
       modifiedTime: article.lastUpdated,
       authors: [article.author],
@@ -68,7 +69,7 @@ export async function generateMetadata({ params }) {
       images: [article.imageUrl],
     },
     alternates: {
-      canonical: `https://traumreise.de/reiseblog/${slug}`,
+      canonical: `${SITE_URL}/reiseblog/${slug}`,
     },
     // ── Vorübergehend: Indexierung deaktiviert ───────────────────────────────
     robots: {

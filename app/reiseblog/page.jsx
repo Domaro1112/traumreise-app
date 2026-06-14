@@ -12,6 +12,7 @@ import {
   popularDestinations,
 } from '@/data/blogArticles';
 import { listPublishedBlogArticles } from '@/repositories/blog-cms';
+import { SITE_URL } from '@/lib/site-config';
 import { MapPin, ArrowRight } from 'lucide-react';
 
 // Always render server-side so newly published articles appear immediately.
@@ -35,7 +36,7 @@ export const metadata = {
     description:
       'Handverlesene Reise-Guides, Budget-Hacks und Geheimtipps – kostenlos und immer aktuell.',
     type: 'website',
-    url: 'https://traumreise.de/reiseblog',
+    url: `${SITE_URL}/reiseblog`,
     images: [
       {
         url: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80',
@@ -46,7 +47,7 @@ export const metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://traumreise.de/reiseblog',
+    canonical: `${SITE_URL}/reiseblog`,
   },
 };
 
@@ -58,22 +59,22 @@ export default async function Reiseblog() {
     '@graph': [
       {
         '@type': 'Blog',
-        '@id': 'https://traumreise.de/reiseblog#blog',
-        name: 'Traumreise Reiseblog',
+        '@id': `${SITE_URL}/reiseblog#blog`,
+        name: 'ApeAround Reiseblog',
         description:
           'Handverlesene Reise-Guides, Budget-Hacks und Insider-Tipps von unserem Experten-Team.',
-        url: 'https://traumreise.de/reiseblog',
+        url: `${SITE_URL}/reiseblog`,
         inLanguage: 'de-DE',
         publisher: {
           '@type': 'Organization',
-          name: 'Traumreise',
-          url: 'https://traumreise.de',
+          name: 'ApeAround',
+          url: SITE_URL,
         },
         blogPost: blogArticles.map((a) => ({
           '@type': 'BlogPosting',
           headline: a.title,
           description: a.excerpt,
-          url: `https://traumreise.de/reiseblog/${a.slug}`,
+          url: `${SITE_URL}/reiseblog/${a.slug}`,
           datePublished: a.date,
           author: { '@type': 'Person', name: a.author },
           keywords: a.tags.join(', '),
@@ -89,12 +90,12 @@ export default async function Reiseblog() {
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://traumreise.de' },
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
           {
             '@type': 'ListItem',
             position: 2,
             name: 'Reiseblog',
-            item: 'https://traumreise.de/reiseblog',
+            item: `${SITE_URL}/reiseblog`,
           },
         ],
       },
@@ -105,7 +106,7 @@ export default async function Reiseblog() {
         itemListElement: blogArticles.map((a, i) => ({
           '@type': 'ListItem',
           position: i + 1,
-          url: `https://traumreise.de/reiseblog/${a.slug}`,
+          url: `${SITE_URL}/reiseblog/${a.slug}`,
           name: a.title,
         })),
       },

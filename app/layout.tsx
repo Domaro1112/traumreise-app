@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
+import { SITE_URL } from "@/lib/site-config";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -17,6 +18,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Traumreise – Deine persönliche KI-Reiseberaterin",
   description:
     "Erzähl uns von dir – unsere KI findet dein perfektes Reiseziel inkl. Hotels, Flügen & Aktivitäten. 100% kostenlos & ohne Anmeldung.",

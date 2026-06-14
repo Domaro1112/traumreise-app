@@ -13,6 +13,7 @@ import BlogExportModal  from '@/components/admin/blog/BlogExportModal';
 import ImageUploader   from '@/components/admin/media/ImageUploader';
 import GalleryEditor   from '@/components/admin/media/GalleryEditor';
 import { generateTocFromSections, calcReadingTime } from '@/lib/blog-content-utils';
+import { SITE_URL, SITE_HOST } from '@/lib/site-config';
 
 function uid() {
   try { return crypto.randomUUID(); } catch { return `${Date.now()}-${Math.random().toString(36).slice(2)}`; }
@@ -843,7 +844,7 @@ export default function BlogEditorClient({ isNew, initialData }) {
           </Field>
 
           <Field label="Canonical URL" hint="Nur ausfüllen wenn dieser Artikel auf einer anderen URL kanonisch ist.">
-            <input type="url" value={f.canonical_url} onChange={e => set('canonical_url', e.target.value)} style={inputStyle} placeholder="https://traumreise.de/reiseblog/…" />
+            <input type="url" value={f.canonical_url} onChange={e => set('canonical_url', e.target.value)} style={inputStyle} placeholder={`${SITE_URL}/reiseblog/…`} />
           </Field>
 
           {/* SERP preview */}
@@ -851,7 +852,7 @@ export default function BlogEditorClient({ isNew, initialData }) {
             <div style={{ marginTop: '24px', padding: '20px 24px', background: '#F8FAFC', border: '1.5px solid #E2E8F0', borderRadius: '12px' }}>
               <p style={{ fontSize: '12px', fontWeight: 700, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '12px' }}>SERP-Vorschau</p>
               <p style={{ fontSize: '13px', color: '#0F9D58', marginBottom: '4px' }}>
-                traumreise.de › reiseblog › {f.slug || '…'}
+                {SITE_HOST} › reiseblog › {f.slug || '…'}
               </p>
               <p style={{ fontSize: '18px', fontWeight: 600, color: '#1A0DAB', marginBottom: '6px', lineHeight: 1.3 }}>
                 {f.seo_title || f.title || '(kein Titel)'}

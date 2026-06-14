@@ -1,5 +1,7 @@
+import { SITE_URL } from '@/lib/site-config';
+
 export default function ArticleJsonLd({ article }) {
-  const baseUrl = 'https://traumreise.de';
+  const baseUrl = SITE_URL;
   const articleUrl = `${baseUrl}/reiseblog/${article.slug}`;
 
   const schema = {
