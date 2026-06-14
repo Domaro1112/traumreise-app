@@ -221,6 +221,7 @@ function Classic({ onBack }) {
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState(null);
   const [personality, setPersonality] = useState(null);
+  const [extras, setExtras] = useState(null);
   const [error, setError] = useState("");
   const [showEmail, setShowEmail] = useState(false);
 
@@ -243,7 +244,7 @@ function Classic({ onBack }) {
   const reset = () => {
     setFreeText(""); setInterests([]); setBudget("");
     setDuration(""); setSeason("");
-    setResults(null); setPersonality(null); setError("");
+    setResults(null); setPersonality(null); setExtras(null); setError("");
   };
 
   const getDefaultDates = () => {
@@ -323,6 +324,7 @@ function Classic({ onBack }) {
       const parsed = await res.json();
       setPersonality(parsed.personality);
       setResults(parsed.destinations.map(d => ({ ...d, ...buildAffiliateUrls(d) })));
+      setExtras({ packingList: parsed.packingList, surprise: parsed.surprise });
     } catch { setError("Fehler. Bitte nochmal versuchen."); }
     setLoading(false);
   };
@@ -343,6 +345,9 @@ function Classic({ onBack }) {
           results={results}
           personality={personality}
           interests={interests}
+          packingList={extras?.packingList}
+          surprise={extras?.surprise}
+          duration={duration}
           onReset={reset}
           onEmail={() => setShowEmail(true)}
         />
