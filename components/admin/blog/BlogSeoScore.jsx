@@ -87,12 +87,23 @@ function CheckRow({ check }) {
   );
 }
 
-export default function BlogSeoScore({ f }) {
-  const { score, checks } = useMemo(() => calcSeoScore(f), [
-    f.seo_title, f.seo_description, f.slug, f.excerpt,
-    f.cover_image_url, f.hero_image_url, f.content_sections,
-    f.faq, f.category, f.tags, f.table_of_contents,
-  ]);
+/**
+ * initialData — the full article row from the DB (passed by BlogEditorClient).
+ * Supplies key_takeaways and internal_links which are not tracked in the
+ * live form state but are needed for a score that matches the admin list.
+ */
+export default function BlogSeoScore({ f, initialData }) {
+  const { score, checks } = useMemo(
+    () => calcSeoScore(f, initialData),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [
+      f.seo_title, f.seo_description, f.slug, f.excerpt,
+      f.cover_image_url, f.hero_image_url, f.content_sections,
+      f.faq, f.category, f.tags,
+      f.date, f.reading_time, f.author, f.destination, f.country,
+      initialData?.key_takeaways, initialData?.internal_links,
+    ]
+  );
 
   const errorCount = checks.filter(c => c.status === 'error').length;
   const warnCount  = checks.filter(c => c.status === 'warn').length;

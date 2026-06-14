@@ -808,7 +808,7 @@ export default function BlogEditorClient({ isNew, initialData }) {
       {tab === 'seo' && (
         <div>
           {/* ── SEO Score Card ───────────────────────────────────────────── */}
-          <BlogSeoScore f={f} />
+          <BlogSeoScore f={f} initialData={initialData} />
 
           <Field label="SEO Titel" hint="Wird in <title> und OG:title verwendet. Leer = Artikel-Titel.">
             <input
