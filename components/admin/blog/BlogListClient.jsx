@@ -346,24 +346,28 @@ export default function BlogListClient({ initialArticles }) {
       </div>
 
       {/* Table */}
-      <div style={{ background: '#FFFFFF', borderRadius: '16px', border: '1.5px solid #E2E8F0', overflow: 'auto', boxShadow: '0 2px 8px rgba(15,23,42,0.04)' }}>
+      <div style={{
+        background: '#FFFFFF', borderRadius: '16px',
+        border: '1.5px solid #E2E8F0',
+        overflowX: 'auto', overflowY: 'visible',
+        boxShadow: '0 2px 8px rgba(15,23,42,0.04)',
+        WebkitOverflowScrolling: 'touch',
+      }}>
         {filtered.length === 0 ? (
           <div style={{ padding: '60px 32px', textAlign: 'center', color: '#94A3B8', fontSize: '15px' }}>
             Keine Artikel gefunden.
           </div>
         ) : (
-          <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '700px' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '960px', tableLayout: 'auto' }}>
             <thead>
               <tr style={{ background: '#F8FAFC', borderBottom: '1.5px solid #E2E8F0' }}>
-                {['Titel', 'Kategorie', 'Status', 'Feedback', 'Erstellt', 'Veröffentlicht', 'Aktionen'].map(h => (
-                  <th key={h} style={{
-                    padding: '12px 14px', textAlign: 'left',
-                    fontSize: '11px', fontWeight: 700, color: '#64748B',
-                    letterSpacing: '0.5px', textTransform: 'uppercase', whiteSpace: 'nowrap',
-                  }}>
-                    {h}
-                  </th>
-                ))}
+                <th style={{ padding: '12px 14px', textAlign: 'left', fontSize: '11px', fontWeight: 700, color: '#64748B', letterSpacing: '0.5px', textTransform: 'uppercase', whiteSpace: 'nowrap', minWidth: '200px' }}>Titel</th>
+                <th style={{ padding: '12px 14px', textAlign: 'left', fontSize: '11px', fontWeight: 700, color: '#64748B', letterSpacing: '0.5px', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>Kategorie</th>
+                <th style={{ padding: '12px 14px', textAlign: 'left', fontSize: '11px', fontWeight: 700, color: '#64748B', letterSpacing: '0.5px', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>Status</th>
+                <th style={{ padding: '12px 14px', textAlign: 'left', fontSize: '11px', fontWeight: 700, color: '#64748B', letterSpacing: '0.5px', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>Feedback</th>
+                <th style={{ padding: '12px 14px', textAlign: 'left', fontSize: '11px', fontWeight: 700, color: '#64748B', letterSpacing: '0.5px', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>Erstellt</th>
+                <th style={{ padding: '12px 14px', textAlign: 'left', fontSize: '11px', fontWeight: 700, color: '#64748B', letterSpacing: '0.5px', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>Veröffentlicht</th>
+                <th style={{ padding: '12px 14px', textAlign: 'left', fontSize: '11px', fontWeight: 700, color: '#64748B', letterSpacing: '0.5px', textTransform: 'uppercase', whiteSpace: 'nowrap', minWidth: '290px', width: '290px' }}>Aktionen</th>
               </tr>
             </thead>
             <tbody>
@@ -373,11 +377,11 @@ export default function BlogListClient({ initialArticles }) {
                   style={{ borderBottom: i < filtered.length - 1 ? '1px solid #F1F5F9' : 'none' }}
                 >
                   {/* Titel */}
-                  <td style={{ padding: '14px 14px', maxWidth: '280px' }}>
-                    <div style={{ fontWeight: 600, fontSize: '14px', color: '#0F172A', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  <td style={{ padding: '14px 14px', minWidth: '200px', maxWidth: '320px' }}>
+                    <div style={{ fontWeight: 600, fontSize: '14px', color: '#0F172A', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '300px' }}>
                       {article.title}
                     </div>
-                    <div style={{ fontSize: '11px', color: '#94A3B8', marginTop: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    <div style={{ fontSize: '11px', color: '#94A3B8', marginTop: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '300px' }}>
                       /{article.slug}
                     </div>
                   </td>
@@ -413,8 +417,8 @@ export default function BlogListClient({ initialArticles }) {
                   </td>
 
                   {/* Aktionen */}
-                  <td style={{ padding: '14px 14px', whiteSpace: 'nowrap' }}>
-                    <div style={{ display: 'flex', gap: '5px', alignItems: 'center' }}>
+                  <td style={{ padding: '10px 14px', whiteSpace: 'nowrap', minWidth: '290px', width: '290px', verticalAlign: 'middle', overflow: 'visible' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'nowrap', flexShrink: 0 }}>
 
                       {/* Bearbeiten */}
                       <Link

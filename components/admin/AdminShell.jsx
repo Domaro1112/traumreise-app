@@ -33,7 +33,8 @@ export default function AdminShell({ children, userEmail }) {
         <main style={{
           flex: 1,
           padding: 'clamp(20px, 3vw, 36px)',
-          overflowX: 'hidden',
+          overflowX: 'visible',
+          minWidth: 0,
         }}>
           {children}
         </main>
