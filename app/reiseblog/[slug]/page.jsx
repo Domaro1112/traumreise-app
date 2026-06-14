@@ -15,6 +15,7 @@ import {
   listPublishedBlogSlugs,
 } from '@/repositories/blog-cms';
 import { getDestinationsBySlugsBatch } from '@/repositories/destinations-cms';
+import BlogArticleViewTracker from '@/components/blog/BlogArticleViewTracker';
 
 function slugToName(slug) {
   return slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
@@ -95,6 +96,7 @@ export default async function ArticlePage({ params }) {
 
   return (
     <>
+      <BlogArticleViewTracker articleId={article.id} slug={article.slug} />
       <ArticleJsonLd article={article} />
       <Header />
 

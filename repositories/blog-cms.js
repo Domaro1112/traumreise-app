@@ -1,5 +1,6 @@
 import 'server-only';
 import { createServerClient } from '@/lib/supabase/server';
+import { calculateSeoScore, calculateLlmoScore } from '@/lib/blog-scores';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Shape mapper: DB row (snake_case) → public article shape (camelCase)
@@ -68,6 +69,47 @@ export async function listBlogAdmin() {
     .order('created_at', { ascending: false });
   if (error) throw new Error(error.message);
   return data ?? [];
+}
+
+/**
+ * Admin list enriched with view counts and SEO/LLMO scores.
+ * Runs exactly 2 DB queries regardless of article count (no N+1).
+ */
+export async function listBlogAdminWithStats() {
+  const supabase = createServerClient();
+
+  // All fields required for score calculation
+  const { data: articles, error } = await supabase
+    .from('blog_articles')
+    .select(
+      'id, slug, title, excerpt, category, destination, country, ' +
+      'status, featured, published_at, created_at, updated_at, ' +
+      'helpful_count, not_helpful_count, ' +
+      'seo_title, seo_description, ' +
+      'hero_image_url, cover_image_url, ' +
+      'date, reading_time, author, tags, ' +
+      'key_takeaways, faq, internal_links, content_sections'
+    )
+    .order('created_at', { ascending: false });
+
+  if (error) throw new Error(error.message);
+
+  // Aggregated view counts via Postgres function (single query for all articles)
+  const { data: viewRows } = await supabase.rpc('get_blog_view_counts');
+  const viewMap = Object.fromEntries(
+    (viewRows ?? []).map(v => [v.article_id, v])
+  );
+
+  return (articles ?? []).map(article => {
+    const views = viewMap[article.id] ?? { total_views: 0, views_30d: 0 };
+    return {
+      ...article,
+      total_views: Number(views.total_views ?? 0),
+      views_30d:   Number(views.views_30d   ?? 0),
+      seo_score:   calculateSeoScore(article),
+      llmo_score:  calculateLlmoScore(article),
+    };
+  });
 }
 
 /** Full article row for the admin editor. */
