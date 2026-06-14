@@ -1,11 +1,12 @@
 'use client';
 
 import { useState, useCallback, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import {
   Sparkles, Plane, ChevronRight, ChevronLeft, ShieldCheck, Loader2,
+  Mail, CheckCircle2,
 } from 'lucide-react';
 import Container from '@/components/layout/Container';
+import TravelResultView from '@/components/finder/TravelResultView';
 
 // ── Image library ─────────────────────────────────────────────────────────────
 // All files must live in public/images/funnel/cards/
@@ -79,6 +80,10 @@ const STEPS = [
   { num: 3, label: 'Budget' },
   { num: 4, label: 'Dauer' },
 ];
+
+// ── Value mappings to /api/ai/travel format ───────────────────────────────────
+const BUDGET_MAP   = { budget: 'low', mid: 'mid', comfort: 'high', luxury: 'high', open: 'mid' };
+const DURATION_MAP = { short_trip: 'weekend', one_week: 'week', two_weeks: 'twoweeks', long_trip: 'long', flexible: 'week' };
 
 // ── Visual card ───────────────────────────────────────────────────────────────
 function VisualCard({ selected, disabled, onClick, img, bg, label, sublabel }) {
@@ -205,17 +210,82 @@ function NextBtn({ onClick, disabled, label = 'Weiter' }) {
   );
 }
 
+// ── Email popup (same as /finder) ─────────────────────────────────────────────
+function EmailPopup({ destination, onClose }) {
+  const [email, setEmail] = useState('');
+  const [agreed, setAgreed] = useState(false);
+  const [done, setDone] = useState(false);
+  const valid = email.includes('@') && email.includes('.') && agreed;
+
+  if (done) return (
+    <div style={{ position: 'fixed', inset: 0, background: 'rgba(15,23,42,0.72)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+      <div style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '24px', boxShadow: '0 24px 80px rgba(15,23,42,0.20)', maxWidth: '420px', width: '100%', padding: '40px 32px', textAlign: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
+          <div style={{ width: '64px', height: '64px', borderRadius: '20px', background: 'linear-gradient(135deg,#EFF6FF,#ECFEFF)', border: '1.5px solid #BFDBFE', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Mail size={28} strokeWidth={1.5} color="#0EA5E9" />
+          </div>
+        </div>
+        <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', fontWeight: 700, color: '#0F172A', marginBottom: '10px' }}>Fast geschafft!</h3>
+        <p style={{ color: '#64748B', fontSize: '15px', lineHeight: 1.7, marginBottom: '24px' }}>Wir haben dir eine <strong style={{ color: '#0EA5E9' }}>Bestätigungsmail</strong> geschickt.</p>
+        <button onClick={onClose} style={{ padding: '12px 28px', borderRadius: '12px', border: 'none', background: 'linear-gradient(135deg,#0EA5E9,#06B6D4)', color: '#fff', fontWeight: 700, fontSize: '15px', cursor: 'pointer' }}>
+          Alles klar
+        </button>
+      </div>
+    </div>
+  );
+
+  return (
+    <div style={{ position: 'fixed', inset: 0, background: 'rgba(15,23,42,0.72)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+      <div style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '24px', boxShadow: '0 24px 80px rgba(15,23,42,0.20)', maxWidth: '420px', width: '100%', padding: '36px 32px', position: 'relative' }}>
+        <button onClick={onClose} style={{ position: 'absolute', top: 14, right: 18, background: 'none', border: 'none', color: '#94A3B8', fontSize: 22, cursor: 'pointer', lineHeight: 1 }}>×</button>
+        <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+          <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', fontWeight: 700, color: '#0F172A', marginBottom: '8px' }}>Reise-Inspiration ins Postfach</h3>
+          <p style={{ color: '#64748B', fontSize: '14px', lineHeight: 1.6 }}>
+            {destination ? `Erhalte deinen ${destination}-Reiseplan + wöchentlich die besten Deals.` : 'Wöchentlich die besten Deals & Inspiration.'}
+          </p>
+        </div>
+        <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="deine@email.de"
+          style={{ width: '100%', boxSizing: 'border-box', background: '#F8FAFF', border: `2px solid ${email.includes('@') ? '#0EA5E9' : '#E2E8F0'}`, borderRadius: '12px', padding: '13px 16px', color: '#0F172A', fontSize: '15px', outline: 'none', marginBottom: '14px', fontFamily: 'inherit' }} />
+        <label style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', cursor: 'pointer', marginBottom: '20px' }}>
+          <div onClick={() => setAgreed(a => !a)} style={{ width: '20px', height: '20px', minWidth: '20px', borderRadius: '5px', border: `2px solid ${agreed ? '#0EA5E9' : '#CBD5E1'}`, background: agreed ? '#EFF6FF' : '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '1px', cursor: 'pointer' }}>
+            {agreed && <span style={{ color: '#0EA5E9', fontSize: '13px', fontWeight: 700 }}>✓</span>}
+          </div>
+          <span style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.6 }}>
+            Ich bin einverstanden, Reise-Inspiration & Angebote per Mail zu erhalten. Abmeldung jederzeit möglich.
+          </span>
+        </label>
+        <button onClick={() => valid && setDone(true)} disabled={!valid}
+          style={{ width: '100%', padding: '14px', borderRadius: '12px', border: 'none', background: valid ? 'linear-gradient(135deg,#0EA5E9,#06B6D4)' : '#F1F5F9', color: valid ? '#fff' : '#94A3B8', fontWeight: 700, fontSize: '15px', cursor: valid ? 'pointer' : 'not-allowed', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+          <Mail size={16} strokeWidth={2} />
+          Kostenlos anmelden
+        </button>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '14px', marginTop: '12px' }}>
+          <span style={{ fontSize: '11px', color: '#94A3B8', display: 'flex', alignItems: 'center', gap: '4px' }}>
+            <CheckCircle2 size={11} strokeWidth={2} /> DSGVO-konform
+          </span>
+          <span style={{ fontSize: '11px', color: '#94A3B8' }}>Kein Spam</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── Main component ────────────────────────────────────────────────────────────
 export default function HomeTravelWizard() {
-  const router = useRouter();
-
-  const [step,       setStep]       = useState(1);
-  const [moods,      setMoods]      = useState([]);
-  const [season,     setSeason]     = useState('');
-  const [budget,     setBudget]     = useState('');
+  const [step,         setStep]         = useState(1);
+  const [moods,        setMoods]        = useState([]);
+  const [season,       setSeason]       = useState('');
+  const [budget,       setBudget]       = useState('');
   const [duration,     setDuration]     = useState('');
   const [personalNote, setPersonalNote] = useState('');
   const [submitting,   setSubmitting]   = useState(false);
+
+  // Result state
+  const [results,      setResults]      = useState(null);
+  const [personality,  setPersonality]  = useState(null);
+  const [extras,       setExtras]       = useState(null);
+  const [error,        setError]        = useState('');
+  const [showEmail,    setShowEmail]    = useState(false);
 
   const toggleMood = useCallback(
     id => setMoods(prev =>
@@ -226,23 +296,88 @@ export default function HomeTravelWizard() {
 
   const handleSelectSeason = (id) => { setSeason(id); setStep(3); };
 
+  // ── Affiliate URL helpers (same logic as /finder Classic) ──────────────────
+  const getDefaultDates = () => {
+    const apiDuration = DURATION_MAP[duration] || 'week';
+    const apiSeason   = season === 'flex' ? 'spring' : season;
+    const now  = new Date();
+    const year = now.getFullYear();
+    const nights = { weekend: 4, week: 7, twoweeks: 14, long: 21 }[apiDuration] || 7;
+    const seasonStart = {
+      spring: new Date(year, 3, 15),
+      summer: new Date(year, 6, 10),
+      autumn: new Date(year, 9, 10),
+      winter: new Date(year, 11, 20),
+    }[apiSeason] || new Date(now.getTime() + 30 * 86400000);
+    if (seasonStart < now) seasonStart.setFullYear(year + 1);
+    const end = new Date(seasonStart.getTime() + nights * 86400000);
+    const fmt = d => d.toISOString().split('T')[0];
+    return { ci: fmt(seasonStart), co: fmt(end) };
+  };
+
+  const buildAffiliateUrls = (dest) => {
+    const apiBudget   = BUDGET_MAP[budget] || 'mid';
+    const { ci, co }  = getDefaultDates();
+    const searchCity  = dest.skySearch || dest.destination;
+    const iata        = (dest.iata || '').toUpperCase().trim();
+    const skyClass    = apiBudget === 'high' ? 'business' : 'economy';
+    const toSlug = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    const BOOKING_ORDER = { low: 'price', mid: 'popularity', high: 'class_asc' };
+    const trivagoUrl = `https://www.trivago.de/?sQuery=${encodeURIComponent(searchCity)}&aDateRange%5Barr%5D=${ci}&aDateRange%5Bdep%5D=${co}&adults=2&children=0&iRoomType=7`;
+    const bookingUrl = `https://www.booking.com/searchresults.de.html?ss=${encodeURIComponent(searchCity)}&checkin=${ci}&checkout=${co}&group_adults=2&group_children=0&no_rooms=1&order=${BOOKING_ORDER[apiBudget] || 'popularity'}&lang=de`;
+    const skyUrl = iata
+      ? `https://www.skyscanner.de/fluge-nach/${iata}/?adults=2&children=0&cabinclass=${skyClass}`
+      : `https://www.skyscanner.de/fluge-nach/${toSlug(searchCity)}/?adults=2&children=0&cabinclass=${skyClass}`;
+    const gygUrl     = `https://www.getyourguide.de/s/?q=${encodeURIComponent(dest.destination)}&date_from=${ci}&date_to=${co}`;
+    const check24Url = `https://www.check24.de/urlaub/ergebnisse/?reiseziel=${encodeURIComponent(dest.destination)}&abreise=${ci}&rueckreise=${co}&erwachsene=2&kinder=0`;
+    return { trivagoUrl, bookingUrl, skyUrl, gygUrl, check24Url };
+  };
+
   const handleSubmit = async () => {
     if (submitting) return;
     setSubmitting(true);
+    setError('');
     try {
-      const res = await fetch('/api/travel-finder/session', {
-        method: 'POST',
+      const moodLabels  = moods.map(id => MOODS.find(m => m.id === id)?.label || id);
+      const apiBudget   = BUDGET_MAP[budget]   || 'mid';
+      const apiDuration = DURATION_MAP[duration] || 'week';
+      const apiSeason   = season === 'flex' ? 'spring' : season;
+
+      const res = await fetch('/api/ai/travel', {
+        method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            moodSelection: moods, season, budget, duration,
-            personalNote: personalNote.trim() || undefined,
-          }),
+          freeText:  personalNote.trim() || '',
+          interests: moodLabels,
+          budget:    apiBudget,
+          duration:  apiDuration,
+          season:    apiSeason,
+          adults:    2,
+          children:  0,
+        }),
       });
-      const { sessionId } = await res.json();
-      router.push(`/traumreise-ergebnis?session_id=${encodeURIComponent(sessionId)}`);
+      if (!res.ok) throw new Error();
+      const parsed = await res.json();
+      setPersonality(parsed.personality);
+      setResults(parsed.destinations.map(d => ({ ...d, ...buildAffiliateUrls(d) })));
+      setExtras({ packingList: parsed.packingList, surprise: parsed.surprise });
     } catch {
-      setSubmitting(false);
+      setError('Fehler beim Abrufen. Bitte nochmal versuchen.');
     }
+    setSubmitting(false);
+  };
+
+  const reset = () => {
+    setResults(null);
+    setPersonality(null);
+    setExtras(null);
+    setError('');
+    setStep(1);
+    setMoods([]);
+    setSeason('');
+    setBudget('');
+    setDuration('');
+    setPersonalNote('');
   };
 
   return (
@@ -256,214 +391,255 @@ export default function HomeTravelWizard() {
           marginTop: '-40px', position: 'relative', zIndex: 10,
         }}>
 
-          {/* Header */}
-          <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-            <div style={{
-              display: 'inline-flex', alignItems: 'center', gap: '8px',
-              padding: '6px 18px', borderRadius: '20px',
-              background: '#EFF6FF', border: '1px solid #BFDBFE',
-              fontSize: '11px', fontWeight: 700, letterSpacing: '1.5px',
-              textTransform: 'uppercase', color: '#0284C7', marginBottom: '12px',
-              fontFamily: 'var(--font-heading)',
-            }}>
-              <Sparkles size={12} strokeWidth={2} />
-              Deine Traumreise in 2 Minuten
-            </div>
-            <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(20px, 3vw, 30px)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', margin: '0 0 8px' }}>
-              Beschreibe deine perfekte Reise
-            </h2>
-            <p style={{ fontSize: '15px', color: '#64748B', lineHeight: 1.65, maxWidth: '500px', margin: '0 auto' }}>
-              Sag uns, worauf du Lust hast – ApeAround findet deine 3 persönlichen Traumziele.
-            </p>
-          </div>
-
-          <StepProgress current={step} />
-
-          {/* Step 1 — Stimmung */}
-          {step === 1 && (
-            <div>
-              <StepHeading
-                title="Welche Reise passt gerade zu dir?"
-                hint={
-                  <>
-                    Wähle bis zu 3 Optionen
-                    {moods.length > 0 && (
-                      <span style={{ color: '#0EA5E9', fontWeight: 700, marginLeft: '8px' }}>
-                        · {moods.length}/3 ausgewählt
-                      </span>
-                    )}
-                  </>
-                }
-              />
-              <div className="funnel-mood-grid" style={{ marginBottom: '28px' }}>
-                {MOODS.map(m => {
-                  const sel   = moods.includes(m.id);
-                  const maxed = !sel && moods.length >= 3;
-                  return (
-                    <VisualCard key={m.id} selected={sel} disabled={maxed}
-                      onClick={() => toggleMood(m.id)}
-                      img={m.img} bg={m.bg} label={m.label} />
-                  );
-                })}
-              </div>
+          {/* ── Loading ────────────────────────────────────────────────────── */}
+          {submitting && (
+            <div style={{ textAlign: 'center', padding: '60px 0' }}>
+              <div style={{ width: '48px', height: '48px', border: '3px solid #BAE6FD', borderTopColor: '#0EA5E9', borderRadius: '50%', animation: 'spin .8s linear infinite', margin: '0 auto 18px' }} />
+              <div style={{ color: '#64748B', fontSize: '15px', fontWeight: 500 }}>Deine Traumreise wird vorbereitet…</div>
             </div>
           )}
 
-          {/* Step 2 — Reisezeit */}
-          {step === 2 && (
-            <div>
-              <StepHeading
-                title="Wann möchtest du verreisen?"
-                hint="Wähle eine Option – danach geht es automatisch weiter"
-              />
-              <div className="funnel-season-grid" style={{ marginBottom: '28px' }}>
-                {SEASONS.map(s => (
-                  <VisualCard key={s.id} selected={season === s.id}
-                    onClick={() => handleSelectSeason(s.id)}
-                    img={s.img} bg={s.bg} label={s.label} />
-                ))}
-              </div>
-            </div>
+          {/* ── Results ────────────────────────────────────────────────────── */}
+          {!submitting && results && (
+            <TravelResultView
+              results={results}
+              personality={personality}
+              interests={moods}
+              packingList={extras?.packingList}
+              surprise={extras?.surprise}
+              duration={DURATION_MAP[duration] || 'week'}
+              onReset={reset}
+              onEmail={() => setShowEmail(true)}
+            />
           )}
 
-          {/* Step 3 — Budget */}
-          {step === 3 && (
-            <div>
-              <StepHeading title="Welches Budget passt zu dir?" hint="Wähle eine Option" />
-              <div className="funnel-budget-grid" style={{ marginBottom: '28px' }}>
-                {BUDGETS.map(b => (
-                  <VisualCard key={b.id} selected={budget === b.id}
-                    onClick={() => setBudget(b.id)}
-                    img={b.img} bg={b.bg} label={b.label} sublabel={b.sub} />
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Step 4 — Dauer + persönliche Notiz */}
-          {step === 4 && (
-            <div>
-              <StepHeading title="Wie lange möchtest du verreisen?" hint="Wähle eine Option" />
-              <div className="funnel-season-grid" style={{ marginBottom: '28px' }}>
-                {DURATIONS.map(d => (
-                  <VisualCard key={d.id} selected={duration === d.id}
-                    onClick={() => setDuration(d.id)}
-                    img={d.img} bg={d.bg} label={d.label} sublabel={d.sub} />
-                ))}
-              </div>
-
-              {/* Optional free-text field */}
-              <div style={{ marginBottom: '8px' }}>
-                <label style={{
-                  display: 'block', fontSize: '14px', fontWeight: 600,
-                  color: '#374151', marginBottom: '8px',
+          {/* ── Funnel (unchanged) ─────────────────────────────────────────── */}
+          {!submitting && !results && (
+            <>
+              {/* Header */}
+              <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+                <div style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '8px',
+                  padding: '6px 18px', borderRadius: '20px',
+                  background: '#EFF6FF', border: '1px solid #BFDBFE',
+                  fontSize: '11px', fontWeight: 700, letterSpacing: '1.5px',
+                  textTransform: 'uppercase', color: '#0284C7', marginBottom: '12px',
+                  fontFamily: 'var(--font-heading)',
                 }}>
-                  Was ist dir bei deiner Traumreise besonders wichtig?
-                  <span style={{ fontWeight: 400, color: '#94A3B8', marginLeft: '6px' }}>
-                    (optional)
-                  </span>
-                </label>
-                <textarea
-                  value={personalNote}
-                  onChange={e => setPersonalNote(e.target.value.slice(0, 500))}
-                  maxLength={500}
-                  rows={3}
-                  placeholder="Zum Beispiel: ruhiges Hotel, wenig Touristen, gutes Essen, kurze Flugzeit, kinderfreundlich, viel Natur …"
-                  style={{
-                    width: '100%', padding: '12px 14px', borderRadius: '14px',
-                    border: '1.5px solid #E2E8F0', background: '#FAFBFF',
-                    fontSize: '14px', color: '#0F172A', lineHeight: 1.65,
-                    fontFamily: 'inherit', resize: 'vertical',
-                    transition: 'border-color 0.2s',
-                    outline: 'none',
-                  }}
-                  onFocus={e => { e.currentTarget.style.borderColor = '#0EA5E9'; e.currentTarget.style.background = '#fff'; }}
-                  onBlur={e => { e.currentTarget.style.borderColor = '#E2E8F0'; e.currentTarget.style.background = '#FAFBFF'; }}
-                />
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '5px' }}>
-                  <span style={{ fontSize: '11px', color: '#94A3B8' }}>
-                    Optional – wir berücksichtigen nur Angaben, die zu deiner Reise passen.
-                  </span>
-                  <span style={{ fontSize: '11px', color: personalNote.length > 450 ? '#F97316' : '#94A3B8' }}>
-                    {personalNote.length}/500
-                  </span>
+                  <Sparkles size={12} strokeWidth={2} />
+                  Deine Traumreise in 2 Minuten
+                </div>
+                <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(20px, 3vw, 30px)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', margin: '0 0 8px' }}>
+                  Beschreibe deine perfekte Reise
+                </h2>
+                <p style={{ fontSize: '15px', color: '#64748B', lineHeight: 1.65, maxWidth: '500px', margin: '0 auto' }}>
+                  Sag uns, worauf du Lust hast – ApeAround findet deine 3 persönlichen Traumziele.
+                </p>
+              </div>
+
+              <StepProgress current={step} />
+
+              {/* Step 1 — Stimmung */}
+              {step === 1 && (
+                <div>
+                  <StepHeading
+                    title="Welche Reise passt gerade zu dir?"
+                    hint={
+                      <>
+                        Wähle bis zu 3 Optionen
+                        {moods.length > 0 && (
+                          <span style={{ color: '#0EA5E9', fontWeight: 700, marginLeft: '8px' }}>
+                            · {moods.length}/3 ausgewählt
+                          </span>
+                        )}
+                      </>
+                    }
+                  />
+                  <div className="funnel-mood-grid" style={{ marginBottom: '28px' }}>
+                    {MOODS.map(m => {
+                      const sel   = moods.includes(m.id);
+                      const maxed = !sel && moods.length >= 3;
+                      return (
+                        <VisualCard key={m.id} selected={sel} disabled={maxed}
+                          onClick={() => toggleMood(m.id)}
+                          img={m.img} bg={m.bg} label={m.label} />
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Step 2 — Reisezeit */}
+              {step === 2 && (
+                <div>
+                  <StepHeading
+                    title="Wann möchtest du verreisen?"
+                    hint="Wähle eine Option – danach geht es automatisch weiter"
+                  />
+                  <div className="funnel-season-grid" style={{ marginBottom: '28px' }}>
+                    {SEASONS.map(s => (
+                      <VisualCard key={s.id} selected={season === s.id}
+                        onClick={() => handleSelectSeason(s.id)}
+                        img={s.img} bg={s.bg} label={s.label} />
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Step 3 — Budget */}
+              {step === 3 && (
+                <div>
+                  <StepHeading title="Welches Budget passt zu dir?" hint="Wähle eine Option" />
+                  <div className="funnel-budget-grid" style={{ marginBottom: '28px' }}>
+                    {BUDGETS.map(b => (
+                      <VisualCard key={b.id} selected={budget === b.id}
+                        onClick={() => setBudget(b.id)}
+                        img={b.img} bg={b.bg} label={b.label} sublabel={b.sub} />
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Step 4 — Dauer + persönliche Notiz */}
+              {step === 4 && (
+                <div>
+                  <StepHeading title="Wie lange möchtest du verreisen?" hint="Wähle eine Option" />
+                  <div className="funnel-season-grid" style={{ marginBottom: '28px' }}>
+                    {DURATIONS.map(d => (
+                      <VisualCard key={d.id} selected={duration === d.id}
+                        onClick={() => setDuration(d.id)}
+                        img={d.img} bg={d.bg} label={d.label} sublabel={d.sub} />
+                    ))}
+                  </div>
+
+                  {/* Optional free-text field */}
+                  <div style={{ marginBottom: '8px' }}>
+                    <label style={{
+                      display: 'block', fontSize: '14px', fontWeight: 600,
+                      color: '#374151', marginBottom: '8px',
+                    }}>
+                      Was ist dir bei deiner Traumreise besonders wichtig?
+                      <span style={{ fontWeight: 400, color: '#94A3B8', marginLeft: '6px' }}>
+                        (optional)
+                      </span>
+                    </label>
+                    <textarea
+                      value={personalNote}
+                      onChange={e => setPersonalNote(e.target.value.slice(0, 500))}
+                      maxLength={500}
+                      rows={3}
+                      placeholder="Zum Beispiel: ruhiges Hotel, wenig Touristen, gutes Essen, kurze Flugzeit, kinderfreundlich, viel Natur …"
+                      style={{
+                        width: '100%', padding: '12px 14px', borderRadius: '14px',
+                        border: '1.5px solid #E2E8F0', background: '#FAFBFF',
+                        fontSize: '14px', color: '#0F172A', lineHeight: 1.65,
+                        fontFamily: 'inherit', resize: 'vertical',
+                        transition: 'border-color 0.2s',
+                        outline: 'none',
+                      }}
+                      onFocus={e => { e.currentTarget.style.borderColor = '#0EA5E9'; e.currentTarget.style.background = '#fff'; }}
+                      onBlur={e => { e.currentTarget.style.borderColor = '#E2E8F0'; e.currentTarget.style.background = '#FAFBFF'; }}
+                    />
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '5px' }}>
+                      <span style={{ fontSize: '11px', color: '#94A3B8' }}>
+                        Optional – wir berücksichtigen nur Angaben, die zu deiner Reise passen.
+                      </span>
+                      <span style={{ fontSize: '11px', color: personalNote.length > 450 ? '#F97316' : '#94A3B8' }}>
+                        {personalNote.length}/500
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Error */}
+              {error && (
+                <div style={{ padding: '12px 16px', borderRadius: '12px', background: '#FEF2F2', border: '1px solid #FECACA', color: '#DC2626', fontSize: '14px', marginBottom: '16px' }}>
+                  {error}
+                </div>
+              )}
+
+              {/* Navigation */}
+              <div style={{
+                paddingTop: '22px', borderTop: '1px solid #F1F5F9',
+                display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px',
+              }}>
+                <div>
+                  {step > 1 && (
+                    <button
+                      onClick={() => setStep(s => s - 1)}
+                      style={{
+                        display: 'inline-flex', alignItems: 'center', gap: '6px',
+                        padding: '11px 18px', borderRadius: '12px',
+                        border: '1.5px solid #E2E8F0', background: '#FFFFFF',
+                        color: '#64748B', fontSize: '14px', fontWeight: 600,
+                        cursor: 'pointer', fontFamily: 'inherit',
+                      }}
+                    >
+                      <ChevronLeft size={16} strokeWidth={2.5} />
+                      Zurück
+                    </button>
+                  )}
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '8px' }}>
+                  {step === 1 && <NextBtn onClick={() => setStep(2)} disabled={moods.length === 0} />}
+                  {step === 2 && <NextBtn onClick={() => season && setStep(3)} disabled={!season} />}
+                  {step === 3 && <NextBtn onClick={() => budget && setStep(4)} disabled={!budget} />}
+
+                  {step === 4 && (
+                    <button
+                      onClick={duration && !submitting ? handleSubmit : undefined}
+                      disabled={!duration || submitting}
+                      style={{
+                        display: 'inline-flex', alignItems: 'center', gap: '10px',
+                        padding: '15px clamp(22px, 4vw, 48px)', borderRadius: '14px', border: 'none',
+                        background: duration && !submitting
+                          ? 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)'
+                          : '#E2E8F0',
+                        color: duration && !submitting ? '#FFFFFF' : '#94A3B8',
+                        cursor: duration && !submitting ? 'pointer' : 'not-allowed',
+                        fontSize: 'clamp(14px, 2vw, 17px)', fontWeight: 700,
+                        fontFamily: 'var(--font-heading)',
+                        boxShadow: duration && !submitting ? '0 6px 24px rgba(14,165,233,0.38)' : 'none',
+                        transition: 'all 0.22s ease',
+                      }}
+                    >
+                      {submitting ? (
+                        <>
+                          <Loader2 size={18} strokeWidth={2} style={{ animation: 'spin 1s linear infinite' }} />
+                          Wird geladen…
+                        </>
+                      ) : (
+                        <>
+                          <Plane size={18} strokeWidth={2.5} />
+                          Meine Traumreise finden
+                          <Sparkles size={16} strokeWidth={2} />
+                        </>
+                      )}
+                    </button>
+                  )}
+
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                    <ShieldCheck size={11} strokeWidth={2} color="#94A3B8" />
+                    <span style={{ fontSize: '11px', color: '#94A3B8' }}>
+                      100% kostenlos &amp; unverbindlich
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </>
           )}
-
-          {/* Navigation */}
-          <div style={{
-            paddingTop: '22px', borderTop: '1px solid #F1F5F9',
-            display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px',
-          }}>
-            <div>
-              {step > 1 && (
-                <button
-                  onClick={() => setStep(s => s - 1)}
-                  style={{
-                    display: 'inline-flex', alignItems: 'center', gap: '6px',
-                    padding: '11px 18px', borderRadius: '12px',
-                    border: '1.5px solid #E2E8F0', background: '#FFFFFF',
-                    color: '#64748B', fontSize: '14px', fontWeight: 600,
-                    cursor: 'pointer', fontFamily: 'inherit',
-                  }}
-                >
-                  <ChevronLeft size={16} strokeWidth={2.5} />
-                  Zurück
-                </button>
-              )}
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '8px' }}>
-              {step === 1 && <NextBtn onClick={() => setStep(2)} disabled={moods.length === 0} />}
-              {step === 2 && <NextBtn onClick={() => season && setStep(3)} disabled={!season} />}
-              {step === 3 && <NextBtn onClick={() => budget && setStep(4)} disabled={!budget} />}
-
-              {step === 4 && (
-                <button
-                  onClick={duration && !submitting ? handleSubmit : undefined}
-                  disabled={!duration || submitting}
-                  style={{
-                    display: 'inline-flex', alignItems: 'center', gap: '10px',
-                    padding: '15px clamp(22px, 4vw, 48px)', borderRadius: '14px', border: 'none',
-                    background: duration && !submitting
-                      ? 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)'
-                      : '#E2E8F0',
-                    color: duration && !submitting ? '#FFFFFF' : '#94A3B8',
-                    cursor: duration && !submitting ? 'pointer' : 'not-allowed',
-                    fontSize: 'clamp(14px, 2vw, 17px)', fontWeight: 700,
-                    fontFamily: 'var(--font-heading)',
-                    boxShadow: duration && !submitting ? '0 6px 24px rgba(14,165,233,0.38)' : 'none',
-                    transition: 'all 0.22s ease',
-                  }}
-                >
-                  {submitting ? (
-                    <>
-                      <Loader2 size={18} strokeWidth={2} style={{ animation: 'spin 1s linear infinite' }} />
-                      Wird geladen…
-                    </>
-                  ) : (
-                    <>
-                      <Plane size={18} strokeWidth={2.5} />
-                      Meine Traumreise finden
-                      <Sparkles size={16} strokeWidth={2} />
-                    </>
-                  )}
-                </button>
-              )}
-
-              <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                <ShieldCheck size={11} strokeWidth={2} color="#94A3B8" />
-                <span style={{ fontSize: '11px', color: '#94A3B8' }}>
-                  100% kostenlos &amp; unverbindlich
-                </span>
-              </div>
-            </div>
-          </div>
 
         </div>
       </Container>
+
+      {showEmail && (
+        <EmailPopup
+          destination={results?.[0]?.destination || ''}
+          onClose={() => setShowEmail(false)}
+        />
+      )}
     </section>
   );
 }
