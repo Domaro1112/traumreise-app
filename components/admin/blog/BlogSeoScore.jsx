@@ -101,6 +101,7 @@ export default function BlogSeoScore({ f, initialData }) {
       f.cover_image_url, f.hero_image_url, f.content_sections,
       f.faq, f.category, f.tags,
       f.date, f.reading_time, f.author, f.destination, f.country,
+      f.key_takeaways,
       initialData?.key_takeaways, initialData?.internal_links,
     ]
   );

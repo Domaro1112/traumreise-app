@@ -132,6 +132,9 @@ export default function BlogEditorClient({ isNew, initialData }) {
     faq: initialData?.faq
       ? JSON.stringify(initialData.faq, null, 2)
       : '',
+    key_takeaways: initialData?.key_takeaways
+      ? JSON.stringify(initialData.key_takeaways, null, 2)
+      : '',
   });
 
   function set(key, val) {
@@ -226,6 +229,9 @@ export default function BlogEditorClient({ isNew, initialData }) {
       faq: (normalized._faq ?? []).length > 0
         ? JSON.stringify(normalized._faq, null, 2)
         : prev.faq,
+      key_takeaways: (normalized._keyTakeaways ?? []).length > 0
+        ? JSON.stringify(normalized._keyTakeaways, null, 2)
+        : prev.key_takeaways,
       gallery_items: (normalized._galleryImages ?? []).length > 0
         ? normalized._galleryImages.map((g, i) => ({
             localId: uid(),
@@ -274,6 +280,7 @@ export default function BlogEditorClient({ isNew, initialData }) {
     try { if (f.table_of_contents.trim()) payload.table_of_contents = JSON.parse(f.table_of_contents); } catch {}
     try { if (f.content_sections.trim())  payload.content_sections  = JSON.parse(f.content_sections);  } catch {}
     try { if (f.faq.trim())               payload.faq               = JSON.parse(f.faq);               } catch {}
+    try { if (f.key_takeaways?.trim())    payload.key_takeaways     = JSON.parse(f.key_takeaways);     } catch {}
     return payload;
   }
 

@@ -24,6 +24,9 @@ function slugToName(slug) {
 import Link from 'next/link';
 import { ArrowLeft, Plane, ArrowRight } from 'lucide-react';
 
+// Always render server-side so deleted/unpublished articles return 404 immediately.
+export const dynamic = 'force-dynamic';
+
 /* ── Static params ─────────────────────────────────────────────────────────── */
 export async function generateStaticParams() {
   const slugs = await listPublishedBlogSlugs();
