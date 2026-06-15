@@ -4,8 +4,9 @@ import { useState, useRef, useEffect } from 'react';
 import {
   ArrowRight, Sparkles, Share2, CheckCircle2,
   MapPin, Mail, RotateCcw, Plane, Building2, Compass, Briefcase,
-  Car, Calendar, Backpack, Star, Sun, ChevronDown, ChevronUp,
-  Send, MessageCircle, Euro,
+  Car, CalendarDays, Backpack, Sun, ChevronDown, ChevronUp,
+  Send, MessageCircle, Euro, Wallet, Gem, Hotel, MapPinned,
+  Info, FileText, Shirt, Smartphone, Heart, Package,
 } from 'lucide-react';
 import { moodOptions } from '@/data/finderOptions';
 import { getDestinationImage } from '@/data/destinationImages';
@@ -149,11 +150,11 @@ export default function TravelResultView({ results, personality, interests, pack
   };
 
   const packCategories = [
-    { key: 'documents', label: 'Dokumente',  icon: '📄' },
-    { key: 'clothes',   label: 'Kleidung',   icon: '👕' },
-    { key: 'tech',      label: 'Technik',    icon: '📱' },
-    { key: 'health',    label: 'Gesundheit', icon: '💊' },
-    { key: 'misc',      label: 'Sonstiges',  icon: '🎒' },
+    { key: 'documents', label: 'Dokumente',  Icon: FileText,   color: '#0284C7' },
+    { key: 'clothes',   label: 'Kleidung',   Icon: Shirt,      color: '#7C3AED' },
+    { key: 'tech',      label: 'Technik',    Icon: Smartphone, color: '#0EA5E9' },
+    { key: 'health',    label: 'Gesundheit', Icon: Heart,      color: '#E11D48' },
+    { key: 'misc',      label: 'Sonstiges',  Icon: Package,    color: '#EA580C' },
   ];
 
   return (
@@ -168,14 +169,16 @@ export default function TravelResultView({ results, personality, interests, pack
       {/* ══════════════════════════════════════════════════════════════════════ */}
       {/* ROW 1 · TOP DASHBOARD — 3-column grid                                */}
       {/* ══════════════════════════════════════════════════════════════════════ */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: '12px', marginBottom: '12px', alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: '12px', marginBottom: '12px', alignItems: 'stretch' }}>
 
         {/* Col 1 · Surprise */}
         {surprise && (
-          <section aria-label="Überraschungsziel" style={{ ...card, background: 'linear-gradient(135deg,#FDF4FF 0%,#F0F9FF 100%)', border: '1.5px solid #E9D5FF' }}>
-            <SectionTitle label="ApeAround-Überraschung" title="Dein geheimes Traumziel" icon={Star} iconColor="#A855F7" iconBg="#F3E8FF" iconBorder="#E9D5FF" />
+          <section aria-label="Überraschungsziel" style={{ ...card, background: 'linear-gradient(135deg,#FDF4FF 0%,#F0F9FF 100%)', border: '1.5px solid #E9D5FF', display: 'flex', flexDirection: 'column' }}>
+            <SectionTitle label="ApeAround-Überraschung" title="Dein geheimes Traumziel" icon={Sparkles} iconColor="#A855F7" iconBg="#F3E8FF" iconBorder="#E9D5FF" />
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-              <span style={{ fontSize: '26px' }}>✨</span>
+              <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'linear-gradient(135deg,#A855F7,#7C3AED)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <Sparkles size={18} strokeWidth={1.5} color="#FFFFFF" />
+              </div>
               <div>
                 <div style={{ fontSize: '19px', fontWeight: 800, color: '#7C3AED', fontFamily: 'var(--font-heading)', lineHeight: 1.1 }}>{surprise.destination}</div>
                 <div style={{ fontSize: '11px', color: '#A78BFA', display: 'flex', alignItems: 'center', gap: '3px', marginTop: '3px' }}>
@@ -197,7 +200,7 @@ export default function TravelResultView({ results, personality, interests, pack
 
         {/* Col 2 · Destination Details (updates when dest changes) */}
         {(cur.weather || cur.flightTime || cur.budgetPerDay || cur.highlights?.length > 0 || cur.tagline) && (
-          <section aria-label="Reiseziel-Details" style={{ ...card, background: '#FFFCF5', border: '1.5px solid #FED7AA' }}>
+          <section aria-label="Reiseziel-Details" style={{ ...card, background: '#FFFCF5', border: '1.5px solid #FED7AA', display: 'flex', flexDirection: 'column' }}>
             <SectionTitle label="Auf einen Blick" title={cur.destination} icon={Sun} iconColor="#D97706" iconBg="#FFF7ED" iconBorder="#FED7AA" />
 
             {/* 3 info tiles */}
@@ -205,21 +208,33 @@ export default function TravelResultView({ results, personality, interests, pack
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '7px', marginBottom: '12px' }}>
                 {cur.weather && (
                   <div style={{ padding: '10px 8px', borderRadius: '12px', background: '#FFF7ED', border: '1px solid #FED7AA', textAlign: 'center' }}>
-                    <div style={{ fontSize: '18px', marginBottom: '4px' }}>☀️</div>
+                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '6px' }}>
+                      <div style={{ width: '30px', height: '30px', borderRadius: '9px', background: '#FEF3C7', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Sun size={14} strokeWidth={2} color="#D97706" />
+                      </div>
+                    </div>
                     <div style={{ fontSize: '9px', fontWeight: 700, color: '#C2410C', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '3px' }}>Wetter</div>
                     <div style={{ fontSize: '11px', color: '#78350F', fontWeight: 600, lineHeight: 1.3 }}>{cur.weather}</div>
                   </div>
                 )}
                 {cur.flightTime && (
                   <div style={{ padding: '10px 8px', borderRadius: '12px', background: '#EFF6FF', border: '1px solid #BFDBFE', textAlign: 'center' }}>
-                    <div style={{ fontSize: '18px', marginBottom: '4px' }}>✈️</div>
+                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '6px' }}>
+                      <div style={{ width: '30px', height: '30px', borderRadius: '9px', background: '#DBEAFE', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Plane size={14} strokeWidth={2} color="#1D4ED8" />
+                      </div>
+                    </div>
                     <div style={{ fontSize: '9px', fontWeight: 700, color: '#1D4ED8', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '3px' }}>Flugzeit</div>
                     <div style={{ fontSize: '11px', color: '#1E3A8A', fontWeight: 600, lineHeight: 1.3 }}>{cur.flightTime}</div>
                   </div>
                 )}
                 {cur.budgetPerDay && (
                   <div style={{ padding: '10px 8px', borderRadius: '12px', background: '#F0FDF4', border: '1px solid #BBF7D0', textAlign: 'center' }}>
-                    <div style={{ fontSize: '18px', marginBottom: '4px' }}>💰</div>
+                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '6px' }}>
+                      <div style={{ width: '30px', height: '30px', borderRadius: '9px', background: '#DCFCE7', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Wallet size={14} strokeWidth={2} color="#15803D" />
+                      </div>
+                    </div>
                     <div style={{ fontSize: '9px', fontWeight: 700, color: '#15803D', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '3px' }}>Budget/Tag</div>
                     <div style={{ fontSize: '11px', color: '#14532D', fontWeight: 600, lineHeight: 1.3 }}>{cur.budgetPerDay}</div>
                   </div>
@@ -241,7 +256,7 @@ export default function TravelResultView({ results, personality, interests, pack
 
             {/* Tagline */}
             {cur.tagline && (
-              <div style={{ background: 'linear-gradient(135deg,#EFF6FF,#ECFEFF)', border: '1px solid #BFDBFE', borderRadius: '10px', padding: '10px 12px', display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
+              <div style={{ marginTop: 'auto', background: 'linear-gradient(135deg,#EFF6FF,#ECFEFF)', border: '1px solid #BFDBFE', borderRadius: '10px', padding: '10px 12px', display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
                 <Sparkles size={12} strokeWidth={2} color={ACCENT} style={{ flexShrink: 0, marginTop: '2px' }} />
                 <p itemProp="description" style={{ margin: 0, fontSize: '12px', color: '#1E40AF', fontStyle: 'italic', lineHeight: 1.6, fontWeight: 500 }}>„{cur.tagline}"</p>
               </div>
@@ -251,8 +266,8 @@ export default function TravelResultView({ results, personality, interests, pack
 
         {/* Col 3 · Personality */}
         {personality && (
-          <section aria-label="Dein Reiseprofil" style={{ ...card, background: 'linear-gradient(135deg,#EFF6FF 0%,#ECFEFF 100%)', border: '1.5px solid #BFDBFE' }}>
-            <SectionTitle label="ApeAround-Analyse" title="Dein Reiseprofil" icon={Sparkles} />
+          <section aria-label="Dein Reiseprofil" style={{ ...card, background: 'linear-gradient(135deg,#EFF6FF 0%,#ECFEFF 100%)', border: '1.5px solid #BFDBFE', display: 'flex', flexDirection: 'column' }}>
+            <SectionTitle label="ApeAround-Analyse" title="Dein Reiseprofil" icon={Compass} />
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '12px' }}>
               {(personality.types || []).map((t, i) => (
                 <span key={i} style={{ padding: '4px 11px', borderRadius: '20px', background: '#FFFFFF', border: '1.5px solid #BFDBFE', fontSize: '12px', color: '#0284C7', fontWeight: 700, fontFamily: 'var(--font-heading)' }}>{t}</span>
@@ -263,7 +278,7 @@ export default function TravelResultView({ results, personality, interests, pack
                 {personality.traits.map((trait, i) => <TraitBar key={i} label={trait.label} value={trait.value} />)}
               </div>
             )}
-            <p style={{ margin: 0, fontSize: '12px', fontStyle: 'italic', color: '#1E40AF', lineHeight: 1.6, fontWeight: 500 }}>„{personality.summary}"</p>
+            <p style={{ margin: 0, marginTop: 'auto', fontSize: '12px', fontStyle: 'italic', color: '#1E40AF', lineHeight: 1.6, fontWeight: 500 }}>„{personality.summary}"</p>
           </section>
         )}
       </div>
@@ -326,13 +341,13 @@ export default function TravelResultView({ results, personality, interests, pack
         {/* Reiseplan */}
         {!cur.itinerary?.length && phase2Loading && (
           <div style={{ ...card, marginBottom: '12px' }}>
-            <SectionTitle label="Dein Reiseplan" title="Reiseplan wird erstellt…" icon={Calendar} />
-            <InlineSkeleton message="Reiseplan wird erstellt…" />
+            <SectionTitle label="Dein Reiseplan" title="Reiseplan wird erstellt…" icon={CalendarDays} />
+            <InlineSkeleton message="Reiseplan wird erstellt… Einen kurzen Augenblick noch." />
           </div>
         )}
         {cur.itinerary?.length > 0 && (
           <section aria-label="Dein Reiseplan" style={{ ...card, marginBottom: '12px' }}>
-            <SectionTitle label="Dein Reiseplan" title={`${cur.destination} – Tag für Tag`} icon={Calendar} />
+            <SectionTitle label="Dein Reiseplan" title={`${cur.destination} – Tag für Tag`} icon={CalendarDays} />
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(200px,1fr))', gap: '8px' }}>
               {cur.itinerary.map((day, i) => (
                 <div key={i} style={{ padding: '12px', borderRadius: '12px', background: i === 0 ? 'linear-gradient(135deg,#EFF6FF,#ECFEFF)' : '#F8FAFF', border: `1px solid ${i === 0 ? '#BFDBFE' : '#E2E8F0'}` }}>
@@ -359,13 +374,13 @@ export default function TravelResultView({ results, personality, interests, pack
         {/* Hotels */}
         {!cur.hotels?.length && phase2Loading && (
           <div style={{ ...card, marginBottom: '12px' }}>
-            <SectionTitle label="KI-Empfehlungen" title="Empfohlene Hotels" icon={Building2} />
+            <SectionTitle label="KI-Empfehlungen" title="Empfohlene Hotels" icon={Hotel} />
             <InlineSkeleton message="Hotelvorschläge werden geladen…" />
           </div>
         )}
         {cur.hotels?.length > 0 && (
           <section aria-label="Empfohlene Hotels" style={{ ...card, marginBottom: '12px' }}>
-            <SectionTitle label="ApeAround-Empfehlungen" title="Empfohlene Hotels" icon={Building2} />
+            <SectionTitle label="ApeAround-Empfehlungen" title="Empfohlene Hotels" icon={Hotel} />
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(230px,1fr))', gap: '8px', marginBottom: '10px' }}>
               {cur.hotels.map((hotel, i) => (
                 <div key={i} style={{ padding: '12px', borderRadius: '12px', background: i === 0 ? 'linear-gradient(135deg,#EFF6FF,#ECFEFF)' : '#F8FAFF', border: `1.5px solid ${i === 0 ? '#BFDBFE' : '#E2E8F0'}` }}>
@@ -394,13 +409,13 @@ export default function TravelResultView({ results, personality, interests, pack
         {/* Aktivitäten */}
         {!cur.activities?.length && phase2Loading && (
           <div style={{ ...card, marginBottom: '12px' }}>
-            <SectionTitle label="Aktivitäten" title="Perfekt für dich ausgewählt" icon={Compass} iconColor="#EA580C" iconBg="#FFF7ED" iconBorder="#FED7AA" />
+            <SectionTitle label="Aktivitäten" title="Perfekt für dich ausgewählt" icon={MapPinned} iconColor="#EA580C" iconBg="#FFF7ED" iconBorder="#FED7AA" />
             <InlineSkeleton message="Aktivitäten werden geladen…" />
           </div>
         )}
         {cur.activities?.length > 0 && (
           <section aria-label="Empfohlene Aktivitäten" style={{ ...card, marginBottom: '12px' }}>
-            <SectionTitle label="Aktivitäten" title="Perfekt für dich ausgewählt" icon={Compass} iconColor="#EA580C" iconBg="#FFF7ED" iconBorder="#FED7AA" />
+            <SectionTitle label="Aktivitäten" title="Perfekt für dich ausgewählt" icon={MapPinned} iconColor="#EA580C" iconBg="#FFF7ED" iconBorder="#FED7AA" />
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(170px,1fr))', gap: '8px', marginBottom: '10px' }}>
               {cur.activities.map((act, i) => (
                 <div key={i} style={{ padding: '12px', borderRadius: '12px', background: '#F8FAFF', border: '1px solid #E2E8F0' }}>
@@ -414,7 +429,7 @@ export default function TravelResultView({ results, personality, interests, pack
               ))}
             </div>
             <a href={goUrl('getyourguide', cur.gygUrl)} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 14px', background: 'linear-gradient(135deg,#FF5533,#FF8C00)', color: '#FFFFFF', borderRadius: '10px', textDecoration: 'none', fontSize: '13px', fontWeight: 700 }}>
-              <Compass size={13} strokeWidth={2} />
+              <MapPinned size={13} strokeWidth={2} />
               Alle Aktivitäten in {cur.destination} – GetYourGuide
             </a>
           </section>
@@ -426,12 +441,16 @@ export default function TravelResultView({ results, personality, interests, pack
             <SectionTitle label="Budget-Übersicht" title="Kostenschätzung für deine Reise" icon={Euro} iconColor="#15803D" iconBg="#F0FDF4" iconBorder="#BBF7D0" />
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(110px,1fr))', gap: '8px', alignItems: 'stretch' }}>
               {[
-                { label: 'Flug',        value: cur.costEstimate.flight,     icon: '✈️', note: 'p.P.' },
-                { label: 'Unterkunft',  value: cur.costEstimate.hotel,      icon: '🏨', note: 'gesamt' },
-                { label: 'Aktivitäten', value: cur.costEstimate.activities, icon: '🎯', note: 'gesamt' },
+                { label: 'Flug',        value: cur.costEstimate.flight,     Icon: Plane,   iconBg: '#DBEAFE', iconColor: '#1D4ED8', note: 'p.P.' },
+                { label: 'Unterkunft',  value: cur.costEstimate.hotel,      Icon: Hotel,   iconBg: '#F3E8FF', iconColor: '#7C3AED', note: 'gesamt' },
+                { label: 'Aktivitäten', value: cur.costEstimate.activities, Icon: MapPinned, iconBg: '#FEE2E2', iconColor: '#DC2626', note: 'gesamt' },
               ].filter(r => r.value && r.value !== '0€').map((row, i) => (
                 <div key={i} style={{ padding: '14px 10px', borderRadius: '13px', background: '#F8FAFF', border: '1px solid #F1F5F9', textAlign: 'center' }}>
-                  <div style={{ fontSize: '22px', marginBottom: '5px' }}>{row.icon}</div>
+                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>
+                    <div style={{ width: '34px', height: '34px', borderRadius: '10px', background: row.iconBg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <row.Icon size={15} strokeWidth={1.75} color={row.iconColor} />
+                    </div>
+                  </div>
                   <div style={{ fontSize: '9px', fontWeight: 700, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>{row.label}</div>
                   <div style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', lineHeight: 1.2 }}>{row.value}</div>
                   <div style={{ fontSize: '10px', color: '#94A3B8', marginTop: '2px' }}>{row.note}</div>
@@ -439,7 +458,11 @@ export default function TravelResultView({ results, personality, interests, pack
               ))}
               {cur.costEstimate.total && (
                 <div style={{ padding: '14px 10px', borderRadius: '13px', background: 'linear-gradient(135deg,#EFF6FF,#ECFEFF)', border: '2px solid #BFDBFE', textAlign: 'center' }}>
-                  <div style={{ fontSize: '22px', marginBottom: '5px' }}>💎</div>
+                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>
+                    <div style={{ width: '34px', height: '34px', borderRadius: '10px', background: 'linear-gradient(135deg,#0EA5E9,#06B6D4)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Gem size={15} strokeWidth={1.75} color="#FFFFFF" />
+                    </div>
+                  </div>
                   <div style={{ fontSize: '9px', fontWeight: 700, color: '#0284C7', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>Gesamt</div>
                   <div style={{ fontSize: '15px', fontWeight: 800, color: '#0284C7', lineHeight: 1.2, fontFamily: 'var(--font-heading)' }}>{cur.costEstimate.total}</div>
                   <div style={{ fontSize: '10px', color: '#64748B', marginTop: '2px' }}>pro Person</div>
@@ -455,20 +478,24 @@ export default function TravelResultView({ results, personality, interests, pack
         {/* ══════════════════════════════════════════════════════════════════ */}
         {/* BOTTOM 4-COLUMN GRID: Chat | Flüge | Mietwagen | CTAs            */}
         {/* ══════════════════════════════════════════════════════════════════ */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: '12px', marginBottom: '12px', alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: '12px', marginBottom: '12px', alignItems: 'stretch' }}>
 
           {/* Chat */}
           <section aria-label="KI-Reiseberater" style={{ ...card, display: 'flex', flexDirection: 'column' }}>
             <SectionTitle label="KI-Reiseberater" title={`Frag mich zu ${cur.destination}`} icon={MessageCircle} />
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginBottom: '8px' }}>
               {['Beste Reisezeit?', 'Geheimtipps?', 'Sicherheit?', 'Lokales Essen?'].map(q => (
-                <button key={q} onClick={() => setChatInput(q)} style={{ padding: '4px 9px', borderRadius: '20px', border: '1px solid #BFDBFE', background: '#F0F9FF', color: '#0284C7', fontSize: '11px', fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>{q}</button>
+                <button type="button" key={q} onClick={() => setChatInput(q)} style={{ padding: '4px 9px', borderRadius: '20px', border: '1px solid #BFDBFE', background: '#F0F9FF', color: '#0284C7', fontSize: '11px', fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>{q}</button>
               ))}
             </div>
             <div style={{ flex: 1, minHeight: '80px', maxHeight: '200px', overflowY: 'auto', marginBottom: '8px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {chatMessages.length === 0 && (
                 <div style={{ textAlign: 'center', padding: '18px 0', color: '#94A3B8', fontSize: '12px', lineHeight: 1.6 }}>
-                  <div style={{ fontSize: '22px', marginBottom: '6px' }}>💬</div>
+                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>
+                    <div style={{ width: '36px', height: '36px', borderRadius: '11px', background: '#EFF6FF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <MessageCircle size={16} strokeWidth={1.5} color={ACCENT} />
+                    </div>
+                  </div>
                   Fragen zu <strong style={{ color: '#475569' }}>{cur.destination}</strong>?
                 </div>
               )}
@@ -497,16 +524,18 @@ export default function TravelResultView({ results, personality, interests, pack
           </section>
 
           {/* Flüge */}
-          <section aria-label="Empfohlene Flüge" style={card}>
+          <section aria-label="Empfohlene Flüge" style={{ ...card, display: 'flex', flexDirection: 'column' }}>
             <SectionTitle label="Flüge buchen" title="Empfohlene Flüge" icon={Plane} />
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px', borderRadius: '12px', background: '#EFF6FF', border: '1.5px solid #BFDBFE', marginBottom: '10px' }}>
-              <span style={{ fontSize: '22px' }}>✈️</span>
+              <div style={{ width: '38px', height: '38px', borderRadius: '12px', background: 'linear-gradient(135deg,#0770e3,#00a0de)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <Plane size={16} strokeWidth={1.75} color="#FFFFFF" />
+              </div>
               <div>
                 <div style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A' }}>Direktflüge nach {cur.destination}</div>
                 {cur.flightTime && <div style={{ fontSize: '11px', color: '#64748B', marginTop: '2px' }}>{cur.flightTime} · via Skyscanner</div>}
               </div>
             </div>
-            <a href={goUrl('skyscanner', cur.skyUrl)} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '11px 14px', background: 'linear-gradient(135deg,#0770e3,#00a0de)', color: '#FFFFFF', borderRadius: '12px', textDecoration: 'none', fontSize: '13px', fontWeight: 700 }}>
+            <a href={goUrl('skyscanner', cur.skyUrl)} target="_blank" rel="noopener noreferrer" style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: '8px', padding: '11px 14px', background: 'linear-gradient(135deg,#0770e3,#00a0de)', color: '#FFFFFF', borderRadius: '12px', textDecoration: 'none', fontSize: '13px', fontWeight: 700 }}>
               <Plane size={13} strokeWidth={2} />
               Flüge nach {cur.destination} suchen
               <ArrowRight size={13} strokeWidth={2.5} style={{ marginLeft: 'auto' }} />
@@ -515,11 +544,16 @@ export default function TravelResultView({ results, personality, interests, pack
 
           {/* Mietwagen */}
           {cur.carRental && (
-            <section aria-label="Mietwagen" style={card}>
+            <section aria-label="Mietwagen" style={{ ...card, display: 'flex', flexDirection: 'column' }}>
               <SectionTitle label="Mobilität vor Ort" title="Mietwagen" icon={Car} iconColor="#7C3AED" iconBg="#F5F3FF" iconBorder="#DDD6FE" />
               <div style={{ padding: '12px', borderRadius: '12px', background: cur.carRental.recommended ? '#F0FDF4' : '#F8FAFF', border: `1.5px solid ${cur.carRental.recommended ? '#BBF7D0' : '#E2E8F0'}`, marginBottom: cur.carRental.recommended ? '10px' : '0' }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-                  <span style={{ fontSize: '18px', flexShrink: 0 }}>{cur.carRental.recommended ? '🚗' : 'ℹ️'}</span>
+                  <div style={{ width: '32px', height: '32px', borderRadius: '9px', background: cur.carRental.recommended ? '#DCFCE7' : '#F1F5F9', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '1px' }}>
+                    {cur.carRental.recommended
+                      ? <Car size={14} strokeWidth={2} color="#15803D" />
+                      : <Info size={14} strokeWidth={2} color="#64748B" />
+                    }
+                  </div>
                   <div>
                     <div style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A', marginBottom: '3px' }}>{cur.carRental.recommended ? 'Mietwagen empfohlen' : 'Kein Mietwagen nötig'}</div>
                     <div style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.5 }}>{cur.carRental.reason}</div>
@@ -527,7 +561,7 @@ export default function TravelResultView({ results, personality, interests, pack
                 </div>
               </div>
               {cur.carRental.recommended && (
-                <a href={goUrl('check24', cur.check24Url)} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '11px 14px', background: 'linear-gradient(135deg,#003399,#e30613)', color: '#FFFFFF', borderRadius: '12px', textDecoration: 'none', fontSize: '13px', fontWeight: 700 }}>
+                <a href={goUrl('check24', cur.check24Url)} target="_blank" rel="noopener noreferrer" style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: '8px', padding: '11px 14px', background: 'linear-gradient(135deg,#003399,#e30613)', color: '#FFFFFF', borderRadius: '12px', textDecoration: 'none', fontSize: '13px', fontWeight: 700 }}>
                   <Car size={13} strokeWidth={2} /> Mietwagen – CHECK24
                 </a>
               )}
@@ -590,7 +624,9 @@ export default function TravelResultView({ results, personality, interests, pack
               return (
                 <div key={cat.key} style={{ borderRadius: '10px', border: '1px solid #F1F5F9', overflow: 'hidden' }}>
                   <button type="button" onClick={() => setOpenPackCategory(isOpen ? null : cat.key)} style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 12px', background: isOpen ? '#EFF6FF' : '#F8FAFF', border: 'none', cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left' }}>
-                    <span style={{ fontSize: '15px', flexShrink: 0 }}>{cat.icon}</span>
+                    <div style={{ width: '22px', height: '22px', borderRadius: '6px', background: isOpen ? cat.color + '20' : '#E2E8F0', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <cat.Icon size={11} strokeWidth={2} color={isOpen ? cat.color : '#64748B'} />
+                    </div>
                     <span style={{ fontSize: '12px', fontWeight: 700, color: '#0F172A', flex: 1 }}>{cat.label}</span>
                     <span style={{ fontSize: '10px', color: '#94A3B8' }}>{items.length}</span>
                     {isOpen ? <ChevronUp size={12} strokeWidth={2.5} color="#94A3B8" /> : <ChevronDown size={12} strokeWidth={2.5} color="#94A3B8" />}
