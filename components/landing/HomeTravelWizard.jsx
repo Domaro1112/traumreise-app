@@ -80,6 +80,21 @@ const STEPS = [
   { num: 4, label: 'Dauer' },
 ];
 
+const QUICK_CHIPS = [
+  'Kurze Flugzeit',
+  'Wenig Touristen',
+  'Gutes Essen',
+  'Familienfreundlich',
+  'Viel Natur',
+  'Direkt am Strand',
+  'Luxusurlaub',
+  'Abenteuer',
+  'Wellness',
+  'Mietwagen vermeiden',
+  'Gute Ausflüge',
+  'Budgetfreundlich',
+];
+
 // ── Visual card ───────────────────────────────────────────────────────────────
 function VisualCard({ selected, disabled, onClick, img, bg, label, sublabel }) {
   useEffect(() => {
@@ -209,14 +224,15 @@ function NextBtn({ onClick, disabled, label = 'Weiter' }) {
 export default function HomeTravelWizard() {
   const router = useRouter();
 
-  const [step,         setStep]         = useState(1);
-  const [moods,        setMoods]        = useState([]);
-  const [season,       setSeason]       = useState('');
-  const [budget,       setBudget]       = useState('');
-  const [duration,     setDuration]     = useState('');
-  const [personalNote, setPersonalNote] = useState('');
-  const [submitting,   setSubmitting]   = useState(false);
-  const [error,        setError]        = useState('');
+  const [step,          setStep]          = useState(1);
+  const [moods,         setMoods]         = useState([]);
+  const [season,        setSeason]        = useState('');
+  const [budget,        setBudget]        = useState('');
+  const [duration,      setDuration]      = useState('');
+  const [personalNote,  setPersonalNote]  = useState('');
+  const [selectedChips, setSelectedChips] = useState([]);
+  const [submitting,    setSubmitting]    = useState(false);
+  const [error,         setError]         = useState('');
 
   const toggleMood = useCallback(
     id => setMoods(prev =>
@@ -237,11 +253,15 @@ export default function HomeTravelWizard() {
       const apiDuration = DURATION_MAP[duration] || 'week';
       const apiSeason   = season === 'flex' ? 'spring' : season;
 
+      // Combine manual text + selected chips into one freeText
+      const parts = [personalNote.trim(), selectedChips.join(', ')].filter(Boolean);
+      const freeText = parts.join(' | ');
+
       const res = await fetch('/api/ai/travel-save', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          freeText:  personalNote.trim() || '',
+          freeText,
           interests: moodLabels,
           moodIds:   moods,
           budget:    apiBudget,
@@ -251,11 +271,24 @@ export default function HomeTravelWizard() {
           children:  0,
         }),
       });
-      if (!res.ok) throw new Error('API-Fehler');
+
+      if (!res.ok) {
+        let msg = `Serverfehler (${res.status})`;
+        try {
+          const body = await res.json();
+          if (body?.error) msg = body.error;
+        } catch { /* response not JSON */ }
+        console.error('[HomeTravelWizard] API error:', res.status, msg);
+        setError(msg);
+        setSubmitting(false);
+        return;
+      }
+
       const { id } = await res.json();
       router.push(`/traumreise/${id}`);
-    } catch {
-      setError('Fehler beim Abrufen. Bitte nochmal versuchen.');
+    } catch (err) {
+      console.error('[HomeTravelWizard] fetch error:', err);
+      setError('Verbindungsfehler. Bitte Internetverbindung prüfen und nochmal versuchen.');
       setSubmitting(false);
     }
   };
@@ -408,6 +441,57 @@ export default function HomeTravelWizard() {
                       <span style={{ fontSize: '11px', color: personalNote.length > 450 ? '#F97316' : '#94A3B8' }}>
                         {personalNote.length}/500
                       </span>
+                    </div>
+
+                    {/* ── Schnellauswahl Chips ───────────────────────────── */}
+                    <div style={{ marginTop: '16px' }}>
+                      <div style={{ fontSize: '12px', fontWeight: 700, color: '#64748B', letterSpacing: '0.5px', marginBottom: '10px', textTransform: 'uppercase' }}>
+                        Schnellauswahl
+                      </div>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                        {QUICK_CHIPS.map(chip => {
+                          const active = selectedChips.includes(chip);
+                          return (
+                            <button
+                              key={chip}
+                              type="button"
+                              onClick={() => setSelectedChips(prev =>
+                                prev.includes(chip) ? prev.filter(c => c !== chip) : [...prev, chip]
+                              )}
+                              style={{
+                                display: 'inline-flex', alignItems: 'center', gap: '5px',
+                                padding: '6px 13px', borderRadius: '20px',
+                                border: `1.5px solid ${active ? '#0EA5E9' : '#E2E8F0'}`,
+                                background: active ? '#EFF6FF' : '#FAFBFF',
+                                color: active ? '#0284C7' : '#64748B',
+                                fontSize: '13px', fontWeight: active ? 700 : 500,
+                                cursor: 'pointer', fontFamily: 'inherit',
+                                transition: 'all 0.15s ease',
+                                whiteSpace: 'nowrap',
+                              }}
+                            >
+                              {active && (
+                                <span style={{ fontSize: '11px', fontWeight: 800, color: '#0EA5E9' }}>✓</span>
+                              )}
+                              {chip}
+                            </button>
+                          );
+                        })}
+                      </div>
+                      {selectedChips.length > 0 && (
+                        <div style={{ marginTop: '8px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                          <span style={{ fontSize: '11px', color: '#0284C7' }}>
+                            {selectedChips.length} {selectedChips.length === 1 ? 'Wunsch' : 'Wünsche'} ausgewählt
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => setSelectedChips([])}
+                            style={{ fontSize: '11px', color: '#94A3B8', background: 'none', border: 'none', cursor: 'pointer', padding: '2px 6px' }}
+                          >
+                            Auswahl zurücksetzen
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
