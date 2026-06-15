@@ -2,10 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
 import { createSession, saveAnalysis } from '@/repositories/travel-funnel';
 
-// Allow up to 120 s on Vercel Pro / Fluid compute.
-// Without this, Vercel Hobby cuts the function at 60 s — which is why the
-// generic "Fehler beim Abrufen" error appeared: the Claude call was timing out.
-export const maxDuration = 120;
+export const maxDuration = 60;
 
 export async function POST(request: NextRequest) {
   const apiKey = process.env.ANTHROPIC_API_KEY;
@@ -33,22 +30,21 @@ export async function POST(request: NextRequest) {
 
   const budgetLabel   = ({ low: 'Budget', mid: 'Mittelklasse', high: 'Luxus' } as Record<string, string>)[budget ?? ''] ?? budget ?? 'Mittelklasse';
   const durationLabel = ({ weekend: 'Wochenende', week: '1 Woche', twoweeks: '2 Wochen', long: '3+ Wochen' } as Record<string, string>)[duration ?? ''] ?? duration ?? '1 Woche';
-  // Reduced itinerary days to cut output tokens by ~40 %:
-  // Old: weekend→3, week→5, twoweeks→7, long→7
-  // New: weekend→2, week→3, twoweeks→5, long→5
-  const itineraryDays = ({ weekend: 2, week: 3, twoweeks: 5, long: 5 } as Record<string, number>)[duration ?? ''] ?? 3;
   const seasonLabel   = ({ spring: 'Frühling', summer: 'Sommer', autumn: 'Herbst', winter: 'Winter' } as Record<string, string>)[season ?? ''] ?? season ?? 'Sommer';
   const interestList  = Array.isArray(interests) ? interests.join(', ') : (interests ?? '');
 
-  // JSON template — activities reduced 4→3 per destination to further cut output tokens
-  const prompt = `Du bist ein Premium-Reise-Experte. Erstelle für folgende Person exakt 3 Reiseempfehlungen.
+  // Phase 1: Schnell — nur Kerninfos, keine Hotels/Aktivitäten/Reiseplan
+  // Ziel: ~700-900 Output-Tokens → ~10 Sekunden
+  // Phase 2 (hotels, activities, itinerary, packingList) wird nachgelagert auf der Ergebnisseite geladen
+  const prompt = `Du bist ein Premium-Reise-Experte. Erstelle für folgende Person 3 Reiseempfehlungen (nur Basisinfo).
+
 PERSON: "${freeText || 'keine Angabe'}"
 Interessen: ${interestList} | Budget: ${budgetLabel} | Dauer: ${durationLabel} | Jahreszeit: ${seasonLabel} | ${adults ?? 2} Erwachsene${(children ?? 0) > 0 ? `, ${children} Kinder` : ''}
 
-Antworte AUSSCHLIESSLICH als valides JSON ohne Markdown-Blöcke oder Erklärungen:
+Antworte AUSSCHLIESSLICH als valides JSON ohne Markdown-Blöcke:
 {
   "personality": {
-    "types": ["Emoji Typ1","Emoji Typ2","Emoji Typ3"],
+    "types": ["Emoji1","Emoji2","Emoji3"],
     "summary": "Poetischer Satz zur Reisepersönlichkeit",
     "traits": [
       {"label":"Abenteuerlust","value":75},
@@ -68,74 +64,72 @@ Antworte AUSSCHLIESSLICH als valides JSON ohne Markdown-Blöcke oder Erklärunge
       "weather": "z.B. 24°C, sonnig",
       "flightTime": "z.B. 2h 30min ab Frankfurt",
       "budgetPerDay": "z.B. 80-120€ p.P.",
-      "hotels": [
-        {"name":"Hotelname","category":"4-Sterne Boutique","pricePerNight":"120-180€/Nacht","why":"Kurz"},
-        {"name":"Hotelname2","category":"Design Hotel","pricePerNight":"80-120€/Nacht","why":"Kurz"}
-      ],
-      "activities": [
-        {"name":"Aktivität","category":"Kultur","price":"kostenlos","why":"Kurze Begründung"},
-        {"name":"Aktivität","category":"Erlebnis","price":"35€","why":"Kurze Begründung"},
-        {"name":"Aktivität","category":"Kulinarik","price":"15€","why":"Kurze Begründung"}
-      ],
-      "carRental": {"recommended": false, "reason": "Kurz"},
-      "itinerary": [
-        {"day": 1, "title": "Tagesname", "activities": ["Aktivität 1","Aktivität 2","Aktivität 3"]}
-      ],
-      "costEstimate": {
-        "flight": "200-350€ p.P.",
-        "hotel": "700-1200€ gesamt",
-        "carRental": "0€",
-        "activities": "150-250€",
-        "total": "1050-1800€"
-      }
+      "carRental": {"recommended": false, "reason": "Kurze Begründung"},
+      "costEstimate": {"flight":"200-350€ p.P.","hotel":"700-1200€","carRental":"0€","activities":"150-250€","total":"1050-1800€"}
     }
   ],
-  "packingList": {
-    "documents": ["Reisepass","Krankenversicherungskarte","Kreditkarte ohne Auslandsgebühren"],
-    "clothes": ["Leichte Kleidung","Bequeme Schuhe","Abendkleidung"],
-    "tech": ["Reiseadapter","Powerbank","Kamera"],
-    "health": ["Sonnencreme SPF 50","Reiseapotheke","Insektenschutz"],
-    "misc": ["Offline-Stadtplan","Trinkflasche","Reise-App"]
-  },
   "surprise": {
     "destination": "Wenig bekanntes Reiseziel",
     "country": "Land",
-    "tagline": "Was die meisten nicht ahnen",
+    "tagline": "Was viele nicht ahnen",
     "whySurprising": "Warum es perfekt passt"
   }
 }
-Wichtig: Genau ${itineraryDays} Einträge im itinerary-Array pro Destination. Alle Texte auf Deutsch. Traits-Werte 0-100.`;
+Alle Texte auf Deutsch. Traits-Werte 0-100.`;
 
-  // ── Claude call ────────────────────────────────────────────────────────────
+  // ── Claude call (Phase 1) ──────────────────────────────────────────────────
   let raw: string;
+  let stopReason: string | null = null;
   try {
     const client  = new Anthropic({ apiKey });
     const message = await client.messages.create({
       model:      'claude-sonnet-4-6',
-      max_tokens: 4000,
+      max_tokens: 2000,
       messages:   [{ role: 'user', content: prompt }],
     });
+    stopReason = message.stop_reason ?? null;
     raw = message.content
       .map((b: { type: string; text?: string }) => (b.type === 'text' ? b.text ?? '' : ''))
       .join('')
       .replace(/```json\s*|```/g, '')
       .trim();
+
+    if (stopReason === 'max_tokens') {
+      console.error('[travel-save] Phase 1 truncated by max_tokens — raw length:', raw.length);
+    }
   } catch (err) {
     console.error('[travel-save] Claude API error:', err);
     return NextResponse.json(
-      { error: 'KI-Anfrage fehlgeschlagen. Bitte in wenigen Sekunden erneut versuchen.', detail: String(err) },
+      { error: 'KI-Anfrage fehlgeschlagen. Bitte in wenigen Sekunden erneut versuchen.' },
       { status: 502 }
     );
   }
 
   // ── JSON parse ─────────────────────────────────────────────────────────────
-  let parsed: unknown;
+  let parsed: Record<string, unknown>;
   try {
-    parsed = JSON.parse(raw);
+    parsed = JSON.parse(raw) as Record<string, unknown>;
   } catch (err) {
-    console.error('[travel-save] JSON parse error. Raw output:', raw.slice(0, 500));
+    console.error('[travel-save] JSON parse error:', String(err), '| stop_reason:', stopReason, '| raw:', raw.slice(0, 800));
+    const isTimeout = stopReason === 'max_tokens';
     return NextResponse.json(
-      { error: 'KI-Antwort konnte nicht verarbeitet werden. Bitte nochmal versuchen.', detail: String(err) },
+      {
+        error:      isTimeout
+          ? 'KI-Antwort wurde unterbrochen. Bitte nochmal versuchen.'
+          : 'KI-Antwort konnte nicht verarbeitet werden. Bitte nochmal versuchen.',
+        parseError: String(err),
+        stopReason,
+      },
+      { status: 500 }
+    );
+  }
+
+  // ── Basic validation ───────────────────────────────────────────────────────
+  const dests = parsed.destinations as unknown[];
+  if (!parsed.personality || !Array.isArray(dests) || dests.length === 0 || !parsed.surprise) {
+    console.error('[travel-save] Validation failed. Keys:', Object.keys(parsed));
+    return NextResponse.json(
+      { error: 'KI-Antwort unvollständig. Bitte nochmal versuchen.' },
       { status: 500 }
     );
   }
@@ -160,7 +154,7 @@ Wichtig: Genau ${itineraryDays} Einträge im itinerary-Array pro Destination. Al
   } catch (err) {
     console.error('[travel-save] Supabase error:', err);
     return NextResponse.json(
-      { error: 'Analyse konnte nicht gespeichert werden. Bitte nochmal versuchen.', detail: String(err) },
+      { error: 'Analyse konnte nicht gespeichert werden. Bitte nochmal versuchen.' },
       { status: 500 }
     );
   }

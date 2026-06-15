@@ -70,6 +70,7 @@ export default async function TravelResultPage({ params }) {
       <Header />
       <main style={{ paddingTop: '88px', minHeight: '100vh' }}>
         <ResultPageClient
+          sessionId={id}
           results={results}
           personality={analysis.personality}
           interests={session.mood_selection ?? []}

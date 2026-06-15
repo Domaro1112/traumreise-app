@@ -273,9 +273,10 @@ export default function HomeTravelWizard() {
       });
 
       if (!res.ok) {
-        let msg = `Serverfehler (${res.status})`;
+        let msg = `Serverfehler (${res.status}). Bitte nochmal versuchen.`;
         try {
           const body = await res.json();
+          console.error('[HomeTravelWizard] API error body:', body);
           if (body?.error) msg = body.error;
         } catch { /* response not JSON */ }
         console.error('[HomeTravelWizard] API error:', res.status, msg);

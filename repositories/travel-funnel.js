@@ -43,6 +43,45 @@ export async function saveAnalysis(sessionId, analysis) {
   if (error) throw new Error(error.message);
 }
 
+// Merges Phase 2 data (hotels, activities, itinerary, packingList) into an existing session.
+export async function mergeAnalysis(sessionId, phase2) {
+  const supabase = createServerClient();
+
+  // Read current Phase 1 data
+  const { data, error: readErr } = await supabase
+    .from('travel_funnel_sessions')
+    .select('generated_destinations')
+    .eq('id', sessionId)
+    .single();
+  if (readErr) throw new Error(readErr.message);
+
+  const existing = data?.generated_destinations ?? {};
+  const mergedDestinations = (existing.destinations ?? []).map((dest, i) => {
+    const p2 = (phase2.destinations ?? [])[i];
+    if (!p2) return dest;
+    return {
+      ...dest,
+      hotels:     p2.hotels     ?? dest.hotels,
+      activities: p2.activities ?? dest.activities,
+      itinerary:  p2.itinerary  ?? dest.itinerary,
+    };
+  });
+
+  const merged = {
+    ...existing,
+    destinations: mergedDestinations,
+    packingList:  phase2.packingList ?? existing.packingList,
+  };
+
+  const { error: writeErr } = await supabase
+    .from('travel_funnel_sessions')
+    .update({ generated_destinations: merged })
+    .eq('id', sessionId);
+  if (writeErr) throw new Error(writeErr.message);
+
+  return merged;
+}
+
 export async function updateSession(sessionId, { moodSelection, season, budget, duration, generatedDestinations }) {
   const supabase = createServerClient();
   const patch = {};
