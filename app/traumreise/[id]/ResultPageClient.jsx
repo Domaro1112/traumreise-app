@@ -64,7 +64,7 @@ function EmailPopup({ destination, onClose }) {
   );
 }
 
-export default function ResultPageClient({ sessionId, results: initialResults, personality, interests, packingList: initialPackingList, surprise, duration }) {
+export default function ResultPageClient({ sessionId, results: initialResults, personality, interests, packingList: initialPackingList, surprise, duration, budget }) {
   const router = useRouter();
   const [showEmail,   setShowEmail]   = useState(false);
   const [results,     setResults]     = useState(initialResults);
@@ -118,6 +118,7 @@ export default function ResultPageClient({ sessionId, results: initialResults, p
         packingList={packingList}
         surprise={surprise}
         duration={duration}
+        budget={budget}
         phase2Loading={phase2Loading}
         onReset={() => router.push('/')}
         onEmail={() => setShowEmail(true)}

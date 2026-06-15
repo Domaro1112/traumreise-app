@@ -6,7 +6,7 @@ import {
   MapPin, Mail, RotateCcw, Plane, Building2, Compass, Briefcase,
   Car, CalendarDays, Backpack, Sun, ChevronDown, ChevronUp,
   Send, MessageCircle, Euro, Wallet, Gem, Hotel, MapPinned,
-  Info, FileText, Shirt, Smartphone, Heart, Package,
+  Info, FileText, Shirt, Smartphone, Heart, Package, Award,
 } from 'lucide-react';
 import { moodOptions } from '@/data/finderOptions';
 import { getDestinationImage } from '@/data/destinationImages';
@@ -105,7 +105,153 @@ function InlineSkeleton({ message }) {
   );
 }
 
-export default function TravelResultView({ results, personality, interests, packingList, surprise, duration, phase2Loading, onReset, onEmail }) {
+const BUDGET_LABELS = { low: 'Budget-Reise', mid: 'Mittelklasse-Reise', high: 'Premium-Reise' };
+const DURATION_LABELS = { weekend: 'Kurztrip', week: 'Urlaubswoche', twoweeks: 'Zwei Wochen', long: 'Langzeitreise' };
+
+function getMatchReasons(result, personality, interests) {
+  const seen = new Set();
+  const out = [];
+  for (const h of (result.highlights || []).slice(0, 3)) {
+    const short = h.replace(/^[^\wäöüÄÖÜ]+/, '').split(' ').slice(0, 4).join(' ').replace(/[.,!?]$/, '');
+    if (!seen.has(short)) { seen.add(short); out.push(short); }
+    if (out.length === 3) break;
+  }
+  for (const t of (personality?.types || []).slice(0, 1)) {
+    if (!seen.has(t)) { seen.add(t); out.push(t); }
+  }
+  return out.slice(0, 4);
+}
+
+function getDecisionWhen(result) {
+  if (result.tagline) {
+    const clean = result.tagline.replace(/[„""]/g, '').split(/[,–—]/)[0].trim();
+    const words = clean.split(' ');
+    return words.slice(0, 6).join(' ') + (words.length > 6 ? '…' : '');
+  }
+  if (result.highlights?.[0]) {
+    const words = result.highlights[0].split(' ');
+    return words.slice(0, 5).join(' ') + (words.length > 5 ? '…' : '');
+  }
+  return result.destination;
+}
+
+function TravelDNA({ personality, interests, duration, budget }) {
+  if (!personality) return null;
+  const moodLabels = (interests || []).map(id => moodOptions.find(m => m.id === id)?.label).filter(Boolean);
+  const dLabel = DURATION_LABELS[duration];
+  const bLabel = BUDGET_LABELS[budget];
+  return (
+    <section aria-label="Reise-DNA" style={{ marginBottom: '12px', borderRadius: '18px', padding: '20px 22px', background: 'linear-gradient(135deg,#0F172A 0%,#1E3A5F 100%)', position: 'relative', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', top: -40, right: -40, width: '200px', height: '200px', borderRadius: '50%', background: 'radial-gradient(circle,rgba(14,165,233,0.18) 0%,transparent 70%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'relative' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+          <div style={{ width: '28px', height: '28px', borderRadius: '8px', background: 'rgba(14,165,233,0.2)', border: '1px solid rgba(14,165,233,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <Compass size={13} strokeWidth={2} color="#38BDF8" />
+          </div>
+          <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: '#38BDF8', fontFamily: 'var(--font-heading)' }}>Deine Reise-DNA</span>
+        </div>
+        {personality.summary && (
+          <p style={{ margin: '0 0 12px', fontSize: 'clamp(14px,2vw,16px)', fontWeight: 600, color: '#F1F5F9', lineHeight: 1.65, maxWidth: '720px' }}>
+            „{personality.summary}"
+          </p>
+        )}
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+          {(personality.types || []).map((t, i) => (
+            <span key={i} style={{ padding: '4px 11px', borderRadius: '20px', background: 'rgba(14,165,233,0.18)', border: '1px solid rgba(14,165,233,0.35)', fontSize: '11px', color: '#7DD3FC', fontWeight: 600 }}>{t}</span>
+          ))}
+          {moodLabels.map((l, i) => (
+            <span key={i} style={{ padding: '4px 11px', borderRadius: '20px', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.13)', fontSize: '11px', color: '#94A3B8', fontWeight: 500 }}>{l}</span>
+          ))}
+          {dLabel && <span style={{ padding: '4px 11px', borderRadius: '20px', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.13)', fontSize: '11px', color: '#94A3B8', fontWeight: 500 }}>{dLabel}</span>}
+          {bLabel && <span style={{ padding: '4px 11px', borderRadius: '20px', background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.13)', fontSize: '11px', color: '#94A3B8', fontWeight: 500 }}>{bLabel}</span>}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function DecisionHelper({ results }) {
+  return (
+    <section aria-label="Entscheidungshilfe" style={{ ...card, marginBottom: '12px' }}>
+      <SectionTitle label="Entscheidungshilfe" title="Welches Ziel passt wann?" icon={Compass} />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
+        {results.map((r, i) => {
+          const m = MATCHES[Math.min(i, MATCHES.length - 1)];
+          const when = getDecisionWhen(r);
+          return (
+            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', padding: '10px 12px', borderRadius: '10px', background: i === 0 ? m.bg : '#F8FAFF', border: `1px solid ${i === 0 ? m.border : '#F1F5F9'}` }}>
+              <div style={{ width: '24px', height: '24px', borderRadius: '7px', background: m.bg, border: `1.5px solid ${m.border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: '11px', fontWeight: 800, color: m.color, fontFamily: 'var(--font-heading)' }}>{i + 1}</div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <span style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A', fontFamily: 'var(--font-heading)' }}>{r.destination}</span>
+                <span style={{ fontSize: '12px', color: '#64748B' }}> – wenn du </span>
+                <span style={{ fontSize: '12px', color: '#64748B', fontStyle: 'italic' }}>{when.toLowerCase()}</span>
+                <span style={{ fontSize: '12px', color: '#64748B' }}> suchst</span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function NextStepCard({ result, onEmail }) {
+  const s = JSON.stringify(result).toLowerCase();
+  const isBeach  = /strand|beach|meer|sea|island|küste|insel/.test(s);
+  const needsCar = result.carRental?.recommended;
+  let step, reason, StepIcon, iconBg, iconColor, cta1, cta2;
+  if (isBeach) {
+    step = `Unterkunft in ${result.destination} sichern`;
+    reason = 'Gute Strandunterkünfte sind schnell ausgebucht – besonders in der Hochsaison lohnt es sich, früh zu buchen.';
+    StepIcon = Hotel; iconBg = '#F3E8FF'; iconColor = '#7C3AED';
+    cta1 = { label: 'Hotels prüfen', href: result.trivagoUrl || result.bookingUrl, provider: 'trivago' };
+    cta2 = { label: 'Flüge vergleichen', href: result.skyUrl, provider: 'skyscanner' };
+  } else if (needsCar) {
+    step = `Flug + Mietwagen für ${result.destination} kombinieren`;
+    reason = 'Ein Kombipaket ist oft günstiger als einzeln buchen – und gibt dir vor Ort maximale Freiheit.';
+    StepIcon = Car; iconBg = '#FEE2E2'; iconColor = '#DC2626';
+    cta1 = { label: 'Mietwagen + Flug – CHECK24', href: result.check24Url, provider: 'check24' };
+    cta2 = { label: 'Nur Flüge', href: result.skyUrl, provider: 'skyscanner' };
+  } else {
+    step = `Flüge nach ${result.destination} vergleichen`;
+    reason = 'Gute Preise entstehen oft wochenlang vor dem Flug – ein früher Vergleich zahlt sich aus.';
+    StepIcon = Plane; iconBg = '#DBEAFE'; iconColor = '#1D4ED8';
+    cta1 = { label: 'Flüge suchen – Skyscanner', href: result.skyUrl, provider: 'skyscanner' };
+    cta2 = { label: 'Hotels prüfen', href: result.bookingUrl, provider: 'booking' };
+  }
+  return (
+    <section aria-label="Nächster Schritt" style={{ marginBottom: '12px', borderRadius: '18px', padding: '20px 22px', background: 'linear-gradient(135deg,#0F172A 0%,#1E293B 100%)', position: 'relative', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', bottom: -30, left: -30, width: '160px', height: '160px', borderRadius: '50%', background: 'radial-gradient(circle,rgba(14,165,233,0.12) 0%,transparent 70%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'relative' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+          <div style={{ width: '28px', height: '28px', borderRadius: '8px', background: 'rgba(14,165,233,0.2)', border: '1px solid rgba(14,165,233,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <ArrowRight size={13} strokeWidth={2.5} color="#38BDF8" />
+          </div>
+          <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: '#38BDF8', fontFamily: 'var(--font-heading)' }}>Dein sinnvollster nächster Schritt</span>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '14px 16px', borderRadius: '13px', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.09)', marginBottom: '12px' }}>
+          <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: iconBg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <StepIcon size={17} strokeWidth={1.75} color={iconColor} />
+          </div>
+          <div>
+            <div style={{ fontSize: '14px', fontWeight: 700, color: '#F8FAFC', marginBottom: '4px', fontFamily: 'var(--font-heading)', lineHeight: 1.35 }}>{step}</div>
+            <div style={{ fontSize: '12px', color: '#94A3B8', lineHeight: 1.6 }}>{reason}</div>
+          </div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+          <a href={goUrl(cta1.provider, cta1.href)} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '11px 12px', borderRadius: '11px', background: 'linear-gradient(135deg,#0EA5E9,#06B6D4)', color: '#FFFFFF', textDecoration: 'none', fontSize: '12px', fontWeight: 700, textAlign: 'center' }}>
+            <StepIcon size={12} strokeWidth={2} />{cta1.label}
+          </a>
+          <a href={goUrl(cta2.provider, cta2.href)} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '11px 12px', borderRadius: '11px', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', color: '#E2E8F0', textDecoration: 'none', fontSize: '12px', fontWeight: 600, textAlign: 'center' }}>
+            {cta2.label}
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function TravelResultView({ results, personality, interests, packingList, surprise, duration, budget, phase2Loading, onReset, onEmail }) {
   const [idx, setIdx]                     = useState(0);
   const [showShare, setShowShare]         = useState(false);
   const [openPackCategory, setOpenPackCategory] = useState(null);
@@ -160,6 +306,8 @@ export default function TravelResultView({ results, personality, interests, pack
   return (
     <div style={{ maxWidth: '1080px', margin: '0 auto', padding: 'clamp(12px,4vw,28px)', animation: 'fadeUp .4s cubic-bezier(0.16,1,0.3,1) both' }}>
 
+      <TravelDNA personality={personality} interests={interests} duration={duration} budget={budget} />
+
       {/* ── Schema.org ─────────────────────────────────────────────────────── */}
       <script
         type="application/ld+json"
@@ -202,6 +350,21 @@ export default function TravelResultView({ results, personality, interests, pack
         {(cur.weather || cur.flightTime || cur.budgetPerDay || cur.highlights?.length > 0 || cur.tagline) && (
           <section aria-label="Reiseziel-Details" style={{ ...card, background: '#FFFCF5', border: '1.5px solid #FED7AA', display: 'flex', flexDirection: 'column' }}>
             <SectionTitle label="Auf einen Blick" title={cur.destination} icon={Sun} iconColor="#D97706" iconBg="#FFF7ED" iconBorder="#FED7AA" />
+
+            {/* Hauptempfehlung badge – only for #1 result */}
+            {idx === 0 && (
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '9px', padding: '9px 11px', borderRadius: '10px', background: 'linear-gradient(135deg,#F0FDF4,#ECFDF5)', border: '1.5px solid #86EFAC', marginBottom: '12px' }}>
+                <Award size={14} strokeWidth={2} color="#16A34A" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <div>
+                  <div style={{ fontSize: '11px', fontWeight: 700, color: '#15803D', marginBottom: '2px' }}>Unsere Empfehlung für dich</div>
+                  <div style={{ fontSize: '11px', color: '#166534', lineHeight: 1.5 }}>
+                    {cur.destination} passt am besten zu deinem Profil
+                    {personality?.types?.length ? ` als ${personality.types[0]}` : ''}
+                    {cur.highlights?.[0] ? ` – besonders wegen: ${cur.highlights[0].split('.')[0].toLowerCase()}.` : '.'}
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* 3 info tiles */}
             {(cur.weather || cur.flightTime || cur.budgetPerDay) && (
@@ -331,7 +494,32 @@ export default function TravelResultView({ results, personality, interests, pack
             );
           })}
         </div>
+
+        {/* Match reasons per destination */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(140px,1fr))', gap: '8px', marginTop: '10px' }}>
+          {results.map((r, i) => {
+            const reasons = getMatchReasons(r, personality, interests);
+            if (!reasons.length) return null;
+            const m = MATCHES[Math.min(i, MATCHES.length - 1)];
+            return (
+              <div key={i}>
+                <div style={{ fontSize: '10px', fontWeight: 600, color: '#94A3B8', marginBottom: '5px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                  {r.destination} – passt zu dir wegen
+                </div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+                  {reasons.map((reason, j) => (
+                    <span key={j} style={{ padding: '3px 8px', borderRadius: '20px', background: m.bg, border: `1px solid ${m.border}`, fontSize: '10px', color: m.color, fontWeight: 600 }}>
+                      {reason}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </section>
+
+      <DecisionHelper results={results} />
 
       {/* ══════════════════════════════════════════════════════════════════════ */}
       {/* PER-DESTINATION SECTIONS (animated on destination change)            */}
@@ -435,6 +623,39 @@ export default function TravelResultView({ results, personality, interests, pack
           </section>
         )}
 
+        {/* ── ApeAround-Geheimtipp ───────────────────────────────────── */}
+        {(cur.highlights?.length > 0 || (cur.activities?.length > 0 && !phase2Loading)) && (
+          <section aria-label="ApeAround-Geheimtipp" style={{ ...card, marginBottom: '12px', background: 'linear-gradient(135deg,#FFFBEB 0%,#FFF7ED 100%)', border: '1.5px solid #FDE68A' }}>
+            <SectionTitle label="ApeAround-Geheimtipp" title={`Unser Tipp für ${cur.destination}`} icon={Sparkles} iconColor="#D97706" iconBg="#FEF3C7" iconBorder="#FDE68A" />
+            <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+              <div style={{ width: '42px', height: '42px', borderRadius: '13px', background: 'linear-gradient(135deg,#F59E0B,#FBBF24)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <Sparkles size={18} strokeWidth={1.5} color="#FFFFFF" />
+              </div>
+              <div style={{ flex: 1 }}>
+                {cur.activities?.[1] && !phase2Loading ? (
+                  <>
+                    <div style={{ fontSize: '13px', fontWeight: 700, color: '#92400E', marginBottom: '4px', fontFamily: 'var(--font-heading)' }}>{cur.activities[1].name}</div>
+                    {cur.activities[1].why && <div style={{ fontSize: '12px', color: '#78350F', lineHeight: 1.6 }}>{cur.activities[1].why}</div>}
+                    {cur.activities[1].price && <div style={{ marginTop: '6px', display: 'inline-flex', padding: '2px 9px', borderRadius: '20px', background: '#FEF3C7', border: '1px solid #FDE68A', fontSize: '11px', color: '#92400E', fontWeight: 600 }}>{cur.activities[1].price}</div>}
+                  </>
+                ) : cur.activities?.[0] && !phase2Loading ? (
+                  <>
+                    <div style={{ fontSize: '13px', fontWeight: 700, color: '#92400E', marginBottom: '4px', fontFamily: 'var(--font-heading)' }}>{cur.activities[0].name}</div>
+                    {cur.activities[0].why && <div style={{ fontSize: '12px', color: '#78350F', lineHeight: 1.6 }}>{cur.activities[0].why}</div>}
+                  </>
+                ) : (
+                  <>
+                    <div style={{ fontSize: '13px', fontWeight: 700, color: '#92400E', marginBottom: '4px', fontFamily: 'var(--font-heading)' }}>{cur.highlights?.[1] || cur.highlights?.[0] || cur.destination}</div>
+                    <div style={{ fontSize: '12px', color: '#78350F', lineHeight: 1.6 }}>
+                      {cur.highlights?.[2] || `${cur.destination} hat weit mehr zu bieten als die typischen Touristenpfade. Frag unseren KI-Reiseberater für persönliche Insidertipps.`}
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Kostenschätzung — kompakt horizontal */}
         {cur.costEstimate && (
           <section aria-label="Kostenschätzung" style={{ ...card, marginBottom: '12px' }}>
@@ -474,6 +695,8 @@ export default function TravelResultView({ results, personality, interests, pack
             </div>
           </section>
         )}
+
+        <NextStepCard result={cur} onEmail={onEmail} />
 
         {/* ══════════════════════════════════════════════════════════════════ */}
         {/* BOTTOM 4-COLUMN GRID: Chat | Flüge | Mietwagen | CTAs            */}

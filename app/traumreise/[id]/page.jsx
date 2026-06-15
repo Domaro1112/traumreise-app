@@ -77,6 +77,7 @@ export default async function TravelResultPage({ params }) {
           packingList={analysis.packingList}
           surprise={analysis.surprise}
           duration={displayDuration}
+          budget={budget ?? null}
         />
       </main>
       <Footer />
