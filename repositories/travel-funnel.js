@@ -33,6 +33,16 @@ export async function getSession(sessionId) {
   return data;
 }
 
+// Saves the full AI analysis JSON to an existing session.
+export async function saveAnalysis(sessionId, analysis) {
+  const supabase = createServerClient();
+  const { error } = await supabase
+    .from('travel_funnel_sessions')
+    .update({ generated_destinations: analysis })
+    .eq('id', sessionId);
+  if (error) throw new Error(error.message);
+}
+
 export async function updateSession(sessionId, { moodSelection, season, budget, duration, generatedDestinations }) {
   const supabase = createServerClient();
   const patch = {};
