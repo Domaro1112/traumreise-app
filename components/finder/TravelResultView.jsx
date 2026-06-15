@@ -19,7 +19,7 @@ const MATCHES = [
 const ACCENT = '#0EA5E9';
 
 function goUrl(provider, rawUrl) {
-  if (!rawUrl) return '#';
+  if (!rawUrl) return undefined; // no href = no navigation, avoids '#' hash-scroll
   if (process.env.NODE_ENV !== 'production') {
     console.log('[AFFILIATE_BUTTON_HREF]', { component: 'TravelResultView', provider });
   }
@@ -74,11 +74,11 @@ function ShareModal({ destination, country, tagline, onClose }) {
   return (
     <div style={{ position: 'fixed', inset: 0, background: 'rgba(15,23,42,0.72)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
       <div style={{ background: '#FFFFFF', borderRadius: '24px', boxShadow: '0 24px 80px rgba(15,23,42,0.22)', border: '1.5px solid #BFDBFE', padding: '40px 32px', maxWidth: '380px', width: '100%', textAlign: 'center', position: 'relative' }}>
-        <button onClick={onClose} style={{ position: 'absolute', top: 14, right: 18, background: 'none', border: 'none', color: '#94A3B8', fontSize: 24, cursor: 'pointer', lineHeight: 1 }}>×</button>
+        <button type="button" onClick={onClose} style={{ position: 'absolute', top: 14, right: 18, background: 'none', border: 'none', color: '#94A3B8', fontSize: 24, cursor: 'pointer', lineHeight: 1 }}>×</button>
         <div style={{ fontFamily: 'var(--font-heading)', fontSize: 22, fontWeight: 700, color: '#0F172A', marginBottom: 6 }}>{destination}</div>
         <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: '1.5px', textTransform: 'uppercase', color: ACCENT, marginBottom: 14 }}>{country}</div>
         <div style={{ fontSize: 14, color: '#64748B', lineHeight: 1.7, marginBottom: 22, fontStyle: 'italic' }}>„{tagline}"</div>
-        <button onClick={share} style={{ width: '100%', padding: '13px', borderRadius: 12, border: 'none', background: 'linear-gradient(135deg,#0EA5E9,#06B6D4)', color: '#fff', fontWeight: 700, fontSize: 15, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+        <button type="button" onClick={share} style={{ width: '100%', padding: '13px', borderRadius: 12, border: 'none', background: 'linear-gradient(135deg,#0EA5E9,#06B6D4)', color: '#fff', fontWeight: 700, fontSize: 15, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
           <Share2 size={16} strokeWidth={2} />
           Traumreise teilen
         </button>
@@ -116,7 +116,12 @@ export default function TravelResultView({ results, personality, interests, pack
   const cur   = results[idx];
   const match = MATCHES[Math.min(idx, MATCHES.length - 1)];
 
-  useEffect(() => { chatEndRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [chatMessages]);
+  // Only scroll when messages are ADDED — not when chat is cleared on destination change
+  useEffect(() => {
+    if (chatMessages.length > 0) {
+      chatEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, [chatMessages]);
   useEffect(() => { setChatMessages([]); }, [idx]);
 
   function getDestImage(r, i) {
@@ -275,6 +280,7 @@ export default function TravelResultView({ results, personality, interests, pack
             const imgUrl = getDestImage(r, i);
             return (
               <button
+                type="button"
                 key={i}
                 onClick={() => setIdx(i)}
                 style={{
@@ -484,7 +490,7 @@ export default function TravelResultView({ results, personality, interests, pack
             </div>
             <div style={{ display: 'flex', gap: '6px' }}>
               <input type="text" value={chatInput} onChange={e => setChatInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && !e.shiftKey && sendChat()} placeholder={`Stell mir deine Frage zu ${cur.destination}...`} style={{ flex: 1, padding: '9px 12px', borderRadius: '10px', border: '1.5px solid #E2E8F0', background: '#F8FAFF', fontSize: '12px', color: '#0F172A', outline: 'none', fontFamily: 'inherit' }} />
-              <button onClick={sendChat} disabled={!chatInput.trim() || chatLoading} style={{ padding: '9px 13px', borderRadius: '10px', border: 'none', background: chatInput.trim() && !chatLoading ? 'linear-gradient(135deg,#0EA5E9,#06B6D4)' : '#F1F5F9', color: chatInput.trim() && !chatLoading ? '#FFFFFF' : '#94A3B8', cursor: chatInput.trim() && !chatLoading ? 'pointer' : 'not-allowed', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <button type="button" onClick={sendChat} disabled={!chatInput.trim() || chatLoading} style={{ padding: '9px 13px', borderRadius: '10px', border: 'none', background: chatInput.trim() && !chatLoading ? 'linear-gradient(135deg,#0EA5E9,#06B6D4)' : '#F1F5F9', color: chatInput.trim() && !chatLoading ? '#FFFFFF' : '#94A3B8', cursor: chatInput.trim() && !chatLoading ? 'pointer' : 'not-allowed', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <Send size={13} strokeWidth={2} />
               </button>
             </div>
@@ -544,16 +550,16 @@ export default function TravelResultView({ results, personality, interests, pack
                 <div style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A' }}>Reiseplan per Mail erhalten</div>
                 <div style={{ fontSize: '11px', color: '#64748B' }}>Wöchentlich Deals & Inspiration</div>
               </div>
-              <button onClick={onEmail} style={{ padding: '8px 13px', borderRadius: '10px', border: 'none', background: 'linear-gradient(135deg,#0EA5E9,#06B6D4)', color: '#FFFFFF', fontWeight: 700, fontSize: '12px', cursor: 'pointer', fontFamily: 'inherit', whiteSpace: 'nowrap', flexShrink: 0, boxShadow: '0 3px 10px rgba(14,165,233,0.3)' }}>
+              <button type="button" onClick={onEmail} style={{ padding: '8px 13px', borderRadius: '10px', border: 'none', background: 'linear-gradient(135deg,#0EA5E9,#06B6D4)', color: '#FFFFFF', fontWeight: 700, fontSize: '12px', cursor: 'pointer', fontFamily: 'inherit', whiteSpace: 'nowrap', flexShrink: 0, boxShadow: '0 3px 10px rgba(14,165,233,0.3)' }}>
                 Kostenlos →
               </button>
             </div>
 
-            <button onClick={() => setShowShare(true)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '11px', borderRadius: '12px', border: '1.5px solid #E2E8F0', background: '#FFFFFF', color: '#475569', fontWeight: 700, fontSize: '13px', cursor: 'pointer', fontFamily: 'inherit' }}>
+            <button type="button" onClick={() => setShowShare(true)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '11px', borderRadius: '12px', border: '1.5px solid #E2E8F0', background: '#FFFFFF', color: '#475569', fontWeight: 700, fontSize: '13px', cursor: 'pointer', fontFamily: 'inherit' }}>
               <Share2 size={13} strokeWidth={2} /> Traumreise teilen
             </button>
 
-            <button onClick={onReset} style={{ background: 'none', border: 'none', color: '#94A3B8', fontSize: '12px', cursor: 'pointer', fontFamily: 'inherit', padding: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
+            <button type="button" onClick={onReset} style={{ background: 'none', border: 'none', color: '#94A3B8', fontSize: '12px', cursor: 'pointer', fontFamily: 'inherit', padding: '6px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
               <RotateCcw size={11} strokeWidth={2} /> Neue Suche starten
             </button>
           </div>
@@ -583,7 +589,7 @@ export default function TravelResultView({ results, personality, interests, pack
               const isOpen = openPackCategory === cat.key;
               return (
                 <div key={cat.key} style={{ borderRadius: '10px', border: '1px solid #F1F5F9', overflow: 'hidden' }}>
-                  <button onClick={() => setOpenPackCategory(isOpen ? null : cat.key)} style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 12px', background: isOpen ? '#EFF6FF' : '#F8FAFF', border: 'none', cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left' }}>
+                  <button type="button" onClick={() => setOpenPackCategory(isOpen ? null : cat.key)} style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 12px', background: isOpen ? '#EFF6FF' : '#F8FAFF', border: 'none', cursor: 'pointer', fontFamily: 'inherit', textAlign: 'left' }}>
                     <span style={{ fontSize: '15px', flexShrink: 0 }}>{cat.icon}</span>
                     <span style={{ fontSize: '12px', fontWeight: 700, color: '#0F172A', flex: 1 }}>{cat.label}</span>
                     <span style={{ fontSize: '10px', color: '#94A3B8' }}>{items.length}</span>
