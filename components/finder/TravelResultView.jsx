@@ -27,12 +27,22 @@ function goUrl(provider, rawUrl) {
   return `/go/${provider}?url=${encodeURIComponent(rawUrl)}`;
 }
 
+// Stop at the first German connector/preposition — everything before is a complete noun phrase
+const CHIP_CONNECTOR_RX = /\s+(?:und|oder|mit|sowie|für|durch|über|unter|neben|zwischen|aber|sondern|an\s|in\s|auf\s|von\s|zu\s|nach\s|bei\s|am\s|im\s|zum\s|zur\s)\S/i;
+
+function chipify(text) {
+  const clean = text.replace(/^[^\wäöüÄÖÜ]+/, '');
+  const idx = clean.search(CHIP_CONNECTOR_RX);
+  const phrase = (idx > 2 ? clean.slice(0, idx) : clean).trim();
+  return phrase.split(/\s+/).slice(0, 4).join(' ').replace(/[.,!?:;–—]$/, '');
+}
+
 function getMatchReasons(result, personality, interests) {
   const seen = new Set();
   const out = [];
   for (const h of (result.highlights || []).slice(0, 3)) {
-    const short = h.replace(/^[^\wäöüÄÖÜ]+/, '').split(' ').slice(0, 4).join(' ').replace(/[.,!?]$/, '');
-    if (!seen.has(short)) { seen.add(short); out.push(short); }
+    const short = chipify(h);
+    if (short.length >= 3 && !seen.has(short)) { seen.add(short); out.push(short); }
     if (out.length === 3) break;
   }
   for (const t of (personality?.types || []).slice(0, 1)) {
@@ -371,8 +381,8 @@ export default function TravelResultView({ results, personality, interests, pack
 
           <section aria-label="Warum Platz 1" style={{ ...card, display: 'flex', flexDirection: 'column' }}>
             <SectionTitle
-              label="KI-Analyse"
-              title={idx === 0 ? `Warum ${cur.destination} Platz 1 gewonnen hat` : `Was ${cur.destination} überzeugt`}
+              label="ApeAround-Analyse"
+              title={idx === 0 ? `Warum ${cur.destination} auf Platz 1 ist` : `Was ${cur.destination} überzeugt`}
               icon={Award} iconColor="#16A34A" iconBg="#F0FDF4" iconBorder="#86EFAC"
             />
             <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
@@ -436,7 +446,7 @@ export default function TravelResultView({ results, personality, interests, pack
         {/* ── HOTELS ─────────────────────────────────────────────────────── */}
         {!cur.hotels?.length && phase2Loading && (
           <div style={{ ...card, marginBottom: '12px' }}>
-            <SectionTitle label="KI-Empfehlungen" title="Empfohlene Hotels" icon={Hotel} />
+            <SectionTitle label="ApeAround-Empfehlungen" title="Empfohlene Hotels" icon={Hotel} />
             <InlineSkeleton message="Hotelvorschläge werden geladen…" />
           </div>
         )}
