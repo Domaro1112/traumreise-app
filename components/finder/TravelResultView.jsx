@@ -159,7 +159,7 @@ export default function TravelResultView({ results, personality, interests, pack
         {/* Col 1 · Surprise */}
         {surprise && (
           <section aria-label="Überraschungsziel" style={{ ...card, background: 'linear-gradient(135deg,#FDF4FF 0%,#F0F9FF 100%)', border: '1.5px solid #E9D5FF' }}>
-            <SectionTitle label="KI-Überraschung" title="Dein geheimes Traumziel" icon={Star} iconColor="#A855F7" iconBg="#F3E8FF" iconBorder="#E9D5FF" />
+            <SectionTitle label="ApeAround-Überraschung" title="Dein geheimes Traumziel" icon={Star} iconColor="#A855F7" iconBg="#F3E8FF" iconBorder="#E9D5FF" />
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
               <span style={{ fontSize: '26px' }}>✨</span>
               <div>
