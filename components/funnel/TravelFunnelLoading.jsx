@@ -30,8 +30,13 @@ export default function TravelFunnelLoading() {
   useEffect(() => {
     const mi = setInterval(() => setMsgIdx(i => (i + 1) % MESSAGES.length), 1800);
     const ii = setInterval(() => setImgIdx(i => (i + 1) % IMAGES.length), 2400);
-    // Linear progress: reaches ~92% in ~18 s
-    const pi = setInterval(() => setProgress(p => Math.min(p + 1.28, 92)), 250);
+    // Eased progress: fast start, natural slowdown — asymptotically approaches 88%
+    // Never visually "sticks" at a number because no percentage is shown
+    const pi = setInterval(() => setProgress(p => {
+      const remaining = 88 - p;
+      if (remaining <= 0) return p;
+      return p + Math.max(0.12, remaining * 0.042);
+    }), 250);
     return () => { clearInterval(mi); clearInterval(ii); clearInterval(pi); };
   }, []);
 
@@ -122,7 +127,7 @@ export default function TravelFunnelLoading() {
         />
       </div>
       <p style={{ fontSize: '11px', color: '#94A3B8', marginTop: '8px' }}>
-        {Math.round(progress)}% abgeschlossen
+        Deine Traumreise wird vorbereitet…
       </p>
     </div>
   );

@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import TravelResultView from '@/components/finder/TravelResultView';
-import { Mail, CheckCircle2, Loader2 } from 'lucide-react';
+import { Mail, CheckCircle2 } from 'lucide-react';
 
 function EmailPopup({ destination, onClose }) {
   const [email,  setEmail]  = useState('');
@@ -64,39 +64,18 @@ function EmailPopup({ destination, onClose }) {
   );
 }
 
-function Phase2Banner() {
-  return (
-    <div style={{
-      display: 'flex', alignItems: 'center', gap: '10px',
-      background: 'linear-gradient(135deg, #EFF6FF, #ECFEFF)',
-      border: '1.5px solid #BAE6FD',
-      borderRadius: '14px',
-      padding: '14px 20px',
-      margin: '0 auto 24px',
-      maxWidth: '680px',
-      fontSize: '14px',
-      color: '#0369A1',
-      fontWeight: 500,
-    }}>
-      <Loader2 size={18} strokeWidth={2} style={{ animation: 'spin 1s linear infinite', flexShrink: 0 }} />
-      Hotels, Aktivitäten & Reiseplan werden geladen…
-      <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
-    </div>
-  );
-}
-
 export default function ResultPageClient({ sessionId, results: initialResults, personality, interests, packingList: initialPackingList, surprise, duration }) {
-  const router     = useRouter();
-  const [showEmail, setShowEmail] = useState(false);
-  const [results,   setResults]   = useState(initialResults);
+  const router = useRouter();
+  const [showEmail,   setShowEmail]   = useState(false);
+  const [results,     setResults]     = useState(initialResults);
   const [packingList, setPackingList] = useState(initialPackingList);
   const [phase2Loading, setPhase2Loading] = useState(false);
   const phase2Triggered = useRef(false);
 
   useEffect(() => {
-    // Only trigger Phase 2 when hotels are missing and we have a sessionId
-    const needsPhase2 = !results?.[0]?.hotels?.length;
-    if (!needsPhase2 || !sessionId || phase2Triggered.current) return;
+    // Phase 2 is already complete if hotels are present (saved from a previous visit)
+    const phase2Complete = (results?.[0]?.hotels?.length ?? 0) > 0;
+    if (phase2Complete || !sessionId || phase2Triggered.current) return;
 
     phase2Triggered.current = true;
     setPhase2Loading(true);
@@ -112,7 +91,6 @@ export default function ResultPageClient({ sessionId, results: initialResults, p
       })
       .then(data => {
         if (!data.destinations?.length) return;
-        // Merge Phase 2 fields (hotels, activities, itinerary) into existing results
         setResults(prev =>
           prev.map((dest, i) => {
             const p2 = data.destinations[i];
@@ -133,12 +111,6 @@ export default function ResultPageClient({ sessionId, results: initialResults, p
 
   return (
     <>
-      {phase2Loading && (
-        <div style={{ paddingTop: '16px' }}>
-          <Phase2Banner />
-        </div>
-      )}
-
       <TravelResultView
         results={results}
         personality={personality}
@@ -146,6 +118,7 @@ export default function ResultPageClient({ sessionId, results: initialResults, p
         packingList={packingList}
         surprise={surprise}
         duration={duration}
+        phase2Loading={phase2Loading}
         onReset={() => router.push('/')}
         onEmail={() => setShowEmail(true)}
       />

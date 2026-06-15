@@ -95,7 +95,16 @@ const card = {
   padding: '18px 20px',
 };
 
-export default function TravelResultView({ results, personality, interests, packingList, surprise, duration, onReset, onEmail }) {
+function InlineSkeleton({ message }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '14px 16px', borderRadius: '12px', background: '#F8FAFF', border: '1px dashed #BAE6FD', color: '#64748B', fontSize: '13px', fontWeight: 500 }}>
+      <div style={{ width: '14px', height: '14px', borderRadius: '50%', border: '2px solid #BFDBFE', borderTopColor: '#0EA5E9', animation: 'spin 0.9s linear infinite', flexShrink: 0 }} />
+      {message}
+    </div>
+  );
+}
+
+export default function TravelResultView({ results, personality, interests, packingList, surprise, duration, phase2Loading, onReset, onEmail }) {
   const [idx, setIdx]                     = useState(0);
   const [showShare, setShowShare]         = useState(false);
   const [openPackCategory, setOpenPackCategory] = useState(null);
@@ -238,7 +247,7 @@ export default function TravelResultView({ results, personality, interests, pack
         {/* Col 3 · Personality */}
         {personality && (
           <section aria-label="Dein Reiseprofil" style={{ ...card, background: 'linear-gradient(135deg,#EFF6FF 0%,#ECFEFF 100%)', border: '1.5px solid #BFDBFE' }}>
-            <SectionTitle label="KI-Analyse" title="Dein Reiseprofil" icon={Sparkles} />
+            <SectionTitle label="ApeAround-Analyse" title="Dein Reiseprofil" icon={Sparkles} />
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '12px' }}>
               {(personality.types || []).map((t, i) => (
                 <span key={i} style={{ padding: '4px 11px', borderRadius: '20px', background: '#FFFFFF', border: '1.5px solid #BFDBFE', fontSize: '12px', color: '#0284C7', fontWeight: 700, fontFamily: 'var(--font-heading)' }}>{t}</span>
@@ -258,7 +267,7 @@ export default function TravelResultView({ results, personality, interests, pack
       {/* ROW 2 · TOP 3 DESTINATION IMAGE CARDS                                */}
       {/* ══════════════════════════════════════════════════════════════════════ */}
       <section aria-label="Deine Top 3 Traumziele" style={{ ...card, marginBottom: '12px' }}>
-        <SectionTitle label="KI-Empfehlungen" title="Deine Top 3 Traumziele" icon={MapPin} />
+        <SectionTitle label="ApeAround-Empfehlungen" title="Deine Top 3 Traumziele" icon={MapPin} />
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(160px,1fr))', gap: '10px' }}>
           {results.map((r, i) => {
             const m      = MATCHES[Math.min(i, MATCHES.length - 1)];
@@ -309,6 +318,12 @@ export default function TravelResultView({ results, personality, interests, pack
       <div key={idx} style={{ animation: 'fadeUp .3s cubic-bezier(0.16,1,0.3,1) both' }}>
 
         {/* Reiseplan */}
+        {!cur.itinerary?.length && phase2Loading && (
+          <div style={{ ...card, marginBottom: '12px' }}>
+            <SectionTitle label="Dein Reiseplan" title="Reiseplan wird erstellt…" icon={Calendar} />
+            <InlineSkeleton message="Reiseplan wird erstellt…" />
+          </div>
+        )}
         {cur.itinerary?.length > 0 && (
           <section aria-label="Dein Reiseplan" style={{ ...card, marginBottom: '12px' }}>
             <SectionTitle label="Dein Reiseplan" title={`${cur.destination} – Tag für Tag`} icon={Calendar} />
@@ -336,9 +351,15 @@ export default function TravelResultView({ results, personality, interests, pack
         )}
 
         {/* Hotels */}
+        {!cur.hotels?.length && phase2Loading && (
+          <div style={{ ...card, marginBottom: '12px' }}>
+            <SectionTitle label="KI-Empfehlungen" title="Empfohlene Hotels" icon={Building2} />
+            <InlineSkeleton message="Hotelvorschläge werden geladen…" />
+          </div>
+        )}
         {cur.hotels?.length > 0 && (
           <section aria-label="Empfohlene Hotels" style={{ ...card, marginBottom: '12px' }}>
-            <SectionTitle label="KI-Empfehlungen" title="Empfohlene Hotels" icon={Building2} />
+            <SectionTitle label="ApeAround-Empfehlungen" title="Empfohlene Hotels" icon={Building2} />
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(230px,1fr))', gap: '8px', marginBottom: '10px' }}>
               {cur.hotels.map((hotel, i) => (
                 <div key={i} style={{ padding: '12px', borderRadius: '12px', background: i === 0 ? 'linear-gradient(135deg,#EFF6FF,#ECFEFF)' : '#F8FAFF', border: `1.5px solid ${i === 0 ? '#BFDBFE' : '#E2E8F0'}` }}>
@@ -365,6 +386,12 @@ export default function TravelResultView({ results, personality, interests, pack
         )}
 
         {/* Aktivitäten */}
+        {!cur.activities?.length && phase2Loading && (
+          <div style={{ ...card, marginBottom: '12px' }}>
+            <SectionTitle label="Aktivitäten" title="Perfekt für dich ausgewählt" icon={Compass} iconColor="#EA580C" iconBg="#FFF7ED" iconBorder="#FED7AA" />
+            <InlineSkeleton message="Aktivitäten werden geladen…" />
+          </div>
+        )}
         {cur.activities?.length > 0 && (
           <section aria-label="Empfohlene Aktivitäten" style={{ ...card, marginBottom: '12px' }}>
             <SectionTitle label="Aktivitäten" title="Perfekt für dich ausgewählt" icon={Compass} iconColor="#EA580C" iconBg="#FFF7ED" iconBorder="#FED7AA" />
@@ -540,6 +567,12 @@ export default function TravelResultView({ results, personality, interests, pack
       {/* ══════════════════════════════════════════════════════════════════════ */}
       {/* PACKLISTE — global                                                   */}
       {/* ══════════════════════════════════════════════════════════════════════ */}
+      {!packingList && phase2Loading && (
+        <div style={{ ...card, marginBottom: '12px' }}>
+          <SectionTitle label="KI-Packliste" title="Was du einpacken solltest" icon={Backpack} />
+          <InlineSkeleton message="Packliste wird vorbereitet…" />
+        </div>
+      )}
       {packingList && (
         <section aria-label="KI-Packliste" style={{ ...card, marginBottom: '12px' }}>
           <SectionTitle label="KI-Packliste" title="Was du einpacken solltest" icon={Backpack} />
