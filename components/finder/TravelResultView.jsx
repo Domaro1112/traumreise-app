@@ -204,27 +204,80 @@ function getProfileCardData(typeStr) {
   return   { Icon: Award,      iconColor: '#0EA5E9', iconBg: '#EFF6FF', iconBorder: '#BFDBFE' };
 }
 
-function MonkeyVisual() {
+function ProfileBannerCard({ profileCards, summary }) {
   const [imgError, setImgError] = useState(false);
   return (
-    <div style={{ flex: '0 0 clamp(140px,26%,196px)', borderRadius: '18px', overflow: 'hidden', background: 'linear-gradient(160deg,#EFF6FF 0%,#DBEAFE 60%,#ECFEFF 100%)', border: '1.5px solid #BFDBFE', boxShadow: '0 4px 24px rgba(14,165,233,0.14)', alignSelf: 'stretch', minHeight: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-      {!imgError ? (
-        <img
-          src="/images/travel-profile-monkey.png"
-          alt="ApeAround Reisemonkey"
-          onError={() => setImgError(true)}
-          loading="lazy"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'right center', display: 'block', position: 'absolute', inset: 0 }}
-        />
-      ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', padding: '24px', color: '#93C5FD' }}>
-          <Compass size={38} strokeWidth={1.25} color="#93C5FD" />
-          <MapPin  size={26} strokeWidth={1.25} color="#BFDBFE" />
-          <Heart   size={20} strokeWidth={1.25} color="#DBEAFE" />
-          <Sparkles size={16} strokeWidth={1.25} color="#EFF6FF" />
+    <>
+      <style>{`
+        .ape-profile-banner {
+          position: relative;
+          min-height: clamp(280px,32vw,390px);
+          border-radius: 14px;
+          overflow: hidden;
+          border: 1.5px solid #BFDBFE;
+          box-shadow: 0 4px 24px rgba(14,165,233,0.11);
+        }
+        .ape-profile-overlay {
+          position: relative;
+          z-index: 1;
+          max-width: 54%;
+          padding: clamp(16px,3vw,26px);
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          justify-content: center;
+          min-height: clamp(280px,32vw,390px);
+          box-sizing: border-box;
+        }
+        @media (max-width: 580px) {
+          .ape-profile-banner { min-height: 340px; }
+          .ape-profile-overlay { max-width: 100%; min-height: 340px; }
+        }
+      `}</style>
+      <div
+        className="ape-profile-banner"
+        style={imgError
+          ? { background: 'linear-gradient(135deg,#EFF6FF 0%,#DBEAFE 100%)' }
+          : { backgroundImage: "url('/images/travel-profile-monkey.png')", backgroundSize: 'cover', backgroundPosition: 'right center' }
+        }
+      >
+        {/* Hidden sentinel for onError detection */}
+        {!imgError && (
+          <img src="/images/travel-profile-monkey.png" alt="" aria-hidden="true"
+            onError={() => setImgError(true)}
+            style={{ position: 'absolute', width: 0, height: 0, opacity: 0, pointerEvents: 'none' }}
+          />
+        )}
+        {/* Gradient overlay: left = near-white for text, right = transparent to reveal monkey */}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg,rgba(255,255,255,0.97) 0%,rgba(255,255,255,0.91) 38%,rgba(255,255,255,0.22) 62%,transparent 80%)', pointerEvents: 'none' }} />
+        {/* Content sits over the overlay on the left */}
+        <div className="ape-profile-overlay">
+          {profileCards.map(({ Icon, iconColor, iconBg, iconBorder, title }, j) => (
+            <div key={j} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '9px 13px', borderRadius: '11px', background: 'rgba(255,255,255,0.84)', backdropFilter: 'blur(8px)', border: '1.5px solid rgba(191,219,254,0.8)', boxShadow: '0 1px 8px rgba(14,165,233,0.07)' }}>
+              <div style={{ width: '30px', height: '30px', minWidth: '30px', borderRadius: '9px', background: iconBg, border: `1px solid ${iconBorder}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Icon size={13} strokeWidth={1.75} color={iconColor} />
+              </div>
+              <span style={{ fontSize: '13px', fontWeight: 600, color: '#0F172A', lineHeight: 1.3 }}>{title}</span>
+            </div>
+          ))}
+          {summary && (
+            <div style={{ display: 'flex', gap: '9px', marginTop: '2px', padding: '11px 13px', borderRadius: '10px', background: 'rgba(255,255,255,0.82)', backdropFilter: 'blur(8px)', border: '1px solid rgba(191,219,254,0.7)' }}>
+              <div style={{ width: '3px', minWidth: '3px', borderRadius: '2px', background: 'linear-gradient(to bottom,#0EA5E9,#06B6D4)', alignSelf: 'stretch' }} />
+              <p style={{ margin: 0, fontSize: '12px', fontStyle: 'italic', color: '#1E40AF', lineHeight: 1.65, fontWeight: 500 }}>
+                „{summary}"
+              </p>
+            </div>
+          )}
+          {imgError && (
+            <div style={{ display: 'flex', gap: '10px', marginTop: '6px' }}>
+              <Compass size={22} strokeWidth={1.25} color="#93C5FD" />
+              <MapPin  size={22} strokeWidth={1.25} color="#BFDBFE" />
+              <Heart   size={22} strokeWidth={1.25} color="#DBEAFE" />
+            </div>
+          )}
         </div>
-      )}
-    </div>
+      </div>
+    </>
   );
 }
 
@@ -420,29 +473,10 @@ export default function TravelResultView({ results, personality, interests, pack
           {personality && (
             <section aria-label="Warum diese Reise passt" style={{ ...card }}>
               <SectionTitle label="Dein Reiseprofil" title="Warum diese Reise perfekt zu dir passt" icon={Compass} />
-              <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
-                {/* LEFT – profile mini-cards + quote */}
-                <div style={{ flex: '1 1 220px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '7px' }}>
-                  {profileCards.map(({ Icon, iconColor, iconBg, iconBorder, title }, j) => (
-                    <div key={j} style={{ display: 'flex', alignItems: 'center', gap: '11px', padding: '10px 14px', borderRadius: '12px', background: '#F8FAFF', border: '1.5px solid #BFDBFE', boxShadow: '0 1px 6px rgba(14,165,233,0.06)' }}>
-                      <div style={{ width: '34px', height: '34px', minWidth: '34px', borderRadius: '10px', background: iconBg, border: `1px solid ${iconBorder}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <Icon size={15} strokeWidth={1.75} color={iconColor} />
-                      </div>
-                      <span style={{ fontSize: '13px', fontWeight: 600, color: '#0F172A', lineHeight: 1.35 }}>{title}</span>
-                    </div>
-                  ))}
-                  {personality.summary && (
-                    <div style={{ display: 'flex', gap: '10px', marginTop: '4px', padding: '12px 14px', borderRadius: '10px', background: 'linear-gradient(135deg,#EFF6FF,#ECFEFF)', border: '1px solid #BFDBFE' }}>
-                      <div style={{ width: '3px', minWidth: '3px', borderRadius: '2px', background: 'linear-gradient(to bottom,#0EA5E9,#06B6D4)', alignSelf: 'stretch' }} />
-                      <p style={{ margin: 0, fontSize: '12px', fontStyle: 'italic', color: '#1E40AF', lineHeight: 1.7, fontWeight: 500 }}>
-                        „{stripEmoji(personality.summary)}"
-                      </p>
-                    </div>
-                  )}
-                </div>
-                {/* RIGHT – monkey image */}
-                <MonkeyVisual />
-              </div>
+              <ProfileBannerCard
+                profileCards={profileCards}
+                summary={personality.summary ? stripEmoji(personality.summary) : ''}
+              />
             </section>
           )}
 
