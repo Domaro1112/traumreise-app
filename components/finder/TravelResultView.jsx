@@ -330,11 +330,62 @@ function AnalysisBannerCard({ reasons }) {
   );
 }
 
-const HOTEL_GRADIENTS = [
-  'linear-gradient(135deg,#0F172A 0%,#1E3A5F 100%)',
-  'linear-gradient(135deg,#1E1B4B 0%,#3730A3 100%)',
-  'linear-gradient(135deg,#064E3B 0%,#065F46 100%)',
-];
+const HOTEL_IMAGE_MAP = {
+  city:      '/images/hotels/city-hotel.png',
+  boutique:  '/images/hotels/boutique-hotel.png',
+  wellness:  '/images/hotels/wellness-hotel.png',
+  family:    '/images/hotels/family-hotel.png',
+  beach:     '/images/hotels/beach-resort.png',
+  mountain:  '/images/hotels/mountain-hotel.png',
+  budget:    '/images/hotels/budget-hotel.png',
+  romantic:  '/images/hotels/romantic-hotel.png',
+};
+
+function getHotelImage(hotel, destination, personality) {
+  const text = [
+    hotel.name, hotel.description, hotel.type, hotel.category,
+    destination, ...(personality?.types || []), personality?.summary,
+  ].filter(Boolean).join(' ').toLowerCase();
+  if (/wellness|spa|therme|entspannung/.test(text))          return HOTEL_IMAGE_MAP.wellness;
+  if (/familie|kinder|family/.test(text))                    return HOTEL_IMAGE_MAP.family;
+  if (/strand|beach|meer|resort/.test(text))                 return HOTEL_IMAGE_MAP.beach;
+  if (/berg|alpen|mountain|hütte/.test(text))           return HOTEL_IMAGE_MAP.mountain;
+  if (/budget|günstig|preiswert|preis-leistung/.test(text)) return HOTEL_IMAGE_MAP.budget;
+  if (/romantik|romantic|paar|zweisamkeit/.test(text))       return HOTEL_IMAGE_MAP.romantic;
+  if (/boutique|charmant|historisch|design/.test(text))      return HOTEL_IMAGE_MAP.boutique;
+  return HOTEL_IMAGE_MAP.city;
+}
+
+function HotelCardHeader({ src, isTopPick, price }) {
+  const [imgErr, setImgErr] = useState(false);
+  return (
+    <div style={{ height: 'clamp(150px,16vw,185px)', position: 'relative', overflow: 'hidden', borderRadius: '16px 16px 0 0', flexShrink: 0, background: imgErr ? 'linear-gradient(135deg,#0F172A 0%,#1E3A5F 100%)' : '#F1F5F9' }}>
+      {!imgErr ? (
+        <img
+          src={src}
+          alt=""
+          loading="lazy"
+          onError={() => setImgErr(true)}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+        />
+      ) : (
+        <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ width: '52px', height: '52px', borderRadius: '15px', background: 'rgba(255,255,255,0.13)', border: '1px solid rgba(255,255,255,0.22)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Hotel size={24} strokeWidth={1.5} color="rgba(255,255,255,0.88)" />
+          </div>
+        </div>
+      )}
+      {/* Gradient overlay for badge readability */}
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(15,23,42,0.22) 0%,rgba(15,23,42,0.04) 45%,rgba(15,23,42,0.30) 100%)', pointerEvents: 'none' }} />
+      {isTopPick && (
+        <div style={{ position: 'absolute', top: '10px', left: '10px', padding: '4px 10px', borderRadius: '8px', background: 'linear-gradient(135deg,#F59E0B,#EF4444)', fontSize: '10px', fontWeight: 700, color: '#FFFFFF', letterSpacing: '0.4px', zIndex: 1 }}>Top Pick</div>
+      )}
+      {price && (
+        <div style={{ position: 'absolute', top: '10px', right: '10px', padding: '5px 11px', borderRadius: '8px', background: 'rgba(15,23,42,0.62)', backdropFilter: 'blur(8px)', fontSize: '13px', fontWeight: 700, color: '#FFFFFF', letterSpacing: '0.2px', zIndex: 1 }}>{price}</div>
+      )}
+    </div>
+  );
+}
 
 // All providers are in ALLOWED_BASE_DOMAINS — routed through /go/[provider] for affiliate tracking
 const HOTEL_PROVIDERS = [
@@ -616,18 +667,11 @@ export default function TravelResultView({ results, personality, interests, pack
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,340px))', justifyContent: 'center', gap: 'clamp(10px,2vw,16px)', marginBottom: '22px' }}>
               {cur.hotels.map((hotel, i) => (
                 <div key={i} style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid #E2E8F0', boxShadow: '0 3px 18px rgba(15,23,42,0.08)', background: '#FFFFFF', display: 'flex', flexDirection: 'column' }}>
-                  {/* Gradient header */}
-                  <div style={{ height: '118px', background: HOTEL_GRADIENTS[i % HOTEL_GRADIENTS.length], position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <div style={{ width: '52px', height: '52px', borderRadius: '15px', background: 'rgba(255,255,255,0.13)', border: '1px solid rgba(255,255,255,0.22)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <Hotel size={24} strokeWidth={1.5} color="rgba(255,255,255,0.88)" />
-                    </div>
-                    {hotel.pricePerNight && (
-                      <div style={{ position: 'absolute', top: '10px', right: '10px', padding: '5px 11px', borderRadius: '8px', background: 'rgba(0,0,0,0.52)', backdropFilter: 'blur(8px)', fontSize: '13px', fontWeight: 700, color: '#FFFFFF', letterSpacing: '0.2px' }}>{hotel.pricePerNight}</div>
-                    )}
-                    {i === 0 && (
-                      <div style={{ position: 'absolute', top: '10px', left: '10px', padding: '4px 10px', borderRadius: '8px', background: 'linear-gradient(135deg,#F59E0B,#EF4444)', fontSize: '10px', fontWeight: 700, color: '#FFFFFF', letterSpacing: '0.4px' }}>Top Pick</div>
-                    )}
-                  </div>
+                  <HotelCardHeader
+                    src={getHotelImage(hotel, cur.destination, personality)}
+                    isTopPick={i === 0}
+                    price={hotel.pricePerNight}
+                  />
                   {/* Card body */}
                   <div style={{ padding: '14px 16px', flex: 1, display: 'flex', flexDirection: 'column' }}>
                     <div style={{ fontSize: '15px', fontWeight: 700, color: '#0F172A', fontFamily: 'var(--font-heading)', marginBottom: '4px', lineHeight: 1.25 }}>{hotel.name}</div>
@@ -644,6 +688,12 @@ export default function TravelResultView({ results, personality, interests, pack
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Symbolbilder-Hinweis */}
+            <div style={{ marginBottom: '16px', textAlign: 'center', fontSize: '10px', color: '#CBD5E1', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
+              <Info size={10} strokeWidth={2} color="#CBD5E1" />
+              Symbolbilder im ApeAround-Stil — keine echten Hotelfotos
             </div>
 
             {/* CTA heading */}
