@@ -343,6 +343,8 @@ const HOTEL_IMAGE_MAP = {
 
 function getHotelImage(hotel = {}, destination = '', personality = {}) {
   try {
+    // Direct type lookup takes priority (used by generic fallback hotels)
+    if (hotel?.type && HOTEL_IMAGE_MAP[hotel.type]) return HOTEL_IMAGE_MAP[hotel.type];
     const personalityTypes = Array.isArray(personality?.types) ? personality.types : [];
     const text = [
       hotel?.name, hotel?.description, hotel?.type, hotel?.category,
@@ -361,6 +363,49 @@ function getHotelImage(hotel = {}, destination = '', personality = {}) {
     // Fallback on any unexpected error
   }
   return HOTEL_IMAGE_MAP.city;
+}
+
+function buildDestinationHotelFallback(cur, personality) {
+  const destName = cur?.destination || cur?.name || cur?.title || 'deinem Reiseziel';
+  const destCountry = cur?.country || '';
+  const personalityTypes = Array.isArray(personality?.types) ? personality.types : [];
+  const text = [destName, destCountry, cur?.description, personality?.summary, ...personalityTypes]
+    .filter(Boolean).join(' ').toLowerCase();
+
+  if (/strand|meer|beach|küste|insel|mallorca|kreta|ibiza|fuerteventura|lanzarote|resort/.test(text)) {
+    return [
+      { name: `Strandresort in ${destName}`,    category: 'Strand & Erholung',    type: 'beach',   why: `Ideal, wenn du in ${destName} kurze Wege zum Meer und entspannte Urlaubstage suchst.`, isGeneric: true },
+      { name: `Boutique-Hotel in ${destName}`,  category: 'Charmant & zentral',   type: 'boutique',why: `Passt gut, wenn du Atmosphäre, Komfort und eine schöne Lage kombinieren möchtest.`,      isGeneric: true },
+    ];
+  }
+  if (/berg|alpen|mountain|tirol|innsbruck|salzburg|berchtesgaden|wandern/.test(text)) {
+    return [
+      { name: `Alpenhotel in ${destName}`,      category: 'Berge & Natur',        type: 'mountain',why: `Ideal für Natur, Ausblicke und entspannte Tage in alpiner Umgebung.`,                    isGeneric: true },
+      { name: `Wellnesshotel in ${destName}`,   category: 'Wellness & Erholung',  type: 'wellness',why: `Passt zu einer ruhigen Auszeit mit Komfort und Erholung.`,                               isGeneric: true },
+    ];
+  }
+  if (/wellness|spa|therme|bad |kurort|badenweiler|wiesbaden/.test(text)) {
+    return [
+      { name: `Wellnesshotel in ${destName}`,   category: 'Spa & Erholung',       type: 'wellness',why: `Ideal für eine erholsame Auszeit mit exklusiven Spa-Angeboten.`,                        isGeneric: true },
+      { name: `Boutique-Hotel in ${destName}`,  category: 'Charmant & stilvoll',  type: 'boutique',why: `Passt gut für einen gepflegten Aufenthalt mit persönlichem Charakter.`,                 isGeneric: true },
+    ];
+  }
+  if (/romantik|paar|zweisamkeit|verliebt|honeymoon/.test(text)) {
+    return [
+      { name: `Romantikhotel in ${destName}`,   category: 'Romantik & Genuss',    type: 'romantic',why: `Ideal für besondere Momente, schöne Atmosphäre und gemeinsame Zeit.`,                   isGeneric: true },
+      { name: `Boutique-Hotel in ${destName}`,  category: 'Charmant & stilvoll',  type: 'boutique',why: `Passt zu einem stilvollen Aufenthalt mit persönlichem Charakter.`,                      isGeneric: true },
+    ];
+  }
+  if (/familie|kinder|family|familienurlaub/.test(text)) {
+    return [
+      { name: `Familienhotel in ${destName}`,   category: 'Familien & Kinder',    type: 'family',  why: `Ideal für entspannte Familienurlaube mit Angeboten für Groß und Klein.`,                isGeneric: true },
+      { name: `Strandresort in ${destName}`,    category: 'Strand & Erholung',    type: 'beach',   why: `Viel Platz und Aktivitäten für die ganze Familie.`,                                     isGeneric: true },
+    ];
+  }
+  return [
+    { name: `Stadthotel in ${destName}`,        category: 'Zentral & komfortabel',type: 'city',    why: `Gute Wahl für kurze Wege, Komfort und flexible Reiseplanung.`,                          isGeneric: true },
+    { name: `Boutique-Hotel in ${destName}`,    category: 'Charmant & individuell',type: 'boutique',why: `Passt gut, wenn du Atmosphäre und eine besondere Unterkunft suchst.`,                  isGeneric: true },
+  ];
 }
 
 function HotelCardHeader({ src, isTopPick, price }) {
@@ -674,10 +719,7 @@ export default function TravelResultView({ results, personality, interests, pack
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,340px))', justifyContent: 'center', gap: 'clamp(10px,2vw,16px)', marginBottom: '22px' }}>
               {(cur.hotels?.length > 0
                 ? cur.hotels
-                : [
-                    { name: 'Hotel am Markt',        category: '4-Sterne-Hotel',   why: 'Zentrale Lage mit bestem Zugang zu allen Sehenswürdigkeiten.' },
-                    { name: 'Hotel Rathausglöckel',  category: 'Boutique-Hotel',   why: 'Charmantes Boutique-Hotel mit persönlichem Service und lokalem Flair.' },
-                  ]
+                : buildDestinationHotelFallback(cur, personality)
               ).map((hotel, i) => (
                 <div key={`${hotel?.name || 'hotel'}-${i}`} style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid #E2E8F0', boxShadow: '0 3px 18px rgba(15,23,42,0.08)', background: '#FFFFFF', display: 'flex', flexDirection: 'column' }}>
                   <HotelCardHeader
@@ -696,7 +738,9 @@ export default function TravelResultView({ results, personality, interests, pack
                     )}
                     <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', gap: '5px' }}>
                       <CheckCircle2 size={9} strokeWidth={2.5} color="#10B981" />
-                      <span style={{ fontSize: '10px', color: '#94A3B8', lineHeight: 1 }}>Basierend auf deinem Reiseprofil</span>
+                      <span style={{ fontSize: '10px', color: '#94A3B8', lineHeight: 1 }}>
+                        {hotel?.isGeneric ? 'Symbolische Unterkunftsempfehlung' : 'Basierend auf deinem Reiseprofil'}
+                      </span>
                     </div>
                   </div>
                 </div>
