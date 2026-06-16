@@ -365,47 +365,87 @@ function getHotelImage(hotel = {}, destination = '', personality = {}) {
   return HOTEL_IMAGE_MAP.city;
 }
 
-function buildDestinationHotelFallback(cur, personality) {
-  const destName = cur?.destination || cur?.name || cur?.title || 'deinem Reiseziel';
-  const destCountry = cur?.country || '';
-  const personalityTypes = Array.isArray(personality?.types) ? personality.types : [];
-  const text = [destName, destCountry, cur?.description, personality?.summary, ...personalityTypes]
-    .filter(Boolean).join(' ').toLowerCase();
-
-  if (/strand|meer|beach|küste|insel|mallorca|kreta|ibiza|fuerteventura|lanzarote|resort/.test(text)) {
-    return [
-      { name: `Strandresort in ${destName}`,    category: 'Strand & Erholung',    type: 'beach',   why: `Ideal, wenn du in ${destName} kurze Wege zum Meer und entspannte Urlaubstage suchst.`, isGeneric: true },
-      { name: `Boutique-Hotel in ${destName}`,  category: 'Charmant & zentral',   type: 'boutique',why: `Passt gut, wenn du Atmosphäre, Komfort und eine schöne Lage kombinieren möchtest.`,      isGeneric: true },
-    ];
-  }
-  if (/berg|alpen|mountain|tirol|innsbruck|salzburg|berchtesgaden|wandern/.test(text)) {
-    return [
-      { name: `Alpenhotel in ${destName}`,      category: 'Berge & Natur',        type: 'mountain',why: `Ideal für Natur, Ausblicke und entspannte Tage in alpiner Umgebung.`,                    isGeneric: true },
-      { name: `Wellnesshotel in ${destName}`,   category: 'Wellness & Erholung',  type: 'wellness',why: `Passt zu einer ruhigen Auszeit mit Komfort und Erholung.`,                               isGeneric: true },
-    ];
-  }
-  if (/wellness|spa|therme|bad |kurort|badenweiler|wiesbaden/.test(text)) {
-    return [
-      { name: `Wellnesshotel in ${destName}`,   category: 'Spa & Erholung',       type: 'wellness',why: `Ideal für eine erholsame Auszeit mit exklusiven Spa-Angeboten.`,                        isGeneric: true },
-      { name: `Boutique-Hotel in ${destName}`,  category: 'Charmant & stilvoll',  type: 'boutique',why: `Passt gut für einen gepflegten Aufenthalt mit persönlichem Charakter.`,                 isGeneric: true },
-    ];
-  }
-  if (/romantik|paar|zweisamkeit|verliebt|honeymoon/.test(text)) {
-    return [
-      { name: `Romantikhotel in ${destName}`,   category: 'Romantik & Genuss',    type: 'romantic',why: `Ideal für besondere Momente, schöne Atmosphäre und gemeinsame Zeit.`,                   isGeneric: true },
-      { name: `Boutique-Hotel in ${destName}`,  category: 'Charmant & stilvoll',  type: 'boutique',why: `Passt zu einem stilvollen Aufenthalt mit persönlichem Charakter.`,                      isGeneric: true },
-    ];
-  }
-  if (/familie|kinder|family|familienurlaub/.test(text)) {
-    return [
-      { name: `Familienhotel in ${destName}`,   category: 'Familien & Kinder',    type: 'family',  why: `Ideal für entspannte Familienurlaube mit Angeboten für Groß und Klein.`,                isGeneric: true },
-      { name: `Strandresort in ${destName}`,    category: 'Strand & Erholung',    type: 'beach',   why: `Viel Platz und Aktivitäten für die ganze Familie.`,                                     isGeneric: true },
-    ];
-  }
-  return [
-    { name: `Stadthotel in ${destName}`,        category: 'Zentral & komfortabel',type: 'city',    why: `Gute Wahl für kurze Wege, Komfort und flexible Reiseplanung.`,                          isGeneric: true },
-    { name: `Boutique-Hotel in ${destName}`,    category: 'Charmant & individuell',type: 'boutique',why: `Passt gut, wenn du Atmosphäre und eine besondere Unterkunft suchst.`,                  isGeneric: true },
+function isRealHotelRecommendation(hotel) {
+  const name = String(hotel?.name || '').trim();
+  if (!name || hotel?.isGeneric) return false;
+  const genericRx = [
+    /^stadthotel in /i, /^boutique-hotel in /i, /^wellnesshotel in /i,
+    /^romantikhotel in /i, /^alpenhotel in /i, /^strandresort in /i,
+    /^familienhotel in /i, /^budgethotel in /i, /^günstiges hotel in /i,
   ];
+  return !genericRx.some(rx => rx.test(name));
+}
+
+function buildHotelSearchQuery(hotel, cur) {
+  const dest = cur?.destination || cur?.name || '';
+  if (!hotel || hotel?.mode === 'destinationSearch') {
+    return ['Hotels', dest].filter(Boolean).join(' ');
+  }
+  const name = String(hotel?.searchQuery || hotel?.name || '').trim();
+  return [name, dest].filter(Boolean).join(' ');
+}
+
+function buildHotelProviderTargetUrl(providerKey, searchQuery) {
+  const encoded = encodeURIComponent(searchQuery);
+  switch (providerKey) {
+    case 'booking':      return `https://www.booking.com/searchresults.de.html?ss=${encoded}&lang=de&selected_currency=EUR`;
+    case 'trivago':      return `https://www.trivago.de/de/srl?search=${encoded}`;
+    case 'check24':      return `https://hotel.check24.de/search?searchTerm=${encoded}`;
+    case 'expedia':      return `https://www.expedia.de/Hotel-Search?destination=${encoded}`;
+    case 'holidaycheck': return `https://www.holidaycheck.de/suche?search=${encoded}`;
+    default:             return `https://www.google.com/search?q=${encoded}+Hotel`;
+  }
+}
+
+function HotelProviderModal({ hotel, cur, onClose }) {
+  const isSpecific  = hotel?.mode !== 'destinationSearch';
+  const destName    = cur?.destination || 'deinem Reiseziel';
+  const searchQuery = buildHotelSearchQuery(hotel, cur);
+  return (
+    <div
+      role="dialog" aria-modal="true" aria-label="Hotelangebote vergleichen"
+      style={{ position: 'fixed', inset: 0, zIndex: 9000, background: 'rgba(15,23,42,0.52)', backdropFilter: 'blur(4px)', display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}
+      onClick={onClose}
+    >
+      <div
+        style={{ background: '#FFFFFF', borderRadius: '20px 20px 0 0', padding: 'clamp(18px,4vw,28px)', width: '100%', maxWidth: '560px', boxShadow: '0 -8px 40px rgba(15,23,42,0.18)', maxHeight: '85vh', overflowY: 'auto' }}
+        onClick={e => e.stopPropagation()}
+      >
+        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '12px', marginBottom: '18px' }}>
+          <div>
+            <div style={{ fontSize: '17px', fontWeight: 700, color: '#0F172A', lineHeight: 1.2, marginBottom: '5px' }}>Hotelangebote vergleichen</div>
+            <div style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.5 }}>
+              {isSpecific
+                ? `Angebote für „${hotel.name}" in ${destName} direkt beim Anbieter öffnen`
+                : `Passende Hotels in ${destName} bei unseren Partnern finden`}
+            </div>
+          </div>
+          <button onClick={onClose} aria-label="Schließen"
+            style={{ all: 'unset', cursor: 'pointer', width: '32px', height: '32px', borderRadius: '50%', background: '#F1F5F9', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: '14px', color: '#475569', fontWeight: 700 }}
+          >✕</button>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
+          {HOTEL_PROVIDERS.map(({ key, name, sub, logo, Icon, accent, bg, border }) => {
+            const targetUrl = buildHotelProviderTargetUrl(key, searchQuery);
+            return (
+              <a key={key} href={goUrl(key, targetUrl)} target="_blank" rel="noopener noreferrer" onClick={onClose}
+                style={{ display: 'flex', alignItems: 'center', gap: '14px', padding: '12px 16px', borderRadius: '13px', background: bg, border: `1.5px solid ${border}`, textDecoration: 'none', boxShadow: '0 1px 5px rgba(15,23,42,0.04)' }}
+              >
+                <div style={{ width: '44px', height: '34px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <ProviderLogo logo={logo} name={name} FallbackIcon={Icon} accent={accent} />
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A', lineHeight: 1.2 }}>{name}</div>
+                  <div style={{ fontSize: '11px', color: '#64748B', marginTop: '2px' }}>{sub}</div>
+                </div>
+                <ArrowRight size={13} strokeWidth={2} color={accent} style={{ flexShrink: 0 }} />
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function HotelCardHeader({ src, isTopPick, price }) {
@@ -484,17 +524,19 @@ export default function TravelResultView({ results, personality, interests, pack
   const [chatMessages, setChatMessages]         = useState([]);
   const [chatInput, setChatInput]               = useState('');
   const [chatLoading, setChatLoading]           = useState(false);
+  const [selectedHotel, setSelectedHotel]       = useState(null);
   const chatEndRef = useRef(null);
 
-  const cur   = results[idx];
-  const match = MATCHES[Math.min(idx, MATCHES.length - 1)];
+  const cur        = results[idx];
+  const match      = MATCHES[Math.min(idx, MATCHES.length - 1)];
+  const realHotels = Array.isArray(cur?.hotels) ? cur.hotels.filter(isRealHotelRecommendation) : [];
 
   useEffect(() => {
     if (chatMessages.length > 0) {
       chatEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }, [chatMessages]);
-  useEffect(() => { setChatMessages([]); }, [idx]);
+  useEffect(() => { setChatMessages([]); setSelectedHotel(null); }, [idx]);
 
   function getDestImage(r, i) {
     const moodId   = interests[i % Math.max(interests.length, 1)];
@@ -729,61 +771,83 @@ export default function TravelResultView({ results, personality, interests, pack
         )}
 
         {/* ── HOTELS ─────────────────────────────────────────────────────── */}
-        {!cur.hotels?.length && phase2Loading && (
+        {!realHotels.length && phase2Loading && (
           <div style={{ ...card, marginBottom: '12px' }}>
             <SectionTitle label="ApeAround-Empfehlungen" title="Empfohlene Hotels" icon={Hotel} />
             <InlineSkeleton message="Hotelvorschläge werden geladen…" />
           </div>
         )}
-        {(cur.hotels?.length > 0 || !phase2Loading) && (
+        {(!phase2Loading || realHotels.length > 0) && (
           <section aria-label="Empfohlene Hotels" style={{ ...card, marginBottom: '12px' }}>
             <SectionTitle label="ApeAround-Empfehlungen" title="Empfohlene Hotels" icon={Hotel} />
 
-            {/* Hotel cards — centered with auto-fit so empty tracks collapse */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,340px))', justifyContent: 'center', gap: 'clamp(10px,2vw,16px)', marginBottom: '22px' }}>
-              {(cur.hotels?.length > 0
-                ? cur.hotels
-                : buildDestinationHotelFallback(cur, personality)
-              ).map((hotel, i) => (
-                <div key={`${hotel?.name || 'hotel'}-${i}`} style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid #E2E8F0', boxShadow: '0 3px 18px rgba(15,23,42,0.08)', background: '#FFFFFF', display: 'flex', flexDirection: 'column' }}>
-                  <HotelCardHeader
-                    src={getHotelImage(hotel, cur.destination, personality)}
-                    isTopPick={i === 0}
-                    price={hotel?.pricePerNight}
-                  />
-                  {/* Card body */}
-                  <div style={{ padding: '14px 16px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                    <div style={{ fontSize: '15px', fontWeight: 700, color: '#0F172A', fontFamily: 'var(--font-heading)', marginBottom: '4px', lineHeight: 1.25 }}>{hotel?.name}</div>
-                    {hotel?.category && (
-                      <div style={{ fontSize: '11px', color: '#94A3B8', fontWeight: 500, marginBottom: '8px' }}>{hotel.category}</div>
-                    )}
-                    {hotel?.why && (
-                      <div style={{ fontSize: '12px', color: '#475569', lineHeight: 1.6, flex: 1 }}>{hotel.why}</div>
-                    )}
-                    <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                      <CheckCircle2 size={9} strokeWidth={2.5} color="#10B981" />
-                      <span style={{ fontSize: '10px', color: '#94A3B8', lineHeight: 1 }}>
-                        {hotel?.isGeneric ? 'Symbolische Unterkunftsempfehlung' : 'Basierend auf deinem Reiseprofil'}
-                      </span>
-                    </div>
-                  </div>
+            {realHotels.length > 0 ? (
+              <>
+                {/* Real hotel cards — clickable, open provider picker */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,340px))', justifyContent: 'center', gap: 'clamp(10px,2vw,16px)', marginBottom: '16px' }}>
+                  {realHotels.map((hotel, i) => (
+                    <button
+                      key={`${hotel?.name}-${i}`}
+                      onClick={() => setSelectedHotel(hotel)}
+                      aria-label={`Anbieter für ${hotel?.name} auswählen`}
+                      style={{ all: 'unset', borderRadius: '16px', overflow: 'hidden', border: '1px solid #E2E8F0', boxShadow: '0 3px 18px rgba(15,23,42,0.08)', background: '#FFFFFF', display: 'flex', flexDirection: 'column', cursor: 'pointer', textAlign: 'left', boxSizing: 'border-box' }}
+                    >
+                      <HotelCardHeader
+                        src={getHotelImage(hotel, cur.destination, personality)}
+                        isTopPick={i === 0}
+                        price={hotel?.pricePerNight}
+                      />
+                      <div style={{ padding: '14px 16px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                        <div style={{ fontSize: '15px', fontWeight: 700, color: '#0F172A', fontFamily: 'var(--font-heading)', marginBottom: '4px', lineHeight: 1.25 }}>{hotel?.name}</div>
+                        {hotel?.category && (
+                          <div style={{ fontSize: '11px', color: '#94A3B8', fontWeight: 500, marginBottom: '8px' }}>{hotel.category}</div>
+                        )}
+                        {hotel?.why && (
+                          <div style={{ fontSize: '12px', color: '#475569', lineHeight: 1.6, flex: 1 }}>{hotel.why}</div>
+                        )}
+                        <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                          <ArrowRight size={10} strokeWidth={2.5} color="#0EA5E9" />
+                          <span style={{ fontSize: '10px', color: '#0EA5E9', fontWeight: 600, lineHeight: 1 }}>Anbieter vergleichen</span>
+                        </div>
+                      </div>
+                    </button>
+                  ))}
                 </div>
-              ))}
-            </div>
+                <div style={{ marginBottom: '16px', textAlign: 'center', fontSize: '10px', color: '#CBD5E1', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
+                  <Info size={10} strokeWidth={2} color="#CBD5E1" />
+                  Symbolbilder im ApeAround-Stil — keine echten Hotelfotos
+                </div>
+              </>
+            ) : (
+              <>
+                {/* No real hotels: seriöser Suchbereich */}
+                <div style={{ marginBottom: '14px', padding: '14px 16px', borderRadius: '12px', background: '#F8FAFC', border: '1px solid #E2E8F0' }}>
+                  <div style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '4px' }}>Hotels für {cur?.destination || 'dein Reiseziel'} finden</div>
+                  <div style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.55 }}>Wir zeigen dir passende Hotelangebote bei unseren Partnern. Die konkrete Auswahl öffnet sich direkt beim Anbieter.</div>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
+                  <button
+                    onClick={() => setSelectedHotel({ mode: 'destinationSearch' })}
+                    aria-label={`Passende Hotels in ${cur?.destination || 'deinem Reiseziel'} suchen`}
+                    style={{ all: 'unset', display: 'flex', alignItems: 'center', gap: '12px', padding: '14px 20px', borderRadius: '14px', background: 'linear-gradient(135deg,#EFF6FF,#F0F9FF)', border: '1.5px solid #BFDBFE', cursor: 'pointer', boxSizing: 'border-box' }}
+                  >
+                    <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: '#DBEAFE', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Hotel size={18} strokeWidth={1.5} color="#1D4ED8" />
+                    </div>
+                    <div>
+                      <div style={{ fontSize: '14px', fontWeight: 700, color: '#1E40AF' }}>Passende Hotels in {cur?.destination || 'deinem Reiseziel'} suchen</div>
+                      <div style={{ fontSize: '11px', color: '#3B82F6', marginTop: '2px' }}>Anbieter vergleichen →</div>
+                    </div>
+                  </button>
+                </div>
+              </>
+            )}
 
-            {/* Symbolbilder-Hinweis */}
-            <div style={{ marginBottom: '16px', textAlign: 'center', fontSize: '10px', color: '#CBD5E1', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
-              <Info size={10} strokeWidth={2} color="#CBD5E1" />
-              Symbolbilder im ApeAround-Stil — keine echten Hotelfotos
-            </div>
-
-            {/* CTA heading */}
+            {/* CTA + provider grid */}
             <div style={{ marginBottom: '14px', paddingBottom: '14px', borderBottom: '1px solid #F1F5F9' }}>
               <div style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '4px' }}>Hotels & Preise vergleichen</div>
               <div style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.55 }}>Vergleiche passende Angebote bei unseren Hotelpartnern und finde den besten Deal für deine Reise.</div>
             </div>
-
-            {/* Provider grid */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(130px,1fr))', gap: '8px', marginBottom: '10px' }}>
               {HOTEL_PROVIDERS.map(({ key, name, sub, logo, Icon, accent, bg, border, getUrl }) => {
                 const url = getUrl(cur);
@@ -791,7 +855,6 @@ export default function TravelResultView({ results, personality, interests, pack
                   <a key={key} href={goUrl(key, url)} target="_blank" rel="noopener noreferrer"
                     style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', padding: '14px 10px 11px', borderRadius: '13px', background: bg, border: `1.5px solid ${border}`, textDecoration: 'none', boxShadow: '0 1px 6px rgba(15,23,42,0.05)' }}
                   >
-                    {/* Logo area — fixed height so all buttons align */}
                     <div style={{ height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <ProviderLogo logo={logo} name={name} FallbackIcon={Icon} accent={accent} />
                     </div>
@@ -801,11 +864,12 @@ export default function TravelResultView({ results, personality, interests, pack
                 );
               })}
             </div>
-
-            {/* Affiliate disclaimer */}
             <div style={{ fontSize: '10px', color: '#CBD5E1', textAlign: 'center', lineHeight: 1.5 }}>
               Einige Links können Affiliate-Links sein — für dich bleibt der Preis gleich.
             </div>
+
+            {/* Hotel provider modal */}
+            {selectedHotel && <HotelProviderModal hotel={selectedHotel} cur={cur} onClose={() => setSelectedHotel(null)} />}
           </section>
         )}
 

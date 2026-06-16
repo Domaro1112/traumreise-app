@@ -69,8 +69,8 @@ Antworte AUSSCHLIESSLICH als valides JSON ohne Markdown-Blöcke:
     {
       "destination": "${destinations[0].destination}",
       "hotels": [
-        {"name":"Hotelname","category":"3-Sterne","pricePerNight":"90€/Nacht","why":"Kurzer Grund"},
-        {"name":"Hotelname","category":"4-Sterne","pricePerNight":"140€/Nacht","why":"Kurzer Grund"}
+        {"name":"Konkreter echter Hotelname","category":"3-Sterne","pricePerNight":"90€/Nacht","why":"Kurzer Grund","type":"city","searchQuery":"Hotelname Zielort"},
+        {"name":"Konkreter echter Hotelname","category":"4-Sterne","pricePerNight":"140€/Nacht","why":"Kurzer Grund","type":"boutique","searchQuery":"Hotelname Zielort"}
       ],
       "activities": [
         {"name":"Aktivität","category":"Kultur","price":"kostenlos","why":"Kurzer Grund"},
@@ -91,7 +91,11 @@ Antworte AUSSCHLIESSLICH als valides JSON ohne Markdown-Blöcke:
     "misc": ["Offline-Karte","Trinkflasche","Reise-Taschentücher"]
   }
 }
-Wichtig: Genau ${itineraryDays} Einträge pro itinerary-Array. Alle 3 Destinations vollständig ausfüllen. Alle Texte auf Deutsch.`;
+Wichtig:
+- Hotels: Nenne ausschließlich real existierende Hotels mit konkretem Namen (z.B. "Hotel Elephant Weimar", nicht "Stadthotel in Weimar"). Wenn du keinen echten Hotelnamen sicher kennst, gib für hotels ein leeres Array zurück.
+- type-Feld muss eines sein von: city, boutique, wellness, family, beach, mountain, budget, romantic
+- searchQuery = Hotelname + Zielort als Suchbegriff (z.B. "Hotel Elephant Weimar")
+- Genau ${itineraryDays} Einträge pro itinerary-Array. Alle 3 Destinations vollständig ausfüllen. Alle Texte auf Deutsch.`;
 
   // ── Claude call (Phase 2) ──────────────────────────────────────────────────
   let raw: string;
