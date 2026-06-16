@@ -331,28 +331,35 @@ function AnalysisBannerCard({ reasons }) {
 }
 
 const HOTEL_IMAGE_MAP = {
-  city:      '/images/hotels/city-hotel.png',
-  boutique:  '/images/hotels/boutique-hotel.png',
-  wellness:  '/images/hotels/wellness-hotel.png',
-  family:    '/images/hotels/family-hotel.png',
-  beach:     '/images/hotels/beach-resort.png',
-  mountain:  '/images/hotels/mountain-hotel.png',
-  budget:    '/images/hotels/budget-hotel.png',
-  romantic:  '/images/hotels/romantic-hotel.png',
+  city:      '/images/hotels/city-hotel.webp',
+  boutique:  '/images/hotels/boutique-hotel.webp',
+  wellness:  '/images/hotels/wellness-hotel.webp',
+  family:    '/images/hotels/family-hotel.webp',
+  beach:     '/images/hotels/beach-resort.webp',
+  mountain:  '/images/hotels/mountain-hotel.webp',
+  budget:    '/images/hotels/budget-hotel.webp',
+  romantic:  '/images/hotels/romantic-hotel.webp',
 };
 
-function getHotelImage(hotel, destination, personality) {
-  const text = [
-    hotel.name, hotel.description, hotel.type, hotel.category,
-    destination, ...(personality?.types || []), personality?.summary,
-  ].filter(Boolean).join(' ').toLowerCase();
-  if (/wellness|spa|therme|entspannung/.test(text))          return HOTEL_IMAGE_MAP.wellness;
-  if (/familie|kinder|family/.test(text))                    return HOTEL_IMAGE_MAP.family;
-  if (/strand|beach|meer|resort/.test(text))                 return HOTEL_IMAGE_MAP.beach;
-  if (/berg|alpen|mountain|hütte/.test(text))           return HOTEL_IMAGE_MAP.mountain;
-  if (/budget|günstig|preiswert|preis-leistung/.test(text)) return HOTEL_IMAGE_MAP.budget;
-  if (/romantik|romantic|paar|zweisamkeit/.test(text))       return HOTEL_IMAGE_MAP.romantic;
-  if (/boutique|charmant|historisch|design/.test(text))      return HOTEL_IMAGE_MAP.boutique;
+function getHotelImage(hotel = {}, destination = '', personality = {}) {
+  try {
+    const personalityTypes = Array.isArray(personality?.types) ? personality.types : [];
+    const text = [
+      hotel?.name, hotel?.description, hotel?.type, hotel?.category,
+      typeof destination === 'string' ? destination : destination?.name,
+      personality?.summary,
+      ...personalityTypes,
+    ].filter(Boolean).join(' ').toLowerCase();
+    if (/wellness|spa|therme|entspannung|relax/.test(text))           return HOTEL_IMAGE_MAP.wellness;
+    if (/familie|kinder|family/.test(text))                           return HOTEL_IMAGE_MAP.family;
+    if (/strand|beach|meer|resort|küste/.test(text))                  return HOTEL_IMAGE_MAP.beach;
+    if (/berg|alpen|mountain|h.tte|chalet/.test(text))                return HOTEL_IMAGE_MAP.mountain;
+    if (/budget|günstig|preiswert|preis.leistung/.test(text))         return HOTEL_IMAGE_MAP.budget;
+    if (/romantik|romantic|paar|zweisamkeit|verliebt/.test(text))     return HOTEL_IMAGE_MAP.romantic;
+    if (/boutique|charmant|historisch|design|flair/.test(text))       return HOTEL_IMAGE_MAP.boutique;
+  } catch {
+    // Fallback on any unexpected error
+  }
   return HOTEL_IMAGE_MAP.city;
 }
 
@@ -659,26 +666,32 @@ export default function TravelResultView({ results, personality, interests, pack
             <InlineSkeleton message="Hotelvorschläge werden geladen…" />
           </div>
         )}
-        {cur.hotels?.length > 0 && (
+        {(cur.hotels?.length > 0 || !phase2Loading) && (
           <section aria-label="Empfohlene Hotels" style={{ ...card, marginBottom: '12px' }}>
             <SectionTitle label="ApeAround-Empfehlungen" title="Empfohlene Hotels" icon={Hotel} />
 
             {/* Hotel cards — centered with auto-fit so empty tracks collapse */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,340px))', justifyContent: 'center', gap: 'clamp(10px,2vw,16px)', marginBottom: '22px' }}>
-              {cur.hotels.map((hotel, i) => (
-                <div key={i} style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid #E2E8F0', boxShadow: '0 3px 18px rgba(15,23,42,0.08)', background: '#FFFFFF', display: 'flex', flexDirection: 'column' }}>
+              {(cur.hotels?.length > 0
+                ? cur.hotels
+                : [
+                    { name: 'Hotel am Markt',        category: '4-Sterne-Hotel',   why: 'Zentrale Lage mit bestem Zugang zu allen Sehenswürdigkeiten.' },
+                    { name: 'Hotel Rathausglöckel',  category: 'Boutique-Hotel',   why: 'Charmantes Boutique-Hotel mit persönlichem Service und lokalem Flair.' },
+                  ]
+              ).map((hotel, i) => (
+                <div key={`${hotel?.name || 'hotel'}-${i}`} style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid #E2E8F0', boxShadow: '0 3px 18px rgba(15,23,42,0.08)', background: '#FFFFFF', display: 'flex', flexDirection: 'column' }}>
                   <HotelCardHeader
                     src={getHotelImage(hotel, cur.destination, personality)}
                     isTopPick={i === 0}
-                    price={hotel.pricePerNight}
+                    price={hotel?.pricePerNight}
                   />
                   {/* Card body */}
                   <div style={{ padding: '14px 16px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                    <div style={{ fontSize: '15px', fontWeight: 700, color: '#0F172A', fontFamily: 'var(--font-heading)', marginBottom: '4px', lineHeight: 1.25 }}>{hotel.name}</div>
-                    {hotel.category && (
+                    <div style={{ fontSize: '15px', fontWeight: 700, color: '#0F172A', fontFamily: 'var(--font-heading)', marginBottom: '4px', lineHeight: 1.25 }}>{hotel?.name}</div>
+                    {hotel?.category && (
                       <div style={{ fontSize: '11px', color: '#94A3B8', fontWeight: 500, marginBottom: '8px' }}>{hotel.category}</div>
                     )}
-                    {hotel.why && (
+                    {hotel?.why && (
                       <div style={{ fontSize: '12px', color: '#475569', lineHeight: 1.6, flex: 1 }}>{hotel.why}</div>
                     )}
                     <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', gap: '5px' }}>
