@@ -56,12 +56,16 @@ function getMatchReasons(result, personality, interests) {
 
 function buildWhyWon(result, personality, matchPct) {
   const reasons = [];
-  (result.highlights || []).slice(0, 3).forEach(h => reasons.push(h));
-  if (personality?.types?.[0]) reasons.push(`Passt perfekt zum Reiseprofil: ${personality.types[0]}`);
+  (result.highlights || []).slice(0, 3).forEach(h => {
+    const clean = stripEmoji(h).replace(/^[^\wäöüÄÖÜ]+/, '').replace(/[.,!?;]$/, '').trim();
+    if (clean.length > 3) reasons.push(clean);
+  });
+  const profileType = personality?.types?.[0] ? stripEmoji(personality.types[0]).trim() : null;
+  if (profileType) reasons.push(`Passt perfekt zu deinem Reiseprofil: ${profileType}`);
   if (result.budgetPerDay) reasons.push(`Attraktives Budget: ab ${result.budgetPerDay}`);
   else reasons.push('Hervorragendes Preis-Leistungs-Verhältnis');
   if (reasons.length < 5) reasons.push(`${matchPct}% Übereinstimmung mit deinen Reisewünschen`);
-  return reasons.slice(0, 5);
+  return reasons.filter(r => r.length > 3).slice(0, 5);
 }
 
 function SectionLabel({ text, color = ACCENT }) {
@@ -281,6 +285,63 @@ function ProfileBannerCard({ profileCards, summary }) {
   );
 }
 
+function AnalysisBannerCard({ reasons }) {
+  const [imgError, setImgError] = useState(false);
+  const bg = imgError
+    ? { background: 'linear-gradient(180deg,#F0FDF4 0%,#DCFCE7 55%,#BBF7D0 100%)' }
+    : { background: "linear-gradient(180deg,rgba(255,255,255,0.97) 0%,rgba(255,255,255,0.92) 44%,rgba(255,255,255,0.35) 68%,rgba(255,255,255,0.05) 100%),url('/images/apearound-analysis-bags.png') center bottom / cover no-repeat" };
+  return (
+    <>
+      <style>{`
+        .ape-analysis-banner {
+          position: relative;
+          min-height: clamp(440px,42vw,570px);
+          border-radius: 14px;
+          overflow: hidden;
+          border: 1.5px solid #BBF7D0;
+          box-shadow: 0 4px 24px rgba(16,185,129,0.10);
+          display: flex;
+          flex-direction: column;
+        }
+        .ape-analysis-content {
+          padding: clamp(14px,2.5vw,20px);
+          padding-bottom: clamp(130px,16vw,175px);
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        @media (max-width: 580px) {
+          .ape-analysis-banner { min-height: 400px; }
+          .ape-analysis-content { padding-bottom: 110px; }
+        }
+      `}</style>
+      <div className="ape-analysis-banner" style={bg}>
+        {!imgError && (
+          <img src="/images/apearound-analysis-bags.png" alt="" aria-hidden="true"
+            onError={() => setImgError(true)}
+            style={{ position: 'absolute', width: 0, height: 0, opacity: 0, pointerEvents: 'none' }}
+          />
+        )}
+        <div className="ape-analysis-content">
+          {reasons.map((r, i) => (
+            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', padding: '10px 13px', borderRadius: '12px', background: 'rgba(255,255,255,0.86)', backdropFilter: 'blur(8px)', border: '1px solid rgba(34,197,94,0.22)', boxShadow: '0 2px 10px rgba(15,23,42,0.07)' }}>
+              <CheckCircle2 size={14} strokeWidth={2.5} color="#16A34A" style={{ flexShrink: 0, marginTop: '1px' }} />
+              <span style={{ fontSize: '12px', color: '#166534', fontWeight: 500, lineHeight: 1.55 }}>{r}</span>
+            </div>
+          ))}
+        </div>
+        {imgError && (
+          <div style={{ position: 'absolute', bottom: '18px', right: '18px', display: 'flex', gap: '10px', opacity: 0.22 }}>
+            <Briefcase size={38} strokeWidth={1.25} color="#16A34A" />
+            <Plane    size={28} strokeWidth={1.25} color="#16A34A" />
+            <MapPin   size={24} strokeWidth={1.25} color="#16A34A" />
+          </div>
+        )}
+      </div>
+    </>
+  );
+}
+
 const HOTEL_GRADIENTS = [
   'linear-gradient(135deg,#0F172A 0%,#1E3A5F 100%)',
   'linear-gradient(135deg,#1E1B4B 0%,#3730A3 100%)',
@@ -486,14 +547,7 @@ export default function TravelResultView({ results, personality, interests, pack
               title={idx === 0 ? `Warum ${cur.destination} auf Platz 1 ist` : `Was ${cur.destination} überzeugt`}
               icon={Award} iconColor="#16A34A" iconBg="#F0FDF4" iconBorder="#86EFAC"
             />
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
-              {buildWhyWon(cur, personality, match.pct).map((r, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '9px', padding: '9px 11px', borderRadius: '10px', background: '#F0FDF4', border: '1px solid #DCFCE7' }}>
-                  <CheckCircle2 size={13} strokeWidth={2.5} color="#16A34A" style={{ flexShrink: 0, marginTop: '1px' }} />
-                  <span style={{ fontSize: '12px', color: '#166534', fontWeight: 500, lineHeight: 1.5 }}>{r}</span>
-                </div>
-              ))}
-            </div>
+            <AnalysisBannerCard reasons={buildWhyWon(cur, personality, match.pct)} />
           </section>
         </div>
 
