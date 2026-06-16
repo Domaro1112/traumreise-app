@@ -183,6 +183,51 @@ function NextStepCard({ result, onEmail }) {
   );
 }
 
+function getProfileCardData(typeStr) {
+  const lower = typeStr.toLowerCase();
+  if (/romantik|paar|zweisamkeit|liebe|herz|couple|romance/.test(lower))
+    return { Icon: Heart,      iconColor: '#E11D48', iconBg: '#FFF1F2', iconBorder: '#FECDD3' };
+  if (/genuss|kulinar|essen|café|kaffee|wein|speise|food|gourmet/.test(lower))
+    return { Icon: Euro,       iconColor: '#D97706', iconBg: '#FFFBEB', iconBorder: '#FDE68A' };
+  if (/kultur|museum|architektur|geschichte|kunst|heritage|historic/.test(lower))
+    return { Icon: MapPinned,  iconColor: '#7C3AED', iconBg: '#F5F3FF', iconBorder: '#DDD6FE' };
+  if (/abenteuer|aktiv|outdoor|sport|wandern|trekking|adventure/.test(lower))
+    return { Icon: Compass,    iconColor: '#EA580C', iconBg: '#FFF7ED', iconBorder: '#FED7AA' };
+  if (/wellness|spa|erholung|entspann|ruhe|yoga|relax/.test(lower))
+    return { Icon: Sparkles,   iconColor: '#0EA5E9', iconBg: '#EFF6FF', iconBorder: '#BFDBFE' };
+  if (/natur|berg|strand|meer|wald|see|landschaft|nature/.test(lower))
+    return { Icon: Sun,        iconColor: '#16A34A', iconBg: '#F0FDF4', iconBorder: '#BBF7D0' };
+  if (/city|stadt|urban|metro|nightlife|städte/.test(lower))
+    return { Icon: MapPinned,  iconColor: '#0284C7', iconBg: '#EFF6FF', iconBorder: '#BFDBFE' };
+  if (/budget|preis|günstig|sparen/.test(lower))
+    return { Icon: Wallet,     iconColor: '#15803D', iconBg: '#F0FDF4', iconBorder: '#BBF7D0' };
+  return   { Icon: Award,      iconColor: '#0EA5E9', iconBg: '#EFF6FF', iconBorder: '#BFDBFE' };
+}
+
+function MonkeyVisual() {
+  const [imgError, setImgError] = useState(false);
+  return (
+    <div style={{ flex: '0 0 clamp(140px,26%,196px)', borderRadius: '18px', overflow: 'hidden', background: 'linear-gradient(160deg,#EFF6FF 0%,#DBEAFE 60%,#ECFEFF 100%)', border: '1.5px solid #BFDBFE', boxShadow: '0 4px 24px rgba(14,165,233,0.14)', alignSelf: 'stretch', minHeight: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+      {!imgError ? (
+        <img
+          src="/images/travel-profile-monkey.png"
+          alt="ApeAround Reisemonkey"
+          onError={() => setImgError(true)}
+          loading="lazy"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'right center', display: 'block', position: 'absolute', inset: 0 }}
+        />
+      ) : (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', padding: '24px', color: '#93C5FD' }}>
+          <Compass size={38} strokeWidth={1.25} color="#93C5FD" />
+          <MapPin  size={26} strokeWidth={1.25} color="#BFDBFE" />
+          <Heart   size={20} strokeWidth={1.25} color="#DBEAFE" />
+          <Sparkles size={16} strokeWidth={1.25} color="#EFF6FF" />
+        </div>
+      )}
+    </div>
+  );
+}
+
 const HOTEL_GRADIENTS = [
   'linear-gradient(135deg,#0F172A 0%,#1E3A5F 100%)',
   'linear-gradient(135deg,#1E1B4B 0%,#3730A3 100%)',
@@ -241,6 +286,11 @@ export default function TravelResultView({ results, personality, interests, pack
   ];
 
   const moodLabels = (interests || []).map(id => moodOptions.find(m => m.id === id)?.label).filter(Boolean);
+
+  const profileCards = [
+    ...(personality?.types || []).map(t => stripEmoji(t).trim()).filter(t => t.length > 2),
+    ...moodLabels.filter(l => !(personality?.types || []).some(t => stripEmoji(t).toLowerCase().includes(l.toLowerCase()))),
+  ].slice(0, 4).map(title => ({ title, ...getProfileCardData(title) }));
 
   return (
     <div style={{ maxWidth: '1080px', margin: '0 auto', padding: 'clamp(12px,4vw,28px)', animation: 'fadeUp .4s cubic-bezier(0.16,1,0.3,1) both' }}>
@@ -368,25 +418,31 @@ export default function TravelResultView({ results, personality, interests, pack
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: '12px', marginBottom: '12px', alignItems: 'stretch' }}>
 
           {personality && (
-            <section aria-label="Warum diese Reise passt" style={{ ...card, display: 'flex', flexDirection: 'column' }}>
+            <section aria-label="Warum diese Reise passt" style={{ ...card }}>
               <SectionTitle label="Dein Reiseprofil" title="Warum diese Reise perfekt zu dir passt" icon={Compass} />
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '7px', marginBottom: '14px' }}>
-                {(personality.types || []).map((t, i) => (
-                  <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '6px 13px', borderRadius: '20px', background: '#EFF6FF', border: '1.5px solid #BFDBFE', fontSize: '12px', color: '#0284C7', fontWeight: 700 }}>
-                    <CheckCircle2 size={10} strokeWidth={2.5} color="#0284C7" /> {t}
-                  </span>
-                ))}
-                {moodLabels.map((l, i) => (
-                  <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '6px 13px', borderRadius: '20px', background: '#F0FDF4', border: '1.5px solid #86EFAC', fontSize: '12px', color: '#15803D', fontWeight: 600 }}>
-                    <CheckCircle2 size={10} strokeWidth={2.5} color="#16A34A" /> {l}
-                  </span>
-                ))}
+              <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+                {/* LEFT – profile mini-cards + quote */}
+                <div style={{ flex: '1 1 220px', minWidth: 0, display: 'flex', flexDirection: 'column', gap: '7px' }}>
+                  {profileCards.map(({ Icon, iconColor, iconBg, iconBorder, title }, j) => (
+                    <div key={j} style={{ display: 'flex', alignItems: 'center', gap: '11px', padding: '10px 14px', borderRadius: '12px', background: '#F8FAFF', border: '1.5px solid #BFDBFE', boxShadow: '0 1px 6px rgba(14,165,233,0.06)' }}>
+                      <div style={{ width: '34px', height: '34px', minWidth: '34px', borderRadius: '10px', background: iconBg, border: `1px solid ${iconBorder}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Icon size={15} strokeWidth={1.75} color={iconColor} />
+                      </div>
+                      <span style={{ fontSize: '13px', fontWeight: 600, color: '#0F172A', lineHeight: 1.35 }}>{title}</span>
+                    </div>
+                  ))}
+                  {personality.summary && (
+                    <div style={{ display: 'flex', gap: '10px', marginTop: '4px', padding: '12px 14px', borderRadius: '10px', background: 'linear-gradient(135deg,#EFF6FF,#ECFEFF)', border: '1px solid #BFDBFE' }}>
+                      <div style={{ width: '3px', minWidth: '3px', borderRadius: '2px', background: 'linear-gradient(to bottom,#0EA5E9,#06B6D4)', alignSelf: 'stretch' }} />
+                      <p style={{ margin: 0, fontSize: '12px', fontStyle: 'italic', color: '#1E40AF', lineHeight: 1.7, fontWeight: 500 }}>
+                        „{stripEmoji(personality.summary)}"
+                      </p>
+                    </div>
+                  )}
+                </div>
+                {/* RIGHT – monkey image */}
+                <MonkeyVisual />
               </div>
-              {personality.summary && (
-                <p style={{ margin: 0, marginTop: 'auto', fontSize: '12px', fontStyle: 'italic', color: '#1E40AF', lineHeight: 1.7, fontWeight: 500, padding: '11px 13px', borderRadius: '10px', background: 'linear-gradient(135deg,#EFF6FF,#ECFEFF)', border: '1px solid #BFDBFE' }}>
-                  „{personality.summary}"
-                </p>
-              )}
             </section>
           )}
 
