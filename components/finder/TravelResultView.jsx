@@ -331,14 +331,14 @@ function AnalysisBannerCard({ reasons }) {
 }
 
 const HOTEL_IMAGE_MAP = {
-  city:      '/images/hotels/city-hotel.webp',
-  boutique:  '/images/hotels/boutique-hotel.webp',
-  wellness:  '/images/hotels/wellness-hotel.webp',
-  family:    '/images/hotels/family-hotel.webp',
-  beach:     '/images/hotels/beach-resort.webp',
-  mountain:  '/images/hotels/mountain-hotel.webp',
-  budget:    '/images/hotels/budget-hotel.webp',
-  romantic:  '/images/hotels/romantic-hotel.webp',
+  city:      '/images/hotels/city-hotel.png',
+  boutique:  '/images/hotels/boutique-hotel.png',
+  wellness:  '/images/hotels/wellness-hotel.png',
+  family:    '/images/hotels/family-hotel.png',
+  beach:     '/images/hotels/beach-resort.png',
+  mountain:  '/images/hotels/mountain-hotel.png',
+  budget:    '/images/hotels/budget-hotel.png',
+  romantic:  '/images/hotels/romantic-hotel.png',
 };
 
 function getHotelImage(hotel = {}, destination = '', personality = {}) {
@@ -410,14 +410,18 @@ function buildDestinationHotelFallback(cur, personality) {
 
 function HotelCardHeader({ src, isTopPick, price }) {
   const [imgErr, setImgErr] = useState(false);
+  const handleError = () => {
+    if (process.env.NODE_ENV === 'development') console.warn('[HotelCardHeader] image failed to load:', src);
+    setImgErr(true);
+  };
   return (
     <div style={{ height: 'clamp(150px,16vw,185px)', position: 'relative', overflow: 'hidden', borderRadius: '16px 16px 0 0', flexShrink: 0, background: imgErr ? 'linear-gradient(135deg,#0F172A 0%,#1E3A5F 100%)' : '#F1F5F9' }}>
       {!imgErr ? (
         <img
           src={src}
           alt=""
-          loading="lazy"
-          onError={() => setImgErr(true)}
+          loading="eager"
+          onError={handleError}
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
         />
       ) : (
@@ -427,8 +431,8 @@ function HotelCardHeader({ src, isTopPick, price }) {
           </div>
         </div>
       )}
-      {/* Gradient overlay for badge readability */}
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(15,23,42,0.22) 0%,rgba(15,23,42,0.04) 45%,rgba(15,23,42,0.30) 100%)', pointerEvents: 'none' }} />
+      {/* Gradient overlay — only rendered when image loaded, keeps badges readable */}
+      {!imgErr && <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(15,23,42,0.22) 0%,rgba(15,23,42,0.04) 45%,rgba(15,23,42,0.30) 100%)', pointerEvents: 'none' }} />}
       {isTopPick && (
         <div style={{ position: 'absolute', top: '10px', left: '10px', padding: '4px 10px', borderRadius: '8px', background: 'linear-gradient(135deg,#F59E0B,#EF4444)', fontSize: '10px', fontWeight: 700, color: '#FFFFFF', letterSpacing: '0.4px', zIndex: 1 }}>Top Pick</div>
       )}
@@ -439,17 +443,37 @@ function HotelCardHeader({ src, isTopPick, price }) {
   );
 }
 
+function ProviderLogo({ logo, name, FallbackIcon, accent }) {
+  const [logoErr, setLogoErr] = useState(false);
+  if (!logo || logoErr) {
+    return (
+      <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: accent + '18', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <FallbackIcon size={16} strokeWidth={1.75} color={accent} />
+      </div>
+    );
+  }
+  return (
+    <img
+      src={logo}
+      alt={`${name} Logo`}
+      loading="lazy"
+      onError={() => setLogoErr(true)}
+      style={{ maxHeight: '28px', maxWidth: '110px', width: 'auto', objectFit: 'contain', display: 'block' }}
+    />
+  );
+}
+
 // All providers are in ALLOWED_BASE_DOMAINS — routed through /go/[provider] for affiliate tracking
 const HOTEL_PROVIDERS = [
-  { key: 'booking',      name: 'Booking.com',  sub: 'Hotels ansehen',       Icon: Hotel,     accent: '#003580', bg: '#EFF6FF', border: '#BFDBFE',
+  { key: 'booking',      name: 'Booking.com',  sub: 'Hotels ansehen',       logo: '/images/providers/booking.png',      Icon: Hotel,     accent: '#003580', bg: '#EFF6FF', border: '#BFDBFE',
     getUrl: r => r.bookingUrl      || `https://www.booking.com/search.html?ss=${encodeURIComponent((r.destination||'')+', '+(r.country||''))}` },
-  { key: 'trivago',      name: 'Trivago',       sub: 'Preise vergleichen',   Icon: Gem,       accent: '#c0100f', bg: '#FFF1F2', border: '#FECDD3',
+  { key: 'trivago',      name: 'Trivago',       sub: 'Preise vergleichen',   logo: '/images/providers/trivago.png',      Icon: Gem,       accent: '#c0100f', bg: '#FFF1F2', border: '#FECDD3',
     getUrl: r => r.trivagoUrl      || `https://www.trivago.de/?search=${encodeURIComponent(r.destination||'')}` },
-  { key: 'check24',      name: 'CHECK24',       sub: 'Angebote vergleichen', Icon: Briefcase, accent: '#003399', bg: '#EEF2FF', border: '#C7D2FE',
+  { key: 'check24',      name: 'CHECK24',       sub: 'Angebote vergleichen', logo: '/images/providers/check24.png',      Icon: Briefcase, accent: '#003399', bg: '#EEF2FF', border: '#C7D2FE',
     getUrl: r => r.check24Url      || `https://hotels.check24.de/?hotelCitySearch=${encodeURIComponent(r.destination||'')}` },
-  { key: 'expedia',      name: 'Expedia',       sub: 'Deals entdecken',      Icon: Plane,     accent: '#C9920A', bg: '#FFFBEB', border: '#FDE68A',
+  { key: 'expedia',      name: 'Expedia',       sub: 'Deals entdecken',      logo: '/images/providers/expedia.png',      Icon: Plane,     accent: '#C9920A', bg: '#FFFBEB', border: '#FDE68A',
     getUrl: r => `https://www.expedia.de/Hotel-Search?destination=${encodeURIComponent((r.destination||'')+', '+(r.country||''))}` },
-  { key: 'holidaycheck', name: 'HolidayCheck',  sub: 'Bewertungen lesen',    Icon: Award,     accent: '#D95E00', bg: '#FFF7ED', border: '#FED7AA',
+  { key: 'holidaycheck', name: 'HolidayCheck',  sub: 'Bewertungen lesen',    logo: '/images/providers/holidaycheck.png', Icon: Award,     accent: '#D95E00', bg: '#FFF7ED', border: '#FED7AA',
     getUrl: r => `https://www.holidaycheck.de/hotel-search?countryId=0&terms=${encodeURIComponent(r.destination||'')}` },
 ];
 
@@ -760,17 +784,18 @@ export default function TravelResultView({ results, personality, interests, pack
             </div>
 
             {/* Provider grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(120px,1fr))', gap: '8px', marginBottom: '10px' }}>
-              {HOTEL_PROVIDERS.map(({ key, name, sub, Icon, accent, bg, border, getUrl }) => {
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(130px,1fr))', gap: '8px', marginBottom: '10px' }}>
+              {HOTEL_PROVIDERS.map(({ key, name, sub, logo, Icon, accent, bg, border, getUrl }) => {
                 const url = getUrl(cur);
                 return (
                   <a key={key} href={goUrl(key, url)} target="_blank" rel="noopener noreferrer"
-                    style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px', padding: '12px 8px', borderRadius: '12px', background: bg, border: `1.5px solid ${border}`, textDecoration: 'none', boxShadow: '0 1px 6px rgba(15,23,42,0.05)', transition: 'box-shadow 0.15s ease' }}
+                    style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', padding: '14px 10px 11px', borderRadius: '13px', background: bg, border: `1.5px solid ${border}`, textDecoration: 'none', boxShadow: '0 1px 6px rgba(15,23,42,0.05)' }}
                   >
-                    <div style={{ width: '32px', height: '32px', borderRadius: '9px', background: accent + '1a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <Icon size={14} strokeWidth={1.75} color={accent} />
+                    {/* Logo area — fixed height so all buttons align */}
+                    <div style={{ height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <ProviderLogo logo={logo} name={name} FallbackIcon={Icon} accent={accent} />
                     </div>
-                    <div style={{ fontSize: '12px', fontWeight: 700, color: '#0F172A', textAlign: 'center', lineHeight: 1.2 }}>{name}</div>
+                    <div style={{ fontSize: '11px', fontWeight: 700, color: '#0F172A', textAlign: 'center', lineHeight: 1.2 }}>{name}</div>
                     <div style={{ fontSize: '10px', color: '#64748B', textAlign: 'center', lineHeight: 1.3 }}>{sub}</div>
                   </a>
                 );
