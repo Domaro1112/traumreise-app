@@ -336,6 +336,20 @@ const HOTEL_GRADIENTS = [
   'linear-gradient(135deg,#064E3B 0%,#065F46 100%)',
 ];
 
+// All providers are in ALLOWED_BASE_DOMAINS — routed through /go/[provider] for affiliate tracking
+const HOTEL_PROVIDERS = [
+  { key: 'booking',      name: 'Booking.com',  sub: 'Hotels ansehen',       Icon: Hotel,     accent: '#003580', bg: '#EFF6FF', border: '#BFDBFE',
+    getUrl: r => r.bookingUrl      || `https://www.booking.com/search.html?ss=${encodeURIComponent((r.destination||'')+', '+(r.country||''))}` },
+  { key: 'trivago',      name: 'Trivago',       sub: 'Preise vergleichen',   Icon: Gem,       accent: '#c0100f', bg: '#FFF1F2', border: '#FECDD3',
+    getUrl: r => r.trivagoUrl      || `https://www.trivago.de/?search=${encodeURIComponent(r.destination||'')}` },
+  { key: 'check24',      name: 'CHECK24',       sub: 'Angebote vergleichen', Icon: Briefcase, accent: '#003399', bg: '#EEF2FF', border: '#C7D2FE',
+    getUrl: r => r.check24Url      || `https://hotels.check24.de/?hotelCitySearch=${encodeURIComponent(r.destination||'')}` },
+  { key: 'expedia',      name: 'Expedia',       sub: 'Deals entdecken',      Icon: Plane,     accent: '#C9920A', bg: '#FFFBEB', border: '#FDE68A',
+    getUrl: r => `https://www.expedia.de/Hotel-Search?destination=${encodeURIComponent((r.destination||'')+', '+(r.country||''))}` },
+  { key: 'holidaycheck', name: 'HolidayCheck',  sub: 'Bewertungen lesen',    Icon: Award,     accent: '#D95E00', bg: '#FFF7ED', border: '#FED7AA',
+    getUrl: r => `https://www.holidaycheck.de/hotel-search?countryId=0&terms=${encodeURIComponent(r.destination||'')}` },
+];
+
 export default function TravelResultView({ results, personality, interests, packingList, surprise, duration, budget, phase2Loading, onReset, onEmail }) {
   const [idx, setIdx]                           = useState(0);
   const [showShare, setShowShare]               = useState(false);
@@ -597,33 +611,68 @@ export default function TravelResultView({ results, personality, interests, pack
         {cur.hotels?.length > 0 && (
           <section aria-label="Empfohlene Hotels" style={{ ...card, marginBottom: '12px' }}>
             <SectionTitle label="ApeAround-Empfehlungen" title="Empfohlene Hotels" icon={Hotel} />
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(240px,1fr))', gap: '12px', marginBottom: '12px' }}>
+
+            {/* Hotel cards — centered with auto-fit so empty tracks collapse */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,340px))', justifyContent: 'center', gap: 'clamp(10px,2vw,16px)', marginBottom: '22px' }}>
               {cur.hotels.map((hotel, i) => (
-                <div key={i} style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid #E2E8F0', boxShadow: '0 2px 12px rgba(15,23,42,0.07)' }}>
-                  <div style={{ height: '110px', background: HOTEL_GRADIENTS[i % HOTEL_GRADIENTS.length], position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: 'rgba(255,255,255,0.14)', border: '1px solid rgba(255,255,255,0.22)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <Hotel size={22} strokeWidth={1.5} color="rgba(255,255,255,0.88)" />
+                <div key={i} style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid #E2E8F0', boxShadow: '0 3px 18px rgba(15,23,42,0.08)', background: '#FFFFFF', display: 'flex', flexDirection: 'column' }}>
+                  {/* Gradient header */}
+                  <div style={{ height: '118px', background: HOTEL_GRADIENTS[i % HOTEL_GRADIENTS.length], position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <div style={{ width: '52px', height: '52px', borderRadius: '15px', background: 'rgba(255,255,255,0.13)', border: '1px solid rgba(255,255,255,0.22)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Hotel size={24} strokeWidth={1.5} color="rgba(255,255,255,0.88)" />
                     </div>
                     {hotel.pricePerNight && (
-                      <div style={{ position: 'absolute', top: '10px', right: '10px', padding: '4px 10px', borderRadius: '8px', background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(8px)', fontSize: '12px', fontWeight: 700, color: '#FFFFFF' }}>{hotel.pricePerNight}</div>
+                      <div style={{ position: 'absolute', top: '10px', right: '10px', padding: '5px 11px', borderRadius: '8px', background: 'rgba(0,0,0,0.52)', backdropFilter: 'blur(8px)', fontSize: '13px', fontWeight: 700, color: '#FFFFFF', letterSpacing: '0.2px' }}>{hotel.pricePerNight}</div>
                     )}
-                    {i === 0 && <div style={{ position: 'absolute', top: '10px', left: '10px', padding: '3px 9px', borderRadius: '8px', background: 'linear-gradient(135deg,#F59E0B,#EF4444)', fontSize: '10px', fontWeight: 700, color: '#FFFFFF' }}>Top Pick</div>}
+                    {i === 0 && (
+                      <div style={{ position: 'absolute', top: '10px', left: '10px', padding: '4px 10px', borderRadius: '8px', background: 'linear-gradient(135deg,#F59E0B,#EF4444)', fontSize: '10px', fontWeight: 700, color: '#FFFFFF', letterSpacing: '0.4px' }}>Top Pick</div>
+                    )}
                   </div>
-                  <div style={{ padding: '13px 15px' }}>
-                    <div style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', fontFamily: 'var(--font-heading)', marginBottom: '3px', lineHeight: 1.3 }}>{hotel.name}</div>
-                    {hotel.category && <div style={{ fontSize: '11px', color: '#94A3B8', marginBottom: '6px' }}>{hotel.category}</div>}
-                    {hotel.why && <div style={{ fontSize: '12px', color: '#475569', lineHeight: 1.5, fontStyle: 'italic' }}>{hotel.why}</div>}
+                  {/* Card body */}
+                  <div style={{ padding: '14px 16px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ fontSize: '15px', fontWeight: 700, color: '#0F172A', fontFamily: 'var(--font-heading)', marginBottom: '4px', lineHeight: 1.25 }}>{hotel.name}</div>
+                    {hotel.category && (
+                      <div style={{ fontSize: '11px', color: '#94A3B8', fontWeight: 500, marginBottom: '8px' }}>{hotel.category}</div>
+                    )}
+                    {hotel.why && (
+                      <div style={{ fontSize: '12px', color: '#475569', lineHeight: 1.6, flex: 1 }}>{hotel.why}</div>
+                    )}
+                    <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                      <CheckCircle2 size={9} strokeWidth={2.5} color="#10B981" />
+                      <span style={{ fontSize: '10px', color: '#94A3B8', lineHeight: 1 }}>Basierend auf deinem Reiseprofil</span>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-              <a href={goUrl('trivago', cur.trivagoUrl)} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '7px', padding: '10px', background: 'linear-gradient(135deg,#d00e17,#ff4d57)', color: '#FFFFFF', borderRadius: '10px', textDecoration: 'none', fontSize: '13px', fontWeight: 700 }}>
-                <Hotel size={13} strokeWidth={2} /> Trivago
-              </a>
-              <a href={goUrl('booking', cur.bookingUrl)} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '7px', padding: '10px', background: 'linear-gradient(135deg,#003580,#0057b8)', color: '#FFFFFF', borderRadius: '10px', textDecoration: 'none', fontSize: '13px', fontWeight: 700 }}>
-                <Hotel size={13} strokeWidth={2} /> Booking.com
-              </a>
+
+            {/* CTA heading */}
+            <div style={{ marginBottom: '14px', paddingBottom: '14px', borderBottom: '1px solid #F1F5F9' }}>
+              <div style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '4px' }}>Hotels & Preise vergleichen</div>
+              <div style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.55 }}>Vergleiche passende Angebote bei unseren Hotelpartnern und finde den besten Deal für deine Reise.</div>
+            </div>
+
+            {/* Provider grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(120px,1fr))', gap: '8px', marginBottom: '10px' }}>
+              {HOTEL_PROVIDERS.map(({ key, name, sub, Icon, accent, bg, border, getUrl }) => {
+                const url = getUrl(cur);
+                return (
+                  <a key={key} href={goUrl(key, url)} target="_blank" rel="noopener noreferrer"
+                    style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px', padding: '12px 8px', borderRadius: '12px', background: bg, border: `1.5px solid ${border}`, textDecoration: 'none', boxShadow: '0 1px 6px rgba(15,23,42,0.05)', transition: 'box-shadow 0.15s ease' }}
+                  >
+                    <div style={{ width: '32px', height: '32px', borderRadius: '9px', background: accent + '1a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <Icon size={14} strokeWidth={1.75} color={accent} />
+                    </div>
+                    <div style={{ fontSize: '12px', fontWeight: 700, color: '#0F172A', textAlign: 'center', lineHeight: 1.2 }}>{name}</div>
+                    <div style={{ fontSize: '10px', color: '#64748B', textAlign: 'center', lineHeight: 1.3 }}>{sub}</div>
+                  </a>
+                );
+              })}
+            </div>
+
+            {/* Affiliate disclaimer */}
+            <div style={{ fontSize: '10px', color: '#CBD5E1', textAlign: 'center', lineHeight: 1.5 }}>
+              Einige Links können Affiliate-Links sein — für dich bleibt der Preis gleich.
             </div>
           </section>
         )}
