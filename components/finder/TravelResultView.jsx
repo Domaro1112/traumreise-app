@@ -27,11 +27,14 @@ function goUrl(provider, rawUrl) {
   return `/go/${provider}?url=${encodeURIComponent(rawUrl)}`;
 }
 
-// Stop at the first German connector/preposition — everything before is a complete noun phrase
-const CHIP_CONNECTOR_RX = /\s+(?:und|oder|mit|sowie|für|durch|über|unter|neben|zwischen|aber|sondern|an\s|in\s|auf\s|von\s|zu\s|nach\s|bei\s|am\s|im\s|zum\s|zur\s)\S/i;
+// Strips emoji and extra whitespace from a string
+const stripEmoji = str => str.replace(/\p{Emoji_Presentation}|\p{Extended_Pictographic}/gu, '').replace(/\s+/g, ' ').trim();
+
+// Split at first German connector with whitespace on both sides — everything before is a complete noun phrase
+const CHIP_CONNECTOR_RX = /\s+(?:und|oder|mit|sowie|für|durch|über|unter|neben|zwischen|aber|sondern|an|in|auf|von|zu|nach|bei|am|im|zum|zur)\s+/i;
 
 function chipify(text) {
-  const clean = text.replace(/^[^\wäöüÄÖÜ]+/, '');
+  const clean = stripEmoji(text.replace(/^[^\wäöüÄÖÜ]+/, ''));
   const idx = clean.search(CHIP_CONNECTOR_RX);
   const phrase = (idx > 2 ? clean.slice(0, idx) : clean).trim();
   return phrase.split(/\s+/).slice(0, 4).join(' ').replace(/[.,!?:;–—]$/, '');
@@ -328,18 +331,26 @@ export default function TravelResultView({ results, personality, interests, pack
           })}
         </div>
 
-        {/* Match reasons */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(140px,1fr))', gap: '8px', marginTop: '12px' }}>
+        {/* Warum es zu dir passt – premium list cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: '10px', marginTop: '14px' }}>
           {results.map((r, i) => {
-            const reasons = getMatchReasons(r, personality, interests);
-            if (!reasons.length) return null;
+            const highlights = (r.highlights || [])
+              .slice(0, 3)
+              .map(h => stripEmoji(h).replace(/^[^\wäöüÄÖÜ]+/, '').replace(/[.,!?;]$/, '').trim())
+              .filter(h => h.length > 3);
+            if (!highlights.length) return null;
             const m = MATCHES[Math.min(i, MATCHES.length - 1)];
             return (
-              <div key={i}>
-                <div style={{ fontSize: '10px', fontWeight: 600, color: '#94A3B8', marginBottom: '5px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{r.destination}</div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
-                  {reasons.map((reason, j) => (
-                    <span key={j} style={{ padding: '3px 8px', borderRadius: '20px', background: m.bg, border: `1px solid ${m.border}`, fontSize: '10px', color: m.color, fontWeight: 600 }}>{reason}</span>
+              <div key={i} style={{ background: m.bg, border: `1.5px solid ${m.border}`, borderRadius: '14px', padding: '14px 16px', boxShadow: `0 2px 12px ${m.color}18` }}>
+                <div style={{ fontSize: '9px', fontWeight: 700, color: m.color, textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  <CheckCircle2 size={9} strokeWidth={2.5} color={m.color} /> Warum {r.destination} zu dir passt
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
+                  {highlights.map((h, j) => (
+                    <div key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                      <div style={{ width: '5px', height: '5px', minWidth: '5px', borderRadius: '50%', background: m.color, marginTop: '7px', flexShrink: 0 }} />
+                      <span style={{ fontSize: '12px', color: '#1E293B', lineHeight: 1.6, fontWeight: 500 }}>{h}</span>
+                    </div>
                   ))}
                 </div>
               </div>
