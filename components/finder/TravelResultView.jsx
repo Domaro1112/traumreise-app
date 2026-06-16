@@ -208,137 +208,125 @@ function getProfileCardData(typeStr) {
   return   { Icon: Award,      iconColor: '#0EA5E9', iconBg: '#EFF6FF', iconBorder: '#BFDBFE' };
 }
 
+// Single shared style block — rendered once before both banner sections
+function VisualBannerStyles() {
+  return (
+    <style>{`
+      .ape-visual-banner {
+        position: relative;
+        flex: 1;
+        min-height: clamp(360px,36vw,480px);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      .ape-profile-banner {
+        border: 1.5px solid #BFDBFE;
+        box-shadow: 0 4px 28px rgba(14,165,233,0.10);
+      }
+      .ape-analysis-banner {
+        border: 1.5px solid #BBF7D0;
+        box-shadow: 0 4px 28px rgba(16,185,129,0.10);
+      }
+      .ape-profile-overlay {
+        position: relative;
+        z-index: 1;
+        max-width: 54%;
+        padding: clamp(16px,3vw,24px);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        justify-content: center;
+        min-height: clamp(360px,36vw,480px);
+        box-sizing: border-box;
+      }
+      .ape-analysis-content {
+        position: relative;
+        z-index: 1;
+        padding: clamp(14px,2.5vw,20px);
+        padding-bottom: clamp(140px,17vw,185px);
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        max-width: 92%;
+      }
+      @media (max-width: 580px) {
+        .ape-visual-banner  { min-height: 370px; }
+        .ape-profile-overlay { max-width: 100%; min-height: 370px; }
+        .ape-analysis-content { padding-bottom: 120px; max-width: 100%; }
+      }
+    `}</style>
+  );
+}
+
 function ProfileBannerCard({ profileCards, summary }) {
   const [imgError, setImgError] = useState(false);
+  const bgStyle = imgError
+    ? { background: 'linear-gradient(135deg,#EFF6FF 0%,#DBEAFE 100%)' }
+    : { background: "linear-gradient(90deg,rgba(255,255,255,0.96) 0%,rgba(255,255,255,0.84) 38%,rgba(255,255,255,0.20) 62%,rgba(255,255,255,0.02) 100%),url('/images/travel-profile-monkey.png') right center / cover no-repeat" };
   return (
-    <>
-      <style>{`
-        .ape-profile-banner {
-          position: relative;
-          min-height: clamp(280px,32vw,390px);
-          border-radius: 14px;
-          overflow: hidden;
-          border: 1.5px solid #BFDBFE;
-          box-shadow: 0 4px 24px rgba(14,165,233,0.11);
-        }
-        .ape-profile-overlay {
-          position: relative;
-          z-index: 1;
-          max-width: 54%;
-          padding: clamp(16px,3vw,26px);
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-          justify-content: center;
-          min-height: clamp(280px,32vw,390px);
-          box-sizing: border-box;
-        }
-        @media (max-width: 580px) {
-          .ape-profile-banner { min-height: 340px; }
-          .ape-profile-overlay { max-width: 100%; min-height: 340px; }
-        }
-      `}</style>
-      <div
-        className="ape-profile-banner"
-        style={imgError
-          ? { background: 'linear-gradient(135deg,#EFF6FF 0%,#DBEAFE 100%)' }
-          : { backgroundImage: "url('/images/travel-profile-monkey.png')", backgroundSize: 'cover', backgroundPosition: 'right center' }
-        }
-      >
-        {/* Hidden sentinel for onError detection */}
-        {!imgError && (
-          <img src="/images/travel-profile-monkey.png" alt="" aria-hidden="true"
-            onError={() => setImgError(true)}
-            style={{ position: 'absolute', width: 0, height: 0, opacity: 0, pointerEvents: 'none' }}
-          />
+    <div className="ape-visual-banner ape-profile-banner" style={bgStyle}>
+      {!imgError && (
+        <img src="/images/travel-profile-monkey.png" alt="" aria-hidden="true"
+          onError={() => setImgError(true)}
+          style={{ position: 'absolute', width: 0, height: 0, opacity: 0, pointerEvents: 'none' }}
+        />
+      )}
+      <div className="ape-profile-overlay">
+        {profileCards.map(({ Icon, iconColor, iconBg, iconBorder, title }, j) => (
+          <div key={j} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '9px 13px', borderRadius: '11px', background: 'rgba(255,255,255,0.84)', backdropFilter: 'blur(8px)', border: '1.5px solid rgba(191,219,254,0.8)', boxShadow: '0 1px 8px rgba(14,165,233,0.07)' }}>
+            <div style={{ width: '30px', height: '30px', minWidth: '30px', borderRadius: '9px', background: iconBg, border: `1px solid ${iconBorder}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Icon size={13} strokeWidth={1.75} color={iconColor} />
+            </div>
+            <span style={{ fontSize: '13px', fontWeight: 600, color: '#0F172A', lineHeight: 1.3 }}>{title}</span>
+          </div>
+        ))}
+        {summary && (
+          <div style={{ display: 'flex', gap: '9px', marginTop: '2px', padding: '11px 13px', borderRadius: '10px', background: 'rgba(255,255,255,0.82)', backdropFilter: 'blur(8px)', border: '1px solid rgba(191,219,254,0.7)' }}>
+            <div style={{ width: '3px', minWidth: '3px', borderRadius: '2px', background: 'linear-gradient(to bottom,#0EA5E9,#06B6D4)', alignSelf: 'stretch' }} />
+            <p style={{ margin: 0, fontSize: '12px', fontStyle: 'italic', color: '#1E40AF', lineHeight: 1.65, fontWeight: 500 }}>„{summary}"</p>
+          </div>
         )}
-        {/* Gradient overlay: left = near-white for text, right = transparent to reveal monkey */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg,rgba(255,255,255,0.97) 0%,rgba(255,255,255,0.91) 38%,rgba(255,255,255,0.22) 62%,transparent 80%)', pointerEvents: 'none' }} />
-        {/* Content sits over the overlay on the left */}
-        <div className="ape-profile-overlay">
-          {profileCards.map(({ Icon, iconColor, iconBg, iconBorder, title }, j) => (
-            <div key={j} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '9px 13px', borderRadius: '11px', background: 'rgba(255,255,255,0.84)', backdropFilter: 'blur(8px)', border: '1.5px solid rgba(191,219,254,0.8)', boxShadow: '0 1px 8px rgba(14,165,233,0.07)' }}>
-              <div style={{ width: '30px', height: '30px', minWidth: '30px', borderRadius: '9px', background: iconBg, border: `1px solid ${iconBorder}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Icon size={13} strokeWidth={1.75} color={iconColor} />
-              </div>
-              <span style={{ fontSize: '13px', fontWeight: 600, color: '#0F172A', lineHeight: 1.3 }}>{title}</span>
-            </div>
-          ))}
-          {summary && (
-            <div style={{ display: 'flex', gap: '9px', marginTop: '2px', padding: '11px 13px', borderRadius: '10px', background: 'rgba(255,255,255,0.82)', backdropFilter: 'blur(8px)', border: '1px solid rgba(191,219,254,0.7)' }}>
-              <div style={{ width: '3px', minWidth: '3px', borderRadius: '2px', background: 'linear-gradient(to bottom,#0EA5E9,#06B6D4)', alignSelf: 'stretch' }} />
-              <p style={{ margin: 0, fontSize: '12px', fontStyle: 'italic', color: '#1E40AF', lineHeight: 1.65, fontWeight: 500 }}>
-                „{summary}"
-              </p>
-            </div>
-          )}
-          {imgError && (
-            <div style={{ display: 'flex', gap: '10px', marginTop: '6px' }}>
-              <Compass size={22} strokeWidth={1.25} color="#93C5FD" />
-              <MapPin  size={22} strokeWidth={1.25} color="#BFDBFE" />
-              <Heart   size={22} strokeWidth={1.25} color="#DBEAFE" />
-            </div>
-          )}
-        </div>
+        {imgError && (
+          <div style={{ display: 'flex', gap: '10px', marginTop: '6px' }}>
+            <Compass size={22} strokeWidth={1.25} color="#93C5FD" />
+            <MapPin  size={22} strokeWidth={1.25} color="#BFDBFE" />
+            <Heart   size={22} strokeWidth={1.25} color="#DBEAFE" />
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 }
 
 function AnalysisBannerCard({ reasons }) {
   const [imgError, setImgError] = useState(false);
-  const bg = imgError
+  const bgStyle = imgError
     ? { background: 'linear-gradient(180deg,#F0FDF4 0%,#DCFCE7 55%,#BBF7D0 100%)' }
-    : { background: "linear-gradient(180deg,rgba(255,255,255,0.97) 0%,rgba(255,255,255,0.92) 44%,rgba(255,255,255,0.35) 68%,rgba(255,255,255,0.05) 100%),url('/images/apearound-analysis-bags.png') center bottom / cover no-repeat" };
+    : { background: "linear-gradient(180deg,rgba(255,255,255,0.97) 0%,rgba(255,255,255,0.92) 44%,rgba(255,255,255,0.42) 68%,rgba(255,255,255,0.06) 100%),url('/images/apearound-analysis-bags.png') center bottom / cover no-repeat" };
   return (
-    <>
-      <style>{`
-        .ape-analysis-banner {
-          position: relative;
-          min-height: clamp(440px,42vw,570px);
-          border-radius: 14px;
-          overflow: hidden;
-          border: 1.5px solid #BBF7D0;
-          box-shadow: 0 4px 24px rgba(16,185,129,0.10);
-          display: flex;
-          flex-direction: column;
-        }
-        .ape-analysis-content {
-          padding: clamp(14px,2.5vw,20px);
-          padding-bottom: clamp(130px,16vw,175px);
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-        }
-        @media (max-width: 580px) {
-          .ape-analysis-banner { min-height: 400px; }
-          .ape-analysis-content { padding-bottom: 110px; }
-        }
-      `}</style>
-      <div className="ape-analysis-banner" style={bg}>
-        {!imgError && (
-          <img src="/images/apearound-analysis-bags.png" alt="" aria-hidden="true"
-            onError={() => setImgError(true)}
-            style={{ position: 'absolute', width: 0, height: 0, opacity: 0, pointerEvents: 'none' }}
-          />
-        )}
-        <div className="ape-analysis-content">
-          {reasons.map((r, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', padding: '10px 13px', borderRadius: '12px', background: 'rgba(255,255,255,0.86)', backdropFilter: 'blur(8px)', border: '1px solid rgba(34,197,94,0.22)', boxShadow: '0 2px 10px rgba(15,23,42,0.07)' }}>
-              <CheckCircle2 size={14} strokeWidth={2.5} color="#16A34A" style={{ flexShrink: 0, marginTop: '1px' }} />
-              <span style={{ fontSize: '12px', color: '#166534', fontWeight: 500, lineHeight: 1.55 }}>{r}</span>
-            </div>
-          ))}
-        </div>
-        {imgError && (
-          <div style={{ position: 'absolute', bottom: '18px', right: '18px', display: 'flex', gap: '10px', opacity: 0.22 }}>
-            <Briefcase size={38} strokeWidth={1.25} color="#16A34A" />
-            <Plane    size={28} strokeWidth={1.25} color="#16A34A" />
-            <MapPin   size={24} strokeWidth={1.25} color="#16A34A" />
+    <div className="ape-visual-banner ape-analysis-banner" style={bgStyle}>
+      {!imgError && (
+        <img src="/images/apearound-analysis-bags.png" alt="" aria-hidden="true"
+          onError={() => setImgError(true)}
+          style={{ position: 'absolute', width: 0, height: 0, opacity: 0, pointerEvents: 'none' }}
+        />
+      )}
+      <div className="ape-analysis-content">
+        {reasons.map((r, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', padding: '10px 13px', borderRadius: '12px', background: 'rgba(255,255,255,0.86)', backdropFilter: 'blur(8px)', border: '1px solid rgba(34,197,94,0.22)', boxShadow: '0 2px 10px rgba(15,23,42,0.07)' }}>
+            <CheckCircle2 size={14} strokeWidth={2.5} color="#16A34A" style={{ flexShrink: 0, marginTop: '1px' }} />
+            <span style={{ fontSize: '12px', color: '#166534', fontWeight: 500, lineHeight: 1.55 }}>{r}</span>
           </div>
-        )}
+        ))}
       </div>
-    </>
+      {imgError && (
+        <div style={{ position: 'absolute', bottom: '18px', right: '18px', display: 'flex', gap: '10px', opacity: 0.22 }}>
+          <Briefcase size={38} strokeWidth={1.25} color="#16A34A" />
+          <Plane    size={28} strokeWidth={1.25} color="#16A34A" />
+          <MapPin   size={24} strokeWidth={1.25} color="#16A34A" />
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -529,10 +517,11 @@ export default function TravelResultView({ results, personality, interests, pack
       <div key={idx} style={{ animation: 'fadeUp .3s cubic-bezier(0.16,1,0.3,1) both' }}>
 
         {/* ── WHY PERFECT + WHY WON ──────────────────────────────────────── */}
+        <VisualBannerStyles />
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: '12px', marginBottom: '12px', alignItems: 'stretch' }}>
 
           {personality && (
-            <section aria-label="Warum diese Reise passt" style={{ ...card }}>
+            <section aria-label="Warum diese Reise passt" style={{ ...card, display: 'flex', flexDirection: 'column' }}>
               <SectionTitle label="Dein Reiseprofil" title="Warum diese Reise perfekt zu dir passt" icon={Compass} />
               <ProfileBannerCard
                 profileCards={profileCards}
