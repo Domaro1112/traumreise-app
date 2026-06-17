@@ -139,7 +139,7 @@ export default function HowItWorksSection() {
         </div>
 
         <div style={{ textAlign: 'center' }}>
-          <Button href="/finder" size="lg">
+          <Button href="#reiseplaner" size="lg">
             <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Plane size={18} strokeWidth={2} />
               Jetzt kostenlos starten

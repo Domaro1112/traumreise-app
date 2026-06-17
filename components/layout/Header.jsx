@@ -13,6 +13,7 @@ export default function Header() {
   const [scrolled, setScrolled]   = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const isHome   = pathname === '/';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -108,12 +109,14 @@ export default function Header() {
 
             {/* CTA + Hamburger */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <Button href="/finder" size="sm" className="hide-mobile">
-                <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Plane size={15} strokeWidth={2} />
-                  Jetzt starten
-                </span>
-              </Button>
+              {!isHome && (
+                <Button href="/finder" size="sm" className="hide-mobile">
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <Plane size={15} strokeWidth={2} />
+                    Jetzt starten
+                  </span>
+                </Button>
+              )}
 
               {/* Mobile hamburger */}
               <button
@@ -199,12 +202,14 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
-          <Button href="/finder" fullWidth size="lg" style={{ marginTop: '16px' }} onClick={() => setMobileOpen(false)}>
-            <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-              <Plane size={18} strokeWidth={2} />
-              Jetzt starten
-            </span>
-          </Button>
+          {!isHome && (
+            <Button href="/finder" fullWidth size="lg" style={{ marginTop: '16px' }} onClick={() => setMobileOpen(false)}>
+              <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                <Plane size={18} strokeWidth={2} />
+                Jetzt starten
+              </span>
+            </Button>
+          )}
         </div>
       )}
     </>

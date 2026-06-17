@@ -295,7 +295,7 @@ export default function HomeTravelWizard() {
   };
 
   return (
-    <section id="wizard" style={{ background: '#FFFFFF', paddingBottom: '80px' }}>
+    <section id="reiseplaner" style={{ background: '#FFFFFF', paddingBottom: '80px', scrollMarginTop: '110px' }}>
       <Container>
         <div style={{
           background: '#FFFFFF', borderRadius: '28px',

@@ -135,7 +135,7 @@ export default function HeroSection() {
               marginBottom: '48px',
             }}
           >
-            <Button href="/finder" size="lg">
+            <Button href="#reiseplaner" size="lg">
               <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Plane size={18} strokeWidth={2} />
                 Traumreise finden
