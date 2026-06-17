@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import {
   Sparkles, Plane, ChevronRight, ChevronLeft, ShieldCheck,
@@ -234,6 +234,17 @@ export default function HomeTravelWizard() {
   const [submitting,    setSubmitting]    = useState(false);
   const [error,         setError]         = useState('');
 
+  const wizardTopRef = useRef(null);
+  const didMountRef  = useRef(false);
+
+  useEffect(() => {
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      return;
+    }
+    wizardTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [step]);
+
   const toggleMood = useCallback(
     id => setMoods(prev =>
       prev.includes(id) ? prev.filter(m => m !== id) : prev.length >= 3 ? prev : [...prev, id]
@@ -295,7 +306,7 @@ export default function HomeTravelWizard() {
   };
 
   return (
-    <section id="reiseplaner" style={{ background: '#FFFFFF', paddingBottom: '80px', scrollMarginTop: '110px' }}>
+    <section ref={wizardTopRef} id="reiseplaner" style={{ background: '#FFFFFF', paddingBottom: '80px', scrollMarginTop: '110px' }}>
       <Container>
         <div style={{
           background: '#FFFFFF', borderRadius: '28px',
