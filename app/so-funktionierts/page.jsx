@@ -227,7 +227,6 @@ export default function SoFunktionierts() {
               {[
                 {
                   n: '1',
-                  Icon: PenLine,
                   img: '/images/how-it-works/step-1-fragen.png',
                   imgAlt: 'Schritt 1: Reisewünsche eingeben',
                   title: 'Du erzählst uns, wonach sich dein Urlaub anfühlen soll',
@@ -235,7 +234,6 @@ export default function SoFunktionierts() {
                 },
                 {
                   n: '2',
-                  Icon: Brain,
                   img: '/images/how-it-works/step-2-analyse.png',
                   imgAlt: 'Schritt 2: KI-Analyse erstellt Reiseprofil',
                   title: 'ApeAround erstellt daraus dein persönliches Reiseprofil',
@@ -243,7 +241,6 @@ export default function SoFunktionierts() {
                 },
                 {
                   n: '3',
-                  Icon: MapPin,
                   img: '/images/how-it-works/step-3-ergebnis.png',
                   imgAlt: 'Schritt 3: Persönliche Reisevorschläge erhalten',
                   title: 'Du bekommst passende Reisevorschläge',
