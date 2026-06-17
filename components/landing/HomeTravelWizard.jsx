@@ -255,7 +255,7 @@ export default function HomeTravelWizard() {
     []
   );
 
-  const handleSelectSeason = (id) => { setSeason(id); setStep(3); };
+  const handleSelectSeason = (id) => { setSeason(id); };
 
   const handleSubmit = async () => {
     if (submitting) return;
@@ -383,7 +383,7 @@ export default function HomeTravelWizard() {
                 <div>
                   <StepHeading
                     title="Wann möchtest du verreisen?"
-                    hint="Wähle eine Option – danach geht es automatisch weiter"
+                    hint="Wähle eine Option"
                   />
                   <div className="funnel-season-grid" style={{ marginBottom: '28px' }}>
                     {SEASONS.map(s => (
