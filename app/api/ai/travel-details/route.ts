@@ -92,7 +92,7 @@ Antworte AUSSCHLIESSLICH als valides JSON ohne Markdown-Blöcke:
   }
 }
 Wichtig:
-- Hotels: Nenne ausschließlich real existierende Hotels mit konkretem Namen (z.B. "Hotel Elephant Weimar", nicht "Stadthotel in Weimar"). Wenn du keinen echten Hotelnamen sicher kennst, gib für hotels ein leeres Array zurück.
+- Hotels: Nenne 2 bekannte, real existierende Hotels mit konkretem Eigennamen für das jeweilige Reiseziel (z.B. "Hotel Ritz Paris", "Bairro Alto Hotel Lissabon", "Hotel Elephant Weimar"). Erfinde KEINE generischen Beschreibungen wie "Stadthotel in Weimar", "Boutique-Hotel in Lissabon" oder "Strandresort in Mallorca". Nur wenn dir für ein konkretes Reiseziel wirklich kein einziger echter Hotelname bekannt ist, gib ein leeres Array zurück — bei bekannten Reisezielen gibt es fast immer passende Hotels.
 - type-Feld muss eines sein von: city, boutique, wellness, family, beach, mountain, budget, romantic
 - searchQuery = Hotelname + Zielort als Suchbegriff (z.B. "Hotel Elephant Weimar")
 - Genau ${itineraryDays} Einträge pro itinerary-Array. Alle 3 Destinations vollständig ausfüllen. Alle Texte auf Deutsch.`;
@@ -129,6 +129,13 @@ Wichtig:
   } catch (err) {
     console.error('[travel-details] JSON parse error:', String(err), '| stop_reason:', stopReason, '| raw:', raw.slice(0, 800));
     return NextResponse.json({ error: 'Detaildaten konnten nicht verarbeitet werden.' }, { status: 500 });
+  }
+
+  if (process.env.NODE_ENV === 'development') {
+    const dests = phase2.destinations as Array<Record<string, unknown>> | undefined;
+    dests?.forEach((d, i) => {
+      console.log(`[travel-details] dest[${i}] (${d.destination}) hotels:`, d.hotels);
+    });
   }
 
   // ── Merge into Supabase ────────────────────────────────────────────────────
