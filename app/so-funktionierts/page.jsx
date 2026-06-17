@@ -246,7 +246,7 @@ export default function SoFunktionierts() {
                   title: 'Du bekommst passende Reisevorschläge',
                   text: 'Du erhältst mehrere Vorschläge mit Gründen, Highlights, passenden Unterkunftsideen und direkten Vergleichsmöglichkeiten bei Reiseanbietern.',
                 },
-              ].map(({ n, Icon, img, imgAlt, title, text }) => (
+              ].map(({ n, img, imgAlt, title, text }) => (
                 <div key={n} style={{
                   background: '#FFFFFF',
                   border: '1.5px solid #E2E8F0',
@@ -258,36 +258,22 @@ export default function SoFunktionierts() {
                   gap: '24px',
                   transition: 'box-shadow 0.3s, border-color 0.3s, transform 0.3s',
                 }}>
-                  {/* Step indicator */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div style={{
-                      width: '48px',
-                      height: '48px',
-                      borderRadius: '50%',
-                      background: 'linear-gradient(135deg, #0EA5E9, #06B6D4)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '18px',
-                      fontWeight: 800,
-                      color: '#fff',
-                      fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-                      boxShadow: '0 4px 16px rgba(14,165,233,0.35)',
-                      flexShrink: 0,
-                    }}>{n}</div>
-                    <div style={{
-                      width: '44px',
-                      height: '44px',
-                      borderRadius: '12px',
-                      background: '#EFF6FF',
-                      border: '1px solid #BFDBFE',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}>
-                      <Icon size={20} strokeWidth={1.5} color="#0EA5E9" />
-                    </div>
-                  </div>
+                  {/* Step number */}
+                  <div style={{
+                    width: '48px',
+                    height: '48px',
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, #0EA5E9, #06B6D4)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '18px',
+                    fontWeight: 800,
+                    color: '#fff',
+                    fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                    boxShadow: '0 4px 16px rgba(14,165,233,0.35)',
+                    flexShrink: 0,
+                  }}>{n}</div>
 
                   {/* Step image */}
                   <HowItWorksImage
