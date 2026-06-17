@@ -236,6 +236,7 @@ export default function HomeTravelWizard() {
 
   const wizardTopRef = useRef(null);
   const didMountRef  = useRef(false);
+  const loadingRef   = useRef(null);
 
   useEffect(() => {
     if (!didMountRef.current) {
@@ -247,6 +248,16 @@ export default function HomeTravelWizard() {
     });
     return () => cancelAnimationFrame(raf);
   }, [step]);
+
+  useEffect(() => {
+    if (!submitting) return;
+    const raf = requestAnimationFrame(() => {
+      setTimeout(() => {
+        loadingRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 50);
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [submitting]);
 
   const toggleMood = useCallback(
     id => setMoods(prev =>
@@ -320,7 +331,14 @@ export default function HomeTravelWizard() {
         }}>
 
           {/* ── Loading ────────────────────────────────────────────────────── */}
-          {submitting && <TravelFunnelLoading />}
+          {submitting && (
+            <div ref={loadingRef} style={{
+              minHeight: 'min(520px, 70vh)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <TravelFunnelLoading />
+            </div>
+          )}
 
           {/* ── Funnel ─────────────────────────────────────────────────────── */}
           {!submitting && (
