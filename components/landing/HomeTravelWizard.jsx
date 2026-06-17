@@ -242,7 +242,10 @@ export default function HomeTravelWizard() {
       didMountRef.current = true;
       return;
     }
-    wizardTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const raf = requestAnimationFrame(() => {
+      wizardTopRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    return () => cancelAnimationFrame(raf);
   }, [step]);
 
   const toggleMood = useCallback(
