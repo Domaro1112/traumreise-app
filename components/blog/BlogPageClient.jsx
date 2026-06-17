@@ -32,7 +32,7 @@ const CATEGORY_COLORS = {
 // ── Static editorial data ────────────────────────────────────────────────────
 const PLANUNG_KARTEN = [
   { Icon: Plane,   title: 'Günstig fliegen',    desc: 'Timing, Buchungstools und Insider-Tricks für günstige Flüge.', href: '/reiseblog', cta: 'Budget-Tipps lesen' },
-  { Icon: MapPin,  title: 'Ziel finden',         desc: 'Das richtige Reiseziel für deinen Stil – mit KI-Unterstützung.',  href: '/finder',    cta: 'Zum Reisefinder' },
+  { Icon: MapPin,  title: 'Ziel finden',         desc: 'Das richtige Reiseziel für deinen Stil – mit KI-Unterstützung.',  href: '/#reiseplaner',    cta: 'Zum Reisefinder' },
   { Icon: Users,   title: 'Familienurlaub',      desc: 'Die besten Reiseziele und wie du sie stressfrei planst.',        href: '/reiseziele', cta: 'Reiseziele entdecken' },
   { Icon: Globe,   title: 'Visum & Einreise',    desc: 'Einreisebestimmungen und Reisedokumente im Überblick.',          href: '/reiseblog', cta: 'Mehr erfahren' },
 ];
@@ -550,7 +550,7 @@ export default function BlogPageClient({ articles, categories: _ignored }) {
               <p style={{ fontSize: 'clamp(14px, 1.8vw, 17px)', color: 'rgba(255,255,255,0.72)', lineHeight: 1.65, marginBottom: '30px' }}>
                 Lass unsere KI in 2 Minuten das perfekte Reiseziel für dich finden – kostenlos und personalisiert.
               </p>
-              <Link href="/finder" style={{ display: 'inline-flex', alignItems: 'center', gap: '9px', padding: '15px 30px', borderRadius: '14px', background: '#FFFFFF', color: '#0284C7', fontSize: '15px', fontWeight: 800, fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', textDecoration: 'none', boxShadow: '0 8px 32px rgba(0,0,0,0.20)' }}>
+              <Link href="/#reiseplaner" style={{ display: 'inline-flex', alignItems: 'center', gap: '9px', padding: '15px 30px', borderRadius: '14px', background: '#FFFFFF', color: '#0284C7', fontSize: '15px', fontWeight: 800, fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', textDecoration: 'none', boxShadow: '0 8px 32px rgba(0,0,0,0.20)' }}>
                 <Plane size={16} strokeWidth={2.5} />
                 Traumreise finden
                 <ArrowRight size={15} strokeWidth={2.5} />

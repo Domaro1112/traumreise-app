@@ -162,7 +162,7 @@ export default function ArticleSidebar({ tableOfContents, destination, galleryIm
           </p>
 
           <Link
-            href="/finder"
+            href="/#reiseplaner"
             style={{
               display: 'flex',
               alignItems: 'center',

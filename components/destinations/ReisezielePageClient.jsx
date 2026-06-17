@@ -212,7 +212,7 @@ export default function ReisezielePageClient({ destinations = [] }) {
       }))
     : POPULAR_PICKS.map(p => ({
         ...p,
-        href: dbSlugs.has(p.slug) ? `/reiseziele/${p.slug}` : '/finder',
+        href: dbSlugs.has(p.slug) ? `/reiseziele/${p.slug}` : '/#reiseplaner',
       }));
 
   const handleFilterChip = (type) => {

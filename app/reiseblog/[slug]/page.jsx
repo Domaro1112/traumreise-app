@@ -176,7 +176,7 @@ export default async function ArticlePage({ params }) {
               </Link>
 
               <Link
-                href="/finder"
+                href="/#reiseplaner"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -268,7 +268,7 @@ export default async function ArticlePage({ params }) {
               </p>
 
               <Link
-                href={`/finder?text=Ich möchte nach ${article.destination} reisen`}
+                href="/#reiseplaner"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',

@@ -104,7 +104,7 @@ export default function TravelFinderBox() {
     if (season) params.set('season', season);
     if (duration) params.set('duration', duration);
     if (budget) params.set('budget', budget);
-    router.push(`/finder?${params.toString()}`);
+    router.push('/#reiseplaner');
   };
 
   return (

@@ -273,7 +273,7 @@ export default async function DestinationPage({ params }) {
                 {[
                   { label: 'Hotels ansehen', href: '#angebote' },
                   { label: 'Flüge suchen', href: '#angebote' },
-                  { label: 'Mit KI planen', href: `/finder?text=Ich möchte nach ${dest.name} reisen` },
+                  { label: 'Mit KI planen', href: '/#reiseplaner' },
                 ].map(cta => (
                   <a
                     key={cta.label}
@@ -593,7 +593,7 @@ export default async function DestinationPage({ params }) {
                     Unsere KI erstellt dir einen persönlichen Reiseplan – kostenlos.
                   </p>
                   <Link
-                    href={`/finder?text=Ich möchte nach ${dest.name} reisen`}
+                    href="/#reiseplaner"
                     style={{
                       display: 'flex',
                       alignItems: 'center',

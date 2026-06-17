@@ -74,13 +74,13 @@ const LINKS = [
     Icon: Bot,
     title: 'KI-Reisefinder',
     text: 'Dein persönliches Reiseziel in Minuten.',
-    href: '/finder',
+    href: '/#reiseplaner',
   },
   {
     Icon: Star,
     title: 'Reise-Zukunfts-Ich',
     text: 'Stell dir vor, wer du auf Reisen sein könntest.',
-    href: '/finder',
+    href: '/#reiseplaner',
   },
   {
     Icon: BookOpen,
@@ -190,7 +190,7 @@ export default function UeberUns() {
                 </p>
 
                 <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-                  <Button href="/finder" size="lg">
+                  <Button href="/#reiseplaner" size="lg">
                     <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <Plane size={17} strokeWidth={2} />
                       Reise finden
@@ -669,7 +669,7 @@ export default function UeberUns() {
               </div>
 
               <div style={{ textAlign: 'center', marginTop: '40px' }}>
-                <Button href="/finder" size="lg">
+                <Button href="/#reiseplaner" size="lg">
                   <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <Plane size={17} strokeWidth={2} />
                     Traumreise finden

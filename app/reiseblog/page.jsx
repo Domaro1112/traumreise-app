@@ -321,7 +321,7 @@ export default async function Reiseblog() {
                 kostenlos und personalisiert auf deinen Stil.
               </p>
               <Link
-                href="/finder"
+                href="/#reiseplaner"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
