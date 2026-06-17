@@ -238,7 +238,7 @@ export default function SoFunktionierts() {
                   Icon: Brain,
                   img: '/images/how-it-works/step-2-analyse.png',
                   imgAlt: 'Schritt 2: KI-Analyse erstellt Reiseprofil',
-                  title: 'ApeAround erstellt daraus dein Reiseprofil',
+                  title: 'ApeAround erstellt daraus dein persönliches Reiseprofil',
                   text: 'Die KI erkennt Muster in deinen Antworten und ordnet sie einem persönlichen Reisetyp zu — zum Beispiel Erholung, Abenteuer, Kultur, Familie, Romantik oder Natur.',
                 },
                 {
