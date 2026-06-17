@@ -296,6 +296,7 @@ export default function SoFunktionierts() {
                   <HowItWorksImage
                     src={img}
                     alt={imgAlt}
+                    variant="step"
                   />
 
                   {/* Text */}
@@ -790,7 +791,7 @@ export default function SoFunktionierts() {
                 lineHeight: 1.75,
                 marginBottom: '36px',
               }}>
-                Beantworte ein paar Fragen und lass ApeAround passende Reiseideen für dich finden.
+                Beantworte ein paar Fragen und lass ApeAround passende Reiseideen für dich finden. Je aussagekräftiger, desto besser deine Vorschläge.
               </p>
               <Button
                 href="/#reiseplaner"
@@ -803,7 +804,7 @@ export default function SoFunktionierts() {
                 }}
               >
                 <Plane size={17} strokeWidth={2} />
-                Traumreise finden
+                Jetzt Traumurlaub finden
               </Button>
               <p style={{
                 marginTop: '18px',

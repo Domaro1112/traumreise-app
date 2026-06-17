@@ -4,14 +4,21 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Plane } from 'lucide-react';
 
+const EDGE_FADE =
+  'linear-gradient(to right, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0) 13%, rgba(255,255,255,0) 87%, rgba(255,255,255,0.92) 100%),' +
+  'linear-gradient(to bottom, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0) 13%, rgba(255,255,255,0) 87%, rgba(255,255,255,0.92) 100%)';
+
 export default function HowItWorksImage({
   src,
   alt,
   loading = 'lazy',
+  variant = 'default',
   style = {},
 }) {
   const [error, setError] = useState(false);
+  const isStep = variant === 'step';
 
+  // ── Fallback ──────────────────────────────────────────────────────────────
   if (error) {
     return (
       <div style={{
@@ -25,7 +32,8 @@ export default function HowItWorksImage({
         justifyContent: 'center',
         gap: '12px',
         padding: '40px 20px',
-        minHeight: '180px',
+        aspectRatio: isStep ? '1/1' : undefined,
+        minHeight: isStep ? undefined : '180px',
         overflow: 'hidden',
         ...style,
       }}>
@@ -47,6 +55,42 @@ export default function HowItWorksImage({
     );
   }
 
+  // ── Step variant: 1:1, contain, edge-fade overlay ─────────────────────────
+  if (isStep) {
+    return (
+      <div style={{
+        position: 'relative',
+        width: '100%',
+        aspectRatio: '1/1',
+        borderRadius: '20px',
+        overflow: 'hidden',
+        background: '#FFFFFF',
+        ...style,
+      }}>
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          loading={loading}
+          onError={() => setError(true)}
+          style={{ objectFit: 'contain', objectPosition: 'center' }}
+          sizes="(max-width: 768px) 100vw, 33vw"
+        />
+        {/* Soft edge-fade overlay — fades all four edges to white */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            pointerEvents: 'none',
+            background: EDGE_FADE,
+          }}
+        />
+      </div>
+    );
+  }
+
+  // ── Default variant: 16/9, cover ──────────────────────────────────────────
   return (
     <div style={{
       position: 'relative',
