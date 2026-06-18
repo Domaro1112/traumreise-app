@@ -226,8 +226,8 @@ export default function DestinationCards({ suggestions = [] }) {
       <Container>
         <SectionTitle
           label="Lass dich von uns inspirieren"
-          title="Traumziele, die zu dir"
-          titleHighlight="passen könnten"
+          title="Traumziele, die dir"
+          titleHighlight="gefallen könnten"
           subtitle="Von tropischen Stränden bis zu pulsierenden Metropolen — wir kennen das perfekte Ziel für jeden Reisetyp."
         />
 
