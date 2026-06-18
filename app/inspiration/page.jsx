@@ -88,106 +88,138 @@ export default async function InspirationPage() {
           }} />
 
           <Container>
-            <div style={{ maxWidth: '780px', margin: '0 auto', textAlign: 'center', position: 'relative' }}>
-              {/* Label */}
-              <div style={{
-                display: 'inline-flex', alignItems: 'center', gap: '8px',
-                padding: '6px 16px', borderRadius: '40px',
-                background: 'rgba(14,165,233,0.12)', border: '1px solid rgba(14,165,233,0.30)',
-                marginBottom: '24px',
-              }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" />
-                </svg>
-                <span style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#38BDF8', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>
-                  Handverlesene Reiseideen
-                </span>
-              </div>
-
-              <h1 style={{
-                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-                fontSize: 'clamp(32px, 6vw, 58px)',
-                fontWeight: 900,
-                lineHeight: 1.15,
-                letterSpacing: '-0.03em',
-                color: '#FFFFFF',
-                margin: '0 0 20px',
-              }}>
-                Reiseinspirationen,{' '}
-                <span style={{
-                  background: 'linear-gradient(135deg, #38BDF8 0%, #22D3EE 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
+            {/* Two-column layout: text left, hero image right */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '48px',
+              flexWrap: 'wrap',
+              position: 'relative',
+            }}>
+              {/* Text column */}
+              <div style={{ flex: '1 1 340px', minWidth: 0 }}>
+                {/* Label */}
+                <div style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '8px',
+                  padding: '6px 16px', borderRadius: '40px',
+                  background: 'rgba(14,165,233,0.12)', border: '1px solid rgba(14,165,233,0.30)',
+                  marginBottom: '24px',
                 }}>
-                  die sofort Fernweh wecken
-                </span>
-              </h1>
-
-              <p style={{
-                fontSize: 'clamp(16px, 2vw, 19px)',
-                color: '#94A3B8',
-                lineHeight: 1.7,
-                margin: '0 0 40px',
-                maxWidth: '620px',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-              }}>
-                Entdecke handverlesene Reiseideen, Hotels, Pauschalreisen, Naturziele und Erlebnisse — direkt mit passenden Anbietern zum Vergleichen.
-              </p>
-
-              {/* CTAs */}
-              <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <a
-                  href="#inspirationen"
-                  style={{
-                    display: 'inline-flex', alignItems: 'center', gap: '8px',
-                    padding: '15px 28px', borderRadius: '16px',
-                    background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
-                    color: '#FFFFFF', textDecoration: 'none',
-                    fontSize: '15px', fontWeight: 700,
-                    boxShadow: '0 6px 24px rgba(14,165,233,0.45)',
-                    fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-                  }}
-                >
-                  Inspiration entdecken
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 5v14M5 12l7 7 7-7" />
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" />
                   </svg>
-                </a>
-                <a
-                  href="/#reiseplaner"
-                  style={{
-                    display: 'inline-flex', alignItems: 'center', gap: '8px',
-                    padding: '15px 28px', borderRadius: '16px',
-                    background: 'rgba(255,255,255,0.08)', border: '1.5px solid rgba(255,255,255,0.18)',
-                    color: '#E2E8F0', textDecoration: 'none',
-                    fontSize: '15px', fontWeight: 600,
-                    fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-                    backdropFilter: 'blur(8px)',
-                  }}
-                >
-                  Traumreise planen
-                </a>
+                  <span style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#38BDF8', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>
+                    Handverlesene Reiseideen
+                  </span>
+                </div>
+
+                <h1 style={{
+                  fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                  fontSize: 'clamp(28px, 5vw, 52px)',
+                  fontWeight: 900,
+                  lineHeight: 1.15,
+                  letterSpacing: '-0.03em',
+                  color: '#FFFFFF',
+                  margin: '0 0 20px',
+                }}>
+                  Reiseinspirationen,{' '}
+                  <span style={{
+                    background: 'linear-gradient(135deg, #38BDF8 0%, #22D3EE 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                  }}>
+                    die sofort Fernweh wecken
+                  </span>
+                </h1>
+
+                <p style={{
+                  fontSize: 'clamp(15px, 1.8vw, 18px)',
+                  color: '#94A3B8',
+                  lineHeight: 1.7,
+                  margin: '0 0 36px',
+                  maxWidth: '540px',
+                }}>
+                  Entdecke handverlesene Reiseideen, Hotels, Pauschalreisen, Naturziele und Erlebnisse — direkt mit passenden Anbietern zum Vergleichen.
+                </p>
+
+                {/* CTAs */}
+                <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+                  <a
+                    href="#inspirationen"
+                    style={{
+                      display: 'inline-flex', alignItems: 'center', gap: '8px',
+                      padding: '14px 26px', borderRadius: '16px',
+                      background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
+                      color: '#FFFFFF', textDecoration: 'none',
+                      fontSize: '15px', fontWeight: 700,
+                      boxShadow: '0 6px 24px rgba(14,165,233,0.45)',
+                      fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                    }}
+                  >
+                    Inspiration entdecken
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 5v14M5 12l7 7 7-7" />
+                    </svg>
+                  </a>
+                  <a
+                    href="/#reiseplaner"
+                    style={{
+                      display: 'inline-flex', alignItems: 'center', gap: '8px',
+                      padding: '14px 26px', borderRadius: '16px',
+                      background: 'rgba(255,255,255,0.08)', border: '1.5px solid rgba(255,255,255,0.18)',
+                      color: '#E2E8F0', textDecoration: 'none',
+                      fontSize: '15px', fontWeight: 600,
+                      fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                      backdropFilter: 'blur(8px)',
+                    }}
+                  >
+                    Traumreise planen
+                  </a>
+                </div>
+
+                {/* Stats row */}
+                <div style={{
+                  display: 'flex', gap: '28px', flexWrap: 'wrap',
+                  marginTop: '48px', paddingTop: '36px',
+                  borderTop: '1px solid rgba(255,255,255,0.08)',
+                }}>
+                  {[
+                    { number: `${items.length}+`, label: 'Reiseideen' },
+                    { number: '8+', label: 'Anbieter & Partner' },
+                    { number: '100%', label: 'kostenlos' },
+                  ].map(({ number, label }) => (
+                    <div key={label}>
+                      <div style={{ fontSize: 'clamp(20px, 2.5vw, 28px)', fontWeight: 900, color: '#38BDF8', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', letterSpacing: '-0.02em' }}>
+                        {number}
+                      </div>
+                      <div style={{ fontSize: '12px', color: '#64748B', marginTop: '3px' }}>{label}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {/* Stats row */}
+              {/* Hero image column */}
               <div style={{
-                display: 'flex', gap: '32px', justifyContent: 'center', flexWrap: 'wrap',
-                marginTop: '56px', paddingTop: '40px',
-                borderTop: '1px solid rgba(255,255,255,0.08)',
+                flex: '0 1 420px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '340px',
               }}>
-                {[
-                  { number: `${items.length}+`, label: 'Reiseideen' },
-                  { number: '8+', label: 'Anbieter & Partner' },
-                  { number: '100%', label: 'kostenlos' },
-                ].map(({ number, label }) => (
-                  <div key={label} style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: 'clamp(22px, 3vw, 30px)', fontWeight: 900, color: '#38BDF8', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', letterSpacing: '-0.02em' }}>
-                      {number}
-                    </div>
-                    <div style={{ fontSize: '13px', color: '#64748B', marginTop: '4px' }}>{label}</div>
-                  </div>
-                ))}
+                <img
+                  src="/images/inspiration/reisemonkey-inspiration-hero.png"
+                  alt="Reisemonkey präsentiert Reiseinspirationen"
+                  loading="eager"
+                  style={{
+                    width: '100%',
+                    maxWidth: '420px',
+                    height: 'auto',
+                    minHeight: '280px',
+                    objectFit: 'contain',
+                    display: 'block',
+                    filter: 'drop-shadow(0 24px 48px rgba(14,165,233,0.25))',
+                  }}
+                />
               </div>
             </div>
           </Container>

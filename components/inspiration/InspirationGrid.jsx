@@ -463,7 +463,7 @@ export default function InspirationGrid({ items = [] }) {
             Noch unsicher? Lass ApeAround<br />deine passende Reiseidee finden.
           </h3>
           <p style={{ fontSize: '15px', color: '#94A3B8', lineHeight: 1.6, margin: 0 }}>
-            Unser KI-Reiseplaner analysiert deine Wünsche und findet das perfekte Reiseziel — kostenlos und in Sekunden.
+            Apo - unser KI-Reiseplaner analysiert deine Wünsche und findet das perfekte Reiseziel — kostenlos und in Sekunden.
           </p>
         </div>
 
