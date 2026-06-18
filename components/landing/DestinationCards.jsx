@@ -4,8 +4,7 @@ import { useState } from 'react';
 import Container from '@/components/layout/Container';
 import SectionTitle from '@/components/ui/SectionTitle';
 import Button from '@/components/ui/Button';
-import { destinations } from '@/data/destinations';
-import { formatPrice } from '@/lib/utils';
+import { buildHomepageSuggestionHref } from '@/lib/homepage-suggestions';
 
 const BADGE_STYLES = {
   Beliebt:    { bg: '#FFF7ED', border: '#FED7AA', color: '#C2410C' },
@@ -16,15 +15,25 @@ const BADGE_STYLES = {
 
 const DEFAULT_BADGE = { bg: '#F8FAFF', border: '#E2E8F0', color: '#475569' };
 
-function DestinationCard({ destination }) {
+function DestinationCard({ suggestion }) {
   const [hovered, setHovered] = useState(false);
-  const badge = BADGE_STYLES[destination.badge] ?? DEFAULT_BADGE;
+  const badge = BADGE_STYLES[suggestion.badge] ?? DEFAULT_BADGE;
+
+  const href   = buildHomepageSuggestionHref(suggestion);
+  const isExt  = href.startsWith('http') || href.startsWith('/go/');
+  const target = suggestion.open_in_new_tab !== false && isExt ? '_blank' : '_self';
 
   return (
-    <div
+    <a
+      href={href}
+      target={target}
+      rel={target === '_blank' ? 'noopener noreferrer' : undefined}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
+        display: 'flex',
+        flexDirection: 'column',
+        textDecoration: 'none',
         borderRadius: '20px',
         overflow: 'hidden',
         background: '#FFFFFF',
@@ -35,11 +44,9 @@ function DestinationCard({ destination }) {
         transform: hovered ? 'translateY(-8px)' : 'translateY(0)',
         transition: 'transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease',
         cursor: 'pointer',
-        display: 'flex',
-        flexDirection: 'column',
       }}
     >
-      {/* Image — 62 % of card height */}
+      {/* Image */}
       <div
         style={{
           position: 'relative',
@@ -49,8 +56,8 @@ function DestinationCard({ destination }) {
         }}
       >
         <img
-          src={destination.imageUrl}
-          alt={`${destination.name}, ${destination.country}`}
+          src={suggestion.image_url}
+          alt={suggestion.image_alt || `${suggestion.title}, ${suggestion.country}`}
           loading="lazy"
           style={{
             width: '100%',
@@ -63,7 +70,6 @@ function DestinationCard({ destination }) {
           }}
         />
 
-        {/* Subtle gradient so badge is always legible */}
         <div
           style={{
             position: 'absolute',
@@ -75,49 +81,53 @@ function DestinationCard({ destination }) {
         />
 
         {/* Badge */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '14px',
-            left: '14px',
-            padding: '5px 12px',
-            borderRadius: '20px',
-            fontSize: '11px',
-            fontWeight: 700,
-            letterSpacing: '0.07em',
-            textTransform: 'uppercase',
-            background: badge.bg,
-            border: `1px solid ${badge.border}`,
-            color: badge.color,
-            fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-            backdropFilter: 'blur(6px)',
-          }}
-        >
-          {destination.badge}
-        </div>
+        {suggestion.badge && (
+          <div
+            style={{
+              position: 'absolute',
+              top: '14px',
+              left: '14px',
+              padding: '5px 12px',
+              borderRadius: '20px',
+              fontSize: '11px',
+              fontWeight: 700,
+              letterSpacing: '0.07em',
+              textTransform: 'uppercase',
+              background: badge.bg,
+              border: `1px solid ${badge.border}`,
+              color: badge.color,
+              fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+              backdropFilter: 'blur(6px)',
+            }}
+          >
+            {suggestion.badge}
+          </div>
+        )}
 
-        {/* Country pill — bottom-right of image */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '14px',
-            right: '14px',
-            padding: '4px 12px',
-            borderRadius: '20px',
-            fontSize: '11px',
-            fontWeight: 600,
-            letterSpacing: '0.5px',
-            background: 'rgba(255,255,255,0.9)',
-            backdropFilter: 'blur(8px)',
-            color: '#0EA5E9',
-            fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-          }}
-        >
-          {destination.country}
-        </div>
+        {/* Country pill */}
+        {suggestion.country && (
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '14px',
+              right: '14px',
+              padding: '4px 12px',
+              borderRadius: '20px',
+              fontSize: '11px',
+              fontWeight: 600,
+              letterSpacing: '0.5px',
+              background: 'rgba(255,255,255,0.9)',
+              backdropFilter: 'blur(8px)',
+              color: '#0EA5E9',
+              fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+            }}
+          >
+            {suggestion.country}
+          </div>
+        )}
       </div>
 
-      {/* Content — flex: 1 ensures equal height across all cards */}
+      {/* Content */}
       <div
         style={{
           padding: '20px 22px 22px',
@@ -126,7 +136,6 @@ function DestinationCard({ destination }) {
           flexDirection: 'column',
         }}
       >
-        {/* Name */}
         <h3
           style={{
             fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
@@ -137,23 +146,23 @@ function DestinationCard({ destination }) {
             lineHeight: 1.25,
           }}
         >
-          {destination.name}
+          {suggestion.title}
         </h3>
 
-        {/* Description — flex: 1 pushes price to the bottom */}
-        <p
-          style={{
-            fontSize: '13px',
-            color: '#64748B',
-            lineHeight: 1.65,
-            marginBottom: '0',
-            flex: 1,
-          }}
-        >
-          {destination.description}
-        </p>
+        {suggestion.description && (
+          <p
+            style={{
+              fontSize: '13px',
+              color: '#64748B',
+              lineHeight: 1.65,
+              marginBottom: '0',
+              flex: 1,
+            }}
+          >
+            {suggestion.description}
+          </p>
+        )}
 
-        {/* Divider */}
         <div
           style={{
             height: '1px',
@@ -162,41 +171,8 @@ function DestinationCard({ destination }) {
           }}
         />
 
-        {/* Price + CTA */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '12px',
-          }}
-        >
-          {/* Price block */}
-          <div style={{ lineHeight: 1 }}>
-            <div style={{ fontSize: '11px', color: '#94A3B8', fontWeight: 500, marginBottom: '3px' }}>
-              ab
-            </div>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: '3px' }}>
-              <span
-                style={{
-                  fontSize: '26px',
-                  fontWeight: 800,
-                  color: '#0F172A',
-                  fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-                  letterSpacing: '-0.03em',
-                  lineHeight: 1,
-                }}
-              >
-                {formatPrice(destination.priceFrom)}
-              </span>
-              <span style={{ fontSize: '13px', color: '#64748B', fontWeight: 500 }}>€</span>
-            </div>
-            <div style={{ fontSize: '11px', color: '#94A3B8', fontWeight: 500, marginTop: '2px' }}>
-              pro Person
-            </div>
-          </div>
-
-          {/* CTA pill */}
+        {/* CTA */}
+        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <div
             style={{
               display: 'flex',
@@ -234,11 +210,11 @@ function DestinationCard({ destination }) {
           </div>
         </div>
       </div>
-    </div>
+    </a>
   );
 }
 
-export default function DestinationCards() {
+export default function DestinationCards({ suggestions = [] }) {
   return (
     <section
       style={{
@@ -256,8 +232,8 @@ export default function DestinationCards() {
         />
 
         <div className="destinations-grid">
-          {destinations.map((dest) => (
-            <DestinationCard key={dest.id} destination={dest} />
+          {suggestions.map((s) => (
+            <DestinationCard key={s.id} suggestion={s} />
           ))}
         </div>
 

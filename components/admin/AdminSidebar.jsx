@@ -5,19 +5,20 @@ import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import {
   LayoutDashboard, MapPin, FileText, Image as ImageIcon,
-  Users, TrendingUp, Search, Settings, LogOut, X, ExternalLink,
+  Users, TrendingUp, Search, Settings, LogOut, X, ExternalLink, Sparkles,
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
 const NAV_ITEMS = [
-  { label: 'Dashboard',    href: '/admin',               icon: LayoutDashboard, exact: true },
-  { label: 'Reiseziele',   href: '/admin/reiseziele',    icon: MapPin          },
-  { label: 'Reiseblog',    href: '/admin/blog',          icon: FileText        },
-  { label: 'Medien',       href: '/admin/medien',        icon: ImageIcon       },
-  { label: 'Leads',        href: '/admin/leads',         icon: Users           },
-  { label: 'Monetarisierung', href: '/admin/affiliate',  icon: TrendingUp      },
-  { label: 'SEO & LLMO',   href: '/admin/seo-llmo',      icon: Search          },
-  { label: 'Einstellungen',href: '/admin/einstellungen', icon: Settings        },
+  { label: 'Dashboard',       href: '/admin',                      icon: LayoutDashboard, exact: true },
+  { label: 'Reiseziele',      href: '/admin/reiseziele',           icon: MapPin          },
+  { label: 'Reiseblog',       href: '/admin/blog',                 icon: FileText        },
+  { label: 'Reisevorschläge', href: '/admin/homepage-suggestions', icon: Sparkles        },
+  { label: 'Medien',          href: '/admin/medien',               icon: ImageIcon       },
+  { label: 'Leads',           href: '/admin/leads',                icon: Users           },
+  { label: 'Monetarisierung', href: '/admin/affiliate',            icon: TrendingUp      },
+  { label: 'SEO & LLMO',      href: '/admin/seo-llmo',             icon: Search          },
+  { label: 'Einstellungen',   href: '/admin/einstellungen',        icon: Settings        },
 ];
 
 export default function AdminSidebar({ isOpen, onClose }) {

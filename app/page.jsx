@@ -8,6 +8,8 @@ import PartnerTrustSection from '@/components/landing/PartnerTrustSection';
 import HowItWorksSection from '@/components/landing/HowItWorksSection';
 import NewsletterSection from '@/components/landing/NewsletterSection';
 import LatestBlogArticles from '@/components/landing/LatestBlogArticles';
+import { listActiveSuggestions } from '@/repositories/homepage-suggestions';
+import { FALLBACK_SUGGESTIONS } from '@/lib/homepage-suggestions';
 
 export const metadata = {
   title: 'Traumreise – Deine persönliche KI-Reiseberaterin',
@@ -15,7 +17,15 @@ export const metadata = {
     'Erzähl uns von dir – wir finden dein perfektes Reiseziel inkl. Hotels, Flügen & Aktivitäten. 100% kostenlos.',
 };
 
-export default function LandingPage() {
+export default async function LandingPage() {
+  let suggestions = FALLBACK_SUGGESTIONS;
+  try {
+    const fromDb = await listActiveSuggestions();
+    if (fromDb.length > 0) suggestions = fromDb;
+  } catch {
+    // Table not yet migrated or Supabase unavailable — fall back to static data
+  }
+
   return (
     <>
       <Header />
@@ -23,7 +33,7 @@ export default function LandingPage() {
         <HeroSection />
         <HomeTravelWizard />
         <FeatureStrip />
-        <DestinationCards />
+        <DestinationCards suggestions={suggestions} />
         <PartnerTrustSection />
         <LatestBlogArticles />
         <HowItWorksSection />
