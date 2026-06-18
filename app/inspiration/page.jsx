@@ -173,7 +173,7 @@ export default async function InspirationPage() {
                       backdropFilter: 'blur(8px)',
                     }}
                   >
-                    Traumreise planen
+                    Traumurlaub planen
                   </a>
                 </div>
 
