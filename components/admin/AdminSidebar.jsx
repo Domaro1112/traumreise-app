@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import {
   LayoutDashboard, MapPin, FileText, Image as ImageIcon,
-  Users, TrendingUp, Search, Settings, LogOut, X, ExternalLink, Sparkles,
+  Users, TrendingUp, Search, Settings, LogOut, X, ExternalLink, Sparkles, Compass,
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
@@ -14,6 +14,7 @@ const NAV_ITEMS = [
   { label: 'Reiseziele',      href: '/admin/reiseziele',           icon: MapPin          },
   { label: 'Reiseblog',       href: '/admin/blog',                 icon: FileText        },
   { label: 'Reisevorschläge', href: '/admin/homepage-suggestions', icon: Sparkles        },
+  { label: 'Inspirationen',   href: '/admin/inspiration',          icon: Compass         },
   { label: 'Medien',          href: '/admin/medien',               icon: ImageIcon       },
   { label: 'Leads',           href: '/admin/leads',                icon: Users           },
   { label: 'Monetarisierung', href: '/admin/affiliate',            icon: TrendingUp      },
