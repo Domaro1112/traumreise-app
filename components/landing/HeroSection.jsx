@@ -97,7 +97,7 @@ export default function HeroSection() {
               letterSpacing: '-0.02em',
             }}
           >
-            Finde deine perfekte
+            Finde deinen perfekten
             <br />
             <span
               style={{
@@ -107,7 +107,7 @@ export default function HeroSection() {
                 backgroundClip: 'text',
               }}
             >
-              Traumreise
+              Traumurlaub
             </span>
           </h1>
 
