@@ -79,7 +79,7 @@ export default async function InspirationPage() {
             .insp-hero-img {
               position: absolute;
               top: 0; right: 0; bottom: 0;
-              width: 58%;
+              width: 64%;
               background-image: url('/images/inspiration/reisemonkey-inspiration-hero.png');
               background-size: cover;
               background-position: center right;
@@ -87,17 +87,21 @@ export default async function InspirationPage() {
               -webkit-mask-image: linear-gradient(
                 to right,
                 transparent 0%,
-                rgba(0,0,0,0.10) 10%,
-                rgba(0,0,0,0.60) 24%,
-                black 40%,
+                transparent 8%,
+                rgba(0,0,0,0.12) 22%,
+                rgba(0,0,0,0.45) 38%,
+                rgba(0,0,0,0.78) 55%,
+                black 72%,
                 black 100%
               );
               mask-image: linear-gradient(
                 to right,
                 transparent 0%,
-                rgba(0,0,0,0.10) 10%,
-                rgba(0,0,0,0.60) 24%,
-                black 40%,
+                transparent 8%,
+                rgba(0,0,0,0.12) 22%,
+                rgba(0,0,0,0.45) 38%,
+                rgba(0,0,0,0.78) 55%,
+                black 72%,
                 black 100%
               );
               z-index: 0;
@@ -105,13 +109,15 @@ export default async function InspirationPage() {
             .insp-hero-fade {
               position: absolute;
               top: 0; right: 0; bottom: 0;
-              width: 62%;
+              width: 78%;
               background: linear-gradient(
                 to right,
-                #0F172A 0%,
-                rgba(15,23,42,0.72) 16%,
-                rgba(15,23,42,0.18) 38%,
-                transparent 55%
+                #0f172a 0%,
+                rgba(15,23,42,0.96) 18%,
+                rgba(15,23,42,0.82) 34%,
+                rgba(15,23,42,0.55) 50%,
+                rgba(15,23,42,0.25) 66%,
+                transparent 82%
               );
               z-index: 1;
               pointer-events: none;
@@ -119,7 +125,7 @@ export default async function InspirationPage() {
             @media (max-width: 900px) {
               .insp-hero-img {
                 width: 100%;
-                opacity: 0.28;
+                opacity: 0.25;
                 -webkit-mask-image: none;
                 mask-image: none;
                 background-position: center top;
@@ -128,8 +134,8 @@ export default async function InspirationPage() {
                 width: 100%;
                 background: linear-gradient(
                   to bottom,
-                  rgba(15,23,42,0.55) 0%,
-                  rgba(15,23,42,0.45) 100%
+                  rgba(15,23,42,0.65) 0%,
+                  rgba(15,23,42,0.50) 100%
                 );
               }
             }
