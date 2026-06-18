@@ -389,10 +389,10 @@ function buildHotelProviderTargetUrl(providerKey, searchQuery) {
   const encoded = encodeURIComponent(searchQuery);
   switch (providerKey) {
     case 'booking':      return `https://www.booking.com/searchresults.de.html?ss=${encoded}&lang=de&selected_currency=EUR`;
-    case 'trivago':      return `https://www.trivago.de/de/srl?search=${encoded}`;
-    case 'check24':      return `https://hotel.check24.de/search?searchTerm=${encoded}`;
+    case 'trivago':      return `https://www.trivago.de/`;
+    case 'check24':      return `https://hotel.check24.de/`;
     case 'expedia':      return `https://www.expedia.de/Hotel-Search?destination=${encoded}`;
-    case 'holidaycheck': return `https://www.holidaycheck.de/suche?search=${encoded}`;
+    case 'holidaycheck': return `https://www.holidaycheck.de/hotel-search?countryId=0&terms=${encoded}`;
     default:             return `https://www.google.com/search?q=${encoded}+Hotel`;
   }
 }
@@ -506,11 +506,11 @@ function ProviderLogo({ logo, name, FallbackIcon, accent }) {
 // All providers are in ALLOWED_BASE_DOMAINS — routed through /go/[provider] for affiliate tracking
 const HOTEL_PROVIDERS = [
   { key: 'booking',      name: 'Booking.com',  sub: 'Hotels ansehen',       logo: '/images/providers/booking.png',      Icon: Hotel,     accent: '#003580', bg: '#EFF6FF', border: '#BFDBFE',
-    getUrl: r => r.bookingUrl      || `https://www.booking.com/search.html?ss=${encodeURIComponent((r.destination||'')+', '+(r.country||''))}` },
+    getUrl: r => r.bookingUrl      || `https://www.booking.com/searchresults.de.html?ss=${encodeURIComponent((r.destination||'')+', '+(r.country||''))}&lang=de&selected_currency=EUR` },
   { key: 'trivago',      name: 'Trivago',       sub: 'Preise vergleichen',   logo: '/images/providers/trivago.png',      Icon: Gem,       accent: '#c0100f', bg: '#FFF1F2', border: '#FECDD3',
-    getUrl: r => r.trivagoUrl      || `https://www.trivago.de/?search=${encodeURIComponent(r.destination||'')}` },
+    getUrl: r => r.trivagoUrl      || `https://www.trivago.de/` },
   { key: 'check24',      name: 'CHECK24',       sub: 'Angebote vergleichen', logo: '/images/providers/check24.png',      Icon: Briefcase, accent: '#003399', bg: '#EEF2FF', border: '#C7D2FE',
-    getUrl: r => r.check24Url      || `https://hotels.check24.de/?hotelCitySearch=${encodeURIComponent(r.destination||'')}` },
+    getUrl: r => r.check24Url      || `https://hotel.check24.de/` },
   { key: 'expedia',      name: 'Expedia',       sub: 'Deals entdecken',      logo: '/images/providers/expedia.png',      Icon: Plane,     accent: '#C9920A', bg: '#FFFBEB', border: '#FDE68A',
     getUrl: r => `https://www.expedia.de/Hotel-Search?destination=${encodeURIComponent((r.destination||'')+', '+(r.country||''))}` },
   { key: 'holidaycheck', name: 'HolidayCheck',  sub: 'Bewertungen lesen',    logo: '/images/providers/holidaycheck.png', Icon: Award,     accent: '#D95E00', bg: '#FFF7ED', border: '#FED7AA',

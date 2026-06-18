@@ -6,11 +6,14 @@ import { buildProviderTargetUrl, buildHomepageSuggestionHref, normalizeImageUrl,
 
 const BADGE_OPTIONS = ['Beliebt', 'Traumziel', 'Geheimtipp', 'Trending'];
 const PROVIDER_OPTIONS = [
-  { value: 'booking',      label: 'Booking.com' },
-  { value: 'expedia',      label: 'Expedia' },
-  { value: 'getyourguide', label: 'GetYourGuide' },
-  { value: 'check24',      label: 'Check24' },
-  { value: 'holidaycheck', label: 'HolidayCheck' },
+  { value: 'booking',           label: 'Booking.com' },
+  { value: 'expedia',           label: 'Expedia' },
+  { value: 'check24_hotel',     label: 'CHECK24 Hotel' },
+  { value: 'check24_urlaub',    label: 'CHECK24 Urlaub / Pauschalreise' },
+  { value: 'check24_mietwagen', label: 'CHECK24 Mietwagen' },
+  { value: 'trivago',           label: 'Trivago' },
+  { value: 'holidaycheck',      label: 'HolidayCheck' },
+  { value: 'getyourguide',      label: 'GetYourGuide' },
 ];
 const LINK_MODE_OPTIONS = [
   { value: 'affiliate', label: 'Affiliate-Link (/go/[provider])' },
