@@ -63,100 +63,22 @@ export default async function InspirationPage() {
       <Header />
 
       <main style={{ background: '#FFFFFF', minHeight: '100vh' }}>
-        {/* Hero */}
+        {/* Hero — vollflächiges Hintergrundbild mit gleichmäßigem Overlay */}
         <section
           style={{
             position: 'relative',
             paddingTop: 'calc(80px + 80px)',
             paddingBottom: '80px',
-            background: 'linear-gradient(135deg, #0F172A 0%, #12324a 55%, #0ea5e9 160%)',
+            backgroundImage: `linear-gradient(180deg, rgba(8,15,30,0.52) 0%, rgba(8,15,30,0.60) 60%, rgba(8,15,30,0.74) 100%), url('/images/inspiration/reisemonkey-inspiration-hero.png')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center center',
+            backgroundRepeat: 'no-repeat',
+            minHeight: 'clamp(620px, 80vh, 760px)',
             overflow: 'hidden',
-            minHeight: '580px',
           }}
         >
-          {/* === responsive image + fade via scoped CSS === */}
-          <style>{`
-            .insp-hero-img {
-              position: absolute;
-              top: 0; right: 0; bottom: 0;
-              width: 64%;
-              background-image: url('/images/inspiration/reisemonkey-inspiration-hero.png');
-              background-size: cover;
-              background-position: center right;
-              background-repeat: no-repeat;
-              -webkit-mask-image: linear-gradient(
-                to right,
-                transparent 0%,
-                transparent 8%,
-                rgba(0,0,0,0.12) 22%,
-                rgba(0,0,0,0.45) 38%,
-                rgba(0,0,0,0.78) 55%,
-                black 72%,
-                black 100%
-              );
-              mask-image: linear-gradient(
-                to right,
-                transparent 0%,
-                transparent 8%,
-                rgba(0,0,0,0.12) 22%,
-                rgba(0,0,0,0.45) 38%,
-                rgba(0,0,0,0.78) 55%,
-                black 72%,
-                black 100%
-              );
-              z-index: 0;
-            }
-            .insp-hero-fade {
-              position: absolute;
-              top: 0; right: 0; bottom: 0;
-              width: 78%;
-              background: linear-gradient(
-                to right,
-                #0f172a 0%,
-                rgba(15,23,42,0.96) 18%,
-                rgba(15,23,42,0.82) 34%,
-                rgba(15,23,42,0.55) 50%,
-                rgba(15,23,42,0.25) 66%,
-                transparent 82%
-              );
-              z-index: 1;
-              pointer-events: none;
-            }
-            @media (max-width: 900px) {
-              .insp-hero-img {
-                width: 100%;
-                opacity: 0.25;
-                -webkit-mask-image: none;
-                mask-image: none;
-                background-position: center top;
-              }
-              .insp-hero-fade {
-                width: 100%;
-                background: linear-gradient(
-                  to bottom,
-                  rgba(15,23,42,0.65) 0%,
-                  rgba(15,23,42,0.50) 100%
-                );
-              }
-            }
-          `}</style>
-
-          {/* Bild-Layer rechts */}
-          <div className="insp-hero-img" aria-hidden="true" />
-          {/* Weicher Fade-Übergang */}
-          <div className="insp-hero-fade" aria-hidden="true" />
-
-          {/* Dekorativer Glow-Punkt links unten */}
-          <div style={{
-            position: 'absolute', bottom: '-15%', left: '-8%',
-            width: '480px', height: '480px', borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(99,102,241,0.10) 0%, transparent 70%)',
-            pointerEvents: 'none', zIndex: 0,
-          }} />
-
           <Container>
-            {/* Text-Bereich — liegt über Bild-Layern */}
-            <div style={{ position: 'relative', zIndex: 2, maxWidth: '640px' }}>
+            <div style={{ position: 'relative', zIndex: 2, maxWidth: '760px' }}>
               {/* Label */}
               <div style={{
                 display: 'inline-flex', alignItems: 'center', gap: '8px',
@@ -180,6 +102,7 @@ export default async function InspirationPage() {
                 letterSpacing: '-0.03em',
                 color: '#FFFFFF',
                 margin: '0 0 20px',
+                textShadow: '0 2px 18px rgba(0,0,0,0.45)',
               }}>
                 Reiseinspirationen,{' '}
                 <span style={{
@@ -193,10 +116,11 @@ export default async function InspirationPage() {
 
               <p style={{
                 fontSize: 'clamp(15px, 1.8vw, 18px)',
-                color: '#94A3B8',
+                color: '#CBD5E1',
                 lineHeight: 1.7,
                 margin: '0 0 36px',
                 maxWidth: '520px',
+                textShadow: '0 1px 8px rgba(0,0,0,0.30)',
               }}>
                 Entdecke handverlesene Reiseideen, Hotels, Pauschalreisen, Naturziele und Erlebnisse — direkt mit passenden Anbietern zum Vergleichen.
               </p>
