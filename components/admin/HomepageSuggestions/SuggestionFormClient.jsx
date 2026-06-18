@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { buildProviderTargetUrl, buildHomepageSuggestionHref } from '@/lib/homepage-suggestions';
+import { buildProviderTargetUrl, buildHomepageSuggestionHref, normalizeImageUrl, isValidImageUrl } from '@/lib/homepage-suggestions';
 
 const BADGE_OPTIONS = ['Beliebt', 'Traumziel', 'Geheimtipp', 'Trending'];
 const PROVIDER_OPTIONS = [
@@ -104,7 +104,10 @@ export default function SuggestionFormClient({ initial }) {
   const router = useRouter();
   const isEdit = !!initial?.id;
 
-  const [form, setForm] = useState({ ...EMPTY, ...initial });
+  const normalizedInitial = initial
+    ? { ...initial, image_url: normalizeImageUrl(initial.image_url ?? '') }
+    : undefined;
+  const [form, setForm] = useState({ ...EMPTY, ...normalizedInitial });
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
 
@@ -119,7 +122,15 @@ export default function SuggestionFormClient({ initial }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+
+    const normalizedImageUrl = normalizeImageUrl(form.image_url);
+    if (!isValidImageUrl(normalizedImageUrl)) {
+      setError('Bitte nutze einen lokalen Pfad wie /images/... oder eine vollständige https:// Bild-URL.');
+      return;
+    }
+
     setSaving(true);
+    const payload = { ...form, image_url: normalizedImageUrl };
 
     const url    = isEdit ? `/api/admin/homepage-suggestions/${initial.id}` : '/api/admin/homepage-suggestions';
     const method = isEdit ? 'PATCH' : 'POST';
@@ -128,10 +139,11 @@ export default function SuggestionFormClient({ initial }) {
       const res = await fetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify(payload),
       });
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || 'Fehler beim Speichern');
+      setForm(prev => ({ ...prev, image_url: normalizedImageUrl }));
       router.push('/admin/homepage-suggestions');
       router.refresh();
     } catch (e) {
@@ -141,7 +153,7 @@ export default function SuggestionFormClient({ initial }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} noValidate>
       {error && (
         <div style={{ marginBottom: '20px', padding: '12px 16px', borderRadius: '10px', background: '#FEF2F2', border: '1.5px solid #FECACA', color: '#DC2626', fontSize: '14px' }}>
           {error}
@@ -235,13 +247,12 @@ export default function SuggestionFormClient({ initial }) {
           Bild
         </h3>
 
-        <Field label="Bild-URL *">
+        <Field label="Bild-URL *" hint="Lokaler Pfad: /images/reisevorschlag/bali.jpg · Externe URL: https://example.com/bild.jpg">
           <input
-            type="url"
+            type="text"
             value={form.image_url}
             onChange={set('image_url')}
-            required
-            placeholder="https://..."
+            placeholder="/images/reisevorschlag/bali.jpg"
             style={FIELD_STYLE}
           />
         </Field>
@@ -322,7 +333,7 @@ export default function SuggestionFormClient({ initial }) {
 
             <Field label="Affiliate-URL überschreiben" hint="Leer lassen = Such-URL wird automatisch verwendet">
               <input
-                type="url"
+                type="text"
                 value={form.affiliate_target_url}
                 onChange={set('affiliate_target_url')}
                 placeholder="https://www.booking.com/..."

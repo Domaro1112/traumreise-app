@@ -1,4 +1,5 @@
 import { createServerClient } from '@/lib/supabase/server';
+import { normalizeImageUrl } from '@/lib/homepage-suggestions';
 
 export async function listActiveSuggestions() {
   const supabase = createServerClient();
@@ -71,7 +72,11 @@ function sanitize(body) {
     'provider_key', 'affiliate_target_url', 'search_query', 'link_mode', 'open_in_new_tab',
     'created_by', 'updated_by',
   ];
-  return Object.fromEntries(
+  const filtered = Object.fromEntries(
     Object.entries(body).filter(([k]) => allowed.includes(k))
   );
+  if (typeof filtered.image_url === 'string') {
+    filtered.image_url = normalizeImageUrl(filtered.image_url);
+  }
+  return filtered;
 }
