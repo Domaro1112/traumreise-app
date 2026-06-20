@@ -121,7 +121,7 @@ export const blogArticles = [
     internalLinks: [
       { href: '/finder', text: 'deine personalisierte Traumreise mit jetzt planen' },
       { href: '/inspiration', text: 'weitere Reiseideen für Südostasien entdecken' },
-      { href: '/so-funktionierts', text: 'so funktioniert der kostenlose Traumreise-Finder' },
+      { href: 'dein-traumurlaub', text: 'so funktioniert der kostenlose Traumreise-Finder' },
     ],
   },
 
@@ -671,7 +671,7 @@ export const blogArticles = [
     relatedArticles: ['bali-unter-1000-euro', 'malediven-familienurlaub', 'tokio-erstbesucher-guide'],
     internalLinks: [
       { href: '/finder', text: 'jetzt den Reisefinder kostenlos ausprobieren' },
-      { href: '/so-funktionierts', text: 'so funktioniert die KI-Reiseplanung im Detail' },
+      { href: 'dein-traumurlaub', text: 'so funktioniert die KI-Reiseplanung im Detail' },
       { href: '/inspiration', text: 'Reiseinspiration für alle Ziele entdecken' },
     ],
   },
