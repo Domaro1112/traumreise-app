@@ -12,6 +12,7 @@ export const footerNav = {
     { label: 'Reiseblog', href: '/reiseblog' },
     { label: 'Reise Inspiration', href: '/inspiration' },
     { label: 'Mietwagen vergleichen', href: '/mietwagen' },
+    { label: 'Urlaub für Alleinerziehende', href: '/urlaub-fuer-alleinerziehende' },
   ],
   rechtliches: [
     { label: 'Datenschutz', href: '/datenschutz' },

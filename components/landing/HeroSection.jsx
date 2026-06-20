@@ -142,7 +142,7 @@ export default function HeroSection() {
               </span>
             </Button>
             <Button
-              href="#so-funktionierts"
+              href="so-funktionierts"
               size="lg"
               style={{
                 background: 'rgba(255,255,255,0.15)',

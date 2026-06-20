@@ -1,32 +1,60 @@
 import { Resend } from 'resend';
 import { SITE_URL } from '@/lib/site-config';
 
-const FROM_ADDRESS = 'ApeAround <newsletter@apearound.de>';
+const FROM_ADDRESS = process.env.EMAIL_FROM ?? 'ApeAround <newsletter@apearound.de>';
 
-function getResend(): Resend | null {
-  const key = process.env.RESEND_API_KEY;
-  if (!key) {
-    console.warn('[email] RESEND_API_KEY not set — email sending skipped.');
-    return null;
-  }
-  return new Resend(key);
-}
+export type MailResult =
+  | { sent: true;  id: string }
+  | { sent: false; error: string };
 
 export async function sendNewsletterConfirmation(
   email: string,
   token: string,
-): Promise<void> {
-  const resend = getResend();
-  if (!resend) return;
+): Promise<MailResult> {
+  const key = process.env.RESEND_API_KEY;
 
-  const confirmUrl = `${SITE_URL}/api/newsletter/confirm?token=${token}`;
+  if (!key) {
+    const msg =
+      'Mailversand nicht konfiguriert: RESEND_API_KEY fehlt. ' +
+      'Bitte RESEND_API_KEY (und optional EMAIL_FROM) in .env.local setzen.';
+    console.error('[MAIL_SEND] ❌', msg);
+    return { sent: false, error: msg };
+  }
 
-  await resend.emails.send({
-    from: FROM_ADDRESS,
-    to:   email,
-    subject: 'Bitte bestätige deine Anmeldung zum ApeAround-Newsletter',
-    html: `
-<!DOCTYPE html>
+  const confirmUrl   = `${SITE_URL}/api/newsletter/confirm?token=${token}`;
+  const unsubUrl     = `${SITE_URL}/api/newsletter/unsubscribe?token=`;
+
+  console.log(`[MAIL_SEND] Sende DOI-Bestätigungsmail an: ${email}`);
+  console.log(`[MAIL_SEND] Confirm-URL: ${confirmUrl}`);
+  console.log(`[MAIL_SEND] From: ${FROM_ADDRESS}`);
+  console.log(`[MAIL_SEND] SITE_URL: ${SITE_URL}`);
+
+  try {
+    const resend = new Resend(key);
+    const { data, error } = await resend.emails.send({
+      from:    FROM_ADDRESS,
+      to:      email,
+      subject: 'Bitte bestätige deine Anmeldung zum ApeAround-Newsletter',
+      html:    buildHtml(confirmUrl, unsubUrl),
+    });
+
+    if (error) {
+      const msg = `Resend API-Fehler: ${(error as Record<string, unknown>)['message'] ?? JSON.stringify(error)}`;
+      console.error('[MAIL_SEND] ❌ Resend Error-Response:', JSON.stringify(error));
+      return { sent: false, error: msg };
+    }
+
+    console.log(`[MAIL_SEND] ✅ Mail erfolgreich gesendet. Resend-ID: ${data?.id}`);
+    return { sent: true, id: data?.id ?? 'unknown' };
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error('[MAIL_SEND] ❌ Exception beim Senden:', msg);
+    return { sent: false, error: msg };
+  }
+}
+
+function buildHtml(confirmUrl: string, unsubUrl: string): string {
+  return `<!DOCTYPE html>
 <html lang="de">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
 <body style="margin:0;padding:0;background:#F8FAFC;font-family:system-ui,-apple-system,sans-serif;">
@@ -41,8 +69,7 @@ export async function sendNewsletterConfirmation(
           <h1 style="margin:0 0 16px;font-size:22px;font-weight:800;color:#0F172A;line-height:1.3;">Fast geschafft!</h1>
           <p style="margin:0 0 14px;color:#475569;font-size:15px;line-height:1.7;">
             Du hast dich für den <strong>ApeAround-Newsletter</strong> angemeldet.
-            Bitte bestätige deine Anmeldung über den folgenden Link.
-            Erst danach erhältst du Reiseideen, Tipps und Neuigkeiten von ApeAround.
+            Bitte bestätige deine Anmeldung über den Button – erst danach erhältst du Reiseideen, Tipps und Neuigkeiten.
           </p>
           <div style="margin:28px 0;text-align:center;">
             <a href="${confirmUrl}"
@@ -60,17 +87,18 @@ export async function sendNewsletterConfirmation(
           </p>
           <hr style="border:none;border-top:1px solid #F1F5F9;margin:0 0 20px;">
           <p style="margin:0;color:#94A3B8;font-size:12px;line-height:1.6;">
-            Falls du dich nicht angemeldet hast, kannst du diese E-Mail ignorieren.
-            Es werden keine weiteren E-Mails von uns gesendet.
+            Falls du dich nicht angemeldet hast, kannst du diese E-Mail ignorieren – es werden keine weiteren Mails gesendet.
           </p>
         </td></tr>
         <tr><td style="background:#F8FAFC;padding:16px 32px;text-align:center;">
-          <p style="margin:0;color:#94A3B8;font-size:11px;">© ApeAround · <a href="${SITE_URL}/datenschutz" style="color:#94A3B8;">Datenschutz</a></p>
+          <p style="margin:0;color:#94A3B8;font-size:11px;">
+            © ApeAround ·
+            <a href="${SITE_URL}/datenschutz" style="color:#94A3B8;">Datenschutz</a>
+          </p>
         </td></tr>
       </table>
     </td></tr>
   </table>
 </body>
-</html>`.trim(),
-  });
+</html>`.trim();
 }
