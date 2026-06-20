@@ -9,18 +9,22 @@ const OVERLAY = 'linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.22
 
 // ── Step definitions ────────────────────────────────────────────────────────
 
+// ── Image base paths ────────────────────────────────────────────────────────
+const FUNNEL_IMG  = '/images/urlaub-alleinerziehende/funnel';
+const FALLBACK_IMG = '/images/funnel/cards';
+
 const STEPS = [
   {
     id: 'childAge',
     question: 'Wie alt ist dein Kind?',
     multi: false,
     options: [
-      { value: '0-3',     label: '0–3 Jahre',                               img: '/images/funnel/cards/spring.jpg',   bg: '#0F3460' },
-      { value: '4-6',     label: '4–6 Jahre',                               img: '/images/funnel/cards/family.jpg',   bg: '#1a4a2e' },
-      { value: '7-10',    label: '7–10 Jahre',                              img: '/images/funnel/cards/active.jpg',   bg: '#162040' },
-      { value: '11-14',   label: '11–14 Jahre',                             img: '/images/funnel/cards/world.jpg',    bg: '#221a44' },
-      { value: '15+',     label: '15+ Jahre',                               img: '/images/funnel/cards/mountain.jpg', bg: '#1a2030' },
-      { value: 'mehrere', label: 'Mehrere Kinder mit unterschiedlichem Alter', img: '/images/funnel/cards/resort.jpg',   bg: '#0F3460' },
+      { value: '0-3',     label: '0–3 Jahre',                               img: `${FUNNEL_IMG}/child-age-0-3.png`,       fallbackImg: `${FALLBACK_IMG}/spring.jpg`,   bg: '#0F3460' },
+      { value: '4-6',     label: '4–6 Jahre',                               img: `${FUNNEL_IMG}/child-age-4-6.png`,       fallbackImg: `${FALLBACK_IMG}/family.jpg`,   bg: '#1a4a2e' },
+      { value: '7-10',    label: '7–10 Jahre',                              img: `${FUNNEL_IMG}/child-age-7-10.png`,      fallbackImg: `${FALLBACK_IMG}/active.jpg`,   bg: '#162040' },
+      { value: '11-14',   label: '11–14 Jahre',                             img: `${FUNNEL_IMG}/child-age-11-14.png`,     fallbackImg: `${FALLBACK_IMG}/world.jpg`,    bg: '#221a44' },
+      { value: '15+',     label: '15+ Jahre',                               img: `${FUNNEL_IMG}/child-age-15-plus.png`,   fallbackImg: `${FALLBACK_IMG}/mountain.jpg`, bg: '#1a2030' },
+      { value: 'mehrere', label: 'Mehrere Kinder mit unterschiedlichem Alter', img: `${FUNNEL_IMG}/child-age-multiple.png`,  fallbackImg: `${FALLBACK_IMG}/resort.jpg`,   bg: '#0F3460' },
     ],
   },
   {
@@ -28,11 +32,11 @@ const STEPS = [
     question: 'Wie möchtest du am liebsten reisen?',
     multi: false,
     options: [
-      { value: 'auto',     label: 'Mit dem Auto',            img: '/images/funnel/cards/mountain.jpg', bg: '#1a2030' },
-      { value: 'bahn',     label: 'Mit der Bahn',            img: '/images/funnel/cards/city.jpg',     bg: '#1e1020' },
-      { value: 'flugzeug', label: 'Mit dem Flugzeug',        img: '/images/funnel/cards/world.jpg',    bg: '#0F2A4C' },
-      { value: 'kurz',     label: 'Möglichst kurze Anreise', img: '/images/funnel/cards/relax.jpg',    bg: '#1a3020' },
-      { value: 'offen',    label: 'Ich bin offen',           img: '/images/funnel/cards/active.jpg',   bg: '#1e2010' },
+      { value: 'auto',     label: 'Mit dem Auto',            img: `${FUNNEL_IMG}/travel-car.png`,            fallbackImg: `${FALLBACK_IMG}/mountain.jpg`, bg: '#1a2030' },
+      { value: 'bahn',     label: 'Mit der Bahn',            img: `${FUNNEL_IMG}/travel-train.png`,          fallbackImg: `${FALLBACK_IMG}/city.jpg`,     bg: '#1e1020' },
+      { value: 'flugzeug', label: 'Mit dem Flugzeug',        img: `${FUNNEL_IMG}/travel-plane.png`,          fallbackImg: `${FALLBACK_IMG}/world.jpg`,    bg: '#0F2A4C' },
+      { value: 'kurz',     label: 'Möglichst kurze Anreise', img: `${FUNNEL_IMG}/travel-short-distance.png`, fallbackImg: `${FALLBACK_IMG}/relax.jpg`,    bg: '#1a3020' },
+      { value: 'offen',    label: 'Ich bin offen',           img: `${FUNNEL_IMG}/travel-open.png`,           fallbackImg: `${FALLBACK_IMG}/active.jpg`,   bg: '#1e2010' },
     ],
   },
   {
@@ -40,14 +44,14 @@ const STEPS = [
     question: 'Welche Urlaubsart passt zu euch?',
     multi: false,
     options: [
-      { value: 'strand',       label: 'Strandurlaub',    img: '/images/funnel/cards/beach.jpg',    bg: '#0F2A4C' },
-      { value: 'ferienpark',   label: 'Ferienpark',      img: '/images/funnel/cards/family.jpg',   bg: '#1a4a2e' },
-      { value: 'bauernhof',    label: 'Bauernhofurlaub', img: '/images/funnel/cards/autumn.jpg',   bg: '#2a1800' },
-      { value: 'camping',      label: 'Camping',         img: '/images/funnel/cards/backpack.jpg', bg: '#182010' },
-      { value: 'allinclusive', label: 'All-Inclusive',   img: '/images/funnel/cards/resort.jpg',   bg: '#0F1A3C' },
-      { value: 'natur',        label: 'Natururlaub',     img: '/images/funnel/cards/mountain.jpg', bg: '#1a2818' },
-      { value: 'staedte',      label: 'Städtetrip',      img: '/images/funnel/cards/city.jpg',     bg: '#1e1020' },
-      { value: 'offen',        label: 'Ich bin offen',   img: '/images/funnel/cards/world.jpg',    bg: '#1a1a34' },
+      { value: 'strand',       label: 'Strandurlaub',    img: `${FUNNEL_IMG}/holiday-beach.png`,         fallbackImg: `${FALLBACK_IMG}/beach.jpg`,    bg: '#0F2A4C' },
+      { value: 'ferienpark',   label: 'Ferienpark',      img: `${FUNNEL_IMG}/holiday-park.png`,          fallbackImg: `${FALLBACK_IMG}/family.jpg`,   bg: '#1a4a2e' },
+      { value: 'bauernhof',    label: 'Bauernhofurlaub', img: `${FUNNEL_IMG}/holiday-farm.png`,          fallbackImg: `${FALLBACK_IMG}/autumn.jpg`,   bg: '#2a1800' },
+      { value: 'camping',      label: 'Camping',         img: `${FUNNEL_IMG}/holiday-camping.png`,       fallbackImg: `${FALLBACK_IMG}/backpack.jpg`, bg: '#182010' },
+      { value: 'allinclusive', label: 'All-Inclusive',   img: `${FUNNEL_IMG}/holiday-all-inclusive.png`, fallbackImg: `${FALLBACK_IMG}/resort.jpg`,   bg: '#0F1A3C' },
+      { value: 'natur',        label: 'Natururlaub',     img: `${FUNNEL_IMG}/holiday-nature.png`,        fallbackImg: `${FALLBACK_IMG}/mountain.jpg`, bg: '#1a2818' },
+      { value: 'staedte',      label: 'Städtetrip',      img: `${FUNNEL_IMG}/holiday-city.png`,          fallbackImg: `${FALLBACK_IMG}/city.jpg`,     bg: '#1e1020' },
+      { value: 'offen',        label: 'Ich bin offen',   img: `${FUNNEL_IMG}/holiday-open.png`,          fallbackImg: `${FALLBACK_IMG}/world.jpg`,    bg: '#1a1a34' },
     ],
   },
   {
@@ -55,10 +59,10 @@ const STEPS = [
     question: 'Wie wichtig ist dir Kinderbetreuung oder Animation?',
     multi: false,
     options: [
-      { value: 'sehr',      label: 'Sehr wichtig',                           img: '/images/funnel/cards/family.jpg',   bg: '#1a4a2e' },
-      { value: 'gut',       label: 'Schön, wenn vorhanden',                  img: '/images/funnel/cards/resort.jpg',   bg: '#0F2A4C' },
-      { value: 'unwichtig', label: 'Nicht wichtig',                          img: '/images/funnel/cards/relax.jpg',    bg: '#1a3020' },
-      { value: 'ruhig',     label: 'Lieber ruhige Umgebung ohne Animation',  img: '/images/funnel/cards/wellness.jpg', bg: '#221a34' },
+      { value: 'sehr',      label: 'Sehr wichtig',                           img: `${FUNNEL_IMG}/childcare-important.png`,      fallbackImg: `${FALLBACK_IMG}/family.jpg`,   bg: '#1a4a2e' },
+      { value: 'gut',       label: 'Schön, wenn vorhanden',                  img: `${FUNNEL_IMG}/childcare-nice-to-have.png`,   fallbackImg: `${FALLBACK_IMG}/resort.jpg`,   bg: '#0F2A4C' },
+      { value: 'unwichtig', label: 'Nicht wichtig',                          img: `${FUNNEL_IMG}/childcare-not-important.png`,  fallbackImg: `${FALLBACK_IMG}/relax.jpg`,    bg: '#1a3020' },
+      { value: 'ruhig',     label: 'Lieber ruhige Umgebung ohne Animation',  img: `${FUNNEL_IMG}/childcare-quiet.png`,          fallbackImg: `${FALLBACK_IMG}/wellness.jpg`, bg: '#221a34' },
     ],
   },
   {
@@ -66,10 +70,10 @@ const STEPS = [
     question: 'Wie stressarm soll die Reise sein?',
     multi: false,
     options: [
-      { value: 'maxentspannt', label: 'So entspannt wie möglich',                   img: '/images/funnel/cards/relax.jpg',    bg: '#1a3020' },
-      { value: 'mix',          label: 'Gute Mischung aus Erholung und Aktivitäten', img: '/images/funnel/cards/active.jpg',   bg: '#162040' },
-      { value: 'abenteuer',    label: 'Wir sind abenteuerlustig',                   img: '/images/funnel/cards/mountain.jpg', bg: '#1a2818' },
-      { value: 'guenstig',     label: 'Hauptsache günstig',                         img: '/images/funnel/cards/backpack.jpg', bg: '#2a1800' },
+      { value: 'maxentspannt', label: 'So entspannt wie möglich',                   img: `${FUNNEL_IMG}/stress-relaxed.png`,   fallbackImg: `${FALLBACK_IMG}/relax.jpg`,    bg: '#1a3020' },
+      { value: 'mix',          label: 'Gute Mischung aus Erholung und Aktivitäten', img: `${FUNNEL_IMG}/stress-balanced.png`,  fallbackImg: `${FALLBACK_IMG}/active.jpg`,   bg: '#162040' },
+      { value: 'abenteuer',    label: 'Wir sind abenteuerlustig',                   img: `${FUNNEL_IMG}/stress-adventure.png`, fallbackImg: `${FALLBACK_IMG}/mountain.jpg`, bg: '#1a2818' },
+      { value: 'guenstig',     label: 'Hauptsache günstig',                         img: `${FUNNEL_IMG}/stress-budget.png`,    fallbackImg: `${FALLBACK_IMG}/backpack.jpg`, bg: '#2a1800' },
     ],
   },
   {
@@ -77,10 +81,10 @@ const STEPS = [
     question: 'Welches Budget passt ungefähr?',
     multi: false,
     options: [
-      { value: 'low',     label: 'Möglichst günstig',                   img: '/images/funnel/cards/backpack.jpg', bg: '#182010' },
-      { value: 'mid',     label: 'Solides Mittelklasse-Budget',         img: '/images/funnel/cards/hotel.jpg',    bg: '#162040' },
-      { value: 'high',    label: 'Komfort darf etwas kosten',           img: '/images/funnel/cards/luxury.jpg',   bg: '#2a1800' },
-      { value: 'compare', label: 'Ich möchte erstmal Ideen vergleichen',img: '/images/funnel/cards/world.jpg',    bg: '#1a1a34' },
+      { value: 'low',     label: 'Möglichst günstig',                   img: `${FUNNEL_IMG}/budget-cheap.png`,   fallbackImg: `${FALLBACK_IMG}/backpack.jpg`, bg: '#182010' },
+      { value: 'mid',     label: 'Solides Mittelklasse-Budget',         img: `${FUNNEL_IMG}/budget-middle.png`,  fallbackImg: `${FALLBACK_IMG}/hotel.jpg`,    bg: '#162040' },
+      { value: 'high',    label: 'Komfort darf etwas kosten',           img: `${FUNNEL_IMG}/budget-comfort.png`, fallbackImg: `${FALLBACK_IMG}/luxury.jpg`,   bg: '#2a1800' },
+      { value: 'compare', label: 'Ich möchte erstmal Ideen vergleichen',img: `${FUNNEL_IMG}/budget-compare.png`, fallbackImg: `${FALLBACK_IMG}/world.jpg`,    bg: '#1a1a34' },
     ],
   },
   {
@@ -89,14 +93,14 @@ const STEPS = [
     multi: true,
     hint: 'Mehrfachauswahl möglich',
     options: [
-      { value: 'kurze_wege',   label: 'Kurze Wege',                        img: '/images/funnel/cards/relax.jpg',    bg: '#1a3020' },
-      { value: 'sicherheit',   label: 'Sichere Umgebung',                  img: '/images/funnel/cards/family.jpg',   bg: '#1a4a2e' },
-      { value: 'unterkunft',   label: 'Kinderfreundliche Unterkunft',      img: '/images/funnel/cards/hotel.jpg',    bg: '#162040' },
-      { value: 'familien',     label: 'Andere Familien vor Ort',           img: '/images/funnel/cards/resort.jpg',   bg: '#0F2A4C' },
-      { value: 'preis',        label: 'Gutes Preis-Leistungs-Verhältnis',  img: '/images/funnel/cards/backpack.jpg', bg: '#182010' },
-      { value: 'verpflegung',  label: 'Einfache Verpflegung',              img: '/images/funnel/cards/autumn.jpg',   bg: '#2a1800' },
-      { value: 'aktivitaeten', label: 'Aktivitäten für Kinder',            img: '/images/funnel/cards/active.jpg',   bg: '#162040' },
-      { value: 'elternteil',   label: 'Erholung für mich als Elternteil',  img: '/images/funnel/cards/wellness.jpg', bg: '#221a34' },
+      { value: 'kurze_wege',   label: 'Kurze Wege',                        img: `${FUNNEL_IMG}/priority-short-distances.png`,     fallbackImg: `${FALLBACK_IMG}/relax.jpg`,    bg: '#1a3020' },
+      { value: 'sicherheit',   label: 'Sichere Umgebung',                  img: `${FUNNEL_IMG}/priority-safe-area.png`,            fallbackImg: `${FALLBACK_IMG}/family.jpg`,   bg: '#1a4a2e' },
+      { value: 'unterkunft',   label: 'Kinderfreundliche Unterkunft',      img: `${FUNNEL_IMG}/priority-child-friendly-stay.png`,  fallbackImg: `${FALLBACK_IMG}/hotel.jpg`,    bg: '#162040' },
+      { value: 'familien',     label: 'Andere Familien vor Ort',           img: `${FUNNEL_IMG}/priority-other-families.png`,       fallbackImg: `${FALLBACK_IMG}/resort.jpg`,   bg: '#0F2A4C' },
+      { value: 'preis',        label: 'Gutes Preis-Leistungs-Verhältnis',  img: `${FUNNEL_IMG}/priority-good-value.png`,           fallbackImg: `${FALLBACK_IMG}/backpack.jpg`, bg: '#182010' },
+      { value: 'verpflegung',  label: 'Einfache Verpflegung',              img: `${FUNNEL_IMG}/priority-easy-food.png`,            fallbackImg: `${FALLBACK_IMG}/autumn.jpg`,   bg: '#2a1800' },
+      { value: 'aktivitaeten', label: 'Aktivitäten für Kinder',            img: `${FUNNEL_IMG}/priority-kids-activities.png`,      fallbackImg: `${FALLBACK_IMG}/active.jpg`,   bg: '#162040' },
+      { value: 'elternteil',   label: 'Erholung für mich als Elternteil',  img: `${FUNNEL_IMG}/priority-parent-relaxation.png`,    fallbackImg: `${FALLBACK_IMG}/wellness.jpg`, bg: '#221a34' },
     ],
   },
 ];
@@ -247,7 +251,17 @@ const ArrowLeft = () => (
 
 // ── VisualCard (matches HomeTravelWizard card style) ────────────────────────
 
-function VisualCard({ selected, onClick, img, bg, label, height }) {
+function VisualCard({ selected, onClick, img, fallbackImg, bg, label, height }) {
+  const [imgSrc, setImgSrc] = useState(img || fallbackImg || null);
+
+  function handleImgError() {
+    if (fallbackImg && imgSrc !== fallbackImg) {
+      setImgSrc(fallbackImg);
+    } else {
+      setImgSrc(null);
+    }
+  }
+
   return (
     <button
       onClick={onClick}
@@ -271,18 +285,29 @@ function VisualCard({ selected, onClick, img, bg, label, height }) {
         textAlign: 'left',
       }}
     >
-      {img && (
-        <div
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            inset: '-1px',
-            backgroundImage: `url(${img})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-          }}
-        />
+      {imgSrc && (
+        <>
+          {/* Hidden probe — detects load failure and triggers fallback */}
+          <img
+            key={imgSrc}
+            src={imgSrc}
+            alt=""
+            aria-hidden="true"
+            onError={handleImgError}
+            style={{ position: 'absolute', width: 0, height: 0, opacity: 0, pointerEvents: 'none' }}
+          />
+          <div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              inset: '-1px',
+              backgroundImage: `url(${imgSrc})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+        </>
       )}
       <div
         aria-hidden="true"
@@ -487,6 +512,7 @@ export default function PlanenFunnel() {
                     selected={selected}
                     onClick={() => isMultiStep ? toggleMulti(opt.value) : selectSingle(opt.value)}
                     img={opt.img}
+                    fallbackImg={opt.fallbackImg}
                     bg={opt.bg}
                     label={opt.label}
                     height={cardHeight}
