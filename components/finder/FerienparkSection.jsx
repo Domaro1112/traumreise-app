@@ -3,34 +3,22 @@
 import { useState } from 'react';
 import { matchFerienparkProviders } from '@/lib/ferienpark-config';
 
-function goUrl(provider, rawUrl) {
-  if (!rawUrl) return undefined;
-  return `/go/${provider}?url=${encodeURIComponent(rawUrl)}`;
-}
-
-function buildAwinUrl(key, merchantId) {
-  const destinations = {
-    centerparcs: 'https://www.centerparcs.de/',
-    landal:      'https://www.landal.de/',
-    roompot:     'https://www.roompot.de/',
-    topparken:   'https://www.topparken.de/',
-    sunparks:    'https://www.sunparks.de/',
-    eurocamp:    'https://www.eurocamp.de/',
-    novasol:     'https://www.novasol.de/',
-  };
-  const dest = destinations[key] ?? 'https://www.awin1.com/';
-  return `https://www.awin1.com/cread.php?awinmid=${merchantId}&awinaffid=&ued=${encodeURIComponent(dest)}`;
-}
-
-const MERCHANT_IDS = {
-  centerparcs: 13639,
-  landal:      9118,
-  roompot:     84299,
-  topparken:   117131,
-  sunparks:    14749,
-  eurocamp:    14888,
-  novasol:     118655,
+// Saubere Provider-URLs — AWIN-URL-Erzeugung erfolgt zentral in /go/[provider]
+const PROVIDER_URLS = {
+  centerparcs: 'https://www.centerparcs.de/',
+  landal:      'https://www.landal.de/',
+  roompot:     'https://www.roompot.de/',
+  topparken:   'https://www.topparken.de/',
+  sunparks:    'https://www.sunparks.de/',
+  eurocamp:    'https://www.eurocamp.de/',
+  novasol:     'https://www.novasol.de/',
 };
+
+function goUrl(provider) {
+  const dest = PROVIDER_URLS[provider];
+  if (!dest) return undefined;
+  return `/go/${provider}?url=${encodeURIComponent(dest)}`;
+}
 
 function ProviderLogo({ providerKey, name, color }) {
   const [failed, setFailed] = useState(false);
@@ -103,9 +91,7 @@ export default function FerienparkSection({ interests, destination, budget }) {
       {/* Provider cards */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         {matched.map((p) => {
-          const merchantId = MERCHANT_IDS[p.key];
-          const awinUrl    = merchantId ? buildAwinUrl(p.key, merchantId) : null;
-          const href       = awinUrl ? goUrl(p.key, awinUrl) : undefined;
+          const href = goUrl(p.key);
 
           return (
             <div

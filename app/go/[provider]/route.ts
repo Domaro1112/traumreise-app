@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { generateAffiliateUrl, isAllowedAffiliateUrl } from '@/lib/affiliate';
+import { generateAffiliateUrl, injectAffiliateParam, isAllowedAffiliateUrl } from '@/lib/affiliate';
+import { AFFILIATE_PROVIDERS } from '@/lib/affiliate-config';
+import { getCachedAffiliateSettings } from '@/repositories/affiliate-settings';
 import { createServerClient } from '@/lib/supabase/server';
 
 export const dynamic = 'force-dynamic';
@@ -21,18 +23,33 @@ export async function GET(
     return NextResponse.redirect(new URL('/', request.url));
   }
 
-  // Affiliate-ID injizieren (gecacht, niemals blockierend)
   let finalUrl = targetUrl;
+
   try {
-    finalUrl = await generateAffiliateUrl(provider, targetUrl);
+    const providerConfig = (AFFILIATE_PROVIDERS as Record<string, { network?: string; buildUrl?: () => string }>)[provider];
+
+    if (providerConfig?.network === 'awin' && providerConfig.buildUrl) {
+      // AWIN-Anbieter: Tracking-URL nur aufbauen wenn Affiliate-ID konfiguriert + aktiviert.
+      // Ohne ID gehen wir direkt zur sauberen Provider-URL (targetUrl) — kein AWIN-Redirect.
+      const settings = await getCachedAffiliateSettings();
+      const setting  = settings[provider];
+
+      if (setting?.enabled && setting?.affiliate_id) {
+        const awinBase = providerConfig.buildUrl();
+        finalUrl = injectAffiliateParam(awinBase, 'awinaffid', setting.affiliate_id);
+      }
+      // else: finalUrl bleibt = targetUrl (saubere Provider-URL)
+    } else {
+      // Nicht-AWIN-Anbieter: bestehende Logik
+      finalUrl = await generateAffiliateUrl(provider, targetUrl);
+    }
   } catch {
-    // Weiterleitung ohne ID im Fehlerfall — kein Abbruch
+    // Weiterleitung ohne Tracking im Fehlerfall — kein Abbruch
   }
 
   console.log('[GO_REDIRECT_HIT]', { provider, targetUrl, finalUrl, changed: finalUrl !== targetUrl });
 
   // Klick-Tracking: echter Fire-and-Forget via async IIFE mit try/catch
-  // Fehler im async-Pfad werden vollständig abgefangen — Redirect schlägt nie fehl.
   void (async () => {
     try {
       await createServerClient()
@@ -42,12 +59,10 @@ export async function GET(
           affiliate_url: finalUrl,
           user_agent:    request.headers.get('user-agent') ?? null,
           referrer:      request.headers.get('referer')    ?? null,
-          // destination_name: null — /go/ hat keinen Destination-Kontext (nullable seit Migration)
         });
-    } catch { /* non-blocking — Tracking-Fehler dürfen Redirect nie stoppen */ }
+    } catch { /* non-blocking */ }
   })();
 
-  // HTTP 302 — Redirect darf niemals am Tracking scheitern
   const response = NextResponse.redirect(finalUrl, { status: 302 });
   response.headers.set('Cache-Control', 'no-store');
   return response;
