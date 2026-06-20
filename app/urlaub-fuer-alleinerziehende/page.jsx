@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Container from '@/components/layout/Container';
@@ -566,7 +567,208 @@ export default function AlleinerziehendePage() {
           </Container>
         </section>
 
-        {/* ── 7. FAQ ──────────────────────────────────────────────────────────── */}
+        {/* ── 7. REISEBLOG-LINKS ──────────────────────────────────────────────── */}
+        <section style={{ background: '#FFFFFF', paddingTop: '80px', paddingBottom: '80px' }}>
+          <Container>
+            <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+              <p style={{
+                fontSize: '12px', fontWeight: 700, letterSpacing: '0.12em',
+                textTransform: 'uppercase', color: '#0EA5E9', marginBottom: '16px',
+                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+              }}>
+                Reiseblog
+              </p>
+              <h2 style={{
+                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                fontSize: 'clamp(22px, 3.5vw, 36px)', fontWeight: 800,
+                color: '#0F172A', margin: '0 0 16px', lineHeight: 1.2,
+              }}>
+                Passende Ratgeber aus dem Reiseblog
+              </h2>
+              <p style={{ fontSize: '16px', color: '#475569', lineHeight: 1.75, margin: '0 0 48px', maxWidth: '600px' }}>
+                Noch mehr Tipps für deine Reiseplanung: Diese Ratgeber helfen dir dabei, den Urlaub mit Kind entspannter, günstiger und besser vorbereitet zu planen.
+              </p>
+
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(270px, 1fr))',
+                gap: '24px',
+              }}>
+                {/* ── Karte 1: Alleinerziehende Tipps ── */}
+                <article style={{
+                  background: '#FFFFFF', border: '1px solid #E2E8F0',
+                  borderRadius: '20px', overflow: 'hidden',
+                  boxShadow: '0 2px 12px rgba(15,23,42,0.05)',
+                  display: 'flex', flexDirection: 'column',
+                }}>
+                  <div style={{
+                    height: '120px', flexShrink: 0,
+                    background: 'linear-gradient(135deg, #0F172A 0%, #12324a 60%, #0EA5E9 140%)',
+                    display: 'flex', alignItems: 'flex-end', padding: '16px',
+                  }}>
+                    <span style={{
+                      display: 'inline-block', padding: '4px 10px', borderRadius: '20px',
+                      background: '#FFF1F2', border: '1px solid #FECDD3', color: '#BE123C',
+                      fontSize: '10px', fontWeight: 700, letterSpacing: '0.5px',
+                      textTransform: 'uppercase',
+                      fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                    }}>
+                      Familienurlaub
+                    </span>
+                  </div>
+                  <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                    <h3 style={{
+                      fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                      fontSize: '16px', fontWeight: 700, color: '#0F172A',
+                      margin: '0 0 10px', lineHeight: 1.35,
+                    }}>
+                      Urlaub für Alleinerziehende: Tipps für entspannte Reisen mit Kind
+                    </h3>
+                    <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.7, margin: '0 0 20px', flex: 1 }}>
+                      Praktische Tipps zu Planung, Budget, Unterkunft, Anreise und stressarmen Reisezielen für Alleinerziehende mit Kind.
+                    </p>
+                    <Link
+                      href="/reiseblog/urlaub-fuer-alleinerziehende-tipps"
+                      style={{
+                        display: 'inline-flex', alignItems: 'center', gap: '6px',
+                        fontSize: '13px', fontWeight: 700, color: '#0EA5E9',
+                        textDecoration: 'none',
+                        fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                      }}
+                    >
+                      Ratgeber lesen
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                      </svg>
+                    </Link>
+                  </div>
+                </article>
+
+                {/* ── Karte 2: Malediven Familienurlaub ── */}
+                <article style={{
+                  background: '#FFFFFF', border: '1px solid #E2E8F0',
+                  borderRadius: '20px', overflow: 'hidden',
+                  boxShadow: '0 2px 12px rgba(15,23,42,0.05)',
+                  display: 'flex', flexDirection: 'column',
+                }}>
+                  <div style={{
+                    height: '120px', flexShrink: 0,
+                    background: 'linear-gradient(135deg, #0C4A6E 0%, #0369A1 50%, #38BDF8 140%)',
+                    display: 'flex', alignItems: 'flex-end', padding: '16px',
+                  }}>
+                    <span style={{
+                      display: 'inline-block', padding: '4px 10px', borderRadius: '20px',
+                      background: '#FFF1F2', border: '1px solid #FECDD3', color: '#BE123C',
+                      fontSize: '10px', fontWeight: 700, letterSpacing: '0.5px',
+                      textTransform: 'uppercase',
+                      fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                    }}>
+                      Familienurlaub
+                    </span>
+                  </div>
+                  <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                    <h3 style={{
+                      fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                      fontSize: '16px', fontWeight: 700, color: '#0F172A',
+                      margin: '0 0 10px', lineHeight: 1.35,
+                    }}>
+                      Malediven mit Kindern – So klappt der Traumurlaub wirklich
+                    </h3>
+                    <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.7, margin: '0 0 20px', flex: 1 }}>
+                      Kinderfreundliche Resorts, sichere Aktivitäten und Tipps zu günstigen Guesthouses – Familienurlaub auf den Malediven ist machbarer als gedacht.
+                    </p>
+                    <Link
+                      href="/reiseblog/malediven-familienurlaub"
+                      style={{
+                        display: 'inline-flex', alignItems: 'center', gap: '6px',
+                        fontSize: '13px', fontWeight: 700, color: '#0EA5E9',
+                        textDecoration: 'none',
+                        fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                      }}
+                    >
+                      Ratgeber lesen
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                      </svg>
+                    </Link>
+                  </div>
+                </article>
+
+                {/* ── Karte 3: KI-Reiseplanung ── */}
+                <article style={{
+                  background: '#FFFFFF', border: '1px solid #E2E8F0',
+                  borderRadius: '20px', overflow: 'hidden',
+                  boxShadow: '0 2px 12px rgba(15,23,42,0.05)',
+                  display: 'flex', flexDirection: 'column',
+                }}>
+                  <div style={{
+                    height: '120px', flexShrink: 0,
+                    background: 'linear-gradient(135deg, #1E1B4B 0%, #3730A3 50%, #818CF8 140%)',
+                    display: 'flex', alignItems: 'flex-end', padding: '16px',
+                  }}>
+                    <span style={{
+                      display: 'inline-block', padding: '4px 10px', borderRadius: '20px',
+                      background: '#EFF6FF', border: '1px solid #BFDBFE', color: '#1D4ED8',
+                      fontSize: '10px', fontWeight: 700, letterSpacing: '0.5px',
+                      textTransform: 'uppercase',
+                      fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                    }}>
+                      KI-Reiseplanung
+                    </span>
+                  </div>
+                  <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                    <h3 style={{
+                      fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                      fontSize: '16px', fontWeight: 700, color: '#0F172A',
+                      margin: '0 0 10px', lineHeight: 1.35,
+                    }}>
+                      KI-Reiseplanung: Wie du in 5 Minuten deinen perfekten Urlaub findest
+                    </h3>
+                    <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.7, margin: '0 0 20px', flex: 1 }}>
+                      Wie ApeAround mit künstlicher Intelligenz passende Reiseziele findet – und warum das besonders für Alleinerziehende mit wenig Planungszeit sinnvoll ist.
+                    </p>
+                    <Link
+                      href="/reiseblog/ki-reiseplanung-anfaenger"
+                      style={{
+                        display: 'inline-flex', alignItems: 'center', gap: '6px',
+                        fontSize: '13px', fontWeight: 700, color: '#0EA5E9',
+                        textDecoration: 'none',
+                        fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                      }}
+                    >
+                      Ratgeber lesen
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                      </svg>
+                    </Link>
+                  </div>
+                </article>
+              </div>
+
+              {/* Link zur Blog-Übersicht */}
+              <div style={{ marginTop: '40px', textAlign: 'center' }}>
+                <Link
+                  href="/reiseblog"
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', gap: '8px',
+                    fontSize: '14px', fontWeight: 600, color: '#0EA5E9',
+                    textDecoration: 'none', padding: '10px 20px',
+                    border: '1.5px solid #BAE6FD', borderRadius: '12px',
+                    background: '#F0F9FF',
+                    fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                  }}
+                >
+                  Alle Reiseguides im Blog entdecken
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* ── 8. FAQ ──────────────────────────────────────────────────────────── */}
         <section style={{ background: '#F8FAFF', paddingTop: '80px', paddingBottom: '80px' }}>
           <Container>
             <div style={{ maxWidth: '760px', margin: '0 auto' }}>
