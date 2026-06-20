@@ -728,7 +728,7 @@ export default function AlleinerziehendePage() {
                       Wie ApeAround mit künstlicher Intelligenz passende Reiseziele findet – und warum das besonders für Alleinerziehende mit wenig Planungszeit sinnvoll ist.
                     </p>
                     <Link
-                      href="/reiseblog/ki-reiseplanung-anfaenger"
+                      href="/reiseblog/kann-ki-deinen-urlaub-planen"
                       style={{
                         display: 'inline-flex', alignItems: 'center', gap: '6px',
                         fontSize: '13px', fontWeight: 700, color: '#0EA5E9',
