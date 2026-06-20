@@ -750,7 +750,7 @@ export default function TravelResultView({ results, personality, interests, pack
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px', borderRadius: '12px', background: '#F0FDF4', border: '1px solid #BBF7D0' }}>
                     <div style={{ width: '36px', height: '36px', borderRadius: '11px', background: '#DCFCE7', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Wallet size={16} strokeWidth={2} color="#15803D" /></div>
                     <div>
-                      <div style={{ fontSize: '10px', fontWeight: 700, color: '#15803D', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '2px' }}>Budget/Tag</div>
+                      <div style={{ fontSize: '10px', fontWeight: 700, color: '#15803D', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '2px' }}>TAGESBUDGET</div>
                       <div style={{ fontSize: '13px', color: '#14532D', fontWeight: 600 }}>{cur.budgetPerDay}</div>
                     </div>
                   </div>
