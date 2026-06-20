@@ -238,93 +238,76 @@ export default function AlleinerziehendePage() {
           position: 'relative',
           paddingTop: 'calc(80px + 80px)',
           paddingBottom: '80px',
-          background: 'linear-gradient(135deg, #0F172A 0%, #12324a 60%, #0EA5E9 160%)',
           overflow: 'hidden',
           minHeight: 'clamp(520px, 65vh, 680px)',
+          display: 'flex',
+          alignItems: 'center',
         }}>
+          {/* Full-width background image */}
+          <Image
+            src="/images/urlaub-fuer-alleinerziehende-hero.jpg"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
+          />
+
+          {/* Dark gradient overlay – keeps text readable over any photo */}
           <div aria-hidden="true" style={{
-            position: 'absolute', top: '5%', right: '-5%',
-            width: '500px', height: '500px', borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(14,165,233,0.13) 0%, transparent 70%)',
-            pointerEvents: 'none',
-          }} />
-          <div aria-hidden="true" style={{
-            position: 'absolute', bottom: '-20%', left: '-8%',
-            width: '400px', height: '400px', borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(99,102,241,0.09) 0%, transparent 70%)',
-            pointerEvents: 'none',
+            position: 'absolute', inset: 0,
+            background: 'linear-gradient(105deg, rgba(15,23,42,0.88) 0%, rgba(18,50,74,0.72) 55%, rgba(14,165,233,0.20) 100%)',
+            zIndex: 1,
           }} />
 
-          <Container>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '48px', flexWrap: 'wrap' }}>
-              {/* Text */}
-              <div style={{ flex: '1 1 340px', minWidth: 0, position: 'relative', zIndex: 2 }}>
-                <div style={{
-                  display: 'inline-flex', alignItems: 'center', gap: '8px',
-                  padding: '6px 16px', borderRadius: '40px', marginBottom: '24px',
-                  background: 'rgba(14,165,233,0.12)', border: '1px solid rgba(14,165,233,0.30)',
-                }}>
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
-                  </svg>
-                  <span style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#38BDF8', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>
-                    Reisen mit Kind
-                  </span>
-                </div>
-
-                <h1 style={{
-                  fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-                  fontSize: 'clamp(28px, 5vw, 50px)', fontWeight: 900,
-                  lineHeight: 1.12, letterSpacing: '-0.03em',
-                  color: '#FFFFFF', margin: '0 0 20px',
-                  textShadow: '0 2px 16px rgba(0,0,0,0.25)',
-                }}>
-                  Urlaub für{' '}
-                  <span style={{
-                    background: 'linear-gradient(135deg, #38BDF8 0%, #22D3EE 100%)',
-                    WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                  }}>
-                    Alleinerziehende
-                  </span>
-                  {' '}mit Kind
-                </h1>
-
-                <p style={{
-                  fontSize: 'clamp(15px, 1.8vw, 18px)', color: '#CBD5E1',
-                  lineHeight: 1.7, margin: '0 0 36px', maxWidth: '520px',
-                }}>
-                  Finde Reiseideen, die zu deinem Alltag passen: bezahlbar, kinderfreundlich, sicher und ohne unnötigen Planungsstress.
-                </p>
-
-                <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-                  <a href="/urlaub-fuer-alleinerziehende/planen" style={BTN_PRIMARY}>
-                    Urlaub mit Kind planen
-                    {ARROW_ICON}
-                  </a>
-                  <a href="#reiseideen" style={BTN_GHOST}>
-                    Reiseideen ansehen
-                  </a>
-                </div>
+          <Container style={{ position: 'relative', zIndex: 2, width: '100%' }}>
+            <div style={{ maxWidth: '640px' }}>
+              {/* Badge */}
+              <div style={{
+                display: 'inline-flex', alignItems: 'center', gap: '8px',
+                padding: '6px 16px', borderRadius: '40px', marginBottom: '24px',
+                background: 'rgba(14,165,233,0.12)', border: '1px solid rgba(14,165,233,0.30)',
+              }}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                <span style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#38BDF8', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>
+                  Reisen mit Kind
+                </span>
               </div>
 
-              {/* Hero image */}
-              <div style={{ flex: '0 1 460px', position: 'relative', zIndex: 2 }}>
-                <div style={{
-                  position: 'relative',
-                  aspectRatio: '16 / 9',
-                  borderRadius: '20px',
-                  overflow: 'hidden',
-                  boxShadow: '0 24px 64px rgba(0,0,0,0.40)',
+              <h1 style={{
+                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                fontSize: 'clamp(28px, 5vw, 54px)', fontWeight: 900,
+                lineHeight: 1.12, letterSpacing: '-0.03em',
+                color: '#FFFFFF', margin: '0 0 20px',
+                textShadow: '0 2px 20px rgba(0,0,0,0.45)',
+              }}>
+                Urlaub für{' '}
+                <span style={{
+                  background: 'linear-gradient(135deg, #38BDF8 0%, #22D3EE 100%)',
+                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
                 }}>
-                  <Image
-                    src="/images/urlaub-fuer-alleinerziehende-hero.jpg"
-                    alt="Urlaub für Alleinerziehende mit Kind am Meer"
-                    fill
-                    priority
-                    sizes="(max-width: 768px) 100vw, 460px"
-                    style={{ objectFit: 'cover' }}
-                  />
-                </div>
+                  Alleinerziehende
+                </span>
+                {' '}mit Kind
+              </h1>
+
+              <p style={{
+                fontSize: 'clamp(15px, 1.8vw, 18px)', color: '#CBD5E1',
+                lineHeight: 1.7, margin: '0 0 36px', maxWidth: '520px',
+              }}>
+                Finde Reiseideen, die zu deinem Alltag passen: bezahlbar, kinderfreundlich, sicher und ohne unnötigen Planungsstress.
+              </p>
+
+              <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+                <a href="/urlaub-fuer-alleinerziehende/planen" style={BTN_PRIMARY}>
+                  Urlaub mit Kind planen
+                  {ARROW_ICON}
+                </a>
+                <a href="#reiseideen" style={BTN_GHOST}>
+                  Reiseideen ansehen
+                </a>
               </div>
             </div>
           </Container>
