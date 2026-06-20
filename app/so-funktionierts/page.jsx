@@ -243,7 +243,7 @@ export default function SoFunktionierts() {
                   n: '3',
                   img: '/images/how-it-works/step-3-ergebnis.png',
                   imgAlt: 'Schritt 3: Persönliche Reisevorschläge erhalten',
-                  title: 'Du bekommst passende Reisevorschläge',
+                  title: 'Du bekommst deine passenden Reisevorschläge',
                   text: 'Du erhältst mehrere Vorschläge mit Gründen, Highlights, passenden Unterkunftsideen und direkten Vergleichsmöglichkeiten bei Reiseanbietern.',
                 },
               ].map(({ n, img, imgAlt, title, text }) => (

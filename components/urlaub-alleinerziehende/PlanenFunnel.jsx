@@ -4,6 +4,9 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Container from '@/components/layout/Container';
 
+// ── Visual card overlay gradient (matches HomeTravelWizard) ─────────────────
+const OVERLAY = 'linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.22) 50%, rgba(0,0,0,0.75) 100%)';
+
 // ── Step definitions ────────────────────────────────────────────────────────
 
 const STEPS = [
@@ -12,12 +15,12 @@ const STEPS = [
     question: 'Wie alt ist dein Kind?',
     multi: false,
     options: [
-      { value: '0-3',     label: '0–3 Jahre' },
-      { value: '4-6',     label: '4–6 Jahre' },
-      { value: '7-10',    label: '7–10 Jahre' },
-      { value: '11-14',   label: '11–14 Jahre' },
-      { value: '15+',     label: '15+ Jahre' },
-      { value: 'mehrere', label: 'Mehrere Kinder mit unterschiedlichem Alter' },
+      { value: '0-3',     label: '0–3 Jahre',                               img: '/images/funnel/cards/spring.jpg',   bg: '#0F3460' },
+      { value: '4-6',     label: '4–6 Jahre',                               img: '/images/funnel/cards/family.jpg',   bg: '#1a4a2e' },
+      { value: '7-10',    label: '7–10 Jahre',                              img: '/images/funnel/cards/active.jpg',   bg: '#162040' },
+      { value: '11-14',   label: '11–14 Jahre',                             img: '/images/funnel/cards/world.jpg',    bg: '#221a44' },
+      { value: '15+',     label: '15+ Jahre',                               img: '/images/funnel/cards/mountain.jpg', bg: '#1a2030' },
+      { value: 'mehrere', label: 'Mehrere Kinder mit unterschiedlichem Alter', img: '/images/funnel/cards/resort.jpg',   bg: '#0F3460' },
     ],
   },
   {
@@ -25,11 +28,11 @@ const STEPS = [
     question: 'Wie möchtest du am liebsten reisen?',
     multi: false,
     options: [
-      { value: 'auto',     label: 'Mit dem Auto' },
-      { value: 'bahn',     label: 'Mit der Bahn' },
-      { value: 'flugzeug', label: 'Mit dem Flugzeug' },
-      { value: 'kurz',     label: 'Möglichst kurze Anreise' },
-      { value: 'offen',    label: 'Ich bin offen' },
+      { value: 'auto',     label: 'Mit dem Auto',            img: '/images/funnel/cards/mountain.jpg', bg: '#1a2030' },
+      { value: 'bahn',     label: 'Mit der Bahn',            img: '/images/funnel/cards/city.jpg',     bg: '#1e1020' },
+      { value: 'flugzeug', label: 'Mit dem Flugzeug',        img: '/images/funnel/cards/world.jpg',    bg: '#0F2A4C' },
+      { value: 'kurz',     label: 'Möglichst kurze Anreise', img: '/images/funnel/cards/relax.jpg',    bg: '#1a3020' },
+      { value: 'offen',    label: 'Ich bin offen',           img: '/images/funnel/cards/active.jpg',   bg: '#1e2010' },
     ],
   },
   {
@@ -37,14 +40,14 @@ const STEPS = [
     question: 'Welche Urlaubsart passt zu euch?',
     multi: false,
     options: [
-      { value: 'strand',       label: 'Strandurlaub' },
-      { value: 'ferienpark',   label: 'Ferienpark' },
-      { value: 'bauernhof',    label: 'Bauernhofurlaub' },
-      { value: 'camping',      label: 'Camping' },
-      { value: 'allinclusive', label: 'All-Inclusive' },
-      { value: 'natur',        label: 'Natururlaub' },
-      { value: 'staedte',      label: 'Städtetrip' },
-      { value: 'offen',        label: 'Ich bin offen' },
+      { value: 'strand',       label: 'Strandurlaub',    img: '/images/funnel/cards/beach.jpg',    bg: '#0F2A4C' },
+      { value: 'ferienpark',   label: 'Ferienpark',      img: '/images/funnel/cards/family.jpg',   bg: '#1a4a2e' },
+      { value: 'bauernhof',    label: 'Bauernhofurlaub', img: '/images/funnel/cards/autumn.jpg',   bg: '#2a1800' },
+      { value: 'camping',      label: 'Camping',         img: '/images/funnel/cards/backpack.jpg', bg: '#182010' },
+      { value: 'allinclusive', label: 'All-Inclusive',   img: '/images/funnel/cards/resort.jpg',   bg: '#0F1A3C' },
+      { value: 'natur',        label: 'Natururlaub',     img: '/images/funnel/cards/mountain.jpg', bg: '#1a2818' },
+      { value: 'staedte',      label: 'Städtetrip',      img: '/images/funnel/cards/city.jpg',     bg: '#1e1020' },
+      { value: 'offen',        label: 'Ich bin offen',   img: '/images/funnel/cards/world.jpg',    bg: '#1a1a34' },
     ],
   },
   {
@@ -52,10 +55,10 @@ const STEPS = [
     question: 'Wie wichtig ist dir Kinderbetreuung oder Animation?',
     multi: false,
     options: [
-      { value: 'sehr',       label: 'Sehr wichtig' },
-      { value: 'gut',        label: 'Schön, wenn vorhanden' },
-      { value: 'unwichtig',  label: 'Nicht wichtig' },
-      { value: 'ruhig',      label: 'Lieber ruhige Umgebung ohne viel Animation' },
+      { value: 'sehr',      label: 'Sehr wichtig',                           img: '/images/funnel/cards/family.jpg',   bg: '#1a4a2e' },
+      { value: 'gut',       label: 'Schön, wenn vorhanden',                  img: '/images/funnel/cards/resort.jpg',   bg: '#0F2A4C' },
+      { value: 'unwichtig', label: 'Nicht wichtig',                          img: '/images/funnel/cards/relax.jpg',    bg: '#1a3020' },
+      { value: 'ruhig',     label: 'Lieber ruhige Umgebung ohne Animation',  img: '/images/funnel/cards/wellness.jpg', bg: '#221a34' },
     ],
   },
   {
@@ -63,10 +66,10 @@ const STEPS = [
     question: 'Wie stressarm soll die Reise sein?',
     multi: false,
     options: [
-      { value: 'maxentspannt', label: 'So entspannt wie möglich' },
-      { value: 'mix',          label: 'Gute Mischung aus Erholung und Aktivitäten' },
-      { value: 'abenteuer',    label: 'Wir sind abenteuerlustig' },
-      { value: 'guenstig',     label: 'Hauptsache günstig' },
+      { value: 'maxentspannt', label: 'So entspannt wie möglich',                   img: '/images/funnel/cards/relax.jpg',    bg: '#1a3020' },
+      { value: 'mix',          label: 'Gute Mischung aus Erholung und Aktivitäten', img: '/images/funnel/cards/active.jpg',   bg: '#162040' },
+      { value: 'abenteuer',    label: 'Wir sind abenteuerlustig',                   img: '/images/funnel/cards/mountain.jpg', bg: '#1a2818' },
+      { value: 'guenstig',     label: 'Hauptsache günstig',                         img: '/images/funnel/cards/backpack.jpg', bg: '#2a1800' },
     ],
   },
   {
@@ -74,10 +77,10 @@ const STEPS = [
     question: 'Welches Budget passt ungefähr?',
     multi: false,
     options: [
-      { value: 'low',     label: 'Möglichst günstig' },
-      { value: 'mid',     label: 'Solides Mittelklasse-Budget' },
-      { value: 'high',    label: 'Komfort darf etwas kosten' },
-      { value: 'compare', label: 'Ich möchte erstmal Ideen vergleichen' },
+      { value: 'low',     label: 'Möglichst günstig',                   img: '/images/funnel/cards/backpack.jpg', bg: '#182010' },
+      { value: 'mid',     label: 'Solides Mittelklasse-Budget',         img: '/images/funnel/cards/hotel.jpg',    bg: '#162040' },
+      { value: 'high',    label: 'Komfort darf etwas kosten',           img: '/images/funnel/cards/luxury.jpg',   bg: '#2a1800' },
+      { value: 'compare', label: 'Ich möchte erstmal Ideen vergleichen',img: '/images/funnel/cards/world.jpg',    bg: '#1a1a34' },
     ],
   },
   {
@@ -86,14 +89,14 @@ const STEPS = [
     multi: true,
     hint: 'Mehrfachauswahl möglich',
     options: [
-      { value: 'kurze_wege',   label: 'Kurze Wege' },
-      { value: 'sicherheit',   label: 'Sichere Umgebung' },
-      { value: 'unterkunft',   label: 'Kinderfreundliche Unterkunft' },
-      { value: 'familien',     label: 'Andere Familien vor Ort' },
-      { value: 'preis',        label: 'Gutes Preis-Leistungs-Verhältnis' },
-      { value: 'verpflegung',  label: 'Einfache Verpflegung' },
-      { value: 'aktivitaeten', label: 'Aktivitäten für Kinder' },
-      { value: 'elternteil',   label: 'Erholung für mich als Elternteil' },
+      { value: 'kurze_wege',   label: 'Kurze Wege',                        img: '/images/funnel/cards/relax.jpg',    bg: '#1a3020' },
+      { value: 'sicherheit',   label: 'Sichere Umgebung',                  img: '/images/funnel/cards/family.jpg',   bg: '#1a4a2e' },
+      { value: 'unterkunft',   label: 'Kinderfreundliche Unterkunft',      img: '/images/funnel/cards/hotel.jpg',    bg: '#162040' },
+      { value: 'familien',     label: 'Andere Familien vor Ort',           img: '/images/funnel/cards/resort.jpg',   bg: '#0F2A4C' },
+      { value: 'preis',        label: 'Gutes Preis-Leistungs-Verhältnis',  img: '/images/funnel/cards/backpack.jpg', bg: '#182010' },
+      { value: 'verpflegung',  label: 'Einfache Verpflegung',              img: '/images/funnel/cards/autumn.jpg',   bg: '#2a1800' },
+      { value: 'aktivitaeten', label: 'Aktivitäten für Kinder',            img: '/images/funnel/cards/active.jpg',   bg: '#162040' },
+      { value: 'elternteil',   label: 'Erholung für mich als Elternteil',  img: '/images/funnel/cards/wellness.jpg', bg: '#221a34' },
     ],
   },
 ];
@@ -242,11 +245,93 @@ const ArrowLeft = () => (
   </svg>
 );
 
-const CheckIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="20 6 9 17 4 12"/>
-  </svg>
-);
+// ── VisualCard (matches HomeTravelWizard card style) ────────────────────────
+
+function VisualCard({ selected, onClick, img, bg, label, height }) {
+  return (
+    <button
+      onClick={onClick}
+      className="funnel-visual-card"
+      style={{
+        position: 'relative',
+        overflow: 'hidden',
+        borderRadius: '16px',
+        border: selected ? '2.5px solid #0EA5E9' : '2.5px solid transparent',
+        padding: 0,
+        display: 'block',
+        width: '100%',
+        height: height || '160px',
+        cursor: 'pointer',
+        backgroundColor: bg || '#162040',
+        boxShadow: selected
+          ? '0 0 0 3px rgba(14,165,233,0.50), 0 0 0 6px rgba(14,165,233,0.14), 0 10px 28px rgba(0,0,0,0.22)'
+          : '0 3px 14px rgba(0,0,0,0.18)',
+        transition: 'border-color 0.18s ease, box-shadow 0.18s ease',
+        fontFamily: 'var(--font-heading,"Poppins",system-ui,sans-serif)',
+        textAlign: 'left',
+      }}
+    >
+      {img && (
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            inset: '-1px',
+            backgroundImage: `url(${img})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
+        />
+      )}
+      <div
+        aria-hidden="true"
+        style={{ position: 'absolute', inset: '-1px', background: OVERLAY, pointerEvents: 'none' }}
+      />
+      <div style={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        padding: '8px 12px 13px',
+        zIndex: 2,
+      }}>
+        <div style={{
+          fontSize: '13px',
+          fontWeight: 700,
+          color: '#fff',
+          textShadow: '0 1px 6px rgba(0,0,0,0.9)',
+          lineHeight: 1.3,
+          letterSpacing: '0.01em',
+        }}>
+          {label}
+        </div>
+      </div>
+      {selected && (
+        <div style={{
+          position: 'absolute',
+          top: '8px',
+          right: '8px',
+          width: '22px',
+          height: '22px',
+          borderRadius: '50%',
+          background: '#0EA5E9',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 2px 10px rgba(14,165,233,0.65)',
+          zIndex: 3,
+          fontSize: '13px',
+          color: '#fff',
+          fontWeight: 800,
+          lineHeight: 1,
+        }}>
+          ✓
+        </div>
+      )}
+    </button>
+  );
+}
 
 // ── Main component ──────────────────────────────────────────────────────────
 
@@ -332,6 +417,10 @@ export default function PlanenFunnel() {
     />
   );
 
+  // Grid: single-select → 1 col mobile / 2 col desktop; multi → 2 col mobile / 4 col desktop
+  const gridCols  = isMultiStep ? 'repeat(auto-fill, minmax(160px, 1fr))' : 'repeat(auto-fill, minmax(280px, 1fr))';
+  const cardHeight = isMultiStep ? '130px' : '160px';
+
   // Questions
   return (
     <div style={{
@@ -386,59 +475,22 @@ export default function PlanenFunnel() {
               </p>
             )}
 
-            {/* Options */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: isMultiStep ? 'repeat(auto-fill,minmax(200px,1fr))' : 'repeat(auto-fill,minmax(220px,1fr))',
-              gap: '10px',
-            }}>
+            {/* Visual card grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: gridCols, gap: '10px' }}>
               {currentStep.options.map(opt => {
                 const selected = isMultiStep
                   ? (answers.priorities || []).includes(opt.value)
                   : answers[currentStep.id] === opt.value;
                 return (
-                  <button
+                  <VisualCard
                     key={opt.value}
+                    selected={selected}
                     onClick={() => isMultiStep ? toggleMulti(opt.value) : selectSingle(opt.value)}
-                    style={{
-                      display: 'flex', alignItems: 'center', gap: '10px',
-                      padding: '14px 18px', borderRadius: '14px', cursor: 'pointer',
-                      border: `2px solid ${selected ? '#0EA5E9' : '#E2E8F0'}`,
-                      background: selected ? '#EFF6FF' : '#FFFFFF',
-                      color: selected ? '#0EA5E9' : '#334155',
-                      fontSize: '14px', fontWeight: selected ? 700 : 500,
-                      textAlign: 'left', transition: 'all 0.15s ease',
-                      fontFamily: 'var(--font-heading,"Poppins",system-ui,sans-serif)',
-                    }}
-                  >
-                    {/* Checkbox indicator for multi */}
-                    {isMultiStep && (
-                      <div style={{
-                        flexShrink: 0,
-                        width: '18px', height: '18px', borderRadius: '5px',
-                        border: `2px solid ${selected ? '#0EA5E9' : '#CBD5E1'}`,
-                        background: selected ? '#0EA5E9' : 'transparent',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        transition: 'all 0.15s',
-                      }}>
-                        {selected && <CheckIcon />}
-                      </div>
-                    )}
-                    {/* Radio indicator for single */}
-                    {!isMultiStep && (
-                      <div style={{
-                        flexShrink: 0,
-                        width: '16px', height: '16px', borderRadius: '50%',
-                        border: `2px solid ${selected ? '#0EA5E9' : '#CBD5E1'}`,
-                        background: selected ? '#0EA5E9' : 'transparent',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        transition: 'all 0.15s',
-                      }}>
-                        {selected && <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#fff' }} />}
-                      </div>
-                    )}
-                    <span>{opt.label}</span>
-                  </button>
+                    img={opt.img}
+                    bg={opt.bg}
+                    label={opt.label}
+                    height={cardHeight}
+                  />
                 );
               })}
             </div>
@@ -500,7 +552,6 @@ function PreviewView({ answers, preview, onCreateIdeas, onBack }) {
           {/* Result cards */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '40px' }}>
 
-            {/* Reisearten */}
             {reisearten.length > 0 && (
               <PreviewCard
                 icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>}
@@ -510,7 +561,6 @@ function PreviewView({ answers, preview, onCreateIdeas, onBack }) {
               />
             )}
 
-            {/* Ziele */}
             {ziele.length > 0 && (
               <PreviewCard
                 icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>}
@@ -520,7 +570,6 @@ function PreviewView({ answers, preview, onCreateIdeas, onBack }) {
               />
             )}
 
-            {/* Worauf achten */}
             {achten.length > 0 && (
               <PreviewCard
                 icon={<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>}
@@ -530,7 +579,6 @@ function PreviewView({ answers, preview, onCreateIdeas, onBack }) {
               />
             )}
 
-            {/* Ehrliche Hinweise */}
             {hinweise.length > 0 && (
               <div style={{
                 background: '#FFFBEB', border: '1px solid #FDE68A',
