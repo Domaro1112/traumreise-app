@@ -18,7 +18,7 @@ export default function sitemap() {
     { url: `${BASE_URL}/finder`,              lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE_URL}/reiseblog`,           lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.9 },
     { url: `${BASE_URL}/inspiration`,         lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE_URL}dein-traumurlaub`,    lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE_URL}so-funktionierts`,    lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE_URL}/ueber-uns`,           lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE_URL}/datenschutz`,         lastModified: new Date(), changeFrequency: 'yearly',  priority: 0.3 },
     { url: `${BASE_URL}/impressum`,           lastModified: new Date(), changeFrequency: 'yearly',  priority: 0.3 },
