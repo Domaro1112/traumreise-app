@@ -296,8 +296,8 @@ export default function AlleinerziehendePage() {
                 </p>
 
                 <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-                  <a href="#alleinerziehend" style={BTN_PRIMARY}>
-                    Reise mit Kind planen
+                  <a href="/urlaub-fuer-alleinerziehende/planen" style={BTN_PRIMARY}>
+                    Urlaub mit Kind planen
                     {ARROW_ICON}
                   </a>
                   <a href="#reiseideen" style={BTN_GHOST}>
@@ -554,12 +554,12 @@ export default function AlleinerziehendePage() {
               }}>
                 Beantworte wenige Fragen und erhalte Reisevorschläge, die besser zu dir, deinem Kind und eurem Budget passen.
               </p>
-              <a href="/" style={{
+              <a href="/urlaub-fuer-alleinerziehende/planen" style={{
                 ...BTN_PRIMARY,
                 padding: '16px 36px',
                 fontSize: '16px',
               }}>
-                Jetzt Reise planen
+                Urlaub mit Kind planen
                 {ARROW_ICON}
               </a>
             </div>
