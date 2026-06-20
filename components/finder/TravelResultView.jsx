@@ -967,42 +967,108 @@ export default function TravelResultView({ results, personality, interests, pack
         )}
 
         {/* ── KOSTENSCHÄTZUNG ─────────────────────────────────────────────── */}
-        {cur.costEstimate && (
-          <section aria-label="Kostenschätzung" style={{ ...card, marginBottom: '12px' }}>
-            <SectionTitle label="Budget-Übersicht" title="Kostenschätzung für deine Reise" icon={Euro} iconColor="#15803D" iconBg="#F0FDF4" iconBorder="#BBF7D0" />
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(110px,1fr))', gap: '8px', alignItems: 'stretch' }}>
-              {[
-                { label: 'Flug',        value: cur.costEstimate.flight,     Icon: Plane,     iconBg: '#DBEAFE', iconColor: '#1D4ED8', note: 'p.P.' },
-                { label: 'Unterkunft',  value: cur.costEstimate.hotel,      Icon: Hotel,     iconBg: '#F3E8FF', iconColor: '#7C3AED', note: 'gesamt' },
-                { label: 'Aktivitäten', value: cur.costEstimate.activities, Icon: MapPinned, iconBg: '#FEE2E2', iconColor: '#DC2626', note: 'gesamt' },
-              ].filter(r => r.value && r.value !== '0€').map((row, i) => (
-                <div key={i} style={{ padding: '14px 10px', borderRadius: '13px', background: '#F8FAFF', border: '1px solid #F1F5F9', textAlign: 'center' }}>
-                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>
-                    <div style={{ width: '34px', height: '34px', borderRadius: '10px', background: row.iconBg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <row.Icon size={15} strokeWidth={1.75} color={row.iconColor} />
-                    </div>
-                  </div>
-                  <div style={{ fontSize: '9px', fontWeight: 700, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>{row.label}</div>
-                  <div style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', lineHeight: 1.2 }}>{row.value}</div>
-                  <div style={{ fontSize: '10px', color: '#94A3B8', marginTop: '2px' }}>{row.note}</div>
-                </div>
-              ))}
-              {cur.costEstimate.total && (
-                <div style={{ padding: '14px 10px', borderRadius: '13px', background: 'linear-gradient(135deg,#EFF6FF,#ECFEFF)', border: '2px solid #BFDBFE', textAlign: 'center' }}>
-                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>
-                    <div style={{ width: '34px', height: '34px', borderRadius: '10px', background: 'linear-gradient(135deg,#0EA5E9,#06B6D4)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <Gem size={15} strokeWidth={1.75} color="#FFFFFF" />
-                    </div>
-                  </div>
-                  <div style={{ fontSize: '9px', fontWeight: 700, color: '#0284C7', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>Gesamt</div>
-                  <div style={{ fontSize: '15px', fontWeight: 800, color: '#0284C7', lineHeight: 1.2, fontFamily: 'var(--font-heading)' }}>{cur.costEstimate.total}</div>
-                  <div style={{ fontSize: '10px', color: '#64748B', marginTop: '2px' }}>pro Person</div>
+        {cur.costEstimate && (() => {
+          // Budget ranges and display labels
+          const BUDGET_META = {
+            low:  { display: 'bis 500 €',        max: 500  },
+            mid:  { display: '500–1.500 €',       max: 1500 },
+            high: { display: '1.500–4.000 €',     max: 4000 },
+          };
+          const budgetMeta = BUDGET_META[budget] ?? null;
+
+          // Parse highest EUR number from strings like "780-1420€ p.P." → 1420
+          const parseMaxEur = (str) => {
+            if (!str) return null;
+            const nums = (str.match(/\d+/g) ?? []).map(Number);
+            return nums.length ? Math.max(...nums) : null;
+          };
+
+          const totalMax    = parseMaxEur(cur.costEstimate.total);
+          const budgetLimit = budgetMeta?.max ?? null;
+          const isOverBudget = budgetLimit !== null && totalMax !== null && totalMax > budgetLimit;
+
+          // Strip trailing unit label from AI output for clean display (AI sometimes adds "gesamt")
+          const cleanValue = (str) => {
+            if (!str) return str;
+            return str.replace(/\s*(gesamt|p\.P\.|pro Person)\s*/gi, '').trim() + ' p.P.';
+          };
+
+          return (
+            <section aria-label="Kostenschätzung" style={{ ...card, marginBottom: '12px' }}>
+              <SectionTitle label="Budget-Übersicht" title="Kostenschätzung für deine Reise" icon={Euro} iconColor="#15803D" iconBg="#F0FDF4" iconBorder="#BBF7D0" />
+
+              {/* Selected budget badge */}
+              {budgetMeta && (
+                <div style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '6px',
+                  padding: '5px 12px', borderRadius: '20px', marginBottom: '12px',
+                  background: '#F0FDF4', border: '1px solid #BBF7D0',
+                  fontSize: '12px', color: '#15803D', fontWeight: 600,
+                }}>
+                  <Wallet size={13} strokeWidth={2.5} />
+                  Gewähltes Budget: {budgetMeta.display} pro Person
                 </div>
               )}
-            </div>
-            <div style={{ marginTop: '8px', fontSize: '11px', color: '#94A3B8' }}>* Schätzwerte basieren auf durchschnittlichen Preisen. Tatsächliche Preise können abweichen.</div>
-          </section>
-        )}
+
+              {/* Over-budget warning */}
+              {isOverBudget && (
+                <div style={{
+                  display: 'flex', alignItems: 'flex-start', gap: '8px',
+                  padding: '10px 12px', borderRadius: '10px', marginBottom: '12px',
+                  background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.30)',
+                  fontSize: '12px', color: '#92400E', lineHeight: 1.5,
+                }}>
+                  <Info size={14} strokeWidth={2} style={{ flexShrink: 0, marginTop: '1px', color: '#D97706' }} />
+                  <span>Dieses Ziel kann je nach Reisezeit leicht über deinem gewählten Budget liegen. Die angezeigten Werte sind Schätzwerte – mit guter Planung (Frühbucher, Nebensaison) ist das Ziel oft im Rahmen erreichbar.</span>
+                </div>
+              )}
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(110px,1fr))', gap: '8px', alignItems: 'stretch' }}>
+                {[
+                  { label: 'Flug',        value: cur.costEstimate.flight,     Icon: Plane,     iconBg: '#DBEAFE', iconColor: '#1D4ED8' },
+                  { label: 'Unterkunft',  value: cur.costEstimate.hotel,      Icon: Hotel,     iconBg: '#F3E8FF', iconColor: '#7C3AED' },
+                  { label: 'Aktivitäten', value: cur.costEstimate.activities, Icon: MapPinned, iconBg: '#FEE2E2', iconColor: '#DC2626' },
+                ].filter(r => r.value && r.value !== '0€' && r.value !== '0€ p.P.').map((row, i) => (
+                  <div key={i} style={{ padding: '14px 10px', borderRadius: '13px', background: '#F8FAFF', border: '1px solid #F1F5F9', textAlign: 'center' }}>
+                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>
+                      <div style={{ width: '34px', height: '34px', borderRadius: '10px', background: row.iconBg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <row.Icon size={15} strokeWidth={1.75} color={row.iconColor} />
+                      </div>
+                    </div>
+                    <div style={{ fontSize: '9px', fontWeight: 700, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>{row.label}</div>
+                    <div style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', lineHeight: 1.2 }}>{cleanValue(row.value)}</div>
+                    <div style={{ fontSize: '10px', color: '#94A3B8', marginTop: '2px' }}>pro Person</div>
+                  </div>
+                ))}
+                {cur.costEstimate.total && (
+                  <div style={{
+                    padding: '14px 10px', borderRadius: '13px', textAlign: 'center',
+                    background: isOverBudget ? 'linear-gradient(135deg,#FFFBEB,#FEF3C7)' : 'linear-gradient(135deg,#EFF6FF,#ECFEFF)',
+                    border: isOverBudget ? '2px solid #FDE68A' : '2px solid #BFDBFE',
+                  }}>
+                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>
+                      <div style={{ width: '34px', height: '34px', borderRadius: '10px', background: isOverBudget ? 'linear-gradient(135deg,#F59E0B,#FBBF24)' : 'linear-gradient(135deg,#0EA5E9,#06B6D4)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <Gem size={15} strokeWidth={1.75} color="#FFFFFF" />
+                      </div>
+                    </div>
+                    <div style={{ fontSize: '9px', fontWeight: 700, color: isOverBudget ? '#92400E' : '#0284C7', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>
+                      {isOverBudget ? 'Gesamt*' : 'Gesamt'}
+                    </div>
+                    <div style={{ fontSize: '15px', fontWeight: 800, color: isOverBudget ? '#B45309' : '#0284C7', lineHeight: 1.2, fontFamily: 'var(--font-heading)' }}>
+                      {cleanValue(cur.costEstimate.total)}
+                    </div>
+                    <div style={{ fontSize: '10px', color: '#64748B', marginTop: '2px' }}>pro Person</div>
+                  </div>
+                )}
+              </div>
+              <div style={{ marginTop: '8px', fontSize: '11px', color: '#94A3B8' }}>
+                {isOverBudget
+                  ? '* Schätzwerte – kann je nach Buchungszeitpunkt und Saison variieren.'
+                  : '* Schätzwerte basieren auf durchschnittlichen Preisen. Tatsächliche Preise können abweichen.'}
+              </div>
+            </section>
+          );
+        })()}
 
         <NextStepCard result={cur} onEmail={onEmail} />
 

@@ -28,7 +28,12 @@ export async function POST(request: NextRequest) {
 
   const { freeText, interests, budget, duration, season, adults, children, moodIds } = body;
 
-  const budgetLabel   = ({ low: 'Budget', mid: 'Mittelklasse', high: 'Luxus' } as Record<string, string>)[budget ?? ''] ?? budget ?? 'Mittelklasse';
+  const BUDGET_INFO: Record<string, { label: string; range: string; max: number; exampleFlight: string; exampleHotel: string; exampleActivities: string; exampleTotal: string; exampleDay: string }> = {
+    low:  { label: 'Budget',       range: 'bis 500 €',          max: 500,  exampleFlight: '80-150€ p.P.',  exampleHotel: '150-280€ p.P.', exampleActivities: '40-80€ p.P.',  exampleTotal: '270-500€ p.P.',   exampleDay: '40-70€ p.P.' },
+    mid:  { label: 'Mittelklasse', range: '500–1.500 €',        max: 1500, exampleFlight: '200-450€ p.P.', exampleHotel: '350-700€ p.P.', exampleActivities: '100-250€ p.P.', exampleTotal: '650-1400€ p.P.',  exampleDay: '80-140€ p.P.' },
+    high: { label: 'Premium',      range: '1.500–4.000 €',      max: 4000, exampleFlight: '600-1400€ p.P.',exampleHotel: '800-2000€ p.P.',exampleActivities: '300-600€ p.P.', exampleTotal: '1700-4000€ p.P.', exampleDay: '200-400€ p.P.' },
+  };
+  const budgetInfo    = BUDGET_INFO[budget ?? ''] ?? BUDGET_INFO['mid'];
   const durationLabel = ({ weekend: 'Wochenende', week: '1 Woche', twoweeks: '2 Wochen', long: '3+ Wochen' } as Record<string, string>)[duration ?? ''] ?? duration ?? '1 Woche';
   const seasonLabel   = ({ spring: 'Frühling', summer: 'Sommer', autumn: 'Herbst', winter: 'Winter' } as Record<string, string>)[season ?? ''] ?? season ?? 'Sommer';
   const interestList  = Array.isArray(interests) ? interests.join(', ') : (interests ?? '');
@@ -39,7 +44,14 @@ export async function POST(request: NextRequest) {
   const prompt = `Du bist ein Premium-Reise-Experte. Erstelle für folgende Person 3 Reiseempfehlungen (nur Basisinfo).
 
 PERSON: "${freeText || 'keine Angabe'}"
-Interessen: ${interestList} | Budget: ${budgetLabel} | Dauer: ${durationLabel} | Jahreszeit: ${seasonLabel} | ${adults ?? 2} Erwachsene${(children ?? 0) > 0 ? `, ${children} Kinder` : ''}
+Interessen: ${interestList} | Budget: ${budgetInfo.label} (${budgetInfo.range} pro Person Gesamtbudget) | Dauer: ${durationLabel} | Jahreszeit: ${seasonLabel} | ${adults ?? 2} Erwachsene${(children ?? 0) > 0 ? `, ${children} Kinder` : ''}
+
+BUDGETREGELN (PFLICHT — nicht überschreiten):
+- Maximales Gesamtbudget: ${budgetInfo.max}€ pro Person für die gesamte Reise
+- Alle costEstimate-Werte MÜSSEN pro Person (p.P.) angegeben werden — KEIN "gesamt"
+- Das Feld "total" DARF NICHT über ${budgetInfo.max}€ p.P. liegen
+- Wähle nur Reiseziele, die realistisch in diesem Budget erreichbar sind
+- Bei Budget-Kategorie: günstige europäische Ziele oder Fernziele in der Nebensaison bevorzugen
 
 Antworte AUSSCHLIESSLICH als valides JSON ohne Markdown-Blöcke:
 {
@@ -63,9 +75,9 @@ Antworte AUSSCHLIESSLICH als valides JSON ohne Markdown-Blöcke:
       "iata": "IATA",
       "weather": "z.B. 24°C, sonnig",
       "flightTime": "z.B. 2h 30min ab Frankfurt",
-      "budgetPerDay": "z.B. 80-120€ p.P.",
+      "budgetPerDay": "${budgetInfo.exampleDay}",
       "carRental": {"recommended": false, "reason": "Kurze Begründung"},
-      "costEstimate": {"flight":"200-350€ p.P.","hotel":"700-1200€","carRental":"0€","activities":"150-250€","total":"1050-1800€"}
+      "costEstimate": {"flight":"${budgetInfo.exampleFlight}","hotel":"${budgetInfo.exampleHotel}","carRental":"0€ p.P.","activities":"${budgetInfo.exampleActivities}","total":"${budgetInfo.exampleTotal}"}
     }
   ],
   "surprise": {
@@ -75,7 +87,7 @@ Antworte AUSSCHLIESSLICH als valides JSON ohne Markdown-Blöcke:
     "whySurprising": "Warum es perfekt passt"
   }
 }
-Alle Texte auf Deutsch. Traits-Werte 0-100.`;
+Alle Texte auf Deutsch. Traits-Werte 0-100. WICHTIG: costEstimate.total MUSS unter ${budgetInfo.max}€ p.P. bleiben.`;
 
   // ── Claude call (Phase 1) ──────────────────────────────────────────────────
   let raw: string;
