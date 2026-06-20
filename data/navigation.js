@@ -3,6 +3,7 @@ export const mainNav = [
   { label: 'Reiseziele', href: '/reiseziele' },
   { label: 'Reiseblog', href: '/reiseblog' },
   { label: 'Mietwagen', href: '/mietwagen' },
+  { label: 'Urlaub für Alleinerziehende', href: '/urlaub-fuer-alleinerziehende' },
 ];
 
 export const footerNav = {
