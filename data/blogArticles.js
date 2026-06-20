@@ -950,7 +950,7 @@ export const blogArticles = [
     contentSections: [
       {
         heading: 'Warum Mallorca mehr ist als Ballermann',
-        content: 'Mallorca leidet unter seinem Image – dabei ist die Baleareninsel landschaftlich eine der schönsten Europas. Während der Süden tatsächlich überlaufen ist, bietet der Norden und Westen unberührte Natur, dramatische Klippen und ein authentisches Dorfleben, das man so kaum noch in Mittelmeereuropa findet. Mit 550 km Küstenlinie und dem UNESCO-Welterbe Serra de Tramuntana hat Mallorca für Naturliebhaber weit mehr zu bieten als Strandliegen und Sangria-Eimer.',
+        content: '[Mallorca](/reiseziele/mallorca) leidet unter seinem Image – dabei ist die Baleareninsel landschaftlich eine der schönsten Europas. Während der Süden tatsächlich überlaufen ist, bietet der Norden und Westen unberührte Natur, dramatische Klippen und ein authentisches Dorfleben, das man so kaum noch in Mittelmeereuropa findet. Mit 550 km Küstenlinie und dem UNESCO-Welterbe Serra de Tramuntana hat Mallorca für Naturliebhaber weit mehr zu bieten als Strandliegen und Sangria-Eimer.',
       },
       {
         heading: 'Die Serra de Tramuntana: Wanderparadies UNESCO',

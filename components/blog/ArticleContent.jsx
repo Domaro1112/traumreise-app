@@ -36,6 +36,37 @@ function computeSectionIds(sections) {
   });
 }
 
+// Parses [linktext](/internal/path) syntax → <Link> components.
+// Only matches internal paths that start with /.
+// Multiple links per string are supported; plain text passes through unchanged.
+function parseInlineLinks(text) {
+  if (!text || !text.includes('[')) return text;
+  const re = /\[([^\]]+)\]\((\/[^)]+)\)/g;
+  const nodes = [];
+  let last = 0;
+  let m;
+  while ((m = re.exec(text)) !== null) {
+    if (m.index > last) nodes.push(text.slice(last, m.index));
+    nodes.push(
+      <Link
+        key={m.index}
+        href={m[2]}
+        style={{
+          color: '#0EA5E9',
+          textDecoration: 'underline',
+          textUnderlineOffset: '3px',
+          fontWeight: 600,
+        }}
+      >
+        {m[1]}
+      </Link>
+    );
+    last = re.lastIndex;
+  }
+  if (last < text.length) nodes.push(text.slice(last));
+  return nodes.length ? nodes : text;
+}
+
 export default function ArticleContent({ sections, internalLinks }) {
   if (!sections?.length) return null;
 
@@ -84,7 +115,7 @@ export default function ArticleContent({ sections, internalLinks }) {
                     marginBottom: '16px',
                   }}
                 >
-                  {para}
+                  {parseInlineLinks(para)}
                 </p>
               ))}
 
@@ -104,7 +135,7 @@ export default function ArticleContent({ sections, internalLinks }) {
                     key={i}
                     style={{ fontSize: '15px', color: '#334155', lineHeight: 1.7 }}
                   >
-                    {typeof h === 'string' ? h : (h?.text ?? '')}
+                    {parseInlineLinks(typeof h === 'string' ? h : (h?.text ?? ''))}
                   </li>
                 ))}
               </ul>
@@ -135,7 +166,7 @@ export default function ArticleContent({ sections, internalLinks }) {
                     fontWeight: 500,
                   }}
                 >
-                  {section.tip}
+                  {parseInlineLinks(section.tip)}
                 </p>
               </div>
             )}
