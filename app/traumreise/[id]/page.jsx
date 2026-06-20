@@ -78,6 +78,7 @@ export default async function TravelResultPage({ params }) {
           surprise={analysis.surprise}
           duration={displayDuration}
           budget={budget ?? null}
+          needsEmailGate={!session.email_submitted_at}
         />
       </main>
       <Footer />

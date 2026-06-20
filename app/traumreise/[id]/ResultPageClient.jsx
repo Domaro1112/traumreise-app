@@ -3,8 +3,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import TravelResultView from '@/components/finder/TravelResultView';
+import EmailGate from '@/components/funnel/EmailGate';
 import { Mail, CheckCircle2 } from 'lucide-react';
 
+/* ─── optional newsletter popup (kept unchanged) ───────────────────────── */
 function EmailPopup({ destination, onClose }) {
   const [email,  setEmail]  = useState('');
   const [agreed, setAgreed] = useState(false);
@@ -64,16 +66,52 @@ function EmailPopup({ destination, onClose }) {
   );
 }
 
-export default function ResultPageClient({ sessionId, results: initialResults, personality, interests, packingList: initialPackingList, surprise, duration, budget }) {
+/* ─── newsletter confirmation banner ───────────────────────────────────── */
+function NewsletterBanner({ email, onClose }) {
+  return (
+    <div style={{
+      position: 'fixed', bottom: '24px', left: '50%', transform: 'translateX(-50%)',
+      background: '#FFFFFF', borderRadius: '14px', border: '1.5px solid rgba(14,165,233,0.25)',
+      boxShadow: '0 8px 32px rgba(0,0,0,0.14)', zIndex: 150,
+      padding: '14px 20px', maxWidth: '480px', width: 'calc(100% - 32px)',
+      display: 'flex', alignItems: 'flex-start', gap: '12px',
+    }}>
+      <div style={{ width: '36px', height: '36px', borderRadius: '10px', flexShrink: 0, background: 'rgba(14,165,233,0.10)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Mail size={18} strokeWidth={1.8} color="#0EA5E9" />
+      </div>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '3px' }}>Bestätigungsmail wurde gesendet</div>
+        <div style={{ fontSize: '13px', color: '#64748B', lineHeight: 1.5 }}>
+          Wir haben eine Bestätigungs-E-Mail an <strong>{email}</strong> gesendet.
+          Bitte bestätige deine Newsletter-Anmeldung.
+        </div>
+      </div>
+      <button onClick={onClose} style={{ background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer', padding: '2px', fontSize: '18px', lineHeight: 1, flexShrink: 0 }}>×</button>
+    </div>
+  );
+}
+
+/* ─── main component ───────────────────────────────────────────────────── */
+export default function ResultPageClient({
+  sessionId, results: initialResults, personality, interests,
+  packingList: initialPackingList, surprise, duration, budget,
+  needsEmailGate,
+}) {
   const router = useRouter();
-  const [showEmail,   setShowEmail]   = useState(false);
-  const [results,     setResults]     = useState(initialResults);
-  const [packingList, setPackingList] = useState(initialPackingList);
-  const [phase2Loading, setPhase2Loading] = useState(false);
+
+  // All hooks must be declared before any conditional return (Rules of Hooks)
+  const [showEmail,        setShowEmail]        = useState(false);
+  const [gatePassed,       setGatePassed]       = useState(!needsEmailGate);
+  const [newsletterEmail,  setNewsletterEmail]  = useState(null);
+  const [showNewsBanner,   setShowNewsBanner]   = useState(false);
+  const [results,          setResults]          = useState(initialResults);
+  const [packingList,      setPackingList]       = useState(initialPackingList);
+  const [phase2Loading,    setPhase2Loading]    = useState(false);
   const phase2Triggered = useRef(false);
 
+  // Phase 2 fetch — only runs after the email gate is passed
   useEffect(() => {
-    // Phase 2 is already complete if hotels are present (saved from a previous visit)
+    if (!gatePassed) return;
     const phase2Complete = (results?.[0]?.hotels?.length ?? 0) > 0;
     if (phase2Complete || !sessionId || phase2Triggered.current) return;
 
@@ -85,30 +123,39 @@ export default function ResultPageClient({ sessionId, results: initialResults, p
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify({ id: sessionId }),
     })
-      .then(res => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
+      .then(res => { if (!res.ok) throw new Error(`HTTP ${res.status}`); return res.json(); })
       .then(data => {
         if (!data.destinations?.length) return;
         setResults(prev =>
           prev.map((dest, i) => {
             const p2 = data.destinations[i];
             if (!p2) return dest;
-            return {
-              ...dest,
-              hotels:     p2.hotels     ?? dest.hotels,
-              activities: p2.activities ?? dest.activities,
-              itinerary:  p2.itinerary  ?? dest.itinerary,
-            };
-          })
+            return { ...dest, hotels: p2.hotels ?? dest.hotels, activities: p2.activities ?? dest.activities, itinerary: p2.itinerary ?? dest.itinerary };
+          }),
         );
         if (data.packingList) setPackingList(data.packingList);
       })
       .catch(err => console.error('[ResultPageClient] Phase 2 fetch error:', err))
       .finally(() => setPhase2Loading(false));
-  }, [sessionId]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [sessionId, gatePassed]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // ── Gate: render before results ────────────────────────────────────────
+  if (!gatePassed) {
+    return (
+      <EmailGate
+        sessionId={sessionId}
+        onComplete={({ email, newsletterQueued }) => {
+          setGatePassed(true);
+          if (newsletterQueued) {
+            setNewsletterEmail(email);
+            setShowNewsBanner(true);
+          }
+        }}
+      />
+    );
+  }
+
+  // ── Results ────────────────────────────────────────────────────────────
   return (
     <>
       <TravelResultView
@@ -128,6 +175,13 @@ export default function ResultPageClient({ sessionId, results: initialResults, p
         <EmailPopup
           destination={results?.[0]?.destination || ''}
           onClose={() => setShowEmail(false)}
+        />
+      )}
+
+      {showNewsBanner && newsletterEmail && (
+        <NewsletterBanner
+          email={newsletterEmail}
+          onClose={() => setShowNewsBanner(false)}
         />
       )}
     </>
