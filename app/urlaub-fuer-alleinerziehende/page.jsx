@@ -246,7 +246,7 @@ export default function AlleinerziehendePage() {
           {/* Full-width background image */}
           <Image
             src="/images/urlaub-fuer-alleinerziehende-hero.jpg"
-            alt=""
+            alt="urlaub-fuer-alleinerziehende"
             fill
             priority
             sizes="100vw"
