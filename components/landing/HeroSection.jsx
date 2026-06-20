@@ -152,7 +152,7 @@ export default function HeroSection() {
                 boxShadow: 'none',
               }}
             >
-              Dein Weg zur Traumreise
+              Dein Weg zur Traumurlaub
             </Button>
           </div>
 
