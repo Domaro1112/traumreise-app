@@ -239,7 +239,7 @@ export default function AlleinerziehendePage() {
           paddingTop: 'calc(80px + 80px)',
           paddingBottom: '80px',
           overflow: 'hidden',
-          minHeight: 'clamp(520px, 65vh, 680px)',
+          minHeight: 'clamp(560px, 68vh, 720px)',
           display: 'flex',
           alignItems: 'center',
         }}>
@@ -250,13 +250,13 @@ export default function AlleinerziehendePage() {
             fill
             priority
             sizes="100vw"
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
+            style={{ objectFit: 'cover', objectPosition: 'center 35%' }}
           />
 
           {/* Dark gradient overlay – keeps text readable over any photo */}
           <div aria-hidden="true" style={{
             position: 'absolute', inset: 0,
-            background: 'linear-gradient(105deg, rgba(15,23,42,0.88) 0%, rgba(18,50,74,0.72) 55%, rgba(14,165,233,0.20) 100%)',
+            background: 'linear-gradient(90deg, rgba(8,25,45,0.78) 0%, rgba(8,25,45,0.58) 38%, rgba(8,25,45,0.25) 70%, rgba(8,25,45,0.10) 100%)',
             zIndex: 1,
           }} />
 
