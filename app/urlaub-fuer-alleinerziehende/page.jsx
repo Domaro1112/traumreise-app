@@ -762,7 +762,103 @@ export default function AlleinerziehendePage() {
           </Container>
         </section>
 
-        {/* ── 8. FAQ ──────────────────────────────────────────────────────────── */}
+        {/* ── 8. FERIENPARK-RATGEBER CLUSTER ──────────────────────────────────── */}
+        <section style={{ background: '#FFFFFF', paddingTop: '80px', paddingBottom: '80px' }}>
+          <Container>
+            <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+              <p style={{
+                fontSize: '12px', fontWeight: 700, letterSpacing: '0.12em',
+                textTransform: 'uppercase', color: '#0EA5E9', marginBottom: '8px',
+                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+              }}>
+                Ferienparks &amp; Familienunterkünfte
+              </p>
+              <h2 style={{
+                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                fontSize: 'clamp(22px, 3.5vw, 36px)', fontWeight: 800,
+                color: '#0F172A', margin: '0 0 12px', lineHeight: 1.2,
+              }}>
+                Ferienparks für Alleinerziehende: Ratgeber & Vergleich
+              </h2>
+              <p style={{ fontSize: '15px', color: '#475569', lineHeight: 1.75, margin: '0 0 32px', maxWidth: '640px' }}>
+                Center Parcs, Landal, Roompot & Co. – ehrliche Einschätzungen, welcher Anbieter sich wirklich für Alleinerziehende eignet. Keine Werbetexte, sondern Ratgeber mit Vorteilen, Nachteilen und Tipps.
+              </p>
+
+              {/* Vergleichs-CTA */}
+              <Link
+                href="/urlaub-fuer-alleinerziehende/ferienparks-vergleich"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '8px',
+                  padding: '13px 22px', borderRadius: '12px',
+                  background: '#0F172A', color: '#FFFFFF',
+                  textDecoration: 'none', fontSize: '14px', fontWeight: 700,
+                  marginBottom: '36px',
+                  fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                }}
+              >
+                Alle Ferienparks vergleichen
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </Link>
+
+              {/* Anbieter-Kacheln */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '14px' }}>
+                {[
+                  { slug: 'center-parcs', name: 'Center Parcs', color: '#005EB8', bg: '#EBF4FF', tagline: 'Kurzurlaub mit Aqua Mundo' },
+                  { slug: 'landal',       name: 'Landal GreenParks', color: '#00843D', bg: '#ECFDF5', tagline: 'Natur & Hundeurlaub' },
+                  { slug: 'roompot',      name: 'Roompot',      color: '#E87722', bg: '#FFF7ED', tagline: 'Küste & Niederlande' },
+                  { slug: 'topparken',    name: 'TopParken',    color: '#1D6FA4', bg: '#EFF6FF', tagline: 'Kleine ruhige Parks in NL' },
+                  { slug: 'sunparks',     name: 'Sunparks',     color: '#F5A623', bg: '#FFFBEB', tagline: 'Wasserpark in Belgien' },
+                  { slug: 'eurocamp',     name: 'Eurocamp',     color: '#2E7D32', bg: '#F0FDF4', tagline: 'Mobilheim in ganz Europa' },
+                  { slug: 'novasol',      name: 'NOVASOL',      color: '#C0392B', bg: '#FEF2F2', tagline: 'Ferienhäuser europaweit' },
+                ].map(({ slug, name, color, bg, tagline }) => (
+                  <Link
+                    key={slug}
+                    href={`/urlaub-fuer-alleinerziehende/${slug}`}
+                    style={{
+                      display: 'flex', flexDirection: 'column', gap: '8px',
+                      padding: '18px 20px', borderRadius: '16px',
+                      background: bg, border: `1.5px solid ${color}28`,
+                      textDecoration: 'none',
+                      transition: 'box-shadow 0.15s',
+                    }}
+                  >
+                    <div style={{
+                      width: '36px', height: '36px', borderRadius: '10px',
+                      background: color + '22', flexShrink: 0,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontSize: '11px', fontWeight: 900, color: color,
+                      fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                    }}>
+                      {name.slice(0, 2).toUpperCase()}
+                    </div>
+                    <p style={{
+                      fontSize: '14px', fontWeight: 700, color: '#0F172A', margin: 0,
+                      fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                    }}>
+                      {name}
+                    </p>
+                    <p style={{ fontSize: '12px', color: '#64748B', margin: 0, lineHeight: 1.5 }}>
+                      {tagline}
+                    </p>
+                    <span style={{
+                      display: 'inline-flex', alignItems: 'center', gap: '4px',
+                      fontSize: '11px', fontWeight: 700, color: color, marginTop: '4px',
+                    }}>
+                      Ratgeber lesen
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                      </svg>
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* ── 9. FAQ ──────────────────────────────────────────────────────────── */}
         <section style={{ background: '#F8FAFF', paddingTop: '80px', paddingBottom: '80px' }}>
           <Container>
             <div style={{ maxWidth: '760px', margin: '0 auto' }}>
