@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import {
   Settings, BarChart2, Save, CheckCircle, AlertCircle,
   RefreshCw, Hotel, Compass, ShoppingCart, Sun, ShoppingBag,
-  Plane, TrendingUp, MapPin, ToggleLeft, ToggleRight,
+  Plane, TrendingUp, MapPin, ToggleLeft, ToggleRight, Trees,
 } from 'lucide-react';
 
 const PROVIDERS = [
@@ -87,6 +87,98 @@ const PROVIDERS = [
     color:       '#0770E3',
     bg:          '#EEF4FF',
     href:        'https://www.partners.skyscanner.net',
+  },
+  // ── AWIN: Ferienparks & Familienurlaub ───────────────────────────────────────
+  {
+    id:          'centerparcs',
+    name:        'Center Parcs',
+    icon:        Trees,
+    param:       'awinaffid',
+    placeholder: 'z.B. 123456',
+    color:       '#005EB8',
+    bg:          '#EBF4FF',
+    href:        'https://www.awin.com/us/advertiser/centerparcs',
+    category:    'Ferienparks & Familienurlaub',
+    network:     'awin',
+    merchantId:  '13639',
+  },
+  {
+    id:          'landal',
+    name:        'Landal GreenParks',
+    icon:        Trees,
+    param:       'awinaffid',
+    placeholder: 'z.B. 123456',
+    color:       '#00843D',
+    bg:          '#ECFDF5',
+    href:        'https://www.awin.com/us/advertiser/landal',
+    category:    'Ferienparks & Familienurlaub',
+    network:     'awin',
+    merchantId:  '9118',
+  },
+  {
+    id:          'roompot',
+    name:        'Roompot',
+    icon:        Trees,
+    param:       'awinaffid',
+    placeholder: 'z.B. 123456',
+    color:       '#E87722',
+    bg:          '#FFF7ED',
+    href:        'https://www.awin.com/us/advertiser/roompot',
+    category:    'Ferienparks & Familienurlaub',
+    network:     'awin',
+    merchantId:  '84299',
+  },
+  {
+    id:          'topparken',
+    name:        'TopParken',
+    icon:        Trees,
+    param:       'awinaffid',
+    placeholder: 'z.B. 123456',
+    color:       '#1D6FA4',
+    bg:          '#EFF6FF',
+    href:        'https://www.awin.com/us/advertiser/topparken',
+    category:    'Ferienparks & Familienurlaub',
+    network:     'awin',
+    merchantId:  '117131',
+  },
+  {
+    id:          'sunparks',
+    name:        'Sunparks',
+    icon:        Sun,
+    param:       'awinaffid',
+    placeholder: 'z.B. 123456',
+    color:       '#F5A623',
+    bg:          '#FFFBEB',
+    href:        'https://www.awin.com/us/advertiser/sunparks',
+    category:    'Ferienparks & Familienurlaub',
+    network:     'awin',
+    merchantId:  '14749',
+  },
+  {
+    id:          'eurocamp',
+    name:        'Eurocamp',
+    icon:        Trees,
+    param:       'awinaffid',
+    placeholder: 'z.B. 123456',
+    color:       '#2E7D32',
+    bg:          '#F0FDF4',
+    href:        'https://www.awin.com/us/advertiser/eurocamp',
+    category:    'Camping & Mobilheime',
+    network:     'awin',
+    merchantId:  '14888',
+  },
+  {
+    id:          'novasol',
+    name:        'NOVASOL',
+    icon:        Trees,
+    param:       'awinaffid',
+    placeholder: 'z.B. 123456',
+    color:       '#C0392B',
+    bg:          '#FEF2F2',
+    href:        'https://www.awin.com/us/advertiser/novasol',
+    category:    'Ferienhäuser',
+    network:     'awin',
+    merchantId:  '118655',
   },
 ];
 
@@ -298,7 +390,11 @@ export default function AffiliateAdminClient() {
                       </div>
                       <div>
                         <p style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', margin: 0 }}>{p.name}</p>
-                        <p style={{ fontSize: '11px', color: '#94A3B8', margin: 0, fontFamily: 'monospace' }}>?{p.param}=…</p>
+                        <p style={{ fontSize: '11px', color: '#94A3B8', margin: 0, fontFamily: 'monospace' }}>
+                          ?{p.param}=…
+                          {p.network && <span style={{ fontFamily: 'inherit', marginLeft: '6px', color: '#0EA5E9', fontWeight: 600 }}>AWIN #{p.merchantId}</span>}
+                        </p>
+                        {p.category && <p style={{ fontSize: '10px', color: '#64748B', margin: '2px 0 0', letterSpacing: '0.04em' }}>{p.category}</p>}
                       </div>
                     </div>
 

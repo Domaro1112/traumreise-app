@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { moodOptions } from '@/data/finderOptions';
 import { getDestinationImage } from '@/data/destinationImages';
+import FerienparkSection from '@/components/finder/FerienparkSection';
 
 const MATCHES = [
   { pct: 96, label: 'Perfektes Match',     color: '#10B981', bg: '#ECFDF5', border: '#6EE7B7' },
@@ -872,6 +873,9 @@ export default function TravelResultView({ results, personality, interests, pack
             {selectedHotel && <HotelProviderModal hotel={selectedHotel} cur={cur} onClose={() => setSelectedHotel(null)} />}
           </section>
         )}
+
+        {/* ── FERIENPARKS & FAMILIENUNTERKÜNFTE ──────────────────────────── */}
+        <FerienparkSection interests={interests} destination={cur} budget={budget} />
 
         {/* ── REISEPLAN (TIMELINE) ────────────────────────────────────────── */}
         {!cur.itinerary?.length && phase2Loading && (
