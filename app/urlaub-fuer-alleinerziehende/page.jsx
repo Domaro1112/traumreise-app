@@ -1,8 +1,8 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Container from '@/components/layout/Container';
-import AlleinerziehendHeroImage from '@/components/urlaub-alleinerziehende/AlleinerziehendHeroImage';
 
 export const metadata = {
   title: 'Urlaub für Alleinerziehende mit Kind | ApeAround',
@@ -308,12 +308,23 @@ export default function AlleinerziehendePage() {
               </div>
 
               {/* Hero image */}
-              <div style={{
-                flex: '0 1 340px', display: 'flex', alignItems: 'center',
-                justifyContent: 'center', minHeight: '260px',
-                position: 'relative', zIndex: 2,
-              }}>
-                <AlleinerziehendHeroImage />
+              <div style={{ flex: '0 1 460px', position: 'relative', zIndex: 2 }}>
+                <div style={{
+                  position: 'relative',
+                  aspectRatio: '16 / 9',
+                  borderRadius: '20px',
+                  overflow: 'hidden',
+                  boxShadow: '0 24px 64px rgba(0,0,0,0.40)',
+                }}>
+                  <Image
+                    src="/images/urlaub-fuer-alleinerziehende-hero.jpg"
+                    alt="Urlaub für Alleinerziehende mit Kind am Meer"
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 460px"
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
               </div>
             </div>
           </Container>
