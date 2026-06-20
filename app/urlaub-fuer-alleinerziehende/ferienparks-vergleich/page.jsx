@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Container from '@/components/layout/Container';
@@ -115,10 +116,31 @@ export default function FerienparkVergleichPage() {
       <Header />
       <main>
 
-        {/* ── HERO ─────────────────────────────────────────────────────── */}
+        {/* ── HERO IMAGE ───────────────────────────────────────────────── */}
+        <section
+          aria-hidden="true"
+          style={{
+            position: 'relative',
+            marginTop: '80px',
+            width: '100%',
+            height: 'clamp(280px, 50vw, 720px)',
+            overflow: 'hidden',
+          }}
+        >
+          <Image
+            src="/images/urlaub-alleinerziehende/ferienparks-vergleich-hero.png"
+            alt="Reisemonkeys vergleichen familienfreundliche Ferienparks für Alleinerziehende mit Kind"
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
+          />
+        </section>
+
+        {/* ── HERO TEXT ────────────────────────────────────────────────── */}
         <section style={{
           background: 'linear-gradient(135deg, #0C1B35 0%, #0A3259 60%, #0E4D8A 100%)',
-          paddingTop: 'calc(80px + 60px)',
+          paddingTop: '60px',
           paddingBottom: '60px',
         }}>
           <Container>
