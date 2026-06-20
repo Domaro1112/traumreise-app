@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
   const BUDGET_MAX: Record<string, number> = { low: 500, mid: 1500, high: 4000 };
   const budgetMax = BUDGET_MAX[budget ?? ''] ?? 1500;
 
-  const budgetLabel   = ({ low: 'Budget (bis 500 € p.P.)', mid: 'Mittelklasse (500–1.500 € p.P.)', high: 'Premium (1.500–4.000 € p.P.)' } as Record<string, string>)[budget ?? ''] ?? 'Mittelklasse (500–1.500 € p.P.)';
+  const budgetLabel   = ({ low: 'Budget (bis 500 €)', mid: 'Mittelklasse (500–1.500 €)', high: 'Premium (1.500–4.000 €)' } as Record<string, string>)[budget ?? ''] ?? 'Mittelklasse (500–1.500 €)';
   const durationLabel = ({ weekend: 'Wochenende', week: '1 Woche', twoweeks: '2 Wochen', long: '3+ Wochen' } as Record<string, string>)[duration ?? ''] ?? duration ?? '1 Woche';
   const seasonLabel   = ({ spring: 'Frühling', summer: 'Sommer', autumn: 'Herbst', winter: 'Winter' } as Record<string, string>)[season ?? ''] ?? season ?? 'Sommer';
 
@@ -64,8 +64,8 @@ export async function POST(request: NextRequest) {
 Reiseziele:
 ${destLines}
 
-Budget: ${budgetLabel} | Dauer: ${durationLabel} | Jahreszeit: ${seasonLabel}
-PFLICHT: Hotelpreise müssen pro Person (p.P.) und innerhalb des Budgetrahmens bleiben (max ${budgetMax}€ p.P. Gesamtbudget).
+Budget: ${budgetLabel} pro Person | Dauer: ${durationLabel} | Jahreszeit: ${seasonLabel}
+Hotelpreise: Realistische Nachtpreise p.P. nennen. Keine Lockpreise erfinden. Bei Budget-Kategorie: echte Hostels, Guesthouses und 2–3-Sterne-Hotels nennen, keine 4-5-Sterne-Preise.
 
 Antworte AUSSCHLIESSLICH als valides JSON ohne Markdown-Blöcke:
 {

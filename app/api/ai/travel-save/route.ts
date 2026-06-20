@@ -28,12 +28,12 @@ export async function POST(request: NextRequest) {
 
   const { freeText, interests, budget, duration, season, adults, children, moodIds } = body;
 
-  const BUDGET_INFO: Record<string, { label: string; range: string; max: number; exampleFlight: string; exampleHotel: string; exampleActivities: string; exampleTotal: string; exampleDay: string }> = {
-    low:  { label: 'Budget',       range: 'bis 500 €',          max: 500,  exampleFlight: '80-150€ p.P.',  exampleHotel: '150-280€ p.P.', exampleActivities: '40-80€ p.P.',  exampleTotal: '270-500€ p.P.',   exampleDay: '40-70€ p.P.' },
-    mid:  { label: 'Mittelklasse', range: '500–1.500 €',        max: 1500, exampleFlight: '200-450€ p.P.', exampleHotel: '350-700€ p.P.', exampleActivities: '100-250€ p.P.', exampleTotal: '650-1400€ p.P.',  exampleDay: '80-140€ p.P.' },
-    high: { label: 'Premium',      range: '1.500–4.000 €',      max: 4000, exampleFlight: '600-1400€ p.P.',exampleHotel: '800-2000€ p.P.',exampleActivities: '300-600€ p.P.', exampleTotal: '1700-4000€ p.P.', exampleDay: '200-400€ p.P.' },
+  const BUDGET_META: Record<string, { label: string; range: string; max: number }> = {
+    low:  { label: 'Budget',       range: 'bis 500 €',     max: 500  },
+    mid:  { label: 'Mittelklasse', range: '500–1.500 €',   max: 1500 },
+    high: { label: 'Premium',      range: '1.500–4.000 €', max: 4000 },
   };
-  const budgetInfo    = BUDGET_INFO[budget ?? ''] ?? BUDGET_INFO['mid'];
+  const budgetMeta    = BUDGET_META[budget ?? ''] ?? BUDGET_META['mid'];
   const durationLabel = ({ weekend: 'Wochenende', week: '1 Woche', twoweeks: '2 Wochen', long: '3+ Wochen' } as Record<string, string>)[duration ?? ''] ?? duration ?? '1 Woche';
   const seasonLabel   = ({ spring: 'Frühling', summer: 'Sommer', autumn: 'Herbst', winter: 'Winter' } as Record<string, string>)[season ?? ''] ?? season ?? 'Sommer';
   const interestList  = Array.isArray(interests) ? interests.join(', ') : (interests ?? '');
@@ -41,17 +41,23 @@ export async function POST(request: NextRequest) {
   // Phase 1: Schnell — nur Kerninfos, keine Hotels/Aktivitäten/Reiseplan
   // Ziel: ~700-900 Output-Tokens → ~10 Sekunden
   // Phase 2 (hotels, activities, itinerary, packingList) wird nachgelagert auf der Ergebnisseite geladen
-  const prompt = `Du bist ein Premium-Reise-Experte. Erstelle für folgende Person 3 Reiseempfehlungen (nur Basisinfo).
+  const prompt = `Du bist ein erfahrener Reise-Experte. Erstelle für folgende Person 3 Reiseempfehlungen (nur Basisinfo).
 
 PERSON: "${freeText || 'keine Angabe'}"
-Interessen: ${interestList} | Budget: ${budgetInfo.label} (${budgetInfo.range} pro Person Gesamtbudget) | Dauer: ${durationLabel} | Jahreszeit: ${seasonLabel} | ${adults ?? 2} Erwachsene${(children ?? 0) > 0 ? `, ${children} Kinder` : ''}
+Interessen: ${interestList} | Budget: ${budgetMeta.label} (${budgetMeta.range} pro Person Gesamtbudget) | Dauer: ${durationLabel} | Jahreszeit: ${seasonLabel} | ${adults ?? 2} Erwachsene${(children ?? 0) > 0 ? `, ${children} Kinder` : ''}
 
-BUDGETREGELN (PFLICHT — nicht überschreiten):
-- Maximales Gesamtbudget: ${budgetInfo.max}€ pro Person für die gesamte Reise
-- Alle costEstimate-Werte MÜSSEN pro Person (p.P.) angegeben werden — KEIN "gesamt"
-- Das Feld "total" DARF NICHT über ${budgetInfo.max}€ p.P. liegen
-- Wähle nur Reiseziele, die realistisch in diesem Budget erreichbar sind
-- Bei Budget-Kategorie: günstige europäische Ziele oder Fernziele in der Nebensaison bevorzugen
+PREISREGELN — BITTE GENAU BEACHTEN:
+1. Alle costEstimate-Werte pro Person (p.P.) für die gesamte Reisedauer.
+2. Keine erfundenen Lockpreise. Flugkosten = realistischer Hin- und Rückflug ab Deutschland (Preisvergleich Skyscanner/Google Flights als Referenz).
+   - Kurzstrecke Europa: typisch 80–250 € p.P. R/T, je nach Saison und Vorlaufzeit
+   - Mittelstrecke (z.B. Ägypten, Türkei): 200–500 € p.P. R/T
+   - Fernstrecke (z.B. Asien, Amerika): 500–1.400 € p.P. R/T
+3. Unterkunft: Realistische Preise für die gewählte Reisedauer (Gesamtnächte × realistischer Nachtpreis p.P.).
+4. Wähle bevorzugt Ziele, die realistisch im Budget erreichbar sind.
+   - Bei Budget "${budgetMeta.label}": günstige Nahziele, Busreisen oder Niedrigpreisflieger in Nebensaison bevorzugen.
+   - Falls ein Ziel trotzdem realistisch teurer ist: zeige ehrliche Preise und nutze budgetStatus "ueber" oder "knapp".
+5. ERFINDE KEINE UNREALISTISCH NIEDRIGEN PREISE, nur damit sie unter ${budgetMeta.max}€ passen. Ehrlichkeit hat Vorrang.
+6. budgetStatus-Werte: "passt" (Gesamtkosten klar im Budget), "knapp" (bis 20% über Budget), "ueber" (mehr als 20% über Budget), "nur_sparreise" (Ziel ist nur mit extremem Sparen erreichbar).
 
 Antworte AUSSCHLIESSLICH als valides JSON ohne Markdown-Blöcke:
 {
@@ -75,9 +81,16 @@ Antworte AUSSCHLIESSLICH als valides JSON ohne Markdown-Blöcke:
       "iata": "IATA",
       "weather": "z.B. 24°C, sonnig",
       "flightTime": "z.B. 2h 30min ab Frankfurt",
-      "budgetPerDay": "${budgetInfo.exampleDay}",
+      "budgetPerDay": "z.B. 60–90 € p.P.",
       "carRental": {"recommended": false, "reason": "Kurze Begründung"},
-      "costEstimate": {"flight":"${budgetInfo.exampleFlight}","hotel":"${budgetInfo.exampleHotel}","carRental":"0€ p.P.","activities":"${budgetInfo.exampleActivities}","total":"${budgetInfo.exampleTotal}"}
+      "costEstimate": {
+        "flight": "z.B. 120–200 € p.P.",
+        "hotel": "z.B. 200–350 € p.P.",
+        "carRental": "0 € p.P.",
+        "activities": "z.B. 60–120 € p.P.",
+        "total": "z.B. 380–670 € p.P.",
+        "budgetStatus": "passt"
+      }
     }
   ],
   "surprise": {
@@ -87,7 +100,7 @@ Antworte AUSSCHLIESSLICH als valides JSON ohne Markdown-Blöcke:
     "whySurprising": "Warum es perfekt passt"
   }
 }
-Alle Texte auf Deutsch. Traits-Werte 0-100. WICHTIG: costEstimate.total MUSS unter ${budgetInfo.max}€ p.P. bleiben.`;
+Alle Texte auf Deutsch. Traits-Werte 0–100. Verwende realistische Marktpreise — keine Lockpreise, keine erfundenen Billigstpreise.`;
 
   // ── Claude call (Phase 1) ──────────────────────────────────────────────────
   let raw: string;

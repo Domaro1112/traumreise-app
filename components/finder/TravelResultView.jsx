@@ -968,26 +968,51 @@ export default function TravelResultView({ results, personality, interests, pack
 
         {/* ── KOSTENSCHÄTZUNG ─────────────────────────────────────────────── */}
         {cur.costEstimate && (() => {
-          // Budget ranges and display labels
           const BUDGET_META = {
-            low:  { display: 'bis 500 €',        max: 500  },
-            mid:  { display: '500–1.500 €',       max: 1500 },
-            high: { display: '1.500–4.000 €',     max: 4000 },
+            low:  { display: 'bis 500 €',     max: 500  },
+            mid:  { display: '500–1.500 €',   max: 1500 },
+            high: { display: '1.500–4.000 €', max: 4000 },
           };
           const budgetMeta = BUDGET_META[budget] ?? null;
 
-          // Parse highest EUR number from strings like "780-1420€ p.P." → 1420
+          // Parses the MAXIMUM EUR value from an AI string like "380–670 € p.P." → 670
           const parseMaxEur = (str) => {
             if (!str) return null;
-            const nums = (str.match(/\d+/g) ?? []).map(Number);
+            const nums = (str.match(/\d+/g) ?? []).map(Number).filter(n => n > 10);
             return nums.length ? Math.max(...nums) : null;
           };
 
-          const totalMax    = parseMaxEur(cur.costEstimate.total);
-          const budgetLimit = budgetMeta?.max ?? null;
-          const isOverBudget = budgetLimit !== null && totalMax !== null && totalMax > budgetLimit;
+          // Determine budget status: prefer explicit AI field, fall back to numeric comparison
+          const aiStatus     = cur.costEstimate.budgetStatus; // "passt"|"knapp"|"ueber"|"nur_sparreise"
+          const totalMax     = parseMaxEur(cur.costEstimate.total);
+          const budgetLimit  = budgetMeta?.max ?? null;
+          const numericRatio = (budgetLimit && totalMax) ? totalMax / budgetLimit : null;
+          const derivedStatus = numericRatio === null ? 'passt'
+            : numericRatio <= 1.0  ? 'passt'
+            : numericRatio <= 1.20 ? 'knapp'
+            : numericRatio <= 1.60 ? 'ueber'
+            : 'nur_sparreise';
 
-          // Strip trailing unit label from AI output for clean display (AI sometimes adds "gesamt")
+          const effectiveStatus = (aiStatus && ['passt','knapp','ueber','nur_sparreise'].includes(aiStatus))
+            ? aiStatus
+            : derivedStatus;
+
+          // Visual config per status
+          const STATUS_CFG = {
+            passt:         { badgeLabel: 'Passt zu deinem Budget',        badgeBg: '#F0FDF4', badgeColor: '#15803D', badgeBorder: '#BBF7D0', totalBg: 'linear-gradient(135deg,#EFF6FF,#ECFEFF)', totalBorder: '2px solid #BFDBFE', totalColor: '#0284C7', gemBg: 'linear-gradient(135deg,#0EA5E9,#06B6D4)', totalLabel: 'Gesamt', showWarning: false, disclaimer: '* Schätzwerte basieren auf durchschnittlichen Marktpreisen. Tatsächliche Preise können abweichen.' },
+            knapp:         { badgeLabel: 'Knapp im Budget',               badgeBg: '#FFFBEB', badgeColor: '#92400E', badgeBorder: '#FDE68A', totalBg: 'linear-gradient(135deg,#FFFBEB,#FEF3C7)', totalBorder: '2px solid #FDE68A', totalColor: '#B45309', gemBg: 'linear-gradient(135deg,#F59E0B,#FBBF24)', totalLabel: 'Gesamt*', showWarning: true,  disclaimer: '* Schätzwerte – knapp im Budget. Mit Frühbucher-Rabatt oder Nebensaison oft erreichbar.' },
+            ueber:         { badgeLabel: 'Über deinem Budget',            badgeBg: '#FEF2F2', badgeColor: '#991B1B', badgeBorder: '#FECACA', totalBg: 'linear-gradient(135deg,#FEF2F2,#FEE2E2)', totalBorder: '2px solid #FECACA', totalColor: '#991B1B', gemBg: 'linear-gradient(135deg,#EF4444,#F87171)', totalLabel: 'Gesamt*', showWarning: true,  disclaimer: '* Schätzwerte basieren auf realistischen Marktpreisen – dieses Ziel liegt über deinem Budget.' },
+            nur_sparreise: { badgeLabel: 'Nur als Sparreise realistisch', badgeBg: '#EFF6FF', badgeColor: '#1D4ED8', badgeBorder: '#BFDBFE', totalBg: 'linear-gradient(135deg,#EFF6FF,#ECFEFF)', totalBorder: '2px solid #BFDBFE', totalColor: '#1D4ED8', gemBg: 'linear-gradient(135deg,#3B82F6,#0EA5E9)', totalLabel: 'Gesamt*', showWarning: true,  disclaimer: '* Dieses Ziel ist mit dem gewählten Budget nur als sehr günstige Reise in der Nebensaison realistisch.' },
+          };
+          const cfg = STATUS_CFG[effectiveStatus];
+
+          const WARNING_MSG = {
+            knapp:         'Dieses Ziel liegt knapp über deinem gewählten Budget. Mit Frühbucherpreis, Nebensaison oder günstiger Unterkunft ist es oft erreichbar.',
+            ueber:         'Dieses Ziel liegt voraussichtlich über deinem gewählten Budget. Die Kostenschätzung basiert auf realistischen Marktpreisen – wir erfinden keine Lockpreise.',
+            nur_sparreise: 'Dieses Ziel ist mit deinem Budget nur als günstige Kurzreise in der Nebensaison realistisch. Für mehr Komfort empfehlen wir ein höheres Budget.',
+          };
+
+          // Normalize AI output: strip inconsistent "gesamt" / "p.P." labels, füge einheitliches "p.P." hinzu
           const cleanValue = (str) => {
             if (!str) return str;
             return str.replace(/\s*(gesamt|p\.P\.|pro Person)\s*/gi, '').trim() + ' p.P.';
@@ -997,38 +1022,34 @@ export default function TravelResultView({ results, personality, interests, pack
             <section aria-label="Kostenschätzung" style={{ ...card, marginBottom: '12px' }}>
               <SectionTitle label="Budget-Übersicht" title="Kostenschätzung für deine Reise" icon={Euro} iconColor="#15803D" iconBg="#F0FDF4" iconBorder="#BBF7D0" />
 
-              {/* Selected budget badge */}
-              {budgetMeta && (
-                <div style={{
-                  display: 'inline-flex', alignItems: 'center', gap: '6px',
-                  padding: '5px 12px', borderRadius: '20px', marginBottom: '12px',
-                  background: '#F0FDF4', border: '1px solid #BBF7D0',
-                  fontSize: '12px', color: '#15803D', fontWeight: 600,
-                }}>
-                  <Wallet size={13} strokeWidth={2.5} />
-                  Gewähltes Budget: {budgetMeta.display} pro Person
+              {/* Two-row header: selected budget + status badge */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+                {budgetMeta && (
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '4px 11px', borderRadius: '20px', background: '#F1F5F9', border: '1px solid #E2E8F0', fontSize: '12px', color: '#475569', fontWeight: 600 }}>
+                    <Wallet size={12} strokeWidth={2.5} />
+                    Gewähltes Budget: {budgetMeta.display} p.P.
+                  </div>
+                )}
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '4px 11px', borderRadius: '20px', background: cfg.badgeBg, border: `1px solid ${cfg.badgeBorder}`, fontSize: '12px', color: cfg.badgeColor, fontWeight: 700 }}>
+                  {cfg.badgeLabel}
+                </div>
+              </div>
+
+              {/* Warning message for non-"passt" statuses */}
+              {cfg.showWarning && WARNING_MSG[effectiveStatus] && (
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', padding: '10px 12px', borderRadius: '10px', marginBottom: '12px', background: effectiveStatus === 'ueber' ? 'rgba(239,68,68,0.07)' : effectiveStatus === 'knapp' ? 'rgba(245,158,11,0.08)' : 'rgba(59,130,246,0.08)', border: `1px solid ${effectiveStatus === 'ueber' ? 'rgba(239,68,68,0.25)' : effectiveStatus === 'knapp' ? 'rgba(245,158,11,0.30)' : 'rgba(59,130,246,0.25)'}`, fontSize: '12px', color: effectiveStatus === 'ueber' ? '#991B1B' : effectiveStatus === 'knapp' ? '#92400E' : '#1D4ED8', lineHeight: 1.5 }}>
+                  <Info size={14} strokeWidth={2} style={{ flexShrink: 0, marginTop: '1px' }} />
+                  <span>{WARNING_MSG[effectiveStatus]}</span>
                 </div>
               )}
 
-              {/* Over-budget warning */}
-              {isOverBudget && (
-                <div style={{
-                  display: 'flex', alignItems: 'flex-start', gap: '8px',
-                  padding: '10px 12px', borderRadius: '10px', marginBottom: '12px',
-                  background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.30)',
-                  fontSize: '12px', color: '#92400E', lineHeight: 1.5,
-                }}>
-                  <Info size={14} strokeWidth={2} style={{ flexShrink: 0, marginTop: '1px', color: '#D97706' }} />
-                  <span>Dieses Ziel kann je nach Reisezeit leicht über deinem gewählten Budget liegen. Die angezeigten Werte sind Schätzwerte – mit guter Planung (Frühbucher, Nebensaison) ist das Ziel oft im Rahmen erreichbar.</span>
-                </div>
-              )}
-
+              {/* Cost cards */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(110px,1fr))', gap: '8px', alignItems: 'stretch' }}>
                 {[
                   { label: 'Flug',        value: cur.costEstimate.flight,     Icon: Plane,     iconBg: '#DBEAFE', iconColor: '#1D4ED8' },
                   { label: 'Unterkunft',  value: cur.costEstimate.hotel,      Icon: Hotel,     iconBg: '#F3E8FF', iconColor: '#7C3AED' },
                   { label: 'Aktivitäten', value: cur.costEstimate.activities, Icon: MapPinned, iconBg: '#FEE2E2', iconColor: '#DC2626' },
-                ].filter(r => r.value && r.value !== '0€' && r.value !== '0€ p.P.').map((row, i) => (
+                ].filter(r => r.value && !['0€','0€ p.P.','0 € p.P.','0 €'].includes(r.value.trim())).map((row, i) => (
                   <div key={i} style={{ padding: '14px 10px', borderRadius: '13px', background: '#F8FAFF', border: '1px solid #F1F5F9', textAlign: 'center' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>
                       <div style={{ width: '34px', height: '34px', borderRadius: '10px', background: row.iconBg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -1041,31 +1062,19 @@ export default function TravelResultView({ results, personality, interests, pack
                   </div>
                 ))}
                 {cur.costEstimate.total && (
-                  <div style={{
-                    padding: '14px 10px', borderRadius: '13px', textAlign: 'center',
-                    background: isOverBudget ? 'linear-gradient(135deg,#FFFBEB,#FEF3C7)' : 'linear-gradient(135deg,#EFF6FF,#ECFEFF)',
-                    border: isOverBudget ? '2px solid #FDE68A' : '2px solid #BFDBFE',
-                  }}>
+                  <div style={{ padding: '14px 10px', borderRadius: '13px', textAlign: 'center', background: cfg.totalBg, border: cfg.totalBorder }}>
                     <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>
-                      <div style={{ width: '34px', height: '34px', borderRadius: '10px', background: isOverBudget ? 'linear-gradient(135deg,#F59E0B,#FBBF24)' : 'linear-gradient(135deg,#0EA5E9,#06B6D4)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <div style={{ width: '34px', height: '34px', borderRadius: '10px', background: cfg.gemBg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <Gem size={15} strokeWidth={1.75} color="#FFFFFF" />
                       </div>
                     </div>
-                    <div style={{ fontSize: '9px', fontWeight: 700, color: isOverBudget ? '#92400E' : '#0284C7', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>
-                      {isOverBudget ? 'Gesamt*' : 'Gesamt'}
-                    </div>
-                    <div style={{ fontSize: '15px', fontWeight: 800, color: isOverBudget ? '#B45309' : '#0284C7', lineHeight: 1.2, fontFamily: 'var(--font-heading)' }}>
-                      {cleanValue(cur.costEstimate.total)}
-                    </div>
+                    <div style={{ fontSize: '9px', fontWeight: 700, color: cfg.totalColor, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px' }}>{cfg.totalLabel}</div>
+                    <div style={{ fontSize: '15px', fontWeight: 800, color: cfg.totalColor, lineHeight: 1.2, fontFamily: 'var(--font-heading)' }}>{cleanValue(cur.costEstimate.total)}</div>
                     <div style={{ fontSize: '10px', color: '#64748B', marginTop: '2px' }}>pro Person</div>
                   </div>
                 )}
               </div>
-              <div style={{ marginTop: '8px', fontSize: '11px', color: '#94A3B8' }}>
-                {isOverBudget
-                  ? '* Schätzwerte – kann je nach Buchungszeitpunkt und Saison variieren.'
-                  : '* Schätzwerte basieren auf durchschnittlichen Preisen. Tatsächliche Preise können abweichen.'}
-              </div>
+              <div style={{ marginTop: '8px', fontSize: '11px', color: '#94A3B8' }}>{cfg.disclaimer}</div>
             </section>
           );
         })()}
