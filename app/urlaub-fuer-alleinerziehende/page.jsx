@@ -256,7 +256,7 @@ export default function AlleinerziehendePage() {
           {/* Dark gradient overlay – keeps text readable over any photo */}
           <div aria-hidden="true" style={{
             position: 'absolute', inset: 0,
-            background: 'linear-gradient(90deg, rgba(8,25,45,0.78) 0%, rgba(8,25,45,0.58) 38%, rgba(8,25,45,0.25) 70%, rgba(8,25,45,0.10) 100%)',
+            background: 'linear-gradient(90deg, rgba(8,25,45,0.55) 0%, rgba(8,25,45,0.38) 36%, rgba(8,25,45,0.02) 100%, rgba(8,25,45,0.10) 100%)',
             zIndex: 1,
           }} />
 
