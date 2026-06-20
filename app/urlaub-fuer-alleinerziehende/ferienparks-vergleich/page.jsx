@@ -117,10 +117,10 @@ export default function FerienparkVergleichPage() {
 
         {/* ── HERO ─────────────────────────────────────────────────────── */}
         <section style={{
-          background: "linear-gradient(90deg, rgba(5,20,45,0.88) 0%, rgba(5,20,45,0.70) 42%, rgba(5,20,45,0.25) 100%), url('/images/urlaub-alleinerziehende/ferienparks-vergleich-hero.png') center / cover no-repeat",
+          background: "linear-gradient(90deg, rgba(5,20,45,0.72) 0%, rgba(5,20,45,0.52) 42%, rgba(5,20,45,0.12) 100%), url('/images/urlaub-alleinerziehende/ferienparks-vergleich-hero.png') center 32% / cover no-repeat",
           paddingTop: 'calc(80px + 60px)',
           paddingBottom: '60px',
-          minHeight: 'clamp(520px, 70vh, 760px)',
+          minHeight: 'clamp(560px, 72vh, 800px)',
           display: 'flex',
           alignItems: 'center',
         }}>
