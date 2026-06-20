@@ -250,7 +250,7 @@ export default function AlleinerziehendePage() {
             fill
             priority
             sizes="100vw"
-            style={{ objectFit: 'cover', objectPosition: 'center 15%' }}
+            style={{ objectFit: 'cover', objectPosition: 'center 5%' }}
           />
 
           {/* Dark gradient overlay – keeps text readable over any photo */}
