@@ -9,8 +9,9 @@ export function generateStaticParams() {
   return getAllParkSlugs().map(slug => ({ anbieter: slug }));
 }
 
-export function generateMetadata({ params }) {
-  const p = getParkPageBySlug(params.anbieter);
+export async function generateMetadata({ params }) {
+  const { anbieter } = await params;
+  const p = getParkPageBySlug(anbieter);
   if (!p) return {};
   return {
     title:       p.seoTitle,
@@ -44,8 +45,9 @@ const ARROW = (
   </svg>
 );
 
-export default function AnbieterPage({ params }) {
-  const p = getParkPageBySlug(params.anbieter);
+export default async function AnbieterPage({ params }) {
+  const { anbieter } = await params;
+  const p = getParkPageBySlug(anbieter);
   if (!p) notFound();
 
   const affiliateHref = `/go/${p.providerKey}?url=${encodeURIComponent(p.defaultTargetUrl)}`;
