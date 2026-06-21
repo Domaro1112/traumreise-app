@@ -1,5 +1,5 @@
 import {
-  MapPin, FileText, Users, TrendingUp, Zap, Edit3, Star,
+  MapPin, FileText, Users, TrendingUp, Zap, Edit3, Star, BadgeCheck,
 } from 'lucide-react';
 import Link from 'next/link';
 import AdminStatCard from '@/components/admin/AdminStatCard';
@@ -21,8 +21,11 @@ const STATUS_BADGE = {
 export default async function AdminDashboard() {
   let destinations = [];
   let articles = null; // null = Fehlerfall, [] = erfolgreich aber leer
-  let creatorTotal = 0;
-  let creatorNew   = 0;
+  let creatorTotal     = 0;
+  let creatorNew       = 0;
+  let profilePublished = 0;
+  let profileDraft     = 0;
+  let profileTotal     = 0;
   try {
     destinations = await listDestinationsAdmin();
   } catch { /* Supabase not yet available */ }
@@ -31,13 +34,22 @@ export default async function AdminDashboard() {
   } catch { /* Supabase not yet available */ }
   try {
     const supabase = createServerClient();
-    const [{ count: total }, { count: newCount }] = await Promise.all([
+    const [
+      { count: total }, { count: newCount },
+      { count: profPub }, { count: profDraft }, { count: profTotal },
+    ] = await Promise.all([
       supabase.from('creator_applications').select('*', { count: 'exact', head: true }),
       supabase.from('creator_applications').select('*', { count: 'exact', head: true }).eq('status', 'new'),
+      supabase.from('creator_profiles').select('*', { count: 'exact', head: true }).eq('status', 'published'),
+      supabase.from('creator_profiles').select('*', { count: 'exact', head: true }).eq('status', 'draft'),
+      supabase.from('creator_profiles').select('*', { count: 'exact', head: true }),
     ]);
-    creatorTotal = total ?? 0;
-    creatorNew   = newCount ?? 0;
-  } catch { /* Tabelle noch nicht angelegt */ }
+    creatorTotal     = total    ?? 0;
+    creatorNew       = newCount ?? 0;
+    profilePublished = profPub  ?? 0;
+    profileDraft     = profDraft ?? 0;
+    profileTotal     = profTotal ?? 0;
+  } catch { /* Tabellen noch nicht angelegt */ }
 
   const totalDests         = destinations.length;
   const publishedCount     = destinations.filter(d => d.status === 'published').length;
@@ -118,6 +130,15 @@ export default async function AdminDashboard() {
       bgColor:  '#F5F3FF',
       href:     '/admin/creator-applications',
       hint:     creatorNew > 0 ? 'Neue Bewerbungen prüfen' : undefined,
+    },
+    {
+      title:    'Creator-Profile',
+      value:    String(profilePublished || '–'),
+      subtitle: `${profileTotal} gesamt · ${profilePublished} live · ${profileDraft} Entwürfe`,
+      icon:     BadgeCheck,
+      color:    '#059669',
+      bgColor:  '#ECFDF5',
+      href:     '/admin/creator-profiles',
     },
   ];
 

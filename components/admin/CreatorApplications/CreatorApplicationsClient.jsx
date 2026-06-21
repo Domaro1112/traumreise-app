@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Trash2, ChevronDown } from 'lucide-react';
+import Link from 'next/link';
+import { Trash2, ChevronDown, UserPlus, Edit2 } from 'lucide-react';
 
 const STATUS_LABELS = {
   new:      'Neu',
@@ -30,8 +31,9 @@ function Badge({ label, color, bg }) {
   );
 }
 
-export default function CreatorApplicationsClient({ initialData }) {
+export default function CreatorApplicationsClient({ initialData, profileMap: initialProfileMap = {} }) {
   const [applications, setApplications] = useState(initialData);
+  const [profileMap,   setProfileMap]   = useState(initialProfileMap);
   const [expanded,     setExpanded]     = useState(null);
   const [loading,      setLoading]      = useState(null);
 
@@ -45,6 +47,28 @@ export default function CreatorApplicationsClient({ initialData }) {
       });
       if (!res.ok) throw new Error('Fehler beim Aktualisieren.');
       setApplications(prev => prev.map(a => a.id === id ? { ...a, status } : a));
+    } catch (e) { alert(e.message); }
+    finally { setLoading(null); }
+  };
+
+  const handleCreateProfile = async (appId) => {
+    setLoading(appId + '_profile');
+    try {
+      const res = await fetch('/api/creator-profiles/from-application', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ applicationId: appId }),
+      });
+      const json = await res.json();
+      if (res.status === 409 && json.profileId) {
+        // Profil existiert bereits — Map aktualisieren
+        setProfileMap(prev => ({ ...prev, [appId]: { id: json.profileId, slug: json.slug } }));
+        return;
+      }
+      if (!res.ok) throw new Error(json.error ?? 'Fehler beim Erstellen.');
+      if (json.profile) {
+        setProfileMap(prev => ({ ...prev, [appId]: { id: json.profile.id, slug: json.profile.slug } }));
+      }
     } catch (e) { alert(e.message); }
     finally { setLoading(null); }
   };
@@ -169,6 +193,44 @@ export default function CreatorApplicationsClient({ initialData }) {
                     );
                   })}
                   <div style={{ flex: 1 }} />
+                  {/* Creator-Profil erstellen / bearbeiten */}
+                  {item.status === 'accepted' && (() => {
+                    const existingProfile = profileMap[item.id];
+                    if (existingProfile) {
+                      return (
+                        <Link
+                          href={`/admin/creator-profiles/${existingProfile.id}`}
+                          style={{
+                            padding: '7px 14px', borderRadius: '10px',
+                            background: 'rgba(124,58,237,0.08)', color: '#7C3AED',
+                            textDecoration: 'none', fontSize: '13px', fontWeight: 600,
+                            border: '1px solid rgba(124,58,237,0.18)',
+                            display: 'inline-flex', alignItems: 'center', gap: '5px',
+                          }}
+                        >
+                          <Edit2 size={12} strokeWidth={2} />
+                          Creator-Profil bearbeiten
+                        </Link>
+                      );
+                    }
+                    return (
+                      <button
+                        disabled={loading === item.id + '_profile'}
+                        onClick={() => handleCreateProfile(item.id)}
+                        style={{
+                          padding: '7px 14px', borderRadius: '10px', border: 'none',
+                          background: 'rgba(124,58,237,0.08)', color: '#7C3AED',
+                          cursor: loading === item.id + '_profile' ? 'wait' : 'pointer',
+                          fontSize: '13px', fontWeight: 600, fontFamily: 'inherit',
+                          display: 'inline-flex', alignItems: 'center', gap: '5px',
+                          border: '1px solid rgba(124,58,237,0.18)',
+                        }}
+                      >
+                        <UserPlus size={12} strokeWidth={2} />
+                        {loading === item.id + '_profile' ? 'Erstelle…' : 'Creator-Profil erstellen'}
+                      </button>
+                    );
+                  })()}
                   <a
                     href={`mailto:${item.email}?subject=${mailtoSubject}`}
                     style={{

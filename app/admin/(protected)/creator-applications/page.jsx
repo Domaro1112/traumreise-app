@@ -9,13 +9,17 @@ export const metadata = {
 
 export default async function AdminCreatorApplicationsPage() {
   let applications = [];
+  let profileMap   = {}; // application_id → { id, slug }
   try {
     const supabase = createServerClient();
-    const { data } = await supabase
-      .from('creator_applications')
-      .select('*')
-      .order('created_at', { ascending: false });
-    applications = data ?? [];
+    const [{ data: apps }, { data: profiles }] = await Promise.all([
+      supabase.from('creator_applications').select('*').order('created_at', { ascending: false }),
+      supabase.from('creator_profiles').select('id, slug, application_id').not('application_id', 'is', null),
+    ]);
+    applications = apps ?? [];
+    profileMap   = Object.fromEntries(
+      (profiles ?? []).map(p => [p.application_id, { id: p.id, slug: p.slug }])
+    );
   } catch {}
 
   const counts = {
@@ -62,7 +66,7 @@ export default async function AdminCreatorApplicationsPage() {
         </div>
       </div>
 
-      <CreatorApplicationsClient initialData={applications} />
+      <CreatorApplicationsClient initialData={applications} profileMap={profileMap} />
     </div>
   );
 }
