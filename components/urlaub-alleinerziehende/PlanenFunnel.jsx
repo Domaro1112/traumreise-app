@@ -451,6 +451,50 @@ export default function PlanenFunnel() {
       <Container>
         <div style={{ maxWidth: '680px', margin: '0 auto' }}>
 
+          {/* ── Intro ──────────────────────────────────────────────────── */}
+          {step === 0 && (
+            <div style={{ marginBottom: '36px', textAlign: 'center' }}>
+              <p style={{
+                fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em',
+                textTransform: 'uppercase', color: '#0EA5E9', marginBottom: '10px',
+                fontFamily: 'var(--font-heading,"Poppins",system-ui,sans-serif)',
+              }}>
+                Urlaub für Alleinerziehende
+              </p>
+              <h1 style={{
+                fontFamily: 'var(--font-heading,"Poppins",system-ui,sans-serif)',
+                fontWeight: 800, color: '#0F172A', lineHeight: 1.2,
+                fontSize: 'clamp(22px,4vw,32px)',
+                marginBottom: '12px',
+              }}>
+                Urlaub planen, der wirklich zu euch passt
+              </h1>
+              <p style={{
+                fontSize: '15px', color: '#64748B', lineHeight: 1.7,
+                maxWidth: '520px', margin: '0 auto 20px',
+              }}>
+                Beantworte 7 kurze Fragen – danach bekommst du passende Reiseideen für dich und dein Kind.
+              </p>
+              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                {['Kindgerecht', 'Budget passend', 'Stressarm geplant'].map(chip => (
+                  <span key={chip} style={{
+                    display: 'inline-flex', alignItems: 'center', gap: '5px',
+                    padding: '5px 14px', borderRadius: '99px',
+                    background: '#EFF6FF', border: '1px solid #BFDBFE',
+                    color: '#1D4ED8', fontSize: '12px', fontWeight: 600,
+                    fontFamily: 'var(--font-heading,"Poppins",system-ui,sans-serif)',
+                  }}>
+                    <span style={{
+                      width: '6px', height: '6px', borderRadius: '50%',
+                      background: '#0EA5E9', flexShrink: 0,
+                    }} />
+                    {chip}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Progress */}
           <div style={{ marginBottom: '36px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
