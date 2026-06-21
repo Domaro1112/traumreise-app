@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Trash2, ChevronDown, UserPlus, Edit2 } from 'lucide-react';
+import { Trash2, ChevronDown, UserPlus, Edit2, Copy, CheckCircle } from 'lucide-react';
 
 const STATUS_LABELS = {
   new:      'Neu',
@@ -36,6 +36,7 @@ export default function CreatorApplicationsClient({ initialData, profileMap: ini
   const [profileMap,   setProfileMap]   = useState(initialProfileMap);
   const [expanded,     setExpanded]     = useState(null);
   const [loading,      setLoading]      = useState(null);
+  const [copied,       setCopied]       = useState(null); // item.id wenn gerade kopiert
 
   const handleStatusChange = async (id, status) => {
     setLoading(id + '_status');
@@ -49,6 +50,15 @@ export default function CreatorApplicationsClient({ initialData, profileMap: ini
       setApplications(prev => prev.map(a => a.id === id ? { ...a, status } : a));
     } catch (e) { alert(e.message); }
     finally { setLoading(null); }
+  };
+
+  const handleCopyOnboardingLink = async (token, appId) => {
+    const url = `${window.location.origin}/creator-onboarding/${token}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(appId);
+      setTimeout(() => setCopied(prev => prev === appId ? null : prev), 2000);
+    } catch { alert(url); }
   };
 
   const handleCreateProfile = async (appId) => {
@@ -228,6 +238,26 @@ export default function CreatorApplicationsClient({ initialData, profileMap: ini
                       >
                         <UserPlus size={12} strokeWidth={2} />
                         {loading === item.id + '_profile' ? 'Erstelle…' : 'Creator-Profil erstellen'}
+                      </button>
+                    );
+                  })()}
+                  {/* Onboarding-Link kopieren wenn Profil+Token vorhanden */}
+                  {profileMap[item.id]?.token && (() => {
+                    const isCopied = copied === item.id;
+                    return (
+                      <button
+                        onClick={() => handleCopyOnboardingLink(profileMap[item.id].token, item.id)}
+                        style={{
+                          padding: '7px 14px', borderRadius: '10px', border: 'none',
+                          background: isCopied ? 'rgba(5,150,105,0.08)' : 'rgba(14,165,233,0.08)',
+                          color: isCopied ? '#059669' : '#0EA5E9',
+                          cursor: 'pointer', fontSize: '13px', fontWeight: 600, fontFamily: 'inherit',
+                          display: 'inline-flex', alignItems: 'center', gap: '5px',
+                          border: `1px solid ${isCopied ? 'rgba(5,150,105,0.18)' : 'rgba(14,165,233,0.18)'}`,
+                        }}
+                      >
+                        {isCopied ? <CheckCircle size={12} strokeWidth={2} /> : <Copy size={12} strokeWidth={2} />}
+                        {isCopied ? 'Kopiert!' : 'Onboarding-Link kopieren'}
                       </button>
                     );
                   })()}

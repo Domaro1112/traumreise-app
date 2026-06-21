@@ -23,9 +23,10 @@ export default async function AdminDashboard() {
   let articles = null; // null = Fehlerfall, [] = erfolgreich aber leer
   let creatorTotal     = 0;
   let creatorNew       = 0;
-  let profilePublished = 0;
-  let profileDraft     = 0;
-  let profileTotal     = 0;
+  let profilePublished  = 0;
+  let profileDraft      = 0;
+  let profileSubmitted  = 0;
+  let profileTotal      = 0;
   try {
     destinations = await listDestinationsAdmin();
   } catch { /* Supabase not yet available */ }
@@ -36,18 +37,20 @@ export default async function AdminDashboard() {
     const supabase = createServerClient();
     const [
       { count: total }, { count: newCount },
-      { count: profPub }, { count: profDraft }, { count: profTotal },
+      { count: profPub }, { count: profDraft }, { count: profSub }, { count: profTotal },
     ] = await Promise.all([
       supabase.from('creator_applications').select('*', { count: 'exact', head: true }),
       supabase.from('creator_applications').select('*', { count: 'exact', head: true }).eq('status', 'new'),
       supabase.from('creator_profiles').select('*', { count: 'exact', head: true }).eq('status', 'published'),
       supabase.from('creator_profiles').select('*', { count: 'exact', head: true }).eq('status', 'draft'),
+      supabase.from('creator_profiles').select('*', { count: 'exact', head: true }).eq('status', 'submitted'),
       supabase.from('creator_profiles').select('*', { count: 'exact', head: true }),
     ]);
-    creatorTotal     = total    ?? 0;
-    creatorNew       = newCount ?? 0;
-    profilePublished = profPub  ?? 0;
+    creatorTotal     = total     ?? 0;
+    creatorNew       = newCount  ?? 0;
+    profilePublished = profPub   ?? 0;
     profileDraft     = profDraft ?? 0;
+    profileSubmitted = profSub   ?? 0;
     profileTotal     = profTotal ?? 0;
   } catch { /* Tabellen noch nicht angelegt */ }
 
@@ -139,6 +142,7 @@ export default async function AdminDashboard() {
       color:    '#059669',
       bgColor:  '#ECFDF5',
       href:     '/admin/creator-profiles',
+      hint:     profileSubmitted > 0 ? `${profileSubmitted} zur Prüfung` : undefined,
     },
   ];
 

@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
   Save, CheckCircle, AlertCircle, RefreshCw,
-  ChevronLeft, ExternalLink, Trash2,
+  ChevronLeft, ExternalLink, Trash2, Copy, Link2, RotateCcw,
 } from 'lucide-react';
 
 const CREATOR_TYPES = [
@@ -64,6 +64,12 @@ export default function CreatorProfileEditClient({ initialProfile, isNew }) {
   const [saveStatus, setSaveStatus] = useState(null); // 'success' | 'error' | null
   const [errorMsg,  setErrorMsg]  = useState('');
   const [deleting,  setDeleting]  = useState(false);
+  const [onboarding, setOnboarding] = useState({
+    token:      initialProfile?.onboarding_token            ?? null,
+    expires_at: initialProfile?.onboarding_token_expires_at ?? null,
+    regenerating: false,
+    copied: false,
+  });
 
   const set = (field, val) => setForm(prev => ({ ...prev, [field]: val }));
 
@@ -134,6 +140,32 @@ export default function CreatorProfileEditClient({ initialProfile, isNew }) {
     } finally {
       setSaving(false);
       setTimeout(() => setSaveStatus(null), 3500);
+    }
+  };
+
+  const onboardingUrl = (tok) =>
+    typeof window !== 'undefined' ? `${window.location.origin}/creator-onboarding/${tok}` : `/creator-onboarding/${tok}`;
+
+  const handleCopyLink = async () => {
+    if (!onboarding.token) return;
+    try {
+      await navigator.clipboard.writeText(onboardingUrl(onboarding.token));
+      setOnboarding(prev => ({ ...prev, copied: true }));
+      setTimeout(() => setOnboarding(prev => ({ ...prev, copied: false })), 2000);
+    } catch { alert('Kopieren fehlgeschlagen. Bitte manuell kopieren.'); }
+  };
+
+  const handleRegenerateToken = async () => {
+    if (!confirm('Neuen Onboarding-Link erstellen? Der bisherige Link wird damit ungültig.')) return;
+    setOnboarding(prev => ({ ...prev, regenerating: true }));
+    try {
+      const res = await fetch(`/api/creator-profiles/${initialProfile.id}/regenerate-onboarding-token`, { method: 'POST' });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error ?? 'Fehler.');
+      setOnboarding({ token: json.token, expires_at: json.expires_at, regenerating: false, copied: false });
+    } catch (e) {
+      alert(e.message);
+      setOnboarding(prev => ({ ...prev, regenerating: false }));
     }
   };
 
@@ -308,6 +340,73 @@ export default function CreatorProfileEditClient({ initialProfile, isNew }) {
         <Section title="Interne Notizen (nicht öffentlich)">
           <Textarea value={form.internal_notes} onChange={v => set('internal_notes', v)} rows={3} placeholder="Notizen, Kommunikationshistorie, Absprachen…" />
         </Section>
+
+        {/* Onboarding-Link */}
+        {!isNew && (
+          <Section title="Creator-Onboarding-Link">
+            <p style={{ fontSize: '13px', color: '#64748B', margin: '0 0 14px', lineHeight: 1.6 }}>
+              Sende diesen Link an den Creator. Darüber kann er sein Profil selbst ausfüllen und zur Prüfung einreichen.
+            </p>
+            {onboarding.token ? (
+              <>
+                <div style={{ background: '#F0F9FF', border: '1px solid #BAE6FD', borderRadius: '10px', padding: '10px 14px', marginBottom: '10px' }}>
+                  <div style={{ fontSize: '11px', fontWeight: 700, color: '#0EA5E9', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                    Onboarding-Link
+                  </div>
+                  <code style={{ fontSize: '12px', color: '#0F172A', wordBreak: 'break-all', lineHeight: 1.6 }}>
+                    {onboardingUrl(onboarding.token)}
+                  </code>
+                </div>
+                {onboarding.expires_at && (
+                  <p style={{ fontSize: '12px', color: '#94A3B8', margin: '0 0 12px' }}>
+                    Gültig bis: {new Date(onboarding.expires_at).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' })}
+                    {new Date(onboarding.expires_at) < new Date() && (
+                      <span style={{ color: '#EF4444', fontWeight: 700 }}> · Abgelaufen</span>
+                    )}
+                  </p>
+                )}
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  <button
+                    onClick={handleCopyLink}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '8px 16px', borderRadius: '10px', border: 'none', background: onboarding.copied ? '#ECFDF5' : '#EFF6FF', color: onboarding.copied ? '#059669' : '#0EA5E9', fontSize: '13px', fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}
+                  >
+                    {onboarding.copied ? <CheckCircle size={13} strokeWidth={2} /> : <Copy size={13} strokeWidth={2} />}
+                    {onboarding.copied ? 'Kopiert!' : 'Link kopieren'}
+                  </button>
+                  <a
+                    href={onboardingUrl(onboarding.token)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '8px 16px', borderRadius: '10px', background: '#F8FAFC', color: '#475569', fontSize: '13px', fontWeight: 600, textDecoration: 'none' }}
+                  >
+                    <ExternalLink size={13} strokeWidth={2} />
+                    Vorschau
+                  </a>
+                  <button
+                    onClick={handleRegenerateToken}
+                    disabled={onboarding.regenerating}
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '8px 16px', borderRadius: '10px', border: 'none', background: '#F1F5F9', color: '#64748B', fontSize: '13px', fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}
+                  >
+                    <RotateCcw size={13} strokeWidth={2} style={onboarding.regenerating ? { animation: 'spin 1s linear infinite' } : undefined} />
+                    {onboarding.regenerating ? 'Erstelle…' : 'Neu erstellen'}
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <p style={{ fontSize: '13px', color: '#94A3B8', margin: 0 }}>Noch kein Onboarding-Link vorhanden.</p>
+                <button
+                  onClick={handleRegenerateToken}
+                  disabled={onboarding.regenerating}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '8px 16px', borderRadius: '10px', border: 'none', background: 'linear-gradient(135deg, #0EA5E9, #06B6D4)', color: '#FFFFFF', fontSize: '13px', fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}
+                >
+                  <Link2 size={13} strokeWidth={2} />
+                  {onboarding.regenerating ? 'Erstelle…' : 'Link erstellen'}
+                </button>
+              </div>
+            )}
+          </Section>
+        )}
 
       </div>
 

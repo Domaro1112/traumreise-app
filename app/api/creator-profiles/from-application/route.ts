@@ -87,19 +87,27 @@ export async function POST(request: NextRequest) {
     const baseSlug = slugify(app.name);
     const slug = await uniqueSlug(supabase, baseSlug);
 
+    // Sicheren Onboarding-Token generieren
+    const tokenBytes = new Uint8Array(32);
+    crypto.getRandomValues(tokenBytes);
+    const onboarding_token = Array.from(tokenBytes).map(b => b.toString(16).padStart(2, '0')).join('');
+    const onboarding_token_expires_at = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString();
+
     const { data: profile, error: insertErr } = await supabase
       .from('creator_profiles')
       .insert({
-        application_id:  applicationId,
+        application_id:               applicationId,
         slug,
-        display_name:    app.name.trim().slice(0, 120),
-        contact_email:   app.email ?? null,
-        creator_type:    app.creator_type ?? null,
-        topics:          app.topics ?? [],
+        display_name:                 app.name.trim().slice(0, 120),
+        contact_email:                app.email ?? null,
+        creator_type:                 app.creator_type ?? null,
+        topics:                       app.topics ?? [],
         social_links,
-        website_url:     (!profileUrl || Object.values(social_links).includes(profileUrl)) ? null : profileUrl,
-        internal_notes:  app.message ? `Aus Bewerbung:\n${app.message}` : null,
-        status:          'draft',
+        website_url:                  (!profileUrl || Object.values(social_links).includes(profileUrl)) ? null : profileUrl,
+        internal_notes:               app.message ? `Aus Bewerbung:\n${app.message}` : null,
+        status:                       'draft',
+        onboarding_token,
+        onboarding_token_expires_at,
       })
       .select()
       .single();
