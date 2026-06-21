@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import CreatorGalleryUploader from '@/components/creator/CreatorGalleryUploader';
+import CreatorImageUploader   from '@/components/creator/CreatorImageUploader';
 
 const TYPE_META = {
   guide: { label: 'Reiseguide', color: '#7C3AED', bg: 'rgba(124,58,237,0.10)', emoji: '📖' },
@@ -72,7 +74,7 @@ function SectionTitle({ children }) {
 
 const EMPTY_FORM = {
   title: '', excerpt: '', destination: '', country: '', category: '',
-  tagsRaw: '', imagesRaw: '', content: '',
+  tagsRaw: '', images: [], content: '',
   tipText: '', tipUrl: '',
   routeStart: '', routeEnd: '', routeDuration: '', routeTravelType: '',
   stops: [],
@@ -87,7 +89,7 @@ function formFromSubmission(s) {
     country:        s.country ?? '',
     category:       s.category ?? '',
     tagsRaw:        (s.tags ?? []).join(', '),
-    imagesRaw:      (s.images ?? []).join('\n'),
+    images:         Array.isArray(s.images) ? s.images : [],
     content:        s.content ?? '',
     tipText:        s.tip_data?.text ?? '',
     tipUrl:         s.tip_data?.url ?? '',
@@ -101,7 +103,7 @@ function formFromSubmission(s) {
 
 function buildPayload(form, type) {
   const tags   = form.tagsRaw.split(',').map(t => t.trim()).filter(Boolean);
-  const images = form.imagesRaw.split('\n').map(u => u.trim()).filter(Boolean);
+  const images = Array.isArray(form.images) ? form.images.filter(Boolean) : [];
   const base = {
     title:       form.title,
     excerpt:     form.excerpt || null,
@@ -508,7 +510,20 @@ export default function CreatorHub({ profile, initialSubmissions, token }) {
                     <input type="text" value={stop.place} onChange={e => setForm(p => ({ ...p, stops: p.stops.map((s, idx) => idx === i ? { ...s, place: e.target.value } : s) }))} placeholder="Ort / Adresse" style={inp()} />
                   </div>
                   <textarea value={stop.description} onChange={e => setForm(p => ({ ...p, stops: p.stops.map((s, idx) => idx === i ? { ...s, description: e.target.value } : s) }))} placeholder="Was gibt es hier zu erleben?" rows={2} style={inp({ resize: 'vertical', marginBottom: '10px' })} />
-                  <input type="url" value={stop.image ?? ''} onChange={e => setForm(p => ({ ...p, stops: p.stops.map((s, idx) => idx === i ? { ...s, image: e.target.value } : s) }))} placeholder="Bild-URL (optional)" style={inp()} />
+                  {editingId ? (
+                    <CreatorImageUploader
+                      value={stop.image ?? ''}
+                      onChange={url => setForm(p => ({ ...p, stops: p.stops.map((s, idx) => idx === i ? { ...s, image: url } : s) }))}
+                      token={token}
+                      targetType="routeStation"
+                      submissionId={editingId}
+                      stationIndex={i}
+                      label={`Stationsbild ${i + 1} (optional)`}
+                      aspectRatio="16/7"
+                    />
+                  ) : (
+                    <input type="url" value={stop.image ?? ''} onChange={e => setForm(p => ({ ...p, stops: p.stops.map((s, idx) => idx === i ? { ...s, image: e.target.value } : s) }))} placeholder="Bild-URL (optional)" style={inp()} />
+                  )}
                 </div>
               ))}
               <button
@@ -522,26 +537,27 @@ export default function CreatorHub({ profile, initialSubmissions, token }) {
 
           {/* Bilder */}
           <SectionTitle>Bilder</SectionTitle>
-          <Field label="Bild-URLs" hint="eine URL pro Zeile">
-            <textarea
-              value={form.imagesRaw}
-              onChange={e => setForm(p => ({ ...p, imagesRaw: e.target.value }))}
-              placeholder="https://…&#10;https://…"
-              rows={3}
-              style={inp({ resize: 'vertical' })}
-            />
-          </Field>
-
-          {/* Preview */}
-          {form.imagesRaw.split('\n').filter(u => u.trim()).length > 0 && (
-            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '24px' }}>
-              {form.imagesRaw.split('\n').filter(u => u.trim()).slice(0, 6).map((url, i) => (
-                <div key={i} style={{ width: '80px', height: '60px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #E2E8F0' }}>
-                  <img src={url.trim()} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { e.target.style.display = 'none'; }} />
-                </div>
-              ))}
-            </div>
-          )}
+          {/* Rechtlicher Hinweis */}
+          <div style={{ background: 'rgba(14,165,233,0.06)', border: '1px solid rgba(14,165,233,0.2)', borderRadius: '10px', padding: '10px 14px', fontSize: '12px', color: '#475569', lineHeight: 1.55, marginBottom: '16px' }}>
+            🔐 <strong>Bildrechte:</strong> Mit dem Hochladen bestätigst du, dass du die Rechte an den Bildern besitzt und ApeAround sie im Rahmen deiner eingereichten Inhalte verwenden darf.
+          </div>
+          <CreatorGalleryUploader
+            images={Array.isArray(form.images) ? form.images : []}
+            onChange={imgs => setForm(p => ({ ...p, images: imgs }))}
+            token={token}
+            targetType="submission"
+            submissionId={editingId ?? undefined}
+            maxImages={8}
+            disabled={!editingId}
+            disabledHint={!editingId ? {
+              primary: activeTab === 'guide'
+                ? 'Speichere deinen Reiseguide zuerst als Entwurf. Danach kannst du Bilder hinzufügen.'
+                : activeTab === 'tip'
+                  ? 'Speichere deinen Reisetipp zuerst als Entwurf. Danach kannst du Bilder hinzufügen.'
+                  : 'Speichere deine Route zuerst als Entwurf. Danach kannst du Bilder und Stationsbilder hinzufügen.',
+              secondary: 'Klicke auf „Als Entwurf speichern" — danach wird der Bild-Upload automatisch aktiviert.',
+            } : null}
+          />
 
           {/* Fehler / Erfolg */}
           {error && (
@@ -556,7 +572,8 @@ export default function CreatorHub({ profile, initialSubmissions, token }) {
           )}
 
           {/* Buttons */}
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', paddingTop: '8px', borderTop: '1px solid #F1F5F9' }}>
+          <div style={{ paddingTop: '8px', borderTop: '1px solid #F1F5F9' }}>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
             <button
               onClick={() => handleSave('draft')}
               disabled={saving}
@@ -578,6 +595,12 @@ export default function CreatorHub({ profile, initialSubmissions, token }) {
             >
               Abbrechen
             </button>
+            </div>
+            {!editingId && !saving && (
+              <p style={{ margin: '8px 0 0', fontSize: '12px', color: '#64748B', lineHeight: 1.5 }}>
+                Nach dem Speichern kannst du Bilder hinzufügen.
+              </p>
+            )}
           </div>
         </div>
       )}

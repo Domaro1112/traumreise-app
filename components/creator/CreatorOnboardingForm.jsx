@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import CreatorImageUploader  from '@/components/creator/CreatorImageUploader';
+import CreatorGalleryUploader from '@/components/creator/CreatorGalleryUploader';
 
 const CREATOR_TYPES = [
   'Reiseblogger', 'Instagram Creator', 'TikTok Creator', 'YouTube Creator',
@@ -31,7 +33,7 @@ function emptyForm(profile) {
     topics:            (profile?.topics        ?? []).join('\n'),
     destinations:      (profile?.destinations  ?? []).join('\n'),
     travel_styles:     (profile?.travel_styles ?? []).join('\n'),
-    gallery_images:    (profile?.gallery_images ?? []).join('\n'),
+    gallery_images:    profile?.gallery_images ?? [],
     instagram:         profile?.social_links?.instagram ?? '',
     tiktok:            profile?.social_links?.tiktok    ?? '',
     youtube:           profile?.social_links?.youtube   ?? '',
@@ -71,7 +73,7 @@ export default function CreatorOnboardingForm({ initialProfile, token }) {
     topics:            splitLines(form.topics),
     destinations:      splitLines(form.destinations),
     travel_styles:     splitLines(form.travel_styles),
-    gallery_images:    splitLines(form.gallery_images),
+    gallery_images:    Array.isArray(form.gallery_images) ? form.gallery_images : splitLines(form.gallery_images),
     featured_tips:     tips.filter(t => t.title.trim()),
     social_links: Object.fromEntries(
       SOCIAL_PLATFORMS
@@ -275,27 +277,44 @@ export default function CreatorOnboardingForm({ initialProfile, token }) {
 
           {/* Bilder */}
           <FormSection title="Profilbilder" icon="📸">
-            <FormField label="Profilbild-URL">
-              <FInput value={form.profile_image_url} onChange={v => set('profile_image_url', v)} placeholder="https://… (quadratisches Foto von dir)" />
-              {form.profile_image_url && (
-                <img src={form.profile_image_url} alt="Preview" style={{ width: '80px', height: '80px', borderRadius: '50%', objectFit: 'cover', marginTop: '10px', border: '2px solid #E2E8F0' }} onError={e => { e.target.style.display = 'none'; }} />
-              )}
-            </FormField>
-            <FormField label="Hero-Bild-URL (großes Banner-Bild)">
-              <FInput value={form.hero_image_url} onChange={v => set('hero_image_url', v)} placeholder="https://… (breites Foto, z.B. 1600×600px)" />
-              {form.hero_image_url && (
-                <img src={form.hero_image_url} alt="Preview" style={{ width: '100%', maxHeight: '120px', borderRadius: '12px', objectFit: 'cover', marginTop: '10px', border: '2px solid #E2E8F0' }} onError={e => { e.target.style.display = 'none'; }} />
-              )}
-            </FormField>
-            <FormField label="Galerie-Bilder (URLs, eine pro Zeile, max. 9)">
-              <FTextarea
-                value={form.gallery_images}
-                onChange={v => set('gallery_images', v)}
-                rows={4}
-                placeholder={"https://images.unsplash.com/…\nhttps://…"}
+            {/* Rechtlicher Hinweis */}
+            <div style={{ background: 'rgba(14,165,233,0.06)', border: '1px solid rgba(14,165,233,0.2)', borderRadius: '10px', padding: '10px 14px', fontSize: '12px', color: '#475569', lineHeight: 1.55 }}>
+              🔐 <strong>Bildrechte:</strong> Mit dem Hochladen bestätigst du, dass du die Rechte an den Bildern besitzt und ApeAround sie im Rahmen deines Creator-Profils und deiner eingereichten Inhalte verwenden darf.
+            </div>
+
+            <CreatorImageUploader
+              value={form.profile_image_url}
+              onChange={url => set('profile_image_url', url)}
+              token={token}
+              targetType="profile"
+              label="Profilbild"
+              hint="Quadratisches Foto von dir · wird kreisförmig angezeigt"
+              aspectRatio="1/1"
+            />
+
+            <CreatorImageUploader
+              value={form.hero_image_url}
+              onChange={url => set('hero_image_url', url)}
+              token={token}
+              targetType="hero"
+              label="Hero-Bild (Banner)"
+              hint="Breites Foto, z.B. 1600 × 600 px · erscheint groß im Profil-Header"
+              aspectRatio="16/6"
+            />
+
+            <div>
+              <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#374151', marginBottom: '6px' }}>
+                Galerie-Bilder <span style={{ fontWeight: 400, color: '#94A3B8' }}>max. 12</span>
+              </label>
+              <CreatorGalleryUploader
+                images={Array.isArray(form.gallery_images) ? form.gallery_images : []}
+                onChange={imgs => set('gallery_images', imgs)}
+                token={token}
+                targetType="gallery"
+                maxImages={12}
               />
-              <p style={hintStyle}>Zeige deine besten Reisemomente. Direkte Bild-URLs (enden auf .jpg / .png / .webp).</p>
-            </FormField>
+              <p style={hintStyle}>Zeige deine besten Reisemomente.</p>
+            </div>
           </FormSection>
 
           {/* Reisetipps */}
