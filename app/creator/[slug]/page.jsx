@@ -62,10 +62,17 @@ const SOCIAL_LABELS = {
   pinterest: 'Pinterest',
 };
 
+const CONTENT_TYPE_META = {
+  guide: { label: 'Reiseguide', color: '#7C3AED', bg: '#F5F3FF', emoji: '📖', href: 'reiseguides' },
+  tip:   { label: 'Reisetipp',  color: '#0EA5E9', bg: '#EFF6FF', emoji: '💡', href: 'reisetipps' },
+  route: { label: 'Reiseroute', color: '#059669', bg: '#ECFDF5', emoji: '🗺️', href: 'reiserouten' },
+};
+
 export default async function CreatorProfilePage({ params }) {
   const { slug } = await params;
 
   let profile = null;
+  let publishedContent = [];
   try {
     const supabase = createServerClient();
     const { data } = await supabase
@@ -75,6 +82,17 @@ export default async function CreatorProfilePage({ params }) {
       .eq('status', 'published')
       .single();
     profile = data;
+
+    if (data) {
+      const { data: contentData } = await supabase
+        .from('creator_submissions')
+        .select('id, type, title, slug, excerpt, destination, images')
+        .eq('creator_profile_id', data.id)
+        .eq('status', 'published')
+        .order('published_at', { ascending: false })
+        .limit(9);
+      publishedContent = contentData ?? [];
+    }
   } catch {}
 
   if (!profile) notFound();
@@ -363,6 +381,44 @@ export default async function CreatorProfilePage({ params }) {
                   </a>
                 ))}
               </div>
+            </div>
+          </section>
+        )}
+
+        {/* ── Veröffentlichte Inhalte ───────────────────────────────────── */}
+        {publishedContent.length > 0 && (
+          <section style={{ maxWidth: '900px', margin: '0 auto', padding: 'clamp(32px, 5vw, 52px) clamp(20px, 5vw, 40px)' }}>
+            <h2 style={{
+              fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+              fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, color: '#0F172A',
+              margin: '0 0 20px', letterSpacing: '-0.02em',
+            }}>
+              Inhalte von {profile.display_name}
+            </h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(clamp(220px, 30vw, 280px), 1fr))', gap: '14px' }}>
+              {publishedContent.map(item => {
+                const m = CONTENT_TYPE_META[item.type] ?? CONTENT_TYPE_META.guide;
+                const img = Array.isArray(item.images) ? item.images[0] : null;
+                return (
+                  <Link key={item.id} href={`/${m.href}/${item.slug}`} style={{ display: 'block', textDecoration: 'none', background: '#FFFFFF', border: '1.5px solid #E2E8F0', borderRadius: '16px', overflow: 'hidden', transition: 'box-shadow 0.15s' }}>
+                    {img && (
+                      <div style={{ aspectRatio: '16/9', overflow: 'hidden' }}>
+                        <img src={img} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} loading="lazy" />
+                      </div>
+                    )}
+                    <div style={{ padding: '14px 16px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '6px' }}>
+                        <span style={{ fontSize: '11px', fontWeight: 700, padding: '2px 8px', borderRadius: '20px', background: m.bg, color: m.color }}>
+                          {m.emoji} {m.label}
+                        </span>
+                        {item.destination && <span style={{ fontSize: '11px', color: '#94A3B8' }}>📍 {item.destination}</span>}
+                      </div>
+                      <p style={{ margin: '0 0 6px', fontSize: '14px', fontWeight: 700, color: '#0F172A', lineHeight: 1.4 }}>{item.title}</p>
+                      {item.excerpt && <p style={{ margin: 0, fontSize: '12px', color: '#64748B', lineHeight: 1.55 }}>{item.excerpt.slice(0, 80)}{item.excerpt.length > 80 ? '…' : ''}</p>}
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </section>
         )}

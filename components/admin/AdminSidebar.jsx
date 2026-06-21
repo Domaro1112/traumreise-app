@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import {
   LayoutDashboard, MapPin, FileText, Image as ImageIcon,
-  Users, TrendingUp, Search, Settings, LogOut, X, ExternalLink, Sparkles, Compass, Handshake, Mail, Bell, Star, BadgeCheck,
+  Users, TrendingUp, Search, Settings, LogOut, X, ExternalLink, Sparkles, Compass, Handshake, Mail, Bell, Star, BadgeCheck, PenLine,
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
@@ -21,6 +21,7 @@ const NAV_ITEMS = [
   { label: 'Kontakt-Anfragen', href: '/admin/contact-inquiries',      icon: Mail      },
   { label: 'Creator-Bewerbungen', href: '/admin/creator-applications', icon: Star      },
   { label: 'Creator-Profile',    href: '/admin/creator-profiles',     icon: BadgeCheck },
+  { label: 'Creator-Inhalte',   href: '/admin/creator-submissions',  icon: PenLine    },
   { label: 'Newsletter',       href: '/admin/newsletter',          icon: Bell            },
   { label: 'Monetarisierung', href: '/admin/affiliate',            icon: TrendingUp      },
   { label: 'SEO & LLMO',      href: '/admin/seo-llmo',             icon: Search          },

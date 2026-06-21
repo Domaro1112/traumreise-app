@@ -160,6 +160,108 @@ function buildCreatorSubmittedHtml(p: {
 </html>`.trim();
 }
 
+// ── Admin-Benachrichtigung: Creator-Inhalt eingereicht ───────────────────────
+
+interface ContentSubmittedPayload {
+  creator_name:  string;
+  content_type:  string;
+  title:         string;
+  destination:   string | null;
+  submission_id: string;
+  submitted_at:  string;
+}
+
+export async function sendCreatorContentSubmittedNotification(
+  payload: ContentSubmittedPayload,
+): Promise<MailResult> {
+  const key        = process.env.RESEND_API_KEY;
+  const notifyMail = process.env.CREATOR_REVIEW_NOTIFY_EMAIL;
+
+  if (!notifyMail) {
+    console.log('[CONTENT_NOTIFY] No CREATOR_REVIEW_NOTIFY_EMAIL configured. Skipping.');
+    return { sent: false, error: 'CREATOR_REVIEW_NOTIFY_EMAIL not configured' };
+  }
+  if (!key) {
+    console.log('[CONTENT_NOTIFY] No RESEND_API_KEY configured. Skipping.');
+    return { sent: false, error: 'RESEND_API_KEY not configured' };
+  }
+
+  const adminUrl = `${SITE_URL}/admin/creator-submissions/${payload.submission_id}`;
+  const submittedAt = new Date(payload.submitted_at).toLocaleString('de-DE', {
+    day: '2-digit', month: '2-digit', year: 'numeric',
+    hour: '2-digit', minute: '2-digit',
+  });
+
+  const typeLabel = payload.content_type === 'guide' ? 'Reiseguide'
+    : payload.content_type === 'tip' ? 'Reisetipp' : 'Reiseroute';
+
+  try {
+    const resend = new Resend(key);
+    const { data, error } = await resend.emails.send({
+      from:    FROM_ADDRESS,
+      to:      notifyMail,
+      subject: `Neuer ${typeLabel} wartet auf Prüfung`,
+      html:    `<!DOCTYPE html>
+<html lang="de"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#F8FAFC;font-family:system-ui,-apple-system,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#F8FAFC;padding:40px 16px;">
+    <tr><td align="center">
+      <table width="560" cellpadding="0" cellspacing="0" style="background:#FFFFFF;border-radius:16px;border:1px solid #E2E8F0;overflow:hidden;max-width:100%;">
+        <tr><td style="background:linear-gradient(135deg,#0F172A 0%,#12324a 60%,#0EA5E9 160%);padding:28px 32px;text-align:center;">
+          <p style="margin:0;font-size:24px;">🐒✈️</p>
+          <p style="margin:6px 0 0;color:#38BDF8;font-weight:700;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;">ApeAround Admin</p>
+        </td></tr>
+        <tr><td style="padding:32px 32px 24px;">
+          <h1 style="margin:0 0 8px;font-size:20px;font-weight:800;color:#0F172A;">Neuer ${typeLabel} zur Prüfung</h1>
+          <p style="margin:0 0 24px;color:#475569;font-size:15px;line-height:1.6;">${payload.creator_name} hat einen neuen Inhalt eingereicht.</p>
+          <table width="100%" cellpadding="0" cellspacing="0" style="background:#F8FAFC;border-radius:12px;border:1px solid #E2E8F0;overflow:hidden;margin:0 0 24px;">
+            <tr><td style="padding:14px 18px;border-bottom:1px solid #E2E8F0;">
+              <p style="margin:0;font-size:12px;color:#94A3B8;text-transform:uppercase;letter-spacing:0.06em;font-weight:700;">Titel</p>
+              <p style="margin:4px 0 0;font-size:15px;color:#0F172A;font-weight:700;">${payload.title}</p>
+            </td></tr>
+            <tr><td style="padding:14px 18px;border-bottom:1px solid #E2E8F0;">
+              <p style="margin:0;font-size:12px;color:#94A3B8;text-transform:uppercase;letter-spacing:0.06em;font-weight:700;">Creator</p>
+              <p style="margin:4px 0 0;font-size:14px;color:#0F172A;">${payload.creator_name}</p>
+            </td></tr>
+            ${payload.destination ? `<tr><td style="padding:14px 18px;border-bottom:1px solid #E2E8F0;">
+              <p style="margin:0;font-size:12px;color:#94A3B8;text-transform:uppercase;letter-spacing:0.06em;font-weight:700;">Ziel</p>
+              <p style="margin:4px 0 0;font-size:14px;color:#0F172A;">${payload.destination}</p>
+            </td></tr>` : ''}
+            <tr><td style="padding:14px 18px;">
+              <p style="margin:0;font-size:12px;color:#94A3B8;text-transform:uppercase;letter-spacing:0.06em;font-weight:700;">Eingereicht am</p>
+              <p style="margin:4px 0 0;font-size:14px;color:#0F172A;">${submittedAt} Uhr</p>
+            </td></tr>
+          </table>
+          <div style="text-align:center;">
+            <a href="${adminUrl}" style="display:inline-block;padding:13px 28px;border-radius:12px;background:linear-gradient(135deg,#0EA5E9,#06B6D4);color:#FFFFFF;font-weight:700;font-size:15px;text-decoration:none;">
+              Inhalt jetzt prüfen →
+            </a>
+          </div>
+        </td></tr>
+        <tr><td style="background:#F8FAFC;padding:14px 32px;text-align:center;">
+          <p style="margin:0;color:#94A3B8;font-size:11px;">ApeAround Admin · Diese E-Mail wurde automatisch generiert.</p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body></html>`,
+    });
+
+    if (error) {
+      const msg = `Resend API-Fehler: ${(error as Record<string, unknown>)['message'] ?? JSON.stringify(error)}`;
+      console.error('[CONTENT_NOTIFY] ❌', msg);
+      return { sent: false, error: msg };
+    }
+
+    console.log(`[CONTENT_NOTIFY] ✅ Admin-Mail gesendet. Resend-ID: ${data?.id}`);
+    return { sent: true, id: data?.id ?? 'unknown' };
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error('[CONTENT_NOTIFY] ❌ Exception:', msg);
+    return { sent: false, error: msg };
+  }
+}
+
 // ── Newsletter-Bestätigung ─────────────────────────────────────────────────────
 
 function buildHtml(confirmUrl: string, unsubUrl: string): string {

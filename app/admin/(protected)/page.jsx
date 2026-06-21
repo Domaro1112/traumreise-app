@@ -1,5 +1,5 @@
 import {
-  MapPin, FileText, Users, TrendingUp, Zap, Edit3, Star, BadgeCheck,
+  MapPin, FileText, Users, TrendingUp, Zap, Edit3, Star, BadgeCheck, PenLine,
 } from 'lucide-react';
 import Link from 'next/link';
 import AdminStatCard from '@/components/admin/AdminStatCard';
@@ -21,12 +21,15 @@ const STATUS_BADGE = {
 export default async function AdminDashboard() {
   let destinations = [];
   let articles = null; // null = Fehlerfall, [] = erfolgreich aber leer
-  let creatorTotal     = 0;
-  let creatorNew       = 0;
-  let profilePublished  = 0;
-  let profileDraft      = 0;
-  let profileSubmitted  = 0;
-  let profileTotal      = 0;
+  let creatorTotal          = 0;
+  let creatorNew            = 0;
+  let profilePublished      = 0;
+  let profileDraft          = 0;
+  let profileSubmitted      = 0;
+  let profileTotal          = 0;
+  let contentPublished      = 0;
+  let contentSubmitted      = 0;
+  let contentTotal          = 0;
   try {
     destinations = await listDestinationsAdmin();
   } catch { /* Supabase not yet available */ }
@@ -38,6 +41,7 @@ export default async function AdminDashboard() {
     const [
       { count: total }, { count: newCount },
       { count: profPub }, { count: profDraft }, { count: profSub }, { count: profTotal },
+      { count: contPub }, { count: contSub }, { count: contTotal },
     ] = await Promise.all([
       supabase.from('creator_applications').select('*', { count: 'exact', head: true }),
       supabase.from('creator_applications').select('*', { count: 'exact', head: true }).eq('status', 'new'),
@@ -45,13 +49,19 @@ export default async function AdminDashboard() {
       supabase.from('creator_profiles').select('*', { count: 'exact', head: true }).eq('status', 'draft'),
       supabase.from('creator_profiles').select('*', { count: 'exact', head: true }).eq('status', 'submitted'),
       supabase.from('creator_profiles').select('*', { count: 'exact', head: true }),
+      supabase.from('creator_submissions').select('*', { count: 'exact', head: true }).eq('status', 'published'),
+      supabase.from('creator_submissions').select('*', { count: 'exact', head: true }).eq('status', 'submitted'),
+      supabase.from('creator_submissions').select('*', { count: 'exact', head: true }),
     ]);
-    creatorTotal     = total     ?? 0;
-    creatorNew       = newCount  ?? 0;
-    profilePublished = profPub   ?? 0;
-    profileDraft     = profDraft ?? 0;
-    profileSubmitted = profSub   ?? 0;
-    profileTotal     = profTotal ?? 0;
+    creatorTotal      = total     ?? 0;
+    creatorNew        = newCount  ?? 0;
+    profilePublished  = profPub   ?? 0;
+    profileDraft      = profDraft ?? 0;
+    profileSubmitted  = profSub   ?? 0;
+    profileTotal      = profTotal ?? 0;
+    contentPublished  = contPub   ?? 0;
+    contentSubmitted  = contSub   ?? 0;
+    contentTotal      = contTotal ?? 0;
   } catch { /* Tabellen noch nicht angelegt */ }
 
   const totalDests         = destinations.length;
@@ -143,6 +153,16 @@ export default async function AdminDashboard() {
       bgColor:  '#ECFDF5',
       href:     '/admin/creator-profiles',
       hint:     profileSubmitted > 0 ? `${profileSubmitted} ${profileSubmitted === 1 ? 'Profil wartet' : 'Profile warten'} auf Prüfung` : undefined,
+    },
+    {
+      title:    'Creator-Inhalte',
+      value:    String(contentPublished || '–'),
+      subtitle: `${contentTotal} gesamt · ${contentPublished} live`,
+      icon:     PenLine,
+      color:    '#0891B2',
+      bgColor:  '#ECFEFF',
+      href:     '/admin/creator-submissions',
+      hint:     contentSubmitted > 0 ? `${contentSubmitted} ${contentSubmitted === 1 ? 'Inhalt wartet' : 'Inhalte warten'} auf Prüfung` : undefined,
     },
   ];
 
