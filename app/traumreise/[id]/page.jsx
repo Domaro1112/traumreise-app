@@ -56,9 +56,31 @@ export default async function TravelResultPage({ params }) {
 
   // Rebuild affiliate URLs using stored budget/season/duration
   const { budget, season, duration } = session;
+
+  // Detect alleinerziehende context via personal_note (set by PlanenFunnel freeText).
+  // Maps age-group label → representative integer age for providers that support it.
+  const note = session.personal_note ?? '';
+  const isAlleinerziehende = note.includes('alleinerziehend');
+  function mapNoteChildAge(n) {
+    if (n.includes('0–3 Jahre'))  return 2;
+    if (n.includes('4–6 Jahre'))  return 5;
+    if (n.includes('7–10 Jahre')) return 8;
+    if (n.includes('11–14 Jahre'))return 12;
+    if (n.includes('15+ Jahre'))  return 15;
+    return null; // mehrere Kinder verschiedenen Alters → omit age param
+  }
+  const resultsAdults   = isAlleinerziehende ? 1 : 2;
+  const resultsChildren = isAlleinerziehende ? 1 : 0;
+  const resultsChildAge = isAlleinerziehende ? mapNoteChildAge(note) : null;
+
   const results = analysis.destinations.map(dest => ({
     ...dest,
-    ...buildAffiliateUrls(dest, { budget, season, duration }),
+    ...buildAffiliateUrls(dest, {
+      budget, season, duration,
+      adults:   resultsAdults,
+      children: resultsChildren,
+      childAge: resultsChildAge,
+    }),
   }));
 
   // Map stored duration value → TravelResultView format
