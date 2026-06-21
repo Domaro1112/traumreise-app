@@ -4,8 +4,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Container from '@/components/layout/Container';
 
-// ── Visual card overlay gradient (matches HomeTravelWizard) ─────────────────
-const OVERLAY = 'linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.22) 50%, rgba(0,0,0,0.75) 100%)';
 
 // ── Step definitions ────────────────────────────────────────────────────────
 
@@ -309,10 +307,6 @@ function VisualCard({ selected, onClick, img, fallbackImg, bg, label, height }) 
           />
         </>
       )}
-      <div
-        aria-hidden="true"
-        style={{ position: 'absolute', inset: '-1px', background: OVERLAY, pointerEvents: 'none' }}
-      />
       <div style={{
         position: 'absolute',
         bottom: 0,
@@ -325,7 +319,7 @@ function VisualCard({ selected, onClick, img, fallbackImg, bg, label, height }) 
           fontSize: '13px',
           fontWeight: 700,
           color: '#fff',
-          textShadow: '0 1px 6px rgba(0,0,0,0.9)',
+          textShadow: '0 2px 8px rgba(0,0,0,0.65), 0 1px 2px rgba(0,0,0,0.9)',
           lineHeight: 1.3,
           letterSpacing: '0.01em',
         }}>
