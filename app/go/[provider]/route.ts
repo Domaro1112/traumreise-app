@@ -26,16 +26,17 @@ export async function GET(
   let finalUrl = targetUrl;
 
   try {
-    const providerConfig = (AFFILIATE_PROVIDERS as Record<string, { network?: string; buildUrl?: () => string }>)[provider];
+    const providerConfig = (AFFILIATE_PROVIDERS as Record<string, { network?: string; buildUrl?: (u?: string) => string }>)[provider];
 
     if (providerConfig?.network === 'awin' && providerConfig.buildUrl) {
       // AWIN-Anbieter: Tracking-URL nur aufbauen wenn Affiliate-ID konfiguriert + aktiviert.
+      // targetUrl (die Such-URL des Anbieters) wird als ued= in den AWIN-Deeplink eingebettet.
       // Ohne ID gehen wir direkt zur sauberen Provider-URL (targetUrl) — kein AWIN-Redirect.
       const settings = await getCachedAffiliateSettings();
       const setting  = settings[provider];
 
       if (setting?.enabled && setting?.affiliate_id) {
-        const awinBase = providerConfig.buildUrl();
+        const awinBase = providerConfig.buildUrl(targetUrl);
         finalUrl = injectAffiliateParam(awinBase, 'awinaffid', setting.affiliate_id);
       }
       // else: finalUrl bleibt = targetUrl (saubere Provider-URL)

@@ -875,7 +875,7 @@ export default function TravelResultView({ results, personality, interests, pack
         )}
 
         {/* ── FERIENPARKS & FAMILIENUNTERKÜNFTE ──────────────────────────── */}
-        <FerienparkSection interests={interests} destination={cur} budget={budget} />
+        <FerienparkSection interests={interests} destination={cur} budget={budget} holidayParkUrls={cur.holidayParkUrls} />
 
         {/* ── REISEPLAN (TIMELINE) ────────────────────────────────────────── */}
         {!cur.itinerary?.length && phase2Loading && (

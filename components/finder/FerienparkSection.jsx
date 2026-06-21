@@ -3,21 +3,10 @@
 import { useState } from 'react';
 import { matchFerienparkProviders } from '@/lib/ferienpark-config';
 
-// Saubere Provider-URLs — AWIN-URL-Erzeugung erfolgt zentral in /go/[provider]
-const PROVIDER_URLS = {
-  centerparcs: 'https://www.centerparcs.de/',
-  landal:      'https://www.landal.de/',
-  roompot:     'https://www.roompot.de/',
-  topparken:   'https://www.topparken.de/',
-  sunparks:    'https://www.sunparks.de/',
-  eurocamp:    'https://www.eurocamp.de/',
-  novasol:     'https://www.novasol.de/',
-};
-
-function goUrl(provider) {
-  const dest = PROVIDER_URLS[provider];
-  if (!dest) return undefined;
-  return `/go/${provider}?url=${encodeURIComponent(dest)}`;
+function buildGoUrl(providerKey, holidayParkUrls) {
+  const searchUrl = holidayParkUrls?.[providerKey];
+  if (!searchUrl) return undefined;
+  return `/go/${providerKey}?url=${encodeURIComponent(searchUrl)}`;
 }
 
 function ProviderLogo({ providerKey, name, color }) {
@@ -55,7 +44,7 @@ function ProviderLogo({ providerKey, name, color }) {
  *
  * @param {{ interests: string[], destination: object, budget: string|null }} props
  */
-export default function FerienparkSection({ interests, destination, budget }) {
+export default function FerienparkSection({ interests, destination, budget, holidayParkUrls }) {
   const matched = matchFerienparkProviders(interests, destination, budget);
   if (!matched.length) return null;
 
@@ -91,7 +80,7 @@ export default function FerienparkSection({ interests, destination, budget }) {
       {/* Provider cards */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         {matched.map((p) => {
-          const href = goUrl(p.key);
+          const href = buildGoUrl(p.key, holidayParkUrls);
 
           return (
             <div
