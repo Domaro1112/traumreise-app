@@ -5,6 +5,7 @@ import {
   Settings, BarChart2, Save, CheckCircle, AlertCircle,
   RefreshCw, Hotel, Compass, ShoppingCart, Sun, ShoppingBag,
   Plane, TrendingUp, MapPin, ToggleLeft, ToggleRight, Trees,
+  Zap, ExternalLink, XCircle, Clock,
 } from 'lucide-react';
 
 const PROVIDERS = [
@@ -184,6 +185,24 @@ const PROVIDERS = [
 
 const PROVIDER_LABELS = Object.fromEntries(PROVIDERS.map(p => [p.id, p.name]));
 
+// ── Test cases ────────────────────────────────────────────────────────────────
+const TEST_CASES = [
+  { provider: 'booking',      label: 'Booking.com – Hotel Paris',           url: 'https://www.booking.com/searchresults.de.html?ss=Paris%2C%20Frankreich&lang=de&selected_currency=EUR' },
+  { provider: 'trivago',      label: 'trivago – Hotel Berlin',              url: 'https://www.trivago.de/?query=Berlin' },
+  { provider: 'skyscanner',   label: 'Skyscanner – Flug Düsseldorf–Mallorca', url: 'https://www.skyscanner.de/fluge-nach/pmi/?adults=2&children=0&cabinclass=economy' },
+  { provider: 'getyourguide', label: 'GetYourGuide – Aktivitäten Mallorca', url: 'https://www.getyourguide.de/s/?q=Mallorca' },
+  { provider: 'check24',      label: 'CHECK24 – Mietwagen Mallorca',        url: 'https://mietwagen.check24.de/?where=Mallorca' },
+  { provider: 'expedia',      label: 'Expedia – Hotel Paris',               url: 'https://www.expedia.de/Hotel-Search?destination=Paris%2C%20Frankreich' },
+  { provider: 'holidaycheck', label: 'HolidayCheck – Mallorca Hotel',       url: 'https://www.holidaycheck.de/hotel-search?terms=Mallorca' },
+  { provider: 'centerparcs',  label: 'Center Parcs – Ferienparks (AWIN)',   url: 'https://www.centerparcs.de/ferienparks/' },
+  { provider: 'landal',       label: 'Landal GreenParks (AWIN)',             url: 'https://www.landal.de/ferienparks/' },
+  { provider: 'roompot',      label: 'Roompot – Ferienwohnungen (AWIN)',    url: 'https://www.roompot.de/ferienwohnungen/' },
+  { provider: 'topparken',    label: 'TopParken (AWIN)',                     url: 'https://www.topparken.de/' },
+  { provider: 'sunparks',     label: 'Sunparks (AWIN)',                      url: 'https://www.sunparks.de/ferienparks/' },
+  { provider: 'eurocamp',     label: 'Eurocamp – Camping (AWIN)',            url: 'https://www.eurocamp.de/campingplatze/' },
+  { provider: 'novasol',      label: 'NOVASOL – Ferienhaus (AWIN)',          url: 'https://www.novasol.de/ferienhaeuser' },
+];
+
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 function StatCard({ label, value, sub }) {
@@ -254,6 +273,10 @@ export default function AffiliateAdminClient() {
   const [statsLoading, setStatsLoading] = useState(false);
   const [statsError, setStatsError] = useState(null);
 
+  // Test state
+  const [testResults, setTestResults] = useState({});
+  const [testRunning, setTestRunning] = useState(false);
+
   // Load settings on mount
   useEffect(() => {
     async function load() {
@@ -294,6 +317,25 @@ export default function AffiliateAdminClient() {
   useEffect(() => {
     if (activeTab === 'stats') loadStats();
   }, [activeTab, loadStats]);
+
+  const runAllTests = async () => {
+    setTestRunning(true);
+    setTestResults({});
+    for (const tc of TEST_CASES) {
+      setTestResults(prev => ({ ...prev, [tc.provider]: { status: 'running' } }));
+      try {
+        const res = await fetch(
+          `/api/admin/affiliate/test?provider=${encodeURIComponent(tc.provider)}&url=${encodeURIComponent(tc.url)}`
+        );
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        setTestResults(prev => ({ ...prev, [tc.provider]: { status: 'done', data } }));
+      } catch (err) {
+        setTestResults(prev => ({ ...prev, [tc.provider]: { status: 'error', error: err.message ?? 'Fehler' } }));
+      }
+    }
+    setTestRunning(false);
+  };
 
   const handleSave = async () => {
     setSaving(true);
@@ -348,6 +390,10 @@ export default function AffiliateAdminClient() {
         <button style={tabStyle('stats')} onClick={() => setActiveTab('stats')}>
           <BarChart2 size={14} strokeWidth={2} />
           Statistiken
+        </button>
+        <button style={tabStyle('test')} onClick={() => setActiveTab('test')}>
+          <Zap size={14} strokeWidth={2} />
+          Link-Test
         </button>
       </div>
 
@@ -564,6 +610,135 @@ export default function AffiliateAdminClient() {
               </div>
             </>
           )}
+        </div>
+      )}
+
+      {/* ── TEST TAB ─────────────────────────────────────────────────────────── */}
+      {activeTab === 'test' && (
+        <div>
+          <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '16px', marginBottom: '24px', flexWrap: 'wrap' }}>
+            <p style={{ fontSize: '14px', color: '#64748B', margin: 0, lineHeight: 1.6, flex: '1 1 200px' }}>
+              Testet für jeden Provider, ob die Affiliate-ID korrekt injiziert wird und wie der finale Link aussieht.
+              Voraussetzung: IDs müssen im Tab „Affiliate-IDs" gespeichert sein.
+            </p>
+            <button
+              onClick={runAllTests}
+              disabled={testRunning}
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: '7px',
+                padding: '10px 20px', borderRadius: '12px', border: 'none',
+                background: testRunning ? '#94A3B8' : 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
+                color: '#FFFFFF', fontSize: '14px', fontWeight: 700,
+                cursor: testRunning ? 'wait' : 'pointer', fontFamily: 'inherit',
+                flexShrink: 0,
+              }}
+            >
+              {testRunning
+                ? <RefreshCw size={14} strokeWidth={2} style={{ animation: 'spin 1s linear infinite' }} />
+                : <Zap size={14} strokeWidth={2} />
+              }
+              {testRunning ? 'Teste…' : 'Alle Provider testen'}
+            </button>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {TEST_CASES.map(tc => {
+              const p    = PROVIDERS.find(pr => pr.id === tc.provider);
+              const Icon = p?.icon ?? Hotel;
+              const res  = testResults[tc.provider];
+
+              let badge, badgeColor, badgeBg, diagText;
+              if (!res) {
+                badge = '○ Nicht getestet'; badgeColor = '#94A3B8'; badgeBg = '#F8FAFC'; diagText = null;
+              } else if (res.status === 'running') {
+                badge = '⟳ Teste…';       badgeColor = '#0EA5E9'; badgeBg = '#EFF6FF'; diagText = null;
+              } else if (res.status === 'error') {
+                badge = '✕ Verbindungsfehler'; badgeColor = '#EF4444'; badgeBg = '#FEF2F2'; diagText = res.error;
+              } else if (res.data?.summary?.ok) {
+                badge = '✓ OK';            badgeColor = '#059669'; badgeBg = '#ECFDF5'; diagText = res.data.diagnosis;
+              } else {
+                badge = '⚠ Keine ID / Problem'; badgeColor = '#D97706'; badgeBg = '#FFFBEB'; diagText = res.data?.diagnosis;
+              }
+
+              const outputUrl = res?.data?.summary?.output;
+              const inputUrl  = tc.url;
+
+              return (
+                <div key={tc.provider} style={{
+                  background: '#FFFFFF', border: '1.5px solid #E2E8F0',
+                  borderRadius: '14px', padding: '14px 18px',
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                    {/* Icon */}
+                    <div style={{
+                      width: '34px', height: '34px', borderRadius: '9px',
+                      background: p?.bg ?? '#F1F5F9',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                    }}>
+                      <Icon size={15} strokeWidth={2} color={p?.color ?? '#64748B'} />
+                    </div>
+
+                    {/* Content */}
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      {/* Row 1: Name + badge */}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px', flexWrap: 'wrap' }}>
+                        <span style={{ fontWeight: 700, fontSize: '13px', color: '#0F172A' }}>{tc.label}</span>
+                        <span style={{
+                          fontSize: '11px', fontWeight: 700, color: badgeColor,
+                          background: badgeBg, padding: '2px 8px', borderRadius: '20px',
+                          border: `1px solid ${badgeColor}22`,
+                        }}>
+                          {badge}
+                        </span>
+                      </div>
+
+                      {/* Row 2: Input URL */}
+                      <div style={{ fontSize: '11px', color: '#94A3B8', fontFamily: 'monospace', marginBottom: '3px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        In: {inputUrl}
+                      </div>
+
+                      {/* Row 3: Output URL (only when done) */}
+                      {res?.status === 'done' && outputUrl && (
+                        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '5px', marginBottom: '4px' }}>
+                          <span style={{ fontSize: '11px', fontFamily: 'monospace', color: res.data?.summary?.ok ? '#059669' : '#94A3B8', wordBreak: 'break-all', flex: 1 }}>
+                            → {outputUrl.length > 120 ? outputUrl.slice(0, 120) + '…' : outputUrl}
+                          </span>
+                          {res.data?.summary?.ok && (
+                            <a
+                              href={outputUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{ color: '#0EA5E9', flexShrink: 0, lineHeight: 1 }}
+                              title="Link öffnen"
+                            >
+                              <ExternalLink size={11} strokeWidth={2} />
+                            </a>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Row 4: Diagnosis */}
+                      {diagText && (
+                        <div style={{ fontSize: '11px', color: badgeColor, lineHeight: 1.5 }}>
+                          {diagText}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Legend */}
+          <div style={{ marginTop: '20px', padding: '14px 18px', background: '#F8FAFC', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+            <p style={{ fontSize: '12px', fontWeight: 700, color: '#64748B', margin: '0 0 8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Hinweise</p>
+            <ul style={{ fontSize: '12px', color: '#64748B', margin: 0, paddingLeft: '16px', lineHeight: 1.8 }}>
+              <li><strong>AWIN-Provider</strong> (Center Parcs, Landal, …): Der finale Link geht über awin1.com mit deiner AWIN Publisher-ID.</li>
+              <li><strong>Keine ID / Problem</strong>: Trage die Affiliate-ID unter „Affiliate-IDs" ein und speichere.</li>
+              <li><strong>Link öffnen</strong> (↗): Öffnet den fertigen Affiliate-Link um den Redirect live zu prüfen.</li>
+            </ul>
+          </div>
         </div>
       )}
 

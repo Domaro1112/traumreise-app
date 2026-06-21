@@ -1,14 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { isAdminRequest } from '@/lib/admin-auth';
 import { getAffiliateSettings } from '@/repositories/affiliate-settings';
-import { generateAffiliateUrl, injectAffiliateParam, AFFILIATE_PARAMS } from '@/lib/affiliate';
+import { injectAffiliateParam, AFFILIATE_PARAMS } from '@/lib/affiliate';
+import { AFFILIATE_PROVIDERS } from '@/lib/affiliate-config';
 
 /**
  * GET /api/admin/affiliate/test?provider=booking&url=https://www.booking.com/...
  *
- * Diagnose-Endpunkt: liest direkt aus der DB (kein Cache), testet die URL-Generierung
- * und gibt einen vollständigen Debug-Report zurück.
- * Nur für eingeloggte Admins zugänglich.
+ * Simuliert exakt was /go/[provider] tut:
+ * - Nicht-AWIN: injectAffiliateParam(targetUrl, param, id)
+ * - AWIN: buildUrl(targetUrl) → injectAffiliateParam(awinBase, 'awinaffid', id)
+ *
+ * Liest direkt aus DB (kein Cache). Nur für eingeloggte Admins.
  */
 export async function GET(request: NextRequest) {
   if (!await isAdminRequest(request)) {
@@ -19,7 +22,7 @@ export async function GET(request: NextRequest) {
   const inputUrl  = request.nextUrl.searchParams.get('url')
     ?? 'https://www.booking.com/index.de.html?label=test&sid=abc';
 
-  // ── 1. Direkt aus DB lesen (Cache bewusst umgangen) ──────────────────────
+  // ── 1. DB direkt lesen (Cache umgangen) ──────────────────────────────────
   let dbSettings: { provider: string; affiliate_id: string; enabled: boolean }[] = [];
   let dbError: string | null = null;
   try {
@@ -28,29 +31,38 @@ export async function GET(request: NextRequest) {
     dbError = err instanceof Error ? err.message : String(err);
   }
 
-  const providerRow = dbSettings.find(s => s.provider === provider) ?? null;
-  const affiliateId = providerRow?.affiliate_id ?? null;
-  const paramName   = (AFFILIATE_PARAMS as Record<string, string>)[provider] ?? null;
+  const providerRow  = dbSettings.find(s => s.provider === provider) ?? null;
+  const affiliateId  = providerRow?.affiliate_id ?? null;
+  const paramName    = (AFFILIATE_PARAMS as Record<string, string>)[provider] ?? null;
+  const providerConf = (AFFILIATE_PROVIDERS as Record<string, any>)[provider];
+  const isAwin       = providerConf?.network === 'awin';
 
-  // ── 2. Direkte Injektion (Logik-Test, unabhängig von DB-Lookup) ──────────
-  const directInject = affiliateId && paramName
-    ? injectAffiliateParam(inputUrl, paramName, affiliateId)
-    : null;
+  // ── 2. Finale URL berechnen (exakt wie /go/[provider]) ───────────────────
+  let finalUrl: string | null = null;
+  let buildError: string | null = null;
 
-  // ── 3. Voller generateAffiliateUrl-Durchlauf (inkl. Cache-Pfad) ──────────
-  let generatedUrl: string | null = null;
-  let generateError: string | null = null;
-  try {
-    generatedUrl = await generateAffiliateUrl(provider, inputUrl);
-  } catch (err) {
-    generateError = err instanceof Error ? err.message : String(err);
+  if (affiliateId && paramName && providerRow?.enabled) {
+    try {
+      if (isAwin && providerConf?.buildUrl) {
+        // AWIN: erst AWIN-Deeplink bauen (mit ued= als Ziel-URL), dann awinaffid injizieren
+        const awinBase = providerConf.buildUrl(inputUrl);
+        finalUrl = injectAffiliateParam(awinBase, 'awinaffid', affiliateId);
+      } else {
+        // Nicht-AWIN: Affiliate-Parameter direkt in Ziel-URL injizieren
+        finalUrl = injectAffiliateParam(inputUrl, paramName, affiliateId);
+      }
+    } catch (err) {
+      buildError = err instanceof Error ? err.message : String(err);
+    }
   }
 
-  const aidInjected = !!(
-    paramName &&
-    affiliateId &&
-    generatedUrl?.includes(`${paramName}=${affiliateId}`)
-  );
+  const aidInjected = !!(paramName && affiliateId && finalUrl?.includes(`${paramName}=${affiliateId}`));
+
+  // ── 3. Fallback-URL: was passiert ohne Affiliate-ID? ─────────────────────
+  // Für AWIN: direkte Provider-URL (targetUrl). Für andere: targetUrl ohne ID.
+  const fallbackUrl = isAwin
+    ? inputUrl
+    : inputUrl;
 
   // ── 4. Diagnose ──────────────────────────────────────────────────────────
   let diagnosis: string;
@@ -59,13 +71,19 @@ export async function GET(request: NextRequest) {
   } else if (!providerRow) {
     diagnosis = `❌ Kein Eintrag für Provider "${provider}" in affiliate_settings. Migration ausführen!`;
   } else if (!affiliateId) {
-    diagnosis = `❌ affiliate_id ist leer. Im Admin-Panel unter Monetarisierung speichern.`;
+    diagnosis = `⚠️ affiliate_id ist leer. Im Admin-Panel unter Monetarisierung eintragen.`;
   } else if (!providerRow.enabled) {
     diagnosis = `❌ Provider "${provider}" ist deaktiviert (enabled = false).`;
+  } else if (buildError) {
+    diagnosis = `❌ URL-Aufbau fehlgeschlagen: ${buildError}`;
   } else if (aidInjected) {
-    diagnosis = `✅ Korrekt: ${paramName}=${affiliateId} in URL injiziert.`;
+    if (isAwin) {
+      diagnosis = `✅ AWIN-Deeplink korrekt: awinaffid=${affiliateId} injiziert. Weiterleitung über awin1.com.`;
+    } else {
+      diagnosis = `✅ Korrekt: ${paramName}=${affiliateId} in URL injiziert.`;
+    }
   } else {
-    diagnosis = `❌ Unbekannter Fehler — URL wurde nicht modifiziert. generateError: ${generateError ?? 'keiner'}`;
+    diagnosis = `❌ Unbekannter Fehler — URL wurde nicht modifiziert.`;
   }
 
   return NextResponse.json({
@@ -73,11 +91,13 @@ export async function GET(request: NextRequest) {
       provider,
       input_url:      inputUrl,
       expected_param: paramName,
+      is_awin:        isAwin,
+      merchant_id:    isAwin ? (providerConf?.awinMerchantId ?? null) : null,
     },
     db: {
       error:        dbError,
       provider_row: providerRow,
-      affiliate_id: affiliateId,
+      affiliate_id: affiliateId ? '***' + affiliateId.slice(-4) : '(leer)',
       enabled:      providerRow?.enabled ?? null,
       all_entries:  dbSettings.map(s => ({
         provider:     s.provider,
@@ -86,17 +106,17 @@ export async function GET(request: NextRequest) {
       })),
     },
     result: {
-      direct_inject:   directInject,
-      generated_url:   generatedUrl,
-      generate_error:  generateError,
-      aid_injected:    aidInjected,
+      final_url:    finalUrl,
+      fallback_url: !finalUrl ? fallbackUrl : null,
+      build_error:  buildError,
+      aid_injected: aidInjected,
     },
     diagnosis,
-    // Kurzform für schnelle Augen-Diagnose
     summary: {
-      input:   inputUrl,
-      output:  generatedUrl,
-      ok:      aidInjected,
+      input:    inputUrl,
+      output:   finalUrl ?? `(kein Redirect — Direkt zu: ${fallbackUrl})`,
+      ok:       aidInjected,
+      is_awin:  isAwin,
     },
   }, { status: 200 });
 }
