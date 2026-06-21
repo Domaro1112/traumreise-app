@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 const CONSENT_TEXT =
   'Ich möchte den ApeAround-Newsletter erhalten und gelegentlich Reiseideen, Tipps, ' +
-  'Angebote und Neuigkeiten per E-Mail bekommen. Ich kann mich jederzeit wieder abmelden. ' +
+  'Angebote und Neuigkeiten <b>für Alleinerziehende per E-Mail</b> per E-Mail bekommen. Ich kann mich jederzeit wieder abmelden. ' +
   'Die Anmeldung wird erst nach Bestätigung per E-Mail aktiv.';
 
 export default function EmailGate({ sessionId, onComplete }) {
