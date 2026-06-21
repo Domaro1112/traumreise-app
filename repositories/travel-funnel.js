@@ -1,6 +1,6 @@
 import { createServerClient } from '@/lib/supabase/server';
 
-export async function createSession({ moodSelection, season, budget, duration, personalNote, userAgent, referrer }) {
+export async function createSession({ moodSelection, season, budget, duration, personalNote, userAgent, referrer, funnelType, source }) {
   const supabase = createServerClient();
   const patch = {
     mood_selection: moodSelection ?? [],
@@ -11,6 +11,8 @@ export async function createSession({ moodSelection, season, budget, duration, p
   if (budget)       patch.budget        = budget;
   if (duration)     patch.duration      = duration;
   if (personalNote) patch.personal_note = personalNote;
+  if (funnelType)   patch.funnel_type   = funnelType;
+  if (source)       patch.source        = source;
 
   const { data, error } = await supabase
     .from('travel_funnel_sessions')
@@ -44,7 +46,7 @@ export async function getSession(sessionId) {
   const supabase = createServerClient();
   const { data, error } = await supabase
     .from('travel_funnel_sessions')
-    .select('id, mood_selection, season, budget, duration, personal_note, generated_destinations, email, email_submitted_at')
+    .select('id, mood_selection, season, budget, duration, personal_note, funnel_type, source, generated_destinations, email, email_submitted_at')
     .eq('id', sessionId)
     .single();
   if (error) throw new Error(error.message);

@@ -513,9 +513,9 @@ const HOTEL_PROVIDERS = [
   { key: 'check24',      name: 'CHECK24',       sub: 'Angebote vergleichen', logo: '/images/providers/check24.png',      Icon: Briefcase, accent: '#003399', bg: '#EEF2FF', border: '#C7D2FE',
     getUrl: r => r.check24Url      || `https://hotel.check24.de/` },
   { key: 'expedia',      name: 'Expedia',       sub: 'Deals entdecken',      logo: '/images/providers/expedia.png',      Icon: Plane,     accent: '#C9920A', bg: '#FFFBEB', border: '#FDE68A',
-    getUrl: r => `https://www.expedia.de/Hotel-Search?destination=${encodeURIComponent((r.destination||'')+', '+(r.country||''))}` },
+    getUrl: r => r.expediaUrl      || `https://www.expedia.de/Hotel-Search?destination=${encodeURIComponent((r.destination||'')+', '+(r.country||''))}` },
   { key: 'holidaycheck', name: 'HolidayCheck',  sub: 'Bewertungen lesen',    logo: '/images/providers/holidaycheck.png', Icon: Award,     accent: '#D95E00', bg: '#FFF7ED', border: '#FED7AA',
-    getUrl: r => `https://www.holidaycheck.de/hotel-search?countryId=0&terms=${encodeURIComponent(r.destination||'')}` },
+    getUrl: r => r.holidaycheckUrl || `https://www.holidaycheck.de/hotel-search?countryId=0&terms=${encodeURIComponent(r.destination||'')}` },
 ];
 
 export default function TravelResultView({ results, personality, interests, packingList, surprise, duration, budget, phase2Loading, onReset, onEmail }) {

@@ -19,6 +19,8 @@ export async function POST(request: NextRequest) {
     adults?: number;
     children?: number;
     moodIds?: string[];
+    funnel_type?: string;
+    source?: string;
   };
   try {
     body = await request.json();
@@ -26,7 +28,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Ungültige Anfrage.' }, { status: 400 });
   }
 
-  const { freeText, interests, budget, duration, season, adults, children, moodIds } = body;
+  const { freeText, interests, budget, duration, season, adults, children, moodIds, funnel_type, source } = body;
 
   const BUDGET_META: Record<string, { label: string; range: string; max: number }> = {
     low:  { label: 'Budget',       range: 'bis 500 €',     max: 500  },
@@ -173,6 +175,8 @@ Alle Texte auf Deutsch. Traits-Werte 0–100. Verwende realistische Marktpreise 
       personalNote: freeText || undefined,
       userAgent,
       referrer,
+      funnelType: funnel_type || undefined,
+      source:     source      || undefined,
     });
     await saveAnalysis(session.id, parsed);
     sessionId = session.id;

@@ -40,6 +40,8 @@ export async function POST(request: NextRequest) {
       personalNote:  body.personalNote,
       userAgent,
       referrer,
+      funnelType:    undefined,
+      source:        undefined,
     });
 
     return NextResponse.json({ sessionId: session.id });
