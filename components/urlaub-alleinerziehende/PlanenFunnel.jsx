@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Container from '@/components/layout/Container';
 
@@ -361,6 +361,13 @@ export default function PlanenFunnel() {
   const [answers,  setAnswers]  = useState({ priorities: [] });
   const [phase,    setPhase]    = useState('questions'); // 'questions' | 'preview' | 'loading' | 'error'
   const [errorMsg, setErrorMsg] = useState('');
+
+  const initialRenderRef = useRef(true);
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (initialRenderRef.current) { initialRenderRef.current = false; return; }
+    requestAnimationFrame(() => { window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }); });
+  }, [step]);
 
   const totalSteps   = STEPS.length;
   const currentStep  = STEPS[step];
