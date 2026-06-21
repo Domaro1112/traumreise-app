@@ -138,12 +138,18 @@ export default function CreatorProfilesListClient({ initialProfiles }) {
           {filtered.map(p => {
             const isLoading = loading?.startsWith(p.id);
             return (
-              <div key={p.id} style={{
-                background: '#FFFFFF', border: '1.5px solid #E2E8F0',
-                borderRadius: '14px', padding: '14px 18px',
-                display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap',
-                opacity: isLoading ? 0.7 : 1, transition: 'opacity 0.15s',
-              }}>
+              <div
+                key={p.id}
+                id={p.status === 'submitted' ? 'submitted-profiles' : undefined}
+                style={{
+                  background: p.status === 'submitted' ? 'linear-gradient(135deg, rgba(14,165,233,0.04) 0%, #FFFFFF 100%)' : '#FFFFFF',
+                  border: p.status === 'submitted' ? '1.5px solid rgba(14,165,233,0.35)' : '1.5px solid #E2E8F0',
+                  borderRadius: '14px', padding: '14px 18px',
+                  display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap',
+                  opacity: isLoading ? 0.7 : 1, transition: 'opacity 0.15s',
+                  boxShadow: p.status === 'submitted' ? '0 0 0 3px rgba(14,165,233,0.08)' : 'none',
+                }}
+              >
                 {/* Info */}
                 <div style={{ flex: 1, minWidth: '180px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '3px' }}>

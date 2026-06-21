@@ -10,9 +10,15 @@ export default async function AdminCreatorProfilesPage() {
     const supabase = createServerClient();
     const { data } = await supabase
       .from('creator_profiles')
-      .select('id, slug, display_name, creator_type, status, created_at, published_at, short_bio, application_id')
+      .select('id, slug, display_name, creator_type, status, created_at, published_at, short_bio, application_id, submitted_at')
       .order('created_at', { ascending: false });
-    profiles = data ?? [];
+
+    // submitted-Profile zuerst, dann nach created_at absteigend
+    profiles = (data ?? []).sort((a, b) => {
+      if (a.status === 'submitted' && b.status !== 'submitted') return -1;
+      if (a.status !== 'submitted' && b.status === 'submitted') return 1;
+      return 0; // Reihenfolge aus DB-Query beibehalten
+    });
   } catch {}
 
   const counts = {
@@ -56,6 +62,44 @@ export default async function AdminCreatorProfilesPage() {
           ))}
         </div>
       </div>
+
+      {/* Banner für eingereichte Profile */}
+      {counts.submitted > 0 && (
+        <div style={{
+          background: 'linear-gradient(135deg, rgba(14,165,233,0.08) 0%, rgba(6,182,212,0.06) 100%)',
+          border: '1.5px solid rgba(14,165,233,0.30)',
+          borderRadius: '14px',
+          padding: '14px 20px',
+          marginBottom: '20px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px',
+          flexWrap: 'wrap',
+        }}>
+          <div style={{ fontSize: '20px' }}>📋</div>
+          <div style={{ flex: 1, minWidth: '200px' }}>
+            <p style={{ margin: 0, fontSize: '14px', fontWeight: 700, color: '#0EA5E9' }}>
+              {counts.submitted === 1
+                ? '1 Creator-Profil wartet auf Prüfung'
+                : `${counts.submitted} Creator-Profile warten auf Prüfung`}
+            </p>
+            <p style={{ margin: '2px 0 0', fontSize: '13px', color: '#64748B' }}>
+              Eingereichte Profile sind unten hervorgehoben und oben in der Liste zu finden.
+            </p>
+          </div>
+          <a
+            href="#submitted-profiles"
+            style={{
+              padding: '8px 18px', borderRadius: '10px',
+              background: '#0EA5E9', color: '#FFFFFF',
+              fontSize: '13px', fontWeight: 700, textDecoration: 'none',
+              flexShrink: 0,
+            }}
+          >
+            Jetzt prüfen →
+          </a>
+        </div>
+      )}
 
       <CreatorProfilesListClient initialProfiles={profiles} />
     </div>

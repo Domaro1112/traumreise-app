@@ -142,7 +142,7 @@ export default async function AdminDashboard() {
       color:    '#059669',
       bgColor:  '#ECFDF5',
       href:     '/admin/creator-profiles',
-      hint:     profileSubmitted > 0 ? `${profileSubmitted} zur Prüfung` : undefined,
+      hint:     profileSubmitted > 0 ? `${profileSubmitted} ${profileSubmitted === 1 ? 'Profil wartet' : 'Profile warten'} auf Prüfung` : undefined,
     },
   ];
 

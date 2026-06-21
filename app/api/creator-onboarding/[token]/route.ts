@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase/server';
+import { sendCreatorProfileSubmittedNotification } from '@/lib/email';
 
 type Params = { params: Promise<{ token: string }> };
 
@@ -70,10 +71,10 @@ export async function PATCH(req: NextRequest, { params }: Params) {
   try {
     const supabase = createServerClient();
 
-    // Erst vollständiges Profil laden (inkl. ID und status für Checks)
+    // Erst vollständiges Profil laden (inkl. ID und status für Checks + Notification)
     const { data: fullProfile } = await supabase
       .from('creator_profiles')
-      .select('id, slug, status, onboarding_token_expires_at, onboarding_completed_at')
+      .select('id, slug, display_name, creator_type, status, submitted_at, onboarding_token_expires_at, onboarding_completed_at')
       .eq('onboarding_token', token)
       .single();
 
@@ -188,12 +189,30 @@ export async function PATCH(req: NextRequest, { params }: Params) {
       }
     }
 
+    // Prüfen ob das die erste Einreichung ist (für Admin-Notification)
+    const isFirstSubmit = update.status === 'submitted'
+      && fullProfile.status !== 'submitted'
+      && !fullProfile.submitted_at;
+
     const { error: updateErr } = await supabase
       .from('creator_profiles')
       .update(update)
       .eq('id', fullProfile.id);
 
     if (updateErr) throw updateErr;
+
+    // Admin-Notification bei erster Einreichung (fire-and-forget, darf nicht Request blockieren)
+    if (isFirstSubmit) {
+      const submittedAt = (update.submitted_at as string) ?? new Date().toISOString();
+      sendCreatorProfileSubmittedNotification({
+        id:           fullProfile.id,
+        display_name: (typeof update.display_name === 'string' ? update.display_name : fullProfile.display_name) ?? '',
+        slug:         (typeof update.slug === 'string' ? update.slug : fullProfile.slug) ?? '',
+        creator_type: (typeof update.creator_type === 'string' ? update.creator_type : fullProfile.creator_type) ?? null,
+        submitted_at: submittedAt,
+      }).catch(e => console.error('[CREATOR_NOTIFY] Fire-and-forget error:', e));
+    }
+
     return NextResponse.json({ success: true });
   } catch (err) {
     console.error('[creator-onboarding PATCH]', err);

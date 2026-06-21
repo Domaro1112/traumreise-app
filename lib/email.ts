@@ -53,6 +53,115 @@ export async function sendNewsletterConfirmation(
   }
 }
 
+// ── Admin-Benachrichtigung: Creator-Profil eingereicht ────────────────────────
+
+interface CreatorSubmittedPayload {
+  id:           string;
+  display_name: string;
+  slug:         string;
+  creator_type: string | null;
+  submitted_at: string;
+}
+
+export async function sendCreatorProfileSubmittedNotification(
+  profile: CreatorSubmittedPayload,
+): Promise<MailResult> {
+  const key        = process.env.RESEND_API_KEY;
+  const notifyMail = process.env.CREATOR_REVIEW_NOTIFY_EMAIL;
+
+  if (!notifyMail) {
+    console.log('[CREATOR_NOTIFY] Creator profile submitted, but no CREATOR_REVIEW_NOTIFY_EMAIL configured. Skipping mail.');
+    return { sent: false, error: 'CREATOR_REVIEW_NOTIFY_EMAIL not configured' };
+  }
+  if (!key) {
+    console.log('[CREATOR_NOTIFY] Creator profile submitted, but RESEND_API_KEY not configured. Skipping mail.');
+    return { sent: false, error: 'RESEND_API_KEY not configured' };
+  }
+
+  const adminUrl   = `${SITE_URL}/admin/creator-profiles/${profile.id}`;
+  const submittedAt = new Date(profile.submitted_at).toLocaleString('de-DE', {
+    day: '2-digit', month: '2-digit', year: 'numeric',
+    hour: '2-digit', minute: '2-digit',
+  });
+
+  try {
+    const resend = new Resend(key);
+    const { data, error } = await resend.emails.send({
+      from:    FROM_ADDRESS,
+      to:      notifyMail,
+      subject: 'Neues Creator-Profil wartet auf Prüfung',
+      html:    buildCreatorSubmittedHtml({ ...profile, adminUrl, submittedAt }),
+    });
+
+    if (error) {
+      const msg = `Resend API-Fehler: ${(error as Record<string, unknown>)['message'] ?? JSON.stringify(error)}`;
+      console.error('[CREATOR_NOTIFY] ❌', msg);
+      return { sent: false, error: msg };
+    }
+
+    console.log(`[CREATOR_NOTIFY] ✅ Admin-Mail gesendet. Resend-ID: ${data?.id}`);
+    return { sent: true, id: data?.id ?? 'unknown' };
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error('[CREATOR_NOTIFY] ❌ Exception:', msg);
+    return { sent: false, error: msg };
+  }
+}
+
+function buildCreatorSubmittedHtml(p: {
+  display_name: string; slug: string; creator_type: string | null;
+  submittedAt: string; adminUrl: string;
+}): string {
+  return `<!DOCTYPE html>
+<html lang="de">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#F8FAFC;font-family:system-ui,-apple-system,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#F8FAFC;padding:40px 16px;">
+    <tr><td align="center">
+      <table width="560" cellpadding="0" cellspacing="0" style="background:#FFFFFF;border-radius:16px;border:1px solid #E2E8F0;overflow:hidden;max-width:100%;">
+        <tr><td style="background:linear-gradient(135deg,#0F172A 0%,#12324a 60%,#0EA5E9 160%);padding:28px 32px;text-align:center;">
+          <p style="margin:0;font-size:24px;">🐒✈️</p>
+          <p style="margin:6px 0 0;color:#38BDF8;font-weight:700;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;">ApeAround Admin</p>
+        </td></tr>
+        <tr><td style="padding:32px 32px 24px;">
+          <h1 style="margin:0 0 8px;font-size:20px;font-weight:800;color:#0F172A;line-height:1.3;">Neues Creator-Profil zur Prüfung</h1>
+          <p style="margin:0 0 24px;color:#475569;font-size:15px;line-height:1.6;">Ein Creator hat sein Profil vollständig ausgefüllt und zur Prüfung eingereicht.</p>
+          <table width="100%" cellpadding="0" cellspacing="0" style="background:#F8FAFC;border-radius:12px;border:1px solid #E2E8F0;overflow:hidden;margin:0 0 24px;">
+            <tr><td style="padding:14px 18px;border-bottom:1px solid #E2E8F0;">
+              <p style="margin:0;font-size:12px;color:#94A3B8;text-transform:uppercase;letter-spacing:0.06em;font-weight:700;">Creator-Name</p>
+              <p style="margin:4px 0 0;font-size:15px;color:#0F172A;font-weight:700;">${p.display_name}</p>
+            </td></tr>
+            <tr><td style="padding:14px 18px;border-bottom:1px solid #E2E8F0;">
+              <p style="margin:0;font-size:12px;color:#94A3B8;text-transform:uppercase;letter-spacing:0.06em;font-weight:700;">Profil-Slug</p>
+              <p style="margin:4px 0 0;font-size:14px;color:#64748B;font-family:monospace;">/creator/${p.slug}</p>
+            </td></tr>
+            ${p.creator_type ? `<tr><td style="padding:14px 18px;border-bottom:1px solid #E2E8F0;">
+              <p style="margin:0;font-size:12px;color:#94A3B8;text-transform:uppercase;letter-spacing:0.06em;font-weight:700;">Creator-Typ</p>
+              <p style="margin:4px 0 0;font-size:14px;color:#0F172A;">${p.creator_type}</p>
+            </td></tr>` : ''}
+            <tr><td style="padding:14px 18px;">
+              <p style="margin:0;font-size:12px;color:#94A3B8;text-transform:uppercase;letter-spacing:0.06em;font-weight:700;">Eingereicht am</p>
+              <p style="margin:4px 0 0;font-size:14px;color:#0F172A;">${p.submittedAt} Uhr</p>
+            </td></tr>
+          </table>
+          <div style="text-align:center;">
+            <a href="${p.adminUrl}" style="display:inline-block;padding:13px 28px;border-radius:12px;background:linear-gradient(135deg,#0EA5E9,#06B6D4);color:#FFFFFF;font-weight:700;font-size:15px;text-decoration:none;">
+              Profil jetzt prüfen →
+            </a>
+          </div>
+        </td></tr>
+        <tr><td style="background:#F8FAFC;padding:14px 32px;text-align:center;">
+          <p style="margin:0;color:#94A3B8;font-size:11px;">ApeAround Admin · Diese E-Mail wurde automatisch generiert.</p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`.trim();
+}
+
+// ── Newsletter-Bestätigung ─────────────────────────────────────────────────────
+
 function buildHtml(confirmUrl: string, unsubUrl: string): string {
   return `<!DOCTYPE html>
 <html lang="de">

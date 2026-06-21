@@ -129,7 +129,7 @@ export default function CreatorOnboardingForm({ initialProfile, token }) {
           <div style={{ fontSize: '56px', marginBottom: '24px' }}>🎉</div>
           <h1 style={headingStyle}>Danke, {form.display_name}!</h1>
           <p style={{ fontSize: '16px', color: '#64748B', lineHeight: 1.7, margin: '0 0 32px' }}>
-            Dein Creator-Profil wurde zur Prüfung eingereicht. Wir melden uns, sobald es freigegeben wurde.
+            Dein Profil wurde zur Prüfung eingereicht. ApeAround prüft deine Angaben und meldet sich bei dir, sobald dein Profil freigegeben wurde.
           </p>
           <div style={{ background: '#F0FDF4', borderRadius: '16px', padding: '20px 24px', border: '1px solid #BBF7D0' }}>
             <p style={{ fontSize: '14px', color: '#059669', margin: 0, fontWeight: 600 }}>
