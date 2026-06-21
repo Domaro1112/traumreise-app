@@ -1,14 +1,15 @@
 import {
-  MapPin, FileText, Users, TrendingUp, Zap, Edit3,
+  MapPin, FileText, Users, TrendingUp, Zap, Edit3, Star,
 } from 'lucide-react';
 import Link from 'next/link';
 import AdminStatCard from '@/components/admin/AdminStatCard';
 import QuickLinksSection from '@/components/admin/QuickLinksSection';
 import { listDestinationsAdmin } from '@/repositories/destinations-cms';
 import { listBlogAdmin } from '@/repositories/blog-cms';
+import { createServerClient } from '@/lib/supabase/server';
 
 export const metadata = {
-  title: 'Dashboard | Reisemonkey Admin',
+  title: 'Dashboard | ApeAround Admin',
 };
 
 const STATUS_BADGE = {
@@ -20,12 +21,23 @@ const STATUS_BADGE = {
 export default async function AdminDashboard() {
   let destinations = [];
   let articles = null; // null = Fehlerfall, [] = erfolgreich aber leer
+  let creatorTotal = 0;
+  let creatorNew   = 0;
   try {
     destinations = await listDestinationsAdmin();
   } catch { /* Supabase not yet available */ }
   try {
     articles = await listBlogAdmin();
   } catch { /* Supabase not yet available */ }
+  try {
+    const supabase = createServerClient();
+    const [{ count: total }, { count: newCount }] = await Promise.all([
+      supabase.from('creator_applications').select('*', { count: 'exact', head: true }),
+      supabase.from('creator_applications').select('*', { count: 'exact', head: true }).eq('status', 'new'),
+    ]);
+    creatorTotal = total ?? 0;
+    creatorNew   = newCount ?? 0;
+  } catch { /* Tabelle noch nicht angelegt */ }
 
   const totalDests         = destinations.length;
   const publishedCount     = destinations.filter(d => d.status === 'published').length;
@@ -97,6 +109,16 @@ export default async function AdminDashboard() {
       color:    '#E2001A',
       bgColor:  '#FEF2F2',
     },
+    {
+      title:    'Creator-Bewerbungen',
+      value:    String(creatorNew || '–'),
+      subtitle: `${creatorTotal} gesamt · ${creatorNew} neu`,
+      icon:     Star,
+      color:    '#7C3AED',
+      bgColor:  '#F5F3FF',
+      href:     '/admin/creator-applications',
+      hint:     creatorNew > 0 ? 'Neue Bewerbungen prüfen' : undefined,
+    },
   ];
 
   const preview = destinations.slice(0, 8);
@@ -116,7 +138,7 @@ export default async function AdminDashboard() {
           Willkommen im Admin-Bereich
         </h2>
         <p style={{ fontSize: '14px', color: '#64748B', margin: 0 }}>
-          Hier verwaltest du Inhalte, SEO-Daten, Leads und Affiliate-Statistiken von Reisemonkey.
+          Hier verwaltest du Inhalte, SEO-Daten, Leads und Affiliate-Statistiken von ApeAround.
         </p>
       </div>
 

@@ -1,7 +1,8 @@
+import Link from 'next/link';
 import { TrendingUp } from 'lucide-react';
 
 /**
- * @param {{ title: string, value: string, subtitle?: string, icon: React.ComponentType, color?: string, bgColor?: string, trend?: string }} props
+ * @param {{ title: string, value: string, subtitle?: string, icon: React.ComponentType, color?: string, bgColor?: string, trend?: string, href?: string, hint?: string }} props
  */
 export default function AdminStatCard({
   title,
@@ -11,19 +12,26 @@ export default function AdminStatCard({
   color    = '#0EA5E9',
   bgColor  = '#EFF6FF',
   trend,
+  href,
+  hint,
 }) {
-  return (
-    <div style={{
-      background: '#FFFFFF',
-      borderRadius: '16px',
-      border: '1.5px solid #E2E8F0',
-      padding: '20px 22px',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '12px',
-      boxShadow: '0 2px 8px rgba(15,23,42,0.05)',
-      transition: 'box-shadow 0.15s ease',
-    }}>
+  const cardStyle = {
+    background: '#FFFFFF',
+    borderRadius: '16px',
+    border: '1.5px solid #E2E8F0',
+    padding: '20px 22px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+    boxShadow: '0 2px 8px rgba(15,23,42,0.05)',
+    transition: 'box-shadow 0.15s ease, border-color 0.15s ease',
+    textDecoration: 'none',
+    color: 'inherit',
+    ...(href ? { cursor: 'pointer' } : {}),
+  };
+
+  const inner = (
+    <>
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
         <div>
           <p style={{ fontSize: '12px', fontWeight: 600, color: '#94A3B8', letterSpacing: '0.05em', textTransform: 'uppercase', margin: '0 0 8px' }}>
@@ -75,6 +83,29 @@ export default function AdminStatCard({
           )}
         </div>
       )}
+      {hint && (
+        <p style={{
+          fontSize: '11px', fontWeight: 600, color,
+          margin: 0, background: bgColor,
+          padding: '5px 10px', borderRadius: '8px',
+          display: 'inline-block', alignSelf: 'flex-start',
+        }}>
+          {hint}
+        </p>
+      )}
+    </>
+  );
+
+  if (href) {
+    return (
+      <Link href={href} style={cardStyle}>
+        {inner}
+      </Link>
+    );
+  }
+  return (
+    <div style={cardStyle}>
+      {inner}
     </div>
   );
 }
