@@ -342,7 +342,7 @@ export default function TravelFinderBox() {
             >
               <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                 <Plane size={18} strokeWidth={2} />
-                Traumreise finden
+                Traumurlaub finden
               </span>
             </Button>
             <p style={{ marginTop: '12px', fontSize: '13px', color: '#94A3B8', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>

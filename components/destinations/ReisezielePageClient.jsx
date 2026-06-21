@@ -412,7 +412,7 @@ export default function ReisezielePageClient({ destinations = [] }) {
                   onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.15)'; }}
                 >
                   <Zap size={14} strokeWidth={2} />
-                  Traumreise finden
+                  Traumurlaub finden
                 </Link>
               </div>
             </aside>

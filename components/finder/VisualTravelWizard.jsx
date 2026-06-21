@@ -92,7 +92,7 @@ function CTASection({ canSubmit, onSubmit, onBack }) {
           }}
         >
           <Plane size={18} strokeWidth={2.5} />
-          Meine Traumreise finden
+          Meinen Traumurlaub finden
           <Sparkles size={16} strokeWidth={2} />
         </button>
 

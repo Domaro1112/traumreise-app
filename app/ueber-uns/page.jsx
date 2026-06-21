@@ -672,7 +672,7 @@ export default function UeberUns() {
                 <Button href="/#reiseplaner" size="lg">
                   <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <Plane size={17} strokeWidth={2} />
-                    Traumreise finden
+                    Traumurlaub finden
                   </span>
                 </Button>
               </div>

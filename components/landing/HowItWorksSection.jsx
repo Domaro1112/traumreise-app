@@ -23,7 +23,7 @@ export default function HowItWorksSection() {
           label="Dein Weg zum Traumurlaub"
           title="In 3 einfachen Schritten"
           titleHighlight="zu deiner Traumreise"
-          subtitle="Keine langen Formulare, kein Stress. Einfach erzählen, Analyse starten, ...Traumreise finden."
+          subtitle="Keine langen Formulare, kein Stress. Einfach erzählen, Analyse starten, ...Traumurlaub finden."
         />
 
         <div

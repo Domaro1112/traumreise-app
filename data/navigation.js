@@ -26,6 +26,7 @@ export const footerNav = {
     { label: 'Über uns', href: '/ueber-uns' },
     { label: 'Kontakt', href: '/kontakt' },
     { label: 'Partner werden', href: '/partner-werden' },
+    { label: 'Creator werden', href: '/creator-werden' },
   ],
 };
 

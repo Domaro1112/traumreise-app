@@ -552,7 +552,7 @@ export default function BlogPageClient({ articles, categories: _ignored }) {
               </p>
               <Link href="/#reiseplaner" style={{ display: 'inline-flex', alignItems: 'center', gap: '9px', padding: '15px 30px', borderRadius: '14px', background: '#FFFFFF', color: '#0284C7', fontSize: '15px', fontWeight: 800, fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', textDecoration: 'none', boxShadow: '0 8px 32px rgba(0,0,0,0.20)' }}>
                 <Plane size={16} strokeWidth={2.5} />
-                Traumreise finden
+                Traumurlaub finden
                 <ArrowRight size={15} strokeWidth={2.5} />
               </Link>
               <p style={{ marginTop: '12px', fontSize: '12px', color: 'rgba(255,255,255,0.45)' }}>Kostenlos · Keine Anmeldung · Sofortige Ergebnisse</p>

@@ -138,7 +138,7 @@ export default function HeroSection() {
             <Button href="#reiseplaner" size="lg">
               <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Plane size={18} strokeWidth={2} />
-                Traumreise finden
+                Traumurlaub finden
               </span>
             </Button>
             <Button
