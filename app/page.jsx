@@ -8,8 +8,7 @@ import PartnerTrustSection from '@/components/landing/PartnerTrustSection';
 import HowItWorksSection from '@/components/landing/HowItWorksSection';
 import NewsletterSection from '@/components/landing/NewsletterSection';
 import LatestBlogArticles from '@/components/landing/LatestBlogArticles';
-import AlleinerziehendeTeaserSection from '@/components/landing/AlleinerziehendeTeaserSection';
-import MotorcycleTravelTeaserSection from '@/components/landing/MotorcycleTravelTeaserSection';
+import SpecialTeaserGrid from '@/components/landing/SpecialTeaserGrid';
 import { listActiveSuggestions } from '@/repositories/homepage-suggestions';
 import { FALLBACK_SUGGESTIONS } from '@/lib/homepage-suggestions';
 
@@ -38,8 +37,7 @@ export default async function LandingPage() {
         <DestinationCards suggestions={suggestions} />
         <PartnerTrustSection />
         <LatestBlogArticles />
-        <AlleinerziehendeTeaserSection />
-        <MotorcycleTravelTeaserSection />
+        <SpecialTeaserGrid />
         <HowItWorksSection />
         <NewsletterSection />
       </main>
