@@ -5,7 +5,7 @@ export default function MotorcycleHero() {
     <>
       <style>{`
         .moto-hero-bg {
-          background-position: right center;
+          background-position: right 20%;
         }
         .moto-hero-overlay {
           background: linear-gradient(
@@ -18,7 +18,7 @@ export default function MotorcycleHero() {
         }
         @media (max-width: 768px) {
           .moto-hero-bg {
-            background-position: 68% center;
+            background-position: 68% 25%;
           }
           .moto-hero-overlay {
             background: linear-gradient(
