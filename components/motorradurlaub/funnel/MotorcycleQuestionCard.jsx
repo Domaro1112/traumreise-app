@@ -1,20 +1,142 @@
 'use client';
 
-const CHECK_ICON = (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <polyline points="20 6 9 17 4 12" />
-  </svg>
-);
+import { useState } from 'react';
+
+// ── VisualCard ──────────────────────────────────────────────────────────────
+// Matches the card style used in HomeTravelWizard and PlanenFunnel.
+// Height is controlled by the global .funnel-visual-card CSS class
+// (140px → 160px → 180px at responsive breakpoints).
+
+function VisualCard({ selected, onClick, img, fallbackImg, bg, label, hint }) {
+  const [imgSrc, setImgSrc] = useState(img || fallbackImg || null);
+
+  function handleError() {
+    if (fallbackImg && imgSrc !== fallbackImg) setImgSrc(fallbackImg);
+    else setImgSrc(null);
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="funnel-visual-card"
+      style={{
+        position: 'relative',
+        overflow: 'hidden',
+        borderRadius: '16px',
+        border: selected ? '2.5px solid #0EA5E9' : '2.5px solid transparent',
+        padding: 0,
+        display: 'block',
+        width: '100%',
+        cursor: 'pointer',
+        backgroundColor: bg || '#162040',
+        boxShadow: selected
+          ? '0 0 0 3px rgba(14,165,233,0.50), 0 0 0 6px rgba(14,165,233,0.14), 0 10px 28px rgba(0,0,0,0.22)'
+          : '0 3px 14px rgba(0,0,0,0.18)',
+        transition: 'border-color 0.18s ease, box-shadow 0.18s ease',
+        textAlign: 'left',
+        fontFamily: 'var(--font-heading,"Poppins",system-ui,sans-serif)',
+      }}
+    >
+      {imgSrc && (
+        <>
+          {/* Hidden probe triggers onError fallback before the visible div loads */}
+          <img
+            key={imgSrc}
+            src={imgSrc}
+            alt=""
+            aria-hidden="true"
+            onError={handleError}
+            style={{ position: 'absolute', width: 0, height: 0, opacity: 0, pointerEvents: 'none' }}
+          />
+          <div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              inset: '-1px',
+              backgroundImage: `url(${imgSrc})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+        </>
+      )}
+
+      {/* Dark gradient overlay — keeps text readable on any photo */}
+      <div aria-hidden="true" style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.42) 52%, rgba(0,0,0,0.12) 100%)',
+      }} />
+
+      {/* Label + hint */}
+      <div style={{
+        position: 'absolute',
+        bottom: 0, left: 0, right: 0,
+        padding: '8px 12px 13px',
+        zIndex: 2,
+      }}>
+        <div style={{
+          fontSize: '13px',
+          fontWeight: 700,
+          color: '#fff',
+          textShadow: '0 1px 4px rgba(0,0,0,0.60)',
+          lineHeight: 1.3,
+          letterSpacing: '0.01em',
+        }}>
+          {label}
+        </div>
+        {hint && (
+          <div style={{
+            fontSize: '11px',
+            color: 'rgba(255,255,255,0.65)',
+            marginTop: '2px',
+            lineHeight: 1.2,
+          }}>
+            {hint}
+          </div>
+        )}
+      </div>
+
+      {/* Checkmark badge */}
+      {selected && (
+        <div style={{
+          position: 'absolute',
+          top: '8px', right: '8px',
+          width: '22px', height: '22px',
+          borderRadius: '50%',
+          background: '#0EA5E9',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          boxShadow: '0 2px 10px rgba(14,165,233,0.65)',
+          zIndex: 3,
+          fontSize: '13px', color: '#fff', fontWeight: 800, lineHeight: 1,
+        }}>
+          ✓
+        </div>
+      )}
+    </button>
+  );
+}
+
+// ── Grid class helper ───────────────────────────────────────────────────────
+
+function gridClass(count) {
+  if (count === 4) return 'mqc-grid mqc-grid-2';  // 2×2
+  if (count === 3) return 'mqc-grid mqc-grid-3';  // 1×3
+  return 'mqc-grid mqc-grid-3';                    // 3+n for 5 and 6
+}
+
+// ── Main component ──────────────────────────────────────────────────────────
 
 const ARROW_RIGHT = (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
   </svg>
 );
-
 const ARROW_LEFT = (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" />
+    <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
   </svg>
 );
 
@@ -27,47 +149,49 @@ export default function MotorcycleQuestionCard({
   stepIndex,
   totalSteps,
 }) {
-  const progress = Math.round(((stepIndex + 1) / totalSteps) * 100);
-  const isLast = stepIndex === totalSteps - 1;
-  const cols = question.options.length > 4 ? 3 : 2;
+  const progress = Math.round(((stepIndex) / totalSteps) * 100);
+  const isLast   = stepIndex === totalSteps - 1;
 
   return (
     <>
       <style>{`
-        .mqc-wrapper {
+        .mqc-outer {
           min-height: 100%;
+          padding: clamp(32px, 5vw, 56px) clamp(16px, 4vw, 24px);
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: flex-start;
-          padding: clamp(24px, 5vw, 56px) clamp(16px, 4vw, 24px);
+        }
+        .mqc-inner {
+          width: 100%;
+          max-width: 720px;
         }
         .mqc-card {
           background: #FFFFFF;
           border-radius: 24px;
-          box-shadow: 0 4px 32px rgba(15,23,42,0.10);
-          width: 100%;
-          max-width: 640px;
+          border: 1px solid #E2E8F0;
+          box-shadow: 0 4px 24px rgba(15,23,42,0.07);
           overflow: hidden;
+          margin-bottom: 16px;
         }
-        .mqc-progress-bar {
-          height: 4px;
+        .mqc-progress-track {
+          height: 5px;
           background: #E2E8F0;
         }
         .mqc-progress-fill {
           height: 100%;
-          background: linear-gradient(to right, #0EA5E9, #06B6D4);
-          transition: width 0.35s ease;
-          border-radius: 0 2px 2px 0;
+          background: linear-gradient(90deg, #0EA5E9, #06B6D4);
+          transition: width 0.4s ease;
+          border-radius: 0 3px 3px 0;
         }
         .mqc-body {
-          padding: clamp(28px, 5vw, 44px);
+          padding: clamp(24px, 4vw, 40px);
         }
         .mqc-meta {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-bottom: 24px;
+          margin-bottom: 20px;
         }
         .mqc-step {
           font-size: 12px;
@@ -84,84 +208,31 @@ export default function MotorcycleQuestionCard({
         }
         .mqc-title {
           font-family: var(--font-heading, "Poppins", system-ui, sans-serif);
-          font-size: clamp(20px, 3.5vw, 26px);
+          font-size: clamp(19px, 3.2vw, 24px);
           font-weight: 800;
           color: #0F172A;
-          margin: 0 0 10px;
-          line-height: 1.22;
+          margin: 0 0 6px;
+          line-height: 1.2;
           letter-spacing: -0.02em;
         }
         .mqc-subtitle {
-          font-size: 14px;
-          color: #64748B;
-          line-height: 1.65;
-          margin: 0 0 28px;
+          font-size: 13px;
+          color: #94A3B8;
+          margin: 0 0 24px;
+          line-height: 1.6;
+        }
+        /* Grid variants */
+        .mqc-grid {
+          display: grid;
+          gap: 10px;
         }
         .mqc-grid-2 {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 10px;
-          margin-bottom: 32px;
+          grid-template-columns: repeat(2, 1fr);
         }
         .mqc-grid-3 {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          gap: 10px;
-          margin-bottom: 32px;
+          grid-template-columns: repeat(3, 1fr);
         }
-        .mqc-option {
-          border: 1.5px solid #E2E8F0;
-          border-radius: 14px;
-          padding: 14px 16px;
-          cursor: pointer;
-          background: #F8FAFC;
-          transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
-          text-align: left;
-          position: relative;
-        }
-        .mqc-option:hover {
-          border-color: #BAE6FD;
-          background: #F0F9FF;
-        }
-        .mqc-option.selected {
-          border-color: #0EA5E9;
-          background: rgba(14,165,233,0.06);
-          box-shadow: 0 0 0 3px rgba(14,165,233,0.12);
-        }
-        .mqc-option-label {
-          font-family: var(--font-heading, "Poppins", system-ui, sans-serif);
-          font-size: 14px;
-          font-weight: 700;
-          color: #0F172A;
-          margin: 0 0 3px;
-          padding-right: 24px;
-        }
-        .mqc-option.selected .mqc-option-label {
-          color: #0369A1;
-        }
-        .mqc-option-hint {
-          font-size: 12px;
-          color: #94A3B8;
-          margin: 0;
-        }
-        .mqc-option-check {
-          position: absolute;
-          top: 12px;
-          right: 12px;
-          width: 20px;
-          height: 20px;
-          border-radius: 50%;
-          background: #0EA5E9;
-          color: #FFFFFF;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          opacity: 0;
-          transition: opacity 0.15s ease;
-        }
-        .mqc-option.selected .mqc-option-check {
-          opacity: 1;
-        }
+        /* Navigation */
         .mqc-nav {
           display: flex;
           gap: 10px;
@@ -190,8 +261,7 @@ export default function MotorcycleQuestionCard({
           color: #94A3B8;
           box-shadow: none;
           cursor: not-allowed;
-          transform: none;
-          filter: none;
+          opacity: 0.55;
         }
         .mqc-btn-next:not(:disabled):hover {
           filter: brightness(1.06);
@@ -218,69 +288,80 @@ export default function MotorcycleQuestionCard({
           background: #F1F5F9;
           border-color: #CBD5E1;
         }
+        /* Responsive */
         @media (max-width: 520px) {
           .mqc-grid-3 {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(2, 1fr);
           }
         }
-        @media (max-width: 400px) {
+        @media (max-width: 360px) {
           .mqc-grid-2, .mqc-grid-3 {
             grid-template-columns: 1fr;
           }
         }
       `}</style>
 
-      <div className="mqc-wrapper">
-        <div className="mqc-card">
-          {/* Progress bar */}
-          <div className="mqc-progress-bar">
-            <div className="mqc-progress-fill" style={{ width: `${progress}%` }} />
+      <div className="mqc-outer">
+        <div className="mqc-inner">
+          <div className="mqc-card">
+            {/* Progress bar */}
+            <div className="mqc-progress-track">
+              <div className="mqc-progress-fill" style={{ width: `${progress}%` }} />
+            </div>
+
+            <div className="mqc-body">
+              {/* Step meta */}
+              <div className="mqc-meta">
+                <span className="mqc-step">Schritt {stepIndex + 1} von {totalSteps}</span>
+                <span className="mqc-pct">{progress} % abgeschlossen</span>
+              </div>
+
+              {/* Question */}
+              <h2 className="mqc-title">{question.title}</h2>
+              <p className="mqc-subtitle">{question.subtitle}</p>
+
+              {/* Visual card grid */}
+              <div className={gridClass(question.options.length)}>
+                {question.options.map(opt => (
+                  <VisualCard
+                    key={opt.value}
+                    selected={selected === opt.value}
+                    onClick={() => onSelect(opt.value)}
+                    img={opt.img}
+                    fallbackImg={opt.fallbackImg}
+                    bg={opt.bg}
+                    label={opt.label}
+                    hint={opt.hint}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
 
-          <div className="mqc-body">
-            {/* Meta row */}
-            <div className="mqc-meta">
-              <span className="mqc-step">Schritt {stepIndex + 1} von {totalSteps}</span>
-              <span className="mqc-pct">{progress} %</span>
-            </div>
-
-            {/* Question */}
-            <h2 className="mqc-title">{question.title}</h2>
-            <p className="mqc-subtitle">{question.subtitle}</p>
-
-            {/* Options */}
-            <div className={cols === 3 ? 'mqc-grid-3' : 'mqc-grid-2'}>
-              {question.options.map(opt => (
-                <button
-                  key={opt.value}
-                  type="button"
-                  className={`mqc-option${selected === opt.value ? ' selected' : ''}`}
-                  onClick={() => onSelect(opt.value)}
-                >
-                  <p className="mqc-option-label">{opt.label}</p>
-                  <p className="mqc-option-hint">{opt.hint}</p>
-                  <div className="mqc-option-check" aria-hidden="true">{CHECK_ICON}</div>
-                </button>
-              ))}
-            </div>
-
-            {/* Navigation */}
-            <div className="mqc-nav">
-              {stepIndex > 0 && (
-                <button type="button" className="mqc-btn-back" onClick={onBack}>
-                  {ARROW_LEFT} Zurück
-                </button>
-              )}
-              <button
-                type="button"
-                className="mqc-btn-next"
-                disabled={!selected}
-                onClick={onNext}
-              >
-                {isLast ? 'Ergebnis anzeigen' : 'Weiter'}
-                {ARROW_RIGHT}
+          {/* Navigation */}
+          <div className="mqc-nav">
+            {stepIndex > 0 ? (
+              <button type="button" className="mqc-btn-back" onClick={onBack}>
+                {ARROW_LEFT} Zurück
               </button>
-            </div>
+            ) : (
+              <a
+                href="/motorradurlaub"
+                className="mqc-btn-back"
+                style={{ textDecoration: 'none' }}
+              >
+                {ARROW_LEFT} Zur Übersicht
+              </a>
+            )}
+            <button
+              type="button"
+              className="mqc-btn-next"
+              disabled={!selected}
+              onClick={onNext}
+            >
+              {isLast ? 'Ergebnis anzeigen' : 'Weiter'}
+              {ARROW_RIGHT}
+            </button>
           </div>
         </div>
       </div>
