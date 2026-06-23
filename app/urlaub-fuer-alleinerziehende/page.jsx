@@ -236,10 +236,10 @@ export default function AlleinerziehendePage() {
         {/* ── 1. HERO ──────────────────────────────────────────────────────────── */}
         <section style={{
           position: 'relative',
-          paddingTop: 'calc(80px + 80px)',
-          paddingBottom: '80px',
+          paddingTop: 'clamp(100px, 12vw, 160px)',
+          paddingBottom: 'clamp(60px, 8vw, 96px)',
           overflow: 'hidden',
-          minHeight: 'clamp(560px, 68vh, 720px)',
+          minHeight: 'clamp(520px, 70vh, 760px)',
           display: 'flex',
           alignItems: 'center',
         }}>
@@ -278,7 +278,7 @@ export default function AlleinerziehendePage() {
 
               <h1 style={{
                 fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-                fontSize: 'clamp(28px, 5vw, 54px)', fontWeight: 900,
+                fontSize: 'clamp(28px, 5vw, 56px)', fontWeight: 900,
                 lineHeight: 1.12, letterSpacing: '-0.03em',
                 color: '#FFFFFF', margin: '0 0 20px',
                 textShadow: '0 2px 20px rgba(0,0,0,0.45)',

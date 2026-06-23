@@ -1,81 +1,59 @@
 import Container from '@/components/layout/Container';
+import LandingPageHero from '@/components/layout/LandingPageHero';
 
 export default function MotorcycleHero() {
   return (
     <>
       <style>{`
-        .moto-hero-bg {
-          background-position: right 20%;
+        .moto-content {
+          position: relative;
+          z-index: 1;
+          max-width: 540px;
+          padding-top: clamp(80px, 10vw, 116px);
+          padding-bottom: clamp(60px, 8vw, 96px);
         }
-        .moto-hero-overlay {
-          background: linear-gradient(
-            to right,
-            rgba(15,23,42,0.82) 0%,
-            rgba(15,23,42,0.58) 42%,
-            rgba(15,23,42,0.14) 72%,
-            transparent 100%
-          );
+        .moto-h1 {
+          font-family: var(--font-heading, "Poppins", system-ui, sans-serif);
+          font-size: clamp(34px, 5.5vw, 60px);
+          font-weight: 900;
+          color: #FFFFFF;
+          margin: 0 0 22px;
+          line-height: 1.08;
+          letter-spacing: -0.02em;
+        }
+        .moto-btns {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
         }
         @media (max-width: 768px) {
-          .moto-hero-bg {
-            background-position: 68% 25%;
+          .moto-content {
+            max-width: 100%;
+            padding-top: clamp(80px, 10vw, 100px);
+            padding-bottom: 60px;
           }
-          .moto-hero-overlay {
-            background: linear-gradient(
-              to bottom,
-              rgba(15,23,42,0.62) 0%,
-              rgba(15,23,42,0.52) 60%,
-              rgba(15,23,42,0.72) 100%
-            );
+          .moto-h1 {
+            font-size: clamp(30px, 8vw, 48px);
           }
-          .moto-hero-content {
-            max-width: 100% !important;
-            padding-top: 60px !important;
-            padding-bottom: 60px !important;
+          .moto-btns {
+            flex-direction: column;
           }
-          .moto-hero-h1 {
-            font-size: clamp(30px, 8vw, 48px) !important;
-          }
-          .moto-hero-btns {
-            flex-direction: column !important;
-          }
-          .moto-hero-btns a {
+          .moto-btns a {
             text-align: center;
             justify-content: center;
           }
         }
       `}</style>
 
-      <section
-        className="moto-hero-bg"
-        style={{
-          position: 'relative',
-          minHeight: 'clamp(520px, 75vh, 780px)',
-          backgroundImage: 'url(/images/motorradurlaub/motorradurlaub-hero.png)',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          display: 'flex',
-          alignItems: 'center',
-        }}
+      <LandingPageHero
+        backgroundImage="/images/motorradurlaub/motorradurlaub-hero.png"
+        backgroundPosition="right 20%"
+        mobileBackgroundPosition="68% 25%"
+        overlayGradient="linear-gradient(to right, rgba(15,23,42,0.82) 0%, rgba(15,23,42,0.58) 42%, rgba(15,23,42,0.14) 72%, transparent 100%)"
+        mobileOverlayGradient="linear-gradient(to bottom, rgba(15,23,42,0.62) 0%, rgba(15,23,42,0.52) 60%, rgba(15,23,42,0.72) 100%)"
       >
-        {/* Gradient overlay */}
-        <div
-          aria-hidden="true"
-          className="moto-hero-overlay"
-          style={{ position: 'absolute', inset: 0 }}
-        />
-
         <Container>
-          <div
-            className="moto-hero-content"
-            style={{
-              position: 'relative',
-              zIndex: 1,
-              maxWidth: '540px',
-              paddingTop: '80px',
-              paddingBottom: '80px',
-            }}
-          >
+          <div className="moto-content">
             <p style={{
               fontSize: '11px',
               fontWeight: 700,
@@ -88,18 +66,7 @@ export default function MotorcycleHero() {
               Auf zwei Rädern durch die Welt
             </p>
 
-            <h1
-              className="moto-hero-h1"
-              style={{
-                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-                fontSize: 'clamp(34px, 5.5vw, 60px)',
-                fontWeight: 900,
-                color: '#FFFFFF',
-                margin: '0 0 22px',
-                lineHeight: 1.08,
-                letterSpacing: '-0.02em',
-              }}
-            >
+            <h1 className="moto-h1">
               Motorradurlaub<br />planen
             </h1>
 
@@ -114,10 +81,7 @@ export default function MotorcycleHero() {
               für deinen Urlaub auf zwei Rädern.
             </p>
 
-            <div
-              className="moto-hero-btns"
-              style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}
-            >
+            <div className="moto-btns">
               <a
                 href="/motorradurlaub/planen"
                 style={{
@@ -167,7 +131,7 @@ export default function MotorcycleHero() {
             </div>
           </div>
         </Container>
-      </section>
+      </LandingPageHero>
     </>
   );
 }

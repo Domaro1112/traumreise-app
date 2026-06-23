@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { MapPin, Calendar, Car, ChevronDown, Shield, CheckCircle, Tag } from 'lucide-react';
+import LandingPageHero from '@/components/layout/LandingPageHero';
 import { buildCheck24CarRentalUrl } from '@/lib/car-rental-config';
 
 const HERO_IMAGE = '/images/mietwagen/mietwagen-hero.jpg';
@@ -66,20 +67,12 @@ export default function CarRentalHero() {
   };
 
   return (
-    <section style={{
-      backgroundImage:    `url(${HERO_IMAGE})`,
-      backgroundSize:     'cover',
-      backgroundPosition: 'right center',
-      backgroundRepeat:   'no-repeat',
-      minHeight:          'clamp(560px, 50vw, 720px)',
-      paddingTop:    'clamp(48px, 7vw, 88px)',
-      paddingBottom: 'clamp(48px, 7vw, 80px)',
-      position: 'relative',
-      overflow: 'hidden',
-    }}>
-      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'rgba(15,23,42,0.35)', pointerEvents: 'none' }} />
-
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 clamp(16px, 4vw, 40px)', position: 'relative', zIndex: 1 }}>
+    <LandingPageHero
+      backgroundImage={HERO_IMAGE}
+      backgroundPosition="right center"
+      overlayGradient="rgba(15,23,42,0.35)"
+    >
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(48px, 7vw, 88px) clamp(16px, 4vw, 40px)', position: 'relative', zIndex: 1 }}>
         {/* Badge */}
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', background: 'rgba(14,165,233,0.18)', border: '1px solid rgba(14,165,233,0.35)', borderRadius: '20px', padding: '5px 14px', marginBottom: '20px' }}>
           <Car size={13} strokeWidth={2} color="#38BDF8" />
@@ -88,7 +81,7 @@ export default function CarRentalHero() {
 
         <h1 style={{
           fontFamily: 'var(--font-heading)',
-          fontSize: 'clamp(28px, 4.5vw, 54px)',
+          fontSize: 'clamp(28px, 5vw, 56px)',
           fontWeight: 900,
           color: '#FFFFFF',
           letterSpacing: '-0.03em',
@@ -235,6 +228,6 @@ export default function CarRentalHero() {
           ))}
         </div>
       </div>
-    </section>
+    </LandingPageHero>
   );
 }
