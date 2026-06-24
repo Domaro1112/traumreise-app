@@ -79,6 +79,30 @@ const DIFFICULTY_COLOR = {
   anspruchsvoll: { bg: '#FEE2E2', color: '#DC2626', border: '#FECACA' },
 };
 
+const STOP_TYPE_STYLES = {
+  'Aussichtspunkt': { bg: '#EFF6FF', color: '#1D4ED8', border: '#BFDBFE' },
+  'See':            { bg: '#F0FDFA', color: '#0F766E', border: '#99F6E4' },
+  'Passhöhe':       { bg: '#F5F3FF', color: '#6D28D9', border: '#DDD6FE' },
+  'Altstadt':       { bg: '#FFFBEB', color: '#B45309', border: '#FDE68A' },
+  'Motorradtreff':  { bg: '#F0FDF4', color: '#15803D', border: '#BBF7D0' },
+  'Café':           { bg: '#FFF7ED', color: '#C2410C', border: '#FED7AA' },
+  'Burg':           { bg: '#FFFBEB', color: '#92400E', border: '#FDE68A' },
+  'Panoramastraße': { bg: '#EFF6FF', color: '#1E40AF', border: '#BFDBFE' },
+  'Fähre':          { bg: '#F0F9FF', color: '#0369A1', border: '#BAE6FD' },
+  'Museum':         { bg: '#FAF5FF', color: '#7E22CE', border: '#E9D5FF' },
+  'Pause':          { bg: '#F0FDF4', color: '#166534', border: '#BBF7D0' },
+};
+const STOP_TYPE_DEFAULT = { bg: '#F8FAFC', color: '#475569', border: '#E2E8F0' };
+
+const ITINERARY_DIFFICULTY = {
+  'leicht':                   { bg: '#DCFCE7', color: '#16A34A', border: '#BBF7D0' },
+  'leicht bis mittel':        { bg: '#D1FAE5', color: '#059669', border: '#A7F3D0' },
+  'mittel':                   { bg: '#FEF3C7', color: '#D97706', border: '#FDE68A' },
+  'mittel bis anspruchsvoll': { bg: '#FEF3C7', color: '#B45309', border: '#FDE68A' },
+  'anspruchsvoll':            { bg: '#FEE2E2', color: '#DC2626', border: '#FECACA' },
+};
+const ITINERARY_DIFFICULTY_DEFAULT = { bg: '#F1F5F9', color: '#64748B', border: '#E2E8F0' };
+
 const ARROW_RIGHT = (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
     <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
@@ -434,47 +458,125 @@ export default function MotorcycleResultView({ answers, onReset, aiResult, aiErr
             </section>
           )}
 
-          {/* ── 4. Beispiel-Tagesplan ──────────────────────────────────── */}
+          {/* ── 4. Beispielhafte Tagesetappen ─────────────────────────── */}
           {Array.isArray(aiResult.sampleItinerary) && aiResult.sampleItinerary.length > 0 && (
             <section style={{ background: '#FFFFFF', paddingTop: 'clamp(40px, 5vw, 60px)', paddingBottom: 'clamp(40px, 5vw, 60px)' }}>
               <Container size="sm">
                 <div style={{ marginBottom: '28px' }}>
-                  <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#0EA5E9', margin: '0 0 8px', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>Beispiel-Reiseplan</p>
-                  <h2 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: 'clamp(22px, 3.5vw, 30px)', fontWeight: 800, color: '#0F172A', margin: 0, letterSpacing: '-0.02em' }}>
-                    Dein Tagesplan
+                  <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#0EA5E9', margin: '0 0 8px', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>Etappenplanung</p>
+                  <h2 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: 'clamp(22px, 3.5vw, 30px)', fontWeight: 800, color: '#0F172A', margin: '0 0 10px', letterSpacing: '-0.02em' }}>
+                    Beispielhafte Tagesetappen
                   </h2>
+                  <p style={{ fontSize: '13px', color: '#94A3B8', margin: 0, lineHeight: 1.65 }}>
+                    Keine exakte Navi-Route, sondern realistische Routenideen mit passenden Stopps für deine Motorradtour.
+                  </p>
                 </div>
 
-                {/* Timeline */}
-                <div style={{ position: 'relative', paddingLeft: '48px' }}>
-                  <div aria-hidden="true" style={{ position: 'absolute', left: '18px', top: '22px', bottom: '22px', width: '2px', background: 'linear-gradient(to bottom, #0EA5E9 0%, rgba(14,165,233,0.08) 100%)' }} />
+                {/* Enhanced Timeline */}
+                <div style={{ position: 'relative', paddingLeft: '52px' }}>
+                  <div aria-hidden="true" style={{ position: 'absolute', left: '19px', top: '22px', bottom: '22px', width: '2px', background: 'linear-gradient(to bottom, #0EA5E9 0%, rgba(14,165,233,0.08) 100%)' }} />
 
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                    {aiResult.sampleItinerary.map((day, i) => (
-                      <div key={day.day} style={{ position: 'relative' }}>
-                        {/* Timeline dot */}
-                        <div aria-hidden="true" style={{ position: 'absolute', left: '-38px', top: '13px', width: '22px', height: '22px', borderRadius: '50%', background: 'linear-gradient(135deg, #0EA5E9, #06B6D4)', border: '3px solid #FFFFFF', boxShadow: '0 0 0 2px rgba(14,165,233,0.30)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '9px', fontWeight: 800, color: '#FFFFFF', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>
-                          {day.day}
-                        </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                    {aiResult.sampleItinerary.map((day, i) => {
+                      const diffStyle = ITINERARY_DIFFICULTY[day.difficulty] || ITINERARY_DIFFICULTY_DEFAULT;
+                      const stops = Array.isArray(day.stops) ? day.stops : [];
+                      return (
+                        <div key={day.day || i} style={{ position: 'relative' }}>
+                          {/* Timeline dot */}
+                          <div aria-hidden="true" style={{ position: 'absolute', left: '-41px', top: '14px', width: '22px', height: '22px', borderRadius: '50%', background: 'linear-gradient(135deg, #0EA5E9, #06B6D4)', border: '3px solid #FFFFFF', boxShadow: '0 0 0 2px rgba(14,165,233,0.30)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '9px', fontWeight: 800, color: '#FFFFFF', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>
+                            {day.day || i + 1}
+                          </div>
 
-                        <div style={{ background: '#F8FAFF', border: '1px solid #E2E8F0', borderRadius: '16px', padding: 'clamp(14px, 2.5vw, 20px)' }}>
-                          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'baseline', gap: '8px', marginBottom: '6px' }}>
-                            <h3 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: '15px', fontWeight: 800, color: '#0F172A', margin: 0 }}>
-                              {day.title}
-                            </h3>
-                            {day.approxKm && (
-                              <span style={{ background: 'rgba(14,165,233,0.09)', border: '1px solid rgba(14,165,233,0.20)', borderRadius: '8px', padding: '2px 10px', fontSize: '12px', color: '#0EA5E9', fontWeight: 700, whiteSpace: 'nowrap' }}>
-                                ca. {day.approxKm}
-                              </span>
+                          <div style={{ background: '#F8FAFF', border: '1px solid #E2E8F0', borderRadius: '20px', padding: 'clamp(16px, 2.5vw, 24px)' }}>
+                            {/* Title + km + difficulty */}
+                            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px', marginBottom: '12px' }}>
+                              <h3 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: '15px', fontWeight: 800, color: '#0F172A', margin: 0, lineHeight: 1.3, flex: '1 1 180px' }}>
+                                {day.title}
+                              </h3>
+                              <div style={{ display: 'flex', gap: '7px', flexWrap: 'wrap', flexShrink: 0 }}>
+                                {day.approxKm && (
+                                  <span style={{ background: 'rgba(14,165,233,0.09)', border: '1px solid rgba(14,165,233,0.20)', borderRadius: '8px', padding: '3px 10px', fontSize: '12px', color: '#0EA5E9', fontWeight: 700, whiteSpace: 'nowrap' }}>
+                                    ca. {day.approxKm}
+                                  </span>
+                                )}
+                                {day.difficulty && (
+                                  <span style={{ fontSize: '11px', fontWeight: 700, background: diffStyle.bg, color: diffStyle.color, border: `1px solid ${diffStyle.border}`, borderRadius: '8px', padding: '3px 10px', whiteSpace: 'nowrap' }}>
+                                    {day.difficulty}
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+
+                            {/* Start → End */}
+                            {(day.start || day.end) && (
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px', flexWrap: 'wrap' }}>
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                <span style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A' }}>{day.start || '–'}</span>
+                                <span style={{ color: '#94A3B8', fontSize: '16px', lineHeight: 1 }}>→</span>
+                                <span style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A' }}>{day.end || '–'}</span>
+                              </div>
+                            )}
+
+                            {/* Route idea */}
+                            {day.routeIdea && (
+                              <p style={{ fontSize: '13px', color: '#334155', lineHeight: 1.65, margin: '0 0 12px', fontStyle: 'italic', borderLeft: '3px solid #0EA5E9', paddingLeft: '12px', background: 'rgba(14,165,233,0.04)', borderRadius: '0 8px 8px 0', padding: '8px 12px', borderLeftWidth: '3px', borderLeftStyle: 'solid', borderLeftColor: '#0EA5E9' }}>
+                                {day.routeIdea}
+                              </p>
+                            )}
+
+                            {/* Stops */}
+                            {stops.length > 0 && (
+                              <div style={{ marginBottom: '10px' }}>
+                                <p style={{ fontSize: '10px', fontWeight: 700, color: '#64748B', letterSpacing: '0.08em', textTransform: 'uppercase', margin: '0 0 8px', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>Stopps &amp; Ausflugsziele</p>
+                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '7px', marginBottom: stops.some(s => s.whyStop) ? '10px' : 0 }}>
+                                  {stops.map((stop, si) => {
+                                    const st = STOP_TYPE_STYLES[stop.type] || STOP_TYPE_DEFAULT;
+                                    return (
+                                      <div key={si} style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', background: st.bg, border: `1px solid ${st.border}`, borderRadius: '10px', padding: '4px 11px' }}>
+                                        <span style={{ fontSize: '10px', fontWeight: 800, color: st.color, letterSpacing: '0.04em', textTransform: 'uppercase', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', whiteSpace: 'nowrap' }}>{stop.type || 'Stopp'}</span>
+                                        <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: st.color, opacity: 0.45, flexShrink: 0 }} aria-hidden="true" />
+                                        <span style={{ fontSize: '12px', color: '#1E293B', fontWeight: 600, whiteSpace: 'nowrap' }}>{stop.name}</span>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                                {stops.filter(s => s.whyStop).length > 0 && (
+                                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                                    {stops.filter(s => s.whyStop).map((stop, si) => (
+                                      <p key={si} style={{ fontSize: '12px', color: '#64748B', margin: 0, lineHeight: 1.55 }}>
+                                        <strong style={{ color: '#475569', fontWeight: 600 }}>{stop.name}:</strong> {stop.whyStop}
+                                      </p>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                            )}
+
+                            {/* Food stop */}
+                            {day.foodStop && (
+                              <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: '10px', padding: '8px 12px', marginBottom: '8px' }}>
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#B45309" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginTop: '1px', flexShrink: 0 }}>
+                                  <path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+                                </svg>
+                                <span style={{ fontSize: '12px', color: '#92400E', lineHeight: 1.55 }}>
+                                  <strong style={{ fontWeight: 700 }}>Verpflegung:</strong> {day.foodStop}
+                                </span>
+                              </div>
+                            )}
+
+                            {/* Note */}
+                            {day.note && (
+                              <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', background: '#F0F9FF', border: '1px solid #BAE6FD', borderRadius: '10px', padding: '8px 12px' }}>
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0369A1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginTop: '1px', flexShrink: 0 }}>
+                                  <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+                                </svg>
+                                <span style={{ fontSize: '12px', color: '#0C4A6E', lineHeight: 1.55 }}>{day.note}</span>
+                              </div>
                             )}
                           </div>
-                          {day.routeIdea && (
-                            <p style={{ fontSize: '12px', color: '#0EA5E9', margin: '0 0 5px', fontWeight: 600 }}>{day.routeIdea}</p>
-                          )}
-                          <p style={{ fontSize: '13px', color: '#64748B', lineHeight: 1.6, margin: 0 }}>{day.description}</p>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               </Container>
@@ -696,6 +798,38 @@ export default function MotorcycleResultView({ answers, onReset, aiResult, aiErr
               </div>
             </Container>
           </section>
+
+          {/* Beispielhafte Tagesetappen (Variante B) */}
+          {etappen && etappen.length > 0 && (
+            <section style={{ background: '#FFFFFF', paddingTop: 'clamp(32px, 4vw, 48px)', paddingBottom: 'clamp(32px, 4vw, 48px)' }}>
+              <Container size="sm">
+                <div style={{ marginBottom: '20px' }}>
+                  <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#0EA5E9', margin: '0 0 8px', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>Etappenvorschau</p>
+                  <h2 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: 'clamp(20px, 3vw, 26px)', fontWeight: 800, color: '#0F172A', margin: '0 0 8px', letterSpacing: '-0.02em' }}>
+                    Beispielhafte Tagesetappen
+                  </h2>
+                  <p style={{ fontSize: '13px', color: '#94A3B8', margin: 0, lineHeight: 1.6 }}>
+                    Grober Ablauf für deine Tour – für detailliertere KI-Routenideen den Planungshelfer neu starten.
+                  </p>
+                </div>
+                <div style={{ position: 'relative', paddingLeft: '44px' }}>
+                  <div aria-hidden="true" style={{ position: 'absolute', left: '16px', top: '14px', bottom: '14px', width: '2px', background: 'linear-gradient(to bottom, #0EA5E9, rgba(14,165,233,0.08))' }} />
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    {etappen.map((e, i) => (
+                      <div key={i} style={{ position: 'relative' }}>
+                        <div aria-hidden="true" style={{ position: 'absolute', left: '-34px', top: '10px', width: '18px', height: '18px', borderRadius: '50%', background: '#0EA5E9', border: '3px solid #FFFFFF', boxShadow: '0 0 0 2px rgba(14,165,233,0.28)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '9px', fontWeight: 800, color: '#FFFFFF', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>
+                          {i + 1}
+                        </div>
+                        <div style={{ background: '#F8FAFF', border: '1px solid #E2E8F0', borderRadius: '14px', padding: '12px 16px' }}>
+                          <p style={{ fontSize: '14px', color: '#334155', margin: 0, lineHeight: 1.55, fontWeight: 500 }}>{e}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Container>
+            </section>
+          )}
 
           {/* Packliste (kategorisiert) */}
           <section style={{ background: '#FFFFFF', paddingTop: 'clamp(40px, 5vw, 64px)', paddingBottom: 'clamp(40px, 5vw, 64px)' }}>

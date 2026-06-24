@@ -37,12 +37,19 @@ export async function POST(request) {
 Antworte AUSSCHLIESSLICH als valides JSON ohne Markdown-Blöcke oder Code-Fences.
 Alle Texte auf Deutsch. Sei realistisch und konkret.
 Erfinde KEINE konkreten Hotels. Behaupte KEINE exakten Preise.
-Nenne KEINE garantierten Öffnungszeiten von Pässen.
+Nenne KEINE garantierten Öffnungszeiten von Pässen oder Sehenswürdigkeiten.
 Weise bei Alpenpässen auf saisonale Sperren hin.
-Warne bei 500+ km/Tag vor Ermüdung.
+Warne bei 500+ km/Tag ehrlich vor Ermüdungsgefahr.
 Berücksichtige bei Camping Wetter und Gepäck stärker.
 Gehe bei sicherem Stellplatz auf Garage/Carport ein.
-Nenne maximal 3–5 konkrete Routen.`;
+Nenne maximal 3–5 konkrete Routen.
+Für sampleItinerary gilt:
+- Liefere realistische Etappenvorschläge, keine exakten Navigationsanweisungen oder GPS-Koordinaten.
+- start und end sind bekannte Ortschaften oder Regionen, keine genauen Adressen.
+- stops sind Ausflugsziele, Aussichtspunkte, Panoramastraßen oder Pausenideen — keine Gastro-Adressen mit Öffnungszeiten.
+- Erlaubte type-Werte für stops: Aussichtspunkt, See, Passhöhe, Altstadt, Motorradtreff, Café, Burg, Panoramastraße, Fähre, Museum, Pause.
+- note soll ehrlich auf Länge, Wetter, Pässe oder besondere Anforderungen eingehen.
+- difficulty-Werte: leicht | leicht bis mittel | mittel | mittel bis anspruchsvoll | anspruchsvoll.`;
 
   const userPrompt = `Erstelle eine individuelle Motorradurlaub-Planung für folgende Angaben:
 
@@ -65,7 +72,20 @@ Antworte AUSSCHLIESSLICH als valides JSON in exakt diesem Format:
   ],
   "dailyStages": { "recommendedKmPerDay": "...", "description": "..." },
   "sampleItinerary": [
-    { "day": 1, "title": "...", "routeIdea": "...", "description": "...", "approxKm": "..." }
+    {
+      "day": 1,
+      "title": "Ankommen und erste Kurven",
+      "start": "Startort",
+      "end": "Zielort",
+      "routeIdea": "Kurze Beschreibung der Routenidee als Etappenvorschlag",
+      "approxKm": "120–160 km",
+      "stops": [
+        { "name": "Name des Stopps", "type": "Aussichtspunkt", "whyStop": "Kurzer Hinweis, warum dieser Stopp lohnt" }
+      ],
+      "foodStop": "Café, Gasthof oder Biker-Treff entlang der Strecke",
+      "difficulty": "leicht bis mittel",
+      "note": "Ehrlicher Hinweis zur Etappe (Länge, Wetter, Pässe etc.)"
+    }
   ],
   "bestTravelTime": { "summary": "...", "months": "...", "weatherNote": "..." },
   "accommodationAdvice": { "type": "...", "description": "...", "features": ["abschließbare Garage", "Trockenraum", "frühes Frühstück"] },
