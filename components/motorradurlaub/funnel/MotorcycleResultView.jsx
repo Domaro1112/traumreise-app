@@ -50,7 +50,10 @@ const AFFILIATE_PROVIDERS = [
     description: 'Über 5 Millionen Unterkünfte weltweit auf einen Blick – finde das beste Preis-Leistungs-Verhältnis für deine Tour.',
     trust: 'Über 5 Mio. Unterkünfte im Vergleich',
     cta: 'Unterkünfte vergleichen',
-    buildUrl: (s) => `/go/trivago?url=${encodeURIComponent(`https://www.trivago.de/?query=${encodeURIComponent(s)}&iPathCombination=am`)}`,
+    // Trivago macht einen Destinations-Lookup auf ?query= – der lange AI-Suchterm
+    // trifft kein bekanntes Ziel und Trivago fällt auf sein eigenes Default zurück.
+    // Daher: nur den reinen Regionsnamen übergeben (zweites Argument).
+    buildUrl: (_searchTerm, region) => `/go/trivago?url=${encodeURIComponent(`https://www.trivago.de/?query=${encodeURIComponent(region)}&iPathCombination=am`)}`,
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -140,7 +143,7 @@ function HotelSection({ searchTerm, primaryRegion }) {
           {AFFILIATE_PROVIDERS.map(p => (
             <a
               key={p.key}
-              href={p.buildUrl(searchTerm)}
+              href={p.buildUrl(searchTerm, primaryRegion)}
               target="_blank"
               rel="noopener noreferrer"
               className="mrv-hotel-card"
