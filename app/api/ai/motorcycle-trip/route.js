@@ -13,13 +13,15 @@ const PARKING_MAP     = { veryImportant: 'Sehr wichtig', niceToHave: 'Schön wen
 export async function POST(request) {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
+    console.error('[motorcycle-trip] ANTHROPIC_API_KEY ist nicht gesetzt. Bitte in .env.local eintragen.');
     return NextResponse.json({ error: 'API key missing' }, { status: 500 });
   }
 
   let body;
   try {
     body = await request.json();
-  } catch {
+  } catch (parseErr) {
+    console.error('[motorcycle-trip] Request body parse error:', parseErr);
     return NextResponse.json({ error: 'Ungültige Anfrage.' }, { status: 400 });
   }
 
@@ -100,28 +102,44 @@ Antworte AUSSCHLIESSLICH als valides JSON in exakt diesem Format:
   try {
     const client = new Anthropic({ apiKey });
     const message = await client.messages.create({
-      model: 'claude-opus-4-8',
-      max_tokens: 4000,
-      thinking: { type: 'adaptive' },
+      model: 'claude-sonnet-4-6',
+      max_tokens: 8000,
       system: systemPrompt,
       messages: [{ role: 'user', content: userPrompt }],
     });
+
+    const stopReason = message.stop_reason;
+    if (stopReason === 'max_tokens') {
+      console.warn('[motorcycle-trip] Antwort wurde bei max_tokens abgeschnitten — JSON möglicherweise unvollständig.');
+    }
+
     raw = message.content
       .filter(b => b.type === 'text')
       .map(b => b.text)
       .join('')
-      .replace(/```json\s*|```/g, '')
+      .replace(/```json\s*[\r\n]*/g, '')
+      .replace(/```[\r\n]*/g, '')
       .trim();
+
+    console.log('[motorcycle-trip] Claude stop_reason:', stopReason, '| raw length:', raw.length);
   } catch (err) {
-    console.error('[motorcycle-trip] Claude error:', err);
+    const status = err?.status ?? err?.statusCode ?? 'unknown';
+    const msg    = err?.message ?? String(err);
+    console.error(`[motorcycle-trip] Claude API error (HTTP ${status}): ${msg}`);
     return NextResponse.json({ error: 'KI-Anfrage fehlgeschlagen.' }, { status: 502 });
   }
 
+  // Robuste JSON-Extraktion: nimmt das erste vollständige {...}-Objekt aus der Antwort
   let result;
   try {
-    result = JSON.parse(raw);
+    const jsonMatch = raw.match(/\{[\s\S]*\}/);
+    if (!jsonMatch) {
+      console.error('[motorcycle-trip] Kein JSON-Objekt in der Antwort gefunden. raw (erste 400 Zeichen):', raw.slice(0, 400));
+      return NextResponse.json({ error: 'KI-Antwort enthält kein JSON.' }, { status: 500 });
+    }
+    result = JSON.parse(jsonMatch[0]);
   } catch (err) {
-    console.error('[motorcycle-trip] JSON parse error:', String(err), '| raw:', raw.slice(0, 500));
+    console.error('[motorcycle-trip] JSON.parse Fehler:', String(err), '| raw (erste 500 Zeichen):', raw.slice(0, 500));
     return NextResponse.json({ error: 'KI-Antwort konnte nicht verarbeitet werden.' }, { status: 500 });
   }
 
