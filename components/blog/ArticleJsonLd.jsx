@@ -9,7 +9,7 @@ export default function ArticleJsonLd({ article }) {
     '@graph': [
       /* ── BlogPosting ───────────────────────────────────────────────────────── */
       {
-        '@type': ['BlogPosting', 'Article'],
+        '@type': 'BlogPosting',
         '@id': `${articleUrl}#article`,
         headline: article.title,
         description: article.excerpt,

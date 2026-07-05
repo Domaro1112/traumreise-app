@@ -3,6 +3,9 @@ import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { createServerClient } from '@/lib/supabase/server';
+import JsonLd from '@/components/seo/JsonLd';
+import { buildArticleJsonLd, buildBreadcrumbJsonLd } from '@/lib/seo/jsonLd';
+import { SITE_URL } from '@/lib/site-config';
 
 export const revalidate = 300;
 
@@ -44,20 +47,29 @@ export default async function ReiseguideDetailPage({ params }) {
   const images = Array.isArray(guide.images) ? guide.images.filter(Boolean) : [];
   const tags   = Array.isArray(guide.tags)   ? guide.tags.filter(Boolean) : [];
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: guide.title,
-    description: guide.excerpt || undefined,
-    author: creator ? { '@type': 'Person', name: creator.display_name, url: `/creator/${creator.slug}` } : undefined,
-    image: images[0] || undefined,
-    datePublished: guide.published_at,
-    dateModified: guide.updated_at,
-  };
+  const pageUrl = `${SITE_URL}/reiseguides/${guide.slug}`;
+  const guideJsonLd = [
+    buildBreadcrumbJsonLd([
+      { name: 'Startseite',  url: SITE_URL },
+      { name: 'Reiseguides', url: `${SITE_URL}/reiseguides` },
+      { name: guide.title,   url: pageUrl },
+    ]),
+    buildArticleJsonLd({
+      title:         guide.title,
+      description:   guide.excerpt,
+      url:           pageUrl,
+      image:         images[0],
+      authorName:    creator?.display_name,
+      authorUrl:     creator?.slug ? `${SITE_URL}/creator/${creator.slug}` : undefined,
+      datePublished: guide.published_at,
+      dateModified:  guide.updated_at,
+      keywords:      tags,
+    }),
+  ];
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <JsonLd data={guideJsonLd} />
       <Header />
       <main style={{ minHeight: '100vh', background: '#FFFFFF' }}>
 
