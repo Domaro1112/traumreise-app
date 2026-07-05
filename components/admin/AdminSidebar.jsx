@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import {
   LayoutDashboard, MapPin, FileText, Image as ImageIcon,
-  Users, TrendingUp, Search, Settings, LogOut, X, ExternalLink, Sparkles, Compass, Handshake, Mail, Bell, Star, BadgeCheck, PenLine,
+  Users, TrendingUp, Search, Settings, LogOut, X, ExternalLink, Sparkles, Compass, Handshake, Mail, Bell, Star, BadgeCheck, PenLine, Zap, MousePointerClick,
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
@@ -16,8 +16,10 @@ const NAV_ITEMS = [
   { label: 'Reisevorschläge', href: '/admin/homepage-suggestions', icon: Sparkles        },
   { label: 'Inspirationen',   href: '/admin/inspiration',          icon: Compass         },
   { label: 'Medien',          href: '/admin/medien',               icon: ImageIcon       },
-  { label: 'Leads',           href: '/admin/leads',                icon: Users           },
-  { label: 'Partner-Anfragen',  href: '/admin/partner-inquiries',      icon: Handshake },
+  { label: 'Leads',              href: '/admin/leads',                icon: Users              },
+  { label: 'Funnel-Nutzungen',  href: '/admin/funnel-nutzungen',      icon: Zap                },
+  { label: 'Affiliate-Klicks',  href: '/admin/affiliate-clicks',      icon: MousePointerClick  },
+  { label: 'Partner-Anfragen',  href: '/admin/partner-inquiries',     icon: Handshake          },
   { label: 'Kontakt-Anfragen', href: '/admin/contact-inquiries',      icon: Mail      },
   { label: 'Creator-Bewerbungen', href: '/admin/creator-applications', icon: Star      },
   { label: 'Creator-Profile',    href: '/admin/creator-profiles',     icon: BadgeCheck },

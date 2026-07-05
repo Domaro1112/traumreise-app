@@ -30,6 +30,15 @@ export default async function AdminDashboard() {
   let contentPublished      = 0;
   let contentSubmitted      = 0;
   let contentTotal          = 0;
+  // Analytics counters
+  let newsletterCount = 0;
+  let contactCount    = 0;
+  let affiliateTotal  = 0;
+  let affiliateToday  = 0;
+  let funnelTotal     = 0;
+  let funnelToday     = 0;
+  let funnelSingle    = 0;
+
   try {
     destinations = await listDestinationsAdmin();
   } catch { /* Supabase not yet available */ }
@@ -63,6 +72,35 @@ export default async function AdminDashboard() {
     contentSubmitted  = contSub   ?? 0;
     contentTotal      = contTotal ?? 0;
   } catch { /* Tabellen noch nicht angelegt */ }
+  try {
+    const supabase = createServerClient();
+    const todayStart = new Date(); todayStart.setHours(0, 0, 0, 0);
+    const todayISO = todayStart.toISOString();
+    const [
+      { count: nlCount },
+      { count: ciCount },
+      { count: affAll },
+      { count: affDay },
+      { count: fsAll },
+      { count: fsDay },
+      { count: fsSingle },
+    ] = await Promise.all([
+      supabase.from('newsletter_subscribers').select('*', { count: 'exact', head: true }),
+      supabase.from('contact_inquiries').select('*', { count: 'exact', head: true }),
+      supabase.from('affiliate_clicks').select('*', { count: 'exact', head: true }),
+      supabase.from('affiliate_clicks').select('*', { count: 'exact', head: true }).gte('created_at', todayISO),
+      supabase.from('travel_funnel_sessions').select('*', { count: 'exact', head: true }),
+      supabase.from('travel_funnel_sessions').select('*', { count: 'exact', head: true }).gte('created_at', todayISO),
+      supabase.from('travel_funnel_sessions').select('*', { count: 'exact', head: true }).eq('funnel_type', 'single_parent'),
+    ]);
+    newsletterCount = nlCount  ?? 0;
+    contactCount    = ciCount  ?? 0;
+    affiliateTotal  = affAll   ?? 0;
+    affiliateToday  = affDay   ?? 0;
+    funnelTotal     = fsAll    ?? 0;
+    funnelToday     = fsDay    ?? 0;
+    funnelSingle    = fsSingle ?? 0;
+  } catch { /* Analytics-Tabellen noch nicht verfügbar */ }
 
   const totalDests         = destinations.length;
   const publishedCount     = destinations.filter(d => d.status === 'published').length;
@@ -104,27 +142,30 @@ export default async function AdminDashboard() {
     },
     {
       title:    'Leads',
-      value:    '–',
-      subtitle: 'Datenanbindung folgt',
+      value:    String((newsletterCount + contactCount + creatorTotal) || '–'),
+      subtitle: `Newsletter: ${newsletterCount} · Kontakt: ${contactCount} · Bewerbungen: ${creatorTotal}`,
       icon:     Users,
       color:    '#059669',
       bgColor:  '#ECFDF5',
+      href:     '/admin/leads',
     },
     {
       title:    'Affiliate-Klicks',
-      value:    '–',
-      subtitle: 'Datenanbindung folgt',
+      value:    String(affiliateTotal || '–'),
+      subtitle: `Heute: ${affiliateToday}`,
       icon:     TrendingUp,
       color:    '#D97706',
       bgColor:  '#FFFBEB',
+      href:     '/admin/affiliate-clicks',
     },
     {
       title:    'Funnel-Nutzungen',
-      value:    '–',
-      subtitle: 'Datenanbindung folgt',
+      value:    String(funnelTotal || '–'),
+      subtitle: `Heute: ${funnelToday} · Alleinerziehend: ${funnelSingle}`,
       icon:     Zap,
       color:    '#0891B2',
       bgColor:  '#ECFEFF',
+      href:     '/admin/funnel-nutzungen',
     },
     {
       title:    'Offene Entwürfe',
