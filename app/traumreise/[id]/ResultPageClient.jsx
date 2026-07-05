@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import TravelResultView from '@/components/finder/TravelResultView';
+import TravelOfferQuickLinks from '@/components/finder/TravelOfferQuickLinks';
 import EmailGate from '@/components/funnel/EmailGate';
 import { Mail, CheckCircle2 } from 'lucide-react';
 
@@ -158,6 +159,7 @@ export default function ResultPageClient({
   // ── Results ────────────────────────────────────────────────────────────
   return (
     <>
+      <TravelOfferQuickLinks results={results} />
       <TravelResultView
         results={results}
         personality={personality}
