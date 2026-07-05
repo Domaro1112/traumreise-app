@@ -3,6 +3,26 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Container from '@/components/layout/Container';
 import { PARK_PAGES } from '@/lib/single-parent-park-pages';
+import JsonLd from '@/components/seo/JsonLd';
+import { buildWebPageJsonLd, buildCollectionPageJsonLd } from '@/lib/seo/jsonLd';
+import { SITE_URL } from '@/lib/site-config';
+
+const PAGE_URL = `${SITE_URL}/urlaub-fuer-alleinerziehende/ferienparks-vergleich`;
+
+// BreadcrumbList and FAQPage are already rendered inline in the component.
+// These add the missing WebPage and CollectionPage schemas.
+const PAGE_JSONLD = [
+  buildWebPageJsonLd({
+    title:       'Ferienparks für Alleinerziehende im Vergleich | ApeAround',
+    description: 'Center Parcs, Landal, Roompot, TopParken, Sunparks, Eurocamp und NOVASOL im Vergleich für Alleinerziehende mit Kind.',
+    url:         PAGE_URL,
+  }),
+  buildCollectionPageJsonLd({
+    title:       'Ferienparks für Alleinerziehende im Vergleich',
+    description: 'Übersicht und Vergleich der besten Ferienpark-Anbieter für Alleinerziehende.',
+    url:         PAGE_URL,
+  }),
+];
 
 export const metadata = {
   title: 'Ferienparks für Alleinerziehende im Vergleich | ApeAround',
@@ -109,6 +129,7 @@ export default function FerienparkVergleichPage() {
 
   return (
     <>
+      <JsonLd data={PAGE_JSONLD} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
 

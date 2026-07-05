@@ -3,6 +3,9 @@ import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { createServerClient } from '@/lib/supabase/server';
+import JsonLd from '@/components/seo/JsonLd';
+import { buildArticleJsonLd, buildBreadcrumbJsonLd } from '@/lib/seo/jsonLd';
+import { SITE_URL } from '@/lib/site-config';
 
 export const revalidate = 300;
 
@@ -46,8 +49,26 @@ export default async function ReisetippDetailPage({ params }) {
   const tipText = tip.tip_data?.text ?? tip.content ?? '';
   const tipUrl  = tip.tip_data?.url ?? null;
 
+  const pageUrl = `${SITE_URL}/reisetipps/${tip.slug}`;
+  const tipJsonLd = [
+    buildBreadcrumbJsonLd([
+      { name: 'Startseite', url: SITE_URL },
+      { name: 'Reisetipps', url: `${SITE_URL}/reisetipps` },
+      { name: tip.title,    url: pageUrl },
+    ]),
+    buildArticleJsonLd({
+      title:      tip.title,
+      description: tip.excerpt,
+      url:        pageUrl,
+      image:      images[0],
+      authorName: creator?.display_name,
+      keywords:   tags,
+    }),
+  ];
+
   return (
     <>
+      <JsonLd data={tipJsonLd} />
       <Header />
       <main style={{ minHeight: '100vh', background: '#FFFFFF' }}>
 

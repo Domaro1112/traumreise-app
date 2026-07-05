@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "@/lib/site-config";
+import JsonLd from "@/components/seo/JsonLd";
+import { buildOrganizationJsonLd, buildWebsiteJsonLd } from "@/lib/seo/jsonLd";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -52,7 +54,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de" className={`${poppins.variable} ${inter.variable}`}>
-      <body>{children}</body>
+      <body>
+        <JsonLd data={[buildOrganizationJsonLd(), buildWebsiteJsonLd()]} />
+        {children}
+      </body>
     </html>
   );
 }

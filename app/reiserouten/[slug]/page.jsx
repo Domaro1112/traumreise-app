@@ -3,6 +3,9 @@ import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { createServerClient } from '@/lib/supabase/server';
+import JsonLd from '@/components/seo/JsonLd';
+import { buildArticleJsonLd, buildBreadcrumbJsonLd } from '@/lib/seo/jsonLd';
+import { SITE_URL } from '@/lib/site-config';
 
 export const revalidate = 300;
 
@@ -46,8 +49,26 @@ export default async function ReiserouteDetailPage({ params }) {
   const routeData = route.route_data ?? {};
   const stops     = Array.isArray(routeData.stops) ? routeData.stops : [];
 
+  const pageUrl = `${SITE_URL}/reiserouten/${route.slug}`;
+  const routeJsonLd = [
+    buildBreadcrumbJsonLd([
+      { name: 'Startseite',  url: SITE_URL },
+      { name: 'Reiserouten', url: `${SITE_URL}/reiserouten` },
+      { name: route.title,   url: pageUrl },
+    ]),
+    buildArticleJsonLd({
+      title:       route.title,
+      description: route.excerpt,
+      url:         pageUrl,
+      image:       images[0],
+      authorName:  creator?.display_name,
+      keywords:    tags,
+    }),
+  ];
+
   return (
     <>
+      <JsonLd data={routeJsonLd} />
       <Header />
       <main style={{ minHeight: '100vh', background: '#FFFFFF' }}>
 

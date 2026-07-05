@@ -1,7 +1,7 @@
 import { createServerClient } from '@/lib/supabase/server';
 import { calculateSeoScore, calculateLlmoScore, scoreBadgeStyle } from '@/lib/blog-scores';
 import { Suspense } from 'react';
-import { AlertTriangle, Code2, Cpu, Globe, MapPin, FileText } from 'lucide-react';
+import { AlertTriangle, Code2, Cpu, Globe, MapPin, FileText, CheckCircle } from 'lucide-react';
 import SeoLlmoFilters from '@/components/admin/SeoLlmoFilters';
 
 export const metadata = {
@@ -87,6 +87,24 @@ function calcBlogAeoScore(article) {
   return Math.round((earnedWeight / totalWeight) * 100);
 }
 
+// ─── JSON-LD quality per item ──────────────────────────────────────────────────
+
+/**
+ * JSON-LD is implemented in page code for all destinations + blog articles.
+ * This function evaluates the QUALITY of the output based on field completeness.
+ *
+ * Destinations → reiseziele/[slug] outputs TouristDestination + WebPage + BreadcrumbList + optional FAQPage
+ * Blog articles → reiseblog/[slug] outputs BlogPosting + Article + FAQPage + BreadcrumbList + WebPage
+ */
+function getJsonLdStatus(item) {
+  if (!item.slug) return { label: '— kein Slug', bg: '#FEF2F2', color: '#DC2626' };
+  const rich = item.hasImage && item.hasDesc;
+  const partial = item.hasImage || item.hasDesc;
+  if (rich)    return { label: '✓ Vollst.',  bg: '#ECFDF5', color: '#059669' };
+  if (partial) return { label: '~ Teilw.',   bg: '#FEFCE8', color: '#92400E' };
+  return             { label: '! Felder',   bg: '#FFF7ED', color: '#EA580C' };
+}
+
 // ─── UI helpers ───────────────────────────────────────────────────────────────
 
 function ScoreBadge({ score }) {
@@ -161,6 +179,8 @@ export default async function SeoLlmoPage({ searchParams }) {
     llmo:      calcDestLlmoScore(d),
     hasLlmo:   !!(d.llmo_quick_answer || d.llmo_answer_block || d.ai_summary),
     hasFaq:    Array.isArray(d.faq) && d.faq.length > 0,
+    hasImage:  !!d.hero_image,
+    hasDesc:   !!(d.seo_description || d.short_description),
   }));
 
   const blogItems = blogArticles.map(a => ({
@@ -175,6 +195,8 @@ export default async function SeoLlmoPage({ searchParams }) {
     llmo:      calculateLlmoScore(a),
     hasLlmo:   false,
     hasFaq:    Array.isArray(a.faq) && a.faq.length > 0,
+    hasImage:  !!a.cover_image_url,
+    hasDesc:   !!(a.seo_description || a.excerpt),
   }));
 
   const allItems = [...destItems, ...blogItems];
@@ -187,6 +209,10 @@ export default async function SeoLlmoPage({ searchParams }) {
   const avgLlmo        = avg(allItems.map(i => i.llmo));
   const llmoCoveredCnt = allItems.filter(i => i.hasLlmo).length;
   const faqCnt         = allItems.filter(i => i.hasFaq).length;
+
+  // JSON-LD quality stats
+  const jsonLdFull    = allItems.filter(i => i.hasImage && i.hasDesc && i.slug).length;
+  const jsonLdPartial = allItems.filter(i => (i.hasImage || i.hasDesc) && i.slug && !(i.hasImage && i.hasDesc)).length;
 
   // Table items sorted by SEO ascending (worst first = needs attention)
   const tableSource = tab === 'blog' ? blogItems : tab === 'all' ? allItems : destItems;
@@ -223,19 +249,18 @@ export default async function SeoLlmoPage({ searchParams }) {
           </div>
           <div style={{ fontSize: '13px', color: '#7F1D1D', lineHeight: 1.6 }}>
             <span style={{ display: 'block' }}>
-              <strong>robots.js:</strong>{' '}
-              Alle Crawler blockiert —{' '}
+              <strong>robots.js:</strong> Alle Crawler blockiert —{' '}
               <code style={{ background: '#FEE2E2', padding: '1px 5px', borderRadius: '3px' }}>Disallow: /</code>{' '}
               gilt für alle User-Agents inkl. Googlebot.
             </span>
             <span style={{ display: 'block', marginTop: '4px' }}>
-              <strong>sitemap.js:</strong>{' '}
-              Gibt leeres Array{' '}
+              <strong>sitemap.js:</strong> Gibt leeres Array{' '}
               <code style={{ background: '#FEE2E2', padding: '1px 5px', borderRadius: '3px' }}>[]</code>{' '}
               zurück — keine URLs werden bei Suchmaschinen eingereicht.
             </span>
             <span style={{ display: 'block', marginTop: '8px', fontWeight: 600 }}>
-              Vor dem Go-Live: robots.js auf selektives Allow umstellen und sitemap.js mit publizierten URLs befüllen.
+              JSON-LD ist trotzdem schon vollständig vorbereitet und wartet auf den Go-Live.
+              Vor der Indexierung: robots.js anpassen und sitemap.js mit publizierten URLs befüllen.
             </span>
           </div>
         </div>
@@ -287,21 +312,29 @@ export default async function SeoLlmoPage({ searchParams }) {
       {/* ── JSON-LD / CWV / Keyword status cards ─────────────────────────────── */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '12px', marginBottom: '24px' }}>
 
+        {/* JSON-LD — now implemented */}
         <div style={{ background: '#FFFFFF', borderRadius: '14px', border: '1.5px solid #E2E8F0', padding: '18px 20px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
-            <Code2 size={15} style={{ color: '#DC2626' }} />
+            <Code2 size={15} style={{ color: '#059669' }} />
             <span style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A' }}>JSON-LD / Structured Data</span>
           </div>
-          <span style={{ padding: '2px 8px', borderRadius: '6px', fontSize: '11px', fontWeight: 700, background: '#FEF2F2', color: '#DC2626' }}>
-            Nicht implementiert
+          <span style={{ padding: '2px 8px', borderRadius: '6px', fontSize: '11px', fontWeight: 700, background: '#ECFDF5', color: '#059669' }}>
+            Implementiert
           </span>
-          <p style={{ fontSize: '12px', color: '#64748B', margin: '10px 0 0', lineHeight: 1.5 }}>
-            Keine JSON-LD-Blöcke im Codebase vorhanden. Empfohlen:{' '}
-            <code>TravelDestination</code>, <code>Article</code> und <code>FAQPage</code>{' '}
-            pro Contenttyp ergänzen.
+          <p style={{ fontSize: '12px', color: '#64748B', margin: '10px 0 6px', lineHeight: 1.5 }}>
+            Aktive Schemas:{' '}
+            <strong>Organization, WebSite</strong> (global){' · '}
+            <strong>TouristDestination, WebPage, BreadcrumbList, FAQPage</strong> (Reiseziele){' · '}
+            <strong>BlogPosting, Article, WebPage, BreadcrumbList, FAQPage</strong> (Blog){' · '}
+            <strong>Article, BreadcrumbList</strong> (Creator-Inhalte)
           </p>
+          <div style={{ fontSize: '12px', color: '#64748B', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            <span style={{ color: '#059669', fontWeight: 600 }}>✓ {jsonLdFull} vollständig</span>
+            {jsonLdPartial > 0 && <span style={{ color: '#92400E', fontWeight: 600 }}>~ {jsonLdPartial} teilweise</span>}
+          </div>
         </div>
 
+        {/* Core Web Vitals */}
         <div style={{ background: '#FFFFFF', borderRadius: '14px', border: '1.5px solid #E2E8F0', padding: '18px 20px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
             <Cpu size={15} style={{ color: '#94A3B8' }} />
@@ -315,6 +348,7 @@ export default async function SeoLlmoPage({ searchParams }) {
           </p>
         </div>
 
+        {/* Keyword Tracking */}
         <div style={{ background: '#FFFFFF', borderRadius: '14px', border: '1.5px solid #E2E8F0', padding: '18px 20px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
             <Globe size={15} style={{ color: '#94A3B8' }} />
@@ -361,11 +395,11 @@ export default async function SeoLlmoPage({ searchParams }) {
                   {[
                     { label: 'Typ'          },
                     { label: 'Name'         },
-                    { label: 'SEO',    hint: 'Interne SEO-Feldprüfung (0–100): Titel, Meta, Slug, Bild, FAQ, …'       },
-                    { label: 'AEO',    hint: 'Answer Engine Optimization: FAQ-Abdeckung, Direkt-Antworten (0–100)'    },
-                    { label: 'LLMO',   hint: 'LLM Optimization: AI-Felder, LLMO-Quick-Answer, Entities (0–100)'       },
+                    { label: 'SEO',    hint: 'Interne SEO-Feldprüfung (0–100): Titel, Meta, Slug, Bild, FAQ, …'         },
+                    { label: 'AEO',    hint: 'Answer Engine Optimization: FAQ-Abdeckung, Direkt-Antworten (0–100)'      },
+                    { label: 'LLMO',   hint: 'LLM Optimization: AI-Felder, LLMO-Quick-Answer, Entities (0–100)'         },
                     { label: 'FAQ'          },
-                    { label: 'JSON-LD', hint: 'Strukturierte Schema.org-Daten — derzeit generell nicht implementiert'  },
+                    { label: 'JSON-LD', hint: '✓ Vollst. = Bild + Beschreibung vorhanden · ~ Teilw. = ein Feld fehlt · ! Felder = beide Felder fehlen' },
                     { label: 'Status'       },
                     { label: 'Aktualisiert' },
                   ].map(col => (
@@ -385,44 +419,52 @@ export default async function SeoLlmoPage({ searchParams }) {
                 </tr>
               </thead>
               <tbody>
-                {tableItems.map((item, i) => (
-                  <tr key={`${item.type}-${item.id}`} style={{ borderBottom: i < tableItems.length - 1 ? '1px solid #F8FAFF' : 'none' }}>
-                    <td style={{ padding: '9px 14px', whiteSpace: 'nowrap' }}>
-                      <span style={{
-                        display: 'inline-flex', alignItems: 'center', gap: '4px',
-                        padding: '2px 8px', borderRadius: '6px', fontSize: '11px', fontWeight: 700,
-                        background: item.type === 'destination' ? '#EFF6FF' : '#F0FDF4',
-                        color:      item.type === 'destination' ? '#1D4ED8' : '#15803D',
-                      }}>
-                        {item.type === 'destination'
-                          ? <MapPin   size={10} strokeWidth={2.5} />
-                          : <FileText size={10} strokeWidth={2.5} />
-                        }
-                        {item.type === 'destination' ? 'Reiseziel' : 'Blog'}
-                      </span>
-                    </td>
-                    <td style={{ padding: '9px 14px', fontWeight: 500, color: '#0F172A', maxWidth: '220px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      {item.name || item.slug || '–'}
-                    </td>
-                    <td style={{ padding: '9px 14px' }}><ScoreBadge score={item.seo}  /></td>
-                    <td style={{ padding: '9px 14px' }}><ScoreBadge score={item.aeo}  /></td>
-                    <td style={{ padding: '9px 14px' }}><ScoreBadge score={item.llmo} /></td>
-                    <td style={{ padding: '9px 14px', textAlign: 'center' }}>
-                      <span style={{ fontSize: '12px', fontWeight: 700, color: item.hasFaq ? '#059669' : '#CBD5E1' }}>
-                        {item.hasFaq ? '✓' : '–'}
-                      </span>
-                    </td>
-                    <td style={{ padding: '9px 14px', textAlign: 'center' }}>
-                      <span style={{ fontSize: '12px', color: '#FCA5A5', fontWeight: 600 }}>–</span>
-                    </td>
-                    <td style={{ padding: '9px 14px' }}>
-                      <StatusBadge status={item.status} />
-                    </td>
-                    <td style={{ padding: '9px 14px', color: '#94A3B8', whiteSpace: 'nowrap', fontSize: '12px' }}>
-                      {formatDate(item.updatedAt)}
-                    </td>
-                  </tr>
-                ))}
+                {tableItems.map((item, i) => {
+                  const jsonLd = getJsonLdStatus(item);
+                  return (
+                    <tr key={`${item.type}-${item.id}`} style={{ borderBottom: i < tableItems.length - 1 ? '1px solid #F8FAFF' : 'none' }}>
+                      <td style={{ padding: '9px 14px', whiteSpace: 'nowrap' }}>
+                        <span style={{
+                          display: 'inline-flex', alignItems: 'center', gap: '4px',
+                          padding: '2px 8px', borderRadius: '6px', fontSize: '11px', fontWeight: 700,
+                          background: item.type === 'destination' ? '#EFF6FF' : '#F0FDF4',
+                          color:      item.type === 'destination' ? '#1D4ED8' : '#15803D',
+                        }}>
+                          {item.type === 'destination'
+                            ? <MapPin   size={10} strokeWidth={2.5} />
+                            : <FileText size={10} strokeWidth={2.5} />
+                          }
+                          {item.type === 'destination' ? 'Reiseziel' : 'Blog'}
+                        </span>
+                      </td>
+                      <td style={{ padding: '9px 14px', fontWeight: 500, color: '#0F172A', maxWidth: '220px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {item.name || item.slug || '–'}
+                      </td>
+                      <td style={{ padding: '9px 14px' }}><ScoreBadge score={item.seo}  /></td>
+                      <td style={{ padding: '9px 14px' }}><ScoreBadge score={item.aeo}  /></td>
+                      <td style={{ padding: '9px 14px' }}><ScoreBadge score={item.llmo} /></td>
+                      <td style={{ padding: '9px 14px', textAlign: 'center' }}>
+                        <span style={{ fontSize: '12px', fontWeight: 700, color: item.hasFaq ? '#059669' : '#CBD5E1' }}>
+                          {item.hasFaq ? '✓' : '–'}
+                        </span>
+                      </td>
+                      <td style={{ padding: '9px 14px' }}>
+                        <span style={{
+                          padding: '2px 7px', borderRadius: '5px', fontSize: '11px', fontWeight: 700,
+                          background: jsonLd.bg, color: jsonLd.color, whiteSpace: 'nowrap',
+                        }}>
+                          {jsonLd.label}
+                        </span>
+                      </td>
+                      <td style={{ padding: '9px 14px' }}>
+                        <StatusBadge status={item.status} />
+                      </td>
+                      <td style={{ padding: '9px 14px', color: '#94A3B8', whiteSpace: 'nowrap', fontSize: '12px' }}>
+                        {formatDate(item.updatedAt)}
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -431,7 +473,7 @@ export default async function SeoLlmoPage({ searchParams }) {
         <div style={{ padding: '12px 20px', borderTop: '1px solid #F1F5F9', fontSize: '12px', color: '#CBD5E1' }}>
           {tableItems.length} Einträge ·
           Scores basieren auf Datenbankfeldern, nicht auf Live-Crawl-Daten ·
-          JSON-LD generell noch nicht implementiert
+          JSON-LD: ✓ Vollst. = Bild + Beschreibung vorhanden · ~ Teilw. = ein Pflichtfeld fehlt
         </div>
       </div>
     </div>
