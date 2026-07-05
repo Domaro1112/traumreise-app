@@ -518,7 +518,7 @@ const HOTEL_PROVIDERS = [
     getUrl: r => r.holidaycheckUrl || `https://www.holidaycheck.de/hotel-search?countryId=0&terms=${encodeURIComponent(r.destination||'')}` },
 ];
 
-export default function TravelResultView({ results, personality, interests, packingList, surprise, duration, budget, phase2Loading, onReset, onEmail }) {
+export default function TravelResultView({ results, personality, interests, packingList, surprise, duration, budget, phase2Loading, onReset, onEmail, renderAfterHero = null, showHotelSection = true }) {
   const [idx, setIdx]                           = useState(0);
   const [showShare, setShowShare]               = useState(false);
   const [openPackCategory, setOpenPackCategory] = useState(null);
@@ -625,6 +625,8 @@ export default function TravelResultView({ results, personality, interests, pack
           </div>
         </div>
       </section>
+
+      {renderAfterHero}
 
       {/* ═══════════════════════════════════════════════════════════════════════
           TOP 3 DESTINATION CARDS
@@ -772,13 +774,13 @@ export default function TravelResultView({ results, personality, interests, pack
         )}
 
         {/* ── HOTELS ─────────────────────────────────────────────────────── */}
-        {!realHotels.length && phase2Loading && (
+        {showHotelSection && !realHotels.length && phase2Loading && (
           <div style={{ ...card, marginBottom: '12px' }}>
             <SectionTitle label="ApeAround-Empfehlungen" title="Empfohlene Hotels" icon={Hotel} />
             <InlineSkeleton message="Hotelvorschläge werden geladen…" />
           </div>
         )}
-        {(!phase2Loading || realHotels.length > 0) && (
+        {showHotelSection && (!phase2Loading || realHotels.length > 0) && (
           <section aria-label="Empfohlene Hotels" style={{ ...card, marginBottom: '12px' }}>
             <SectionTitle label="ApeAround-Empfehlungen" title="Empfohlene Hotels" icon={Hotel} />
 

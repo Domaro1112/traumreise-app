@@ -159,7 +159,6 @@ export default function ResultPageClient({
   // ── Results ────────────────────────────────────────────────────────────
   return (
     <>
-      <TravelOfferQuickLinks results={results} />
       <TravelResultView
         results={results}
         personality={personality}
@@ -171,6 +170,8 @@ export default function ResultPageClient({
         phase2Loading={phase2Loading}
         onReset={() => router.push('/')}
         onEmail={() => setShowEmail(true)}
+        renderAfterHero={<TravelOfferQuickLinks results={results} />}
+        showHotelSection={false}
       />
 
       {showEmail && (
