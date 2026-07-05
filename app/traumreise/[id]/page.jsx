@@ -81,9 +81,10 @@ export default async function TravelResultPage({ params }) {
     ...dest,
     ...buildAffiliateUrls(dest, {
       budget, season, duration,
-      adults:   resultsAdults,
-      children: resultsChildren,
-      childAge: resultsChildAge,
+      adults:         resultsAdults,
+      children:       resultsChildren,
+      childAge:       resultsChildAge,
+      isSingleParent,
     }),
   }));
 

@@ -47,6 +47,10 @@ function ProviderLogo({ providerKey, name, color }) {
 export default function FerienparkSection({ interests, destination, budget, holidayParkUrls }) {
   const matched = matchFerienparkProviders(interests, destination, budget);
   if (!matched.length) return null;
+  // Defensive guard: only render for single-parent sessions.
+  // holidayParkUrls is null for regular sessions — this prevents the section
+  // from appearing in the normal travel funnel even if matchFerienparkProviders matches.
+  if (!holidayParkUrls || Object.keys(holidayParkUrls).length === 0) return null;
 
   return (
     <section
