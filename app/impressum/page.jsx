@@ -37,8 +37,8 @@ export default function Impressum() {
             >
               {[
                 { label: 'Angaben gemäß § 5 TMG', value: 'ApeAround\nMarkus Rothke\n[Straße Hausnummer]\nFreudenberg' },
-                { label: 'Kontakt', value: 'E-Mail: kontakt@ApeAround.de\nTelefon: +49 (0) XXX XXXXXXXX' },
-                { label: 'Umsatzsteuer-ID', value: 'USt-IdNr.: DE XXXXXXXXX' },
+                { label: 'Kontakt', value: 'E-Mail: kontakt@ApeAround.de\nTelefon: Auf Anfrage' },
+                { label: 'Umsatzsteuer-ID', value: 'USt-IdNr.: DE ...folgt' },
                 { label: 'Verantwortlich für den Inhalt', value: 'Markus Rothke\n[Adresse wie oben]' },
                 { label: 'Streitschlichtung', value: 'Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: https://ec.europa.eu/consumers/odr. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.' },
               ].map((item) => (
