@@ -19,7 +19,11 @@ export async function proxy(request: NextRequest) {
     const url  = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-    if (url && anon) {
+    // Nur wenn ein Supabase-Login-Cookie existiert (= Admin/Creator eingeloggt).
+    // Normale Besucher haben keins – so entfällt für sie die Anfrage an Supabase.
+    const hasAuthCookie = request.cookies.getAll().some(c => c.name.startsWith('sb-'));
+
+    if (url && anon && hasAuthCookie) {
       const supabase = createServerClient(url, anon, {
         cookies: {
           getAll() {
@@ -58,8 +62,8 @@ export const config = {
      * - /access  (login page itself)
      * - /api/*   (API routes — session is checked per-route via isAdminRequest)
      * - /_next/* (Next.js internals)
-     * - Static files (favicon, sitemap, robots, images)
+     * - Static files (favicon, sitemap, robots, /images/* und alle Dateien mit Bild-/Font-Endung)
      */
-    '/((?!access|api|_next/static|_next/image|_next/data|favicon.ico|sitemap.xml|robots.txt).*)',
+    '/((?!access|api|_next/static|_next/image|_next/data|images/|favicon.ico|sitemap.xml|robots.txt|.*\\.(?:jpg|jpeg|png|webp|avif|gif|svg|ico|woff2?|ttf)$).*)',
   ],
 };
