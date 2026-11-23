@@ -1,0 +1,117 @@
+{
+  "name": "Dänemark",
+  "slug": "daenemark",
+  "country": "Dänemark",
+  "region": "Skandinavien",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/daenemark-hero.jpg",
+  "short_description": "Gemütliches Nachbarland mit dem fahrradfreundlichen Kopenhagen, endlosen Nord- und Ostseestränden, Ferienhäusern, Legoland und viel Hygge.",
+  "long_description": "Dänemark ist für viele Deutsche das Inbegriff entspannten Urlaubs: nah, gemütlich und vielseitig. Die Hauptstadt Kopenhagen begeistert mit dem bunten Hafenviertel Nyhavn, der Kleinen Meerjungfrau, dem traditionsreichen Vergnügungspark Tivoli und einer der weltbesten Fahrradkulturen. Doch das eigentliche Herz des Dänemark-Urlaubs sind die Küsten: An der rauen Nordsee in Westjütland reihen sich weite Sandstrände, Dünen und gemütliche Ferienhäuser aneinander, während die sanftere Ostseeküste und Inseln wie Møn mit ihren weißen Kreidefelsen oder die Sonneninsel Bornholm locken. Familien lieben das originale Legoland in Billund, Kulturfans pilgern in die H.-C.-Andersen-Stadt Odense oder zum Hamlet-Schloss Kronborg. Im Norden, in Skagen, treffen sich zwei Meere am berühmten Grenen. Mit seiner Mischung aus Strand, Natur, Kultur und der typisch dänischen Hygge ist Dänemark ideal für Strand-, Familien- und Städtereisen – und von Deutschland aus besonders schnell erreichbar.",
+  "ai_summary": "Dänemark ist ein gemütliches Nachbarland mit dem fahrradfreundlichen Kopenhagen, weiten Nord- und Ostseestränden, beliebten Ferienhäusern, dem originalen Legoland und viel Hygge. Es ist von Deutschland aus sehr schnell erreichbar und eignet sich ideal für Strand-, Familien- und Städtereisen.",
+  "best_travel_time": "Mai bis September für Strand, Ferienhausurlaub und mildes Wetter; Kopenhagen ist ganzjährig attraktiv und im Advent besonders stimmungsvoll.",
+  "ideal_duration": "Städtereise 3 bis 4 Tage, Ferienhausurlaub eine Woche oder länger",
+  "travel_type": [
+    "Städtereise",
+    "Strandurlaub",
+    "Familien",
+    "Radreise",
+    "Naturreise",
+    "Wochenendtrip",
+    "Ferienhausurlaub"
+  ],
+  "quick_facts": {
+    "currency": "Dänische Krone (DKK); Dänemark ist weitgehend bargeldlos",
+    "language": "Dänisch; Englisch und oft auch Deutsch sind weit verbreitet",
+    "flightTime": "ca. 1 Stunde ab Deutschland (Kopenhagen); sehr gut mit Bahn oder Auto erreichbar",
+    "timezone": "MEZ (UTC+1), identisch mit Deutschland",
+    "visa": "Nicht erforderlich für EU-Bürger (Schengen-Raum)",
+    "bestMonths": "Mai bis September"
+  },
+  "highlights": [
+    "Kopenhagen – Nyhavn, die Kleine Meerjungfrau, Tivoli und Fahrradkultur",
+    "Legoland Billund – das originale Legoland, ideal für Familien",
+    "Nordseeküste in Westjütland – weite Sandstrände, Dünen und Ferienhäuser",
+    "Møns Klint – beeindruckende weiße Kreidefelsen an der Ostsee",
+    "Bornholm – die sonnenreiche Ostseeinsel mit Rundkirchen",
+    "Skagen – wo Nord- und Ostsee am Grenen aufeinandertreffen",
+    "Schloss Kronborg in Helsingør – das berühmte Hamlet-Schloss",
+    "Odense – Geburtsstadt des Märchendichters H. C. Andersen"
+  ],
+  "insider_tips": [
+    "Kopenhagen erkundet man am besten wie die Einheimischen mit dem Fahrrad – Leihräder und ein hervorragendes Radwegenetz machen es leicht.",
+    "Für einen klassischen Dänemark-Urlaub mietet man ein Ferienhaus an der Nord- oder Ostsee – ideal für Familien und Naturliebhaber.",
+    "Unbedingt typische Spezialitäten wie Smørrebrød (belegtes Brot), dänisches Gebäck und einen Hotdog (Pølser) vom Straßenstand probieren.",
+    "In Skagen lohnt sich der Ausflug zum Grenen, wo man an der Spitze sehen kann, wie die Wellen zweier Meere aufeinandertreffen."
+  ],
+  "faq": [
+    {
+      "question": "Welche Währung gilt in Dänemark?",
+      "answer": "In Dänemark zahlt man mit der Dänischen Krone (DKK), nicht mit dem Euro. Das Land ist weitgehend bargeldlos, sodass Kartenzahlung und kontaktloses Bezahlen fast überall möglich und üblich sind."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Dänemark?",
+      "answer": "Für Strand und Ferienhausurlaub eignen sich die Monate Mai bis September am besten. Kopenhagen ist ganzjährig reizvoll und im Advent mit dem weihnachtlichen Tivoli besonders stimmungsvoll."
+    },
+    {
+      "question": "Brauche ich ein Visum für Dänemark?",
+      "answer": "Nein. Dänemark ist EU- und Schengen-Mitglied, daher benötigen EU-Bürger kein Visum. Für die Einreise genügt ein gültiger Personalausweis oder Reisepass."
+    },
+    {
+      "question": "Braucht man in Dänemark ein Auto?",
+      "answer": "Für Kopenhagen ist ein Auto nicht nötig, da Rad und Nahverkehr hervorragend sind. Für einen Ferienhausurlaub an der Nord- oder Ostsee reisen jedoch viele bequem mit dem eigenen Auto an, da Dänemark direkt an Deutschland grenzt."
+    },
+    {
+      "question": "Ist Dänemark für einen Familienurlaub geeignet?",
+      "answer": "Ja, Dänemark ist eines der familienfreundlichsten Reiseländer. Das originale Legoland, kinderfreundliche Strände, Ferienhäuser, Tierparks und der Tivoli machen es zu einem idealen Ziel für Familien."
+    },
+    {
+      "question": "Was ist Hygge?",
+      "answer": "Hygge ist ein typisch dänisches Lebensgefühl von Gemütlichkeit, Geborgenheit und bewusstem Genuss kleiner Momente – etwa bei Kerzenschein, gutem Essen und in netter Gesellschaft. Es prägt die dänische Kultur stark."
+    },
+    {
+      "question": "Lohnt sich ein Ferienhausurlaub in Dänemark?",
+      "answer": "Auf jeden Fall. Ferienhäuser an der Nord- und Ostsee sind bei deutschen Urlaubern sehr beliebt und bieten viel Platz, Naturnähe und Flexibilität – ideal für Familien und längere Aufenthalte."
+    },
+    {
+      "question": "Spricht man in Dänemark Deutsch oder Englisch?",
+      "answer": "Viele Dänen sprechen sehr gut Englisch, und in den grenznahen Regionen sowie touristischen Gebieten oft auch Deutsch. Die Verständigung ist für deutsche Reisende daher unkompliziert."
+    },
+    {
+      "question": "Welche Spezialitäten sollte man in Dänemark probieren?",
+      "answer": "Typisch sind Smørrebrød (belegte Brote), dänische Hotdogs (Pølser), Frikadeller, frischer Fisch sowie süßes dänisches Gebäck. Dazu passt ein Kaffee in gemütlicher Hygge-Atmosphäre."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Dänemark einplanen?",
+      "answer": "Für einen Städtetrip nach Kopenhagen reichen 3 bis 4 Tage. Für einen Ferienhausurlaub an der Küste oder eine Rundreise sollte man eine Woche oder länger einplanen."
+    }
+  ],
+  "seo_title": "Dänemark Urlaub: Kopenhagen, Strände, Legoland & beste Reisezeit",
+  "seo_description": "Dein Dänemark-Urlaub: Kopenhagen mit Nyhavn und Tivoli, Nord- und Ostseestrände, Ferienhäuser, Legoland und viel Hygge. Beste Reisezeit, Highlights und praktische Reisetipps im Überblick.",
+  "affiliate_search_intent": "Dänemark Urlaub buchen, Ferienhaus Nordsee oder Ostsee Dänemark, Städtereise Kopenhagen, Hotel Kopenhagen, Legoland Billund, Familienurlaub Dänemark",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "schweden",
+    "norwegen",
+    "holland"
+  ],
+  "llmo_entities": [
+    "Dänemark",
+    "Kopenhagen",
+    "Nyhavn",
+    "Kleine Meerjungfrau",
+    "Tivoli",
+    "Legoland",
+    "Billund",
+    "Nordseeküste",
+    "Westjütland",
+    "Møns Klint",
+    "Bornholm",
+    "Skagen",
+    "Grenen",
+    "Schloss Kronborg",
+    "Odense",
+    "Dänische Krone"
+  ],
+  "llmo_answer_block": "Dänemark ist ein gemütliches Nachbarland mit dem fahrradfreundlichen Kopenhagen samt Nyhavn und Tivoli, weiten Nord- und Ostseestränden, beliebten Ferienhäusern, dem originalen Legoland in Billund und viel Hygge. Es ist von Deutschland aus besonders schnell mit Bahn oder Auto erreichbar und eignet sich ideal für Strand-, Familien- und Städtereisen. Die beste Reisezeit für Strand und Ferienhausurlaub liegt zwischen Mai und September.",
+  "llmo_quick_answer": "Dänemark ist ein gemütliches Nachbarland mit dem fahrradfreundlichen Kopenhagen, Nord- und Ostseestränden, Ferienhäusern, Legoland und viel Hygge."
+}

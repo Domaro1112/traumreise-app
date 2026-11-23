@@ -50,7 +50,7 @@ const AFFILIATE_PROVIDERS = [
     description: 'Über 5 Millionen Unterkünfte weltweit auf einen Blick – finde das beste Preis-Leistungs-Verhältnis für deine Tour.',
     trust: 'Über 5 Mio. Unterkünfte im Vergleich',
     cta: 'Unterkünfte vergleichen',
-    // Trivago macht einen Destinations-Lookup auf ?query= – der lange AI-Suchterm
+    // Trivago macht einen Destinations-Lookup auf ?query= – der lange Suchterm
     // trifft kein bekanntes Ziel und Trivago fällt auf sein eigenes Default zurück.
     // Daher: nur den reinen Regionsnamen übergeben (zweites Argument).
     buildUrl: (_searchTerm, region) => `/go/trivago?url=${encodeURIComponent(`https://www.trivago.de/?query=${encodeURIComponent(region)}&iPathCombination=am`)}`,
@@ -75,36 +75,6 @@ const AFFILIATE_PROVIDERS = [
     ),
   },
 ];
-
-const DIFFICULTY_COLOR = {
-  leicht:        { bg: '#DCFCE7', color: '#16A34A', border: '#BBF7D0' },
-  mittel:        { bg: '#FEF3C7', color: '#D97706', border: '#FDE68A' },
-  anspruchsvoll: { bg: '#FEE2E2', color: '#DC2626', border: '#FECACA' },
-};
-
-const STOP_TYPE_STYLES = {
-  'Aussichtspunkt': { bg: '#EFF6FF', color: '#1D4ED8', border: '#BFDBFE' },
-  'See':            { bg: '#F0FDFA', color: '#0F766E', border: '#99F6E4' },
-  'Passhöhe':       { bg: '#F5F3FF', color: '#6D28D9', border: '#DDD6FE' },
-  'Altstadt':       { bg: '#FFFBEB', color: '#B45309', border: '#FDE68A' },
-  'Motorradtreff':  { bg: '#F0FDF4', color: '#15803D', border: '#BBF7D0' },
-  'Café':           { bg: '#FFF7ED', color: '#C2410C', border: '#FED7AA' },
-  'Burg':           { bg: '#FFFBEB', color: '#92400E', border: '#FDE68A' },
-  'Panoramastraße': { bg: '#EFF6FF', color: '#1E40AF', border: '#BFDBFE' },
-  'Fähre':          { bg: '#F0F9FF', color: '#0369A1', border: '#BAE6FD' },
-  'Museum':         { bg: '#FAF5FF', color: '#7E22CE', border: '#E9D5FF' },
-  'Pause':          { bg: '#F0FDF4', color: '#166534', border: '#BBF7D0' },
-};
-const STOP_TYPE_DEFAULT = { bg: '#F8FAFC', color: '#475569', border: '#E2E8F0' };
-
-const ITINERARY_DIFFICULTY = {
-  'leicht':                   { bg: '#DCFCE7', color: '#16A34A', border: '#BBF7D0' },
-  'leicht bis mittel':        { bg: '#D1FAE5', color: '#059669', border: '#A7F3D0' },
-  'mittel':                   { bg: '#FEF3C7', color: '#D97706', border: '#FDE68A' },
-  'mittel bis anspruchsvoll': { bg: '#FEF3C7', color: '#B45309', border: '#FDE68A' },
-  'anspruchsvoll':            { bg: '#FEE2E2', color: '#DC2626', border: '#FECACA' },
-};
-const ITINERARY_DIFFICULTY_DEFAULT = { bg: '#F1F5F9', color: '#64748B', border: '#E2E8F0' };
 
 const ARROW_RIGHT = (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -188,24 +158,18 @@ function HotelSection({ searchTerm, primaryRegion }) {
 }
 
 // ── Main component ────────────────────────────────────────────────────────────
-export default function MotorcycleResultView({ answers, onReset, aiResult, aiError }) {
+export default function MotorcycleResultView({ answers, onReset }) {
   const result = computeResult(answers);
   const { profile, regions, bestTime, accommodation, etappen, kmPerDay, duration } = result;
 
-  const primaryRegion = aiResult?.recommendedRegion?.name || regions[0]?.name || 'Motorradurlaub';
-  const searchTerm    = aiResult?.hotelSearchQuery || `Motorradhotel ${primaryRegion}`;
+  const primaryRegion = regions[0]?.name || 'Motorradurlaub';
+  const searchTerm    = `Motorradhotel ${primaryRegion}`;
 
-  const heroChips = aiResult
-    ? [
-        { label: 'Tageskilometer', value: aiResult.dailyStages?.recommendedKmPerDay || kmPerDay },
-        { label: 'Beste Reisezeit', value: aiResult.bestTravelTime?.months || bestTime.split('–')[0].trim() },
-        { label: 'Unterkunft',      value: aiResult.accommodationAdvice?.type || accommodation.label },
-      ]
-    : [
-        { label: 'Reisedauer', value: duration },
-        { label: 'Tagesziel',  value: kmPerDay },
-        { label: 'Beste Zeit', value: bestTime.split(' ').slice(0, 2).join(' ') + ' …' },
-      ];
+  const heroChips = [
+    { label: 'Reisedauer', value: duration },
+    { label: 'Tagesziel',  value: kmPerDay },
+    { label: 'Beste Zeit', value: bestTime.split(' ').slice(0, 2).join(' ') + ' …' },
+  ];
 
   return (
     <>
@@ -303,22 +267,6 @@ export default function MotorcycleResultView({ answers, onReset, aiResult, aiErr
         }
       `}</style>
 
-      {/* ── Fallback-Hinweis ─────────────────────────────────────────── */}
-      {aiError && (
-        <section style={{ background: '#FFF7ED', paddingTop: '16px', paddingBottom: '4px' }}>
-          <Container size="sm">
-            <div style={{ background: '#FED7AA', border: '1px solid #FDBA74', borderRadius: '14px', padding: '14px 18px', display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C2410C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginTop: '1px', flexShrink: 0 }}>
-                <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
-              </svg>
-              <p style={{ fontSize: '13px', color: '#7C2D12', margin: 0, lineHeight: 1.55 }}>
-                Die KI-Planung war gerade nicht verfügbar. Du siehst eine regelbasierte Empfehlung.
-              </p>
-            </div>
-          </Container>
-        </section>
-      )}
-
       {/* ── 1. HERO / SUMMARY CARD ───────────────────────────────────── */}
       <section style={{ background: 'linear-gradient(135deg, #0F172A 0%, #0e2d46 58%, #0c3a55 100%)', paddingTop: 'clamp(44px, 6vw, 72px)', paddingBottom: 'clamp(44px, 6vw, 72px)', position: 'relative', overflow: 'hidden' }}>
         <div aria-hidden="true" style={{ position: 'absolute', top: '-15%', left: '-5%', width: '520px', height: '520px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(14,165,233,0.09) 0%, transparent 68%)', pointerEvents: 'none' }} />
@@ -334,20 +282,18 @@ export default function MotorcycleResultView({ answers, onReset, aiResult, aiErr
                   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
                 </svg>
                 <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.10em', textTransform: 'uppercase', color: '#38BDF8', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>
-                  {aiResult ? `KI-Planung · ${aiResult.riderProfile?.name || 'Dein Profil'}` : 'Dein Fahrprofil'}
+                  Dein Fahrprofil
                 </span>
               </div>
 
               {/* Title */}
               <h1 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: 'clamp(28px, 5vw, 48px)', fontWeight: 900, color: '#FFFFFF', margin: '0 0 16px', letterSpacing: '-0.03em', lineHeight: 1.08 }}>
-                {aiResult ? aiResult.title : profile.label}
+                {profile.label}
               </h1>
 
               {/* Description */}
               <p style={{ fontSize: 'clamp(14px, 2vw, 17px)', color: 'rgba(255,255,255,0.70)', lineHeight: 1.65, margin: '0 0 28px', maxWidth: '520px' }}>
-                {aiResult
-                  ? (aiResult.riderProfile?.description || aiResult.summary)
-                  : profile.description}
+                {profile.description}
               </p>
 
               {/* Region pill */}
@@ -356,9 +302,7 @@ export default function MotorcycleResultView({ answers, onReset, aiResult, aiErr
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
                 </svg>
                 <span style={{ fontSize: '14px', color: '#E0F2FE', fontWeight: 700, fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>
-                  {aiResult
-                    ? `${aiResult.recommendedRegion?.name || primaryRegion}${aiResult.recommendedRegion?.country ? ` · ${aiResult.recommendedRegion.country}` : ''}`
-                    : `${regions[0]?.name || primaryRegion}${regions[0]?.country ? ` · ${regions[0].country}` : ''}`}
+                  {`${regions[0]?.name || primaryRegion}${regions[0]?.country ? ` · ${regions[0].country}` : ''}`}
                 </span>
               </div>
 
@@ -394,343 +338,8 @@ export default function MotorcycleResultView({ answers, onReset, aiResult, aiErr
       {/* ── 2. HOTEL SECTION ────────────────────────────────────────────── */}
       <HotelSection searchTerm={searchTerm} primaryRegion={primaryRegion} />
 
-      {/* ══ VARIANTE A – KI-Ergebnis ════════════════════════════════════ */}
-      {aiResult ? (
-        <>
-          {/* ── 3. Top Routen ──────────────────────────────────────────── */}
-          {Array.isArray(aiResult.topRoutes) && aiResult.topRoutes.length > 0 && (
-            <section style={{ background: '#F1F5F9', paddingTop: 'clamp(40px, 5vw, 60px)', paddingBottom: 'clamp(40px, 5vw, 60px)' }}>
-              <Container>
-                <div style={{ display: 'flex', gap: '36px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
-                  <div style={{ flex: 1, minWidth: '280px' }}>
-                    <div style={{ marginBottom: '28px' }}>
-                      <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#0EA5E9', margin: '0 0 8px', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>Streckenempfehlungen</p>
-                      <h2 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: 'clamp(22px, 3.5vw, 30px)', fontWeight: 800, color: '#0F172A', margin: 0, letterSpacing: '-0.02em' }}>
-                        Top Routen
-                      </h2>
-                    </div>
-                    <div className="mrv-routes-grid">
-                      {aiResult.topRoutes.map((route, i) => {
-                        const diff = DIFFICULTY_COLOR[route.difficulty] || DIFFICULTY_COLOR.mittel;
-                        return (
-                          <div key={i} style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '20px', padding: 'clamp(16px, 2.5vw, 24px)', boxShadow: '0 2px 12px rgba(15,23,42,0.05)' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px', gap: '10px' }}>
-                              <h3 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: '15px', fontWeight: 800, color: '#0F172A', margin: 0, lineHeight: 1.3 }}>
-                                {route.name}
-                              </h3>
-                              <span style={{ fontSize: '11px', fontWeight: 700, background: diff.bg, color: diff.color, border: `1px solid ${diff.border}`, borderRadius: '8px', padding: '3px 9px', whiteSpace: 'nowrap', flexShrink: 0 }}>
-                                {route.difficulty}
-                              </span>
-                            </div>
-                            <p style={{ fontSize: '11px', color: '#0EA5E9', fontWeight: 700, margin: '0 0 8px', letterSpacing: '0.06em', textTransform: 'uppercase', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>
-                              {route.region}
-                            </p>
-                            <p style={{ fontSize: '13px', color: '#475569', lineHeight: 1.6, margin: '0 0 10px' }}>{route.description}</p>
-                            {route.bestFor && (
-                              <p style={{ fontSize: '12px', color: '#64748B', margin: '0 0 4px' }}>
-                                <strong style={{ color: '#0F172A' }}>Ideal für:</strong> {route.bestFor}
-                              </p>
-                            )}
-                            {route.notes && (
-                              <p style={{ fontSize: '12px', color: '#94A3B8', margin: '8px 0 0', fontStyle: 'italic', borderTop: '1px solid #F1F5F9', paddingTop: '8px' }}>
-                                {route.notes}
-                              </p>
-                            )}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                  {/* Route image sidebar */}
-                  <div style={{ width: '210px', flexShrink: 0, alignSelf: 'flex-start', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                    <div style={{ borderRadius: '20px', overflow: 'hidden', aspectRatio: '1/1', background: '#162040', border: '1px solid #E2E8F0' }}>
-                      <ResultImg sources={IMGS.route} alt="Motorradroute" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                    </div>
-                    <div style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '16px', padding: '16px' }}>
-                      <p style={{ fontSize: '11px', color: '#0EA5E9', fontWeight: 700, margin: '0 0 4px', letterSpacing: '0.06em', textTransform: 'uppercase', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>Empfohlene Region</p>
-                      <p style={{ fontSize: '15px', fontWeight: 800, color: '#0F172A', margin: 0, fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', lineHeight: 1.2 }}>
-                        {aiResult.recommendedRegion?.name || primaryRegion}
-                      </p>
-                      {aiResult.recommendedRegion?.country && (
-                        <p style={{ fontSize: '12px', color: '#64748B', margin: '4px 0 0' }}>{aiResult.recommendedRegion.country}</p>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </Container>
-            </section>
-          )}
-
-          {/* ── 4. Beispielhafte Tagesetappen ─────────────────────────── */}
-          {Array.isArray(aiResult.sampleItinerary) && aiResult.sampleItinerary.length > 0 && (
-            <section style={{ background: '#FFFFFF', paddingTop: 'clamp(40px, 5vw, 60px)', paddingBottom: 'clamp(40px, 5vw, 60px)' }}>
-              <Container size="sm">
-                <div style={{ marginBottom: '28px' }}>
-                  <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#0EA5E9', margin: '0 0 8px', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>Etappenplanung</p>
-                  <h2 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: 'clamp(22px, 3.5vw, 30px)', fontWeight: 800, color: '#0F172A', margin: '0 0 10px', letterSpacing: '-0.02em' }}>
-                    Beispielhafte Tagesetappen
-                  </h2>
-                  <p style={{ fontSize: '13px', color: '#94A3B8', margin: 0, lineHeight: 1.65 }}>
-                    Keine exakte Navi-Route, sondern realistische Routenideen mit passenden Stopps für deine Motorradtour.
-                  </p>
-                </div>
-
-                {/* Enhanced Timeline */}
-                <div style={{ position: 'relative', paddingLeft: '52px' }}>
-                  <div aria-hidden="true" style={{ position: 'absolute', left: '19px', top: '22px', bottom: '22px', width: '2px', background: 'linear-gradient(to bottom, #0EA5E9 0%, rgba(14,165,233,0.08) 100%)' }} />
-
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                    {aiResult.sampleItinerary.map((day, i) => {
-                      const diffStyle = ITINERARY_DIFFICULTY[day.difficulty] || ITINERARY_DIFFICULTY_DEFAULT;
-                      const stops = Array.isArray(day.stops) ? day.stops : [];
-                      return (
-                        <div key={day.day || i} style={{ position: 'relative' }}>
-                          {/* Timeline dot */}
-                          <div aria-hidden="true" style={{ position: 'absolute', left: '-41px', top: '14px', width: '22px', height: '22px', borderRadius: '50%', background: 'linear-gradient(135deg, #0EA5E9, #06B6D4)', border: '3px solid #FFFFFF', boxShadow: '0 0 0 2px rgba(14,165,233,0.30)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '9px', fontWeight: 800, color: '#FFFFFF', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>
-                            {day.day || i + 1}
-                          </div>
-
-                          <div style={{ background: '#F8FAFF', border: '1px solid #E2E8F0', borderRadius: '20px', padding: 'clamp(16px, 2.5vw, 24px)' }}>
-                            {/* Title + km + difficulty */}
-                            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px', marginBottom: '12px' }}>
-                              <h3 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: '15px', fontWeight: 800, color: '#0F172A', margin: 0, lineHeight: 1.3, flex: '1 1 180px' }}>
-                                {day.title}
-                              </h3>
-                              <div style={{ display: 'flex', gap: '7px', flexWrap: 'wrap', flexShrink: 0 }}>
-                                {day.approxKm && (
-                                  <span style={{ background: 'rgba(14,165,233,0.09)', border: '1px solid rgba(14,165,233,0.20)', borderRadius: '8px', padding: '3px 10px', fontSize: '12px', color: '#0EA5E9', fontWeight: 700, whiteSpace: 'nowrap' }}>
-                                    ca. {day.approxKm}
-                                  </span>
-                                )}
-                                {day.difficulty && (
-                                  <span style={{ fontSize: '11px', fontWeight: 700, background: diffStyle.bg, color: diffStyle.color, border: `1px solid ${diffStyle.border}`, borderRadius: '8px', padding: '3px 10px', whiteSpace: 'nowrap' }}>
-                                    {day.difficulty}
-                                  </span>
-                                )}
-                              </div>
-                            </div>
-
-                            {/* Start → End */}
-                            {(day.start || day.end) && (
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px', flexWrap: 'wrap' }}>
-                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                <span style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A' }}>{day.start || '–'}</span>
-                                <span style={{ color: '#94A3B8', fontSize: '16px', lineHeight: 1 }}>→</span>
-                                <span style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A' }}>{day.end || '–'}</span>
-                              </div>
-                            )}
-
-                            {/* Route idea */}
-                            {day.routeIdea && (
-                              <p style={{ fontSize: '13px', color: '#334155', lineHeight: 1.65, margin: '0 0 12px', fontStyle: 'italic', borderLeft: '3px solid #0EA5E9', paddingLeft: '12px', background: 'rgba(14,165,233,0.04)', borderRadius: '0 8px 8px 0', padding: '8px 12px', borderLeftWidth: '3px', borderLeftStyle: 'solid', borderLeftColor: '#0EA5E9' }}>
-                                {day.routeIdea}
-                              </p>
-                            )}
-
-                            {/* Stops */}
-                            {stops.length > 0 && (
-                              <div style={{ marginBottom: '10px' }}>
-                                <p style={{ fontSize: '10px', fontWeight: 700, color: '#64748B', letterSpacing: '0.08em', textTransform: 'uppercase', margin: '0 0 8px', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>Stopps &amp; Ausflugsziele</p>
-                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '7px', marginBottom: stops.some(s => s.whyStop) ? '10px' : 0 }}>
-                                  {stops.map((stop, si) => {
-                                    const st = STOP_TYPE_STYLES[stop.type] || STOP_TYPE_DEFAULT;
-                                    return (
-                                      <div key={si} style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', background: st.bg, border: `1px solid ${st.border}`, borderRadius: '10px', padding: '4px 11px' }}>
-                                        <span style={{ fontSize: '10px', fontWeight: 800, color: st.color, letterSpacing: '0.04em', textTransform: 'uppercase', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', whiteSpace: 'nowrap' }}>{stop.type || 'Stopp'}</span>
-                                        <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: st.color, opacity: 0.45, flexShrink: 0 }} aria-hidden="true" />
-                                        <span style={{ fontSize: '12px', color: '#1E293B', fontWeight: 600, whiteSpace: 'nowrap' }}>{stop.name}</span>
-                                      </div>
-                                    );
-                                  })}
-                                </div>
-                                {stops.filter(s => s.whyStop).length > 0 && (
-                                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                                    {stops.filter(s => s.whyStop).map((stop, si) => (
-                                      <p key={si} style={{ fontSize: '12px', color: '#64748B', margin: 0, lineHeight: 1.55 }}>
-                                        <strong style={{ color: '#475569', fontWeight: 600 }}>{stop.name}:</strong> {stop.whyStop}
-                                      </p>
-                                    ))}
-                                  </div>
-                                )}
-                              </div>
-                            )}
-
-                            {/* Food stop */}
-                            {day.foodStop && (
-                              <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', background: '#FFFBEB', border: '1px solid #FDE68A', borderRadius: '10px', padding: '8px 12px', marginBottom: '8px' }}>
-                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#B45309" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginTop: '1px', flexShrink: 0 }}>
-                                  <path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
-                                </svg>
-                                <span style={{ fontSize: '12px', color: '#92400E', lineHeight: 1.55 }}>
-                                  <strong style={{ fontWeight: 700 }}>Verpflegung:</strong> {day.foodStop}
-                                </span>
-                              </div>
-                            )}
-
-                            {/* Note */}
-                            {day.note && (
-                              <div style={{ display: 'flex', gap: '8px', alignItems: 'flex-start', background: '#F0F9FF', border: '1px solid #BAE6FD', borderRadius: '10px', padding: '8px 12px' }}>
-                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0369A1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginTop: '1px', flexShrink: 0 }}>
-                                  <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
-                                </svg>
-                                <span style={{ fontSize: '12px', color: '#0C4A6E', lineHeight: 1.55 }}>{day.note}</span>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </Container>
-            </section>
-          )}
-
-          {/* ── 5. Tageskilometer + Beste Reisezeit ─────────────────────── */}
-          <section style={{ background: '#F1F5F9', paddingTop: 'clamp(40px, 5vw, 56px)', paddingBottom: '40px' }}>
-            <Container>
-              <div className="mrv-info-grid">
-                {aiResult.dailyStages && (
-                  <div className="mrv-info-card">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                      <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(14,165,233,0.10)', border: '1px solid rgba(14,165,233,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0EA5E9', flexShrink: 0 }}>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                      </div>
-                      <h3 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: '17px', fontWeight: 800, color: '#0F172A', margin: 0 }}>Tagesetappe</h3>
-                    </div>
-                    <p style={{ fontSize: '15px', fontWeight: 800, color: '#0EA5E9', margin: '0 0 10px', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>{aiResult.dailyStages.recommendedKmPerDay}</p>
-                    <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.65, margin: 0 }}>{aiResult.dailyStages.description}</p>
-                  </div>
-                )}
-                {aiResult.bestTravelTime && (
-                  <div className="mrv-info-card">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                      <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(14,165,233,0.10)', border: '1px solid rgba(14,165,233,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0EA5E9', flexShrink: 0 }}>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                      </div>
-                      <h3 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: '17px', fontWeight: 800, color: '#0F172A', margin: 0 }}>Beste Reisezeit</h3>
-                    </div>
-                    <p style={{ fontSize: '15px', fontWeight: 700, color: '#0F172A', margin: '0 0 8px' }}>{aiResult.bestTravelTime.months}</p>
-                    <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.65, margin: '0 0 8px' }}>{aiResult.bestTravelTime.summary}</p>
-                    {aiResult.bestTravelTime.weatherNote && (
-                      <p style={{ fontSize: '12px', color: '#94A3B8', lineHeight: 1.6, margin: 0, fontStyle: 'italic' }}>{aiResult.bestTravelTime.weatherNote}</p>
-                    )}
-                  </div>
-                )}
-              </div>
-            </Container>
-          </section>
-
-          {/* ── 6. Unterkunftstipps ──────────────────────────────────────── */}
-          {aiResult.accommodationAdvice && (
-            <section style={{ background: '#F1F5F9', paddingBottom: '40px' }}>
-              <Container>
-                <div style={{ marginBottom: '20px' }}>
-                  <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#0EA5E9', margin: '0 0 8px', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>Unterkunft</p>
-                  <h2 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: 'clamp(22px, 3.5vw, 30px)', fontWeight: 800, color: '#0F172A', margin: 0, letterSpacing: '-0.02em' }}>Unterkunftstipps</h2>
-                </div>
-                <div className="mrv-info-card" style={{ maxWidth: '600px' }}>
-                  <p style={{ fontSize: '15px', fontWeight: 700, color: '#0F172A', margin: '0 0 10px', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>{aiResult.accommodationAdvice.type}</p>
-                  <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.65, margin: '0 0 16px' }}>{aiResult.accommodationAdvice.description}</p>
-                  {Array.isArray(aiResult.accommodationAdvice.features) && aiResult.accommodationAdvice.features.length > 0 && (
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                      {aiResult.accommodationAdvice.features.map((f, i) => (
-                        <span key={i} style={{ fontSize: '12px', fontWeight: 600, background: '#F0F9FF', color: '#0369A1', border: '1px solid #BAE6FD', borderRadius: '8px', padding: '3px 10px' }}>{f}</span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </Container>
-            </section>
-          )}
-
-          {/* ── 7. Packliste ──────────────────────────────────────────────── */}
-          {Array.isArray(aiResult.packingList) && aiResult.packingList.length > 0 && (
-            <section style={{ background: '#FFFFFF', paddingTop: 'clamp(40px, 5vw, 64px)', paddingBottom: 'clamp(40px, 5vw, 64px)' }}>
-              <Container>
-                <div style={{ display: 'flex', gap: '36px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
-                  <div style={{ flex: 1, minWidth: '260px' }}>
-                    <div style={{ marginBottom: '24px' }}>
-                      <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#0EA5E9', margin: '0 0 8px', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>Checkliste</p>
-                      <h2 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: 'clamp(20px, 3vw, 28px)', fontWeight: 800, color: '#0F172A', margin: 0, letterSpacing: '-0.02em' }}>Motorrad-Packliste</h2>
-                    </div>
-                    <div className="mrv-ai-packing-grid">
-                      {aiResult.packingList.map((item, i) => (
-                        <div key={i} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', background: '#F8FAFF', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '11px 14px' }}>
-                          <span style={{ color: '#0EA5E9', marginTop: '2px', flexShrink: 0 }}>
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                          </span>
-                          <span style={{ fontSize: '13px', color: '#475569', lineHeight: 1.5 }}>{item}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  {/* Packing image */}
-                  <div style={{ width: '200px', flexShrink: 0, alignSelf: 'flex-start' }}>
-                    <div style={{ borderRadius: '20px', overflow: 'hidden', aspectRatio: '1/1', background: '#0F172A', border: '1px solid #E2E8F0' }}>
-                      <ResultImg sources={IMGS.packing} alt="Motorrad-Gepäck" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                    </div>
-                  </div>
-                </div>
-              </Container>
-            </section>
-          )}
-
-          {/* ── 8. Sicherheit + Routenhinweise ──────────────────────────── */}
-          {Array.isArray(aiResult.safetyTips) && aiResult.safetyTips.length > 0 && (
-            <section style={{ background: '#F8FAFF', paddingTop: 'clamp(40px, 5vw, 56px)', paddingBottom: 'clamp(40px, 5vw, 56px)' }}>
-              <Container>
-                <div style={{ background: 'linear-gradient(135deg, #0F172A 0%, #0e2d46 55%, #0d3a52 100%)', borderRadius: '24px', padding: 'clamp(28px, 4vw, 44px)', position: 'relative', overflow: 'hidden' }}>
-                  <div aria-hidden="true" style={{ position: 'absolute', top: '-20%', right: '-6%', width: '300px', height: '300px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(14,165,233,0.14) 0%, transparent 68%)', pointerEvents: 'none' }} />
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', marginBottom: '24px', position: 'relative', zIndex: 1 }}>
-                    <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: 'rgba(14,165,233,0.16)', border: '1px solid rgba(14,165,233,0.28)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#38BDF8', flexShrink: 0 }}>
-                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <div>
-                      <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#38BDF8', margin: '0 0 6px', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>Immer beachten</p>
-                      <h2 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 800, color: '#FFFFFF', margin: 0, letterSpacing: '-0.02em' }}>Sicherheitstipps</h2>
-                    </div>
-                  </div>
-                  <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px', position: 'relative', zIndex: 1 }}>
-                    {aiResult.safetyTips.map((tip, i) => (
-                      <li key={i} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                        <span style={{ width: '22px', height: '22px', borderRadius: '50%', background: 'rgba(14,165,233,0.20)', border: '1px solid rgba(14,165,233,0.30)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: 700, color: '#38BDF8', flexShrink: 0, marginTop: '1px', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>{i + 1}</span>
-                        <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.80)', lineHeight: 1.65 }}>{tip}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {Array.isArray(aiResult.routeWarnings) && aiResult.routeWarnings.length > 0 && (
-                  <div style={{ background: '#FEF9C3', border: '1px solid #FDE047', borderRadius: '20px', padding: 'clamp(20px, 3vw, 28px)', marginTop: '16px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
-                      <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: '#FDE047', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#78350F', flexShrink: 0 }}>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
-                        </svg>
-                      </div>
-                      <h3 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: '16px', fontWeight: 800, color: '#78350F', margin: 0 }}>Routenhinweise</h3>
-                    </div>
-                    <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                      {aiResult.routeWarnings.map((w, i) => (
-                        <li key={i} style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
-                          <span style={{ color: '#D97706', flexShrink: 0, marginTop: '4px' }}>
-                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-                          </span>
-                          <span style={{ fontSize: '13px', color: '#78350F', lineHeight: 1.65 }}>{w}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </Container>
-            </section>
-          )}
-        </>
-      ) : (
-        <>
-          {/* ══ VARIANTE B – Regelbasiertes Ergebnis ═══════════════════ */}
-
+      {/* ══ Regelbasiertes Ergebnis ═══════════════════════════════════ */}
+      <>
           {/* Top 3 Regionen */}
           <section style={{ background: '#F1F5F9', paddingTop: 'clamp(40px, 5vw, 60px)', paddingBottom: '40px' }}>
             <Container>
@@ -812,7 +421,7 @@ export default function MotorcycleResultView({ answers, onReset, aiResult, aiErr
                     Beispielhafte Tagesetappen
                   </h2>
                   <p style={{ fontSize: '13px', color: '#94A3B8', margin: 0, lineHeight: 1.6 }}>
-                    Grober Ablauf für deine Tour – für detailliertere KI-Routenideen den Planungshelfer neu starten.
+                    Grober Ablauf für deine Tour – passe die Etappen an dein Tempo und das Wetter an.
                   </p>
                 </div>
                 <div style={{ position: 'relative', paddingLeft: '44px' }}>
@@ -885,7 +494,6 @@ export default function MotorcycleResultView({ answers, onReset, aiResult, aiErr
             </Container>
           </section>
         </>
-      )}
 
       {/* ── Reset ──────────────────────────────────────────────────────── */}
       <section style={{ background: '#F1F5F9', paddingTop: '32px', paddingBottom: '48px' }}>

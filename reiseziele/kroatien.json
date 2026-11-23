@@ -1,0 +1,125 @@
+{
+  "name": "Kroatien",
+  "slug": "kroatien",
+  "country": "Kroatien",
+  "region": "Südosteuropa",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/kroatien-hero.jpg",
+  "short_description": "Adria-Klassiker mit glasklarem Meer, über tausend Inseln, mittelalterlichen Küstenstädten wie Dubrovnik und traumhaften Nationalparks.",
+  "long_description": "Kroatien gehört zu den beliebtesten Urlaubszielen der Deutschen und verbindet kristallklares Adriawasser mit reicher Geschichte und großartiger Natur. Die ummauerte Altstadt von Dubrovnik, der römische Diokletianpalast in Split und die venezianisch geprägten Städtchen Istriens wie Rovinj erzählen von einer bewegten Vergangenheit. Vor der Küste laden über tausend Inseln wie Hvar, Brač mit dem berühmten Strand Zlatni Rat oder Korčula zum Inselhüpfen, Baden und Segeln ein. Im Landesinneren begeistern die türkisblauen Kaskaden der Plitvicer Seen und die Wasserfälle des Krka-Nationalparks. Dazu kommen mediterrane Küche, guter Wein und ein angenehm mildes Klima. Ob entspannter Strandurlaub, aktive Rundreise, Segeltörn oder Familienurlaub – Kroatien ist von Deutschland aus bequem mit dem Auto oder per Flug erreichbar und bietet für jeden Geschmack das passende Erlebnis.",
+  "ai_summary": "Kroatien ist ein beliebtes Adria-Reiseziel mit glasklarem Meer, über tausend Inseln, historischen Küstenstädten wie Dubrovnik und Split sowie Nationalparks wie den Plitvicer Seen. Es eignet sich ideal für Strandurlaub, Inselhüpfen, Segeln und Rundreisen und ist von Deutschland aus auch mit dem Auto gut erreichbar.",
+  "best_travel_time": "Mai bis September für Strand und Meer; Juni und September sind besonders angenehm, da wärmer als der Frühling und weniger überlaufen als der Hochsommer.",
+  "ideal_duration": "1 bis 2 Wochen",
+  "travel_type": [
+    "Strandurlaub",
+    "Rundreise",
+    "Segeln",
+    "Inselhüpfen",
+    "Naturreise",
+    "Aktivurlaub",
+    "Familien"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR); Kroatien hat den Euro 2023 eingeführt",
+    "language": "Kroatisch",
+    "flightTime": "ca. 1,5 bis 2 Stunden ab Deutschland; mit dem Auto sind Istrien und Kvarner Bucht ebenfalls gut erreichbar",
+    "timezone": "MEZ (UTC+1), identisch mit Deutschland",
+    "visa": "Nicht erforderlich für EU-Bürger (EU- und Schengen-Mitglied)",
+    "bestMonths": "Mai bis September"
+  },
+  "highlights": [
+    "Dubrovnik – ummauerte Altstadt und UNESCO-Welterbe an der Adria",
+    "Plitvicer Seen – türkisblaue Seen und Wasserfälle im Nationalpark",
+    "Split – lebendige Hafenstadt rund um den römischen Diokletianpalast",
+    "Istrien – Rovinj, Pula mit Amphitheater und mediterrane Hügeldörfer",
+    "Dalmatinische Inseln – Hvar, Korčula und Brač mit dem Strand Zlatni Rat",
+    "Krka-Nationalpark – beeindruckende Wasserfälle zum Wandern und Staunen",
+    "Zadar – historische Altstadt mit Meeresorgel und „Gruß an die Sonne“",
+    "Kornati-Inseln – karge Schären als Paradies für Segler"
+  ],
+  "insider_tips": [
+    "Die Plitvicer Seen früh am Morgen oder am späten Nachmittag besuchen, um den größten Besucherandrang auf den Holzstegen zu vermeiden.",
+    "Mit den Fähren von Jadrolinija lässt sich günstig und entspannt Inselhüpfen betreiben – beliebte Verbindungen sollte man in der Hochsaison vorab buchen.",
+    "Echte kroatische Küche genießt man am besten in einer Konoba, etwa das traditionelle Peka-Gericht, das langsam unter einer Glocke gegart wird.",
+    "Für mildere Temperaturen und niedrigere Preise lohnt sich die Nebensaison im Juni oder September statt des heißen, vollen Hochsommers."
+  ],
+  "faq": [
+    {
+      "question": "Welche Währung gilt in Kroatien?",
+      "answer": "Seit dem 1. Januar 2023 ist der Euro (EUR) die offizielle Währung in Kroatien; die frühere Kuna wird nicht mehr verwendet. Kartenzahlung ist verbreitet, etwas Bargeld empfiehlt sich für Märkte und kleinere Lokale."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Kroatien?",
+      "answer": "Für Strand und Meer eignen sich die Monate Mai bis September. Besonders angenehm sind Juni und September, da das Wasser dann warm, die Temperaturen aber moderater und die Küstenorte weniger überlaufen sind als im Hochsommer."
+    },
+    {
+      "question": "Brauche ich ein Visum für Kroatien?",
+      "answer": "Nein. Kroatien ist EU- und seit 2023 auch Schengen-Mitglied, daher benötigen EU-Bürger kein Visum. Für die Einreise genügt ein gültiger Personalausweis oder Reisepass."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen in Kroatien?",
+      "answer": "Ja, für Rundreisen entlang der Küste, zu den Nationalparks und ins Hinterland ist ein Auto sehr praktisch. Wer nur an einem Ort am Strand bleibt, kommt auch ohne aus; viele Inseln lassen sich zudem gut per Fähre erreichen."
+    },
+    {
+      "question": "Kann man mit dem eigenen Auto nach Kroatien fahren?",
+      "answer": "Ja, Kroatien ist von Deutschland aus gut mit dem Auto erreichbar. Istrien und die Kvarner Bucht liegen je nach Startort rund 8 bis 10 Stunden entfernt, weiter südlich gelegene Ziele entsprechend länger."
+    },
+    {
+      "question": "Welche Inseln sollte man in Kroatien besuchen?",
+      "answer": "Zu den beliebtesten zählen Hvar mit seinem Nachtleben, das ruhige Korčula, Brač mit dem berühmten Strand Zlatni Rat sowie Vis und Mljet für unberührte Natur. Inselhüpfen per Fähre ist eine schöne Art, mehrere zu erleben."
+    },
+    {
+      "question": "Welche Nationalparks lohnen sich in Kroatien?",
+      "answer": "Besonders sehenswert sind die Plitvicer Seen mit ihren türkisfarbenen Seen und Wasserfällen sowie der Krka-Nationalpark. Beide gehören zu den landschaftlichen Höhepunkten des Landes."
+    },
+    {
+      "question": "Ist Kroatien für einen Familienurlaub geeignet?",
+      "answer": "Ja, Kroatien ist sehr familienfreundlich. Das klare, oft flach abfallende Meer, kinderfreundliche Buchten, Ferienanlagen und kurze Wege machen es zu einem idealen Ziel für Familien."
+    },
+    {
+      "question": "Gibt es in Kroatien Sand- oder Kiesstrände?",
+      "answer": "Die meisten Strände sind Kies- oder Felsstrände, was für besonders klares Wasser sorgt. Badeschuhe sind empfehlenswert. Vereinzelt gibt es auch Sandstrände, etwa auf der Insel Rab oder bei Nin."
+    },
+    {
+      "question": "Spricht man in Kroatien Deutsch oder Englisch?",
+      "answer": "In touristischen Gebieten sprechen viele Kroaten gut Englisch und oft auch Deutsch, da Deutschland ein wichtiger Quellmarkt ist. Die Verständigung ist für deutsche Urlauber daher meist unkompliziert."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Kroatien einplanen?",
+      "answer": "Für einen reinen Strandurlaub an einem Ort reicht eine Woche. Wer Küstenstädte, Inseln und Nationalparks kombinieren möchte, sollte für eine Rundreise 10 bis 14 Tage einplanen."
+    },
+    {
+      "question": "Ist Kroatien ein teures Reiseland?",
+      "answer": "Kroatien liegt preislich im europäischen Mittelfeld. Hotspots wie Dubrovnik und Hvar sind in der Hochsaison teurer, während sich abseits der bekannten Orte und in der Nebensaison weiterhin gut sparen lässt."
+    }
+  ],
+  "seo_title": "Kroatien Urlaub: Adria, Inseln, Sehenswürdigkeiten & beste Reisezeit",
+  "seo_description": "Dein Kroatien-Urlaub: glasklare Adria, Inseln wie Hvar und Brač, Dubrovnik, Split und die Plitvicer Seen. Beste Reisezeit, Highlights und praktische Reisetipps im Überblick.",
+  "affiliate_search_intent": "Kroatien Urlaub buchen, Flug und Hotel Split oder Dubrovnik, Ferienwohnung Istrien, Mietwagen Kroatien vergleichen, Segeltörn Adria, Inselhüpfen Kroatien",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "montenegro",
+    "slowenien",
+    "griechenland"
+  ],
+  "llmo_entities": [
+    "Kroatien",
+    "Adria",
+    "Dubrovnik",
+    "Split",
+    "Diokletianpalast",
+    "Plitvicer Seen",
+    "Krka-Nationalpark",
+    "Istrien",
+    "Rovinj",
+    "Pula",
+    "Hvar",
+    "Brač",
+    "Zlatni Rat",
+    "Korčula",
+    "Zadar",
+    "Kornati"
+  ],
+  "llmo_answer_block": "Kroatien ist ein beliebtes Adria-Reiseziel mit glasklarem Meer, über tausend Inseln, historischen Küstenstädten wie Dubrovnik und Split sowie Nationalparks wie den Plitvicer Seen und Krka. Das Land eignet sich ideal für Strandurlaub, Inselhüpfen, Segeln und Rundreisen und ist von Deutschland aus per Flug oder mit dem Auto gut erreichbar. Seit 2023 gilt der Euro, die beste Reisezeit liegt zwischen Mai und September.",
+  "llmo_quick_answer": "Kroatien ist ein beliebtes Adria-Reiseziel mit glasklarem Meer, über tausend Inseln, Städten wie Dubrovnik und Split und den Plitvicer Seen."
+}

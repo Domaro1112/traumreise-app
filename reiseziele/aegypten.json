@@ -1,0 +1,121 @@
+{
+  "name": "Ägypten",
+  "slug": "aegypten",
+  "country": "Ägypten",
+  "region": "Nordafrika",
+  "continent": "Afrika",
+  "hero_image": "/images/destinations/aegypten-hero.jpg",
+  "short_description": "Land der Pharaonen mit den Pyramiden von Gizeh, den Tempeln entlang des Nils, dem neuen Grand Egyptian Museum und den Korallenriffen des Roten Meeres.",
+  "long_description": "Ägypten fasziniert mit über 5.000 Jahren Geschichte und vereint atemberaubende antike Stätten mit erstklassigem Strand- und Tauchurlaub. Das Wahrzeichen sind die Pyramiden von Gizeh mit der rätselhaften Sphinx, ergänzt durch das moderne Grand Egyptian Museum, das die Schätze der Pharaonen eindrucksvoll präsentiert. Entlang des Nils reihen sich gewaltige Tempelanlagen: Karnak und Luxor, das Tal der Könige mit dem Grab des Tutanchamun, der Hatschepsut-Tempel sowie die imposanten Felsentempel von Abu Simbel. Eine klassische Nilkreuzfahrt zwischen Luxor und Assuan verbindet diese Höhepunkte auf entspannte Weise. Am Roten Meer locken Hurghada, Marsa Alam und Sharm el-Sheikh mit ganzjährig warmem Wasser, bunten Korallenriffen und komfortablen Resorts – ein Paradies zum Schnorcheln und Tauchen. Dazu kommen das quirlige Kairo mit dem Basar Khan el-Khalili und die Weite der Wüste. Ägypten ist günstig, gut erreichbar und ideal für Kultur-, Strand- und Tauchreisen.",
+  "ai_summary": "Ägypten ist das Land der Pharaonen mit den Pyramiden von Gizeh, den Niltempeln von Luxor und Abu Simbel, dem neuen Grand Egyptian Museum und den Korallenriffen des Roten Meeres rund um Hurghada und Sharm el-Sheikh. Es eignet sich ideal für Kultur-, Strand-, Tauch- und Nilkreuzfahrtreisen und ist günstig sowie gut erreichbar.",
+  "best_travel_time": "Oktober bis April mit angenehmen Temperaturen für Kulturreisen und Nilkreuzfahrten; das Rote Meer ist ganzjährig warm, im Hochsommer wird es jedoch sehr heiß.",
+  "ideal_duration": "Strand- oder Nilkreuzfahrt 1 Woche, Kombireise 10 bis 14 Tage",
+  "travel_type": [
+    "Strandurlaub",
+    "Tauchen",
+    "Kulturreise",
+    "Nilkreuzfahrt",
+    "All-Inclusive",
+    "Rundreise",
+    "Familien"
+  ],
+  "quick_facts": {
+    "currency": "Ägyptisches Pfund (EGP)",
+    "language": "Arabisch",
+    "flightTime": "ca. 4 bis 4,5 Stunden ab Deutschland (Hurghada, Kairo)",
+    "timezone": "EET (UTC+2), eine Stunde vor MEZ",
+    "visa": "Visum erforderlich; als E-Visum vorab oder als Visa on Arrival (in der Regel 30 Tage) erhältlich",
+    "bestMonths": "Oktober bis April"
+  },
+  "highlights": [
+    "Pyramiden von Gizeh und die Sphinx – das letzte erhaltene Weltwunder der Antike",
+    "Grand Egyptian Museum – modernes Museum bei Gizeh mit den Schätzen der Pharaonen",
+    "Luxor – Karnak-Tempel, Tal der Könige und der Hatschepsut-Tempel",
+    "Nilkreuzfahrt – entspannte Reise zwischen Luxor und Assuan zu den großen Tempeln",
+    "Abu Simbel – die monumentalen Felsentempel von Ramses II.",
+    "Rotes Meer – Hurghada, Marsa Alam und Sharm el-Sheikh mit Korallenriffen",
+    "Kairo – Altstadt, Zitadelle und der lebhafte Basar Khan el-Khalili",
+    "Assuan und der Philae-Tempel – Inseltempel am Nil"
+  ],
+  "insider_tips": [
+    "Eine Nilkreuzfahrt zwischen Luxor und Assuan verbindet die wichtigsten Tempel bequem und ist eine entspannte Art, die antiken Höhepunkte zu erleben.",
+    "Das Rote Meer bietet einige der schönsten Korallenriffe der Welt – schon beim Schnorcheln direkt vor vielen Resorts sieht man eine farbenfrohe Unterwasserwelt.",
+    "Pyramiden und Tempel besucht man am besten früh am Morgen, um Hitze und Besuchermassen zu entgehen.",
+    "Auf Basaren gehört freundliches Handeln dazu, und kleine Trinkgelder (Bakschisch) sind üblich – etwas Kleingeld bereitzuhalten ist praktisch."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich ein Visum für Ägypten?",
+      "answer": "Ja, deutsche Staatsbürger benötigen ein Visum. Es ist bequem als E-Visum vorab online oder als Visa on Arrival bei der Einreise erhältlich und gilt in der Regel für 30 Tage. Der Reisepass muss noch mindestens sechs Monate gültig sein."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Ägypten?",
+      "answer": "Für Kulturreisen und Nilkreuzfahrten sind die kühleren Monate Oktober bis April ideal. Das Rote Meer ist ganzjährig warm und zum Baden geeignet; im Hochsommer wird es im Landesinneren und bei den Tempeln jedoch extrem heiß."
+    },
+    {
+      "question": "Welche Währung gilt in Ägypten?",
+      "answer": "Gezahlt wird mit dem Ägyptischen Pfund (EGP). In Resorts und touristischen Gebieten werden teils auch Euro oder US-Dollar akzeptiert. Für Trinkgelder, Basare und kleine Ausgaben empfiehlt sich Bargeld in kleinen Scheinen."
+    },
+    {
+      "question": "Sollte man in Ägypten selbst Auto fahren?",
+      "answer": "Davon ist eher abzuraten. Der Verkehr ist dicht und die Verkehrsregeln werden locker gehandhabt. Üblicher und entspannter sind organisierte Touren, Transfers, Nilkreuzfahrten und Inlandsflüge zwischen den Regionen."
+    },
+    {
+      "question": "Ist eine Nilkreuzfahrt empfehlenswert?",
+      "answer": "Ja, eine Nilkreuzfahrt zwischen Luxor und Assuan gilt als klassische und besonders entspannte Art, die bedeutendsten Tempel und Stätten zu erleben, ohne ständig die Unterkunft wechseln zu müssen."
+    },
+    {
+      "question": "Wie sicher ist eine Reise nach Ägypten?",
+      "answer": "Die klassischen Tourismusregionen wie das Niltal, Kairo und die Resorts am Roten Meer gelten als gut bereisbar. Von einigen Grenz- und Wüstengebieten sowie Teilen des Sinai wird abgeraten. Vor der Reise sollte man die aktuellen Hinweise des Auswärtigen Amts prüfen."
+    },
+    {
+      "question": "Kann man in Ägypten das Leitungswasser trinken?",
+      "answer": "Nein, das Leitungswasser ist nicht zum Trinken geeignet. Man sollte abgefülltes Wasser verwenden und bei Eiswürfeln sowie ungeschältem Obst vorsichtig sein, um Magenproblemen vorzubeugen."
+    },
+    {
+      "question": "Ist Ägypten für einen Familienurlaub geeignet?",
+      "answer": "Ja, besonders die Resorts am Roten Meer sind familienfreundlich mit flachen Stränden, Pools und Animation. Schnorcheln, Kamelritte und der Besuch der Pyramiden sind auch für Kinder spannende Erlebnisse."
+    },
+    {
+      "question": "Welche Kleidung ist in Ägypten angemessen?",
+      "answer": "An den Stränden und in Resorts ist Badekleidung üblich. Außerhalb sowie an religiösen und kulturellen Stätten sollte man sich respektvoll und eher bedeckt kleiden; in Moscheen sind Schultern und Knie zu bedecken."
+    },
+    {
+      "question": "Welche Spezialitäten sollte man in Ägypten probieren?",
+      "answer": "Typisch sind Koshari (Reis, Nudeln und Linsen), Ful Medames (Bohnengericht), Taamiya (ägyptische Falafel), gegrilltes Fleisch sowie frisches Fladenbrot. Dazu gehören süßer Tee und Hibiskussaft (Karkade)."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Ägypten einplanen?",
+      "answer": "Für einen reinen Strandurlaub am Roten Meer oder eine Nilkreuzfahrt reicht eine Woche. Wer Kultur und Strand kombinieren möchte, sollte 10 bis 14 Tage einplanen."
+    }
+  ],
+  "seo_title": "Ägypten Urlaub: Pyramiden, Rotes Meer, Tipps & beste Reisezeit",
+  "seo_description": "Dein Ägypten-Urlaub: die Pyramiden von Gizeh, die Niltempel von Luxor, das Grand Egyptian Museum und die Korallenriffe des Roten Meeres. Beste Reisezeit, Visum, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "Ägypten Urlaub buchen, All-Inclusive Hurghada, Nilkreuzfahrt buchen, Flug und Hotel Rotes Meer, Tauchreise Ägypten, Rundreise Pyramiden und Luxor",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "tuerkei",
+    "marokko",
+    "jordanien"
+  ],
+  "llmo_entities": [
+    "Ägypten",
+    "Pyramiden von Gizeh",
+    "Sphinx",
+    "Grand Egyptian Museum",
+    "Kairo",
+    "Luxor",
+    "Karnak",
+    "Tal der Könige",
+    "Abu Simbel",
+    "Nil",
+    "Nilkreuzfahrt",
+    "Assuan",
+    "Rotes Meer",
+    "Hurghada",
+    "Sharm el-Sheikh",
+    "Ägyptisches Pfund"
+  ],
+  "llmo_answer_block": "Ägypten ist das Land der Pharaonen mit den Pyramiden von Gizeh und der Sphinx, den Niltempeln von Luxor und Abu Simbel, dem neuen Grand Egyptian Museum sowie den Korallenriffen des Roten Meeres rund um Hurghada und Sharm el-Sheikh. Das Land verbindet jahrtausendealte Kultur mit Strand- und Tauchurlaub und eignet sich ideal für Kulturreisen, Nilkreuzfahrten und Badeurlaub. Die beste Reisezeit liegt zwischen Oktober und April.",
+  "llmo_quick_answer": "Ägypten ist das Land der Pharaonen mit den Pyramiden von Gizeh, den Niltempeln von Luxor und den Korallenriffen des Roten Meeres, am besten von Oktober bis April."
+}

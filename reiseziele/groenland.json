@@ -1,0 +1,116 @@
+{
+  "name": "Grönland",
+  "slug": "groenland",
+  "country": "Grönland (zum Königreich Dänemark)",
+  "region": "Arktis (Nordatlantik)",
+  "continent": "Nordamerika",
+  "hero_image": "/images/destinations/groenland-hero.jpg",
+  "short_description": "Die größte Insel der Erde als arktisches Abenteuer mit gewaltigen Eisbergen, Gletschern, dem Inlandeis, Nordlichtern, Walen und der Kultur der Inuit.",
+  "long_description": "Grönland ist die größte Insel der Erde und eines der letzten großen Abenteuer unseres Planeten – ein arktisches Reich aus Eis, Stille und überwältigender Weite. Der größte Teil der Insel wird vom mächtigen Inlandeis bedeckt, der nach der Antarktis zweitgrößten Eismasse der Welt. Das absolute Highlight ist der Ilulissat-Eisfjord, UNESCO-Welterbe, wo haushohe Eisberge vom produktivsten Gletscher der Nordhalbkugel ins Meer treiben. In der bunten Hauptstadt Nuuk treffen Inuit-Kultur und moderne Architektur aufeinander. Im Sommer locken die Mitternachtssonne, Bootstouren zwischen Eisbergen, Wal- und Robbenbeobachtung sowie Wanderungen etwa auf dem Arctic Circle Trail; im Winter tanzen die Nordlichter über verschneiten Siedlungen, und Hundeschlittenfahrten gehören zu den unvergesslichen Erlebnissen. Eine Besonderheit: Zwischen den Orten gibt es keine Straßen – gereist wird per Flugzeug, Helikopter oder Boot. Grönland ist abgelegen, teuer und wetterabhängig, belohnt aber mit einer Natur, die ihresgleichen sucht. Ideal für Natur-, Abenteuer- und Expeditionsreisen sowie Kreuzfahrten.",
+  "ai_summary": "Grönland ist die größte Insel der Erde, ein arktisches Abenteuer mit dem UNESCO-Eisfjord von Ilulissat, gewaltigen Eisbergen, dem Inlandeis, Nordlichtern im Winter, der Mitternachtssonne im Sommer und der Kultur der Inuit. Zwischen den Orten gibt es keine Straßen, gereist wird per Flug, Helikopter oder Boot. Es eignet sich ideal für Natur-, Abenteuer- und Expeditionsreisen, ist aber abgelegen und teuer.",
+  "best_travel_time": "Juni bis September für eisfreiere Küsten, Wandern, Wal-Beobachtung, Bootstouren und die Mitternachtssonne; Februar bis April für Nordlichter, Schnee und Hundeschlittenfahrten.",
+  "ideal_duration": "1 bis 2 Wochen",
+  "travel_type": [
+    "Naturreise",
+    "Abenteuer",
+    "Expedition",
+    "Kreuzfahrt",
+    "Nordlichter",
+    "Wandern",
+    "Tierbeobachtung"
+  ],
+  "quick_facts": {
+    "currency": "Dänische Krone (DKK)",
+    "language": "Grönländisch (Kalaallisut) und Dänisch; Englisch in touristischen Kontexten",
+    "flightTime": "Keine Direktflüge aus Deutschland; Anreise über Kopenhagen oder Island nach Nuuk, Ilulissat oder Kangerlussuaq (ab Kopenhagen rund 4,5 Stunden plus Zubringer). Seit Ende 2024 erleichtert ein neuer internationaler Flughafen in Nuuk die Anreise",
+    "timezone": "Mehrere Zeitzonen; Westgrönland/Nuuk UTC−2 (im Sommer UTC−1), rund drei Stunden hinter MEZ",
+    "visa": "Kein Visum für EU-Bürger nötig, aber ein Reisepass ist erforderlich, da Grönland nicht zum Schengen-Raum gehört (ein Schengen-Visum gilt hier nicht)",
+    "bestMonths": "Juni bis September"
+  },
+  "highlights": [
+    "Ilulissat-Eisfjord – haushohe Eisberge, UNESCO-Welterbe",
+    "Inlandeis – die nach der Antarktis zweitgrößte Eismasse der Erde",
+    "Nuuk – bunte Hauptstadt mit Inuit-Kultur und moderner Architektur",
+    "Disko-Bucht – Eisberge, Wale und die Insel Disko",
+    "Nordlichter – über verschneiten Siedlungen im Winter",
+    "Mitternachtssonne – taghelle Nächte im Sommer",
+    "Wal- und Robbenbeobachtung sowie Hundeschlittenfahrten",
+    "Arctic Circle Trail – legendäre Fernwanderung durch die Tundra"
+  ],
+  "insider_tips": [
+    "Zwischen den Orten gibt es keine Straßen – Reisen erfolgen per Flugzeug, Helikopter oder Boot; ein Mietwagen ist daher nicht sinnvoll.",
+    "Das Wetter kann Flüge und Bootstouren kurzfristig verzögern – immer großzügige Pufferzeiten einplanen, besonders bei An- und Abreise.",
+    "Der Ilulissat-Eisfjord ist ein Muss; eine Bootstour zwischen den Eisbergen oder eine Mitternachtssonnen-Fahrt gehört zu den eindrucksvollsten Erlebnissen.",
+    "Grönland ist abgelegen und teuer; eine Expeditionskreuzfahrt ist eine bequeme Möglichkeit, mehrere Küstenorte ohne komplizierte Einzelflüge zu verbinden."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich für Grönland ein Visum?",
+      "answer": "EU-Bürger benötigen für touristische Aufenthalte kein Visum, jedoch einen gültigen Reisepass. Wichtig: Grönland gehört zwar zum Königreich Dänemark, aber nicht zum Schengen-Raum, daher reicht der Personalausweis nicht, und ein Schengen-Visum gilt hier nicht."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Grönland?",
+      "answer": "Der Sommer von Juni bis September ist ideal für Wandern, Bootstouren zwischen Eisbergen, Walbeobachtung und die Mitternachtssonne. Für Nordlichter, Schnee und Hundeschlittenfahrten reist man im Winter, etwa von Februar bis April."
+    },
+    {
+      "question": "Wie reist man nach Grönland an?",
+      "answer": "Es gibt keine Direktflüge aus Deutschland. Üblich ist die Anreise über Kopenhagen oder Island nach Nuuk, Ilulissat oder Kangerlussuaq. Seit Ende 2024 erleichtert ein neuer internationaler Flughafen in Nuuk die Anreise mit größeren Maschinen."
+    },
+    {
+      "question": "Wie reist man innerhalb Grönlands?",
+      "answer": "Eine Besonderheit Grönlands: Zwischen den Städten und Dörfern gibt es keine Straßen. Gereist wird ausschließlich mit dem Flugzeug, dem Helikopter oder per Boot, was Reisen aufwendig und wetterabhängig macht."
+    },
+    {
+      "question": "Welche Währung gilt in Grönland?",
+      "answer": "Gezahlt wird mit der Dänischen Krone (DKK). Kartenzahlung ist in Städten verbreitet, doch in abgelegenen Orten ist etwas Bargeld ratsam. Die Preise sind generell hoch."
+    },
+    {
+      "question": "Ist Grönland ein teures Reiseland?",
+      "answer": "Ja, Grönland ist wegen der abgelegenen Lage und der aufwendigen Logistik teuer. Flüge zwischen den Orten, Unterkünfte und Touren kosten deutlich mehr als in Mitteleuropa. Eine gute Vorausplanung und ein realistisches Budget sind wichtig."
+    },
+    {
+      "question": "Was kann man am Ilulissat-Eisfjord erleben?",
+      "answer": "Der Ilulissat-Eisfjord ist UNESCO-Welterbe und berühmt für seine gewaltigen Eisberge, die vom Sermeq-Kujalleq-Gletscher stammen. Man erlebt ihn auf Wanderwegen am Ufer oder bei Bootstouren, die nah an die schwimmenden Eisriesen heranführen."
+    },
+    {
+      "question": "Sieht man in Grönland Nordlichter und die Mitternachtssonne?",
+      "answer": "Ja. Die Nordlichter zeigen sich in den dunklen Monaten, besonders von Herbst bis Frühjahr. Im Hochsommer geht im Norden die Sonne wochenlang nicht unter – die Mitternachtssonne sorgt dann für taghelle Nächte."
+    },
+    {
+      "question": "Welche Sprache spricht man in Grönland?",
+      "answer": "Amtssprache ist Grönländisch (Kalaallisut), zudem wird Dänisch gesprochen. In touristischen Kontexten kommt man oft auch mit Englisch zurecht, in abgelegenen Dörfern sind die Kenntnisse jedoch begrenzt."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Grönland einplanen?",
+      "answer": "Wegen der aufwendigen Anreise und der wetterabhängigen Verbindungen lohnen sich mindestens 1 bis 2 Wochen. So bleibt genügend Puffer für mögliche Verzögerungen und Zeit, mehrere Regionen oder eine Kreuzfahrt zu erleben."
+    }
+  ],
+  "seo_title": "Grönland Reisen: Eisberge, Nordlichter & beste Reisezeit",
+  "seo_description": "Deine Grönland-Reise: der UNESCO-Eisfjord von Ilulissat, gewaltige Eisberge, das Inlandeis, Nordlichter und die Kultur der Inuit. Beste Reisezeit, Anreise, Einreise und Tipps im Überblick.",
+  "affiliate_search_intent": "Grönland Reise buchen, Flug nach Nuuk oder Ilulissat, Grönland Kreuzfahrt, Expeditionsreise Grönland, Nordlichter Grönland, Ilulissat Eisfjord Tour",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "island",
+    "norwegen",
+    "daenemark"
+  ],
+  "llmo_entities": [
+    "Grönland",
+    "Arktis",
+    "Königreich Dänemark",
+    "Ilulissat",
+    "Ilulissat-Eisfjord",
+    "Inlandeis",
+    "Nuuk",
+    "Disko-Bucht",
+    "Kangerlussuaq",
+    "Nordlichter",
+    "Mitternachtssonne",
+    "Inuit",
+    "Arctic Circle Trail",
+    "Sermeq Kujalleq",
+    "Dänische Krone"
+  ],
+  "llmo_answer_block": "Grönland ist die größte Insel der Erde und ein arktisches Abenteuer mit dem UNESCO-Eisfjord von Ilulissat, gewaltigen Eisbergen, dem mächtigen Inlandeis, Nordlichtern im Winter, der Mitternachtssonne im Sommer und der Kultur der Inuit. Eine Besonderheit: Zwischen den Orten gibt es keine Straßen, gereist wird per Flugzeug, Helikopter oder Boot. Das abgelegene und teure Ziel eignet sich ideal für Natur-, Abenteuer- und Expeditionsreisen sowie Kreuzfahrten, am besten von Juni bis September; für die Einreise ist ein Reisepass nötig, da Grönland nicht zum Schengen-Raum gehört.",
+  "llmo_quick_answer": "Grönland ist die größte Insel der Erde, ein arktisches Abenteuer mit Eisbergen, dem Ilulissat-Eisfjord, Nordlichtern und Inuit-Kultur – ganz ohne Straßen zwischen den Orten."
+}

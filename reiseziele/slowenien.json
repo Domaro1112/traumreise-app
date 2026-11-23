@@ -1,0 +1,119 @@
+{
+  "name": "Slowenien",
+  "slug": "slowenien",
+  "country": "Slowenien",
+  "region": "Mitteleuropa",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/slowenien-hero.jpg",
+  "short_description": "Grünes Naturparadies zwischen Alpen und Adria mit dem märchenhaften Bleder See, türkisem Soča-Fluss, Tropfsteinhöhlen und charmanter Hauptstadt Ljubljana.",
+  "long_description": "Slowenien ist eines der grünsten und vielseitigsten Länder Europas und vereint auf kleinem Raum Alpen, Karstlandschaften und Adriaküste. Das Wahrzeichen ist der märchenhafte Bleder See mit seiner Kircheninsel und der thronenden Burg. In den Julischen Alpen lockt der Triglav-Nationalpark mit Gipfeln, Wäldern und dem ruhigen Bohinjer See, während das türkisblaue Soča-Tal zu den schönsten Flusslandschaften des Kontinents zählt und Rafting- und Wanderfans begeistert. Unter der Erde beeindrucken die riesige Postojna-Höhle und die UNESCO-geschützten Škocjan-Höhlen. Die charmante Hauptstadt Ljubljana mit ihrer autofreien Altstadt, der Drachenbrücke und lebendiger Café-Kultur gilt als eine der grünsten Städte Europas. Im Südwesten reicht das Land bis ans Mittelmeer, wo das venezianisch geprägte Küstenstädtchen Piran wartet. Slowenien ist von Deutschland aus gut erreichbar und ideal für Natur-, Aktiv- und Rundreisen.",
+  "ai_summary": "Slowenien ist ein grünes Naturparadies zwischen Alpen und Adria mit dem Bleder See, dem Triglav-Nationalpark, dem türkisen Soča-Tal, beeindruckenden Tropfsteinhöhlen und der charmanten Hauptstadt Ljubljana. Es eignet sich ideal für Natur-, Aktiv- und Rundreisen und ist von Deutschland aus gut erreichbar.",
+  "best_travel_time": "Mai bis September für Seen, Berge und Aktivurlaub; das Soča-Tal ist im Sommer ideal zum Rafting, im Winter laden die Alpen zum Skifahren ein.",
+  "ideal_duration": "5 bis 7 Tage",
+  "travel_type": [
+    "Naturreise",
+    "Aktivurlaub",
+    "Wandern",
+    "Städtereise",
+    "Roadtrip",
+    "Familien"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Slowenisch",
+    "flightTime": "ca. 1 bis 1,5 Stunden ab Deutschland (Ljubljana); aus Süddeutschland auch gut mit dem Auto erreichbar",
+    "timezone": "MEZ (UTC+1), identisch mit Deutschland",
+    "visa": "Nicht erforderlich für EU-Bürger (Schengen-Raum)",
+    "bestMonths": "Mai bis September"
+  },
+  "highlights": [
+    "Bleder See – Kircheninsel, Burg und das berühmteste Postkartenmotiv des Landes",
+    "Ljubljana – autofreie Altstadt, Drachenbrücke und lebendige Café-Kultur",
+    "Triglav-Nationalpark – Julische Alpen mit Gipfeln, Wäldern und Wanderwegen",
+    "Soča-Tal – türkisblauer Fluss, ideal zum Rafting und Wandern",
+    "Postojna-Höhle und Predjama-Burg – riesiges Tropfsteinsystem und Felsenburg",
+    "Bohinjer See – ruhigere, natürliche Alternative zum Bleder See",
+    "Škocjan-Höhlen – UNESCO-Welterbe mit gewaltigem unterirdischem Canyon",
+    "Piran – venezianisch geprägtes Küstenstädtchen an der Adria"
+  ],
+  "insider_tips": [
+    "Auf der Insel im Bleder See gehört eine Fahrt mit dem traditionellen Pletna-Boot ebenso dazu wie ein Stück der berühmten Cremeschnitte (Kremna rezina) am Ufer.",
+    "Wer es ruhiger mag, weicht vom oft vollen Bleder See auf den nahegelegenen, naturbelasseneren Bohinjer See aus.",
+    "Die malerische Vintgar-Klamm bei Bled lässt sich am entspanntesten früh am Morgen erkunden, bevor die Tagesausflügler eintreffen.",
+    "Im Sommer lohnt sich im Soča-Tal eine Rafting- oder Kajaktour auf dem leuchtend türkisfarbenen Fluss – ein echtes Naturerlebnis."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Slowenien?",
+      "answer": "Für Seen, Berge und Aktivurlaub eignen sich die Monate Mai bis September. Das Soča-Tal ist im Sommer ideal zum Rafting, während die Alpen im Winter Möglichkeiten zum Skifahren bieten."
+    },
+    {
+      "question": "Welche Währung gilt in Slowenien?",
+      "answer": "In Slowenien zahlt man mit dem Euro (EUR); das Land gehört seit 2007 zur Eurozone. Kartenzahlung ist weit verbreitet, etwas Bargeld empfiehlt sich für kleinere Orte und Märkte."
+    },
+    {
+      "question": "Brauche ich ein Visum für Slowenien?",
+      "answer": "Nein. Slowenien ist EU- und Schengen-Mitglied, daher benötigen EU-Bürger kein Visum. Für die Einreise genügt ein gültiger Personalausweis oder Reisepass."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen in Slowenien?",
+      "answer": "Ja, für die Erkundung der Seen, des Triglav-Nationalparks, des Soča-Tals und der Küste ist ein Auto sehr praktisch. Ljubljana selbst lässt sich dagegen gut zu Fuß und mit dem Rad erkunden."
+    },
+    {
+      "question": "Kann man mit dem eigenen Auto nach Slowenien fahren?",
+      "answer": "Ja, besonders aus Süddeutschland ist Slowenien gut mit dem Auto erreichbar. Für die Autobahnen benötigt man eine elektronische Vignette (E-Vignette), die man vorab oder im Land erwerben kann."
+    },
+    {
+      "question": "Was kann man am Bleder See unternehmen?",
+      "answer": "Beliebt sind eine Bootsfahrt zur Kircheninsel, der Aufstieg zur Burg von Bled mit Seeblick, ein Spaziergang um den See sowie Ausflüge zur nahen Vintgar-Klamm. Im Sommer lädt der See auch zum Baden ein."
+    },
+    {
+      "question": "Welche Höhlen sollte man in Slowenien besuchen?",
+      "answer": "Besonders sehenswert sind die Postojna-Höhle mit ihrer Höhlenbahn und die nahe Felsenburg Predjama sowie die UNESCO-geschützten Škocjan-Höhlen mit ihrem gewaltigen unterirdischen Canyon."
+    },
+    {
+      "question": "Hat Slowenien auch Meer und Strände?",
+      "answer": "Ja, Slowenien besitzt einen kurzen, aber reizvollen Küstenabschnitt an der Adria. Orte wie das venezianisch geprägte Piran und das Seebad Portorož laden zum Bummeln und Baden ein."
+    },
+    {
+      "question": "Ist Slowenien für einen Familienurlaub geeignet?",
+      "answer": "Ja, Slowenien ist familienfreundlich und sicher. Badeseen, einfache Wanderungen, Höhlen, Tierparks und eine kompakte Größe mit kurzen Wegen machen es zu einem idealen Ziel für Familien."
+    },
+    {
+      "question": "Spricht man in Slowenien Deutsch oder Englisch?",
+      "answer": "Viele Slowenen sprechen gut Englisch und oft auch Deutsch, besonders in touristischen Regionen. Die Verständigung ist für deutsche Reisende daher meist unkompliziert."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Slowenien einplanen?",
+      "answer": "Für die wichtigsten Höhepunkte wie Ljubljana, Bled und eine Naturregion reichen 5 bis 7 Tage. Wer zusätzlich das Soča-Tal, die Höhlen und die Küste verbinden möchte, plant besser etwas mehr Zeit ein."
+    }
+  ],
+  "seo_title": "Slowenien Urlaub: Bleder See, Natur, Reisetipps & beste Reisezeit",
+  "seo_description": "Dein Slowenien-Urlaub: der märchenhafte Bleder See, der Triglav-Nationalpark, das türkise Soča-Tal, Tropfsteinhöhlen und Ljubljana. Beste Reisezeit, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "Slowenien Reise buchen, Hotel Bled oder Ljubljana, Mietwagen Slowenien vergleichen, Aktivurlaub Soča-Tal, Rundreise Slowenien, Wanderurlaub Julische Alpen",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "kroatien",
+    "oesterreich",
+    "italien"
+  ],
+  "llmo_entities": [
+    "Slowenien",
+    "Bleder See",
+    "Ljubljana",
+    "Triglav-Nationalpark",
+    "Soča-Tal",
+    "Postojna-Höhle",
+    "Predjama",
+    "Škocjan-Höhlen",
+    "Bohinjer See",
+    "Piran",
+    "Vintgar-Klamm",
+    "Julische Alpen",
+    "Drachenbrücke",
+    "Adria",
+    "Portorož"
+  ],
+  "llmo_answer_block": "Slowenien ist ein grünes Naturparadies zwischen Alpen und Adria, bekannt für den märchenhaften Bleder See, den Triglav-Nationalpark, das türkisblaue Soča-Tal, beeindruckende Tropfsteinhöhlen und die charmante Hauptstadt Ljubljana. Das vielseitige Land eignet sich ideal für Natur-, Aktiv- und Rundreisen und ist von Deutschland aus gut erreichbar. Die beste Reisezeit liegt zwischen Mai und September.",
+  "llmo_quick_answer": "Slowenien ist ein grünes Naturland zwischen Alpen und Adria mit dem Bleder See, dem Soča-Tal, Tropfsteinhöhlen und der Hauptstadt Ljubljana."
+}

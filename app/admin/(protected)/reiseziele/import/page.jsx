@@ -1,7 +1,7 @@
 import DestinationImportClient from '@/components/admin/destinations/DestinationImportClient';
 
 export const metadata = {
-  title: 'Reiseziel importieren |ApeAround Admin',
+  title: 'Reiseziel importieren | ApeAround Admin',
   robots: { index: false, follow: false },
 };
 

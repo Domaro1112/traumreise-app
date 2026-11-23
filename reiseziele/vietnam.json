@@ -1,0 +1,125 @@
+{
+  "name": "Vietnam",
+  "slug": "vietnam",
+  "country": "Vietnam",
+  "region": "Südostasien",
+  "continent": "Asien",
+  "hero_image": "/images/destinations/vietnam-hero.jpg",
+  "short_description": "Faszinierendes Südostasien-Ziel mit der Halong-Bucht, Reisterrassen, quirligen Städten, Laternendörfern, Traumstränden und weltberühmter Küche.",
+  "long_description": "Vietnam ist eines der vielfältigsten und faszinierendsten Reiseländer Südostasiens und erstreckt sich schmal über mehr als 1.600 Kilometer von Norden nach Süden. Im Norden beeindrucken die smaragdgrünen Karstfelsen der Halong-Bucht, die leuchtenden Reisterrassen rund um Sapa und die quirlige Altstadt der Hauptstadt Hanoi. Die Landesmitte besticht mit der charmanten Laternenstadt Hoi An, der kaiserlichen Geschichte von Hue und den gewaltigen Höhlen von Phong Nha. Im Süden pulsiert die Millionenmetropole Ho-Chi-Minh-Stadt (Saigon), während das Mekong-Delta mit schwimmenden Märkten und üppigem Grün lockt. Dazu kommen die Traumstrände der Insel Phu Quoc. Vietnam ist berühmt für seine frische, aromatische Küche mit Klassikern wie Pho und Banh Mi, für seine herzlichen Menschen und für ein hervorragendes Preis-Leistungs-Verhältnis. Ob Rundreise, Kultur, Natur oder Strand – das Land bietet intensive und abwechslungsreiche Erlebnisse.",
+  "ai_summary": "Vietnam ist ein vielseitiges Reiseland in Südostasien mit der Halong-Bucht, den Reisterrassen von Sapa, den Städten Hanoi und Ho-Chi-Minh-Stadt, der Laternenstadt Hoi An und dem Mekong-Delta. Es ist bekannt für seine Küche, Gastfreundschaft und günstige Preise und eignet sich ideal für Rundreisen, Kultur-, Natur- und Strandurlaube.",
+  "best_travel_time": "Aufgrund der Länge des Landes variiert das Klima stark; insgesamt sind die Monate November bis April günstig. Der Norden ist im Frühjahr und Herbst am angenehmsten, der Süden ganzjährig warm mit Trockenzeit von Dezember bis April.",
+  "ideal_duration": "2 bis 3 Wochen",
+  "travel_type": [
+    "Rundreise",
+    "Kulturreise",
+    "Naturreise",
+    "Strandurlaub",
+    "Backpacking",
+    "Kulinarik",
+    "Abenteuer"
+  ],
+  "quick_facts": {
+    "currency": "Vietnamesischer Dong (VND)",
+    "language": "Vietnamesisch",
+    "flightTime": "ca. 11 bis 13 Stunden ab Deutschland, meist mit Zwischenstopp (Hanoi, Ho-Chi-Minh-Stadt)",
+    "timezone": "ICT (UTC+7), sechs Stunden vor MEZ",
+    "visa": "Für deutsche Staatsbürger visumfreier Aufenthalt bis 45 Tage; für längere Aufenthalte ist ein E-Visum (bis 90 Tage) erhältlich",
+    "bestMonths": "November bis April"
+  },
+  "highlights": [
+    "Halong-Bucht – smaragdgrünes Meer mit tausenden Karstfelsen, UNESCO-Welterbe",
+    "Hanoi – lebendige Altstadt, Seen und französisches Kolonialerbe",
+    "Hoi An – romantische Laternenstadt mit gut erhaltener Altstadt",
+    "Sapa – terrassierte Reisfelder und Bergvölker im Norden",
+    "Ho-Chi-Minh-Stadt (Saigon) – pulsierende Metropole im Süden",
+    "Mekong-Delta – schwimmende Märkte und üppige Wasserlandschaft",
+    "Hue – ehemalige Kaiserstadt mit Zitadelle und Königsgräbern",
+    "Phong Nha und Ninh Binh – spektakuläre Höhlen und „Halong an Land“"
+  ],
+  "insider_tips": [
+    "Das beste Essen findet man an den Straßenständen – Klassiker wie Pho, Banh Mi und Bun Cha sind dort am authentischsten und günstigsten.",
+    "Beim Überqueren der von Rollern gefüllten Straßen hilft es, ruhig und gleichmäßig weiterzugehen, statt stehen zu bleiben – der Verkehr fließt um einen herum.",
+    "Für die Halong-Bucht lohnt sich eine Übernachtung an Bord eines Bootes; die benachbarte Lan-Ha-Bucht ist oft ruhiger und weniger überlaufen.",
+    "Da der Norden und der Süden sehr unterschiedliches Klima haben, sollte man je nach Route sowohl leichte Kleidung als auch etwas Wärmeres einpacken."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich ein Visum für Vietnam?",
+      "answer": "Deutsche Staatsbürger können für touristische Aufenthalte bis zu 45 Tage visumfrei einreisen. Für längere Aufenthalte gibt es ein praktisches E-Visum, das online beantragt werden kann und bis zu 90 Tage gültig ist. Der Reisepass muss noch mindestens sechs Monate gültig sein."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Vietnam?",
+      "answer": "Da sich Vietnam über mehr als 1.600 Kilometer erstreckt, unterscheidet sich das Klima stark. Insgesamt sind November bis April günstig. Der Norden ist im Frühjahr und Herbst am schönsten, der Süden ganzjährig warm mit Trockenzeit von Dezember bis April."
+    },
+    {
+      "question": "Welche Währung gilt in Vietnam?",
+      "answer": "Gezahlt wird mit dem Vietnamesischen Dong (VND). In Städten ist Kartenzahlung zunehmend möglich, dennoch ist Bargeld besonders an Märkten und Straßenständen wichtig. Es empfiehlt sich, kleine Scheine bereitzuhalten."
+    },
+    {
+      "question": "Wie reist man am besten innerhalb Vietnams?",
+      "answer": "Für lange Strecken eignen sich Inlandsflüge, Nachtzüge wie der Reunification Express und komfortable Busse. Vor Ort nutzt man Taxis, App-Fahrdienste und Roller-Taxis. Ein eigener Mietwagen ist wegen des dichten Verkehrs nicht zu empfehlen; üblicher ist ein Privatfahrer."
+    },
+    {
+      "question": "Kann man in Vietnam selbst Auto fahren?",
+      "answer": "Davon ist abzuraten. Der Verkehr ist dicht und unübersichtlich, und für ausländische Führerscheine gelten besondere Regelungen. Praktischer und sicherer ist es, einen Wagen mit Fahrer zu buchen oder öffentliche Verkehrsmittel zu nutzen."
+    },
+    {
+      "question": "Ist Vietnam ein günstiges Reiseland?",
+      "answer": "Ja, Vietnam zählt zu den preiswertesten Reiseländern Asiens. Essen, Unterkünfte und Transport sind sehr günstig, was es besonders für Rundreisen und Backpacking attraktiv macht."
+    },
+    {
+      "question": "Kann man in Vietnam das Leitungswasser trinken?",
+      "answer": "Nein, das Leitungswasser ist nicht zum Trinken geeignet. Man sollte abgefülltes Wasser verwenden und bei Eiswürfeln und rohen Speisen vorsichtig sein, um Magenproblemen vorzubeugen."
+    },
+    {
+      "question": "Welche Impfungen werden für Vietnam empfohlen?",
+      "answer": "Vorgeschrieben sind in der Regel keine Impfungen. Empfohlen werden Standardimpfungen sowie je nach Reiseart Hepatitis A und teils Typhus. Für eine individuelle Beratung sollte man rechtzeitig ein Tropeninstitut oder den Hausarzt aufsuchen."
+    },
+    {
+      "question": "Welche Spezialitäten sollte man in Vietnam probieren?",
+      "answer": "Unbedingt probieren sollte man Pho (Nudelsuppe), Banh Mi (gefülltes Baguette), Bun Cha, frische Sommerrollen sowie den starken vietnamesischen Kaffee, etwa als Egg Coffee oder mit Kondensmilch."
+    },
+    {
+      "question": "Ist Vietnam für einen Familienurlaub geeignet?",
+      "answer": "Ja, Vietnam ist familienfreundlich und sicher. Bootsfahrten in der Halong-Bucht, Strände auf Phu Quoc, freundliche Menschen und vielfältiges Essen begeistern auch Kinder. Für lange Strecken sollte man etwas mehr Reisezeit einplanen."
+    },
+    {
+      "question": "Ist Vietnam sicher für Reisende?",
+      "answer": "Ja, Vietnam gilt als sicheres Reiseland mit niedriger Gewaltkriminalität. Aufpassen sollte man vor allem auf Taschendiebstahl in Großstädten sowie im chaotischen Straßenverkehr."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Vietnam einplanen?",
+      "answer": "Um Norden, Mitte und Süden zu verbinden, sind 2 bis 3 Wochen ideal. Für eine einzelne Region wie den Norden mit Hanoi und der Halong-Bucht reicht etwa eine Woche."
+    }
+  ],
+  "seo_title": "Vietnam Urlaub: Halong-Bucht, Rundreise, Tipps & beste Reisezeit",
+  "seo_description": "Dein Vietnam-Urlaub: Halong-Bucht, Reisterrassen in Sapa, Hanoi, Hoi An und das Mekong-Delta. Beste Reisezeit, Visum, Highlights und praktische Reisetipps im Überblick.",
+  "affiliate_search_intent": "Vietnam Rundreise buchen, Flug nach Hanoi oder Ho-Chi-Minh-Stadt, Halong-Bucht Kreuzfahrt, Hotel Vietnam, Backpacking Südostasien, Strandurlaub Phu Quoc",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "thailand",
+    "kambodscha",
+    "laos"
+  ],
+  "llmo_entities": [
+    "Vietnam",
+    "Halong-Bucht",
+    "Hanoi",
+    "Ho-Chi-Minh-Stadt",
+    "Saigon",
+    "Hoi An",
+    "Sapa",
+    "Mekong-Delta",
+    "Hue",
+    "Phong Nha",
+    "Ninh Binh",
+    "Phu Quoc",
+    "Pho",
+    "Banh Mi",
+    "Vietnamesischer Dong",
+    "Reisterrassen"
+  ],
+  "llmo_answer_block": "Vietnam ist ein vielseitiges Reiseland in Südostasien, bekannt für die smaragdgrüne Halong-Bucht, die Reisterrassen von Sapa, die Städte Hanoi und Ho-Chi-Minh-Stadt, die Laternenstadt Hoi An und das Mekong-Delta. Das Land begeistert mit weltberühmter Küche, herzlicher Gastfreundschaft und günstigen Preisen und eignet sich ideal für Rundreisen, Kultur-, Natur- und Strandurlaube. Für deutsche Reisende ist ein Aufenthalt bis 45 Tage visumfrei möglich.",
+  "llmo_quick_answer": "Vietnam ist ein vielseitiges Südostasien-Ziel mit der Halong-Bucht, Reisterrassen, lebendigen Städten und weltberühmter Küche, für Deutsche bis 45 Tage visumfrei."
+}

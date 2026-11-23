@@ -1,0 +1,116 @@
+{
+  "name": "Schottland",
+  "slug": "schottland",
+  "country": "Vereinigtes Königreich",
+  "region": "Westeuropa",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/schottland-hero.jpg",
+  "short_description": "Wildromantisches Land der Highlands mit Burgen, Lochs, der Isle of Skye, Whisky, dem geheimnisvollen Loch Ness und dem lebendigen Edinburgh.",
+  "long_description": "Schottland verzaubert mit rauer, wildromantischer Natur, jahrhundertealter Geschichte und herzlichen Menschen. Die Hauptstadt Edinburgh thront mit ihrem Castle über der Royal Mile und ist im Sommer Schauplatz des weltberühmten Festivals. Das eigentliche Herz des Landes sind jedoch die Highlands: dramatische Bergtäler wie Glencoe, einsame Lochs und endlose Weiten. Die Isle of Skye begeistert mit spektakulären Felsformationen wie dem Old Man of Storr, der Quiraing und den Fairy Pools. Am sagenumwobenen Loch Ness sucht man nach dem Ungeheuer Nessie, während Burgen wie Eilean Donan und Stirling Castle Geschichte lebendig werden lassen. Eine der schönsten Routen ist die North Coast 500, ein Roadtrip rund um den Norden. Dazu kommen weltberühmte Whisky-Destillerien, der Glenfinnan-Viadukt aus den Harry-Potter-Filmen und das kreative Glasgow. Mit seiner einzigartigen Landschaft ist Schottland ideal für Roadtrips, Wander- und Naturreisen – und von Deutschland aus schnell erreichbar.",
+  "ai_summary": "Schottland ist ein wildromantisches Land mit den Highlands, Burgen, Lochs, der Isle of Skye, dem geheimnisvollen Loch Ness, Whisky-Destillerien und der Hauptstadt Edinburgh. Es eignet sich ideal für Roadtrips, Wander- und Naturreisen und ist von Deutschland aus schnell erreichbar; für die Einreise sind Reisepass und ETA nötig.",
+  "best_travel_time": "Mai bis September für möglichst mildes Wetter und lange Tage; im Hochsommer können kleine Mücken (Midges) in den Highlands lästig werden.",
+  "ideal_duration": "rund eine Woche",
+  "travel_type": [
+    "Roadtrip",
+    "Naturreise",
+    "Wandern",
+    "Kulturreise",
+    "Geschichtsreise",
+    "Whisky-Reise"
+  ],
+  "quick_facts": {
+    "currency": "Britisches Pfund (GBP); schottische Banknoten sind gültig",
+    "language": "Englisch (regional auch Schottisch-Gälisch und Scots)",
+    "flightTime": "ca. 2 Stunden ab Deutschland (Edinburgh, Glasgow)",
+    "timezone": "GMT (UTC+0), eine Stunde hinter MEZ",
+    "visa": "Kein Visum nötig, aber Reisepass und vorab eine kostenpflichtige elektronische Reisegenehmigung (ETA) erforderlich",
+    "bestMonths": "Mai bis September"
+  },
+  "highlights": [
+    "Edinburgh – Castle, Royal Mile, Altstadt und das berühmte Sommerfestival",
+    "Highlands – dramatische Bergtäler wie Glencoe und endlose Weiten",
+    "Isle of Skye – Old Man of Storr, die Quiraing und die Fairy Pools",
+    "Loch Ness – sagenumwobener See mit Urquhart Castle",
+    "North Coast 500 – spektakulärer Roadtrip rund um den Norden",
+    "Whisky-Destillerien – etwa in der Speyside und auf Islay",
+    "Eilean Donan Castle – malerisch gelegene Burg am Wasser",
+    "Glenfinnan-Viadukt – berühmt aus den Harry-Potter-Filmen"
+  ],
+  "insider_tips": [
+    "Die North Coast 500 ist ein traumhafter Roadtrip durch die nördlichen Highlands – auf den schmalen Single-Track-Roads nutzt man die Ausweichbuchten (Passing Places).",
+    "Im Hochsommer können winzige Mücken (Midges) in den Highlands lästig sein – ein Insektenschutzmittel gehört dann ins Gepäck.",
+    "Eine Whisky-Destillerie-Tour, etwa in der Speyside oder auf Islay, gehört für viele zum Schottland-Erlebnis dazu; als Fahrer plant man Proben mit Bedacht.",
+    "Über den Glenfinnan-Viadukt fährt im Sommer der dampfbetriebene Jacobite Steam Train – ein Highlight für Harry-Potter-Fans."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich für Schottland ein Visum?",
+      "answer": "Für touristische Aufenthalte benötigen deutsche Staatsbürger kein Visum, jedoch eine kostenpflichtige elektronische Reisegenehmigung (ETA), die vor der Reise online beantragt wird. Zudem ist ein gültiger Reisepass erforderlich; der Personalausweis reicht seit dem Brexit nicht mehr aus."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Schottland?",
+      "answer": "Am angenehmsten ist es von Mai bis September mit milderem Wetter und langen Tagen. Das Wetter bleibt jedoch zu jeder Jahreszeit wechselhaft, und im Hochsommer können in den Highlands kleine Mücken (Midges) auftreten."
+    },
+    {
+      "question": "Welche Währung gilt in Schottland?",
+      "answer": "In Schottland zahlt man mit dem Britischen Pfund (GBP). Schottische Banken geben eigene Banknoten aus, die im ganzen Land gültig sind. Kartenzahlung und kontaktloses Bezahlen sind nahezu überall möglich."
+    },
+    {
+      "question": "Fährt man in Schottland links?",
+      "answer": "Ja, es herrscht Linksverkehr. Auf den schmalen Single-Track-Roads der Highlands nutzt man die Ausweichbuchten (Passing Places), um entgegenkommende Fahrzeuge passieren zu lassen."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen in Schottland?",
+      "answer": "Ja, für die Highlands, die Inseln und Routen wie die North Coast 500 ist ein Auto fast unverzichtbar, um flexibel zu sein. In Edinburgh und Glasgow ist ein Auto dagegen wegen des guten Nahverkehrs nicht nötig."
+    },
+    {
+      "question": "Gibt es das Ungeheuer von Loch Ness wirklich?",
+      "answer": "Wissenschaftlich gibt es keine Belege für „Nessie“, doch die Legende macht Loch Ness zu einem beliebten Ausflugsziel. Am Ufer lohnt sich der Besuch der Ruine von Urquhart Castle mit Blick über den See."
+    },
+    {
+      "question": "Ist die Isle of Skye einen Besuch wert?",
+      "answer": "Ja, die Isle of Skye zählt zu den schönsten Regionen Schottlands. Felsformationen wie der Old Man of Storr und die Quiraing sowie die Fairy Pools bieten spektakuläre Landschaften und beliebte Wanderungen."
+    },
+    {
+      "question": "Kann man in Schottland Whisky-Destillerien besuchen?",
+      "answer": "Ja, Schottland ist die Heimat des Scotch Whisky. Bekannte Regionen sind die Speyside, Islay und die Highlands, in denen viele Destillerien Führungen und Verkostungen anbieten."
+    },
+    {
+      "question": "Ist Schottland für einen Familienurlaub geeignet?",
+      "answer": "Ja, Schottland ist familienfreundlich. Burgen, Tierbeobachtungen, einfache Wanderungen, Bootstouren auf den Lochs und der Jacobite Steam Train sorgen für Abwechslung bei Groß und Klein."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Schottland einplanen?",
+      "answer": "Für Edinburgh und einen ersten Eindruck der Highlands reichen einige Tage. Für eine Rundreise mit Inseln und der North Coast 500 sollte man rund eine Woche oder mehr einplanen."
+    }
+  ],
+  "seo_title": "Schottland Urlaub: Highlands, Roadtrip, Tipps & beste Reisezeit",
+  "seo_description": "Dein Schottland-Urlaub: die Highlands, die Isle of Skye, Loch Ness, Burgen, Whisky und Edinburgh. Beste Reisezeit, Einreise mit ETA, Roadtrip-Tipps und Highlights im Überblick.",
+  "affiliate_search_intent": "Schottland Reise buchen, Flug nach Edinburgh, Hotel Edinburgh, Mietwagen Schottland vergleichen, Roadtrip North Coast 500, Rundreise Highlands",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "england",
+    "irland",
+    "island"
+  ],
+  "llmo_entities": [
+    "Schottland",
+    "Edinburgh",
+    "Edinburgh Castle",
+    "Royal Mile",
+    "Highlands",
+    "Glencoe",
+    "Isle of Skye",
+    "Old Man of Storr",
+    "Loch Ness",
+    "Urquhart Castle",
+    "North Coast 500",
+    "Eilean Donan Castle",
+    "Glenfinnan-Viadukt",
+    "Whisky",
+    "Glasgow",
+    "Britisches Pfund"
+  ],
+  "llmo_answer_block": "Schottland ist ein wildromantisches Land im Norden Großbritanniens, bekannt für die Highlands, Burgen, einsame Lochs, die spektakuläre Isle of Skye, das geheimnisvolle Loch Ness, weltberühmten Whisky und die Hauptstadt Edinburgh. Es eignet sich ideal für Roadtrips wie die North Coast 500 sowie für Wander- und Naturreisen und ist von Deutschland aus in rund zwei Stunden erreichbar. Für die Einreise sind ein Reisepass und eine vorab beantragte elektronische Reisegenehmigung (ETA) nötig.",
+  "llmo_quick_answer": "Schottland ist ein wildromantisches Land mit den Highlands, der Isle of Skye, Loch Ness, Burgen und Whisky; zur Einreise braucht man Reisepass und ETA."
+}

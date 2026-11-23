@@ -7,7 +7,7 @@ import PartnerHeroImage from '@/components/partner/PartnerHeroImage';
 export const metadata = {
   title: 'Partner werden | Mit ApeAround zusammenarbeiten',
   description:
-    'Werde Partner von ApeAround und erreiche Reisende mit Hotels, Reiseangeboten, Erlebnissen, Regionen oder Affiliate-Angeboten in einem modernen KI-Reiseumfeld.',
+    'Werde Partner von ApeAround und erreiche Reisende mit Hotels, Reiseangeboten, Erlebnissen, Regionen oder Affiliate-Angeboten auf einer modernen Reiseplattform.',
   openGraph: {
     title: 'Partner werden | ApeAround',
     description: 'Hotels, Reiseanbieter, Tourismusregionen und mehr — partner mit ApeAround und erreiche Reisende im richtigen Moment.',
@@ -125,7 +125,7 @@ const COOPERATION_OPTIONS = [
   { label: 'Platzierung in Reiseinspirationen', text: 'Dein Hotel, deine Region oder dein Angebot kann als kuratierte Inspiration-Karte auf der /inspiration-Seite erscheinen.' },
   { label: 'Hotel- oder Angebotsvorschläge', text: 'Gezielte Anzeige in thematischen Hotelvorschlägen auf der Startseite oder in Suchergebnissen.' },
   { label: 'Regionale Reiseempfehlungen', text: 'Tourismusverbände, Städte und Regionen können als Reiseziel oder Inspiration sichtbar werden.' },
-  { label: 'Destination Marketing', text: 'Wir können Reiseregionen, Nationalparks und Städte in der KI-Reiseplanung als empfehlenswerte Ziele einbinden.' },
+  { label: 'Destination Marketing', text: 'Wir können Reiseregionen, Nationalparks und Städte in unseren Reiseguides und Inspirationen sichtbar machen.' },
   { label: 'Content-Kooperationen', text: 'Gemeinsame redaktionelle Beiträge, Reisetipps oder Erlebnisberichte im ApeAround-Reiseblog.' },
   { label: 'Sponsored Inspiration Cards', text: 'Gesponserte Karten mit klarer Kennzeichnung in der Inspirations-Galerie — sauber eingebettet, nicht aufdringlich.' },
   { label: 'Individuelle Kampagnen', text: 'Haben wir was vergessen? Sprich uns einfach an — wir prüfen individuelle Kooperationsideen.' },
@@ -251,7 +251,7 @@ export default function PartnerWerdenPage() {
                   fontSize: 'clamp(15px, 1.8vw, 18px)',
                   color: '#CBD5E1', lineHeight: 1.7, margin: '0 0 36px', maxWidth: '540px',
                 }}>
-                  Erreiche Menschen genau dann, wenn sie nach ihrer nächsten Reiseidee suchen — mit einer modernen KI-Reiseplattform, die Inspiration, Orientierung und Anbieter miteinander verbindet.
+                  Erreiche Menschen genau dann, wenn sie nach ihrer nächsten Reiseidee suchen — mit einer modernen Reiseplattform, die Inspiration, Orientierung und Anbieter miteinander verbindet.
                 </p>
 
                 <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>

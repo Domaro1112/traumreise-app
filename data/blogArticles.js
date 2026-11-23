@@ -17,7 +17,7 @@ export const blogArticles = [
     readingTime: '6 min',
     author: 'Dominik Markus Rothke',
     authorBio:
-      'Das Traumreise-Redaktionsteam besteht aus erfahrenen Reisejournalisten und KI-Experten, die gemeinsam die besten Reiseziele der Welt erkunden und aufbereiten.',
+      'Das Traumreise-Redaktionsteam besteht aus erfahrenen Reisejournalisten und Reiseexperten, die gemeinsam die besten Reiseziele der Welt erkunden und aufbereiten.',
     tags: ['Bali', 'Budget', 'Südostasien', 'Indonesien'],
     featured: true,
     seoTitle: 'Bali unter 1.000 € – Günstig reisen nach Bali | Traumreise',
@@ -117,9 +117,9 @@ export const blogArticles = [
           'Die günstigsten Flüge nach Bali gibt es mit Zwischenstopp in Istanbul (Turkish Airlines), Dubai (Emirates/Flydubai), Singapur (Singapore Airlines) oder Kuala Lumpur (AirAsia). Frühbucherpreise 4–6 Monate im Voraus ab ca. 450–650 € Hin- und Rückflug. Google Flights und Skyscanner für Preisalarm nutzen.',
       },
     ],
-    relatedArticles: ['malediven-familienurlaub', 'albanien-geheimtipp-europa', 'ki-reiseplanung-anfaenger'],
+    relatedArticles: ['malediven-familienurlaub', 'albanien-geheimtipp-europa', 'lissabon-versteckte-perle'],
     internalLinks: [
-      { href: '/finder', text: 'deine personalisierte Traumreise mit jetzt planen' },
+      { href: '/finder', text: 'deine persönliche Traumreise jetzt planen' },
       { href: '/inspiration', text: 'weitere Reiseideen für Südostasien entdecken' },
       { href: 'so-funktionierts', text: 'so funktioniert der kostenlose Traumreise-Finder' },
     ],
@@ -230,7 +230,7 @@ export const blogArticles = [
     ],
     relatedArticles: ['lissabon-versteckte-perle', 'albanien-geheimtipp-europa', 'bali-unter-1000-euro'],
     internalLinks: [
-      { href: '/finder', text: 'deine Mittelmeerreise mit KI planen' },
+      { href: '/finder', text: 'deine Mittelmeerreise planen' },
       { href: '/inspiration', text: 'weitere Reiseziele in Europa entdecken' },
     ],
   },
@@ -340,7 +340,7 @@ export const blogArticles = [
     ],
     relatedArticles: ['tokio-erstbesucher-guide', 'albanien-geheimtipp-europa', 'bali-unter-1000-euro'],
     internalLinks: [
-      { href: '/finder', text: 'dein perfektes Abenteuer-Reiseziel mit KI finden' },
+      { href: '/finder', text: 'dein perfektes Abenteuer-Reiseziel finden' },
       { href: '/inspiration', text: 'mehr Naturreiseziele entdecken' },
     ],
   },
@@ -448,9 +448,9 @@ export const blogArticles = [
           'Tokio gilt als eine der sichersten Großstädte der Welt. Taschendiebstahl ist extrem selten, Nachtleben ist sicher, Frauen können allein ohne Bedenken reisen. Hauptrisiko: Erdbeben – Notrufnummer beachten und App "Safety Tips" der japanischen Regierung installieren.',
       },
     ],
-    relatedArticles: ['santorini-september-geheimtipp', 'lissabon-versteckte-perle', 'ki-reiseplanung-anfaenger'],
+    relatedArticles: ['santorini-september-geheimtipp', 'lissabon-versteckte-perle'],
     internalLinks: [
-      { href: '/finder', text: 'deine Japan-Reise mit KI individuell planen' },
+      { href: '/finder', text: 'deine Japan-Reise individuell planen' },
       { href: '/inspiration', text: 'weitere Städtereisen in Asien entdecken' },
     ],
   },
@@ -560,119 +560,8 @@ export const blogArticles = [
     ],
     relatedArticles: ['santorini-september-geheimtipp', 'albanien-geheimtipp-europa', 'tokio-erstbesucher-guide'],
     internalLinks: [
-      { href: '/finder', text: 'deine Europa-Städtereise mit KI personalisieren' },
+      { href: '/finder', text: 'deine Europa-Städtereise personalisieren' },
       { href: '/inspiration', text: 'weitere günstige Städtereiseziele entdecken' },
-    ],
-  },
-
-  /* ─── 6. KI-Reiseplanung ──────────────────────────────────────────────────── */
-  {
-    slug: 'ki-reiseplanung-anfaenger',
-    title: 'KI-Reiseplanung: Wie du in 5 Minuten deinen perfekten Urlaub findest',
-    excerpt:
-      'Traumreise nutzt künstliche Intelligenz, um deinen Traumurlaub zu finden. Kein stundenlanger Vergleich mehr. Wir erklären, wie unsere KI funktioniert und was du dabei beachten solltest.',
-    category: 'KI-Reiseplanung',
-    destination: 'Weltweit',
-    country: 'International',
-    imageUrl:
-      'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80',
-    date: '22. Januar 2025',
-    lastUpdated: '2025-05-01',
-    readingTime: '4 min',
-    author: 'Dominik Markus Rothke',
-    authorBio:
-      'Das Traumreise-Team entwickelt und verbessert fortlaufend die KI-Reiseplanung und gibt hier Einblicke in die Technologie dahinter.',
-    tags: ['KI', 'Reiseplanung', 'Technologie', 'Urlaub', 'Personalisierung'],
-    featured: false,
-    seoTitle: 'KI-Reiseplanung – So findest du deinen Traumurlaub | Traumreise',
-    seoDescription:
-      'Mit KI in 5 Minuten zum Traumurlaub: Wie Traumreise künstliche Intelligenz nutzt, um das perfekte Reiseziel für deinen Reisestil und dein Budget zu finden.',
-    keyTakeaways: [
-      { label: 'Zeitaufwand', value: 'ca. 2–5 Minuten' },
-      { label: 'Kosten', value: '100 % kostenlos, keine Anmeldung' },
-      { label: 'Wie es funktioniert', value: 'KI analysiert deinen Reisestil und gibt Empfehlungen' },
-      { label: 'Ergebnis', value: 'Persönliche Reiseziel-Empfehlung inkl. Hotels & Flüge' },
-      { label: 'Jetzt starten', value: 'traumreise.de/finder' },
-    ],
-    destinationFacts: {
-      country: 'International',
-      region: 'Weltweit',
-      city: 'Alle Reiseziele',
-      currency: 'Alle Währungen',
-      language: 'Deutsch (Interface), alle Zielsprachen',
-      timezone: 'Je nach Reiseziel',
-      airport: 'Alle internationalen Flughäfen',
-      bestMonths: ['Jederzeit'],
-      averageDailyBudget: 'Individuell konfigurierbar',
-      coordinates: { lat: 0, lng: 0 },
-      flightTimeFromGermany: 'Abhängig vom Ziel',
-      typicalActivities: ['Reiseplanung', 'Inspiration', 'Buchung', 'Personalisierung'],
-    },
-    airportInfo: {
-      name: 'Alle deutschen Flughäfen',
-      iata: 'FRA, MUC, BER, HAM, DUS, STR',
-      distanceToCity: 'Je nach Standort',
-      transferTime: 'Individuell',
-    },
-    tableOfContents: [
-      { id: 'wie-ki-funktioniert', label: 'Wie KI-Planung funktioniert' },
-      { id: 'vorteile', label: 'Vorteile gegenüber klassischen Reisebüros' },
-      { id: 'anleitung', label: 'Schritt-für-Schritt Anleitung' },
-      { id: 'faq', label: 'Häufige Fragen' },
-    ],
-    contentSections: [
-      {
-        id: 'wie-ki-funktioniert',
-        heading: 'Wie funktioniert KI-gestützte Reiseplanung bei Traumreise?',
-        content:
-          'Traumreise nutzt das Sprachmodell Claude von Anthropic, um deine individuelle Beschreibung deines Traumurlaubs zu analysieren. Du erzählst uns in deinen eigenen Worten, was du suchst – ob Strand und Entspannung, Städtetrip mit Kultur oder Abenteuer in der Wildnis. Die KI versteht Nuancen, Stimmungen und Präferenzen, die klassische Buchungssysteme mit Dropdown-Menüs nie erfassen könnten.\n\nAuf Basis deiner Antworten plus optionaler Angaben zu Reisezeit, Dauer und Budget generiert die KI personalisierte Reiseempfehlungen – mit konkreten Zielvorschlägen, Affiliate-Links zu Hotels und Flügen sowie einem Überblick über Highlights.',
-        tip: 'Tipp für bessere Ergebnisse: Sei präzise und persönlich. Nicht "Ich möchte verreisen", sondern "Ich liebe morgens früh am leeren Strand zu sitzen und abends lokales Essen auszuprobieren – ohne Partytrubel." Die KI versteht das.',
-      },
-      {
-        id: 'vorteile',
-        heading: 'Warum KI-Reiseplanung klassischen Reisebüros überlegen ist',
-        content:
-          'Klassische Reisebüros arbeiten mit Standardkatalogen und können nur begrenzt personalisieren. Online-Plattformen wie Booking.com überfluten mit Optionen, ohne zu filtern. Traumreise-KI tut das Gegenteil: Sie stellt gezielte Rückfragen, versteht deinen Reisetyp und gibt eine kurze, präzise Empfehlung – statt 847 Suchergebnissen.',
-      },
-      {
-        id: 'anleitung',
-        heading: 'Schritt-für-Schritt: So nutzt du den Traumreise-Finder',
-        content:
-          'Schritt 1: Gehe zu traumreise.de/finder. Schritt 2: Wähle zwischen "Klassisch" (strukturierter Fragebogen mit Saisonauswahl, Budget, Dauer) und "Zukunft" (freies Erzählen deines Traumlebens). Schritt 3: Beschreibe deinen Wunschurlaub in mindestens 15 Zeichen. Schritt 4: Warte ca. 5–10 Sekunden – die KI analysiert und empfiehlt. Schritt 5: Schau dir die Ergebniskarte mit Destination, Highlights und direkten Buchungslinks an. Keine Anmeldung, keine Bezahlung – 100 % kostenlos.',
-      },
-    ],
-    faq: [
-      {
-        question: 'Ist die KI-Reiseplanung wirklich kostenlos?',
-        answer:
-          'Ja – Traumreise ist 100 % kostenlos für Reisende. Wir finanzieren uns über Partnerprovisionen, wenn du über unsere Links buchst. Für dich entstehen keinerlei Mehrkosten.',
-      },
-      {
-        question: 'Wie genau sind die KI-Empfehlungen?',
-        answer:
-          'Die KI liefert sehr gute Ergebnisse, wenn du präzise beschreibst, was du suchst. Je mehr Details (Aktivitäten, Stimmung, Budget, Begleitung), desto passgenauer die Empfehlung. Die KI lernt keine persönlichen Daten über dich – jede Anfrage wird neu bewertet.',
-      },
-      {
-        question: 'Welche KI-Technologie steckt hinter Traumreise?',
-        answer:
-          'Traumreise nutzt Claude von Anthropic, eines der führenden Sprachmodelle für natürliche Sprachverarbeitung. Die Kombination aus Reiseexpertise in unserem Prompt und der Stärke des Modells in Verständnis und Empathie macht die Ergebnisse so präzise.',
-      },
-      {
-        question: 'Kann ich die KI auch für Gruppenreisen nutzen?',
-        answer:
-          'Ja – beschreibe einfach, dass du mit Familie, Freunden oder als Paar reist, und die KI passt die Empfehlung entsprechend an. Du kannst auch mehrere Präferenzen nennen ("Ich möchte aktive Wanderungen, mein Partner lieber Strand").',
-      },
-      {
-        question: 'Bucht die KI die Reise auch für mich?',
-        answer:
-          'Nein – die KI empfiehlt, du buchst. Traumreise zeigt dir direkte Links zu Buchungsplattformen (Hotels, Flüge, Aktivitäten), die Entscheidung triffst du selbst. Das gibt dir volle Kontrolle und Flexibilität.',
-      },
-    ],
-    relatedArticles: ['bali-unter-1000-euro', 'malediven-familienurlaub', 'tokio-erstbesucher-guide'],
-    internalLinks: [
-      { href: '/finder', text: 'jetzt den Reisefinder kostenlos ausprobieren' },
-      { href: 'so-funktionierts', text: 'so funktioniert die KI-Reiseplanung im Detail' },
-      { href: '/inspiration', text: 'Reiseinspiration für alle Ziele entdecken' },
     ],
   },
 
@@ -779,9 +668,9 @@ export const blogArticles = [
           'Auf Resortinseln ja – Alkohol wird in Restaurants und Bars serviert. Auf bewohnten Inseln (mit lokaler Bevölkerung) ist der Kauf und Konsum von Alkohol verboten. Guesthouses auf diesen Inseln bieten keinen Alkohol an.',
       },
     ],
-    relatedArticles: ['bali-unter-1000-euro', 'ki-reiseplanung-anfaenger', 'santorini-september-geheimtipp'],
+    relatedArticles: ['bali-unter-1000-euro', 'lissabon-versteckte-perle', 'santorini-september-geheimtipp'],
     internalLinks: [
-      { href: '/finder', text: 'dein perfektes Familienziel mit KI finden' },
+      { href: '/finder', text: 'dein perfektes Familienziel finden' },
       { href: '/inspiration', text: 'weitere Familienreiseziele entdecken' },
     ],
   },
@@ -891,7 +780,7 @@ export const blogArticles = [
     ],
     relatedArticles: ['santorini-september-geheimtipp', 'lissabon-versteckte-perle', 'bali-unter-1000-euro'],
     internalLinks: [
-      { href: '/finder', text: 'dein Balkan-Abenteuer mit KI planen' },
+      { href: '/finder', text: 'dein Balkan-Abenteuer planen' },
       { href: '/inspiration', text: 'weitere europäische Geheimtipps entdecken' },
     ],
   },
@@ -997,7 +886,7 @@ export const blogArticles = [
     ],
     relatedArticles: ['albanien-geheimtipp-europa', 'santorini-september-geheimtipp', 'lissabon-versteckte-perle'],
     internalLinks: [
-      { href: '/finder', text: 'deinen Mallorca-Urlaub mit KI planen' },
+      { href: '/finder', text: 'deinen Mallorca-Urlaub planen' },
       { href: '/reiseblog', text: 'weitere Mittelmeer-Geheimtipps entdecken' },
     ],
   },
@@ -1103,7 +992,7 @@ export const blogArticles = [
     ],
     relatedArticles: ['albanien-geheimtipp-europa', 'lissabon-versteckte-perle', 'bali-unter-1000-euro'],
     internalLinks: [
-      { href: '/finder', text: 'deine Madeira-Reise mit KI planen' },
+      { href: '/finder', text: 'deine Madeira-Reise planen' },
       { href: '/reiseblog', text: 'weitere Insel-Reiseguides entdecken' },
     ],
   },
@@ -1209,7 +1098,7 @@ export const blogArticles = [
     ],
     relatedArticles: ['madeira-7-tage-reiseroute', 'norwegen-fjorde-reiseguide', 'albanien-geheimtipp-europa'],
     internalLinks: [
-      { href: '/finder', text: 'dein Island-Abenteuer mit KI entdecken' },
+      { href: '/finder', text: 'dein Island-Abenteuer entdecken' },
       { href: '/inspiration', text: 'weitere Nordeuropa-Reiseguides lesen' },
     ],
   },
@@ -1315,7 +1204,7 @@ export const blogArticles = [
     ],
     relatedArticles: ['bali-unter-1000-euro', 'albanien-geheimtipp-europa', 'santorini-september-geheimtipp'],
     internalLinks: [
-      { href: '/finder', text: 'dein Thailand-Urlaub mit KI planen' },
+      { href: '/finder', text: 'dein Thailand-Urlaub planen' },
       { href: '/reiseblog', text: 'weitere Asien-Reiseguides entdecken' },
     ],
   },
@@ -1421,7 +1310,7 @@ export const blogArticles = [
     ],
     relatedArticles: ['lissabon-versteckte-perle', 'albanien-geheimtipp-europa', 'mallorca-ohne-massentourismus'],
     internalLinks: [
-      { href: '/finder', text: 'deinen Portugal-Roadtrip mit KI planen' },
+      { href: '/finder', text: 'deinen Portugal-Roadtrip planen' },
       { href: '/reiseblog', text: 'weitere Europa-Roadtrip-Guides lesen' },
     ],
   },
@@ -1527,7 +1416,7 @@ export const blogArticles = [
     ],
     relatedArticles: ['santorini-september-geheimtipp', 'lissabon-versteckte-perle', 'albanien-geheimtipp-europa'],
     internalLinks: [
-      { href: '/finder', text: 'dein Griechenland-Urlaub mit KI planen' },
+      { href: '/finder', text: 'dein Griechenland-Urlaub planen' },
       { href: '/inspiration', text: 'weitere Mittelmeer-Urlaubsziele entdecken' },
     ],
   },
@@ -1633,7 +1522,7 @@ export const blogArticles = [
     ],
     relatedArticles: ['island-rundreise-anfaenger', 'madeira-7-tage-reiseroute', 'albanien-geheimtipp-europa'],
     internalLinks: [
-      { href: '/finder', text: 'dein Norwegen-Abenteuer mit KI planen' },
+      { href: '/finder', text: 'dein Norwegen-Abenteuer planen' },
       { href: '/reiseblog', text: 'weitere Skandinavien-Reiseguides lesen' },
     ],
   },
@@ -1739,7 +1628,7 @@ export const blogArticles = [
     ],
     relatedArticles: ['tokio-erstbesucher-guide', 'bali-unter-1000-euro', 'thailand-inselhopping-2-wochen'],
     internalLinks: [
-      { href: '/finder', text: 'deine Japan-Traumreise mit KI planen' },
+      { href: '/finder', text: 'deine Japan-Traumreise planen' },
       { href: '/reiseblog', text: 'weitere Asien-Reiseguides entdecken' },
     ],
   },
@@ -1845,7 +1734,7 @@ export const blogArticles = [
     ],
     relatedArticles: ['albanien-geheimtipp-europa', 'santorini-september-geheimtipp', 'griechenland-inselhopping-einsteiger'],
     internalLinks: [
-      { href: '/finder', text: 'deinen Kroatien-Roadtrip mit KI planen' },
+      { href: '/finder', text: 'deinen Kroatien-Roadtrip planen' },
       { href: '/reiseblog', text: 'weitere Adria-Reiseguides entdecken' },
     ],
   },
@@ -1951,7 +1840,7 @@ export const blogArticles = [
     ],
     relatedArticles: ['albanien-geheimtipp-europa', 'madeira-7-tage-reiseroute', 'norwegen-fjorde-reiseguide'],
     internalLinks: [
-      { href: '/finder', text: 'deinen Südtirol-Urlaub mit KI planen' },
+      { href: '/finder', text: 'deinen Südtirol-Urlaub planen' },
       { href: '/inspiration', text: 'weitere Alpen-Reiseziele entdecken' },
     ],
   },
@@ -2057,7 +1946,7 @@ export const blogArticles = [
     ],
     relatedArticles: ['tokio-erstbesucher-guide', 'japan-rundreise-14-tage', 'bali-unter-1000-euro'],
     internalLinks: [
-      { href: '/finder', text: 'deinen Dubai-Stopover mit KI planen' },
+      { href: '/finder', text: 'deinen Dubai-Stopover planen' },
       { href: '/reiseblog', text: 'weitere Fernreise-Guides entdecken' },
     ],
   },
@@ -2163,7 +2052,7 @@ export const blogArticles = [
     ],
     relatedArticles: ['bali-unter-1000-euro', 'thailand-inselhopping-2-wochen', 'albanien-geheimtipp-europa'],
     internalLinks: [
-      { href: '/finder', text: 'deine Costa Rica-Reise mit KI planen' },
+      { href: '/finder', text: 'deine Costa Rica-Reise planen' },
       { href: '/inspiration', text: 'weitere Regenwald-Abenteuer entdecken' },
     ],
   },
@@ -2177,7 +2066,6 @@ export const blogCategories = [
   { id: 'Städtereisen',      label: 'Städtereisen',      icon: 'Building2' },
   { id: 'Natur & Abenteuer', label: 'Natur & Abenteuer', icon: 'Mountain' },
   { id: 'Familienurlaub',    label: 'Familienurlaub',    icon: 'Heart' },
-  { id: 'KI-Reiseplanung',   label: 'KI-Reiseplanung',   icon: 'Bot' },
   { id: 'Routen & Roadtrips', label: 'Routen & Roadtrips', icon: 'Map' },
 ];
 
@@ -2192,10 +2080,10 @@ export const communityTips = [
   },
   {
     icon: 'Wallet',
-    title: 'Günstig buchen mit KI',
-    tip: 'Unsere KI analysiert deinen Reisestil und findet Destinationen, die perfekt zu deinem Budget passen – völlig kostenlos und ohne Anmeldung.',
+    title: 'Passend zum Budget planen',
+    tip: 'Unser Reisefinder zeigt dir Ziele, die zu deinem Reisestil und Budget passen – inklusive Kostenüberblick, völlig kostenlos und ohne Anmeldung.',
     link: '/finder',
-    linkLabel: 'KI jetzt starten',
+    linkLabel: 'Reisefinder starten',
   },
   {
     icon: 'MapPin',

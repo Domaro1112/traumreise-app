@@ -21,13 +21,13 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Traumreise – Deine persönliche KI-Reiseberaterin",
+  title: "ApeAround – Finde deine Traumreise",
   description:
-    "Erzähl uns von dir – unsere KI findet dein perfektes Reiseziel inkl. Hotels, Flügen & Aktivitäten. 100% kostenlos & ohne Anmeldung.",
-  keywords: ["Reise", "KI", "Reiseplaner", "Traumreise", "Urlaub", "Reiseberatung"],
+    "Beantworte ein paar Fragen und entdecke Reiseziele, die zu dir passen – mit Reiseprofil, Kostenüberblick und direkten Links zu Hotels, Flügen & Aktivitäten. Kostenlos & ohne Anmeldung.",
+  keywords: ["Reise", "Reisefinder", "Reiseplaner", "Traumreise", "Urlaub", "Reiseinspiration"],
   openGraph: {
-    title: "Traumreise – Deine persönliche KI-Reiseberaterin",
-    description: "Persönliche Reiseempfehlungen durch KI. Kostenlos & sofort verfügbar.",
+    title: "ApeAround – Finde deine Traumreise",
+    description: "Persönliche Reiseideen in wenigen Klicks. Kostenlos & sofort verfügbar.",
     type: "website",
   },
   // ── Vorübergehend: Indexierung global deaktiviert ─────────────────────────

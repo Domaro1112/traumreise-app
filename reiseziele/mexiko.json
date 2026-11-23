@@ -1,0 +1,125 @@
+{
+  "name": "Mexiko",
+  "slug": "mexiko",
+  "country": "Mexiko",
+  "region": "Lateinamerika",
+  "continent": "Nordamerika",
+  "hero_image": "/images/destinations/mexiko-hero.jpg",
+  "short_description": "Faszinierendes Reiseland mit Maya-Ruinen, Traumstränden an der Karibik, Cenoten, lebendiger Kultur und weltberühmter Küche.",
+  "long_description": "Mexiko ist ein Land der Gegensätze und kulturellen Vielfalt – von den türkisblauen Karibikstränden der Riviera Maya über uralte Maya- und Azteken-Stätten bis zu den pulsierenden Straßen der Hauptstadt Mexiko-Stadt. Auf der Halbinsel Yucatán locken Weltwunder wie Chichén Itzá, die malerischen Klippenruinen von Tulum und die geheimnisvollen Cenoten, kristallklare Kalksteinquellen zum Schwimmen und Tauchen. Im Landesinneren beeindrucken die Pyramiden von Teotihuacán, koloniale Städte wie Guanajuato und die für ihre Küche berühmte Region Oaxaca. Mexiko ist zugleich ein kulinarisches Paradies: Tacos, Mole und frische Tortillas gehören zur lebendigen Esskultur, die zum UNESCO-Weltkulturerbe zählt. Ob Strandurlaub, Rundreise, Tauchen oder Kulturtrip – Mexiko bietet für jeden Reisetyp unvergessliche Erlebnisse.",
+  "ai_summary": "Mexiko ist ein vielseitiges Reiseland in Nordamerika mit Maya-Ruinen wie Chichén Itzá und Tulum, den Karibikstränden der Riviera Maya, einzigartigen Cenoten und der lebendigen Hauptstadt Mexiko-Stadt. Es vereint Strandurlaub, Kultur, Abenteuer und eine weltberühmte Küche und eignet sich besonders gut für Rundreisen.",
+  "best_travel_time": "Die beste Reisezeit ist die Trockenzeit von November bis April mit angenehmen Temperaturen und wenig Regen; von Juni bis Oktober besteht in der Karibik Hurrikan-Saison.",
+  "ideal_duration": "Strandurlaub 1 bis 2 Wochen, Rundreise 2 bis 3 Wochen",
+  "travel_type": [
+    "Strandurlaub",
+    "Rundreise",
+    "Kulturreise",
+    "Tauchen",
+    "Abenteuer",
+    "Backpacking",
+    "Familien"
+  ],
+  "quick_facts": {
+    "currency": "Mexikanischer Peso (MXN)",
+    "language": "Spanisch",
+    "flightTime": "ca. 11 bis 13 Stunden ab Deutschland (Cancún rund 11 Stunden)",
+    "timezone": "Mehrere Zeitzonen (UTC−5 bis UTC−7); Zentralmexiko UTC−6, sieben Stunden hinter MEZ",
+    "visa": "Für Touristen kein Visum nötig (Aufenthalt bis 180 Tage); bei Einreise wird eine Touristenkarte ausgestellt",
+    "bestMonths": "November bis April"
+  },
+  "highlights": [
+    "Chichén Itzá – berühmte Maya-Pyramide und eines der neuen Weltwunder",
+    "Tulum – malerische Maya-Ruinen direkt über dem türkisfarbenen Karibikmeer",
+    "Cenoten in Yucatán – kristallklare Kalksteinquellen zum Schwimmen und Tauchen",
+    "Riviera Maya und Cancún – endlose Karibikstrände mit weißem Sand",
+    "Mexiko-Stadt – pulsierende Hauptstadt mit Zócalo, Museen und Street Food",
+    "Teotihuacán – gewaltige Pyramidenanlage der Sonne und des Mondes",
+    "Oaxaca – Kulturstadt und kulinarisches Zentrum mit Mole und Mezcal",
+    "Isla Holbox und Cozumel – ruhige Inseln zum Schnorcheln und Tauchen"
+  ],
+  "insider_tips": [
+    "Cenoten am besten früh am Morgen besuchen, bevor die Tagestouren eintreffen – dann hat man das klare Wasser oft fast für sich allein.",
+    "Echtes mexikanisches Street Food wie Tacos al Pastor schmeckt an den kleinen Ständen authentischer und günstiger als in touristischen Restaurants.",
+    "Wer Anfang November reist, erlebt mit dem Día de Muertos (Tag der Toten) eines der farbenprächtigsten und stimmungsvollsten Feste des Landes.",
+    "Für günstige Kurzstrecken nutzt man die Sammeltaxis (Colectivos), die zwischen vielen Orten der Riviera Maya verkehren."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Mexiko?",
+      "answer": "Ideal ist die Trockenzeit von November bis April mit viel Sonne und angenehmen Temperaturen. Von Juni bis Oktober ist Regenzeit, und an der Karibikküste besteht zwischen Juni und November ein Hurrikan-Risiko."
+    },
+    {
+      "question": "Brauche ich ein Visum für Mexiko?",
+      "answer": "Für touristische Aufenthalte bis zu 180 Tagen benötigen deutsche Staatsbürger kein Visum. Bei der Einreise erhält man eine Touristenkarte (FMM). Der Reisepass muss für die Dauer des Aufenthalts gültig sein."
+    },
+    {
+      "question": "Welche Währung gilt in Mexiko?",
+      "answer": "Gezahlt wird mit dem Mexikanischen Peso (MXN). In touristischen Orten werden teils auch US-Dollar akzeptiert, der Kurs ist dann aber oft ungünstiger. Kartenzahlung ist in Städten verbreitet, für Märkte und Trinkgeld empfiehlt sich Bargeld."
+    },
+    {
+      "question": "Wie sicher ist eine Reise nach Mexiko?",
+      "answer": "Die klassischen Touristenregionen wie die Riviera Maya, Yucatán und die kolonialen Städte gelten als gut bereisbar. Vor einer Reise sollte man jedoch stets die aktuellen Sicherheitshinweise des Auswärtigen Amts prüfen, da einzelne Bundesstaaten als gefährlicher eingestuft werden."
+    },
+    {
+      "question": "Kann man in Mexiko das Leitungswasser trinken?",
+      "answer": "Nein, Leitungswasser ist in der Regel nicht zum Trinken geeignet. Man sollte auf abgefülltes Wasser zurückgreifen und auch beim Zähneputzen besser Flaschenwasser verwenden."
+    },
+    {
+      "question": "Wie lange dauert der Flug nach Mexiko?",
+      "answer": "Ein Direktflug von Deutschland nach Cancún dauert etwa 11 Stunden, nach Mexiko-Stadt rund 12 bis 13 Stunden. Es gibt mehrere Direktverbindungen sowie Flüge mit Zwischenstopp."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen in Mexiko?",
+      "answer": "Für eine individuelle Rundreise auf der Halbinsel Yucatán ist ein Mietwagen sehr praktisch, um Cenoten, Ruinen und kleinere Orte flexibel zu erreichen. Wer ausschließlich im Strandresort bleibt, kommt auch ohne Auto aus."
+    },
+    {
+      "question": "Was sind Cenoten?",
+      "answer": "Cenoten sind natürliche, mit Süßwasser gefüllte Kalksteinlöcher, die vor allem auf Yucatán verbreitet sind. Sie galten den Maya als heilig und sind heute beliebte Orte zum Schwimmen, Schnorcheln und Tauchen."
+    },
+    {
+      "question": "Welche typischen Gerichte sollte man in Mexiko probieren?",
+      "answer": "Unbedingt probieren sollte man Tacos al Pastor, Guacamole, Tamales, Mole, Quesadillas und frische Tortillas. Die mexikanische Küche zählt zum UNESCO-Weltkulturerbe und ist deutlich vielfältiger als das im Ausland bekannte Tex-Mex."
+    },
+    {
+      "question": "Welche Impfungen brauche ich für Mexiko?",
+      "answer": "Vorgeschrieben sind in der Regel keine Impfungen. Empfohlen werden Standardimpfungen sowie je nach Reiseart Hepatitis A und teils Typhus. Für eine individuelle Beratung sollte man rechtzeitig ein Tropeninstitut oder den Hausarzt aufsuchen."
+    },
+    {
+      "question": "Ist Mexiko für einen Familienurlaub geeignet?",
+      "answer": "Ja, besonders die Riviera Maya bietet familienfreundliche Strände, Resorts und Erlebnisparks wie Xcaret und Xel-Há. Cenoten, Tierbeobachtungen und Maya-Ruinen sorgen für Abwechslung bei Groß und Klein."
+    },
+    {
+      "question": "Wie viel Zeit sollte man für eine Mexiko-Reise einplanen?",
+      "answer": "Für einen reinen Strandurlaub reichen 1 bis 2 Wochen. Wer Kultur, Ruinen, Cenoten und mehrere Regionen verbinden möchte, sollte für eine Rundreise 2 bis 3 Wochen einplanen."
+    }
+  ],
+  "seo_title": "Mexiko Urlaub: Reisetipps, Maya-Ruinen, Strände & beste Reisezeit",
+  "seo_description": "Dein Mexiko-Urlaub: Maya-Stätten wie Chichén Itzá und Tulum, Karibikstrände, Cenoten und Mexiko-Stadt. Beste Reisezeit, Highlights, Sicherheit und praktische Tipps im Überblick.",
+  "affiliate_search_intent": "Mexiko Rundreise buchen, Flug und Hotel Cancún oder Riviera Maya, Mietwagen Yucatán vergleichen, All-Inclusive Mexiko, Ausflüge Chichén Itzá und Cenoten",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "kuba",
+    "costa-rica",
+    "guatemala"
+  ],
+  "llmo_entities": [
+    "Mexiko",
+    "Yucatán",
+    "Chichén Itzá",
+    "Tulum",
+    "Cancún",
+    "Riviera Maya",
+    "Cenoten",
+    "Mexiko-Stadt",
+    "Teotihuacán",
+    "Oaxaca",
+    "Cozumel",
+    "Isla Holbox",
+    "Maya",
+    "Tacos al Pastor",
+    "Día de Muertos",
+    "Mexikanischer Peso"
+  ],
+  "llmo_answer_block": "Mexiko ist ein vielseitiges Reiseland in Nordamerika, bekannt für seine Maya-Ruinen wie Chichén Itzá und Tulum, die Karibikstrände der Riviera Maya, die einzigartigen Cenoten und die lebendige Hauptstadt Mexiko-Stadt. Es verbindet Strandurlaub, Kultur, Abenteuer und eine weltberühmte Küche und eignet sich besonders für Rundreisen. Die beste Reisezeit liegt in der Trockenzeit von November bis April.",
+  "llmo_quick_answer": "Mexiko ist ein vielseitiges Reiseland mit Maya-Ruinen, Karibikstränden, Cenoten und weltberühmter Küche, am besten von November bis April zu bereisen."
+}

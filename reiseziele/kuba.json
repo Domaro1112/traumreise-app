@@ -1,0 +1,117 @@
+{
+  "name": "Kuba",
+  "slug": "kuba",
+  "country": "Kuba",
+  "region": "Karibik",
+  "continent": "Nordamerika",
+  "hero_image": "/images/destinations/kuba-hero.jpg",
+  "short_description": "Faszinierende Karibikinsel voller Oldtimer, Kolonialcharme und Salsa – derzeit jedoch wegen einer schweren Versorgungskrise und Reisewarnung des Auswärtigen Amts kein empfohlenes Reiseziel.",
+  "long_description": "Kuba ist eine der faszinierendsten Inseln der Karibik – ein Land voller Lebensfreude, Musik und morbidem Charme. Havanna verzaubert mit seiner bröckelnden Kolonialaltstadt, bunten Oldtimern und der Uferpromenade Malecón. Das koloniale Trinidad, das Tabaktal von Viñales, die Traumstrände von Varadero und Cayo Coco sowie die Musikstadt Santiago de Cuba prägen das Bild einer Insel mit großer kultureller Tiefe. Wichtig ist jedoch der aktuelle Kontext: Kuba steckt seit Monaten in einer gravierenden Energie- und Versorgungskrise. Lange Stromausfälle, Treibstoffmangel, Engpässe bei Wasser, Lebensmitteln und medizinischer Versorgung sowie ein stark eingeschränkter Flugbetrieb prägen den Alltag. Das deutsche Auswärtige Amt rät derzeit dringend von Reisen ab, und große Reiseveranstalter haben die Insel vorübergehend aus dem Programm genommen. Diese Seite dient daher der ehrlichen Information und Orientierung, nicht der Urlaubsbuchung. Sobald sich die Lage stabilisiert, gehört Kuba zweifellos wieder zu den lohnendsten Zielen der Karibik.",
+  "ai_summary": "Kuba ist eine kulturell faszinierende Karibikinsel mit Havanna, Oldtimern, kolonialen Städten wie Trinidad, dem Tabaktal Viñales und Salsa-Kultur. Aktuell rät das Auswärtige Amt jedoch dringend von Reisen ab: Eine schwere Energie- und Versorgungskrise sorgt für lange Stromausfälle, Engpässe und einen stark eingeschränkten Flugbetrieb. Kuba ist derzeit kein empfohlenes oder verlässlich buchbares Reiseziel.",
+  "best_travel_time": "Klimatisch wäre die Trockenzeit von Dezember bis April am besten; aufgrund der aktuellen Versorgungskrise und der Reisewarnung des Auswärtigen Amts ist derzeit jedoch generell von Reisen abzuraten.",
+  "ideal_duration": "Derzeit nicht empfehlenswert; touristische Reisen sind aktuell nicht ratsam.",
+  "travel_type": [
+    "Kulturreise",
+    "Rundreise",
+    "Strandurlaub",
+    "Musikreise"
+  ],
+  "quick_facts": {
+    "currency": "Kubanischer Peso (CUP); im Westen übliche Kreditkarten funktionieren kaum, die Geldversorgung ist krisenbedingt stark gestört",
+    "language": "Spanisch",
+    "flightTime": "Normalerweise ca. 10 bis 11 Stunden; derzeit ist der Flugbetrieb stark eingeschränkt, viele Airlines haben Europa-Flüge ausgesetzt",
+    "timezone": "CST (UTC−5), sechs Stunden hinter MEZ",
+    "visa": "Touristenkarte (Tarjeta del Turista) erforderlich; ein Kuba-Besuch kann zudem die spätere visumfreie Einreise in die USA (ESTA) ausschließen",
+    "bestMonths": "Klimatisch Dezember bis April – derzeit jedoch Reisewarnung beachten"
+  },
+  "highlights": [
+    "Havanna – koloniale Altstadt (UNESCO), Oldtimer und der Malecón",
+    "Trinidad – malerische Kolonialstadt mit Kopfsteinpflaster, UNESCO-Welterbe",
+    "Viñales – grünes Tabaktal mit Karstbergen (Mogotes)",
+    "Varadero – langer Sandstrand und Badeort",
+    "Santiago de Cuba – Wiege von Son und Salsa im Osten der Insel",
+    "Cienfuegos – elegante Hafenstadt mit französischem Einfluss",
+    "Cayo Coco und Cayo Largo – vorgelagerte Inseln mit Traumstränden"
+  ],
+  "insider_tips": [
+    "Vor jeglicher Reiseplanung unbedingt die aktuellen Reise- und Sicherheitshinweise des Auswärtigen Amts prüfen, da sich die Versorgungslage kurzfristig ändern kann.",
+    "Wer Karibik-Flair, koloniale Städte und Strände sucht, findet derzeit in der Dominikanischen Republik, Mexiko oder Jamaika deutlich verlässlichere Alternativen.",
+    "Sollte sich die Lage stabilisieren, gilt weiterhin: ausreichend Bargeld mitnehmen, da westliche Karten auf Kuba traditionell nur eingeschränkt funktionieren.",
+    "Authentische kubanische Musik erlebt man später am besten in einer Casa de la Trova, etwa in Santiago de Cuba oder Trinidad."
+  ],
+  "faq": [
+    {
+      "question": "Kann man derzeit als Tourist nach Kuba reisen?",
+      "answer": "Das deutsche Auswärtige Amt rät aktuell dringend von Reisen nach Kuba ab. Grund ist eine schwere Energie- und Versorgungskrise mit weitreichenden Folgen für den Alltag. Touristische Reisen sind derzeit nicht ratsam."
+    },
+    {
+      "question": "Warum ist von Kuba-Reisen aktuell abzuraten?",
+      "answer": "Kuba leidet unter einer gravierenden Treibstoff- und Energiekrise. Es kommt zu langen, teils stundenlangen Stromausfällen sowie zu Engpässen bei Wasser, Lebensmitteln und medizinischer Versorgung. Auch der Flugbetrieb ist stark eingeschränkt."
+    },
+    {
+      "question": "Gibt es noch Flüge von Europa nach Kuba?",
+      "answer": "Der Flugbetrieb ist erheblich eingeschränkt. Da kubanische Flughäfen seit Anfang 2026 ausländische Maschinen nicht mehr betanken können, haben viele Airlines Verbindungen gekürzt, gestrichen oder ausgesetzt. Flüge können kurzfristig ausfallen oder umgeleitet werden."
+    },
+    {
+      "question": "Wie ist die Stromversorgung auf Kuba?",
+      "answer": "Die Stromversorgung ist landesweit stark gestört, mit teils sehr langen täglichen Ausfällen. Durchgehend Strom gibt es meist nur in Hotels mit Generatoren – und auch das nur, solange Treibstoff vorhanden ist. Bei Ausfällen sind oft auch Wasser, Internet und Geldautomaten betroffen."
+    },
+    {
+      "question": "Funktionieren auf Kuba meine Kreditkarten?",
+      "answer": "Im Westen übliche Kreditkarten funktionieren auf Kuba ohnehin nur sehr eingeschränkt, US-Karten gar nicht. In der aktuellen Krise ist die Geldversorgung über Automaten zusätzlich gestört. Reisende wären weitgehend auf mitgebrachtes Bargeld angewiesen."
+    },
+    {
+      "question": "Wie ist die medizinische Versorgung auf Kuba?",
+      "answer": "Die ohnehin angespannte medizinische Versorgung ist durch die Energiekrise stark beeinträchtigt. Notfallversorgung und medizinisch notwendige Rücktransporte können derzeit nicht zuverlässig gewährleistet werden, was das Reiserisiko deutlich erhöht."
+    },
+    {
+      "question": "Braucht man für Kuba ein Visum?",
+      "answer": "Für die Einreise ist eine Touristenkarte (Tarjeta del Turista) erforderlich. Zu beachten ist außerdem, dass ein Kuba-Besuch die spätere visumfreie Einreise in die USA über das ESTA-System ausschließen kann."
+    },
+    {
+      "question": "Welche Sehenswürdigkeiten hat Kuba grundsätzlich zu bieten?",
+      "answer": "Kulturell ist Kuba reich: Havanna mit Altstadt und Oldtimern, das koloniale Trinidad, das Tabaktal von Viñales, die Strände von Varadero und die Musikstadt Santiago de Cuba. Diese sind aktuell jedoch nur eingeschränkt und nicht empfohlen erreichbar."
+    },
+    {
+      "question": "Gibt es sicherere Alternativen zu einer Kuba-Reise?",
+      "answer": "Ja. Wer Karibik-Flair, koloniale Städte und Traumstrände erleben möchte, findet derzeit in der Dominikanischen Republik, in Mexiko oder auf Jamaika deutlich verlässlichere und besser versorgte Alternativen."
+    },
+    {
+      "question": "Wann wäre Kuba klimatisch am besten zu bereisen?",
+      "answer": "Klimatisch ist die Trockenzeit von Dezember bis April am angenehmsten, während von Juni bis November Hurrikan-Saison herrscht. Unabhängig vom Klima ist derzeit jedoch die Reisewarnung des Auswärtigen Amts ausschlaggebend."
+    },
+    {
+      "question": "Wo finde ich verlässliche aktuelle Informationen zur Lage?",
+      "answer": "Die verbindliche Quelle sind die offiziellen Reise- und Sicherheitshinweise des Auswärtigen Amts. Sie werden laufend aktualisiert und sollten vor jeder Reiseüberlegung geprüft werden."
+    }
+  ],
+  "seo_title": "Kuba Reisen: Aktuelle Lage, Versorgungskrise & Reiseinfos 2026",
+  "seo_description": "Kuba im Überblick: Havanna, Oldtimer, Trinidad und Strände – sowie die aktuelle Reisewarnung des Auswärtigen Amts wegen der Energie- und Versorgungskrise, Flugausfälle und sichere Alternativen.",
+  "affiliate_search_intent": "Informationen zu Kuba-Reisen, aktuelle Reisehinweise Kuba, Versorgungslage Kuba, sichere Karibik-Alternativen wie Dominikanische Republik, Mexiko oder Jamaika",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "dominikanische-republik",
+    "mexiko",
+    "jamaika"
+  ],
+  "llmo_entities": [
+    "Kuba",
+    "Havanna",
+    "Malecón",
+    "Oldtimer",
+    "Trinidad",
+    "Viñales",
+    "Varadero",
+    "Santiago de Cuba",
+    "Cienfuegos",
+    "Cayo Coco",
+    "Salsa",
+    "Son",
+    "Kubanischer Peso",
+    "Reisewarnung",
+    "Auswärtiges Amt",
+    "Versorgungskrise"
+  ],
+  "llmo_answer_block": "Kuba ist eine kulturell faszinierende Karibikinsel mit Havanna, Oldtimern, kolonialen Städten wie Trinidad, dem Tabaktal Viñales und lebendiger Salsa-Kultur. Aktuell rät das deutsche Auswärtige Amt jedoch dringend von Reisen ab: Eine schwere Energie- und Versorgungskrise sorgt für lange Stromausfälle, Engpässe bei Wasser, Lebensmitteln und medizinischer Versorgung sowie einen stark eingeschränkten Flugbetrieb. Kuba ist daher derzeit kein empfohlenes oder verlässlich buchbares Reiseziel; sicherere Alternativen sind etwa die Dominikanische Republik, Mexiko oder Jamaika.",
+  "llmo_quick_answer": "Kuba ist eine kulturell faszinierende Karibikinsel mit Havanna und Oldtimern, derzeit aber wegen einer schweren Versorgungskrise und Reisewarnung des Auswärtigen Amts kein empfohlenes Reiseziel."
+}

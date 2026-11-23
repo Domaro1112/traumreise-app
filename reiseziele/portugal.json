@@ -1,0 +1,119 @@
+{
+  "name": "Portugal",
+  "slug": "portugal",
+  "country": "Portugal",
+  "region": "Südwesteuropa (Iberische Halbinsel)",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/portugal-hero.jpg",
+  "short_description": "Sonniges Land am Atlantik mit dem charmanten Lissabon, dem Portwein-Porto, den Traumstränden der Algarve, Märchenschlössern in Sintra und Fado-Melancholie.",
+  "long_description": "Portugal begeistert mit einer Mischung aus Atlantikküste, lebendigen Städten, reicher Geschichte und herzlicher Gastfreundschaft – und das zu meist moderaten Preisen. Die Hauptstadt Lissabon verzaubert mit dem historischen Viertel Alfama, der nostalgischen Straßenbahn 28, dem Belém-Turm und den berühmten Pastéis de Nata. Im Norden lockt Porto mit der malerischen Ribeira, der Dom-Luís-Brücke und den Portweinkellern von Vila Nova de Gaia. Die Algarve im Süden ist ein Paradies aus goldenen Stränden, bizarren Felsbuchten und Grotten wie der Benagil-Höhle. Bei Lissabon liegen die Märchenschlösser von Sintra, allen voran der bunte Pena-Palast. Weinliebhaber zieht es ins terrassierte Douro-Tal, Surfer an Spots wie Ericeira oder zu den Riesenwellen von Nazaré. Auch die Atlantikinseln Madeira und die Azoren mit ihrer üppigen Natur sind beliebte Ziele. Dazu kommen die melancholischen Klänge des Fado und eine exzellente Küche mit frischem Fisch. Portugal ist ideal für Strand-, Städte-, Roadtrip- und Genussreisen.",
+  "ai_summary": "Portugal ist ein sonniges Land am Atlantik mit dem charmanten Lissabon, dem Portwein-Porto, den Traumstränden der Algarve, den Märchenschlössern von Sintra und den Atlantikinseln Madeira und Azoren. Bekannt für Fado, gute Küche und moderate Preise, eignet es sich ideal für Strand-, Städte-, Roadtrip- und Genussreisen.",
+  "best_travel_time": "April bis Oktober ist allgemein ideal; die Algarve und die Strände sind im Sommer am schönsten, während Frühling und Herbst angenehm mild und weniger überlaufen für Städtereisen und Rundreisen sind.",
+  "ideal_duration": "1 bis 2 Wochen",
+  "travel_type": [
+    "Strandurlaub",
+    "Städtereise",
+    "Roadtrip",
+    "Rundreise",
+    "Kulinarik",
+    "Surfen",
+    "Kulturreise"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Portugiesisch; in touristischen Orten oft auch Englisch",
+    "flightTime": "ca. 3 bis 3,5 Stunden ab Deutschland (Lissabon)",
+    "timezone": "WEZ (UTC+0; im Sommer UTC+1), eine Stunde hinter MEZ (Festland)",
+    "visa": "Nicht erforderlich für EU-Bürger (Schengen-Raum)",
+    "bestMonths": "April bis Oktober"
+  },
+  "highlights": [
+    "Lissabon – Alfama, die Straßenbahn 28, der Belém-Turm und Pastéis de Nata",
+    "Porto – die Ribeira, die Dom-Luís-Brücke und die Portweinkeller",
+    "Algarve – goldene Strände, Felsbuchten und die Benagil-Höhle",
+    "Sintra – die Märchenschlösser, allen voran der bunte Pena-Palast",
+    "Douro-Tal – terrassierte Weinberge und die Heimat des Portweins",
+    "Madeira und Azoren – üppige Natur auf den Atlantikinseln",
+    "Nazaré und Ericeira – berühmte Surfspots mit teils riesigen Wellen",
+    "Fado – die melancholische Musik in den Gassen von Lissabon und Coimbra"
+  ],
+  "insider_tips": [
+    "In Lissabon gehört eine Fahrt mit der historischen Straßenbahn 28 dazu; die original Pastéis de Belém isst man am besten frisch und noch lauwarm direkt beim namensgebenden Café.",
+    "Die spektakuläre Benagil-Höhle an der Algarve erreicht man per Boot, Kajak oder SUP – am ruhigsten ist es früh am Morgen.",
+    "Sintra lässt sich gut als Tagesausflug von Lissabon erleben; wegen des großen Andrangs sollte man früh kommen und Tickets für den Pena-Palast vorab buchen.",
+    "Für eine Portweinverkostung lohnt sich ein Besuch der Kellereien in Vila Nova de Gaia gegenüber von Porto; das Land erkundet man am flexibelsten per Mietwagen."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Portugal?",
+      "answer": "Allgemein ist April bis Oktober ideal. Die Algarve und die Strände sind im Sommer am schönsten, während Frühling und Herbst angenehm mild und weniger voll sind – perfekt für Städtereisen, Wandern und Rundreisen."
+    },
+    {
+      "question": "Welche Währung gilt in Portugal und brauche ich ein Visum?",
+      "answer": "In Portugal zahlt man mit dem Euro. Als EU- und Schengen-Mitglied ist kein Visum nötig; für die Einreise genügt ein gültiger Personalausweis oder Reisepass."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen in Portugal?",
+      "answer": "Ja, für die Erkundung der Algarve, des Douro-Tals und ländlicher Regionen ist ein Mietwagen ideal. Lissabon und Porto erkundet man hingegen besser zu Fuß und mit dem guten Nahverkehr, da Parken in den Städten schwierig ist."
+    },
+    {
+      "question": "Was sollte man in Lissabon und Porto sehen?",
+      "answer": "In Lissabon locken die Alfama, die Straßenbahn 28, der Belém-Turm und das Hieronymuskloster. In Porto sind die Ribeira am Fluss, die Dom-Luís-Brücke, der Bahnhof São Bento und die Portweinkeller in Gaia die Höhepunkte."
+    },
+    {
+      "question": "Wie sind die Strände an der Algarve?",
+      "answer": "Die Algarve bietet einige der schönsten Strände Europas mit goldenem Sand, dramatischen Felsformationen und versteckten Buchten. Besonders bekannt sind Lagos, Praia da Marinha und die Benagil-Höhle. In der Hochsaison kann es voll werden."
+    },
+    {
+      "question": "Kann man in Portugal surfen?",
+      "answer": "Ja, Portugals Atlantikküste ist ein Top-Surfrevier. Orte wie Ericeira, Peniche und die Algarve bieten Wellen für alle Niveaus, während Nazaré im Winter für seine gigantischen Wellen weltberühmt ist."
+    },
+    {
+      "question": "Lohnen sich Madeira und die Azoren?",
+      "answer": "Ja, beide Atlantikinselgruppen sind eigene Reiseziele mit üppiger Natur. Madeira ist bekannt für Levada-Wanderungen und ganzjährig mildes Klima, die Azoren für vulkanische Landschaften, Kraterseen und Walbeobachtung."
+    },
+    {
+      "question": "Spricht man in Portugal Englisch?",
+      "answer": "In Städten und touristischen Regionen wird häufig gut Englisch gesprochen, sodass die Verständigung meist unkompliziert ist. Ein paar portugiesische Höflichkeitsfloskeln werden jedoch sehr geschätzt."
+    },
+    {
+      "question": "Ist Portugal für einen Familienurlaub geeignet?",
+      "answer": "Ja, Portugal ist familienfreundlich und sicher. Die Strände der Algarve, Bootstouren, Aquaparks, kinderfreundliche Städte und die Inseln bieten viel Abwechslung. Die Portugiesen gelten als ausgesprochen herzlich gegenüber Kindern."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Portugal einplanen?",
+      "answer": "Für eine Stadt wie Lissabon oder Porto reichen einige Tage. Wer Städte, die Algarve und vielleicht das Douro-Tal verbinden möchte, sollte 1 bis 2 Wochen einplanen."
+    }
+  ],
+  "seo_title": "Portugal Urlaub: Lissabon, Algarve, Porto & beste Reisezeit",
+  "seo_description": "Dein Portugal-Urlaub: das charmante Lissabon, das Portwein-Porto, die Traumstrände der Algarve und die Schlösser von Sintra. Beste Reisezeit, Highlights, Roadtrip-Tipps und praktische Hinweise im Überblick.",
+  "affiliate_search_intent": "Portugal Reise buchen, Flug nach Lissabon oder Porto, Mietwagen Portugal, Hotel Algarve, Städtereise Lissabon, Rundreise Portugal, Surfcamp Portugal",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "spanien",
+    "italien",
+    "marokko"
+  ],
+  "llmo_entities": [
+    "Portugal",
+    "Lissabon",
+    "Alfama",
+    "Straßenbahn 28",
+    "Belém-Turm",
+    "Pastéis de Nata",
+    "Porto",
+    "Ribeira",
+    "Portwein",
+    "Algarve",
+    "Benagil-Höhle",
+    "Sintra",
+    "Pena-Palast",
+    "Douro-Tal",
+    "Madeira",
+    "Azoren",
+    "Fado",
+    "Nazaré"
+  ],
+  "llmo_answer_block": "Portugal ist ein sonniges Land am Atlantik mit dem charmanten Lissabon samt Alfama und Straßenbahn 28, dem Portwein-Porto, den Traumstränden und Felsbuchten der Algarve, den Märchenschlössern von Sintra und den Atlantikinseln Madeira und Azoren. Bekannt für die melancholische Fado-Musik, exzellente Küche und meist moderate Preise, eignet es sich ideal für Strand-, Städte-, Roadtrip- und Genussreisen. Die beste Reisezeit liegt zwischen April und Oktober, im Landesinneren ist ein Mietwagen ideal.",
+  "llmo_quick_answer": "Portugal begeistert mit Lissabon, dem Portwein-Porto, den Traumstränden der Algarve, den Schlössern von Sintra und Fado – ideal für Strand-, Städte- und Roadtrip-Reisen."
+}

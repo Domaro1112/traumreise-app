@@ -1,0 +1,116 @@
+{
+  "name": "München",
+  "slug": "muenchen",
+  "country": "Deutschland",
+  "region": "Bayern",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/muenchen-hero.jpg",
+  "short_description": "Bayerns charmante Hauptstadt mit Marienplatz, Biergärten, dem Englischen Garten, dem Oktoberfest, royaler Pracht und den Alpen direkt vor der Haustür.",
+  "long_description": "München ist die Hauptstadt Bayerns und verbindet weltstädtisches Flair mit bayerischer Gemütlichkeit wie keine andere deutsche Stadt. Im Herzen liegt der Marienplatz mit dem prächtigen Neuen Rathaus, dessen Glockenspiel täglich die Besucher verzaubert, überragt von den markanten Zwiebeltürmen der Frauenkirche. Royale Pracht erlebt man in der Residenz und im weitläufigen Schloss Nymphenburg. Der riesige Englische Garten lädt zum Flanieren ein – hier surfen mutige Wellenreiter auf der stehenden Welle des Eisbachs, und in den Biergärten am Chinesischen Turm genießt man Brotzeit und frisch Gezapftes. Das traditionsreiche Hofbräuhaus und der Viktualienmarkt verkörpern die Münchner Lebensart, während das Deutsche Museum, die Pinakotheken und die BMW Welt für Abwechslung sorgen. Weltberühmt ist das Oktoberfest, das größte Volksfest der Welt. Und wer Natur sucht, erreicht die Alpen und Seen wie den Tegernsee oder Schlösser wie Neuschwanstein bei einem Tagesausflug. München ist ein ideales Ziel für einen Städtetrip mit bayerischem Charme.",
+  "ai_summary": "München ist Bayerns charmante Hauptstadt mit dem Marienplatz, der Frauenkirche, dem Englischen Garten mit Eisbach-Surfern, traditionsreichen Biergärten, royaler Pracht und dem weltberühmten Oktoberfest. Mit den Alpen vor der Haustür eignet sie sich ideal für einen Städtetrip mit bayerischem Flair und ist innerdeutsch sehr gut erreichbar.",
+  "best_travel_time": "Mai bis September mit mildem Wetter ist ideal für Biergärten und Sightseeing; das Oktoberfest findet von Mitte September bis Anfang Oktober statt, und im Advent locken stimmungsvolle Christkindlmärkte.",
+  "ideal_duration": "2 bis 3 Tage",
+  "travel_type": [
+    "Städtereise",
+    "Kulturreise",
+    "Wochenendtrip",
+    "Kulinarik",
+    "Familien",
+    "Shopping"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Deutsch (bairischer Dialekt)",
+    "flightTime": "Innerdeutsches Ziel; bequem per ICE oder Auto erreichbar, der Flughafen München (MUC) ist gut angebunden",
+    "timezone": "MEZ (UTC+1)",
+    "visa": "Nicht erforderlich (innerdeutsch bzw. für EU-Bürger im Schengen-Raum)",
+    "bestMonths": "Mai bis September"
+  },
+  "highlights": [
+    "Marienplatz mit Neuem Rathaus und dem berühmten Glockenspiel",
+    "Frauenkirche – Wahrzeichen Münchens mit den markanten Zwiebeltürmen",
+    "Englischer Garten – Biergärten, Chinesischer Turm und die Eisbach-Surfer",
+    "Schloss Nymphenburg und die Residenz – royale Pracht",
+    "Oktoberfest – das größte Volksfest der Welt auf der Theresienwiese",
+    "Hofbräuhaus und Viktualienmarkt – bayerische Lebensart und Genuss",
+    "Deutsches Museum, Pinakotheken und BMW Welt – Wissenschaft, Kunst und Technik",
+    "Alpen und Schlösser – Tagesausflüge nach Neuschwanstein oder zu den Seen"
+  ],
+  "insider_tips": [
+    "Im Englischen Garten lohnt sich der Blick auf die Eisbachwelle, wo Surfer das ganze Jahr über auf einer stehenden Flusswelle reiten.",
+    "In vielen Biergärten darf man an Tischen ohne Bedienung eine eigene Brotzeit mitbringen – ein günstiges und typisch bayerisches Erlebnis.",
+    "Das Glockenspiel am Neuen Rathaus spielt täglich, meist um 11 und 12 Uhr; ein guter Blick gelingt vom Marienplatz oder vom Café gegenüber.",
+    "München ist ein idealer Ausgangspunkt für Tagesausflüge zum Schloss Neuschwanstein, an die Seen und in die Alpen; für den Nahverkehr lohnt sich ein MVV-Tagesticket."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für München?",
+      "answer": "Am angenehmsten ist es von Mai bis September für Biergärten und Sightseeing. Das Oktoberfest findet von Mitte September bis Anfang Oktober statt, und im Advent sorgen Christkindlmärkte für festliche Stimmung. Im Winter sind die nahen Alpen ein Plus."
+    },
+    {
+      "question": "Wann ist das Oktoberfest in München?",
+      "answer": "Das Oktoberfest findet traditionell von Mitte September bis zum ersten Sonntag im Oktober auf der Theresienwiese statt und dauert rund 16 bis 18 Tage. Wer in dieser Zeit anreist, sollte Unterkünfte sehr früh buchen und für die Festzelte möglichst reservieren."
+    },
+    {
+      "question": "Wie reist man am besten nach München an?",
+      "answer": "München ist per ICE aus ganz Deutschland sehr gut erreichbar, und der Hauptbahnhof liegt zentral. Auch die Anreise mit dem Auto ist möglich, und der Flughafen München ist über S-Bahn gut mit der Innenstadt verbunden."
+    },
+    {
+      "question": "Braucht man in München ein Auto?",
+      "answer": "Nein, München hat einen hervorragenden Nahverkehr mit U-Bahn, S-Bahn, Tram und Bus (MVV), und die Innenstadt ist gut zu Fuß zu erkunden. Ein Auto ist eher hinderlich, lohnt sich aber für Ausflüge in die Alpen."
+    },
+    {
+      "question": "Was sollte man am Marienplatz sehen?",
+      "answer": "Der Marienplatz ist das Herz Münchens mit dem prächtigen Neuen Rathaus und seinem Glockenspiel, der Mariensäule und dem Blick auf die Frauenkirche. Von der Aussichtsplattform des Alten Peter (St. Peter) hat man einen tollen Rundblick."
+    },
+    {
+      "question": "Was macht die Münchner Biergartenkultur aus?",
+      "answer": "Biergärten gehören zur Münchner Lebensart. Unter Kastanien genießt man Maß, Brezn und bayerische Spezialitäten; an unbedienten Tischen darf oft eigenes Essen mitgebracht werden. Besonders bekannt sind die Gärten im Englischen Garten und am Viktualienmarkt."
+    },
+    {
+      "question": "Welche Museen lohnen sich in München?",
+      "answer": "Sehenswert sind das Deutsche Museum als eines der größten Technikmuseen der Welt, die Pinakotheken mit bedeutender Kunst, das NS-Dokumentationszentrum sowie die BMW Welt und das BMW Museum für Autofans."
+    },
+    {
+      "question": "Ist München für Familien geeignet?",
+      "answer": "Ja, sehr. Das Deutsche Museum, der Tierpark Hellabrunn, der Englische Garten, das Sea Life und Ausflüge an die Seen oder in die Alpen bieten viel Abwechslung für Kinder."
+    },
+    {
+      "question": "Welche Tagesausflüge bieten sich von München an?",
+      "answer": "Beliebt sind das Schloss Neuschwanstein, die Zugspitze und Garmisch-Partenkirchen, die Seen wie Tegernsee und Starnberger See sowie ein Abstecher ins österreichische Salzburg. Vieles ist auch mit dem Bayern-Ticket per Bahn erreichbar."
+    },
+    {
+      "question": "Wie viele Tage sollte man für München einplanen?",
+      "answer": "Für die wichtigsten Highlights der Stadt reichen 2 bis 3 Tage. Wer zusätzlich Museen vertiefen oder Tagesausflüge in die Alpen und zu den Schlössern unternehmen möchte, sollte mehr Zeit einplanen."
+    }
+  ],
+  "seo_title": "München Städtereise: Marienplatz, Oktoberfest & beste Reisezeit",
+  "seo_description": "Dein München-Trip: der Marienplatz mit Glockenspiel, der Englische Garten, Biergärten, das Oktoberfest und royale Schlösser. Beste Reisezeit, Anreise, Highlights und Tipps im Überblick.",
+  "affiliate_search_intent": "München Städtereise buchen, Hotel München, München Wochenende, Oktoberfest Reise, Neuschwanstein Tour ab München, Städtetrip Bayern",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "nuernberg",
+    "salzburg",
+    "wien"
+  ],
+  "llmo_entities": [
+    "München",
+    "Bayern",
+    "Marienplatz",
+    "Neues Rathaus",
+    "Glockenspiel",
+    "Frauenkirche",
+    "Englischer Garten",
+    "Eisbach",
+    "Schloss Nymphenburg",
+    "Residenz München",
+    "Oktoberfest",
+    "Theresienwiese",
+    "Hofbräuhaus",
+    "Viktualienmarkt",
+    "Deutsches Museum",
+    "Neuschwanstein"
+  ],
+  "llmo_answer_block": "München ist die Hauptstadt Bayerns und verbindet weltstädtisches Flair mit bayerischer Gemütlichkeit – mit dem Marienplatz und seinem Glockenspiel, der Frauenkirche, dem Englischen Garten samt Eisbach-Surfern, traditionsreichen Biergärten, royaler Pracht und dem weltberühmten Oktoberfest. Mit den Alpen und Schlössern wie Neuschwanstein vor der Haustür eignet sie sich ideal für einen Städtetrip und ist innerdeutsch sehr gut per ICE erreichbar. Die beste Reisezeit liegt zwischen Mai und September, das Oktoberfest findet von Mitte September bis Anfang Oktober statt.",
+  "llmo_quick_answer": "München ist Bayerns charmante Hauptstadt mit Marienplatz, Biergärten, dem Englischen Garten, dem Oktoberfest und den Alpen vor der Haustür."
+}

@@ -90,7 +90,7 @@ export default function AdminLoginPage() {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '6px' }}>
             <Image
               src="/images/logo/reisemonkey-logo.png"
-              alt="Reisemonkey"
+              alt="ApeAround"
               width={1536}
               height={1024}
               style={{ height: '72px', width: 'auto', objectFit: 'contain' }}

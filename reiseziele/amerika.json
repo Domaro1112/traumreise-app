@@ -1,0 +1,125 @@
+{
+  "name": "Amerika",
+  "slug": "amerika",
+  "country": "Vereinigte Staaten (USA)",
+  "region": "Nordamerika",
+  "continent": "Nordamerika",
+  "hero_image": "/images/destinations/amerika-hero.jpg",
+  "short_description": "Das Land der unbegrenzten Möglichkeiten mit Metropolen wie New York, spektakulären Nationalparks, dem Grand Canyon, Las Vegas und endlosen Roadtrips.",
+  "long_description": "„Amerika“ steht umgangssprachlich für die USA – ein riesiges, unglaublich vielfältiges Land, das von pulsierenden Metropolen bis zu gewaltigen Naturwundern reicht. New York City begeistert mit der Freiheitsstatue, dem Times Square, dem Central Park und ikonischen Wolkenkratzern. An der Westküste locken das glamouröse Los Angeles mit Hollywood, das kreative San Francisco mit der Golden Gate Bridge und die Glitzerwelt von Las Vegas. Der Südwesten ist ein Paradies für Roadtrips: Der Grand Canyon, das Monument Valley und Nationalparks wie Yosemite, Yellowstone und Zion zählen zu den spektakulärsten Landschaften der Erde. Florida verbindet die Strände von Miami mit den Freizeitparks Orlandos, während Washington D.C. das politische Herz des Landes bildet. Dazu kommen Hawaii, die Rocky Mountains und die legendäre Route 66. Wegen der enormen Distanzen ist ein Roadtrip oder eine Kombination aus Inlandsflügen und Mietwagen ideal. Die USA sind perfekt für Rundreisen, Städtetrips, Nationalpark-Abenteuer und Familienurlaube – erfordern aber eine gute Vorbereitung bei Einreise und Versicherung.",
+  "ai_summary": "Amerika steht umgangssprachlich für die USA, ein riesiges, vielfältiges Land mit Metropolen wie New York, Los Angeles und Las Vegas, spektakulären Nationalparks, dem Grand Canyon und endlosen Roadtrip-Routen. Es eignet sich ideal für Rundreisen, Städtetrips und Naturabenteuer; für die Einreise sind ein elektronischer Reisepass und eine kostenpflichtige ESTA-Genehmigung nötig.",
+  "best_travel_time": "Stark regionabhängig; allgemein sind Mai bis Oktober günstig. Der Südwesten und die Nationalparks sind im Frühjahr und Herbst am angenehmsten, Florida im Winter, der Norden im Sommer.",
+  "ideal_duration": "2 bis 3 Wochen",
+  "travel_type": [
+    "Rundreise",
+    "Roadtrip",
+    "Städtereise",
+    "Naturreise",
+    "Nationalparks",
+    "Familien",
+    "Abenteuer"
+  ],
+  "quick_facts": {
+    "currency": "US-Dollar (USD)",
+    "language": "Englisch (überwiegend); Spanisch ist weit verbreitet",
+    "flightTime": "ca. 8 bis 9 Stunden zur Ostküste, 11 bis 12 Stunden zur Westküste ab Deutschland",
+    "timezone": "Mehrere Zeitzonen (Ostküste UTC−5 bis Westküste UTC−8, Hawaii UTC−10)",
+    "visa": "Kein Visum für Touristen (bis 90 Tage) über das Visa Waiver Program; erforderlich sind ein elektronischer Reisepass und eine kostenpflichtige ESTA-Genehmigung (rund 40 US-Dollar, 2 Jahre gültig)",
+    "bestMonths": "Mai bis Oktober (regional unterschiedlich)"
+  },
+  "highlights": [
+    "New York City – Freiheitsstatue, Times Square, Central Park und Skyline",
+    "Grand Canyon – eine der spektakulärsten Schluchten der Welt",
+    "Las Vegas – Glitzermetropole und Tor zu den Nationalparks des Südwestens",
+    "Kalifornien – Los Angeles, Hollywood, San Francisco und die Golden Gate Bridge",
+    "Nationalparks – Yellowstone, Yosemite, Zion und das Monument Valley",
+    "Florida – Strände von Miami und die Freizeitparks Orlandos",
+    "Route 66 – legendäre Straße quer durch den Westen",
+    "Washington D.C. – Hauptstadt mit Weißem Haus, Kapitol und Museen"
+  ],
+  "insider_tips": [
+    "Ein klassischer Südwest-Roadtrip verbindet Las Vegas, den Grand Canyon und mehrere Nationalparks – die Distanzen sind groß, planen Sie genügend Fahrzeit ein.",
+    "Für mehrere Nationalparks lohnt sich der „America the Beautiful“-Jahrespass, der den Eintritt deutlich günstiger macht.",
+    "Trinkgeld (Tip) gehört in den USA fest dazu – in Restaurants sind etwa 15 bis 20 Prozent üblich; Preise werden zudem oft ohne Steuer ausgezeichnet, die erst an der Kasse hinzukommt.",
+    "Eine gute Auslandskrankenversicherung ist unverzichtbar, da die medizinische Versorgung in den USA extrem teuer ist."
+  ],
+  "faq": [
+    {
+      "question": "Ist „Amerika“ dasselbe wie die USA?",
+      "answer": "Umgangssprachlich wird „Amerika“ meist für die Vereinigten Staaten (USA) verwendet, obwohl der Begriff streng genommen den gesamten Doppelkontinent Nord- und Südamerika bezeichnet. Auf dieser Seite geht es um die USA."
+    },
+    {
+      "question": "Brauche ich ein Visum für die USA?",
+      "answer": "Für touristische Aufenthalte bis zu 90 Tagen benötigen deutsche Staatsbürger kein Visum, sondern reisen über das Visa Waiver Program ein. Dafür sind eine genehmigte ESTA-Reisegenehmigung und ein elektronischer (biometrischer) Reisepass zwingend erforderlich."
+    },
+    {
+      "question": "Was kostet ein ESTA und wie lange gilt es?",
+      "answer": "Die ESTA-Genehmigung kostet aktuell rund 40 US-Dollar pro Person und ist nach Genehmigung zwei Jahre gültig (oder bis der Reisepass abläuft). In diesem Zeitraum sind mehrere Einreisen für jeweils bis zu 90 Tage möglich. Sie sollte rechtzeitig vor Abflug beantragt werden."
+    },
+    {
+      "question": "Welche Währung gilt in den USA?",
+      "answer": "Gezahlt wird mit dem US-Dollar (USD). Kartenzahlung ist nahezu überall üblich und oft Standard. Beachten sollte man, dass Preise meist ohne die jeweilige Verkaufssteuer ausgezeichnet sind, die erst an der Kasse hinzukommt."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für die USA?",
+      "answer": "Das hängt stark von der Region ab. Allgemein sind Mai bis Oktober günstig. Der Südwesten und die Nationalparks sind im Frühjahr und Herbst am angenehmsten, Florida im Winter, der Norden und die Bergregionen im Sommer."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen in den USA?",
+      "answer": "Ja, wegen der enormen Distanzen ist ein Mietwagen für die meisten Reisen sehr empfehlenswert, vor allem für Roadtrips und Nationalparks. Nur in Großstädten wie New York ist ein Auto eher hinderlich; dort sind öffentliche Verkehrsmittel besser."
+    },
+    {
+      "question": "Wie überbrückt man die großen Entfernungen?",
+      "answer": "Für lange Strecken sind Inlandsflüge das schnellste Mittel, ergänzt durch Mietwagen für regionale Erkundungen. Eine Kombination aus beidem ist bei Rundreisen üblich, da die Distanzen zwischen den Regionen sehr groß sind."
+    },
+    {
+      "question": "Brauche ich eine Reiseversicherung für die USA?",
+      "answer": "Unbedingt. Das US-Gesundheitssystem ist extrem teuer, und schon ein Notfall kann sehr hohe Kosten verursachen. Eine gute Auslandskrankenversicherung mit ausreichender Deckung ist daher für USA-Reisen essenziell."
+    },
+    {
+      "question": "Sind die USA für einen Familienurlaub geeignet?",
+      "answer": "Ja, die USA sind ein klassisches Familienziel. Die Freizeitparks in Orlando und Kalifornien, Nationalparks, Strände und kinderfreundliche Städte bieten viel Abwechslung. Für Roadtrips sollte man die Etappen kindgerecht planen."
+    },
+    {
+      "question": "Gibt es bei der Einreise Besonderheiten zu beachten?",
+      "answer": "Ja. Vorläufige Pässe und Kinderreisepässe werden nicht akzeptiert. Wer sich seit Januar 2021 in Kuba aufgehalten hat, kann kein ESTA nutzen und braucht ein Visum. Die Einreisebestimmungen können sich kurzfristig ändern, daher sollte man vorab die aktuellen Hinweise des Auswärtigen Amts prüfen."
+    },
+    {
+      "question": "Welche Nationalparks sollte man besuchen?",
+      "answer": "Zu den beeindruckendsten zählen der Grand Canyon, Yellowstone, Yosemite, Zion, Bryce Canyon und das Monument Valley. Sie lassen sich gut zu Roadtrip-Routen verbinden, besonders im Südwesten."
+    },
+    {
+      "question": "Wie viele Tage sollte man für die USA einplanen?",
+      "answer": "Für eine Stadt wie New York reichen einige Tage. Für eine Rundreise oder einen Roadtrip durch eine Region wie den Südwesten oder die Westküste sollte man wegen der Distanzen 2 bis 3 Wochen einplanen."
+    }
+  ],
+  "seo_title": "USA Urlaub: New York, Nationalparks, Roadtrip & beste Reisezeit",
+  "seo_description": "Dein USA-Urlaub: New York, der Grand Canyon, Las Vegas, Kalifornien und die Nationalparks. Beste Reisezeit, Einreise mit ESTA, Roadtrip-Tipps und Highlights im Überblick.",
+  "affiliate_search_intent": "USA Reise buchen, Flug nach New York oder Los Angeles, Mietwagen USA vergleichen, Roadtrip Westküste, Rundreise USA, Hotel New York, ESTA Einreise USA",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "kanada",
+    "mexiko",
+    "dominikanische-republik"
+  ],
+  "llmo_entities": [
+    "USA",
+    "Amerika",
+    "Vereinigte Staaten",
+    "New York City",
+    "Freiheitsstatue",
+    "Grand Canyon",
+    "Las Vegas",
+    "Los Angeles",
+    "San Francisco",
+    "Golden Gate Bridge",
+    "Yellowstone",
+    "Yosemite",
+    "Monument Valley",
+    "Florida",
+    "Route 66",
+    "ESTA"
+  ],
+  "llmo_answer_block": "„Amerika“ steht umgangssprachlich für die USA, ein riesiges und vielfältiges Land mit Metropolen wie New York, Los Angeles und Las Vegas, spektakulären Nationalparks wie Yellowstone und Yosemite, dem Grand Canyon und legendären Roadtrip-Routen. Wegen der enormen Distanzen ist eine Kombination aus Mietwagen und Inlandsflügen ideal, und das Land eignet sich für Rundreisen, Städtetrips, Naturabenteuer und Familienurlaube. Für die Einreise benötigen deutsche Reisende einen elektronischen Reisepass und eine kostenpflichtige ESTA-Genehmigung.",
+  "llmo_quick_answer": "Amerika steht umgangssprachlich für die USA – ein riesiges Reiseland mit New York, dem Grand Canyon, Las Vegas und Nationalparks; zur Einreise braucht man ePass und ESTA."
+}

@@ -514,7 +514,7 @@ export default function AlleinerziehendePage() {
                 Was für eine Familie mit zwei Erwachsenen entspannend ist, kann für eine alleinerziehende Person mit Kleinkind anstrengend sein – und umgekehrt. Alter des Kindes, eigenes Budget, verfügbare Urlaubszeit, Anreiseweg und gewünschter Komfortgrad spielen alle eine entscheidende Rolle.
               </p>
               <p style={{ fontSize: '15px', color: '#475569', lineHeight: 1.75, margin: 0 }}>
-                Genau deshalb macht eine KI-gestützte Reiseplanung hier Sinn: Statt allgemeiner Listen bekommst du Vorschläge, die zu deiner konkreten Situation passen – nicht zu einer Durchschnittsfamilie.
+                Genau deshalb fragt unser Reiseplaner gezielt nach eurer Situation: Statt allgemeiner Listen bekommst du Vorschläge, die zu deiner konkreten Situation passen – nicht zu einer Durchschnittsfamilie.
               </p>
             </div>
           </Container>
@@ -688,7 +688,7 @@ export default function AlleinerziehendePage() {
                   </div>
                 </article>
 
-                {/* ── Karte 3: KI-Reiseplanung ── */}
+                {/* ── Karte 3: Reiseplaner ── */}
                 <article style={{
                   background: '#FFFFFF', border: '1px solid #E2E8F0',
                   borderRadius: '20px', overflow: 'hidden',
@@ -707,7 +707,7 @@ export default function AlleinerziehendePage() {
                       textTransform: 'uppercase',
                       fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
                     }}>
-                      KI-Reiseplanung
+                      Reiseplaner
                     </span>
                   </div>
                   <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
@@ -716,13 +716,13 @@ export default function AlleinerziehendePage() {
                       fontSize: '16px', fontWeight: 700, color: '#0F172A',
                       margin: '0 0 10px', lineHeight: 1.35,
                     }}>
-                      KI-Reiseplanung: Wie du in 5 Minuten deinen perfekten Urlaub findest
+                      In wenigen Minuten zu passenden Reiseideen für euch
                     </h3>
                     <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.7, margin: '0 0 20px', flex: 1 }}>
-                      Wie ApeAround mit künstlicher Intelligenz passende Reiseziele findet – und warum das besonders für Alleinerziehende mit wenig Planungszeit sinnvoll ist.
+                      Ein paar Fragen zu Alter, Anreise und Urlaubsart – und du bekommst familienfreundliche Reiseziele, die zu euch passen. Ideal, wenn wenig Zeit zum Planen bleibt.
                     </p>
                     <Link
-                      href="/reiseblog/kann-ki-deinen-urlaub-planen"
+                      href="/urlaub-fuer-alleinerziehende/planen"
                       style={{
                         display: 'inline-flex', alignItems: 'center', gap: '6px',
                         fontSize: '13px', fontWeight: 700, color: '#0EA5E9',

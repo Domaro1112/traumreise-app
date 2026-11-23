@@ -165,7 +165,7 @@ function computePreview(a) {
   };
 }
 
-// ── AI integration helpers ──────────────────────────────────────────────────
+// ── Matching helpers ──────────────────────────────────────────────────
 
 function mapBudget(b) {
   if (b === 'low')  return 'low';
@@ -199,7 +199,6 @@ function buildFreeText(a) {
     `${CHILDCARE_LABELS[a.childcareNeed] || a.childcareNeed}.`,
     `Reisestil: ${STRESS_LABELS[a.stressLevel] || a.stressLevel}.`,
     `Besonders wichtig für uns: ${prios}.`,
-    'Bitte familienfreundliche Reiseideen für Alleinerziehende vorschlagen, mit Fokus auf einfache Anreise, sichere Umgebung und kindgerechte Ziele.',
   ].join(' ');
 }
 
@@ -405,8 +404,8 @@ export default function PlanenFunnel() {
     setPhase('loading');
     setErrorMsg('');
     try {
-      // Step 1: Run AI analysis and create session
-      const res = await fetch('/api/ai/travel-save', {
+      // Step 1: Find matching destinations (rule-based) and create session
+      const res = await fetch('/api/traumreise', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -415,9 +414,8 @@ export default function PlanenFunnel() {
           budget:       mapBudget(answers.budgetLevel),
           duration:     'week',
           season:       'summer',
-          adults:       1,
-          children:     1,
           moodIds:      [],
+          singleParent: answers,
           funnel_type:  'single_parent',
           source:       'urlaub-fuer-alleinerziehende',
         }),
@@ -775,7 +773,7 @@ function PreviewCard({ icon, title, items, color }) {
   );
 }
 
-// ── Email gate view (shown before AI call) ──────────────────────────────────
+// ── Email gate view (shown before matching) ──────────────────────────────────
 
 function EmailGateView({ defaultEmail, defaultConsent, onSubmit, onBack }) {
   const [email,   setEmail]   = useState(defaultEmail || '');

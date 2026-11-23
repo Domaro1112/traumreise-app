@@ -1,0 +1,120 @@
+{
+  "name": "Kambodscha",
+  "slug": "kambodscha",
+  "country": "Kambodscha",
+  "region": "Südostasien",
+  "continent": "Asien",
+  "hero_image": "/images/destinations/kambodscha-hero.jpg",
+  "short_description": "Faszinierendes Südostasien-Ziel mit den weltberühmten Angkor-Tempeln, bewegender Geschichte, dem Tonle-Sap-See und einsamen Inselstränden.",
+  "long_description": "Kambodscha vereint eine der großartigsten Tempelanlagen der Welt mit bewegender Geschichte, herzlichen Menschen und ursprünglicher Natur. Das unangefochtene Highlight ist die gewaltige Tempelstadt Angkor bei Siem Reap mit dem ikonischen Angkor Wat, den geheimnisvollen Gesichtertürmen des Bayon und dem von Wurzeln überwucherten Ta Prohm. In der Hauptstadt Phnom Penh treffen der prächtige Königspalast und lebendige Märkte auf die erschütternden Erinnerungsorte der Roten Khmer, etwa die Killing Fields und das Gefängnis Tuol Sleng. Am riesigen Tonle-Sap-See lässt sich das Leben in schwimmenden Dörfern erleben, während der ländliche Charme rund um Battambang und das gemächliche Kampot mit seinen Pfefferplantagen zum Verweilen einladen. Im Süden warten Strände und einsame Inseln wie Koh Rong. Kambodscha ist günstig, weniger überlaufen als seine Nachbarn und ideal für Reisende, die Kultur, Geschichte und Natur verbinden möchten.",
+  "ai_summary": "Kambodscha ist ein faszinierendes Reiseland in Südostasien mit der weltberühmten Tempelstadt Angkor bei Siem Reap, der geschichtsträchtigen Hauptstadt Phnom Penh, dem Tonle-Sap-See und einsamen Inselstränden im Süden. Es ist günstig, gastfreundlich und eignet sich ideal für Kultur-, Geschichts- und Rundreisen.",
+  "best_travel_time": "Die beste Reisezeit ist die kühle Trockenzeit von November bis Februar; insgesamt sind November bis März günstig, während von Mai bis Oktober Regenzeit herrscht.",
+  "ideal_duration": "1 bis 2 Wochen",
+  "travel_type": [
+    "Rundreise",
+    "Kulturreise",
+    "Geschichtsreise",
+    "Strandurlaub",
+    "Backpacking",
+    "Abenteuer"
+  ],
+  "quick_facts": {
+    "currency": "Kambodschanischer Riel (KHR); der US-Dollar ist als Zweitwährung weit verbreitet",
+    "language": "Khmer",
+    "flightTime": "Keine Direktflüge; ca. 14 bis 15 Stunden mit Zwischenstopp (Phnom Penh, Siem Reap)",
+    "timezone": "ICT (UTC+7), sechs Stunden vor MEZ",
+    "visa": "Visum erforderlich; als E-Visum vorab oder als Visa on Arrival (in der Regel 30 Tage) erhältlich",
+    "bestMonths": "November bis Februar"
+  },
+  "highlights": [
+    "Angkor Wat – größtes religiöses Bauwerk der Welt und Wahrzeichen Kambodschas",
+    "Bayon – Tempel mit den berühmten steinernen Gesichtertürmen",
+    "Ta Prohm – von mächtigen Baumwurzeln überwucherter Dschungeltempel",
+    "Phnom Penh – Königspalast, Märkte und Erinnerungsorte der Roten Khmer",
+    "Tonle-Sap-See – schwimmende Dörfer und einzigartiges Leben auf dem Wasser",
+    "Koh Rong und Koh Rong Sanloem – Inseln mit weißen Stränden im Süden",
+    "Battambang – ländlicher Charme, Tempel und der Bamboo Train",
+    "Kampot und Kep – Pfefferplantagen, Flusslandschaft und Küstenflair"
+  ],
+  "insider_tips": [
+    "Den Sonnenaufgang über Angkor Wat sollte man früh ansteuern – das Farbenspiel über den Tempeltürmen ist trotz der Menschenmengen ein unvergessliches Erlebnis.",
+    "Mit einem Mehrtagespass für Angkor lohnt es sich, auch abgelegenere Tempel jenseits der Hauptanlagen zu erkunden, wo es deutlich ruhiger ist.",
+    "Der US-Dollar wird fast überall akzeptiert; das Wechselgeld unter einem Dollar erhält man jedoch in Riel – kleine Scheine sind praktisch.",
+    "Die Besuche der Killing Fields und des Tuol-Sleng-Museums sind bedrückend, aber wichtig, um die jüngere Geschichte Kambodschas zu verstehen."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich ein Visum für Kambodscha?",
+      "answer": "Ja, deutsche Staatsbürger benötigen ein Visum. Es ist bequem als E-Visum vorab online oder als Visa on Arrival bei der Einreise erhältlich und gilt in der Regel für 30 Tage. Der Reisepass muss noch mindestens sechs Monate gültig sein."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Kambodscha?",
+      "answer": "Ideal ist die kühle Trockenzeit von November bis Februar. Insgesamt sind die Monate November bis März günstig, während von Mai bis Oktober Regenzeit mit hoher Luftfeuchtigkeit und Schauern herrscht."
+    },
+    {
+      "question": "Welche Währung gilt in Kambodscha?",
+      "answer": "Offizielle Währung ist der Kambodschanische Riel (KHR), doch der US-Dollar ist als faktische Zweitwährung weit verbreitet und wird fast überall akzeptiert. Wechselgeld unter einem Dollar erhält man meist in Riel. Bargeld ist wichtig."
+    },
+    {
+      "question": "Wie kommt man nach Kambodscha?",
+      "answer": "Es gibt keine Direktflüge aus Deutschland; die Anreise erfolgt mit Zwischenstopp, etwa über Bangkok, Singapur oder Doha. Beliebt ist auch die Kombination mit Vietnam oder Thailand und die Einreise auf dem Landweg."
+    },
+    {
+      "question": "Wie reist man innerhalb Kambodschas?",
+      "answer": "Üblich sind Busse, Minivans, Inlandsflüge sowie Tuk-Tuks und Fahrzeuge mit Fahrer für Ausflüge. Ein eigener Mietwagen ist unüblich; für Tempeltouren in Angkor bietet sich ein Tuk-Tuk mit Fahrer für den Tag an."
+    },
+    {
+      "question": "Wie viel Zeit sollte man für die Angkor-Tempel einplanen?",
+      "answer": "Für die wichtigsten Tempel reicht ein voller Tag, für ein entspannteres Erlebnis mit weiteren Anlagen empfehlen sich zwei bis drei Tage. Dafür gibt es entsprechende Mehrtagespässe."
+    },
+    {
+      "question": "Ist Kambodscha sicher für Reisende?",
+      "answer": "Ja, Kambodscha gilt als sicheres Reiseland mit gastfreundlichen Menschen. Aufpassen sollte man auf Taschendiebstahl in Städten und im Straßenverkehr. In abgelegenen Gebieten gibt es noch Minenreste, weshalb man markierte Wege nicht verlassen sollte."
+    },
+    {
+      "question": "Kann man in Kambodscha das Leitungswasser trinken?",
+      "answer": "Nein, das Leitungswasser ist nicht zum Trinken geeignet. Man sollte abgefülltes Wasser verwenden und bei Eiswürfeln sowie rohen Speisen vorsichtig sein."
+    },
+    {
+      "question": "Welche Impfungen werden für Kambodscha empfohlen?",
+      "answer": "Vorgeschrieben sind in der Regel keine Impfungen. Empfohlen werden Standardimpfungen sowie je nach Reiseart Hepatitis A und teils Typhus. Für eine individuelle Beratung sollte man rechtzeitig ein Tropeninstitut oder den Hausarzt aufsuchen."
+    },
+    {
+      "question": "Hat Kambodscha auch Strände?",
+      "answer": "Ja, im Süden rund um Sihanoukville und vor allem auf den Inseln Koh Rong und Koh Rong Sanloem gibt es schöne, teils noch ruhige Strände mit weißem Sand und klarem Wasser."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Kambodscha einplanen?",
+      "answer": "Für die Höhepunkte Angkor und Phnom Penh reicht etwa eine Woche. Wer zusätzlich den Süden mit den Inseln oder Battambang und Kampot erleben möchte, sollte rund 2 Wochen einplanen."
+    }
+  ],
+  "seo_title": "Kambodscha Urlaub: Angkor Wat, Reisetipps & beste Reisezeit",
+  "seo_description": "Dein Kambodscha-Urlaub: die Tempel von Angkor Wat, Phnom Penh, der Tonle-Sap-See und Inselstrände wie Koh Rong. Beste Reisezeit, Visum, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "Kambodscha Rundreise buchen, Flug nach Siem Reap oder Phnom Penh, Hotel Siem Reap, Angkor Wat Tour, Backpacking Südostasien, Kambodscha Vietnam Kombireise",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "vietnam",
+    "thailand",
+    "laos"
+  ],
+  "llmo_entities": [
+    "Kambodscha",
+    "Angkor Wat",
+    "Angkor",
+    "Bayon",
+    "Ta Prohm",
+    "Siem Reap",
+    "Phnom Penh",
+    "Königspalast",
+    "Killing Fields",
+    "Tuol Sleng",
+    "Tonle-Sap-See",
+    "Koh Rong",
+    "Battambang",
+    "Kampot",
+    "Khmer",
+    "Kambodschanischer Riel"
+  ],
+  "llmo_answer_block": "Kambodscha ist ein faszinierendes Reiseland in Südostasien, bekannt vor allem für die weltberühmte Tempelstadt Angkor mit Angkor Wat bei Siem Reap, die geschichtsträchtige Hauptstadt Phnom Penh, den Tonle-Sap-See und einsame Inselstrände wie Koh Rong im Süden. Das Land ist günstig, gastfreundlich und weniger überlaufen als seine Nachbarn und eignet sich ideal für Kultur-, Geschichts- und Rundreisen. Die beste Reisezeit ist die kühle Trockenzeit von November bis Februar.",
+  "llmo_quick_answer": "Kambodscha ist ein Südostasien-Ziel mit den weltberühmten Angkor-Tempeln, der Hauptstadt Phnom Penh und Inselstränden, am besten von November bis Februar."
+}

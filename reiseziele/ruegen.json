@@ -1,0 +1,117 @@
+{
+  "name": "Insel Rügen",
+  "slug": "ruegen",
+  "country": "Deutschland",
+  "region": "Mecklenburg-Vorpommern (Ostsee)",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/ruegen-hero.jpg",
+  "short_description": "Deutschlands größte Insel an der Ostsee mit kreideweißen Steilküsten, mondänen Seebädern, langen Sandstränden, dem Königsstuhl und nostalgischer Bäderarchitektur.",
+  "long_description": "Rügen ist Deutschlands größte Insel und einer der beliebtesten Urlaubsorte an der Ostsee. Berühmt sind vor allem die leuchtend weißen Kreidefelsen im Nationalpark Jasmund, allen voran der markante Königsstuhl, eingebettet in uralte Buchenwälder, die zum UNESCO-Welterbe gehören. An der Küste reihen sich die mondänen Ostseebäder Binz, Sellin und Göhren mit ihrer eleganten weißen Bäderarchitektur, weiten Sandstränden und historischen Seebrücken – die Seebrücke Sellin gilt als eines der schönsten Fotomotive der Insel. An der Nordspitze ragt das Kap Arkona mit seinen Leuchttürmen und dem urigen Fischerdörfchen Vitt auf. Nostalgisch tuckert die historische Dampfschmalspurbahn „Rasender Roland“ durch die Landschaft. Geschichtsinteressierte besuchen den Koloss von Prora oder die weiße Rosenstadt Putbus, und im Sommer locken die Störtebeker-Festspiele in Ralswiek. Mit kilometerlangen Stränden, viel Natur, Wellness und Familienfreundlichkeit ist Rügen ideal für Strand-, Natur- und Aktivurlaube – und von ganz Deutschland aus gut erreichbar.",
+  "ai_summary": "Rügen ist Deutschlands größte Insel an der Ostsee mit den weißen Kreidefelsen und dem Königsstuhl im Nationalpark Jasmund, den mondänen Seebädern Binz und Sellin, langen Sandstränden und nostalgischer Bäderarchitektur. Sie eignet sich ideal für Strand-, Natur- und Familienurlaube und ist von ganz Deutschland aus gut erreichbar.",
+  "best_travel_time": "Mai bis September für Strand und Badeurlaub; Frühling und Herbst eignen sich für Wandern, Radfahren und Wellness, und auch der Winter hat mit Spaziergängen an rauer See seinen Reiz.",
+  "ideal_duration": "Eine Woche, alternativ ein langes Wochenende",
+  "travel_type": [
+    "Strandurlaub",
+    "Naturreise",
+    "Familien",
+    "Wellness",
+    "Radreise",
+    "Wandern",
+    "Ferienhausurlaub"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Deutsch",
+    "flightTime": "Innerdeutsches Ziel; mit dem Auto über die Rügenbrücke bei Stralsund oder bequem mit der Bahn erreichbar",
+    "timezone": "MEZ (UTC+1)",
+    "visa": "Nicht erforderlich (innerdeutsch bzw. für EU-Bürger im Schengen-Raum)",
+    "bestMonths": "Mai bis September"
+  },
+  "highlights": [
+    "Kreidefelsen und Königsstuhl im Nationalpark Jasmund, UNESCO-Welterbe",
+    "Seebad Binz – elegantes Ostseebad mit weißer Bäderarchitektur",
+    "Seebrücke Sellin – ikonisches Wahrzeichen und beliebtes Fotomotiv",
+    "Kap Arkona – Steilküste, Leuchttürme und das Fischerdorf Vitt",
+    "Rasender Roland – historische Dampfschmalspurbahn",
+    "Lange Sandstrände – etwa entlang der Prorer Wiek",
+    "Prora – der monumentale historische Gebäudekomplex",
+    "Putbus – die weiße Rosenstadt mit klassizistischer Architektur"
+  ],
+  "insider_tips": [
+    "Die Kreidefelsen erlebt man besonders eindrucksvoll vom Wasser aus bei einer Bootstour entlang der Küste – eine schöne Ergänzung zum Aussichtspunkt Königsstuhl mit seinem Skywalk.",
+    "Die Bäderarchitektur in Binz und Sellin ist im Morgenlicht am schönsten; die Seebrücke Sellin lohnt sich besonders zum Sonnenaufgang.",
+    "Eine Fahrt mit dem „Rasenden Roland“, der historischen Dampfbahn, ist ein nostalgisches Erlebnis für Groß und Klein.",
+    "In der Hauptsaison ist Rügen sehr beliebt – Ferienhäuser und -wohnungen sollte man früh buchen, und die Nebensaison im Frühherbst ist ruhiger und oft günstiger."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Rügen?",
+      "answer": "Für Strand und Baden eignen sich die Monate Mai bis September. Frühling und Herbst sind ideal zum Wandern, Radfahren und für Wellness, und auch der Winter hat mit stürmischer See und ruhigen Stränden seinen besonderen Reiz."
+    },
+    {
+      "question": "Wie reist man nach Rügen an?",
+      "answer": "Rügen ist über die Rügenbrücke und den Rügendamm bei Stralsund mit dem Auto erreichbar. Ebenso gut kommt man mit der Bahn an, etwa über Stralsund und Bergen auf Rügen bis in die Seebäder."
+    },
+    {
+      "question": "Braucht man auf Rügen ein Auto?",
+      "answer": "Ein Auto ist praktisch, da die Insel groß ist und die Highlights weit verstreut liegen. Vor Ort gibt es aber auch Busse, Bahnverbindungen, den „Rasenden Roland“ und gute Radwege, sodass man vieles auch ohne Auto erreicht."
+    },
+    {
+      "question": "Was hat es mit den Kreidefelsen und dem Königsstuhl auf sich?",
+      "answer": "Die leuchtend weißen Kreidefelsen liegen im Nationalpark Jasmund, dessen alte Buchenwälder zum UNESCO-Welterbe gehören. Der bekannteste Felsen ist der Königsstuhl, der über ein Nationalpark-Zentrum und einen Skywalk zugänglich ist."
+    },
+    {
+      "question": "Welche Seebäder sind auf Rügen besonders schön?",
+      "answer": "Zu den bekanntesten zählen Binz, Sellin und Göhren mit ihrer eleganten weißen Bäderarchitektur, langen Sandstränden und historischen Seebrücken. Die Seebrücke Sellin ist ein besonders beliebtes Wahrzeichen."
+    },
+    {
+      "question": "Ist Rügen für einen Familienurlaub geeignet?",
+      "answer": "Ja, sehr. Flache Sandstrände, der „Rasende Roland“, Naturerlebnisse, der Baumwipfelpfad im Naturerbe Zentrum und kinderfreundliche Seebäder machen Rügen zu einem idealen Ziel für Familien."
+    },
+    {
+      "question": "Kann man in der Ostsee vor Rügen baden?",
+      "answer": "Ja, im Sommer laden die Strände zum Baden ein. Die Ostsee ist von Juni bis September am wärmsten und an den Seebädern gibt es bewachte Abschnitte. Das Wasser ist erfrischend kühler als an südlichen Meeren."
+    },
+    {
+      "question": "Was ist der „Rasende Roland“?",
+      "answer": "Der „Rasende Roland“ ist eine historische Schmalspur-Dampfeisenbahn, die seit über hundert Jahren durch den Südosten Rügens fährt und mehrere Seebäder verbindet. Eine Fahrt ist ein nostalgisches Highlight."
+    },
+    {
+      "question": "Eignet sich Rügen auch für die Nebensaison?",
+      "answer": "Ja, gerade Frühling, Herbst und Winter sind reizvoll: ruhigere Strände, Wellness in den Hotels, Wanderungen an der Steilküste und stimmungsvolle Stürme. Viele schätzen die Insel außerhalb der Hauptsaison besonders."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Rügen einplanen?",
+      "answer": "Für einen erholsamen Strandurlaub mit den wichtigsten Höhepunkten eignet sich eine Woche. Für einen Kurzurlaub mit Schwerpunkt auf einem Seebad reicht auch ein langes Wochenende."
+    }
+  ],
+  "seo_title": "Insel Rügen: Kreidefelsen, Seebäder & beste Reisezeit",
+  "seo_description": "Dein Urlaub auf Rügen: die weißen Kreidefelsen mit dem Königsstuhl, die Seebäder Binz und Sellin, lange Sandstrände und der „Rasende Roland“. Beste Reisezeit, Anreise, Highlights und Tipps im Überblick.",
+  "affiliate_search_intent": "Rügen Urlaub buchen, Ferienwohnung oder Ferienhaus Rügen, Hotel Binz, Wellnesshotel Rügen, Ostsee Urlaub Rügen, Familienurlaub Rügen",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "usedom",
+    "sylt",
+    "fehmarn"
+  ],
+  "llmo_entities": [
+    "Insel Rügen",
+    "Ostsee",
+    "Mecklenburg-Vorpommern",
+    "Kreidefelsen",
+    "Königsstuhl",
+    "Nationalpark Jasmund",
+    "Binz",
+    "Sellin",
+    "Seebrücke Sellin",
+    "Göhren",
+    "Kap Arkona",
+    "Vitt",
+    "Rasender Roland",
+    "Prora",
+    "Putbus",
+    "Stralsund"
+  ],
+  "llmo_answer_block": "Rügen ist Deutschlands größte Insel an der Ostsee, berühmt für die weißen Kreidefelsen und den Königsstuhl im Nationalpark Jasmund, die mondänen Seebäder Binz und Sellin mit ihrer eleganten Bäderarchitektur, lange Sandstrände und die historische Dampfbahn „Rasender Roland“. Mit viel Natur, Wellness und Familienfreundlichkeit eignet sie sich ideal für Strand-, Natur- und Aktivurlaube und ist von ganz Deutschland über die Rügenbrücke oder per Bahn gut erreichbar. Die beste Reisezeit für Strand liegt zwischen Mai und September, Frühling und Herbst eignen sich für Wandern und Wellness.",
+  "llmo_quick_answer": "Rügen ist Deutschlands größte Insel an der Ostsee mit weißen Kreidefelsen, dem Königsstuhl, den Seebädern Binz und Sellin und langen Sandstränden."
+}

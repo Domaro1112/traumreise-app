@@ -58,7 +58,7 @@ export default function Footer() {
             >
               <Image
                 src="/images/logo/reisemonkey-logo.png"
-                alt="Reisemonkey"
+                alt="ApeAround"
                 width={1536}
                 height={1024}
                 style={{ height: '72px', width: 'auto', display: 'block', objectFit: 'contain' }}

@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { QUESTIONS, computeResult } from '@/lib/motorradurlaub-funnel';
+import { useState } from 'react';
+import { QUESTIONS } from '@/lib/motorradurlaub-funnel';
 import MotorcycleQuestionCard from './MotorcycleQuestionCard';
 import MotorcycleResultView from './MotorcycleResultView';
 
@@ -67,58 +67,23 @@ function LoadingScreen() {
 export default function MotorcycleFunnel() {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState({});
-  const [aiResult, setAiResult] = useState(null);
-  const [aiLoading, setAiLoading] = useState(false);
-  const [aiError, setAiError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const currentQuestion = QUESTIONS[step];
   const isDone = step >= QUESTIONS.length;
-
-  useEffect(() => {
-    if (step < QUESTIONS.length) return;
-
-    let cancelled = false;
-    setAiLoading(true);
-    setAiResult(null);
-    setAiError(false);
-
-    const fallbackResult = computeResult(answers);
-
-    fetch('/api/ai/motorcycle-trip', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        duration:      answers.duration,
-        dailyKm:       answers.dailyKm,
-        style:         answers.style,
-        destination:   answers.destination,
-        accommodation: answers.accommodation,
-        parking:       answers.parking,
-        fallbackResult,
-      }),
-    })
-      .then(res => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
-      .then(data => {
-        if (!cancelled) { setAiResult(data); setAiLoading(false); }
-      })
-      .catch(err => {
-        console.error('[MotorcycleFunnel] AI call failed:', err);
-        if (!cancelled) { setAiError(true); setAiLoading(false); }
-      });
-
-    return () => { cancelled = true; };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [step]);
 
   const handleSelect = (value) => {
     setAnswers(prev => ({ ...prev, [currentQuestion.id]: value }));
   };
 
   const handleNext = () => {
-    setStep(s => s + 1);
+    const next = step + 1;
+    setStep(next);
+    // Kurze Ladeanimation, danach regelbasiertes Ergebnis (keine KI)
+    if (next >= QUESTIONS.length) {
+      setLoading(true);
+      setTimeout(() => setLoading(false), 900);
+    }
   };
 
   const handleBack = () => {
@@ -128,21 +93,12 @@ export default function MotorcycleFunnel() {
   const handleReset = () => {
     setStep(0);
     setAnswers({});
-    setAiResult(null);
-    setAiLoading(false);
-    setAiError(false);
+    setLoading(false);
   };
 
   if (isDone) {
-    if (aiLoading) return <LoadingScreen />;
-    return (
-      <MotorcycleResultView
-        answers={answers}
-        onReset={handleReset}
-        aiResult={aiResult}
-        aiError={aiError}
-      />
-    );
+    if (loading) return <LoadingScreen />;
+    return <MotorcycleResultView answers={answers} onReset={handleReset} />;
   }
 
   return (

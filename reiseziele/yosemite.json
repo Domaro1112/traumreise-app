@@ -1,0 +1,121 @@
+{
+  "name": "Yosemite-Nationalpark",
+  "slug": "yosemite",
+  "country": "Vereinigte Staaten (USA)",
+  "region": "Kalifornien (Sierra Nevada)",
+  "continent": "Nordamerika",
+  "hero_image": "/images/destinations/yosemite-hero.jpg",
+  "short_description": "Spektakulärer Nationalpark in Kaliforniens Sierra Nevada mit gewaltigen Granitfelsen wie El Capitan und Half Dome, tosenden Wasserfällen und uralten Mammutbäumen.",
+  "long_description": "Der Yosemite-Nationalpark in der kalifornischen Sierra Nevada zählt zu den eindrucksvollsten Naturlandschaften der Welt und ist UNESCO-Welterbe. Berühmt ist der Park für seine gewaltigen Granitformationen: Der senkrechte Monolith El Capitan gilt als Mekka der Kletterer, der markante Half Dome ist das Wahrzeichen des Parks. Im Herzen liegt das Yosemite Valley, über das die Yosemite Falls – die höchsten Wasserfälle Nordamerikas – in die Tiefe stürzen, ergänzt durch den zarten Bridalveil Fall. Vom Aussichtspunkt Glacier Point und vom klassischen Tunnel View bieten sich grandiose Panoramen über das Tal. In der Mariposa Grove ragen jahrtausendealte Riesenmammutbäume in den Himmel, und über die hochalpine Tioga Road erreicht man die weiten Tuolumne Meadows. Die Wasserfälle sind im Frühsommer durch die Schneeschmelze am eindrucksvollsten. Yosemite eignet sich perfekt als Höhepunkt eines Kalifornien-Roadtrips und ist ein Traumziel für Natur-, Wander-, Kletter- und Fotoreisen.",
+  "ai_summary": "Der Yosemite-Nationalpark in Kaliforniens Sierra Nevada ist UNESCO-Welterbe und berühmt für die Granitfelsen El Capitan und Half Dome, die Yosemite Falls, das Yosemite Valley und die Mammutbäume der Mariposa Grove. Er eignet sich ideal als Höhepunkt eines Kalifornien-Roadtrips und für Natur- und Wanderreisen; für die Einreise gelten die USA-Bestimmungen mit ESTA.",
+  "best_travel_time": "Mai bis September/Oktober; die Wasserfälle sind im Frühsommer (Mai bis Juni) durch die Schneeschmelze am stärksten. Hochlagen wie die Tioga Road und Glacier Point sind meist nur von etwa Juni bis Oktober/November geöffnet.",
+  "ideal_duration": "2 bis 4 Tage, oft als Teil eines Kalifornien-Roadtrips",
+  "travel_type": [
+    "Naturreise",
+    "Nationalparks",
+    "Roadtrip",
+    "Wandern",
+    "Klettern",
+    "Fotoreise",
+    "Familien"
+  ],
+  "quick_facts": {
+    "currency": "US-Dollar (USD)",
+    "language": "Englisch",
+    "flightTime": "Kein Direktflug zum Park; ab Deutschland ca. 11 bis 12 Stunden in die USA plus Anschluss/Fahrt. Nächste Flughäfen: San Francisco (SFO, rund 3,5 bis 4 Stunden Fahrt) und Fresno (FAT, rund 2,5 Stunden)",
+    "timezone": "Pacific Time (UTC−8; im Sommer UTC−7), rund neun Stunden hinter MEZ",
+    "visa": "Wie für die USA: kein Visum für Touristen (bis 90 Tage), aber elektronischer Reisepass und kostenpflichtige ESTA-Genehmigung erforderlich",
+    "bestMonths": "Mai bis September"
+  },
+  "highlights": [
+    "El Capitan – gewaltiger Granitmonolith und weltberühmtes Kletterziel",
+    "Half Dome – das markante Wahrzeichen des Parks",
+    "Yosemite Falls – die höchsten Wasserfälle Nordamerikas",
+    "Glacier Point – spektakulärer Aussichtspunkt über das Tal und auf Half Dome",
+    "Tunnel View – der klassische Postkartenblick ins Yosemite Valley",
+    "Mariposa Grove – jahrtausendealte Riesenmammutbäume (Sequoias)",
+    "Bridalveil Fall – markanter Wasserfall am Eingang des Tals",
+    "Tioga Road und Tuolumne Meadows – hochalpine Landschaft im Osten des Parks"
+  ],
+  "insider_tips": [
+    "Die Wasserfälle sind im Mai und Juni durch die Schneeschmelze am eindrucksvollsten; im Spätsommer führen einige deutlich weniger oder kein Wasser.",
+    "In der Hochsaison kann ein Reservierungssystem (Timed-Entry) für die Einfahrt gelten – die aktuellen Regeln unbedingt vorab auf nps.gov prüfen.",
+    "Unterkünfte im Tal sind sehr begehrt und müssen Monate im Voraus gebucht werden; günstigere Alternativen bieten Gateway-Towns wie Mariposa, Oakhurst, El Portal oder Groveland.",
+    "Lebensmittel gehören wegen der Bären in die bereitgestellten Bear Boxes und niemals über Nacht ins Auto; für den Aufstieg zum Half Dome ist ein Permit per Verlosung nötig."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für den Yosemite-Nationalpark?",
+      "answer": "Am eindrucksvollsten sind die Wasserfälle im Frühsommer (Mai bis Juni) während der Schneeschmelze. Für vollen Zugang inklusive Hochlagen wie der Tioga Road und Glacier Point eignen sich die Monate Juni bis Oktober. Im Winter ist das Tal zugänglich, viele Hochstraßen sind jedoch gesperrt."
+    },
+    {
+      "question": "Braucht man eine Reservierung für die Einfahrt nach Yosemite?",
+      "answer": "In den letzten Jahren galt zu Stoßzeiten ein Reservierungssystem mit Timed-Entry für die Einfahrt. Ob und wann dies aktuell gilt, ändert sich jährlich, daher sollte man die offiziellen Regelungen vor der Reise unbedingt auf der Parkwebseite nps.gov prüfen."
+    },
+    {
+      "question": "Wie reist man zum Yosemite-Nationalpark an?",
+      "answer": "Es gibt keinen Flughafen direkt am Park. Üblich ist ein Flug in die USA mit Ziel San Francisco (rund 3,5 bis 4 Stunden Fahrt) oder Fresno (rund 2,5 Stunden). Von dort fährt man mit dem Mietwagen weiter, oft im Rahmen eines Kalifornien-Roadtrips."
+    },
+    {
+      "question": "Braucht man in Yosemite einen Mietwagen?",
+      "answer": "Für die An- und Weiterreise ist ein Mietwagen sehr empfehlenswert, da der Park abgelegen liegt. Im Yosemite Valley selbst gibt es in der Hauptsaison kostenlose Shuttlebusse, mit denen man die Hauptattraktionen autofrei erreichen kann."
+    },
+    {
+      "question": "Brauche ich für Yosemite ein Visum?",
+      "answer": "Es gelten die Einreisebestimmungen der USA: Für touristische Aufenthalte bis 90 Tage ist kein Visum nötig, aber ein elektronischer Reisepass und eine vorab beantragte, kostenpflichtige ESTA-Genehmigung. Details finden sich auf der USA-Seite."
+    },
+    {
+      "question": "Was kostet der Eintritt in den Yosemite-Nationalpark?",
+      "answer": "Für ein privates Fahrzeug gilt ein mehrtägiges Eintrittsticket. Wer mehrere US-Nationalparks besucht, fährt mit dem Jahrespass „America the Beautiful“ oft günstiger, der den Eintritt in alle Nationalparks abdeckt."
+    },
+    {
+      "question": "Wo übernachtet man am besten?",
+      "answer": "Im Park gibt es Lodges und Campgrounds, etwa im Yosemite Valley, die früh ausgebucht sind und lange im Voraus gebucht werden müssen. Alternativen bieten die Gateway-Towns wie Mariposa, Oakhurst, El Portal und Groveland."
+    },
+    {
+      "question": "Wie besteigt man den Half Dome?",
+      "answer": "Der berühmte Aufstieg zum Half Dome mit seinen Stahlseilen erfordert ein spezielles Permit, das über eine Verlosung vergeben wird. Es handelt sich um eine lange, anspruchsvolle Wanderung, die gute Kondition und Trittsicherheit voraussetzt."
+    },
+    {
+      "question": "Muss man im Yosemite mit Bären rechnen?",
+      "answer": "Ja, im Park leben Schwarzbären. Lebensmittel und duftende Gegenstände müssen in den bereitgestellten Bear Boxes verstaut werden und dürfen nicht im Auto bleiben. Bei Begegnungen hält man Abstand und füttert die Tiere niemals."
+    },
+    {
+      "question": "Ist Yosemite für Familien geeignet?",
+      "answer": "Ja, der Park ist sehr familienfreundlich. Leichte Talwanderungen, Wasserfälle, das Shuttlesystem, Badestellen am Merced River und das Junior-Ranger-Programm sorgen für Abwechslung. Auf Sicherheit an Flüssen und Aussichtspunkten ist zu achten."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Yosemite einplanen?",
+      "answer": "Für die wichtigsten Highlights im Tal reichen 2 Tage, besser sind 3 bis 4 Tage, um auch Glacier Point, die Mariposa Grove und das Hochland entlang der Tioga Road zu erleben."
+    }
+  ],
+  "seo_title": "Yosemite-Nationalpark: El Capitan, Wasserfälle & beste Reisezeit",
+  "seo_description": "Dein Besuch im Yosemite-Nationalpark: El Capitan, Half Dome, die Yosemite Falls und uralte Mammutbäume. Beste Reisezeit, Anreise, Reservierung, Tipps und Highlights im Überblick.",
+  "affiliate_search_intent": "Yosemite Reise buchen, Flug nach San Francisco, Mietwagen Kalifornien, Hotel Mariposa oder Oakhurst, Yosemite Touren und Wanderungen, Rundreise Kalifornien Nationalparks",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "yellowstone",
+    "grand-canyon",
+    "sequoia"
+  ],
+  "llmo_entities": [
+    "Yosemite-Nationalpark",
+    "Kalifornien",
+    "Sierra Nevada",
+    "El Capitan",
+    "Half Dome",
+    "Yosemite Falls",
+    "Yosemite Valley",
+    "Glacier Point",
+    "Tunnel View",
+    "Bridalveil Fall",
+    "Mariposa Grove",
+    "Mammutbäume",
+    "Tioga Road",
+    "Tuolumne Meadows",
+    "San Francisco",
+    "Merced River"
+  ],
+  "llmo_answer_block": "Der Yosemite-Nationalpark in Kaliforniens Sierra Nevada ist UNESCO-Welterbe und berühmt für seine gewaltigen Granitfelsen El Capitan und Half Dome, die Yosemite Falls als höchste Wasserfälle Nordamerikas, das Yosemite Valley und die jahrtausendealten Mammutbäume der Mariposa Grove. Er eignet sich ideal als Höhepunkt eines Kalifornien-Roadtrips, am besten von Mai bis Oktober, wobei die Wasserfälle im Frühsommer am eindrucksvollsten sind. Für die Einreise gelten die USA-Bestimmungen mit elektronischem Reisepass und ESTA.",
+  "llmo_quick_answer": "Der Yosemite-Nationalpark in Kalifornien begeistert mit den Granitfelsen El Capitan und Half Dome, den Yosemite Falls und Mammutbäumen, am besten von Mai bis Oktober."
+}

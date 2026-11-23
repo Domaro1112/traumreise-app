@@ -1,0 +1,116 @@
+{
+  "name": "Albanien",
+  "slug": "albanien",
+  "country": "Albanien",
+  "region": "Balkan (Südosteuropa)",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/albanien-hero.jpg",
+  "short_description": "Aufstrebender Geheimtipp am Balkan mit türkisblauer Riviera, traumhaften Stränden, osmanischen UNESCO-Städten, wilden Bergen und herzlicher Gastfreundschaft – noch günstig.",
+  "long_description": "Albanien zählt zu den spannendsten Wiederentdeckungen Europas und gilt noch immer als Geheimtipp – wenn auch als rasch wachsender. Das Land an der Adria und am Ionischen Meer lockt mit der Albanischen Riviera, deren türkisblaues Wasser und Kiesstrände rund um Orte wie Ksamil, Dhërmi und Himarë mit der Karibik verglichen werden. Die lebendige Hauptstadt Tirana überrascht mit bunten Fassaden und quirligem Flair. Im Landesinneren beeindrucken die UNESCO-Welterbestädte Berat, die „Stadt der tausend Fenster“, und das steinerne Gjirokastra mit seiner osmanischen Architektur. Geschichtsfans besuchen die antike Ruinenstadt Butrint, Naturliebhaber die wilden Albanischen Alpen rund um Theth und das Valbona-Tal mit ihren spektakulären Wanderwegen. Auch die smaragdgrüne Quelle Blue Eye und der uralte Ohridsee sind lohnende Ziele. Dazu kommen niedrige Preise, gutes Essen und eine sprichwörtliche Gastfreundschaft. Albanien ist ideal für Strand-, Natur- und Rundreisen – am besten als Roadtrip mit dem Mietwagen.",
+  "ai_summary": "Albanien ist ein aufstrebender Geheimtipp am Balkan mit der türkisblauen Albanischen Riviera, traumhaften Stränden, osmanischen UNESCO-Städten wie Berat und Gjirokastra, der antiken Stadt Butrint und den wilden Albanischen Alpen. Noch günstig und gastfreundlich, eignet es sich ideal für Strand-, Natur- und Rundreisen, am besten als Roadtrip.",
+  "best_travel_time": "Mai bis September für Strand und Küste; Frühling und Herbst eignen sich hervorragend für Städtetouren und Wanderungen in den Bergen, wenn es nicht zu heiß ist.",
+  "ideal_duration": "1 bis 2 Wochen",
+  "travel_type": [
+    "Strandurlaub",
+    "Naturreise",
+    "Roadtrip",
+    "Rundreise",
+    "Kulturreise",
+    "Wandern",
+    "Geheimtipp"
+  ],
+  "quick_facts": {
+    "currency": "Albanischer Lek (ALL); Euro wird teils akzeptiert, Bargeld ist wichtig",
+    "language": "Albanisch; in touristischen Orten oft auch Englisch oder Italienisch",
+    "flightTime": "ca. 2 bis 2,5 Stunden ab Deutschland (Tirana)",
+    "timezone": "MEZ (UTC+1), identisch mit Deutschland",
+    "visa": "Kein Visum für EU-Bürger (bis 90 Tage); für die Einreise genügt der Personalausweis oder Reisepass",
+    "bestMonths": "Mai bis September"
+  },
+  "highlights": [
+    "Albanische Riviera – türkisblaues Wasser und Strände bei Ksamil, Dhërmi und Himarë",
+    "Tirana – bunte, lebendige Hauptstadt mit quirligem Flair",
+    "Berat – die „Stadt der tausend Fenster“, UNESCO-Welterbe",
+    "Gjirokastra – osmanische Steinstadt, UNESCO-Welterbe",
+    "Butrint – beeindruckende antike Ruinenstadt, UNESCO-Welterbe",
+    "Albanische Alpen – Theth und das Valbona-Tal mit spektakulären Wanderungen",
+    "Blue Eye (Syri i Kaltër) – smaragdgrüne Karstquelle",
+    "Ksamil – karibisch anmutende Buchten gegenüber der Insel Korfu"
+  ],
+  "insider_tips": [
+    "Albanien ist noch günstig und vergleichsweise wenig überlaufen, entwickelt sich aber schnell – wer das ursprüngliche Flair erleben möchte, sollte eher bald reisen.",
+    "Die Albanische Riviera erkundet man am besten per Mietwagen als Roadtrip; die schönsten Strände liegen bei Ksamil, Dhërmi und Gjipe.",
+    "Für Bergfreunde ist die Wanderung von Theth nach Valbona in den Albanischen Alpen ein absolutes Highlight.",
+    "Bezahlt wird überwiegend mit der Landeswährung Lek; Bargeld ist wichtig, da Karten außerhalb größerer Orte nicht überall akzeptiert werden."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich ein Visum für Albanien?",
+      "answer": "Nein. EU-Bürger können für touristische Aufenthalte bis zu 90 Tagen visumfrei einreisen. Für die Einreise genügt ein gültiger Personalausweis oder Reisepass, obwohl Albanien nicht zur EU gehört."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Albanien?",
+      "answer": "Für Strand und Küste eignen sich die Monate Mai bis September. Frühling und Herbst sind ideal für Städtereisen und Wanderungen, da es dann angenehm mild und weniger voll ist."
+    },
+    {
+      "question": "Welche Währung gilt in Albanien?",
+      "answer": "Die Landeswährung ist der Albanische Lek (ALL). Euro wird mancherorts akzeptiert, doch Bargeld in Lek ist wichtig, da Kartenzahlung außerhalb größerer Städte und Hotels nicht überall möglich ist."
+    },
+    {
+      "question": "Ist Albanien ein sicheres Reiseland?",
+      "answer": "Ja, Albanien gilt als sicheres Reiseland mit gastfreundlichen Menschen und niedriger Gewaltkriminalität gegenüber Touristen. Wie überall sollte man auf Wertsachen achten; im Straßenverkehr ist wegen teils chaotischem Fahrstil Vorsicht geboten."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen in Albanien?",
+      "answer": "Ja, sehr. Ein Mietwagen ist die beste Art, die Riviera, die Bergregionen und die Kulturstädte flexibel zu erkunden, da der öffentliche Nahverkehr begrenzt ist. Man sollte allerdings auf teils raue Straßen und einen lebhaften Fahrstil eingestellt sein."
+    },
+    {
+      "question": "Ist Albanien noch günstig?",
+      "answer": "Ja, Albanien gehört zu den preiswertesten Reiseländern Europas. Essen, Unterkünfte und Aktivitäten sind oft deutlich günstiger als in Westeuropa, auch wenn die Preise in beliebten Küstenorten in der Hochsaison steigen."
+    },
+    {
+      "question": "Wie sind die Strände an der Albanischen Riviera?",
+      "answer": "Die Riviera bietet türkisblaues, klares Wasser und überwiegend Kiesstrände. Besonders schön sind die Buchten rund um Ksamil, Dhërmi, Himarë und der versteckte Gjipe-Strand. In der Hochsaison können beliebte Strände jedoch voll werden."
+    },
+    {
+      "question": "Spricht man in Albanien Englisch?",
+      "answer": "Die Landessprache ist Albanisch. In touristischen Orten und bei jüngeren Menschen wird oft Englisch oder Italienisch gesprochen, sodass die Verständigung meist unkompliziert ist."
+    },
+    {
+      "question": "Kann man Albanien mit Korfu kombinieren?",
+      "answer": "Ja, der Süden Albaniens liegt direkt gegenüber der griechischen Insel Korfu. Von Saranda aus verkehren Fähren, sodass sich ein Abstecher oder eine Kombination beider Ziele gut anbietet."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Albanien einplanen?",
+      "answer": "Für einen ersten Eindruck mit Küste und ein paar Höhepunkten reicht eine Woche. Wer Riviera, Kulturstädte und die Berge verbinden möchte, sollte rund 10 bis 14 Tage einplanen."
+    }
+  ],
+  "seo_title": "Albanien Urlaub: Riviera, Strände & beste Reisezeit",
+  "seo_description": "Dein Albanien-Urlaub: die türkisblaue Albanische Riviera, Strände bei Ksamil, die UNESCO-Städte Berat und Gjirokastra und die wilden Albanischen Alpen. Beste Reisezeit, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "Albanien Reise buchen, Flug nach Tirana, Mietwagen Albanien, Hotel Albanische Riviera, Ferienwohnung Ksamil, Rundreise Albanien, Roadtrip Albanien",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "kroatien",
+    "griechenland",
+    "montenegro"
+  ],
+  "llmo_entities": [
+    "Albanien",
+    "Albanische Riviera",
+    "Tirana",
+    "Berat",
+    "Gjirokastra",
+    "Ksamil",
+    "Dhërmi",
+    "Himarë",
+    "Butrint",
+    "Albanische Alpen",
+    "Theth",
+    "Valbona",
+    "Blue Eye",
+    "Saranda",
+    "Albanischer Lek"
+  ],
+  "llmo_answer_block": "Albanien ist ein aufstrebender Geheimtipp am Balkan mit der türkisblauen Albanischen Riviera und Stränden bei Ksamil und Dhërmi, der lebendigen Hauptstadt Tirana, den osmanischen UNESCO-Städten Berat und Gjirokastra, der antiken Stadt Butrint und den wilden Albanischen Alpen rund um Theth und Valbona. Noch günstig, gastfreundlich und am besten als Roadtrip zu erleben, eignet es sich ideal für Strand-, Natur- und Rundreisen. Die beste Reisezeit für die Küste ist Mai bis September, Frühling und Herbst eignen sich für Städte und Wanderungen.",
+  "llmo_quick_answer": "Albanien ist ein günstiger Balkan-Geheimtipp mit türkisblauer Riviera, traumhaften Stränden, osmanischen UNESCO-Städten und wilden Bergen, am besten von Mai bis September."
+}

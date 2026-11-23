@@ -1,0 +1,120 @@
+{
+  "name": "China",
+  "slug": "china",
+  "country": "Volksrepublik China",
+  "region": "Ostasien",
+  "continent": "Asien",
+  "hero_image": "/images/destinations/china-hero.jpg",
+  "short_description": "Riesiges Reich der Mitte mit der Chinesischen Mauer, der Terrakotta-Armee, futuristischen Megastädten, Karstlandschaften und Pandas – für Deutsche jetzt visumfrei.",
+  "long_description": "China ist ein Land der Superlative und Gegensätze, das jahrtausendealte Kultur mit atemberaubender Moderne verbindet. Das berühmteste Wahrzeichen ist die Chinesische Mauer, die sich über tausende Kilometer durch das Land zieht. In der Hauptstadt Peking beeindrucken die Verbotene Stadt, der Tian'anmen-Platz und der Himmelstempel, während in Xi'an die weltberühmte Terrakotta-Armee schlummert. Shanghai präsentiert sich als futuristische Megacity mit spektakulärer Skyline am Bund. Naturwunder wie die Karstberge entlang des Li-Flusses bei Guilin und Yangshuo, die schwebenden Felsen von Zhangjiajie oder die Gelben Berge (Huangshan) zählen zu den schönsten Landschaften Asiens. In Chengdu kann man die berühmten Großen Pandas bestaunen. Dank des hervorragenden Hochgeschwindigkeitszugnetzes lassen sich die enormen Distanzen erstaunlich bequem überwinden. Besonders erfreulich: Für deutsche Reisende ist die Einreise derzeit visumfrei. China ist ideal für Kultur-, Rundreise- und Naturerlebnisse – erfordert aber wegen Sprache, Bezahlsystemen und Internet etwas Vorbereitung.",
+  "ai_summary": "China ist ein riesiges Reiseland in Ostasien mit der Chinesischen Mauer, der Terrakotta-Armee in Xi'an, Megastädten wie Peking und Shanghai, den Karstlandschaften bei Guilin und den Pandas in Chengdu. Es ist für deutsche Reisende derzeit visumfrei (bis 30 Tage) und dank Hochgeschwindigkeitszügen gut zu bereisen, erfordert aber Vorbereitung bei Sprache, mobilem Bezahlen und Internet.",
+  "best_travel_time": "Frühling (April bis Mai) und Herbst (September bis November) mit mildem Wetter sind ideal; der Hochsommer ist heiß und schwül, der Winter im Norden kalt. Die großen Feiertage sollte man wegen des Andrangs meiden.",
+  "ideal_duration": "2 bis 3 Wochen",
+  "travel_type": [
+    "Rundreise",
+    "Kulturreise",
+    "Städtereise",
+    "Naturreise",
+    "Geschichtsreise",
+    "Abenteuer"
+  ],
+  "quick_facts": {
+    "currency": "Renminbi / Yuan (CNY); China ist weitgehend bargeldlos, üblich sind die Bezahl-Apps Alipay und WeChat Pay",
+    "language": "Chinesisch (Hochchinesisch/Mandarin); Englisch ist wenig verbreitet",
+    "flightTime": "ca. 10 bis 12 Stunden ab Deutschland im Direktflug (Peking, Shanghai)",
+    "timezone": "Landesweit einheitlich UTC+8, sieben Stunden vor MEZ",
+    "visa": "Für deutsche Staatsbürger derzeit visumfrei bis 30 Tage (Regelung gilt bis 31.12.2026); nötig sind ein 6 Monate gültiger Reisepass, ein Weiter-/Rückflugnachweis und die Arrival Card",
+    "bestMonths": "April bis Mai sowie September bis November"
+  },
+  "highlights": [
+    "Chinesische Mauer – das gewaltige Wahrzeichen, gut erreichbar von Peking",
+    "Peking – Verbotene Stadt, Tian'anmen-Platz und Himmelstempel",
+    "Terrakotta-Armee in Xi'an – tausende lebensgroße Tonkrieger",
+    "Shanghai – futuristische Skyline und die Uferpromenade Bund",
+    "Guilin und Yangshuo – traumhafte Karstberge entlang des Li-Flusses",
+    "Zhangjiajie – schwebende Felssäulen, Inspiration für „Avatar“",
+    "Chengdu – Aufzuchtstation der berühmten Großen Pandas",
+    "Huangshan – die malerischen Gelben Berge mit Nebelmeeren"
+  ],
+  "insider_tips": [
+    "Richten Sie schon vor der Reise die Bezahl-Apps Alipay oder WeChat Pay ein und hinterlegen Sie eine ausländische Karte – nahezu alles wird mobil bezahlt, Bargeld ist selten.",
+    "Viele westliche Dienste wie Google, WhatsApp und Instagram sind in China gesperrt; eine VPN-App sollte man bereits vor der Einreise installieren.",
+    "Das Hochgeschwindigkeitszugnetz ist hervorragend und verbindet die Städte schnell und komfortabel – Tickets bucht man am besten frühzeitig.",
+    "Wegen der Sprachbarriere helfen eine Übersetzungs-App mit Offline-Funktion und Adressen in chinesischer Schrift enorm weiter."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich ein Visum für China?",
+      "answer": "Für touristische Aufenthalte bis zu 30 Tagen können deutsche Staatsbürger derzeit visumfrei einreisen; diese Regelung gilt bis zum 31. Dezember 2026. Nötig sind ein mindestens sechs Monate gültiger Reisepass, ein Nachweis über die Weiter- oder Rückreise sowie die Arrival Card. Da sich die Bestimmungen ändern können, sollte man den aktuellen Stand vorab prüfen."
+    },
+    {
+      "question": "Was ist die Arrival Card?",
+      "answer": "Die Arrival Card ist eine verpflichtende Einreisekarte, die man entweder vorab online oder bei der Ankunft auf Papier ausfüllt. Sie gehört zu den Standarddokumenten bei der Einreise nach China."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für China?",
+      "answer": "Am angenehmsten sind Frühling (April bis Mai) und Herbst (September bis November). Der Hochsommer ist heiß und schwül, der Winter im Norden kalt. Die großen Feiertage wie die Golden Week und das chinesische Neujahr sollte man wegen des großen Andrangs meiden."
+    },
+    {
+      "question": "Wie bezahlt man in China?",
+      "answer": "China ist weitgehend bargeldlos. Bezahlt wird fast überall mobil per Alipay oder WeChat Pay, in denen sich inzwischen auch ausländische Karten hinterlegen lassen. Diese Apps sollte man vor der Reise einrichten, da Bargeld und ausländische Kreditkarten oft nur eingeschränkt akzeptiert werden."
+    },
+    {
+      "question": "Funktionieren Google, WhatsApp und Co. in China?",
+      "answer": "Nein, viele westliche Dienste wie Google, WhatsApp, Instagram und Facebook sind in China gesperrt. Wer sie nutzen möchte, sollte vor der Einreise eine VPN-App installieren, da der Download im Land schwierig sein kann."
+    },
+    {
+      "question": "Wie reist man am besten innerhalb Chinas?",
+      "answer": "Das exzellente Hochgeschwindigkeitszugnetz verbindet die Städte schnell und komfortabel; für sehr große Distanzen bieten sich Inlandsflüge an. In den Städten sind Metro und Fahrdienste wie DiDi praktisch. Ein eigener Mietwagen ist nicht zu empfehlen, da ausländische Führerscheine nicht anerkannt werden."
+    },
+    {
+      "question": "Welche Währung gilt in China?",
+      "answer": "Die Währung ist der Renminbi, dessen Einheit Yuan (CNY) genannt wird. Im Alltag wird fast ausschließlich mobil bezahlt, weshalb die Einrichtung von Alipay oder WeChat Pay sehr wichtig ist."
+    },
+    {
+      "question": "Spricht man in China Englisch?",
+      "answer": "Englisch ist nur wenig verbreitet, vor allem außerhalb großer Hotels und touristischer Orte. Eine Übersetzungs-App, am besten mit Offline-Modus, sowie wichtige Adressen in chinesischer Schrift erleichtern die Verständigung erheblich."
+    },
+    {
+      "question": "Ist China für einen Familienurlaub geeignet?",
+      "answer": "Ja, China kann mit Kindern faszinierend sein, etwa durch die Pandas in Chengdu, die Chinesische Mauer und moderne Städte. Wegen Sprache, Distanzen und Bezahlsystemen erfordert eine Familienreise jedoch etwas mehr Planung."
+    },
+    {
+      "question": "Ist China ein sicheres Reiseland?",
+      "answer": "Die Kriminalität gegenüber Reisenden ist niedrig, und China gilt als sicher zu bereisen. Beachten sollte man jedoch besondere rechtliche Gegebenheiten und die aktuellen Hinweise des Auswärtigen Amts, etwa zu Registrierungspflichten bei privater Unterkunft."
+    },
+    {
+      "question": "Wie viele Tage sollte man für China einplanen?",
+      "answer": "Für die klassischen Höhepunkte Peking, Xi'an und Shanghai sollte man etwa 10 bis 14 Tage einplanen. Wer zusätzlich Naturregionen wie Guilin oder Zhangjiajie und die Pandas in Chengdu erleben möchte, plant 2 bis 3 Wochen ein."
+    }
+  ],
+  "seo_title": "China Urlaub: Chinesische Mauer, Reisetipps & beste Reisezeit",
+  "seo_description": "Dein China-Urlaub: die Chinesische Mauer, die Terrakotta-Armee, Peking und Shanghai, Guilin und die Pandas in Chengdu. Beste Reisezeit, visumfreie Einreise, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "China Rundreise buchen, Flug nach Peking oder Shanghai, Hotel China, Gruppenreise China, Chinesische Mauer Tour, visumfreie Einreise China",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "japan",
+    "vietnam",
+    "thailand"
+  ],
+  "llmo_entities": [
+    "China",
+    "Chinesische Mauer",
+    "Peking",
+    "Verbotene Stadt",
+    "Tian'anmen-Platz",
+    "Terrakotta-Armee",
+    "Xi'an",
+    "Shanghai",
+    "Bund",
+    "Guilin",
+    "Yangshuo",
+    "Li-Fluss",
+    "Zhangjiajie",
+    "Chengdu",
+    "Pandas",
+    "Renminbi"
+  ],
+  "llmo_answer_block": "China ist ein riesiges Reiseland in Ostasien, bekannt für die Chinesische Mauer, die Verbotene Stadt in Peking, die Terrakotta-Armee in Xi'an, die futuristische Megacity Shanghai, die Karstlandschaften bei Guilin und die Pandas in Chengdu. Für deutsche Reisende ist die Einreise derzeit visumfrei (bis 30 Tage, gültig bis Ende 2026), und dank des hervorragenden Hochgeschwindigkeitszugnetzes lässt sich das Land gut bereisen. Vorbereitung bei Sprache, mobilem Bezahlen mit Alipay/WeChat Pay und Internet (VPN) ist jedoch ratsam.",
+  "llmo_quick_answer": "China ist ein riesiges Reiseland mit der Chinesischen Mauer, der Terrakotta-Armee, Megastädten wie Shanghai und Pandas in Chengdu – für Deutsche derzeit visumfrei bis 30 Tage."
+}

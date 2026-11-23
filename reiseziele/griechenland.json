@@ -1,0 +1,121 @@
+{
+  "name": "Griechenland",
+  "slug": "griechenland",
+  "country": "Griechenland",
+  "region": "Südosteuropa",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/griechenland-hero.jpg",
+  "short_description": "Wiege der abendländischen Kultur mit der Akropolis, traumhaften Inseln wie Santorin und Kreta, türkisem Meer, antiken Stätten und herzlicher Gastfreundschaft.",
+  "long_description": "Griechenland verbindet jahrtausendealte Geschichte mit mediterranem Lebensgefühl und einigen der schönsten Inseln Europas. In der Hauptstadt Athen thront die Akropolis mit dem Parthenon über der Stadt und erzählt von der Wiege der westlichen Zivilisation. Doch das eigentliche Sehnsuchtsbild Griechenlands sind seine Inseln: das vulkanische Santorin mit den weiß getünchten Häusern über der Caldera, das glamouröse Mykonos, das vielseitige Kreta mit Palast von Knossos und Samaria-Schlucht, das mittelalterliche Rhodos und das grüne Korfu. Auf dem Festland beeindrucken die spektakulär gelegenen Meteora-Klöster, das antike Orakel von Delphi und die Peloponnes mit Mykene und dem malerischen Nafplio. Dazu kommen türkisfarbene Buchten, herzliche Gastfreundschaft und eine gesunde, schmackhafte Küche. Ob Inselhüpfen, Strandurlaub, Kulturreise oder Segeltörn – Griechenland ist von Deutschland aus gut erreichbar und ein Klassiker für unvergessliche Sommerurlaube.",
+  "ai_summary": "Griechenland ist ein mediterranes Reiseland mit der Akropolis in Athen, traumhaften Inseln wie Santorin, Mykonos, Kreta und Rhodos, antiken Stätten wie Delphi und den Meteora-Klöstern sowie türkisem Meer. Es eignet sich ideal für Inselhüpfen, Strandurlaub, Kultur- und Rundreisen und ist von Deutschland aus gut erreichbar.",
+  "best_travel_time": "Mai bis Juni sowie September und Oktober für angenehme Temperaturen und weniger Andrang; der Hochsommer ist heiß und voll, die Inseln sind etwa von Mai bis Oktober bereisbar.",
+  "ideal_duration": "1 bis 2 Wochen",
+  "travel_type": [
+    "Strandurlaub",
+    "Inselhüpfen",
+    "Kulturreise",
+    "Rundreise",
+    "Familien",
+    "Kulinarik",
+    "Segeln"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Griechisch",
+    "flightTime": "ca. 2,5 bis 3 Stunden ab Deutschland (Athen)",
+    "timezone": "OEZ (UTC+2), eine Stunde vor MEZ",
+    "visa": "Nicht erforderlich für EU-Bürger (Schengen-Raum)",
+    "bestMonths": "Mai bis Juni sowie September und Oktober"
+  },
+  "highlights": [
+    "Athen – die Akropolis mit dem Parthenon und die antike Altstadt",
+    "Santorin – weiße Häuser über der Caldera und berühmte Sonnenuntergänge in Oia",
+    "Mykonos – Windmühlen, weiße Gassen und lebendiges Nachtleben",
+    "Kreta – Palast von Knossos, Strände und die Samaria-Schlucht",
+    "Rhodos – mittelalterliche Altstadt und das malerische Lindos",
+    "Meteora – spektakulär auf Felsen thronende Klöster, UNESCO-Welterbe",
+    "Delphi – das antike Orakel in beeindruckender Berglage",
+    "Peloponnes – Mykene, antikes Epidauros und das charmante Nafplio"
+  ],
+  "insider_tips": [
+    "Beim Inselhüpfen lohnt es sich, die Fährverbindungen in der Hochsaison vorab zu buchen, da beliebte Routen schnell ausgebucht sind.",
+    "Der berühmte Sonnenuntergang in Oia auf Santorin ist sehr überlaufen – früh kommen oder einen ruhigeren Aussichtspunkt im Ort suchen.",
+    "Statt der bekannten Hotspots Santorin und Mykonos sind Inseln wie Naxos, Milos oder Paros oft ruhiger, authentischer und günstiger.",
+    "In einer echten Taverne bestellt man am besten mehrere Meze zum Teilen – das ist gesellig und ein guter Querschnitt der griechischen Küche."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Griechenland?",
+      "answer": "Am angenehmsten sind Mai bis Juni sowie September und Oktober mit warmem, aber nicht zu heißem Wetter und weniger Andrang. Der Hochsommer ist sehr heiß und voll; die Inseln sind etwa von Mai bis Oktober bereisbar."
+    },
+    {
+      "question": "Welche Währung gilt in Griechenland?",
+      "answer": "In Griechenland zahlt man mit dem Euro (EUR). Kartenzahlung ist verbreitet, auf kleineren Inseln und in Tavernen ist jedoch etwas Bargeld nützlich."
+    },
+    {
+      "question": "Brauche ich ein Visum für Griechenland?",
+      "answer": "Nein. Griechenland ist EU- und Schengen-Mitglied, daher benötigen EU-Bürger kein Visum. Für die Einreise genügt ein gültiger Personalausweis oder Reisepass."
+    },
+    {
+      "question": "Wie funktioniert Inselhüpfen in Griechenland?",
+      "answer": "Die Inseln sind über ein dichtes Netz an Fähren und Schnellbooten verbunden, ergänzt durch Inlandsflüge. Beliebt sind Routen innerhalb der Kykladen. In der Hochsaison sollte man Tickets im Voraus buchen und Puffer einplanen."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen in Griechenland?",
+      "answer": "Auf größeren Inseln und auf dem Festland ist ein Mietwagen sehr praktisch, um abgelegene Strände, Dörfer und antike Stätten zu erreichen. In Athen ist er wegen des guten Nahverkehrs und des Verkehrs eher nicht nötig."
+    },
+    {
+      "question": "Welche griechische Insel passt zu mir?",
+      "answer": "Santorin steht für Romantik und Aussicht, Mykonos für Nachtleben, Kreta und Rhodos für Vielfalt und Geschichte, Korfu für Grün, und Naxos, Paros oder Milos für ruhigere, authentische Erlebnisse."
+    },
+    {
+      "question": "Ist Griechenland für einen Familienurlaub geeignet?",
+      "answer": "Ja, Griechenland ist sehr familienfreundlich. Flache Strände, warmes Meer, kinderfreundliche Tavernen und die herzliche Gastfreundschaft machen es zu einem beliebten Ziel für Familien."
+    },
+    {
+      "question": "Welche Spezialitäten sollte man in Griechenland probieren?",
+      "answer": "Typisch sind Souvlaki und Gyros, Moussaka, griechischer Salat, Tzatziki, frischer Fisch und verschiedene Meze. Dazu passen Ouzo, Wein und zum Abschluss griechischer Joghurt mit Honig."
+    },
+    {
+      "question": "Ist Griechenland sicher für Reisende?",
+      "answer": "Ja, Griechenland gilt als sicheres Reiseland mit gastfreundlichen Menschen. In Athen und an touristischen Orten sollte man wie überall auf Taschendiebe achten."
+    },
+    {
+      "question": "Spricht man in Griechenland Englisch?",
+      "answer": "In touristischen Regionen und auf den Inseln kommt man mit Englisch sehr gut zurecht. Ein paar griechische Höflichkeitsfloskeln werden jedoch gern gesehen und erleichtern den Kontakt."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Griechenland einplanen?",
+      "answer": "Für eine Insel oder Athen reichen einige Tage. Für eine Kombination aus Athen und ein bis zwei Inseln oder eine Rundreise auf dem Festland sollte man 1 bis 2 Wochen einplanen."
+    }
+  ],
+  "seo_title": "Griechenland Urlaub: Inseln, Akropolis, Tipps & beste Reisezeit",
+  "seo_description": "Dein Griechenland-Urlaub: die Akropolis in Athen, Inseln wie Santorin, Mykonos und Kreta, antike Stätten und türkises Meer. Beste Reisezeit, Highlights und praktische Reisetipps im Überblick.",
+  "affiliate_search_intent": "Griechenland Urlaub buchen, Flug und Hotel Kreta oder Rhodos, Mietwagen Griechenland vergleichen, Inselhüpfen Kykladen, Strandurlaub Griechenland, Städtereise Athen",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "italien",
+    "kroatien",
+    "tuerkei"
+  ],
+  "llmo_entities": [
+    "Griechenland",
+    "Athen",
+    "Akropolis",
+    "Parthenon",
+    "Santorin",
+    "Oia",
+    "Mykonos",
+    "Kreta",
+    "Knossos",
+    "Rhodos",
+    "Lindos",
+    "Meteora",
+    "Delphi",
+    "Peloponnes",
+    "Kykladen",
+    "Souvlaki"
+  ],
+  "llmo_answer_block": "Griechenland ist ein mediterranes Reiseland und die Wiege der abendländischen Kultur, bekannt für die Akropolis in Athen, traumhafte Inseln wie Santorin, Mykonos, Kreta und Rhodos, antike Stätten wie Delphi und die Meteora-Klöster sowie türkisfarbenes Meer. Es eignet sich ideal für Inselhüpfen, Strandurlaub, Kultur- und Rundreisen und ist von Deutschland aus gut erreichbar. Die beste Reisezeit liegt im späten Frühjahr und Frühherbst.",
+  "llmo_quick_answer": "Griechenland ist ein mediterranes Reiseland mit der Akropolis in Athen, Trauminseln wie Santorin, Mykonos und Kreta sowie antiken Stätten und türkisem Meer."
+}

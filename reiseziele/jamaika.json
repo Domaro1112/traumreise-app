@@ -1,0 +1,125 @@
+{
+  "name": "Jamaika",
+  "slug": "jamaika",
+  "country": "Jamaika",
+  "region": "Karibik",
+  "continent": "Nordamerika",
+  "hero_image": "/images/destinations/jamaika-hero.jpg",
+  "short_description": "Lebensfrohe Karibikinsel mit Traumstränden, Reggae und Bob-Marley-Erbe, Wasserfällen, den grünen Blue Mountains und entspanntem Inselflair.",
+  "long_description": "Jamaika ist die Heimat des Reggae und steht wie kaum eine andere Karibikinsel für Lebensfreude, Rhythmus und entspanntes Inselgefühl. Türkisfarbenes Meer und Traumstrände wie der Seven Mile Beach in Negril oder der Doctor's Cave Beach in Montego Bay laden zum Baden ein, während komfortable All-Inclusive-Resorts in Ocho Rios, Negril und Montego Bay für sorglose Erholung sorgen. Naturhighlights wie die berühmten Dunn's River Falls, die man hinaufklettern kann, die leuchtende Luminous Lagoon und die grünen Blue Mountains mit ihrem weltbekannten Kaffee zeigen die landschaftliche Vielfalt der Insel. Kulturell ist Jamaika untrennbar mit Bob Marley und dem Reggae verbunden – sein Geburtsort Nine Mile und Kingston sind beliebte Pilgerstätten für Musikfans. Dazu kommen die würzige Jerk-Küche, herzliche Menschen und eine ansteckende Gelassenheit nach dem Motto „No Problem“. Jamaika ist ideal für Strandurlaub, Erholung, Flitterwochen und alle, die Karibik mit kulturellem Flair erleben möchten.",
+  "ai_summary": "Jamaika ist eine lebensfrohe Karibikinsel mit Traumstränden, dem Erbe von Reggae und Bob Marley, Wasserfällen wie den Dunn's River Falls und den grünen Blue Mountains. Sie bietet komfortable All-Inclusive-Resorts und entspanntes Inselflair und eignet sich ideal für Strandurlaub, Erholung und Flitterwochen.",
+  "best_travel_time": "Die beste Reisezeit ist die Trockenzeit von November bis April; von Juni bis November ist Hurrikan-Saison mit höherem Sturmrisiko, besonders zwischen August und Oktober.",
+  "ideal_duration": "1 bis 2 Wochen",
+  "travel_type": [
+    "Strandurlaub",
+    "All-Inclusive",
+    "Erholung",
+    "Kulturreise",
+    "Flitterwochen",
+    "Naturreise",
+    "Familien"
+  ],
+  "quick_facts": {
+    "currency": "Jamaika-Dollar (JMD); in touristischen Gebieten wird oft auch der US-Dollar akzeptiert",
+    "language": "Englisch (Amtssprache); umgangssprachlich das jamaikanische Patois",
+    "flightTime": "ca. 11 Stunden ab Deutschland, meist mit Zwischenstopp (Montego Bay)",
+    "timezone": "EST (UTC−5), sechs Stunden hinter MEZ; keine Zeitumstellung",
+    "visa": "Kein Visum nötig für touristische Aufenthalte (bis 90 Tage); vor der Einreise ist das Online-Einreiseformular auszufüllen",
+    "bestMonths": "November bis April"
+  },
+  "highlights": [
+    "Seven Mile Beach in Negril – langer Traumstrand mit Sonnenuntergängen",
+    "Dunn's River Falls bei Ocho Rios – berühmter Wasserfall zum Hinaufklettern",
+    "Blue Mountains – grüne Bergwelt und Heimat des weltbekannten Blue Mountain Coffee",
+    "Bob-Marley-Erbe – sein Geburtsort Nine Mile und das Bob-Marley-Museum in Kingston",
+    "Rick's Café in Negril – Klippenspringen und Sonnenuntergangsstimmung",
+    "Luminous Lagoon – nächtlich biolumineszent leuchtendes Wasser",
+    "Doctor's Cave Beach in Montego Bay – klares Wasser und Schnorcheln",
+    "Port Antonio und die Blue Lagoon – ruhigerer, ursprünglicher Inselosten"
+  ],
+  "insider_tips": [
+    "Jamaika ist die Wiege des Reggae – ein Besuch in Bob Marleys Geburtsort Nine Mile oder im Museum in Kingston lohnt sich für Musikfans besonders.",
+    "Unbedingt original jamaikanisches Jerk Chicken oder Jerk Pork probieren, am authentischsten an einfachen Ständen, etwa rund um Boston Bay.",
+    "Der US-Dollar wird vielerorts akzeptiert, das Wechselgeld erhält man jedoch meist in Jamaika-Dollar – kleine Beträge in Landeswährung sind praktisch.",
+    "Den Sonnenuntergang erlebt man stimmungsvoll im Rick's Café in Negril, wo Mutige von den Klippen ins Meer springen."
+  ],
+  "faq": [
+    {
+      "question": "Kann man Jamaika 2026 nach Hurrikan Melissa wieder bereisen?",
+      "answer": "Ja. Nach dem Hurrikan im Oktober 2025 lief der Wiederaufbau zügig, und der Tourismussektor wurde im Laufe des Jahres 2026 wieder voll betriebsbereit. Regionen wie Negril, Ocho Rios, Port Antonio und Kingston waren ohnehin kaum betroffen. Vor der Buchung lohnt ein Blick auf den aktuellen Status der jeweiligen Region und Hotels."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Jamaika?",
+      "answer": "Ideal ist die Trockenzeit von November bis April mit viel Sonne und angenehmer Luftfeuchtigkeit. Von Juni bis November ist Hurrikan-Saison, mit dem höchsten Risiko zwischen August und Oktober."
+    },
+    {
+      "question": "Brauche ich ein Visum für Jamaika?",
+      "answer": "Nein, für touristische Aufenthalte bis zu 90 Tagen benötigen deutsche Staatsbürger kein Visum. Vor der Einreise ist jedoch ein Online-Einreiseformular auszufüllen. Der Reisepass sollte für die Dauer des Aufenthalts gültig sein."
+    },
+    {
+      "question": "Welche Währung gilt in Jamaika?",
+      "answer": "Offizielle Währung ist der Jamaika-Dollar (JMD). In Resorts und touristischen Gebieten wird häufig auch der US-Dollar akzeptiert. Für Trinkgelder und kleinere Ausgaben empfiehlt sich etwas Bargeld."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen auf Jamaika?",
+      "answer": "Die meisten Urlauber bleiben im All-Inclusive-Resort und nutzen organisierte Ausflüge oder Transfers. Ein Mietwagen ist nicht nötig; wer dennoch fährt, sollte den Linksverkehr und den teils anspruchsvollen Straßenzustand beachten."
+    },
+    {
+      "question": "Ist Jamaika sicher für Reisende?",
+      "answer": "Die Touristenregionen und Resorts gelten als gut bereisbar. Allerdings hat Jamaika in einigen Gebieten eine hohe Kriminalität, weshalb das Auswärtige Amt von nicht notwendigen Reisen in bestimmte Regionen abrät. Vor der Reise sollte man die aktuellen Reise- und Sicherheitshinweise prüfen und sich vorwiegend in den bekannten Resortgebieten bewegen."
+    },
+    {
+      "question": "Kann man auf Jamaika das Leitungswasser trinken?",
+      "answer": "In Resorts und größeren Orten gilt das Leitungswasser meist als aufbereitet und trinkbar. Zur Sicherheit greifen viele Reisende dennoch auf abgefülltes Wasser zurück, besonders in ländlichen Gebieten."
+    },
+    {
+      "question": "Welche Impfungen werden für Jamaika empfohlen?",
+      "answer": "Vorgeschrieben sind in der Regel keine Impfungen. Empfohlen werden Standardimpfungen sowie je nach Reiseart Hepatitis A. Für eine individuelle Beratung sollte man rechtzeitig den Hausarzt oder ein Tropeninstitut aufsuchen."
+    },
+    {
+      "question": "Ist Jamaika für einen Familienurlaub geeignet?",
+      "answer": "Ja, viele Resorts sind familienfreundlich und bieten flache Strände, Pools und Animation. Ausflüge wie die Dunn's River Falls oder Bootstouren sorgen für zusätzliche Abwechslung für Kinder."
+    },
+    {
+      "question": "Was sollte man kulinarisch auf Jamaika probieren?",
+      "answer": "Typisch sind Jerk Chicken und Jerk Pork, Ackee and Saltfish (das Nationalgericht), Curry-Gerichte, frischer Fisch sowie tropische Früchte. Dazu passen der Blue Mountain Coffee und der berühmte jamaikanische Rum."
+    },
+    {
+      "question": "Eignet sich Jamaika für Flitterwochen?",
+      "answer": "Ja, mit romantischen Stränden, stimmungsvollen Sonnenuntergängen und Resorts speziell für Paare zählt Jamaika zu den beliebten Zielen für Flitterwochen und Hochzeitsreisen."
+    },
+    {
+      "question": "Wie viel Zeit sollte man für Jamaika einplanen?",
+      "answer": "Für einen erholsamen Strandurlaub sind 1 bis 2 Wochen ideal. Wer zusätzlich Natur, Wasserfälle und das musikalische Erbe der Insel erleben möchte, profitiert von der längeren Variante mit mehreren Ausflügen."
+    }
+  ],
+  "seo_title": "Jamaika Urlaub: Strände, Reggae, Reisetipps & beste Reisezeit",
+  "seo_description": "Dein Jamaika-Urlaub: Traumstrände wie der Seven Mile Beach, die Dunn's River Falls, das Reggae- und Bob-Marley-Erbe und die Blue Mountains. Beste Reisezeit, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "Jamaika All-Inclusive buchen, Flug und Hotel Montego Bay, Pauschalreise Karibik, Strandurlaub Negril oder Ocho Rios, Flitterwochen Jamaika",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "dominikanische-republik",
+    "kuba",
+    "mexiko"
+  ],
+  "llmo_entities": [
+    "Jamaika",
+    "Negril",
+    "Seven Mile Beach",
+    "Montego Bay",
+    "Ocho Rios",
+    "Dunn's River Falls",
+    "Blue Mountains",
+    "Bob Marley",
+    "Nine Mile",
+    "Kingston",
+    "Reggae",
+    "Rick's Café",
+    "Luminous Lagoon",
+    "Port Antonio",
+    "Jerk Chicken",
+    "Jamaika-Dollar"
+  ],
+  "llmo_answer_block": "Jamaika ist eine lebensfrohe Karibikinsel und die Heimat des Reggae, bekannt für Traumstrände wie den Seven Mile Beach in Negril, die Dunn's River Falls, das Erbe von Bob Marley und die grünen Blue Mountains mit ihrem berühmten Kaffee. Die Insel bietet komfortable All-Inclusive-Resorts und entspanntes Inselflair und eignet sich ideal für Strandurlaub, Erholung und Flitterwochen. Die beste Reisezeit ist die Trockenzeit von November bis April.",
+  "llmo_quick_answer": "Jamaika ist eine lebensfrohe Karibikinsel mit Traumstränden, Reggae- und Bob-Marley-Erbe, Wasserfällen und den Blue Mountains, am besten von November bis April."
+}

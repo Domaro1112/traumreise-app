@@ -26,7 +26,7 @@ const FAQS = [
   },
   {
     q: 'Wie persönlich ist die Auswertung wirklich?',
-    a: 'Die Auswertung basiert auf deinen Antworten zu Stimmung, Reisedauer, Budget und Interessen. Die KI erstellt daraus ein Reiseprofil und schlägt Ziele vor, die dazu passen — nicht willkürliche Pauschalangebote.',
+    a: 'Die Auswertung basiert auf deinen Antworten zu Stimmung, Reisedauer, Budget und Interessen. Daraus entsteht ein Reiseprofil, das wir mit unserer redaktionell gepflegten Auswahl an Reisezielen abgleichen — nicht willkürliche Pauschalangebote.',
   },
 ];
 

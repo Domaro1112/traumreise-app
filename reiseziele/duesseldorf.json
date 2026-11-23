@@ -1,0 +1,119 @@
+{
+  "name": "Düsseldorf",
+  "slug": "duesseldorf",
+  "country": "Deutschland",
+  "region": "Nordrhein-Westfalen",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/duesseldorf-hero.jpg",
+  "short_description": "Mondäne Rhein-Metropole mit Luxus-Shopping auf der Kö, lebendiger Altstadt, kreativem MedienHafen und großem Japanviertel.",
+  "long_description": "Düsseldorf, die Landeshauptstadt von Nordrhein-Westfalen, verbindet rheinische Lebensfreude mit großstädtischer Eleganz. Die berühmte Königsallee zählt zu den exklusivsten Einkaufsstraßen Europas, während die historische Altstadt als „längste Theke der Welt“ mit ihren dicht gedrängten Kneipen und dem typischen Altbier für ausgelassene Stimmung sorgt. Architektonisch beeindruckt der MedienHafen mit den geschwungenen Gehry-Bauten, und vom Rheinturm öffnet sich ein weiter Blick über Stadt und Strom. Düsseldorf ist zudem für seine große japanische Gemeinde bekannt – rund um die Immermannstraße findet man authentische Restaurants, Bäckereien und Geschäfte. Mit hochkarätigen Kunstsammlungen, der schönen Rheinuferpromenade und dem barocken Schloss Benrath ist die Stadt ein ideales Ziel für einen abwechslungsreichen Städtetrip.",
+  "ai_summary": "Düsseldorf ist die Landeshauptstadt von Nordrhein-Westfalen und eine mondäne Rhein-Metropole mit Luxus-Shopping auf der Königsallee, lebendiger Altstadt, dem modernen MedienHafen und einem großen Japanviertel. Die gut erreichbare Stadt eignet sich ideal für einen kompakten Städtetrip rund um Kultur, Kulinarik und Shopping.",
+  "best_travel_time": "Mai bis September für mildes Wetter und Außengastronomie; im Februar lockt der Straßenkarneval, im Juli die große Rheinkirmes.",
+  "ideal_duration": "2 bis 3 Tage",
+  "travel_type": [
+    "Städtereise",
+    "Kulturreise",
+    "Shopping",
+    "Kulinarik",
+    "Paare",
+    "Wochenendtrip"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Deutsch",
+    "flightTime": "Innerdeutsch per Bahn oder Auto erreichbar; internationaler Flughafen Düsseldorf (DUS) mit Verbindungen in ganz Europa",
+    "timezone": "MEZ (UTC+1)",
+    "visa": "Nicht erforderlich (Inland für Deutsche, EU- und Schengen-Raum)",
+    "bestMonths": "Mai bis September"
+  },
+  "highlights": [
+    "Königsallee (die „Kö“) – exklusive Einkaufsstraße mit Wassergraben und Luxusboutiquen",
+    "Altstadt – die „längste Theke der Welt“ mit zahlreichen Brauhäusern und Altbier",
+    "MedienHafen – moderne Architektur mit den markanten Gehry-Bauten",
+    "Rheinturm – Aussichtsplattform mit Panoramablick über Stadt und Rhein",
+    "Rheinuferpromenade – beliebte Flaniermeile am Wasser zwischen Altstadt und Hafen",
+    "Japanviertel rund um die Immermannstraße – authentische Restaurants und Geschäfte",
+    "Schloss Benrath – barockes Lustschloss mit weitläufigem Park",
+    "Kunstsammlung Nordrhein-Westfalen (K20 / K21) – bedeutende moderne Kunst"
+  ],
+  "insider_tips": [
+    "In der Altstadt unbedingt ein frisch gezapftes Altbier und den Kräuterlikör Killepitsch probieren – am besten direkt am Tresen eines traditionellen Brauhauses.",
+    "Im Japanviertel an der Immermannstraße gibt es authentische Ramen, Sushi und japanische Süßwaren wie sonst kaum anderswo in Deutschland.",
+    "Den Sonnenuntergang am besten am MedienHafen oder vom Rheinturm aus genießen, wenn sich die Glasfassaden im Licht spiegeln.",
+    "Bei gutem Wetter laden die Rheinwiesen in Oberkassel zu einem entspannten Picknick mit Blick auf die Altstadt-Silhouette ein."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Düsseldorf?",
+      "answer": "Am angenehmsten ist Düsseldorf von Mai bis September, wenn die Außengastronomie und die Rheinpromenade zum Verweilen einladen. Für besondere Erlebnisse bieten sich der Karneval im Februar und die Rheinkirmes im Juli an."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Düsseldorf einplanen?",
+      "answer": "Für die wichtigsten Sehenswürdigkeiten, einen Altstadtbummel und etwas Shopping reichen 2 bis 3 Tage gut aus. Wer auch Ausflüge ins Umland oder ins benachbarte Köln plant, kann gern länger bleiben."
+    },
+    {
+      "question": "Braucht man in Düsseldorf ein Auto?",
+      "answer": "Nein, ein Auto ist nicht nötig. Düsseldorf verfügt über ein sehr gutes Netz aus U-Bahn, Straßenbahn und S-Bahn, und die Innenstadt lässt sich bequem zu Fuß erkunden. Ein Mietwagen lohnt sich nur für Ausflüge ins weitere Umland."
+    },
+    {
+      "question": "Was ist die „längste Theke der Welt“?",
+      "answer": "So wird die Düsseldorfer Altstadt genannt, weil sich dort auf engem Raum mehrere Hundert Kneipen, Bars und Brauhäuser aneinanderreihen. Berühmt ist sie für das obergärige Düsseldorfer Altbier."
+    },
+    {
+      "question": "Was kann man in Düsseldorf kostenlos unternehmen?",
+      "answer": "Kostenlos sind unter anderem ein Spaziergang über die Rheinuferpromenade, das Flanieren auf der Königsallee, der Park von Schloss Benrath sowie das Bummeln durch die Altstadt und den MedienHafen."
+    },
+    {
+      "question": "Wie kommt man vom Flughafen in die Innenstadt?",
+      "answer": "Der Flughafen Düsseldorf (DUS) ist per S-Bahn in rund 10 bis 15 Minuten mit dem Hauptbahnhof verbunden. Alternativ stehen der SkyTrain zur S-Bahn-Station sowie Taxis und Fahrdienste zur Verfügung."
+    },
+    {
+      "question": "Welche Spezialitäten sollte man in Düsseldorf probieren?",
+      "answer": "Typisch sind das dunkle Düsseldorfer Altbier, der Kräuterlikör Killepitsch, rheinische Gerichte wie Halve Hahn und Reibekuchen sowie die japanische Küche im Viertel rund um die Immermannstraße."
+    },
+    {
+      "question": "Eignet sich Düsseldorf für einen Familienurlaub?",
+      "answer": "Ja, Düsseldorf ist familienfreundlich. Der Aquazoo, der Rheinpark, Schloss Benrath mit Naturkundemuseum und die Rheinkirmes im Sommer bieten viel Abwechslung für Kinder."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Düsseldorf und Köln?",
+      "answer": "Die beiden Rheinstädte gelten als freundschaftliche Rivalen. Düsseldorf ist für Altbier, Mode und das mondäne Flair der Kö bekannt, Köln für Kölsch, den Dom und seinen Karneval. Beide liegen nur etwa eine halbe Stunde voneinander entfernt."
+    },
+    {
+      "question": "Warum gibt es in Düsseldorf ein Japanviertel?",
+      "answer": "Düsseldorf beherbergt eine der größten japanischen Gemeinden Europas, da sich viele japanische Unternehmen hier angesiedelt haben. Rund um die Immermannstraße entstand dadurch ein authentisches Viertel mit Restaurants, Geschäften und einem jährlichen Japan-Tag."
+    },
+    {
+      "question": "Ist Düsseldorf ein gutes Ziel zum Shoppen?",
+      "answer": "Ja, Düsseldorf zählt zu den besten Shopping-Zielen Deutschlands. Die Königsallee steht für Luxusmarken, während die Schadowstraße und die Altstadt eine große Auswahl an gängigen Geschäften bieten."
+    }
+  ],
+  "seo_title": "Düsseldorf Städtereise: Sehenswürdigkeiten, Tipps & beste Reisezeit",
+  "seo_description": "Dein Städtetrip nach Düsseldorf: Königsallee, Altstadt, MedienHafen und Japanviertel. Die besten Sehenswürdigkeiten, Insidertipps und die ideale Reisezeit im Überblick.",
+  "affiliate_search_intent": "Städtereise Düsseldorf buchen, Hotel Düsseldorf Altstadt oder Kö, Flug nach Düsseldorf, Stadtführungen und Aktivitäten Düsseldorf, Wochenendtrip Rhein",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "koeln",
+    "hamburg",
+    "muenchen"
+  ],
+  "llmo_entities": [
+    "Düsseldorf",
+    "Nordrhein-Westfalen",
+    "Königsallee",
+    "Altstadt Düsseldorf",
+    "MedienHafen",
+    "Rheinturm",
+    "Altbier",
+    "Japanviertel",
+    "Immermannstraße",
+    "Schloss Benrath",
+    "Rheinuferpromenade",
+    "Kunstsammlung NRW",
+    "Rheinkirmes",
+    "Killepitsch",
+    "Flughafen Düsseldorf"
+  ],
+  "llmo_answer_block": "Düsseldorf ist die Landeshauptstadt von Nordrhein-Westfalen und eine elegante Rhein-Metropole, bekannt für die Luxus-Einkaufsstraße Königsallee, die lebendige Altstadt mit ihrem Altbier, den modernen MedienHafen und ein großes Japanviertel. Die Stadt ist sehr gut erreichbar und eignet sich ideal für einen kompakten Städtetrip rund um Shopping, Kultur und Kulinarik. Innerhalb der Stadt kommt man bequem mit dem dichten Nahverkehrsnetz voran.",
+  "llmo_quick_answer": "Düsseldorf ist die Rhein-Metropole und Landeshauptstadt von NRW, bekannt für die Königsallee, die Altstadt mit Altbier und den MedienHafen."
+}

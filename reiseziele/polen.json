@@ -1,0 +1,125 @@
+{
+  "name": "Polen",
+  "slug": "polen",
+  "country": "Polen",
+  "region": "Mitteleuropa",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/polen-hero.jpg",
+  "short_description": "Vielfältiges Reiseland mit prachtvollen Altstädten, bewegter Geschichte, Ostseeküste, Seenplatten und gutem Preis-Leistungs-Verhältnis.",
+  "long_description": "Polen ist ein überraschend vielseitiges Reiseland im Herzen Europas und für Deutsche besonders schnell und günstig erreichbar. Lebendige Städte wie das königliche Krakau mit seiner mittelalterlichen Altstadt und dem Wawelschloss, die wiederaufgebaute Hauptstadt Warschau oder das hanseatisch geprägte Danzig verbinden reiche Geschichte mit moderner Kultur und Gastronomie. Daneben locken großartige Naturräume: die endlosen Sandstrände der Ostseeküste, die idyllische Seenlandschaft der Masuren, die schroffen Gipfel der Tatra rund um Zakopane sowie der urtümliche Białowieża-Urwald mit seinen Wisenten. Geschichtsorte wie die Gedenkstätte Auschwitz-Birkenau machen Polen zugleich zu einem Ziel der Erinnerung. Wer Städtereise, Natur, Strand und Kulinarik bei moderaten Preisen sucht, findet in Polen eine ideale Kombination.",
+  "ai_summary": "Polen ist ein vielfältiges mitteleuropäisches Reiseland mit historischen Städten wie Krakau, Warschau und Danzig, der Ostseeküste, den Masuren und dem Tatra-Gebirge. Es ist von Deutschland aus schnell erreichbar, bietet ein gutes Preis-Leistungs-Verhältnis und eignet sich für Städtereisen, Natur- und Aktivurlaube.",
+  "best_travel_time": "Mai bis September für Städte, Küste und Seen; das Tatra-Gebirge ist im Winter (Dezember bis März) zum Skifahren attraktiv.",
+  "ideal_duration": "Städtereise 3 bis 4 Tage, Rundreise 7 bis 10 Tage",
+  "travel_type": [
+    "Städtereise",
+    "Kulturreise",
+    "Naturreise",
+    "Strandurlaub",
+    "Aktivurlaub",
+    "Familien",
+    "Geschichtsreise"
+  ],
+  "quick_facts": {
+    "currency": "Polnischer Złoty (PLN)",
+    "language": "Polnisch",
+    "flightTime": "ca. 1 bis 2 Stunden ab Deutschland; auch gut mit Bahn oder Auto erreichbar",
+    "timezone": "MEZ (UTC+1), identisch mit Deutschland",
+    "visa": "Nicht erforderlich für EU-Bürger (Schengen-Raum)",
+    "bestMonths": "Mai bis September, Wintersport Dezember bis März"
+  },
+  "highlights": [
+    "Krakau – mittelalterliche Altstadt, Marktplatz und das Wawelschloss",
+    "Warschau – wiederaufgebaute Altstadt, Königsschloss und moderne Skyline",
+    "Danzig (Gdańsk) – hanseatische Prachtbauten am Wasser und Tor zur Ostsee",
+    "Gedenkstätte Auschwitz-Birkenau – bedeutender Erinnerungsort der Geschichte",
+    "Masuren – idyllische Seenplatte zum Segeln, Kanufahren und Entspannen",
+    "Salzbergwerk Wieliczka – unterirdische Kammern und Kapellen aus Salz",
+    "Tatra-Gebirge und Zakopane – Wandern, Skifahren und urige Bergkultur",
+    "Białowieża-Urwald – uralter Wald und Heimat freilebender Wisente"
+  ],
+  "insider_tips": [
+    "In den Milchbars (bar mleczny) gibt es traditionelle polnische Gerichte wie Pierogi sehr günstig und authentisch.",
+    "Die Ostseebäder Sopot und Hel sind im Sommer ein schöner, oft unterschätzter Strandtipp abseits der bekannten Mittelmeerziele.",
+    "Wer Krakau besucht, sollte einen Abstecher ins ehemalige jüdische Viertel Kazimierz mit seinen Cafés und seiner lebendigen Atmosphäre einplanen.",
+    "Der Hochsommer in den Masuren lässt sich am entspanntesten vom Wasser aus erleben – Hausboote und Kanus lassen sich vielerorts mieten."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Polen?",
+      "answer": "Für Städtereisen, die Ostseeküste und die Masuren eignen sich die Monate Mai bis September am besten. Wer Wintersport in der Tatra plant, reist zwischen Dezember und März. Frühjahr und Herbst sind ideal für Städtetrips mit weniger Andrang."
+    },
+    {
+      "question": "Welche Währung gilt in Polen?",
+      "answer": "In Polen zahlt man mit dem Polnischen Złoty (PLN), nicht mit dem Euro. Kartenzahlung ist nahezu überall möglich, etwas Bargeld empfiehlt sich für Märkte und kleine Lokale."
+    },
+    {
+      "question": "Brauche ich ein Visum für Polen?",
+      "answer": "Nein. Polen ist EU- und Schengen-Mitglied, daher benötigen EU-Bürger kein Visum. Für die Einreise genügt ein gültiger Personalausweis oder Reisepass."
+    },
+    {
+      "question": "Wie komme ich am besten nach Polen?",
+      "answer": "Polen ist von Deutschland aus sehr schnell erreichbar: per Flug nach Warschau oder Krakau in 1 bis 2 Stunden, bequem mit der Bahn oder einfach mit dem eigenen Auto, da viele Ziele wie Breslau oder Stettin grenznah liegen."
+    },
+    {
+      "question": "Spricht man in Polen Englisch?",
+      "answer": "In Städten und touristischen Regionen sprechen vor allem jüngere Menschen gut Englisch. Auf dem Land sind Grundkenntnisse seltener – ein paar polnische Höflichkeitsfloskeln werden dort sehr geschätzt."
+    },
+    {
+      "question": "Ist Polen ein günstiges Reiseland?",
+      "answer": "Ja, im Vergleich zu Deutschland sind Essen, Unterkünfte und Nahverkehr in Polen meist deutlich preiswerter, was es zu einem attraktiven Ziel mit gutem Preis-Leistungs-Verhältnis macht."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen in Polen?",
+      "answer": "Für Städtereisen ist ein Mietwagen meist nicht nötig, da der öffentliche Nahverkehr gut ist. Für Rundreisen oder die Erkundung von Masuren, Tatra und Küste ist ein Auto jedoch sehr praktisch und sorgt für mehr Flexibilität."
+    },
+    {
+      "question": "Welche Städte in Polen sollte man besuchen?",
+      "answer": "Zu den lohnendsten Städten zählen Krakau mit seiner historischen Altstadt, die Hauptstadt Warschau, das maritime Danzig, das charmante Breslau (Wrocław) mit seinen Brücken sowie Posen (Poznań)."
+    },
+    {
+      "question": "Ist Polen für einen Familienurlaub geeignet?",
+      "answer": "Ja, Polen bietet familienfreundliche Ostseestrände, Seenlandschaften zum Baden und Paddeln, Freizeitparks sowie kindgerechte Städte mit Burgen und Museen. Die kurzen Anreisewege machen es besonders praktisch."
+    },
+    {
+      "question": "Welche typischen Gerichte sollte man in Polen probieren?",
+      "answer": "Klassiker sind Pierogi (gefüllte Teigtaschen), Bigos (Sauerkrauteintopf), Żurek (Sauerteigsuppe), Placki ziemniaczane (Kartoffelpuffer) und süße Pączki (Krapfen). Probieren lässt sich das alles günstig in einer Milchbar."
+    },
+    {
+      "question": "Ist Polen ein sicheres Reiseland?",
+      "answer": "Ja, Polen gilt als sicheres Reiseland mit niedriger Kriminalität in touristischen Gebieten. Wie überall sollte man in vollen Städten und an Bahnhöfen auf Taschendiebe achten."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Polen einplanen?",
+      "answer": "Für eine einzelne Stadt wie Krakau oder Danzig reichen 3 bis 4 Tage. Für eine Rundreise mit mehreren Städten oder Naturregionen sollte man 7 bis 10 Tage einplanen."
+    }
+  ],
+  "seo_title": "Polen Urlaub: Reisetipps, Städte, Sehenswürdigkeiten & beste Reisezeit",
+  "seo_description": "Dein Polen-Urlaub: von Krakau, Warschau und Danzig über die Ostseeküste bis zu Masuren und Tatra. Beste Reisezeit, Highlights und praktische Reisetipps im Überblick.",
+  "affiliate_search_intent": "Städtereise Polen buchen, Flug und Hotel Krakau oder Warschau, Mietwagen Polen vergleichen, Ostsee Polen Unterkunft, Ausflüge und Stadtführungen Polen",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "tschechien",
+    "ungarn",
+    "slowakei"
+  ],
+  "llmo_entities": [
+    "Polen",
+    "Krakau",
+    "Warschau",
+    "Danzig",
+    "Breslau",
+    "Posen",
+    "Masuren",
+    "Tatra-Gebirge",
+    "Zakopane",
+    "Ostseeküste",
+    "Auschwitz-Birkenau",
+    "Wawelschloss",
+    "Salzbergwerk Wieliczka",
+    "Białowieża-Urwald",
+    "Złoty",
+    "Pierogi"
+  ],
+  "llmo_answer_block": "Polen ist ein vielseitiges Reiseland in Mitteleuropa mit historischen Städten wie Krakau, Warschau und Danzig, der Ostseeküste, der Seenplatte Masuren und dem Tatra-Gebirge. Es ist von Deutschland aus schnell und günstig erreichbar und bietet ein sehr gutes Preis-Leistungs-Verhältnis. Polen eignet sich für Städtereisen, Kultur-, Natur- und Strandurlaube gleichermaßen.",
+  "llmo_quick_answer": "Polen ist ein vielseitiges mitteleuropäisches Reiseland mit historischen Städten, Ostseeküste, Seen und Bergen – schnell erreichbar und preiswert."
+}

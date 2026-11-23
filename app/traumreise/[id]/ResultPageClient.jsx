@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import TravelResultView from '@/components/finder/TravelResultView';
 import TravelOfferQuickLinks from '@/components/finder/TravelOfferQuickLinks';
@@ -105,40 +105,8 @@ export default function ResultPageClient({
   const [gatePassed,       setGatePassed]       = useState(!needsEmailGate);
   const [newsletterEmail,  setNewsletterEmail]  = useState(null);
   const [showNewsBanner,   setShowNewsBanner]   = useState(false);
-  const [results,          setResults]          = useState(initialResults);
-  const [packingList,      setPackingList]       = useState(initialPackingList);
-  const [phase2Loading,    setPhase2Loading]    = useState(false);
-  const phase2Triggered = useRef(false);
-
-  // Phase 2 fetch — only runs after the email gate is passed
-  useEffect(() => {
-    if (!gatePassed) return;
-    const phase2Complete = (results?.[0]?.hotels?.length ?? 0) > 0;
-    if (phase2Complete || !sessionId || phase2Triggered.current) return;
-
-    phase2Triggered.current = true;
-    setPhase2Loading(true);
-
-    fetch('/api/ai/travel-details', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ id: sessionId }),
-    })
-      .then(res => { if (!res.ok) throw new Error(`HTTP ${res.status}`); return res.json(); })
-      .then(data => {
-        if (!data.destinations?.length) return;
-        setResults(prev =>
-          prev.map((dest, i) => {
-            const p2 = data.destinations[i];
-            if (!p2) return dest;
-            return { ...dest, hotels: p2.hotels ?? dest.hotels, activities: p2.activities ?? dest.activities, itinerary: p2.itinerary ?? dest.itinerary };
-          }),
-        );
-        if (data.packingList) setPackingList(data.packingList);
-      })
-      .catch(err => console.error('[ResultPageClient] Phase 2 fetch error:', err))
-      .finally(() => setPhase2Loading(false));
-  }, [sessionId, gatePassed]); // eslint-disable-line react-hooks/exhaustive-deps
+  const results     = initialResults;
+  const packingList = initialPackingList;
 
   // ── Gate: render before results ────────────────────────────────────────
   if (!gatePassed) {
@@ -167,7 +135,7 @@ export default function ResultPageClient({
         surprise={surprise}
         duration={duration}
         budget={budget}
-        phase2Loading={phase2Loading}
+        phase2Loading={false}
         onReset={() => router.push('/')}
         onEmail={() => setShowEmail(true)}
         renderAfterHero={<TravelOfferQuickLinks results={results} />}

@@ -1,0 +1,116 @@
+{
+  "name": "Amsterdam",
+  "slug": "amsterdam",
+  "country": "Niederlande",
+  "region": "Nordholland",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/amsterdam-hero.jpg",
+  "short_description": "Charmante Grachtenmetropole mit UNESCO-Kanälen, Weltklasse-Museen, Fahrradkultur, dem Anne-Frank-Haus, Tulpen und entspanntem Lebensgefühl.",
+  "long_description": "Amsterdam ist eine der charmantesten Städte Europas und vereint historisches Flair mit weltoffener Lebensart. Das Herz der Stadt bildet der UNESCO-geschützte Grachtengürtel, dessen malerische Kanäle, schmale Giebelhäuser und unzählige Brücken man am besten bei einer Bootsfahrt oder vom Fahrrad aus erlebt. Kulturell spielt Amsterdam in der Weltliga: Das Rijksmuseum zeigt Meisterwerke von Rembrandt und Vermeer, das Van-Gogh-Museum die weltgrößte Sammlung des Malers, und das bewegende Anne-Frank-Haus erinnert an die Geschichte. Im gemütlichen Jordaan-Viertel reihen sich Cafés, Boutiquen und Hofgärten aneinander, während der Vondelpark zum Entspannen einlädt. Der schwimmende Blumenmarkt und die nahen Tulpenfelder samt dem Keukenhof verzaubern besonders im Frühling. Amsterdam ist berühmt für seine Fahrradkultur, sein liberales Lebensgefühl und seine Gemütlichkeit. Von Deutschland aus schnell per Bahn oder Flug erreichbar, ist die Stadt ein ideales Ziel für einen Städtetrip übers Wochenende.",
+  "ai_summary": "Amsterdam ist eine charmante Grachtenmetropole mit dem UNESCO-Kanalgürtel, Weltklasse-Museen wie dem Rijksmuseum und dem Van-Gogh-Museum, dem Anne-Frank-Haus, ausgeprägter Fahrradkultur und Tulpen. Von Deutschland aus schnell erreichbar, eignet sie sich ideal für einen Städtetrip übers Wochenende.",
+  "best_travel_time": "April bis September mit mildem Wetter ist ideal; im April locken Tulpenblüte und der bunte King's Day, und der Dezember ist mit Lichtern und Weihnachtsstimmung besonders reizvoll.",
+  "ideal_duration": "2 bis 4 Tage",
+  "travel_type": [
+    "Städtereise",
+    "Kulturreise",
+    "Wochenendtrip",
+    "Radreise",
+    "Kulinarik",
+    "Familien"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Niederländisch; Englisch und oft auch Deutsch sind sehr weit verbreitet",
+    "flightTime": "ca. 1 bis 1,5 Stunden ab Deutschland; aus dem Westen bequem per ICE oder Auto erreichbar",
+    "timezone": "MEZ (UTC+1), identisch mit Deutschland",
+    "visa": "Nicht erforderlich für EU-Bürger (Schengen-Raum)",
+    "bestMonths": "April bis September"
+  },
+  "highlights": [
+    "Grachtengürtel – die UNESCO-Kanäle mit Giebelhäusern und Brücken",
+    "Rijksmuseum – Meisterwerke von Rembrandt und Vermeer",
+    "Van-Gogh-Museum – die weltgrößte Sammlung des Malers",
+    "Anne-Frank-Haus – bewegende Gedenkstätte und Museum",
+    "Jordaan-Viertel – gemütliche Gassen, Cafés und Boutiquen",
+    "Vondelpark – grüne Oase im Zentrum der Stadt",
+    "Bloemenmarkt – der schwimmende Blumenmarkt",
+    "Keukenhof und Tulpenfelder – farbenprächtige Blütenpracht im Frühling"
+  ],
+  "insider_tips": [
+    "Eine Grachtenfahrt gehört dazu; die Stadt selbst erkundet man am besten zu Fuß oder wie die Einheimischen mit dem Fahrrad.",
+    "Tickets für das Anne-Frank-Haus und das Van-Gogh-Museum sollten unbedingt weit im Voraus online mit Zeitfenster gebucht werden, da sie schnell ausverkauft sind.",
+    "Im Frühling (Ende März bis Mitte Mai) lohnt ein Tagesausflug zum Blumenpark Keukenhof und zu den Tulpenfeldern im Umland.",
+    "Auf den Radwegen sollte man nicht laufen – sie sind den zahlreichen Radfahrern vorbehalten; für den Nahverkehr ist eine OV-Chipkaart oder kontaktloses Bezahlen praktisch."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Amsterdam?",
+      "answer": "Am angenehmsten ist es von April bis September. Im April locken Tulpenblüte und der farbenfrohe King's Day, der Sommer bietet langes Tageslicht, und der Dezember verzaubert mit weihnachtlicher Stimmung. Regen ist ganzjährig möglich."
+    },
+    {
+      "question": "Wie reist man nach Amsterdam an?",
+      "answer": "Aus Westdeutschland ist Amsterdam bequem per ICE in wenigen Stunden erreichbar; der Bahnhof liegt zentral. Auch Flüge zum Airport Schiphol sind kurz, und von dort fährt ein Zug in rund 15 Minuten ins Zentrum."
+    },
+    {
+      "question": "Braucht man in Amsterdam ein Auto?",
+      "answer": "Nein, im Gegenteil. Amsterdam ist eine Fahrrad- und Fußgängerstadt mit gutem Nahverkehr aus Tram, Bus und Metro. Autofahren ist wegen enger Gassen, teurer Parkplätze und Grachten eher hinderlich."
+    },
+    {
+      "question": "Sollte man Museumstickets im Voraus buchen?",
+      "answer": "Unbedingt. Besonders das Anne-Frank-Haus und das Van-Gogh-Museum sind sehr gefragt und vergeben Zeitfenster, die oft Wochen im Voraus ausverkauft sind. Wer spontan kommt, riskiert, keinen Einlass zu bekommen."
+    },
+    {
+      "question": "Wann blühen die Tulpen rund um Amsterdam?",
+      "answer": "Die Tulpensaison reicht etwa von Ende März bis Mitte Mai. In dieser Zeit hat auch der berühmte Blumenpark Keukenhof geöffnet, und die Tulpenfelder im Umland verwandeln die Landschaft in ein Farbenmeer."
+    },
+    {
+      "question": "Wie funktioniert das mit den Coffeeshops?",
+      "answer": "In den Niederlanden wird der Verkauf kleiner Mengen Cannabis in lizenzierten Coffeeshops geduldet, ist aber an Regeln und Altersgrenzen gebunden. In Teilen der Amsterdamer Innenstadt gelten zudem Einschränkungen, etwa beim Konsum auf der Straße. Es bleibt eine persönliche Entscheidung im rechtlichen Rahmen."
+    },
+    {
+      "question": "Ist Amsterdam für einen Familienurlaub geeignet?",
+      "answer": "Ja, Amsterdam ist familienfreundlich. Grachtenfahrten, der Vondelpark, das wissenschaftliche Mitmachmuseum NEMO, der Artis-Zoo und Ausflüge zum Keukenhof bieten viel für Kinder. Vieles lässt sich gut zu Fuß oder per Boot erleben."
+    },
+    {
+      "question": "Spricht man in Amsterdam Deutsch oder Englisch?",
+      "answer": "Englisch wird in Amsterdam nahezu überall ausgezeichnet gesprochen, und auch Deutsch ist vielen geläufig. Die Verständigung ist für deutsche Reisende daher problemlos."
+    },
+    {
+      "question": "Kann man das berühmte Rotlichtviertel besuchen?",
+      "answer": "Ja, das historische Viertel De Wallen ist auch tagsüber als Teil der Altstadt sehenswert. Es gelten Verhaltensregeln, etwa ein Fotografierverbot gegenüber den Fenstern. Respektvolles Verhalten wird erwartet."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Amsterdam einplanen?",
+      "answer": "Für die wichtigsten Highlights eignen sich 2 bis 3 Tage. Wer mehrere Museen, Viertel und einen Ausflug ins Umland verbinden möchte, kann gut 4 Tage bleiben."
+    }
+  ],
+  "seo_title": "Amsterdam Städtereise: Grachten, Museen & beste Reisezeit",
+  "seo_description": "Deine Amsterdam-Reise: die UNESCO-Grachten, das Rijksmuseum und Van-Gogh-Museum, das Anne-Frank-Haus und die Tulpen. Beste Reisezeit, Anreise, Highlights und praktische Tipps im Überblick.",
+  "affiliate_search_intent": "Amsterdam Städtereise buchen, Hotel Amsterdam, Amsterdam Wochenende, Grachtenfahrt Amsterdam, Van Gogh Museum Tickets, Keukenhof Ausflug, Zug nach Amsterdam",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "holland",
+    "rotterdam",
+    "bruessel"
+  ],
+  "llmo_entities": [
+    "Amsterdam",
+    "Niederlande",
+    "Nordholland",
+    "Grachten",
+    "Grachtengürtel",
+    "Rijksmuseum",
+    "Van-Gogh-Museum",
+    "Anne-Frank-Haus",
+    "Jordaan",
+    "Vondelpark",
+    "Bloemenmarkt",
+    "Keukenhof",
+    "Tulpen",
+    "Schiphol",
+    "King's Day",
+    "Euro"
+  ],
+  "llmo_answer_block": "Amsterdam ist eine charmante Grachtenmetropole mit dem UNESCO-geschützten Kanalgürtel, Weltklasse-Museen wie dem Rijksmuseum und dem Van-Gogh-Museum, dem bewegenden Anne-Frank-Haus, ausgeprägter Fahrradkultur und im Frühling den Tulpen samt Keukenhof. Mit ihrem liberalen Lebensgefühl und der Gemütlichkeit eignet sie sich ideal für einen Städtetrip übers Wochenende und ist von Deutschland aus schnell per ICE oder Flug erreichbar. Die beste Reisezeit liegt zwischen April und September, Tickets für die Top-Museen sollte man vorab buchen.",
+  "llmo_quick_answer": "Amsterdam ist eine charmante Grachtenmetropole mit UNESCO-Kanälen, Weltklasse-Museen, Fahrradkultur, dem Anne-Frank-Haus und Tulpen – ideal für einen Wochenendtrip."
+}

@@ -1,5 +1,5 @@
 import {
-  Plane, PenLine, Cpu, MapPin, Hotel,
+  Plane, PenLine, ListChecks, MapPin, Hotel,
   ExternalLink, Info, CheckCircle, Brain,
   Sparkles, ArrowRight, HelpCircle, Shield,
   X, Check, Users, Search,
@@ -12,7 +12,7 @@ import FaqAccordion from './FaqAccordion';
 import HowItWorksImage from './HowItWorksImage';
 
 export const metadata = {
-  title: 'So funktioniert ApeAround | KI-Reiseplanung einfach erklärt',
+  title: 'So funktioniert ApeAround | Reiseplanung einfach erklärt',
   description:
     'Erfahre, wie ApeAround aus deinen Wünschen ein persönliches Reiseprofil erstellt und passende Reiseideen, Hotels und Anbieter vorschlägt.',
 };
@@ -66,7 +66,7 @@ const howToJsonLd = {
       '@type': 'HowToStep',
       position: 2,
       name: 'Reiseprofil entsteht',
-      text: 'Die KI erstellt aus deinen Antworten ein persönliches Reiseprofil.',
+      text: 'Aus deinen Antworten entsteht ein persönliches Reiseprofil.',
     },
     {
       '@type': 'HowToStep',
@@ -138,7 +138,7 @@ export default function SoFunktionierts() {
                   border: '1px solid rgba(14,165,233,0.22)',
                 }}>
                   <Sparkles size={12} strokeWidth={2} />
-                  KI-Reiseplanung
+                  Reisefinder
                 </div>
 
                 <h1 style={{
@@ -168,7 +168,7 @@ export default function SoFunktionierts() {
                   marginBottom: '36px',
                   maxWidth: '520px',
                 }}>
-                  Unser KI-Reiseplaner verbindet deine Wünsche, dein Reisegefühl und passende Reiseideen zu einem persönlichen Vorschlag — schnell, einfach und inspirierend.
+                  Unser Reisefinder verbindet deine Wünsche, dein Reisegefühl und passende Reiseideen zu einem persönlichen Vorschlag — schnell, einfach und inspirierend.
                 </p>
 
                 <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
@@ -186,7 +186,7 @@ export default function SoFunktionierts() {
               {/* Hero Image */}
               <HowItWorksImage
                 src="/images/how-it-works/reisemonkey-ki-reiseplanung.png"
-                alt="ApeAround KI-Reiseplanung – Dein persönliches Reiseprofil entsteht"
+                alt="ApeAround Reisefinder – Dein persönliches Reiseprofil entsteht"
                 loading="eager"
                 style={{ maxWidth: '500px', width: '100%', margin: '0 auto', aspectRatio: '4/3' }}
               />
@@ -235,9 +235,9 @@ export default function SoFunktionierts() {
                 {
                   n: '2',
                   img: '/images/how-it-works/step-2-analyse.png',
-                  imgAlt: 'Schritt 2: KI-Analyse erstellt Reiseprofil',
+                  imgAlt: 'Schritt 2: Dein Reiseprofil entsteht',
                   title: 'ApeAround erstellt daraus dein persönliches Reiseprofil',
-                  text: 'Die KI erkennt Muster in deinen Antworten und ordnet sie einem persönlichen Reisetyp zu — zum Beispiel Erholung, Abenteuer, Kultur, Familie, Romantik oder Natur.',
+                  text: 'Deine Antworten werden einem persönlichen Reisetyp zugeordnet — zum Beispiel Erholung, Abenteuer, Kultur, Familie, Romantik oder Natur.',
                 },
                 {
                   n: '3',
@@ -327,7 +327,7 @@ export default function SoFunktionierts() {
                 maxWidth: '600px',
                 margin: '0 auto',
               }}>
-                ApeAround kombiniert deine Angaben nicht zu einer starren Pauschalreise, sondern zu einer persönlichen Orientierung. Die KI bewertet, welche Reiseziele, Unterkunftsarten und Reiseideen besonders gut zu deinem Profil passen.
+                ApeAround kombiniert deine Angaben nicht zu einer starren Pauschalreise, sondern zu einer persönlichen Orientierung. Jedes Reiseziel aus unserer Auswahl wird nach Stimmung, Reisezeit, Dauer und Budget bewertet – die passendsten zeigen wir dir zuerst.
               </p>
             </div>
 
@@ -342,7 +342,7 @@ export default function SoFunktionierts() {
               {[
                 { n: '1', Icon: PenLine,     label: 'Deine Antworten',        color: '#0EA5E9', bg: '#EFF6FF',  border: '#BFDBFE' },
                 { n: '2', Icon: Users,        label: 'Persönliches Reiseprofil', color: '#0284C7', bg: '#F0F9FF',  border: '#BAE6FD' },
-                { n: '3', Icon: Cpu,          label: 'KI-Analyse',             color: '#06B6D4', bg: '#ECFEFF',  border: '#A5F3FC' },
+                { n: '3', Icon: ListChecks,   label: 'Abgleich mit Reisezielen', color: '#06B6D4', bg: '#ECFEFF',  border: '#A5F3FC' },
                 { n: '4', Icon: MapPin,       label: 'Top-Reisevorschläge',    color: '#0EA5E9', bg: '#EFF6FF',  border: '#BFDBFE' },
                 { n: '5', Icon: Hotel,        label: 'Hotels & Anbieter',      color: '#0369A1', bg: '#F0F9FF',  border: '#BAE6FD' },
                 { n: '6', Icon: CheckCircle,  label: 'Entscheidung treffen',   color: '#059669', bg: '#F0FDF4',  border: '#BBF7D0' },

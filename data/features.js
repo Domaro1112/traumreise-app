@@ -1,9 +1,9 @@
 export const features = [
   {
-    id: 'ai',
-    icon: 'Bot',
-    title: 'KI-gestützte Empfehlung',
-    description: 'Wir analysieren DEINE Wünsche und finden DEIN perfektes Reiseziel.',
+    id: 'match',
+    icon: 'Compass',
+    title: 'Persönliche Empfehlung',
+    description: 'Wir gleichen DEINE Wünsche mit unseren Reisezielen ab und zeigen dir, was wirklich passt.',
   },
   {
     id: 'allinone',
@@ -35,10 +35,10 @@ export const howItWorksSteps = [
   },
   {
     step: 2,
-    icon: 'Cpu',
+    icon: 'Compass',
     title: 'Wir finden dein perfektes Ziel',
     description:
-      'Wir analysieren deine Angaben und finden das Reiseziel, das wirklich zu dir passt.',
+      'Wir gleichen deine Angaben mit unseren Reisezielen ab und zeigen dir, was wirklich zu dir passt.',
   },
   {
     step: 3,
@@ -59,6 +59,6 @@ export const partners = [
 
 export const trustBadges = [
   { icon: 'Gift', label: '100% kostenlos' },
-  { icon: 'Bot', label: 'KI-gestützt' },
+  { icon: 'Compass', label: 'Persönlich abgestimmt' },
   { icon: 'ShieldCheck', label: 'Datenschutz garantiert' },
 ];

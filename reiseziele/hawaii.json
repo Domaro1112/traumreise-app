@@ -1,0 +1,118 @@
+{
+  "name": "Hawaii",
+  "slug": "hawaii",
+  "country": "Vereinigte Staaten (USA)",
+  "region": "Hawaii (Pazifik)",
+  "continent": "Ozeanien",
+  "hero_image": "/images/destinations/hawaii-hero.jpg",
+  "short_description": "Tropisches Inselparadies im Pazifik mit Traumstränden, aktiven Vulkanen, üppigem Regenwald, Surfwellen, Walen und der herzlichen Aloha-Kultur.",
+  "long_description": "Hawaii ist der Inbegriff des tropischen Paradieses und zugleich der einzige US-Bundesstaat mitten im Pazifik. Der Archipel besteht aus mehreren Hauptinseln, die jeweils ihren eigenen Charakter haben. Oʻahu ist mit der Hauptstadt Honolulu, dem berühmten Waikiki Beach und der Gedenkstätte Pearl Harbor das pulsierende Zentrum, während die Nordküste im Winter zum Mekka der Surfer wird. Maui begeistert mit der kurvenreichen Road to Hana und dem Sonnenaufgang über dem Vulkan Haleakalā. Auf Big Island, der jüngsten Insel, kann man im Volcanoes-Nationalpark die aktiven Vulkane Kīlauea und Mauna Loa erleben. Das „Garteninsel“ genannte Kauaʻi verzaubert mit der dramatischen Nā Pali Coast und dem farbenprächtigen Waimea Canyon. Dazu kommen exzellente Schnorchel- und Tauchreviere, die Beobachtung von Buckelwalen im Winter und die herzliche Aloha-Kultur mit Hula und Luau-Festen. Hawaii ist ideal für Strand-, Natur-, Aktiv- und Flitterwochenreisen – die Anreise aus Europa ist allerdings lang.",
+  "ai_summary": "Hawaii ist ein tropisches Inselparadies im Pazifik und US-Bundesstaat mit Traumstränden, aktiven Vulkanen, üppigem Regenwald, Surfwellen, Walen und der Aloha-Kultur. Die Hauptinseln Oʻahu, Maui, Big Island und Kauaʻi haben je eigenen Charakter. Es eignet sich ideal für Strand-, Natur- und Flitterwochenreisen; für die Einreise gelten die USA-Bestimmungen mit ESTA, die Anreise aus Europa ist lang.",
+  "best_travel_time": "Hawaii ist ganzjährig tropisch warm. Am trockensten ist es von April bis Oktober. Von Dezember bis April kann man Buckelwale beobachten, und im Winter rollen an den Nordküsten die großen Surfwellen.",
+  "ideal_duration": "1 bis 2 Wochen, oft mit zwei Inseln",
+  "travel_type": [
+    "Strandurlaub",
+    "Naturreise",
+    "Inselhüpfen",
+    "Wandern",
+    "Surfen",
+    "Flitterwochen",
+    "Familien",
+    "Abenteuer"
+  ],
+  "quick_facts": {
+    "currency": "US-Dollar (USD)",
+    "language": "Englisch und Hawaiianisch",
+    "flightTime": "Kein Direktflug aus Deutschland; mit Zwischenstopps insgesamt rund 18 bis 22 Stunden, meist über das US-Festland",
+    "timezone": "Hawaii-Aleutian Standard Time (UTC−10), ohne Sommerzeit; rund 11 bis 12 Stunden hinter MEZ",
+    "visa": "Wie für die USA: kein Visum für Touristen (bis 90 Tage), aber elektronischer Reisepass und kostenpflichtige ESTA-Genehmigung erforderlich",
+    "bestMonths": "April bis Oktober"
+  },
+  "highlights": [
+    "Waikiki Beach und Honolulu auf Oʻahu – Strandleben und Großstadtflair",
+    "Pearl Harbor – die historische Gedenkstätte auf Oʻahu",
+    "Road to Hana auf Maui – kurvenreiche Panoramastraße durch den Regenwald",
+    "Haleakalā – Sonnenaufgang über dem gewaltigen Vulkankrater auf Maui",
+    "Volcanoes-Nationalpark auf Big Island – die aktiven Vulkane Kīlauea und Mauna Loa",
+    "Nā Pali Coast auf Kauaʻi – dramatische, unzugängliche Steilküste",
+    "Waimea Canyon auf Kauaʻi – der „Grand Canyon des Pazifiks“",
+    "Walbeobachtung und Aloha-Kultur – Buckelwale im Winter, Hula und Luau"
+  ],
+  "insider_tips": [
+    "Jede Insel hat ihren eigenen Charakter – wer mehrere erleben will, verbindet sie per kurzem Inlandsflug; Oʻahu für Stadt und Strand, Maui und Big Island für Vulkane, Kauaʻi für wilde Natur.",
+    "Auf den Inseln ist ein Mietwagen nahezu unverzichtbar, etwa für die Road to Hana oder die Vulkane; der Sonnenaufgang am Haleakalā erfordert eine Reservierung.",
+    "Zum Schutz der Korallenriffe ist nur „reef-safe“ Sonnencreme erlaubt – Produkte mit Oxybenzon sind verboten; beim Schnorcheln Korallen niemals berühren.",
+    "Die hawaiianische Kultur und Natur verdienen Respekt: heilige Stätten meiden, Wildtiere wie Mönchsrobben und Meeresschildkröten nicht stören und Abstand halten."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich für Hawaii ein Visum?",
+      "answer": "Hawaii ist ein US-Bundesstaat, daher gelten die Einreisebestimmungen der USA: Für touristische Aufenthalte bis 90 Tage ist kein Visum nötig, aber ein elektronischer Reisepass und eine vorab beantragte, kostenpflichtige ESTA-Genehmigung. Details finden sich auf der USA-Seite."
+    },
+    {
+      "question": "Wie reist man nach Hawaii an?",
+      "answer": "Es gibt keine Direktflüge aus Deutschland. Üblich ist die Anreise mit ein bis zwei Zwischenstopps, meist über das US-Festland wie Los Angeles oder San Francisco. Insgesamt sollte man mit rund 18 bis 22 Stunden Reisezeit rechnen."
+    },
+    {
+      "question": "Welche Insel sollte man wählen?",
+      "answer": "Das hängt von den Interessen ab: Oʻahu bietet Stadt, Strand und Geschichte, Maui Vulkane und Walbeobachtung, Big Island aktive Vulkane und Vielfalt, Kauaʻi wilde Natur. Wer Zeit hat, kombiniert zwei Inseln per Inlandsflug."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Hawaii?",
+      "answer": "Hawaii ist ganzjährig warm. Am trockensten ist es von April bis Oktober. Wer Buckelwale sehen möchte, reist zwischen Dezember und April; im Winter sind zudem die großen Surfwellen an den Nordküsten beeindruckend."
+    },
+    {
+      "question": "Welche Währung gilt auf Hawaii?",
+      "answer": "Als US-Bundesstaat zahlt man mit dem US-Dollar (USD). Kartenzahlung ist nahezu überall üblich, und wie auf dem Festland kommen Steuern erst an der Kasse hinzu, während Trinkgeld erwartet wird."
+    },
+    {
+      "question": "Braucht man auf Hawaii einen Mietwagen?",
+      "answer": "Ja, auf den meisten Inseln ist ein Mietwagen praktisch unverzichtbar, um Strände, Vulkane und Aussichtspunkte zu erreichen. Nur in Waikiki auf Oʻahu kommt man zur Not auch ohne Auto zurecht."
+    },
+    {
+      "question": "Kann man auf Hawaii Wale und Meerestiere sehen?",
+      "answer": "Ja, von Dezember bis April ziehen Buckelwale durch die Gewässer, besonders vor Maui. Beim Schnorcheln trifft man oft auf bunte Fische, Meeresschildkröten und mancherorts Delfine. Stets Abstand halten und Tiere nicht berühren."
+    },
+    {
+      "question": "Kann man die Vulkane Hawaiis besuchen?",
+      "answer": "Ja, der Hawaii-Volcanoes-Nationalpark auf Big Island ermöglicht eindrucksvolle Einblicke in die aktive Vulkanlandschaft rund um Kīlauea. Die Aktivität schwankt; aktuelle Bedingungen und Sicherheitshinweise sollte man vorab prüfen."
+    },
+    {
+      "question": "Ist Hawaii für Familien und Flitterwochen geeignet?",
+      "answer": "Ja, beides. Familien schätzen die Strände, Schnorchelreviere und Naturerlebnisse, während Paare die traumhaften Kulissen, Wasserfälle und Sonnenuntergänge für Flitterwochen lieben. Das Angebot reicht von einfach bis luxuriös."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Hawaii einplanen?",
+      "answer": "Wegen der langen Anreise und des Jetlags lohnen sich mindestens 10 Tage. Wer zwei Inseln in Ruhe erleben möchte, plant 2 Wochen ein, um Reisestress zu vermeiden."
+    }
+  ],
+  "seo_title": "Hawaii Urlaub: Inseln, Vulkane, Strände & beste Reisezeit",
+  "seo_description": "Dein Hawaii-Urlaub: Traumstrände, aktive Vulkane, die Road to Hana, Walbeobachtung und die Aloha-Kultur auf Oʻahu, Maui, Big Island und Kauaʻi. Beste Reisezeit, Anreise, Einreise und Tipps im Überblick.",
+  "affiliate_search_intent": "Hawaii Reise buchen, Flug nach Honolulu, Mietwagen Hawaii, Hotel Waikiki, Inselhüpfen Hawaii, Hawaii Rundreise, Flitterwochen Hawaii",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "amerika",
+    "australien",
+    "neuseeland"
+  ],
+  "llmo_entities": [
+    "Hawaii",
+    "Oʻahu",
+    "Honolulu",
+    "Waikiki Beach",
+    "Pearl Harbor",
+    "Maui",
+    "Road to Hana",
+    "Haleakalā",
+    "Big Island",
+    "Volcanoes-Nationalpark",
+    "Kīlauea",
+    "Kauaʻi",
+    "Nā Pali Coast",
+    "Waimea Canyon",
+    "Aloha",
+    "US-Dollar"
+  ],
+  "llmo_answer_block": "Hawaii ist ein tropisches Inselparadies im Pazifik und der einzige US-Bundesstaat im Ozean, mit Traumstränden, aktiven Vulkanen, üppigem Regenwald, Surfwellen, Walen und der herzlichen Aloha-Kultur. Die Hauptinseln Oʻahu, Maui, Big Island und Kauaʻi haben jeweils ihren eigenen Charakter und lassen sich per Inlandsflug verbinden. Es eignet sich ideal für Strand-, Natur-, Aktiv- und Flitterwochenreisen, am besten von April bis Oktober; für die Einreise gelten die USA-Bestimmungen mit ESTA, und die Anreise aus Europa ist lang.",
+  "llmo_quick_answer": "Hawaii ist ein tropisches Inselparadies im Pazifik mit Traumstränden, aktiven Vulkanen, Surfwellen und der Aloha-Kultur – als US-Bundesstaat mit ESTA-Einreise."
+}

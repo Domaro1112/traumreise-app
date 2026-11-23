@@ -1,0 +1,120 @@
+{
+  "name": "Japan",
+  "slug": "japan",
+  "country": "Japan",
+  "region": "Ostasien",
+  "continent": "Asien",
+  "hero_image": "/images/destinations/japan-hero.jpg",
+  "short_description": "Faszinierendes Land zwischen Tradition und Hightech mit Tokios Neonlichtern, Kyotos Tempeln, dem Fuji, Kirschblüte, Sushi und der Hochgeschwindigkeit der Shinkansen.",
+  "long_description": "Japan verbindet wie kein anderes Land jahrhundertealte Tradition mit modernster Technologie und einer einzigartigen Ästhetik. Die Hauptstadt Tokio überwältigt mit Neonlichtern, der berühmten Kreuzung in Shibuya, den Vierteln Shinjuku und Akihabara sowie dem traditionellen Senso-ji-Tempel in Asakusa. Das kaiserliche Kyoto ist das kulturelle Herz mit zahllosen Tempeln, dem leuchtend roten Torii-Tunnel von Fushimi Inari, dem goldenen Pavillon Kinkaku-ji und dem Geisha-Viertel Gion. Über allem thront der heilige Vulkan Fuji. In Hiroshima erinnert der Friedenspark, während das vorgelagerte Miyajima mit seinem im Wasser stehenden Torii verzaubert. Nara begeistert mit freilaufenden Rehen und Osaka mit seiner legendären Streetfood-Szene. Die Kirschblüte im Frühling und das leuchtende Herbstlaub gehören zu den schönsten Naturschauspielen der Welt. Dank der pünktlichen Shinkansen-Hochgeschwindigkeitszüge reist man mühelos durchs Land. Japan ist ideal für Kultur-, Städte- und Kulinarikreisen – sicher, sauber und überaus gastfreundlich.",
+  "ai_summary": "Japan ist ein faszinierendes Reiseland in Ostasien zwischen Tradition und Hightech mit Tokio, den Tempeln Kyotos, dem Fuji, der Kirschblüte, exzellenter Küche und den Shinkansen-Hochgeschwindigkeitszügen. Es ist visumfrei, sehr sicher und gut zu bereisen und eignet sich ideal für Kultur-, Städte- und Kulinarikreisen.",
+  "best_travel_time": "Frühling (März bis Mai) zur Kirschblüte und Herbst (Oktober bis November) zur Laubfärbung sind ideal; der Sommer ist heiß und schwül, der Winter eignet sich für Wintersport und heiße Quellen.",
+  "ideal_duration": "2 bis 3 Wochen",
+  "travel_type": [
+    "Rundreise",
+    "Kulturreise",
+    "Städtereise",
+    "Kulinarik",
+    "Naturreise",
+    "Abenteuer"
+  ],
+  "quick_facts": {
+    "currency": "Japanischer Yen (JPY)",
+    "language": "Japanisch",
+    "flightTime": "ca. 11 bis 12 Stunden ab Deutschland im Direktflug (Tokio)",
+    "timezone": "JST (UTC+9), acht Stunden vor MEZ",
+    "visa": "Kein Visum nötig für touristische Aufenthalte bis 90 Tage",
+    "bestMonths": "März bis Mai sowie Oktober und November"
+  },
+  "highlights": [
+    "Tokio – Shibuya-Kreuzung, Shinjuku, Akihabara und der Senso-ji-Tempel",
+    "Kyoto – Tempel, Fushimi Inari, der goldene Pavillon Kinkaku-ji und das Geisha-Viertel Gion",
+    "Berg Fuji – der heilige Vulkan und das Wahrzeichen Japans",
+    "Hiroshima und Miyajima – Friedenspark und das im Wasser stehende Torii",
+    "Nara – Tempel und freilaufende Rehe im Park",
+    "Osaka – legendäre Streetfood-Szene rund um Dotonbori",
+    "Kirschblüte und Herbstlaub – spektakuläre Naturschauspiele",
+    "Shinkansen – die pünktlichen Hochgeschwindigkeitszüge"
+  ],
+  "insider_tips": [
+    "Für längere Bahnstrecken kann sich der Japan Rail Pass lohnen; für den Nahverkehr nutzt man eine aufladbare IC-Karte wie Suica oder Pasmo.",
+    "Wer die Kirschblüte (Sakura) erleben möchte, reist meist Ende März bis April; die Laubfärbung im Herbst ist im November am schönsten – beide Zeiten sind beliebt und sollten früh gebucht werden.",
+    "In Japan gibt es kein Trinkgeld, und auf Etikette wird Wert gelegt: in vielen Innenräumen Schuhe ausziehen, in Zügen leise sein und Müll oft selbst mitnehmen.",
+    "Die Convenience Stores (Konbini) bieten überraschend gutes und günstiges Essen rund um die Uhr und sind ideale Anlaufstellen für unterwegs."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich ein Visum für Japan?",
+      "answer": "Nein, deutsche Staatsbürger benötigen für touristische Aufenthalte bis zu 90 Tagen kein Visum. Der Reisepass sollte für die Dauer des Aufenthalts gültig sein."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Japan?",
+      "answer": "Am schönsten sind das Frühjahr mit der Kirschblüte (Ende März bis April) und der Herbst mit der Laubfärbung (Oktober bis November). Der Sommer ist heiß und schwül, der Winter bietet Wintersport und stimmungsvolle heiße Quellen."
+    },
+    {
+      "question": "Welche Währung gilt in Japan?",
+      "answer": "Gezahlt wird mit dem Japanischen Yen (JPY). Kartenzahlung ist in Städten verbreitet, dennoch ist Bargeld weiterhin wichtig, besonders in kleineren Lokalen, Tempeln und auf dem Land. Geld hebt man gut an Automaten in Convenience Stores ab."
+    },
+    {
+      "question": "Wie reist man am besten innerhalb Japans?",
+      "answer": "Das hervorragende Zugnetz mit den Shinkansen-Hochgeschwindigkeitszügen ist das beste Verkehrsmittel zwischen den Städten. In den Metropolen nutzt man Metro und Nahverkehr mit einer IC-Karte. Ein eigener Mietwagen ist meist nicht nötig."
+    },
+    {
+      "question": "Lohnt sich der Japan Rail Pass?",
+      "answer": "Das hängt von der Route ab. Wer längere Strecken wie Tokio–Kyoto–Hiroshima fährt, kann mit dem Japan Rail Pass sparen. Für kürzere oder regionale Reisen sind Einzeltickets oder regionale Pässe oft günstiger – am besten vorab durchrechnen."
+    },
+    {
+      "question": "Spricht man in Japan Englisch?",
+      "answer": "In großen Städten und an touristischen Orten kommt man mit Englisch meist zurecht, und vieles ist beschildert. Abseits davon sind die Kenntnisse begrenzt; eine Übersetzungs-App und etwas Geduld helfen weiter."
+    },
+    {
+      "question": "Ist Japan ein teures Reiseland?",
+      "answer": "Japan ist nicht so teuer wie sein Ruf. Unterkünfte und Bahnfahrten können kosten, doch Essen ist oft erschwinglich – etwa in Ramen-Läden, Konbini oder Standlokalen. Mit guter Planung lässt sich Japan gut budgetieren."
+    },
+    {
+      "question": "Was sollte man bei der Etikette beachten?",
+      "answer": "Trinkgeld ist unüblich und kann sogar als unhöflich gelten. In vielen Innenräumen zieht man die Schuhe aus, in Zügen verhält man sich leise, und beim Essen sowie in Tempeln gelten bestimmte Höflichkeitsregeln."
+    },
+    {
+      "question": "Ist Japan für einen Familienurlaub geeignet?",
+      "answer": "Ja, Japan ist sehr sicher, sauber und familienfreundlich. Themenparks, Tierbegegnungen wie die Rehe in Nara, moderne Städte und kindgerechtes Essen begeistern Familien. Die gute Infrastruktur macht das Reisen unkompliziert."
+    },
+    {
+      "question": "Was hat es mit den Onsen auf sich?",
+      "answer": "Onsen sind heiße Quellenbäder und ein fester Bestandteil der japanischen Kultur. Vor dem Baden wäscht man sich gründlich, gebadet wird ohne Badekleidung. In manchen Onsen sind Tätowierungen eingeschränkt; im Zweifel vorher nachfragen."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Japan einplanen?",
+      "answer": "Für die klassische Route Tokio–Kyoto–Osaka reichen etwa 10 bis 14 Tage. Wer zusätzlich Hiroshima, den Norden oder den Süden erleben möchte, sollte 2 bis 3 Wochen einplanen."
+    }
+  ],
+  "seo_title": "Japan Urlaub: Tokio, Kyoto, Kirschblüte & beste Reisezeit",
+  "seo_description": "Dein Japan-Urlaub: Tokio, die Tempel Kyotos, der Berg Fuji, die Kirschblüte und die Shinkansen-Züge. Beste Reisezeit, Visum, Highlights und praktische Reisetipps im Überblick.",
+  "affiliate_search_intent": "Japan Rundreise buchen, Flug nach Tokio, Hotel Tokio oder Kyoto, Japan Rail Pass, Kirschblüte Reise Japan, Rundreise Japan",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "china",
+    "suedkorea",
+    "vietnam"
+  ],
+  "llmo_entities": [
+    "Japan",
+    "Tokio",
+    "Shibuya",
+    "Senso-ji",
+    "Kyoto",
+    "Fushimi Inari",
+    "Kinkaku-ji",
+    "Gion",
+    "Berg Fuji",
+    "Hiroshima",
+    "Miyajima",
+    "Nara",
+    "Osaka",
+    "Kirschblüte",
+    "Shinkansen",
+    "Japanischer Yen"
+  ],
+  "llmo_answer_block": "Japan ist ein faszinierendes Reiseland in Ostasien zwischen Tradition und Hightech mit der Metropole Tokio, den Tempeln des kaiserlichen Kyoto, dem heiligen Berg Fuji, der berühmten Kirschblüte, exzellenter Küche und den pünktlichen Shinkansen-Hochgeschwindigkeitszügen. Das Land ist visumfrei, sehr sicher und sauber und eignet sich ideal für Kultur-, Städte- und Kulinarikreisen. Die beste Reisezeit ist das Frühjahr zur Kirschblüte und der Herbst zur Laubfärbung.",
+  "llmo_quick_answer": "Japan ist ein Land zwischen Tradition und Hightech mit Tokio, den Tempeln Kyotos, dem Fuji, der Kirschblüte und den Shinkansen-Zügen, visumfrei bereisbar."
+}

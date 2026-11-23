@@ -1,0 +1,114 @@
+{
+  "name": "Kings-Canyon-Nationalpark",
+  "slug": "kings-canyon",
+  "country": "Vereinigte Staaten (USA)",
+  "region": "Kalifornien (Sierra Nevada)",
+  "continent": "Nordamerika",
+  "hero_image": "/images/destinations/kings-canyon-hero.jpg",
+  "short_description": "Eindrucksvoller, ruhiger Nationalpark in Kaliforniens Sierra Nevada mit einer der tiefsten Schluchten Nordamerikas, Mammutbäumen und dem berühmten General Grant Tree.",
+  "long_description": "Der Kings-Canyon-Nationalpark in der kalifornischen Sierra Nevada ist der ruhigere, wildere Nachbar des Sequoia-Nationalparks, mit dem er gemeinsam verwaltet wird. Sein Namensgeber ist der Kings Canyon, eine vom Kings River geformte Schlucht, die mit über zweitausend Metern Tiefe zu den tiefsten Nordamerikas zählt. Im Norden liegt der Grant Grove mit dem General Grant Tree, dem zweitgrößten Baum der Erde, der wegen seiner Würde auch „Nation's Christmas Tree“ genannt wird. Die spektakuläre Kings Canyon Scenic Byway führt von den Mammutbaumwäldern hinab in die gewaltige Schlucht bis nach Cedar Grove, dem Ausgangspunkt vieler Wanderungen wie zur Zumwalt Meadow oder zu den Roaring River Falls. Anders als die bekannteren Parks Yosemite oder Sequoia ist Kings Canyon oft angenehm wenig besucht und vermittelt ein Gefühl echter Wildnis. Da die Straße in die Schlucht im Winter gesperrt ist, eignet sich der Park vor allem für die Sommermonate. Kings Canyon ist ein lohnendes Ziel für Natur-, Wander- und Fotoreisen.",
+  "ai_summary": "Der Kings-Canyon-Nationalpark in Kaliforniens Sierra Nevada beeindruckt mit einer der tiefsten Schluchten Nordamerikas, Mammutbaumwäldern und dem General Grant Tree, dem zweitgrößten Baum der Erde. Ruhiger als die Nachbarparks und gemeinsam mit Sequoia verwaltet, eignet er sich ideal für Natur- und Wanderreisen; für die Einreise gelten die USA-Bestimmungen mit ESTA.",
+  "best_travel_time": "Mai bis Oktober sind ideal. Der Grant-Grove-Bereich ist ganzjährig zugänglich, während die Straße in die eigentliche Schlucht nach Cedar Grove meist nur von etwa Mai bis November geöffnet und im Winter gesperrt ist.",
+  "ideal_duration": "1 bis 2 Tage, oft mit dem Sequoia-Nationalpark kombiniert",
+  "travel_type": [
+    "Naturreise",
+    "Nationalparks",
+    "Roadtrip",
+    "Wandern",
+    "Fotoreise",
+    "Familien"
+  ],
+  "quick_facts": {
+    "currency": "US-Dollar (USD)",
+    "language": "Englisch",
+    "flightTime": "Kein Direktflug zum Park; ab Deutschland ca. 11 bis 12 Stunden in die USA plus Anschluss/Fahrt. Nächste Flughäfen: Fresno (FAT, rund 1 bis 1,5 Stunden Fahrt) und Los Angeles (LAX, rund 4 Stunden)",
+    "timezone": "Pacific Time (UTC−8; im Sommer UTC−7), rund neun Stunden hinter MEZ",
+    "visa": "Wie für die USA: kein Visum für Touristen (bis 90 Tage), aber elektronischer Reisepass und kostenpflichtige ESTA-Genehmigung erforderlich",
+    "bestMonths": "Mai bis Oktober"
+  },
+  "highlights": [
+    "General Grant Tree – zweitgrößter Baum der Erde, der „Nation's Christmas Tree“",
+    "Grant Grove – Mammutbaumhain, ganzjährig zugänglich",
+    "Kings Canyon – eine der tiefsten Schluchten Nordamerikas",
+    "Kings Canyon Scenic Byway – spektakuläre Panoramastraße in die Schlucht (saisonal)",
+    "Cedar Grove – Talboden und Ausgangspunkt vieler Wanderungen",
+    "Zumwalt Meadow – idyllische Wiese mit leichtem Rundweg",
+    "Roaring River Falls – tosender Wasserfall nahe Cedar Grove",
+    "Sequoia-Nationalpark – benachbarter Park, ideal zum Kombinieren"
+  ],
+  "insider_tips": [
+    "Der General Grant Tree im Grant Grove ist leicht erreichbar und ganzjährig zugänglich – ein eindrucksvoller Auftakt für jeden Besuch.",
+    "Die Kings Canyon Scenic Byway nach Cedar Grove ist nur etwa von Mai bis November geöffnet; wer die tiefe Schlucht erleben will, sollte in dieser Zeit anreisen.",
+    "Kings Canyon lässt sich mit einem Eintrittsticket zusammen mit dem Sequoia-Nationalpark besuchen – beide ergänzen sich ideal.",
+    "Der Park ist deutlich ruhiger als Yosemite oder Sequoia; Lebensmittel gehören wegen der Bären in die bereitgestellten Bear Boxes."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für den Kings-Canyon-Nationalpark?",
+      "answer": "Am besten besucht man den Park von Mai bis Oktober. Der Grant-Grove-Bereich ist ganzjährig zugänglich, während die Straße in die eigentliche Schlucht nach Cedar Grove meist nur von etwa Mai bis November geöffnet und im Winter gesperrt ist."
+    },
+    {
+      "question": "Was ist der General Grant Tree?",
+      "answer": "Der General Grant Tree ist ein Riesenmammutbaum im Grant Grove und gilt als zweitgrößter Baum der Erde. Wegen seiner Bedeutung wird er auch „Nation's Christmas Tree“ genannt und ist leicht über einen kurzen Weg erreichbar."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Kings Canyon und Sequoia?",
+      "answer": "Beide Parks werden gemeinsam verwaltet und liegen nebeneinander. Sequoia ist bekannt für seine dichten Mammutbaumwälder mit dem General Sherman Tree, während Kings Canyon vor allem mit seiner tiefen Schlucht und alpinen Wildnis beeindruckt und ruhiger ist."
+    },
+    {
+      "question": "Wie reist man zum Kings-Canyon-Nationalpark an?",
+      "answer": "Es gibt keinen Flughafen direkt am Park. Am nächsten liegt Fresno (rund 1 bis 1,5 Stunden Fahrt), auch Los Angeles ist eine gängige Anreiseoption. Von dort fährt man mit dem Mietwagen weiter, oft kombiniert mit Sequoia."
+    },
+    {
+      "question": "Braucht man im Kings-Canyon-Nationalpark einen Mietwagen?",
+      "answer": "Ja, für die Anreise und die Erkundung ist ein Mietwagen praktisch unverzichtbar, da der Park abgelegen in den Bergen liegt und es kaum öffentlichen Nahverkehr gibt."
+    },
+    {
+      "question": "Gilt das Eintrittsticket auch für den Sequoia-Nationalpark?",
+      "answer": "Ja, ein Eintrittsticket gilt für beide gemeinsam verwalteten Parks, Kings Canyon und Sequoia. Wer mehrere US-Nationalparks besucht, fährt mit dem Jahrespass „America the Beautiful“ oft günstiger."
+    },
+    {
+      "question": "Brauche ich für Kings Canyon ein Visum?",
+      "answer": "Es gelten die Einreisebestimmungen der USA: Für touristische Aufenthalte bis 90 Tage ist kein Visum nötig, aber ein elektronischer Reisepass und eine vorab beantragte, kostenpflichtige ESTA-Genehmigung. Details finden sich auf der USA-Seite."
+    },
+    {
+      "question": "Muss man mit Bären rechnen?",
+      "answer": "Ja, im Park leben Schwarzbären. Lebensmittel und duftende Gegenstände müssen in den bereitgestellten Bear Boxes verstaut werden und dürfen nicht im Auto bleiben. Bei Begegnungen hält man Abstand und füttert die Tiere niemals."
+    },
+    {
+      "question": "Ist der Kings-Canyon-Nationalpark für Familien geeignet?",
+      "answer": "Ja, der Park ist familienfreundlich. Leichte Wege im Grant Grove und in der Zumwalt Meadow sowie der Wasserfall Roaring River Falls eignen sich gut für Kinder. An Abgründen und am Fluss ist jedoch Vorsicht geboten."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Kings Canyon einplanen?",
+      "answer": "Für Grant Grove und einen Abstecher in die Schlucht reicht 1 Tag. In Kombination mit dem Sequoia-Nationalpark lohnen sich 2 Tage, um beide Parks in Ruhe zu erleben."
+    }
+  ],
+  "seo_title": "Kings-Canyon-Nationalpark: Schlucht, Mammutbäume & beste Reisezeit",
+  "seo_description": "Dein Besuch im Kings-Canyon-Nationalpark in Kalifornien: eine der tiefsten Schluchten Nordamerikas, der General Grant Tree und ruhige Wildnis. Beste Reisezeit, Anreise, Tipps und Highlights im Überblick.",
+  "affiliate_search_intent": "Kings Canyon Nationalpark Reise buchen, Flug nach Fresno oder Los Angeles, Mietwagen Kalifornien, Hotel nahe Kings Canyon, Sequoia und Kings Canyon Touren, Rundreise Kalifornien Nationalparks",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "sequoia",
+    "yosemite",
+    "grand-canyon"
+  ],
+  "llmo_entities": [
+    "Kings-Canyon-Nationalpark",
+    "Kalifornien",
+    "Sierra Nevada",
+    "Kings Canyon",
+    "Kings River",
+    "General Grant Tree",
+    "Grant Grove",
+    "Kings Canyon Scenic Byway",
+    "Cedar Grove",
+    "Zumwalt Meadow",
+    "Roaring River Falls",
+    "Sequoia-Nationalpark",
+    "Riesenmammutbäume",
+    "Fresno"
+  ],
+  "llmo_answer_block": "Der Kings-Canyon-Nationalpark in Kaliforniens Sierra Nevada beeindruckt mit einer der tiefsten Schluchten Nordamerikas, Mammutbaumwäldern und dem General Grant Tree im Grant Grove, dem zweitgrößten Baum der Erde. Ruhiger als die Nachbarparks und gemeinsam mit Sequoia verwaltet, eignet er sich ideal für Natur- und Wanderreisen; die Straße in die Schlucht ist allerdings nur von etwa Mai bis November geöffnet. Für die Einreise gelten die USA-Bestimmungen mit elektronischem Reisepass und ESTA.",
+  "llmo_quick_answer": "Der Kings-Canyon-Nationalpark in Kalifornien beeindruckt mit einer der tiefsten Schluchten Nordamerikas, Mammutbäumen und dem General Grant Tree, am besten von Mai bis Oktober."
+}

@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import {
   ArrowRight, Sparkles, Share2, CheckCircle2,
   MapPin, Mail, RotateCcw, Plane, Compass, Briefcase,
   Car, CalendarDays, Backpack, Sun, ChevronDown, ChevronUp,
-  Send, MessageCircle, Euro, Wallet, Gem, Hotel, MapPinned,
+  Euro, Wallet, Gem, Hotel, MapPinned,
   Info, FileText, Shirt, Smartphone, Heart, Package, Award,
 } from 'lucide-react';
 import { moodOptions } from '@/data/finderOptions';
@@ -519,25 +519,17 @@ const HOTEL_PROVIDERS = [
 ];
 
 export default function TravelResultView({ results, personality, interests, packingList, surprise, duration, budget, phase2Loading, onReset, onEmail, renderAfterHero = null, showHotelSection = true }) {
-  const [idx, setIdx]                           = useState(0);
+  const [idx, setIdxRaw]                        = useState(0);
   const [showShare, setShowShare]               = useState(false);
   const [openPackCategory, setOpenPackCategory] = useState(null);
-  const [chatMessages, setChatMessages]         = useState([]);
-  const [chatInput, setChatInput]               = useState('');
-  const [chatLoading, setChatLoading]           = useState(false);
   const [selectedHotel, setSelectedHotel]       = useState(null);
-  const chatEndRef = useRef(null);
 
+  const setIdx = (i) => { setIdxRaw(i); setSelectedHotel(null); };
   const cur        = results[idx];
-  const match      = MATCHES[Math.min(idx, MATCHES.length - 1)];
+  const baseMatch  = MATCHES[Math.min(idx, MATCHES.length - 1)];
+  const match      = { ...baseMatch, pct: cur?.matchScore ?? baseMatch.pct };
   const realHotels = Array.isArray(cur?.hotels) ? cur.hotels.filter(isRealHotelRecommendation) : [];
 
-  useEffect(() => {
-    if (chatMessages.length > 0) {
-      chatEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-  }, [chatMessages]);
-  useEffect(() => { setChatMessages([]); setSelectedHotel(null); }, [idx]);
 
   function getDestImage(r, i) {
     const moodId   = interests[i % Math.max(interests.length, 1)];
@@ -546,22 +538,7 @@ export default function TravelResultView({ results, personality, interests, pack
     return getDestinationImage(r.destination, fallback, r.country, { interest: moodId, resultType: 'travel-finder' });
   }
 
-  const sendChat = async () => {
-    if (!chatInput.trim() || chatLoading) return;
-    const userMsg     = { role: 'user', content: chatInput.trim() };
-    const newMessages = [...chatMessages, userMsg];
-    setChatMessages(newMessages);
-    setChatInput('');
-    setChatLoading(true);
-    try {
-      const res  = await fetch('/api/ai/travel-chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ destination: cur.destination, country: cur.country, messages: newMessages }) });
-      const data = await res.json();
-      setChatMessages(prev => [...prev, { role: 'assistant', content: data.reply || 'Entschuldigung, ich konnte keine Antwort generieren.' }]);
-    } catch {
-      setChatMessages(prev => [...prev, { role: 'assistant', content: 'Entschuldigung, ein Fehler ist aufgetreten. Bitte versuche es erneut.' }]);
-    }
-    setChatLoading(false);
-  };
+
 
   const packCategories = [
     { key: 'documents', label: 'Dokumente',  Icon: FileText,   color: '#0284C7' },
@@ -650,7 +627,7 @@ export default function TravelResultView({ results, personality, interests, pack
                   {i + 1}
                 </div>
                 <div style={{ position: 'absolute', top: '10px', right: '10px', padding: '4px 9px', borderRadius: '20px', background: m.color + 'dd', fontSize: '11px', fontWeight: 700, color: '#FFFFFF', backdropFilter: 'blur(4px)' }}>
-                  {m.pct}%
+                  {r.matchScore ?? m.pct}%
                 </div>
                 <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '12px 14px', textAlign: 'left' }}>
                   <div style={{ fontSize: '16px', fontWeight: 800, color: '#FFFFFF', fontFamily: 'var(--font-heading)', lineHeight: 1.1, textShadow: '0 1px 6px rgba(0,0,0,0.5)', marginBottom: '3px' }}>{r.destination}</div>
@@ -963,7 +940,7 @@ export default function TravelResultView({ results, personality, interests, pack
                   <>
                     <div style={{ fontSize: '13px', fontWeight: 700, color: '#92400E', marginBottom: '4px', fontFamily: 'var(--font-heading)' }}>{cur.highlights?.[1] || cur.highlights?.[0] || cur.destination}</div>
                     <div style={{ fontSize: '12px', color: '#78350F', lineHeight: 1.6 }}>
-                      {cur.highlights?.[2] || `${cur.destination} hat weit mehr zu bieten als die typischen Touristenpfade. Frag unseren KI-Reiseberater für persönliche Insidertipps.`}
+                      {cur.highlights?.[2] || `${cur.destination} hat weit mehr zu bieten als die typischen Touristenpfade. Ein Blick in unsere Reiseziel-Guides lohnt sich.`}
                     </div>
                   </>
                 )}
@@ -981,14 +958,14 @@ export default function TravelResultView({ results, personality, interests, pack
           };
           const budgetMeta = BUDGET_META[budget] ?? null;
 
-          // Parses the MAXIMUM EUR value from an AI string like "380–670 € p.P." → 670
+          // Parses the MAXIMUM EUR value from a cost string like "380–670 € p.P." → 670
           const parseMaxEur = (str) => {
             if (!str) return null;
             const nums = (str.match(/\d+/g) ?? []).map(Number).filter(n => n > 10);
             return nums.length ? Math.max(...nums) : null;
           };
 
-          // Determine budget status: prefer explicit AI field, fall back to numeric comparison
+          // Determine budget status: prefer stored field, fall back to numeric comparison
           const aiStatus     = cur.costEstimate.budgetStatus; // "passt"|"knapp"|"ueber"|"nur_sparreise"
           const totalMax     = parseMaxEur(cur.costEstimate.total);
           const budgetLimit  = budgetMeta?.max ?? null;
@@ -1005,7 +982,7 @@ export default function TravelResultView({ results, personality, interests, pack
 
           // Visual config per status
           const STATUS_CFG = {
-            passt:         { badgeLabel: 'Passt zu deinem Budget',        badgeBg: '#F0FDF4', badgeColor: '#15803D', badgeBorder: '#BBF7D0', totalBg: 'linear-gradient(135deg,#EFF6FF,#ECFEFF)', totalBorder: '2px solid #BFDBFE', totalColor: '#0284C7', gemBg: 'linear-gradient(135deg,#0EA5E9,#06B6D4)', totalLabel: 'Gesamt', showWarning: false, disclaimer: '* Schätzwerte basieren auf durchschnittlichen Marktpreisen. Tatsächliche Preise können abweichen.' },
+            passt:         { badgeLabel: 'Passt zu deinem Budget',        badgeBg: '#F0FDF4', badgeColor: '#15803D', badgeBorder: '#BBF7D0', totalBg: 'linear-gradient(135deg,#EFF6FF,#ECFEFF)', totalBorder: '2px solid #BFDBFE', totalColor: '#0284C7', gemBg: 'linear-gradient(135deg,#0EA5E9,#06B6D4)', totalLabel: 'Gesamt', showWarning: false, disclaimer: '* Grobe Richtwerte auf Basis typischer Preise. Tatsächliche Preise hängen von Reisedatum und Anbieter ab.' },
             knapp:         { badgeLabel: 'Knapp im Budget',               badgeBg: '#FFFBEB', badgeColor: '#92400E', badgeBorder: '#FDE68A', totalBg: 'linear-gradient(135deg,#FFFBEB,#FEF3C7)', totalBorder: '2px solid #FDE68A', totalColor: '#B45309', gemBg: 'linear-gradient(135deg,#F59E0B,#FBBF24)', totalLabel: 'Gesamt*', showWarning: true,  disclaimer: '* Schätzwerte – knapp im Budget. Mit Frühbucher-Rabatt oder Nebensaison oft erreichbar.' },
             ueber:         { badgeLabel: 'Über deinem Budget',            badgeBg: '#FEF2F2', badgeColor: '#991B1B', badgeBorder: '#FECACA', totalBg: 'linear-gradient(135deg,#FEF2F2,#FEE2E2)', totalBorder: '2px solid #FECACA', totalColor: '#991B1B', gemBg: 'linear-gradient(135deg,#EF4444,#F87171)', totalLabel: 'Gesamt*', showWarning: true,  disclaimer: '* Schätzwerte basieren auf realistischen Marktpreisen – dieses Ziel liegt über deinem Budget.' },
             nur_sparreise: { badgeLabel: 'Nur als Sparreise realistisch', badgeBg: '#EFF6FF', badgeColor: '#1D4ED8', badgeBorder: '#BFDBFE', totalBg: 'linear-gradient(135deg,#EFF6FF,#ECFEFF)', totalBorder: '2px solid #BFDBFE', totalColor: '#1D4ED8', gemBg: 'linear-gradient(135deg,#3B82F6,#0EA5E9)', totalLabel: 'Gesamt*', showWarning: true,  disclaimer: '* Dieses Ziel ist mit dem gewählten Budget nur als sehr günstige Reise in der Nebensaison realistisch.' },
@@ -1018,7 +995,7 @@ export default function TravelResultView({ results, personality, interests, pack
             nur_sparreise: 'Dieses Ziel ist mit deinem Budget nur als günstige Kurzreise in der Nebensaison realistisch. Für mehr Komfort empfehlen wir ein höheres Budget.',
           };
 
-          // Normalize AI output: strip inconsistent "gesamt" / "p.P." labels, füge einheitliches "p.P." hinzu
+          // Normalize cost strings: strip inconsistent "gesamt" / "p.P." labels, füge einheitliches "p.P." hinzu
           const cleanValue = (str) => {
             if (!str) return str;
             return str.replace(/\s*(gesamt|p\.P\.|pro Person)\s*/gi, '').trim() + ' p.P.';
@@ -1090,46 +1067,24 @@ export default function TravelResultView({ results, personality, interests, pack
         {/* ── BOTTOM GRID ─────────────────────────────────────────────────── */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: '12px', marginBottom: '12px', alignItems: 'stretch' }}>
 
-          {/* Chat */}
-          <section aria-label="KI-Reiseberater" style={{ ...card, display: 'flex', flexDirection: 'column' }}>
-            <SectionTitle label="KI-Reiseberater" title={`Frag mich zu ${cur.destination}`} icon={MessageCircle} />
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginBottom: '8px' }}>
-              {['Beste Reisezeit?', 'Geheimtipps?', 'Sicherheit?', 'Lokales Essen?'].map(q => (
-                <button type="button" key={q} onClick={() => setChatInput(q)} style={{ padding: '4px 9px', borderRadius: '20px', border: '1px solid #BFDBFE', background: '#F0F9FF', color: '#0284C7', fontSize: '11px', fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>{q}</button>
-              ))}
-            </div>
-            <div style={{ flex: 1, minHeight: '80px', maxHeight: '200px', overflowY: 'auto', marginBottom: '8px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {chatMessages.length === 0 && (
-                <div style={{ textAlign: 'center', padding: '18px 0', color: '#94A3B8', fontSize: '12px', lineHeight: 1.6 }}>
-                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>
-                    <div style={{ width: '36px', height: '36px', borderRadius: '11px', background: '#EFF6FF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <MessageCircle size={16} strokeWidth={1.5} color={ACCENT} />
-                    </div>
-                  </div>
-                  Fragen zu <strong style={{ color: '#475569' }}>{cur.destination}</strong>?
-                </div>
-              )}
-              {chatMessages.map((msg, i) => (
-                <div key={i} style={{ display: 'flex', justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start' }}>
-                  <div style={{ maxWidth: '88%', padding: '8px 12px', borderRadius: msg.role === 'user' ? '12px 12px 4px 12px' : '12px 12px 12px 4px', background: msg.role === 'user' ? 'linear-gradient(135deg,#0EA5E9,#06B6D4)' : '#F8FAFF', border: msg.role === 'user' ? 'none' : '1px solid #E2E8F0', fontSize: '12px', color: msg.role === 'user' ? '#FFFFFF' : '#334155', lineHeight: 1.5 }}>
-                    {msg.content}
+          {/* Gut zu wissen */}
+          <section aria-label="Gut zu wissen" style={{ ...card, display: 'flex', flexDirection: 'column' }}>
+            <SectionTitle label="Gut zu wissen" title={`${cur.destination} auf einen Blick`} icon={Info} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {[
+                { Icon: Sun,      label: 'Wetter zur Reisezeit', value: cur.weather },
+                { Icon: Plane,    label: 'Anreise',              value: cur.flightTime },
+                { Icon: Wallet,   label: 'Budget pro Tag',       value: cur.budgetPerDay },
+                { Icon: Car,      label: 'Mietwagen',            value: cur.carRental ? `${cur.carRental.recommended ? 'Empfehlenswert' : 'Nicht nötig'} – ${cur.carRental.reason}` : null },
+              ].filter(row => row.value).map(row => (
+                <div key={row.label} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', padding: '9px 11px', borderRadius: '10px', background: '#F8FAFF', border: '1px solid #E2E8F0' }}>
+                  <row.Icon size={14} strokeWidth={2} color={ACCENT} style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <div>
+                    <div style={{ fontSize: '10px', fontWeight: 700, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{row.label}</div>
+                    <div style={{ fontSize: '12px', color: '#334155', lineHeight: 1.5 }}>{row.value}</div>
                   </div>
                 </div>
               ))}
-              {chatLoading && (
-                <div style={{ display: 'flex' }}>
-                  <div style={{ padding: '8px 14px', borderRadius: '12px 12px 12px 4px', background: '#F8FAFF', border: '1px solid #E2E8F0', display: 'flex', gap: '4px', alignItems: 'center' }}>
-                    {[0, 1, 2].map(n => <div key={n} style={{ width: '5px', height: '5px', borderRadius: '50%', background: ACCENT, animation: `blink 1.2s ${n * 0.2}s step-end infinite` }} />)}
-                  </div>
-                </div>
-              )}
-              <div ref={chatEndRef} />
-            </div>
-            <div style={{ display: 'flex', gap: '6px' }}>
-              <input type="text" value={chatInput} onChange={e => setChatInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && !e.shiftKey && sendChat()} placeholder={`Frag mich zu ${cur.destination}...`} style={{ flex: 1, padding: '9px 12px', borderRadius: '10px', border: '1.5px solid #E2E8F0', background: '#F8FAFF', fontSize: '12px', color: '#0F172A', outline: 'none', fontFamily: 'inherit' }} />
-              <button type="button" onClick={sendChat} disabled={!chatInput.trim() || chatLoading} style={{ padding: '9px 13px', borderRadius: '10px', border: 'none', background: chatInput.trim() && !chatLoading ? 'linear-gradient(135deg,#0EA5E9,#06B6D4)' : '#F1F5F9', color: chatInput.trim() && !chatLoading ? '#FFFFFF' : '#94A3B8', cursor: chatInput.trim() && !chatLoading ? 'pointer' : 'not-allowed', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <Send size={13} strokeWidth={2} />
-              </button>
             </div>
           </section>
 
@@ -1234,13 +1189,13 @@ export default function TravelResultView({ results, personality, interests, pack
       ════════════════════════════════════════════════════════════════════════ */}
       {!packingList && phase2Loading && (
         <div style={{ ...card, marginBottom: '12px' }}>
-          <SectionTitle label="KI-Packliste" title="Was du einpacken solltest" icon={Backpack} />
+          <SectionTitle label="Packliste" title="Was du einpacken solltest" icon={Backpack} />
           <InlineSkeleton message="Packliste wird vorbereitet…" />
         </div>
       )}
       {packingList && (
-        <section aria-label="KI-Packliste" style={{ ...card, marginBottom: '12px' }}>
-          <SectionTitle label="KI-Packliste" title="Was du einpacken solltest" icon={Backpack} />
+        <section aria-label="Packliste" style={{ ...card, marginBottom: '12px' }}>
+          <SectionTitle label="Packliste" title="Was du einpacken solltest" icon={Backpack} />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(150px,1fr))', gap: '6px' }}>
             {packCategories.map(cat => {
               const items = packingList[cat.key] || [];

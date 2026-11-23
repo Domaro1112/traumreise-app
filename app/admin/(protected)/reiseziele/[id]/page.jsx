@@ -8,9 +8,9 @@ export async function generateMetadata({ params }) {
   const { id } = await params;
   try {
     const dest = await getDestinationAdmin(id);
-    return { title: `${dest.name} bearbeiten |ApeAround Admin` };
+    return { title: `${dest.name} bearbeiten | ApeAround Admin` };
   } catch {
-    return { title: 'Reiseziel bearbeiten |ApeAround Admin' };
+    return { title: 'Reiseziel bearbeiten | ApeAround Admin' };
   }
 }
 

@@ -429,7 +429,7 @@ export default function InspirationGrid({ items = [] }) {
         </div>
       )}
 
-      {/* Reisemonkey Banner */}
+      {/* ApeAround Banner */}
       <div
         style={{
           borderRadius: '24px',
@@ -453,7 +453,7 @@ export default function InspirationGrid({ items = [] }) {
 
         <div style={{ position: 'relative', flex: 1, minWidth: '260px' }}>
           <div style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#38BDF8', marginBottom: '10px', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>
-            KI-Reiseplaner
+            Reiseplaner
           </div>
           <h3 style={{
             fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
@@ -463,7 +463,7 @@ export default function InspirationGrid({ items = [] }) {
             Noch unsicher? Lass ApeAround<br />deine passende Reiseidee finden.
           </h3>
           <p style={{ fontSize: '15px', color: '#94A3B8', lineHeight: 1.6, margin: 0 }}>
-            Apo - unser KI-Reiseplaner analysiert deine Wünsche und findet das perfekte Reiseziel — kostenlos und in Sekunden.
+            Apo – unser Reiseplaner gleicht deine Wünsche mit unseren Lieblingszielen ab und zeigt dir, was passt — kostenlos und in Sekunden.
           </p>
         </div>
 

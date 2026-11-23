@@ -85,7 +85,7 @@ export default function AdminSidebar({ isOpen, onClose }) {
           <Link href="/admin" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
             <Image
               src="/images/logo/reisemonkey-logo.png"
-              alt="Reisemonkey Admin"
+              alt="ApeAround Admin"
               width={1536}
               height={1024}
               style={{ height: '52px', width: 'auto', objectFit: 'contain' }}

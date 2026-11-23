@@ -47,7 +47,6 @@ export default async function AdminEinstellungenPage() {
 
   // ── Integration-Status: nur serverseitig prüfen, keine Keys weitergeben ──────
   const integrations = {
-    anthropic:    !!process.env.ANTHROPIC_API_KEY,
     resend:       !!process.env.RESEND_API_KEY,
     supabase:     !!(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY),
     sitePassword: !!process.env.SITE_PASSWORD,

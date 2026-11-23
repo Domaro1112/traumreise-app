@@ -1,0 +1,115 @@
+{
+  "name": "Köln",
+  "slug": "koeln",
+  "country": "Deutschland",
+  "region": "Nordrhein-Westfalen (Rheinland)",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/koeln-hero.jpg",
+  "short_description": "Lebensfrohe Rheinmetropole mit dem weltberühmten Kölner Dom, gemütlichen Brauhäusern, Kölsch, dem größten Karneval Deutschlands und rheinischer Herzlichkeit.",
+  "long_description": "Köln ist die lebensfrohe Metropole am Rhein und steht wie keine andere deutsche Stadt für Offenheit, Geselligkeit und Frohsinn. Das alles überragende Wahrzeichen ist der gotische Kölner Dom, eine der größten Kathedralen der Welt und UNESCO-Welterbe, dessen Türme man über mehr als 500 Stufen erklimmen kann. Direkt daneben spannt sich die Hohenzollernbrücke mit ihren unzähligen Liebesschlössern über den Rhein. In der Altstadt und entlang des Rheinufers reihen sich traditionsreiche Brauhäuser, in denen der Köbes das typische Kölsch in der schlanken Stange serviert. Kunst- und Kulturfreunde besuchen das Museum Ludwig, das Römisch-Germanische Museum oder das beliebte Schokoladenmuseum am Rheinauhafen mit seinen markanten Kranhäusern. Das hippe Belgische Viertel lockt mit Cafés, Boutiquen und Szeneflair. Weltberühmt ist der Kölner Karneval, die „fünfte Jahreszeit“, die die Stadt jedes Jahr in einen Ausnahmezustand der Lebensfreude versetzt. Köln ist ein ideales Ziel für einen Städtetrip übers Wochenende.",
+  "ai_summary": "Köln ist die lebensfrohe Rheinmetropole mit dem weltberühmten gotischen Dom, gemütlichen Brauhäusern und Kölsch, einer lebendigen Altstadt am Rhein und dem größten Karneval Deutschlands. Sie eignet sich ideal für einen Städtetrip übers Wochenende und ist innerdeutsch sehr gut erreichbar.",
+  "best_travel_time": "Mai bis September mit mildem Wetter ist ideal für Altstadt, Rheinufer und Außengastronomie. Wer den berühmten Karneval erleben möchte, reist im Februar oder März, im Advent locken zudem stimmungsvolle Weihnachtsmärkte.",
+  "ideal_duration": "2 bis 3 Tage",
+  "travel_type": [
+    "Städtereise",
+    "Kulturreise",
+    "Wochenendtrip",
+    "Kulinarik",
+    "Familien",
+    "Shopping"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Deutsch",
+    "flightTime": "Innerdeutsches Ziel; bequem per ICE oder Auto erreichbar, besonders schnell aus dem Rheinland und NRW. Der Flughafen Köln/Bonn liegt zentrumsnah",
+    "timezone": "MEZ (UTC+1)",
+    "visa": "Nicht erforderlich (innerdeutsch bzw. für EU-Bürger im Schengen-Raum)",
+    "bestMonths": "Mai bis September"
+  },
+  "highlights": [
+    "Kölner Dom – gotische Kathedrale und UNESCO-Welterbe, mit Turmaufstieg",
+    "Altstadt und Rheinufer – traditionsreiche Brauhäuser und Promenaden",
+    "Hohenzollernbrücke – Liebesschlösser und toller Blick auf den Dom",
+    "Kölsch in den Brauhäusern – das typische Bier in der schlanken Stange",
+    "Museum Ludwig und Römisch-Germanisches Museum – bedeutende Sammlungen",
+    "Schokoladenmuseum am Rheinauhafen mit den markanten Kranhäusern",
+    "Belgisches Viertel – hippes Quartier mit Cafés, Boutiquen und Szeneflair",
+    "Kölner Karneval – die „fünfte Jahreszeit“ und größter Karneval Deutschlands"
+  ],
+  "insider_tips": [
+    "Im Brauhaus serviert der Köbes das Kölsch automatisch nach, bis man den Deckel auf das Glas legt – so signalisiert man, dass man genug hat.",
+    "Der Aufstieg auf den Domturm über mehr als 500 Stufen wird mit einem weiten Blick über Köln und den Rhein belohnt.",
+    "Das schönste Dom-Foto gelingt vom gegenüberliegenden Rheinufer auf der Deutzer Seite, besonders abends mit Blick über die Hohenzollernbrücke.",
+    "Wer den Karneval erleben will, sollte die Termine prüfen – Höhepunkte sind Weiberfastnacht und der Rosenmontagszug; Unterkünfte sind dann früh ausgebucht."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Köln?",
+      "answer": "Am angenehmsten ist es von Mai bis September für Altstadt, Rheinufer und Biergärten. Wer den berühmten Karneval erleben möchte, reist im Februar oder März, und im Advent verzaubern stimmungsvolle Weihnachtsmärkte die Stadt."
+    },
+    {
+      "question": "Wie reist man am besten nach Köln an?",
+      "answer": "Köln ist ein zentraler Bahnknotenpunkt und per ICE aus ganz Deutschland sehr gut erreichbar; der Hauptbahnhof liegt direkt am Dom. Auch die Anreise mit dem Auto ist gut möglich, und der Flughafen Köln/Bonn liegt nah am Zentrum."
+    },
+    {
+      "question": "Braucht man in Köln ein Auto?",
+      "answer": "Nein, Köln hat einen guten öffentlichen Nahverkehr mit Stadtbahn, Bus und S-Bahn, und die Innenstadt lässt sich bestens zu Fuß erkunden. Ein Auto ist für einen Städtetrip eher hinderlich."
+    },
+    {
+      "question": "Kann man den Kölner Dom besichtigen?",
+      "answer": "Ja, der Dom ist frei zugänglich und täglich geöffnet, außerhalb der Gottesdienste. Zusätzlich kann man die Domtürme über mehr als 500 Stufen besteigen und die Schatzkammer besichtigen. Bei Andrang können Wartezeiten entstehen."
+    },
+    {
+      "question": "Wann ist Karneval in Köln?",
+      "answer": "Der Straßenkarneval beginnt an Weiberfastnacht und gipfelt im Rosenmontagszug, meist im Februar oder Anfang März, abhängig vom Osterdatum. Offiziell startet die Karnevalssession bereits am 11.11. Die genauen Termine sollte man vorab prüfen."
+    },
+    {
+      "question": "Was ist Kölsch?",
+      "answer": "Kölsch ist das typische Bier Kölns, ein helles, obergäriges Bier, das in der schlanken 0,2-Liter-Stange serviert wird. In den Brauhäusern schenkt der Köbes automatisch nach, bis man mit dem Bierdeckel auf dem Glas signalisiert, dass man genug hat."
+    },
+    {
+      "question": "Welche Museen lohnen sich in Köln?",
+      "answer": "Besonders sehenswert sind das Museum Ludwig mit moderner Kunst, das Römisch-Germanische Museum, das Wallraf-Richartz-Museum und das beliebte Schokoladenmuseum am Rheinauhafen, das vor allem Familien begeistert."
+    },
+    {
+      "question": "Ist Köln für einen Familienurlaub geeignet?",
+      "answer": "Ja, Köln ist familienfreundlich. Das Schokoladenmuseum, der Kölner Zoo mit Seilbahn, Rheinschifffahrten, der Phantasialand-Freizeitpark in der Nähe und Parks bieten viel Abwechslung für Kinder."
+    },
+    {
+      "question": "Wie ist das Verhältnis zwischen Köln und Düsseldorf?",
+      "answer": "Zwischen den beiden Rheinmetropolen besteht eine sympathische, traditionsreiche Rivalität, die sich besonders am Bier zeigt: In Köln trinkt man Kölsch, in Düsseldorf Altbier. Beide Städte lassen sich gut zu einer Rheinland-Reise verbinden."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Köln einplanen?",
+      "answer": "Für die wichtigsten Highlights rund um Dom, Altstadt und Rheinufer reichen 2 bis 3 Tage. Wer Museen, das Umland oder den Karneval einbeziehen möchte, kann gut länger bleiben."
+    }
+  ],
+  "seo_title": "Köln Städtereise: Dom, Karneval, Kölsch & beste Reisezeit",
+  "seo_description": "Dein Köln-Trip: der weltberühmte Kölner Dom, die Altstadt am Rhein, Brauhäuser mit Kölsch und der größte Karneval Deutschlands. Beste Reisezeit, Anreise, Highlights und Tipps im Überblick.",
+  "affiliate_search_intent": "Köln Städtereise buchen, Hotel Köln, Köln Wochenende, Kölner Dom Führung, Rheinschifffahrt Köln, Karneval Köln, Städtetrip Rheinland",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "duesseldorf",
+    "bonn",
+    "wuppertal"
+  ],
+  "llmo_entities": [
+    "Köln",
+    "Kölner Dom",
+    "Rhein",
+    "Altstadt",
+    "Hohenzollernbrücke",
+    "Kölsch",
+    "Brauhaus",
+    "Museum Ludwig",
+    "Römisch-Germanisches Museum",
+    "Schokoladenmuseum",
+    "Rheinauhafen",
+    "Kranhäuser",
+    "Belgisches Viertel",
+    "Kölner Karneval",
+    "Nordrhein-Westfalen"
+  ],
+  "llmo_answer_block": "Köln ist die lebensfrohe Rheinmetropole mit dem weltberühmten gotischen Dom als UNESCO-Welterbe, gemütlichen Brauhäusern mit Kölsch, einer lebendigen Altstadt am Rheinufer und dem größten Karneval Deutschlands. Highlights sind der Domturmaufstieg, die Hohenzollernbrücke mit Liebesschlössern, bedeutende Museen und das hippe Belgische Viertel. Die Stadt eignet sich ideal für einen Städtetrip übers Wochenende, ist innerdeutsch sehr gut per ICE erreichbar, und die beste Reisezeit liegt zwischen Mai und September.",
+  "llmo_quick_answer": "Köln ist die lebensfrohe Rheinmetropole mit dem weltberühmten Dom, Brauhäusern mit Kölsch, lebendiger Altstadt und dem größten Karneval Deutschlands."
+}

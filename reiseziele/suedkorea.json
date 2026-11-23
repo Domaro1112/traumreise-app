@@ -1,0 +1,120 @@
+{
+  "name": "Südkorea",
+  "slug": "suedkorea",
+  "country": "Südkorea (Republik Korea)",
+  "region": "Ostasien",
+  "continent": "Asien",
+  "hero_image": "/images/destinations/suedkorea-hero.jpg",
+  "short_description": "Dynamisches Land zwischen Hightech und Tradition mit dem pulsierenden Seoul, alten Palästen, K-Pop, koreanischer Küche, der Insel Jeju und der DMZ.",
+  "long_description": "Südkorea ist ein faszinierendes Reiseland, das modernste Technologie, jahrhundertealte Kultur und eine weltweit ausstrahlende Popkultur vereint. Die Hauptstadt Seoul pulsiert rund um die Uhr: prächtige Königspaläste wie Gyeongbokgung und das traditionelle Hanok-Dorf Bukchon treffen auf die Hightech-Viertel Gangnam und die Shopping- und Streetfood-Meile Myeongdong, überragt vom N Seoul Tower. Die Hafenstadt Busan begeistert mit Stränden, dem farbenfrohen Gamcheon Culture Village und dem Küstentempel Haedong Yonggungsa. Die Vulkaninsel Jeju lockt mit Natur, Stränden und dem Berg Hallasan, während die alte Königsstadt Gyeongju mit dem Bulguksa-Tempel ein Freilichtmuseum koreanischer Geschichte ist. An der Grenze zu Nordkorea lässt sich die demilitarisierte Zone (DMZ) besuchen. Dazu kommen die weltweit beliebte K-Pop- und Hallyu-Kultur sowie die exzellente koreanische Küche mit Barbecue, Kimchi und Bibimbap. Dank des hervorragenden Nahverkehrs und der KTX-Schnellzüge reist man bequem. Südkorea ist ideal für Städte-, Kultur- und Kulinarikreisen.",
+  "ai_summary": "Südkorea ist ein dynamisches Reiseland in Ostasien zwischen Hightech und Tradition mit dem pulsierenden Seoul, alten Palästen, der Hafenstadt Busan, der Insel Jeju, der DMZ sowie K-Pop und exzellenter Küche. Es ist visumfrei und derzeit ohne K-ETA bereisbar und eignet sich ideal für Städte-, Kultur- und Kulinarikreisen.",
+  "best_travel_time": "Frühling (April bis Mai) zur Kirschblüte und Herbst (September bis November) zur Laubfärbung sind ideal; der Sommer ist heiß, schwül und regenreich, der Winter kalt, aber gut für Wintersport.",
+  "ideal_duration": "1 bis 2 Wochen",
+  "travel_type": [
+    "Städtereise",
+    "Kulturreise",
+    "Kulinarik",
+    "Rundreise",
+    "Shopping",
+    "Naturreise"
+  ],
+  "quick_facts": {
+    "currency": "Südkoreanischer Won (KRW)",
+    "language": "Koreanisch",
+    "flightTime": "ca. 11 Stunden ab Deutschland im Direktflug (Seoul-Incheon)",
+    "timezone": "KST (UTC+9), acht Stunden vor MEZ",
+    "visa": "Kein Visum nötig (bis 90 Tage); die K-ETA ist für Deutsche bis 31.12.2026 ausgesetzt, jedoch ist die kostenlose e-Arrival Card online auszufüllen",
+    "bestMonths": "April bis Mai sowie September bis November"
+  },
+  "highlights": [
+    "Seoul – Gyeongbokgung-Palast, Bukchon-Hanok-Dorf, Myeongdong und der N Seoul Tower",
+    "Busan – Strände, das Gamcheon Culture Village und der Küstentempel Haedong Yonggungsa",
+    "Jeju – Vulkaninsel mit dem Berg Hallasan, Stränden und Natur",
+    "DMZ – die demilitarisierte Zone an der Grenze zu Nordkorea",
+    "Gyeongju – alte Königsstadt mit dem Bulguksa-Tempel, UNESCO-Welterbe",
+    "K-Pop und Hallyu – die weltweit beliebte koreanische Popkultur",
+    "Koreanische Küche – Barbecue, Kimchi, Bibimbap und Streetfood",
+    "Seoraksan-Nationalpark – beeindruckende Berglandschaft, besonders im Herbst"
+  ],
+  "insider_tips": [
+    "Für den Nahverkehr lohnt sich eine aufladbare T-money-Karte; zwischen den Städten reist man schnell und komfortabel mit dem KTX-Hochgeschwindigkeitszug.",
+    "Unbedingt koreanisches Barbecue und Streetfood probieren – etwa auf dem Gwangjang-Markt in Seoul oder in den lebhaften Gassen von Myeongdong.",
+    "Die Kirschblüte erlebt man im April, die spektakuläre Laubfärbung im Oktober und November – beide Zeiten sind sehr beliebt und sollten früh gebucht werden.",
+    "Vor der Einreise muss die kostenlose e-Arrival Card online ausgefüllt werden; eine K-ETA ist für Deutsche derzeit nicht erforderlich."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich ein Visum oder eine K-ETA für Südkorea?",
+      "answer": "Deutsche Staatsbürger können für Aufenthalte bis zu 90 Tagen visumfrei einreisen. Die K-ETA-Pflicht ist für Deutsche bis zum 31. Dezember 2026 ausgesetzt, sodass derzeit keine K-ETA nötig ist. Verpflichtend ist jedoch die kostenlose e-Arrival Card, die online ausgefüllt wird. Da sich die Regelung ändern kann, sollte man den aktuellen Stand prüfen."
+    },
+    {
+      "question": "Was ist die e-Arrival Card?",
+      "answer": "Die e-Arrival Card ist ein kostenloses elektronisches Einreiseformular, das man innerhalb von drei Tagen vor der Einreise online ausfüllt. Sie ersetzt das frühere Papierformular und ist für visumfreie Einreisende Pflicht."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Südkorea?",
+      "answer": "Am schönsten sind das Frühjahr mit der Kirschblüte (April bis Mai) und der Herbst mit der Laubfärbung (September bis November). Der Sommer ist heiß, schwül und regenreich, der Winter kalt, aber gut für Wintersport."
+    },
+    {
+      "question": "Welche Währung gilt in Südkorea?",
+      "answer": "Gezahlt wird mit dem Südkoreanischen Won (KRW). Kartenzahlung ist sehr weit verbreitet und oft Standard; etwas Bargeld ist nur an wenigen Orten wie Märkten praktisch."
+    },
+    {
+      "question": "Wie reist man am besten innerhalb Südkoreas?",
+      "answer": "Das Land hat einen hervorragenden öffentlichen Nahverkehr. Zwischen den Städten fährt der KTX-Hochgeschwindigkeitszug, in Seoul und Busan gibt es ausgezeichnete Metros. Eine T-money-Karte erleichtert das Bezahlen. Ein Mietwagen ist meist nicht nötig."
+    },
+    {
+      "question": "Spricht man in Südkorea Englisch?",
+      "answer": "In Seoul, an touristischen Orten und bei jüngeren Menschen kommt man mit Englisch oft zurecht, und vieles ist beschildert. Abseits davon ist Englisch begrenzt; eine Übersetzungs-App hilft weiter."
+    },
+    {
+      "question": "Kann man von Südkorea aus die DMZ besuchen?",
+      "answer": "Ja, die demilitarisierte Zone (DMZ) an der Grenze zu Nordkorea lässt sich im Rahmen geführter Touren ab Seoul besuchen. Sie gibt einen eindrücklichen Einblick in die Teilung der koreanischen Halbinsel."
+    },
+    {
+      "question": "Ist Südkorea für einen Familienurlaub geeignet?",
+      "answer": "Ja, Südkorea ist sehr sicher, sauber und familienfreundlich. Themen- und Wasserparks, moderne Städte, Strände auf Jeju und kindgerechtes Essen sorgen für Abwechslung. Die gute Infrastruktur macht das Reisen unkompliziert."
+    },
+    {
+      "question": "Welche Gerichte sollte man in Südkorea probieren?",
+      "answer": "Unbedingt probieren sollte man koreanisches Barbecue (Galbi, Bulgogi), Bibimbap, Kimchi, Tteokbokki (scharfe Reiskuchen), Korean Fried Chicken sowie verschiedene Streetfood-Spezialitäten."
+    },
+    {
+      "question": "Ist Südkorea sicher für Reisende?",
+      "answer": "Ja, Südkorea zählt zu den sichersten Reiseländern mit sehr niedriger Kriminalität. Trotz der Nähe zu Nordkorea ist das Reisen im Land unbedenklich; man sollte lediglich die allgemeinen Hinweise des Auswärtigen Amts beachten."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Südkorea einplanen?",
+      "answer": "Für Seoul und Umgebung reichen einige Tage. Wer zusätzlich Busan, Gyeongju und die Insel Jeju erleben möchte, sollte 1 bis 2 Wochen einplanen."
+    }
+  ],
+  "seo_title": "Südkorea Urlaub: Seoul, Jeju, Reisetipps & beste Reisezeit",
+  "seo_description": "Dein Südkorea-Urlaub: das pulsierende Seoul, Busan, die Insel Jeju, die DMZ, K-Pop und koreanische Küche. Beste Reisezeit, Einreise ohne K-ETA, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "Südkorea Reise buchen, Flug nach Seoul, Hotel Seoul, Rundreise Südkorea, Städtereise Seoul, K-Pop Reise Korea",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "japan",
+    "china",
+    "vietnam"
+  ],
+  "llmo_entities": [
+    "Südkorea",
+    "Seoul",
+    "Gyeongbokgung",
+    "Bukchon",
+    "Myeongdong",
+    "Gangnam",
+    "N Seoul Tower",
+    "Busan",
+    "Gamcheon Culture Village",
+    "Jeju",
+    "Hallasan",
+    "DMZ",
+    "Gyeongju",
+    "Bulguksa",
+    "K-Pop",
+    "Südkoreanischer Won"
+  ],
+  "llmo_answer_block": "Südkorea ist ein dynamisches Reiseland in Ostasien zwischen Hightech und Tradition mit dem pulsierenden Seoul und seinen Palästen, der Hafenstadt Busan, der Vulkaninsel Jeju, der DMZ an der Grenze zu Nordkorea sowie der weltweit beliebten K-Pop-Kultur und exzellenter Küche. Dank hervorragendem Nahverkehr und KTX-Schnellzügen lässt es sich bequem bereisen und eignet sich ideal für Städte-, Kultur- und Kulinarikreisen. Deutsche reisen visumfrei und derzeit ohne K-ETA ein, müssen aber die e-Arrival Card ausfüllen.",
+  "llmo_quick_answer": "Südkorea ist ein dynamisches Land mit dem pulsierenden Seoul, Busan, der Insel Jeju, der DMZ, K-Pop und exzellenter Küche – für Deutsche visumfrei und ohne K-ETA bereisbar."
+}

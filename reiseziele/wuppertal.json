@@ -1,0 +1,114 @@
+{
+  "name": "Wuppertal",
+  "slug": "wuppertal",
+  "country": "Deutschland",
+  "region": "Nordrhein-Westfalen",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/wuppertal-hero.jpg",
+  "short_description": "Bergische Großstadt mit der weltberühmten Schwebebahn, grünem Zoo, kreativer Kulturszene und der Nordbahntrasse als Rad- und Wanderparadies.",
+  "long_description": "Wuppertal im Bergischen Land ist vor allem für ein einzigartiges Wahrzeichen bekannt: die Schwebebahn, die seit über 120 Jahren schwebend über dem Fluss Wupper durch die Stadt gleitet und weltweit ihresgleichen sucht. Eine Fahrt damit ist das ultimative Wuppertal-Erlebnis. Doch die Stadt hat mehr zu bieten: Der Grüne Zoo zählt zu den schönsten Tierparks Deutschlands und ist eng mit der berühmten Geschichte der Elefantendame Tuffi verbunden. Auf der Nordbahntrasse, einer zur Rad- und Wanderstrecke umgebauten Bahnlinie, erkundet man die Stadt von oben, vorbei an Tunneln und Vierteln. Kulturell ist Wuppertal die Heimat des weltberühmten Tanztheaters von Pina Bausch, beherbergt das renommierte Von der Heydt-Museum und den Skulpturenpark Waldfrieden des Künstlers Tony Cragg. Als Geburtsstadt von Friedrich Engels und mit dem lebendigen Luisenviertel sowie prächtigen Gründerzeitvillen verbindet Wuppertal Industriegeschichte, Kunst und Natur zu einem überraschend vielseitigen Ziel für einen Tagesausflug oder Kurztrip.",
+  "ai_summary": "Wuppertal ist eine Großstadt im Bergischen Land, berühmt für die einzigartige Schwebebahn, den Grünen Zoo, die Nordbahntrasse zum Radfahren und eine lebendige Kulturszene mit dem Tanztheater Pina Bausch und dem Skulpturenpark Waldfrieden. Die Stadt eignet sich ideal für einen Tagesausflug oder Kurztrip.",
+  "best_travel_time": "Mai bis September für mildes Wetter, die Nordbahntrasse, den Zoo und die grünen Außenbereiche; die Innenstadt und Museen sind ganzjährig attraktiv.",
+  "ideal_duration": "1 bis 2 Tage",
+  "travel_type": [
+    "Städtereise",
+    "Tagesausflug",
+    "Kulturreise",
+    "Familien",
+    "Wochenendtrip"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Deutsch",
+    "flightTime": "Innerdeutsch per Bahn oder Auto erreichbar; nächste Flughäfen sind Düsseldorf und Köln/Bonn",
+    "timezone": "MEZ (UTC+1)",
+    "visa": "Nicht erforderlich (Inland für Deutsche, EU- und Schengen-Raum)",
+    "bestMonths": "Mai bis September"
+  },
+  "highlights": [
+    "Schwebebahn – das einzigartige Wahrzeichen, schwebend über der Wupper",
+    "Grüner Zoo Wuppertal – einer der schönsten Tierparks Deutschlands",
+    "Nordbahntrasse – Rad- und Wanderweg auf einer ehemaligen Bahnlinie",
+    "Skulpturenpark Waldfrieden – moderne Kunst des Bildhauers Tony Cragg",
+    "Von der Heydt-Museum – renommierte Kunstsammlung in der Innenstadt",
+    "Tanztheater Pina Bausch – weltberühmte Wuppertaler Tanzkompanie",
+    "Botanischer Garten mit Elisenturm – grüne Oase mit Aussicht",
+    "Luisenviertel – lebendiges Gründerzeitviertel mit Cafés und Kneipen"
+  ],
+  "insider_tips": [
+    "Eine Fahrt mit der Schwebebahn gehört unbedingt dazu – am eindrucksvollsten ist die Strecke über dem Fluss Wupper.",
+    "Die Nordbahntrasse lässt sich wunderbar mit dem Rad erkunden und verbindet auf ebener Strecke mehrere Stadtteile, Tunnel und Aussichtspunkte.",
+    "Im Luisenviertel findet man die schönste Gastronomie der Stadt – ideal für eine Pause oder den Abend.",
+    "Wer Zeit hat, sollte eine echte Bergische Kaffeetafel mit Waffeln, Reibekuchen und der typischen Dröppelmina-Kanne probieren."
+  ],
+  "faq": [
+    {
+      "question": "Was ist die Wuppertaler Schwebebahn?",
+      "answer": "Die Schwebebahn ist eine seit 1901 betriebene Hängebahn, die auf rund 13 Kilometern größtenteils über dem Fluss Wupper schwebt. Sie ist das Wahrzeichen der Stadt, ein einzigartiges Verkehrsmittel und zugleich eine echte Attraktion."
+    },
+    {
+      "question": "Lohnt sich ein Ausflug nach Wuppertal?",
+      "answer": "Ja, Wuppertal eignet sich gut für einen Tagesausflug oder Kurztrip. Eine Schwebebahnfahrt, der Grüne Zoo, die Nordbahntrasse und die Kulturangebote bieten viel Abwechslung auf kompaktem Raum."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Wuppertal?",
+      "answer": "Von Mai bis September lassen sich die Nordbahntrasse, der Zoo und die grünen Außenbereiche am besten genießen. Die Innenstadt, Museen und die Schwebebahn sind jedoch ganzjährig einen Besuch wert."
+    },
+    {
+      "question": "Wie kommt man nach Wuppertal?",
+      "answer": "Wuppertal ist innerdeutsch sehr gut per Bahn und Auto erreichbar und liegt zentral im Ruhrgebiet- und Rheinland-Umfeld. Die nächsten Flughäfen sind Düsseldorf und Köln/Bonn, beide nur eine kurze Fahrt entfernt."
+    },
+    {
+      "question": "Braucht man in Wuppertal ein Auto?",
+      "answer": "Nein. Mit der Schwebebahn, Bussen und der Bahn ist man gut unterwegs, und viele Sehenswürdigkeiten liegen zentral. Ein Auto ist nicht nötig, kann aber für Ausflüge ins Bergische Land praktisch sein."
+    },
+    {
+      "question": "Ist der Grüne Zoo Wuppertal einen Besuch wert?",
+      "answer": "Ja, der Grüne Zoo gilt als einer der schönsten Tierparks Deutschlands, eingebettet in eine parkartige Hanglage mit altem Baumbestand. Er ist besonders für Familien ein lohnendes Ziel."
+    },
+    {
+      "question": "Was ist die Nordbahntrasse?",
+      "answer": "Die Nordbahntrasse ist eine zur Rad- und Wanderstrecke umgebaute ehemalige Bahnlinie, die auf rund 23 Kilometern weitgehend steigungsarm durch Wuppertal führt – vorbei an Tunneln, Vierteln und Aussichtspunkten."
+    },
+    {
+      "question": "Welche kulturellen Highlights bietet Wuppertal?",
+      "answer": "Wuppertal ist die Heimat des weltberühmten Tanztheaters von Pina Bausch, beherbergt das Von der Heydt-Museum und den Skulpturenpark Waldfrieden des Bildhauers Tony Cragg. Zudem ist es die Geburtsstadt von Friedrich Engels."
+    },
+    {
+      "question": "Ist Wuppertal für Familien geeignet?",
+      "answer": "Ja, sehr. Die Schwebebahnfahrt begeistert Kinder, der Grüne Zoo, die Nordbahntrasse und Parks bieten viel Platz, und es gibt zahlreiche familienfreundliche Ausflugsziele in und um die Stadt."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Wuppertal einplanen?",
+      "answer": "Für die wichtigsten Highlights reicht ein Tag. Wer Kultur, Zoo, Nordbahntrasse und die Viertel in Ruhe erleben möchte, plant am besten ein Wochenende ein."
+    }
+  ],
+  "seo_title": "Wuppertal: Schwebebahn, Sehenswürdigkeiten & Ausflugstipps",
+  "seo_description": "Dein Ausflug nach Wuppertal: die weltberühmte Schwebebahn, der Grüne Zoo, die Nordbahntrasse und eine kreative Kulturszene. Sehenswürdigkeiten, Tipps und beste Reisezeit im Überblick.",
+  "affiliate_search_intent": "Wuppertal Ausflug, Hotel Wuppertal, Schwebebahn fahren, Städtetrip Bergisches Land, Wochenendtrip NRW, Wuppertal mit Kindern",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "duesseldorf",
+    "koeln",
+    "dortmund"
+  ],
+  "llmo_entities": [
+    "Wuppertal",
+    "Schwebebahn",
+    "Wupper",
+    "Grüner Zoo Wuppertal",
+    "Tuffi",
+    "Nordbahntrasse",
+    "Skulpturenpark Waldfrieden",
+    "Tony Cragg",
+    "Von der Heydt-Museum",
+    "Pina Bausch",
+    "Tanztheater Wuppertal",
+    "Friedrich Engels",
+    "Luisenviertel",
+    "Botanischer Garten",
+    "Bergisches Land"
+  ],
+  "llmo_answer_block": "Wuppertal ist eine Großstadt im Bergischen Land, weltberühmt für die einzigartige Schwebebahn, die schwebend über dem Fluss Wupper durch die Stadt gleitet. Dazu kommen der schöne Grüne Zoo, die Nordbahntrasse zum Radfahren und Wandern sowie eine lebendige Kulturszene mit dem Tanztheater Pina Bausch und dem Skulpturenpark Waldfrieden. Die Stadt ist innerdeutsch gut erreichbar und eignet sich ideal für einen Tagesausflug oder Kurztrip.",
+  "llmo_quick_answer": "Wuppertal ist eine Stadt im Bergischen Land mit der weltberühmten Schwebebahn, dem Grünen Zoo und der Nordbahntrasse, ideal für einen Tagesausflug."
+}

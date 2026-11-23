@@ -1,0 +1,121 @@
+{
+  "name": "Schweiz",
+  "slug": "schweiz",
+  "country": "Schweiz",
+  "region": "Mitteleuropa",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/schweiz-hero.jpg",
+  "short_description": "Alpenland der Superlative mit dem Matterhorn, dem Jungfraujoch, glasklaren Seen, malerischen Städten und den schönsten Panoramazügen der Welt.",
+  "long_description": "Die Schweiz ist ein Naturparadies der Superlative und steht wie kein anderes Land für die Alpen. Majestätische Gipfel wie das ikonische Matterhorn bei Zermatt und das „Top of Europe“ Jungfraujoch ziehen Bergliebhaber aus aller Welt an. Das Berner Oberland rund um Interlaken, Grindelwald und das spektakuläre Lauterbrunnental bietet Wandern und Wintersport in Postkartenkulisse. Glasklare Seen wie der Vierwaldstättersee bei Luzern mit seiner Kapellbrücke oder der Genfersee mit Montreux und den Lavaux-Weinterrassen laden zum Verweilen ein. Im sonnigen Tessin sorgen Lugano und der Lago Maggiore für mediterranes Flair. Ein Erlebnis für sich sind die legendären Panoramazüge wie der Glacier Express und der Bernina Express. Dazu kommen charmante Städte wie Bern, Zürich und Luzern. Die Schweiz ist zwar ein hochpreisiges Reiseland, belohnt aber mit überwältigender Natur, perfekter Organisation und dem wohl besten öffentlichen Verkehrsnetz der Welt.",
+  "ai_summary": "Die Schweiz ist ein Alpenland der Superlative mit dem Matterhorn, dem Jungfraujoch, glasklaren Seen, charmanten Städten wie Luzern und Bern und weltberühmten Panoramazügen. Sie eignet sich ideal für Natur-, Wander-, Wintersport- und Bahnreisen und ist von Deutschland aus schnell erreichbar, jedoch vergleichsweise teuer.",
+  "best_travel_time": "Juni bis September für Wandern, Seen und Bergpanorama; Dezember bis März für Wintersport. Die Städte sind ganzjährig attraktiv.",
+  "ideal_duration": "rund eine Woche",
+  "travel_type": [
+    "Naturreise",
+    "Wandern",
+    "Wintersport",
+    "Bahnreise",
+    "Wellness",
+    "Familien",
+    "Roadtrip"
+  ],
+  "quick_facts": {
+    "currency": "Schweizer Franken (CHF); Euro wird teils akzeptiert, meist zu ungünstigem Kurs",
+    "language": "Deutsch, Französisch, Italienisch und Rätoromanisch",
+    "flightTime": "ca. 1 bis 1,5 Stunden ab Deutschland (Zürich); sehr gut mit Bahn oder Auto erreichbar",
+    "timezone": "MEZ (UTC+1), identisch mit Deutschland",
+    "visa": "Nicht erforderlich; die Schweiz gehört zum Schengen-Raum (jedoch nicht zur EU)",
+    "bestMonths": "Juni bis September sowie Dezember bis März"
+  },
+  "highlights": [
+    "Matterhorn und Zermatt – das wohl berühmteste Bergmotiv der Welt",
+    "Jungfraujoch – das „Top of Europe“ mit Gletscher und Aussichtsplattform",
+    "Berner Oberland – Interlaken, Grindelwald und das Lauterbrunnental",
+    "Luzern – Kapellbrücke und der malerische Vierwaldstättersee",
+    "Genfersee – Montreux, Schloss Chillon und die Lavaux-Weinterrassen",
+    "Panoramazüge – Glacier Express und Bernina Express durch die Alpen",
+    "Rheinfall – der größte Wasserfall Europas bei Schaffhausen",
+    "Tessin – Lugano und der Lago Maggiore mit südlichem Flair"
+  ],
+  "insider_tips": [
+    "Mit dem Swiss Travel Pass nutzt man Züge, Busse, Schiffe und viele Bergbahnen sowie Museen flexibel – ideal, da die Bahn in der Schweiz selbst ein Erlebnis ist.",
+    "Die Panoramazüge wie der Glacier Express und der Bernina Express zählen zu den schönsten Bahnstrecken der Welt und lohnen sich auch ohne Reservierung in regulären Zügen.",
+    "Da die Schweiz teuer ist, sparen Selbstverpfleger mit Einkäufen bei Coop oder Migros und einem Picknick mit Bergblick.",
+    "Für Aussichtsberge wie das Jungfraujoch lohnt es sich, einen klaren Tag abzuwarten und vorab die Webcams zu checken."
+  ],
+  "faq": [
+    {
+      "question": "Welche Währung gilt in der Schweiz?",
+      "answer": "Bezahlt wird mit dem Schweizer Franken (CHF). Vielerorts wird zwar auch Euro akzeptiert, das Wechselgeld erfolgt jedoch in Franken und der Kurs ist meist ungünstig. Kartenzahlung ist nahezu überall möglich."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für die Schweiz?",
+      "answer": "Für Wandern, Seen und Bergpanorama eignen sich Juni bis September. Wintersportler reisen zwischen Dezember und März. Die Städte sind das ganze Jahr über attraktiv."
+    },
+    {
+      "question": "Brauche ich ein Visum für die Schweiz?",
+      "answer": "Nein. Die Schweiz gehört zwar nicht zur EU, ist aber Teil des Schengen-Raums. EU-Bürger benötigen kein Visum; ein gültiger Personalausweis oder Reisepass genügt."
+    },
+    {
+      "question": "Braucht man in der Schweiz ein Auto?",
+      "answer": "Nein, die Schweiz hat eines der besten öffentlichen Verkehrsnetze der Welt. Mit Zügen, Bussen, Schiffen und Bergbahnen erreicht man fast jeden Ort bequem. Die Bahnfahrten selbst gehören zu den Höhepunkten einer Reise."
+    },
+    {
+      "question": "Brauche ich eine Vignette für die Schweiz?",
+      "answer": "Ja, wer mit dem Auto die Schweizer Autobahnen nutzt, benötigt eine Vignette, die als Klebe- oder digitale Variante erhältlich ist und für ein Jahr gilt."
+    },
+    {
+      "question": "Ist die Schweiz ein teures Reiseland?",
+      "answer": "Ja, die Schweiz zählt zu den teuersten Reiseländern der Welt, besonders bei Restaurants, Unterkünften und Bergbahnen. Mit Selbstverpflegung, Pässen für den Nahverkehr und Vorausbuchungen lässt sich jedoch sparen."
+    },
+    {
+      "question": "Lohnt sich der Swiss Travel Pass?",
+      "answer": "Für Reisende, die viel mit Bahn, Bus und Schiff unterwegs sind, lohnt sich der Swiss Travel Pass oft. Er bietet freie Fahrt im öffentlichen Verkehr, Ermäßigungen auf Bergbahnen und freien Eintritt in viele Museen."
+    },
+    {
+      "question": "Ist die Schweiz für einen Familienurlaub geeignet?",
+      "answer": "Ja, die Schweiz ist sehr familienfreundlich und sicher. Bergbahnen, Badeseen, einfache Wanderungen, Tiererlebnisse und kindgerechte Erlebniswelten sorgen für Abwechslung in jeder Jahreszeit."
+    },
+    {
+      "question": "Welche Berge sollte man in der Schweiz sehen?",
+      "answer": "Zu den ikonischsten zählen das Matterhorn bei Zermatt, das Jungfraujoch mit Eiger, Mönch und Jungfrau im Berner Oberland sowie der Pilatus und die Rigi bei Luzern."
+    },
+    {
+      "question": "Welche Spezialitäten sollte man probieren?",
+      "answer": "Typisch sind Käsefondue und Raclette, Rösti, das Zürcher Geschnetzelte sowie Schweizer Schokolade. In den Bergregionen lohnen Älplermagronen und regionale Käsesorten."
+    },
+    {
+      "question": "Wie viele Tage sollte man für die Schweiz einplanen?",
+      "answer": "Für eine Region wie das Berner Oberland oder rund um Luzern reichen einige Tage. Für eine Rundreise mit mehreren Höhepunkten und Panoramazügen sollte man rund eine Woche einplanen."
+    }
+  ],
+  "seo_title": "Schweiz Urlaub: Matterhorn, Alpen, Reisetipps & beste Reisezeit",
+  "seo_description": "Dein Schweiz-Urlaub: das Matterhorn, das Jungfraujoch, glasklare Seen, charmante Städte und die schönsten Panoramazüge. Beste Reisezeit, Highlights und praktische Reisetipps im Überblick.",
+  "affiliate_search_intent": "Schweiz Reise buchen, Hotel Luzern oder Zermatt, Swiss Travel Pass, Skiurlaub Schweiz, Wanderurlaub Berner Oberland, Panoramazug Glacier Express",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "oesterreich",
+    "italien",
+    "frankreich"
+  ],
+  "llmo_entities": [
+    "Schweiz",
+    "Matterhorn",
+    "Zermatt",
+    "Jungfraujoch",
+    "Berner Oberland",
+    "Interlaken",
+    "Grindelwald",
+    "Luzern",
+    "Vierwaldstättersee",
+    "Genfersee",
+    "Glacier Express",
+    "Bernina Express",
+    "Rheinfall",
+    "Bern",
+    "Tessin",
+    "Schweizer Franken"
+  ],
+  "llmo_answer_block": "Die Schweiz ist ein Alpenland der Superlative, bekannt für das Matterhorn, das Jungfraujoch, glasklare Seen, charmante Städte wie Luzern und Bern sowie weltberühmte Panoramazüge wie den Glacier Express. Sie eignet sich ideal für Natur-, Wander-, Wintersport- und Bahnreisen und ist von Deutschland aus schnell erreichbar, jedoch vergleichsweise teuer. Die beste Reisezeit ist der Sommer für Wandern und der Winter für Wintersport.",
+  "llmo_quick_answer": "Die Schweiz ist ein Alpenland mit dem Matterhorn, dem Jungfraujoch, glasklaren Seen und den schönsten Panoramazügen der Welt."
+}

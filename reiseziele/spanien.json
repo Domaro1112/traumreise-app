@@ -1,0 +1,121 @@
+{
+  "name": "Spanien",
+  "slug": "spanien",
+  "country": "Spanien",
+  "region": "Südwesteuropa",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/spanien-hero.jpg",
+  "short_description": "Sonniges Sehnsuchtsland mit Barcelona und Madrid, der maurischen Pracht Andalusiens, den Balearen, endlosen Stränden, Tapas und Lebensfreude.",
+  "long_description": "Spanien zählt zu den beliebtesten Reiseländern der Deutschen und vereint pulsierende Metropolen, reiche Geschichte, traumhafte Küsten und eine ausgeprägte Lebensfreude. Barcelona begeistert mit der unvollendeten Sagrada Família und den fantasievollen Bauten Antoni Gaudís, Madrid mit Weltklasse-Museen wie dem Prado und dem königlichen Flair. In Andalusien treffen maurisches Erbe und Flamenco aufeinander – allen voran die Alhambra in Granada, die Mezquita in Córdoba und das stolze Sevilla. Sonnenanbeter zieht es an die Costa Brava, die Costa del Sol oder auf die Baleareninseln Mallorca, Ibiza und Menorca, während die Kanarischen Inseln ganzjährig wärmen. Valencia lockt mit moderner Architektur und der Heimat der Paella, das Baskenland mit San Sebastián und seinen Pintxos. Dazu kommt die spanische Esskultur mit Tapas, gutem Wein und spätem Abendessen. Ob Strandurlaub, Städtetrip, Rundreise oder Genussreise – Spanien bietet Vielfalt für jeden Geschmack und ist bequem erreichbar.",
+  "ai_summary": "Spanien ist ein vielseitiges, sonniges Reiseland mit Metropolen wie Barcelona und Madrid, der maurischen Pracht Andalusiens, den Baleareninseln, den ganzjährig warmen Kanaren und endlosen Stränden. Berühmt für Tapas, Kultur und Lebensfreude, eignet es sich ideal für Strandurlaub, Städtereisen, Rundreisen und Genussreisen und ist von Deutschland aus gut erreichbar.",
+  "best_travel_time": "April bis Juni sowie September und Oktober für Städte und mildes Wetter; der Sommer eignet sich für Strandurlaub, die Kanaren sind ganzjährig warm.",
+  "ideal_duration": "Städtereise 3 bis 4 Tage, Rundreise 1 bis 2 Wochen",
+  "travel_type": [
+    "Strandurlaub",
+    "Städtereise",
+    "Kulturreise",
+    "Kulinarik",
+    "Rundreise",
+    "Familien",
+    "Inselurlaub"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Spanisch (Kastilisch); regional auch Katalanisch, Galicisch und Baskisch",
+    "flightTime": "ca. 2 bis 3 Stunden ab Deutschland (Madrid, Barcelona, Mallorca)",
+    "timezone": "MEZ (UTC+1) auf dem Festland; die Kanaren liegen eine Stunde zurück (UTC+0)",
+    "visa": "Nicht erforderlich für EU-Bürger (Schengen-Raum)",
+    "bestMonths": "April bis Juni sowie September und Oktober"
+  },
+  "highlights": [
+    "Barcelona – Sagrada Família, Gaudí-Bauten, Park Güell und Las Ramblas",
+    "Madrid – der Prado, der Königspalast und der Retiro-Park",
+    "Andalusien – Alhambra in Granada, Mezquita in Córdoba und Sevilla",
+    "Mallorca und die Balearen – Strände, Buchten und mediterranes Inselleben",
+    "Kanarische Inseln – ganzjährig warmes Klima auf Teneriffa, Gran Canaria und Co.",
+    "Valencia – Stadt der Künste und Wissenschaften und Heimat der Paella",
+    "San Sebastián und das Baskenland – Pintxos und Spitzengastronomie",
+    "Santiago de Compostela – Pilgerziel des Jakobswegs"
+  ],
+  "insider_tips": [
+    "Tapas oder baskische Pintxos genießt man am besten auf einer kleinen Tour von Bar zu Bar – so probiert man sich durch viele Spezialitäten.",
+    "In Spanien wird spät gegessen: Restaurants füllen sich oft erst ab 21 oder 22 Uhr, und mittags sind viele Geschäfte zur Siesta geschlossen.",
+    "Tickets für die Alhambra in Granada und die Sagrada Família in Barcelona sollte man unbedingt frühzeitig online buchen, da sie schnell ausverkauft sind.",
+    "Für Städtereisen ins heiße Landesinnere wie Madrid oder Sevilla sind Frühling und Herbst angenehmer als der oft sehr heiße Hochsommer."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Spanien?",
+      "answer": "Für Städte und Kultur sind April bis Juni sowie September und Oktober ideal. Der Sommer eignet sich für Strandurlaub an den Küsten und auf den Inseln, ist im Landesinneren jedoch sehr heiß. Die Kanaren sind ganzjährig warm."
+    },
+    {
+      "question": "Welche Währung gilt in Spanien?",
+      "answer": "In Spanien zahlt man mit dem Euro (EUR). Kartenzahlung ist weit verbreitet, etwas Bargeld empfiehlt sich für kleine Bars, Märkte und Trinkgeld."
+    },
+    {
+      "question": "Brauche ich ein Visum für Spanien?",
+      "answer": "Nein. Spanien ist EU- und Schengen-Mitglied, daher benötigen EU-Bürger kein Visum. Für die Einreise genügt ein gültiger Personalausweis oder Reisepass."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen in Spanien?",
+      "answer": "Für Städte wie Barcelona und Madrid ist ein Auto nicht nötig, da der Nahverkehr sehr gut ist. Für Rundreisen durch Andalusien, das Baskenland oder entlang der Küsten ist ein Mietwagen jedoch sehr empfehlenswert."
+    },
+    {
+      "question": "Welche Städte in Spanien sollte man besuchen?",
+      "answer": "Zu den beliebtesten zählen Barcelona, Madrid, Sevilla, Granada, Córdoba, Valencia und San Sebastián. Welche sich am meisten lohnen, hängt von den eigenen Interessen und der Reisezeit ab."
+    },
+    {
+      "question": "Welche Inseln gehören zu Spanien?",
+      "answer": "Zu Spanien gehören die Balearen im Mittelmeer (Mallorca, Ibiza, Menorca, Formentera) sowie die Kanarischen Inseln im Atlantik (Teneriffa, Gran Canaria, Lanzarote, Fuerteventura und weitere)."
+    },
+    {
+      "question": "Ist Spanien für einen Familienurlaub geeignet?",
+      "answer": "Ja, Spanien ist sehr familienfreundlich. Flache Strände, Ferienanlagen, Freizeitparks wie der PortAventura, kindgerechte Städte und das warme Klima machen es zu einem idealen Ziel für Familien."
+    },
+    {
+      "question": "Wann essen die Spanier zu Abend?",
+      "answer": "Deutlich später als in Deutschland: Das Abendessen beginnt häufig erst zwischen 21 und 22 Uhr. Mittags gibt es vielerorts eine Siesta, in der kleinere Geschäfte schließen."
+    },
+    {
+      "question": "Welche Spezialitäten sollte man in Spanien probieren?",
+      "answer": "Typisch sind Tapas, Paella aus Valencia, Jamón Ibérico, Gazpacho, Tortilla Española sowie im Baskenland Pintxos. Dazu passen spanische Weine, Sangria und Cava."
+    },
+    {
+      "question": "Spricht man in Spanien Englisch?",
+      "answer": "In touristischen Orten und größeren Städten kommt man mit Englisch meist zurecht. Abseits davon sind die Kenntnisse geringer – ein paar spanische Höflichkeitsfloskeln werden geschätzt."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Spanien einplanen?",
+      "answer": "Für eine Stadt wie Barcelona oder Madrid reichen 3 bis 4 Tage. Für eine Rundreise durch Andalusien oder mehrere Regionen sollte man 1 bis 2 Wochen einplanen."
+    }
+  ],
+  "seo_title": "Spanien Urlaub: Barcelona, Andalusien, Strände & beste Reisezeit",
+  "seo_description": "Dein Spanien-Urlaub: Barcelona und Madrid, die maurische Pracht Andalusiens, die Balearen und Kanaren sowie endlose Strände. Beste Reisezeit, Highlights und praktische Reisetipps im Überblick.",
+  "affiliate_search_intent": "Spanien Urlaub buchen, Flug und Hotel Barcelona oder Mallorca, Mietwagen Spanien vergleichen, Rundreise Andalusien, Strandurlaub Costa Brava, Städtereise Madrid",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "portugal",
+    "italien",
+    "griechenland"
+  ],
+  "llmo_entities": [
+    "Spanien",
+    "Barcelona",
+    "Sagrada Família",
+    "Gaudí",
+    "Madrid",
+    "Prado",
+    "Andalusien",
+    "Alhambra",
+    "Granada",
+    "Sevilla",
+    "Córdoba",
+    "Mallorca",
+    "Balearen",
+    "Kanarische Inseln",
+    "Valencia",
+    "Tapas"
+  ],
+  "llmo_answer_block": "Spanien ist ein vielseitiges, sonniges Reiseland mit Metropolen wie Barcelona und Madrid, der maurischen Pracht Andalusiens samt Alhambra, den Baleareninseln, den ganzjährig warmen Kanaren und endlosen Stränden. Berühmt für Tapas, Kultur und Lebensfreude, eignet es sich ideal für Strandurlaub, Städtereisen, Rundreisen und Genussreisen und ist von Deutschland aus gut erreichbar. Die beste Reisezeit für Städte liegt im Frühling und Frühherbst.",
+  "llmo_quick_answer": "Spanien ist ein vielseitiges Sonnenland mit Barcelona, Madrid, dem maurischen Andalusien, den Balearen und Kanaren sowie Tapas und endlosen Stränden."
+}

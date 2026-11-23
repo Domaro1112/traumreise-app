@@ -1,0 +1,125 @@
+{
+  "name": "Thailand",
+  "slug": "thailand",
+  "country": "Thailand",
+  "region": "Südostasien",
+  "continent": "Asien",
+  "hero_image": "/images/destinations/thailand-hero.jpg",
+  "short_description": "Das beliebteste Fernreiseziel Südostasiens mit Traumstränden, glitzernden Tempeln, dem quirligen Bangkok, Dschungel im Norden und weltberühmter Küche.",
+  "long_description": "Thailand ist das klassische Tor nach Südostasien und für viele die perfekte Mischung aus Strand, Kultur, Abenteuer und Genuss. Die pulsierende Hauptstadt Bangkok begeistert mit prachtvollen Tempeln wie dem Grand Palace und dem Wat Pho, lebhaften Märkten und einer überwältigenden Streetfood-Szene. Der Süden lockt mit den Traumstränden und Inseln der Andamansee und des Golfs von Thailand – von Phuket und den Kalksteinfelsen rund um Krabi und Railay über die Partyinsel Koh Phi Phi bis zu Koh Samui und der Taucherinsel Koh Tao. Im grünen Norden rund um Chiang Mai warten Bergtempel, ethische Elefanten-Schutzstationen und die Kultur der Bergvölker. Geschichtsfans erkunden die Ruinenstädte Ayutthaya und Sukhothai, Naturliebhaber den Regenwald des Khao-Sok-Nationalparks. Mit guter Infrastruktur, freundlichen Menschen und fairen Preisen ist Thailand ideal für Strandurlaub, Rundreisen, Backpacking und Familienreisen.",
+  "ai_summary": "Thailand ist das beliebteste Fernreiseziel Südostasiens mit Traumstränden und Inseln im Süden, der Metropole Bangkok, dem grünen Norden rund um Chiang Mai und weltberühmter Küche. Es bietet eine gute Infrastruktur, faire Preise und eignet sich ideal für Strandurlaub, Rundreisen, Inselhüpfen und Familienreisen.",
+  "best_travel_time": "Die beste Reisezeit ist die kühle Trockenzeit von November bis März. Das Klima variiert regional: Die Andamanküste (Phuket, Krabi) ist im Winter ideal, während die Golfinseln wie Koh Samui eigene Regenmuster haben.",
+  "ideal_duration": "2 bis 3 Wochen",
+  "travel_type": [
+    "Strandurlaub",
+    "Rundreise",
+    "Inselhüpfen",
+    "Backpacking",
+    "Kulturreise",
+    "Kulinarik",
+    "Familien"
+  ],
+  "quick_facts": {
+    "currency": "Thailändischer Baht (THB)",
+    "language": "Thailändisch",
+    "flightTime": "ca. 10 bis 11 Stunden ab Deutschland im Direktflug (Bangkok)",
+    "timezone": "ICT (UTC+7), sechs Stunden vor MEZ",
+    "visa": "Für deutsche Staatsbürger visumfreier Aufenthalt bis 60 Tage; eine Verlängerung vor Ort ist möglich",
+    "bestMonths": "November bis März"
+  },
+  "highlights": [
+    "Bangkok – Grand Palace, Wat Pho, Tempel, Märkte und Streetfood",
+    "Krabi und Railay – türkises Meer und spektakuläre Kalksteinfelsen",
+    "Phuket und Koh Phi Phi – Strände, Inselausflüge und Nachtleben",
+    "Koh Samui, Koh Phangan und Koh Tao – Golf-Inseln zum Baden und Tauchen",
+    "Chiang Mai – Bergtempel, Bergvölker und ethische Elefanten-Schutzstationen",
+    "Ayutthaya und Sukhothai – alte Königsstädte mit beeindruckenden Ruinen",
+    "Khao-Sok-Nationalpark – Regenwald, Kalksteinberge und Stausee",
+    "Schwimmende Märkte – farbenfrohes Treiben auf den Kanälen"
+  ],
+  "insider_tips": [
+    "Bei Elefanten-Erlebnissen unbedingt eine ethische Schutzstation ohne Reiten wählen, in der die Tiere artgerecht leben dürfen.",
+    "Echtes thailändisches Streetfood wie Pad Thai, Som Tam und Mango Sticky Rice schmeckt an den Garküchen am besten und ist sehr günstig.",
+    "Für den Transport in den Städten ist die Grab-App praktisch und transparent – sie zeigt den Preis vorab und vermeidet Verhandlungen.",
+    "Beim Besuch von Tempeln gilt ein Dresscode: Schultern und Knie sollten bedeckt sein, und die Schuhe werden vor dem Betreten ausgezogen."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich ein Visum für Thailand?",
+      "answer": "Deutsche Staatsbürger können für touristische Aufenthalte bis zu 60 Tage visumfrei einreisen; eine Verlängerung ist vor Ort möglich. Der Reisepass muss bei Einreise noch mindestens sechs Monate gültig sein."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Thailand?",
+      "answer": "Ideal ist die kühle Trockenzeit von November bis März. Das Klima ist jedoch regional unterschiedlich: Die Andamanküste rund um Phuket und Krabi ist im Winter am schönsten, während die Golfinseln wie Koh Samui ein etwas anderes Regenmuster haben."
+    },
+    {
+      "question": "Welche Währung gilt in Thailand?",
+      "answer": "Gezahlt wird mit dem Thailändischen Baht (THB). Kartenzahlung ist in Städten und Hotels verbreitet, an Märkten und Garküchen ist jedoch Bargeld wichtig. Geldautomaten sind weit verfügbar."
+    },
+    {
+      "question": "Wie reist man am besten innerhalb Thailands?",
+      "answer": "Günstige Inlandsflüge verbinden die Regionen schnell, dazu gibt es komfortable Züge, Busse und Fähren zu den Inseln. In Städten sind die Grab-App, Taxis und Tuk-Tuks praktisch. Ein eigener Mietwagen ist für die meisten Reisen nicht nötig."
+    },
+    {
+      "question": "Sollte man in Thailand selbst Auto fahren?",
+      "answer": "Für die meisten Reisen ist es nicht nötig, da Flüge, Boote und Fahrdienste gut funktionieren. Wer dennoch fährt, sollte den Linksverkehr und den teils chaotischen Verkehr beachten; Roller sind beliebt, bergen aber ein hohes Unfallrisiko."
+    },
+    {
+      "question": "Welche Inseln in Thailand sollte man besuchen?",
+      "answer": "Beliebt sind Phuket und Koh Phi Phi sowie Krabi mit Railay an der Andamanküste, dazu Koh Samui, Koh Phangan und die Taucherinsel Koh Tao im Golf von Thailand. Welche Inseln sich lohnen, hängt auch von der Reisezeit ab."
+    },
+    {
+      "question": "Ist Thailand für einen Familienurlaub geeignet?",
+      "answer": "Ja, Thailand ist sehr familienfreundlich. Flache Strände, gute Hotels, kindgerechte Ausflüge, freundliche Menschen und vielfältiges Essen machen es zu einem beliebten Ziel für Familien."
+    },
+    {
+      "question": "Kann man in Thailand das Leitungswasser trinken?",
+      "answer": "Nein, das Leitungswasser ist nicht zum Trinken geeignet. Man sollte abgefülltes Wasser verwenden; in Restaurants und Hotels ist das üblich und problemlos verfügbar."
+    },
+    {
+      "question": "Welche Impfungen werden für Thailand empfohlen?",
+      "answer": "Vorgeschrieben sind in der Regel keine Impfungen. Empfohlen werden Standardimpfungen sowie je nach Reiseart Hepatitis A und teils Typhus. Für eine individuelle Beratung sollte man rechtzeitig ein Tropeninstitut oder den Hausarzt aufsuchen."
+    },
+    {
+      "question": "Welche Gerichte sollte man in Thailand probieren?",
+      "answer": "Unbedingt probieren sollte man Pad Thai, grünes und rotes Curry, Tom Yum (scharf-saure Suppe), Som Tam (Papayasalat) sowie Mango Sticky Rice als Dessert. Die thailändische Küche ist aromatisch und vielfältig."
+    },
+    {
+      "question": "Ist Thailand sicher für Reisende?",
+      "answer": "Ja, Thailand gilt als sicheres und gut auf Touristen eingestelltes Reiseland. Aufpassen sollte man auf Taschendiebstahl, im Straßenverkehr sowie bei gängigen Touristenmaschen; Roller sollte man nur mit Erfahrung und Helm fahren."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Thailand einplanen?",
+      "answer": "Um Bangkok, den Norden und ein bis zwei Inseln zu verbinden, sind 2 bis 3 Wochen ideal. Für einen reinen Strandurlaub mit Bangkok-Stopp reichen auch rund 10 Tage."
+    }
+  ],
+  "seo_title": "Thailand Urlaub: Strände, Bangkok, Reisetipps & beste Reisezeit",
+  "seo_description": "Dein Thailand-Urlaub: Traumstrände und Inseln, Bangkok, Chiang Mai und weltberühmte Küche. Beste Reisezeit, Visum, Highlights und praktische Reisetipps im Überblick.",
+  "affiliate_search_intent": "Thailand Urlaub buchen, Flug nach Bangkok oder Phuket, Hotel Thailand, Rundreise Thailand, Inselhüpfen Thailand, Backpacking Südostasien, Strandurlaub Krabi",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "vietnam",
+    "kambodscha",
+    "malaysia"
+  ],
+  "llmo_entities": [
+    "Thailand",
+    "Bangkok",
+    "Grand Palace",
+    "Wat Pho",
+    "Phuket",
+    "Krabi",
+    "Railay",
+    "Koh Phi Phi",
+    "Koh Samui",
+    "Koh Tao",
+    "Chiang Mai",
+    "Ayutthaya",
+    "Sukhothai",
+    "Khao-Sok-Nationalpark",
+    "Thailändischer Baht",
+    "Pad Thai"
+  ],
+  "llmo_answer_block": "Thailand ist das beliebteste Fernreiseziel Südostasiens, bekannt für seine Traumstrände und Inseln im Süden, die pulsierende Metropole Bangkok mit ihren Tempeln, den grünen Norden rund um Chiang Mai und seine weltberühmte Küche. Mit guter Infrastruktur, fairen Preisen und freundlichen Menschen eignet es sich ideal für Strandurlaub, Rundreisen, Inselhüpfen und Familienreisen. Für deutsche Reisende ist ein Aufenthalt bis 60 Tage visumfrei, die beste Reisezeit liegt zwischen November und März.",
+  "llmo_quick_answer": "Thailand ist das beliebteste Südostasien-Ziel mit Traumstränden, Inseln, der Metropole Bangkok und weltberühmter Küche, für Deutsche bis 60 Tage visumfrei."
+}

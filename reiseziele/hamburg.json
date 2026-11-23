@@ -1,0 +1,116 @@
+{
+  "name": "Hamburg",
+  "slug": "hamburg",
+  "country": "Deutschland",
+  "region": "Norddeutschland",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/hamburg-hero.jpg",
+  "short_description": "Das maritime Tor zur Welt mit der spektakulären Elbphilharmonie, der UNESCO-Speicherstadt, dem großen Hafen, der Reeperbahn und der idyllischen Alster.",
+  "long_description": "Hamburg ist Deutschlands maritime Metropole und vereint norddeutsches Understatement mit weltstädtischem Flair. Das Wahrzeichen der Stadt ist die Elbphilharmonie, deren geschwungenes Glasdach über dem Hafen thront und deren Plaza einen herrlichen Rundumblick bietet. Direkt daneben erstreckt sich die UNESCO-Welterbe-Speicherstadt, der weltgrößte zusammenhängende Lagerhauskomplex mit ihren roten Backsteinfassaden und Fleeten, die nahtlos in die moderne HafenCity übergeht. Der Hamburger Hafen lädt zu Rundfahrten und Spaziergängen an den Landungsbrücken ein, während die Reeperbahn im Stadtteil St. Pauli für ihr legendäres Nachtleben bekannt ist. Rund um die Binnen- und Außenalster genießt man bei einer Bootsfahrt oder einem Spaziergang das entspannte Lebensgefühl der Stadt. Familien begeistert das Miniatur Wunderland, die größte Modelleisenbahn der Welt, und am frühen Sonntagmorgen lockt der traditionsreiche Fischmarkt. Als Musical-Hauptstadt Deutschlands und mit ihrer lebendigen Kulinarik ist Hamburg ein ideales Ziel für einen Städtetrip übers Wochenende.",
+  "ai_summary": "Hamburg ist Deutschlands maritime Metropole mit der spektakulären Elbphilharmonie, der UNESCO-Speicherstadt und HafenCity, dem großen Hafen, der Reeperbahn und der idyllischen Alster. Als Musical-Hauptstadt und mit lebendiger Kulinarik eignet sie sich ideal für einen Städtetrip übers Wochenende und ist innerdeutsch bequem erreichbar.",
+  "best_travel_time": "Mai bis September mit mildem Wetter ist ideal für Hafen, Alster und Außengastronomie; im Advent verzaubern stimmungsvolle Weihnachtsmärkte die Stadt.",
+  "ideal_duration": "2 bis 3 Tage",
+  "travel_type": [
+    "Städtereise",
+    "Kulturreise",
+    "Wochenendtrip",
+    "Kulinarik",
+    "Familien",
+    "Shopping"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Deutsch",
+    "flightTime": "Innerdeutsches Ziel; bequem per ICE (z. B. aus Berlin rund 1,5 bis 2 Stunden) oder mit dem Auto. Der Flughafen Hamburg liegt zentrumsnah",
+    "timezone": "MEZ (UTC+1)",
+    "visa": "Nicht erforderlich (innerdeutsch bzw. für EU-Bürger im Schengen-Raum)",
+    "bestMonths": "Mai bis September"
+  },
+  "highlights": [
+    "Elbphilharmonie – Wahrzeichen der Stadt mit Aussichtsplaza über dem Hafen",
+    "Speicherstadt – weltgrößter Lagerhauskomplex, UNESCO-Welterbe",
+    "Hamburger Hafen und Landungsbrücken – Hafenrundfahrten und maritimes Flair",
+    "Reeperbahn und St. Pauli – legendäres Vergnügungs- und Nachtleben",
+    "Binnen- und Außenalster – Bootsfahrten und Spaziergänge im Grünen",
+    "Miniatur Wunderland – größte Modelleisenbahnanlage der Welt",
+    "Fischmarkt – traditionsreiches Markttreiben am frühen Sonntagmorgen",
+    "HafenCity – modernes Stadtviertel rund um die Elbphilharmonie"
+  ],
+  "insider_tips": [
+    "Die Aussichtsplaza der Elbphilharmonie bietet einen tollen Rundumblick über Hafen und Stadt – das Plaza-Ticket sollte man vorab online sichern.",
+    "Eine günstige „Hafenrundfahrt“ gelingt mit der HVV-Fährlinie 62 ab den Landungsbrücken – mit normalem Nahverkehrsticket statt teurer Touristentour.",
+    "Der Fischmarkt in Altona findet sonntags am frühen Morgen statt – ein Erlebnis mit Marktschreiern, Livemusik und Hafenkulisse.",
+    "Unbedingt ein Franzbrötchen probieren, das süße Zimtgebäck ist eine echte Hamburger Spezialität; für den Nahverkehr lohnt sich ein HVV-Tagesticket."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Hamburg?",
+      "answer": "Am angenehmsten ist es von Mai bis September, wenn man Hafen, Alster und Außengastronomie genießen kann. Die Stadt ist aber ganzjährig reizvoll, und im Advent sorgen schöne Weihnachtsmärkte für besonderes Flair. Regenfeste Kleidung ist immer ratsam."
+    },
+    {
+      "question": "Wie reist man am besten nach Hamburg an?",
+      "answer": "Aus den meisten Teilen Deutschlands ist Hamburg bequem per ICE erreichbar, etwa in rund 1,5 bis 2 Stunden aus Berlin. Auch die Anreise mit dem Auto ist gut möglich, und der Flughafen Hamburg liegt nah am Zentrum."
+    },
+    {
+      "question": "Braucht man in Hamburg ein Auto?",
+      "answer": "Nein, Hamburg verfügt über einen sehr guten öffentlichen Nahverkehr mit U-Bahn, S-Bahn, Bussen und Fähren (HVV). Die Innenstadt lässt sich gut zu Fuß erkunden, ein Auto ist eher hinderlich."
+    },
+    {
+      "question": "Kann man die Elbphilharmonie besichtigen?",
+      "answer": "Ja. Die Aussichtsplaza ist mit einem kostengünstigen Ticket zugänglich und bietet einen herrlichen Blick über den Hafen. Für Konzerte im Großen Saal sollte man Karten frühzeitig buchen, da sie sehr begehrt sind."
+    },
+    {
+      "question": "Was ist die Speicherstadt?",
+      "answer": "Die Speicherstadt ist der weltgrößte zusammenhängende Lagerhauskomplex und gehört zum UNESCO-Welterbe. Mit ihren roten Backsteinbauten und Wasserkanälen ist sie besonders abends stimmungsvoll und beherbergt unter anderem das Miniatur Wunderland."
+    },
+    {
+      "question": "Lohnt sich das Miniatur Wunderland?",
+      "answer": "Ja, vor allem für Familien und Technikbegeisterte. Es ist die größte Modelleisenbahn der Welt und äußerst detailreich. Wegen des großen Andrangs sollte man Tickets unbedingt vorab online buchen und ein Zeitfenster reservieren."
+    },
+    {
+      "question": "Was hat es mit dem Fischmarkt auf sich?",
+      "answer": "Der Hamburger Fischmarkt in Altona findet jeden Sonntag am frühen Morgen statt. Neben Fisch, Obst und Blumen sorgen Marktschreier und Livemusik in der historischen Fischauktionshalle für eine einzigartige Atmosphäre."
+    },
+    {
+      "question": "Ist Hamburg für einen Familienurlaub geeignet?",
+      "answer": "Ja, Hamburg ist sehr familienfreundlich. Das Miniatur Wunderland, Hafenrundfahrten, der Tierpark Hagenbeck, Parks wie Planten un Blomen und kindgerechte Museen bieten viel Abwechslung."
+    },
+    {
+      "question": "Ist Hamburg für Musicals bekannt?",
+      "answer": "Ja, Hamburg gilt als Musical-Hauptstadt Deutschlands. Im Hafen werden bekannte Produktionen gezeigt, die man über eigene Fähren erreicht. Musical-Tickets und Pakete sollte man je nach Show frühzeitig buchen."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Hamburg einplanen?",
+      "answer": "Für die wichtigsten Highlights eignet sich ein Wochenende von 2 bis 3 Tagen. Wer Museen, Musicals und Ausflüge ins Umland verbinden möchte, kann auch problemlos länger bleiben."
+    }
+  ],
+  "seo_title": "Hamburg Städtereise: Elbphilharmonie, Hafen & beste Reisezeit",
+  "seo_description": "Dein Hamburg-Trip: die Elbphilharmonie, die UNESCO-Speicherstadt, der Hafen, die Reeperbahn und die Alster. Beste Reisezeit, Anreise, Highlights und praktische Tipps im Überblick.",
+  "affiliate_search_intent": "Hamburg Städtereise buchen, Hotel Hamburg, Hamburg Wochenende, Elbphilharmonie Tickets, Hafenrundfahrt Hamburg, Musical Hamburg, Miniatur Wunderland Tickets",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "berlin",
+    "bremen",
+    "duesseldorf"
+  ],
+  "llmo_entities": [
+    "Hamburg",
+    "Elbphilharmonie",
+    "Speicherstadt",
+    "HafenCity",
+    "Hamburger Hafen",
+    "Landungsbrücken",
+    "Reeperbahn",
+    "St. Pauli",
+    "Alster",
+    "Binnenalster",
+    "Außenalster",
+    "Miniatur Wunderland",
+    "Fischmarkt",
+    "Michel",
+    "Planten un Blomen",
+    "HVV"
+  ],
+  "llmo_answer_block": "Hamburg ist Deutschlands maritime Metropole mit der spektakulären Elbphilharmonie, der zum UNESCO-Welterbe zählenden Speicherstadt, dem großen Hafen mit den Landungsbrücken, der berühmten Reeperbahn und der idyllischen Alster. Als Musical-Hauptstadt Deutschlands und mit Attraktionen wie dem Miniatur Wunderland und dem Fischmarkt eignet sie sich ideal für einen Städtetrip übers Wochenende. Die beste Reisezeit liegt zwischen Mai und September, und innerdeutsch ist die Stadt per ICE bequem erreichbar.",
+  "llmo_quick_answer": "Hamburg ist Deutschlands maritime Metropole mit Elbphilharmonie, UNESCO-Speicherstadt, großem Hafen, Reeperbahn und Alster – ideal für einen Städtetrip übers Wochenende."
+}

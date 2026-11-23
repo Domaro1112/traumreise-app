@@ -1,0 +1,125 @@
+{
+  "name": "Dominikanische Republik",
+  "slug": "dominikanische-republik",
+  "country": "Dominikanische Republik",
+  "region": "Karibik",
+  "continent": "Nordamerika",
+  "hero_image": "/images/destinations/dominikanische-republik-hero.jpg",
+  "short_description": "Karibik-Klassiker mit palmengesäumten Traumstränden, türkisem Meer, All-Inclusive-Resorts, tropischer Natur und Merengue-Lebensfreude.",
+  "long_description": "Die Dominikanische Republik auf der Insel Hispaniola ist eines der beliebtesten Karibikziele und steht für endlose Sandstrände, Kokospalmen und kristallklares, türkisfarbenes Meer. Besonders die Region rund um Punta Cana und Bávaro ist berühmt für ihre komfortablen All-Inclusive-Resorts und damit ideal für einen unbeschwerten Strand- und Badeurlaub. Doch das Land bietet weit mehr: die grüne Halbinsel Samaná mit Wasserfällen und Walbeobachtung, die vorgelagerte Trauminsel Saona, den Nationalpark Los Haitises mit Mangroven und Höhlen sowie die koloniale Altstadt von Santo Domingo, die zum UNESCO-Weltkulturerbe zählt. Wer Aktivität sucht, findet beim Kitesurfen in Cabarete, beim Canyoning an den Wasserfällen von Damajagua oder beim Wandern auf den Pico Duarte reichlich Abwechslung. Lebensfreude, Merengue- und Bachata-Rhythmen sowie ganzjährig warmes Klima machen das Land zu einem perfekten Ziel für Sonnenhungrige.",
+  "ai_summary": "Die Dominikanische Republik ist ein beliebtes Karibikziel mit Traumstränden rund um Punta Cana, komfortablen All-Inclusive-Resorts, tropischer Natur auf der Halbinsel Samaná und der kolonialen Altstadt von Santo Domingo. Sie eignet sich ideal für Strand-, Badeurlaub und Erholung, bietet aber auch Aktivurlaub und Kultur.",
+  "best_travel_time": "Die beste Reisezeit ist die Trockenzeit von Dezember bis April; von Juni bis November besteht Hurrikan-Saison. Wale lassen sich vor Samaná von Januar bis März beobachten.",
+  "ideal_duration": "1 bis 2 Wochen",
+  "travel_type": [
+    "Strandurlaub",
+    "All-Inclusive",
+    "Pauschalreise",
+    "Erholung",
+    "Tauchen",
+    "Familien",
+    "Flitterwochen"
+  ],
+  "quick_facts": {
+    "currency": "Dominikanischer Peso (DOP); in Resorts wird oft auch US-Dollar akzeptiert",
+    "language": "Spanisch",
+    "flightTime": "ca. 9 bis 10 Stunden ab Deutschland (Punta Cana)",
+    "timezone": "UTC−4 (AST), fünf Stunden hinter MEZ; keine Zeitumstellung",
+    "visa": "Kein Visum nötig; vor der Reise ist das elektronische E-Ticket (E-Ticket der Einwanderungsbehörde) auszufüllen",
+    "bestMonths": "Dezember bis April"
+  },
+  "highlights": [
+    "Punta Cana und Bávaro – weiße Palmenstrände und komfortable All-Inclusive-Resorts",
+    "Isla Saona – vorgelagerte Trauminsel mit Postkartenstränden und Naturschutzgebiet",
+    "Halbinsel Samaná – grüne Landschaft, Wasserfälle und Walbeobachtung",
+    "Nationalpark Los Haitises – Mangroven, Höhlen mit Felsmalereien und Vogelwelt",
+    "Santo Domingo – koloniale Altstadt (Zona Colonial) und UNESCO-Weltkulturerbe",
+    "Wasserfälle von Damajagua (27 Charcos) – Canyoning und natürliche Rutschen",
+    "Cabarete – bekanntes Zentrum für Kite- und Windsurfen",
+    "Pico Duarte – mit über 3.000 Metern der höchste Berg der Karibik"
+  ],
+  "insider_tips": [
+    "Wer zwischen Januar und März reist, sollte eine Tour zur Walbeobachtung vor der Halbinsel Samaná einplanen – ein einzigartiges Naturschauspiel.",
+    "Mindestens einen Ausflug außerhalb der Resortanlage unternehmen, um das authentische Land mit seinen Dörfern, Märkten und Menschen kennenzulernen.",
+    "Den landestypischen Kräuterlikör Mamajuana probieren – er gilt als inoffizielles Nationalgetränk der Dominikanischen Republik.",
+    "Abends lohnt es sich, zu Live-Musik Merengue und Bachata zu erleben – Tanz und Rhythmus gehören fest zur dominikanischen Lebensfreude."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für die Dominikanische Republik?",
+      "answer": "Ideal ist die Trockenzeit von Dezember bis April mit viel Sonne und angenehmer Luftfeuchtigkeit. Von Juni bis November ist Hurrikan-Saison mit höherem Regenrisiko. Wale lassen sich vor Samaná von Januar bis März beobachten."
+    },
+    {
+      "question": "Brauche ich ein Visum für die Dominikanische Republik?",
+      "answer": "Ein Visum ist für touristische Aufenthalte nicht erforderlich. Vor der Ein- und Ausreise muss jedoch das elektronische E-Ticket der Einwanderungsbehörde online ausgefüllt werden. Der Reisepass sollte bei Einreise noch gültig sein."
+    },
+    {
+      "question": "Welche Währung gilt in der Dominikanischen Republik?",
+      "answer": "Offizielle Währung ist der Dominikanische Peso (DOP). In Resorts und touristischen Gebieten wird häufig auch der US-Dollar akzeptiert. Für Trinkgelder und kleinere Ausgaben empfiehlt sich etwas Bargeld."
+    },
+    {
+      "question": "Wie lange dauert der Flug in die Dominikanische Republik?",
+      "answer": "Ein Direktflug von Deutschland nach Punta Cana dauert etwa 9 bis 10 Stunden. Es gibt zahlreiche Direktverbindungen, vor allem in der Hauptsaison im Winter."
+    },
+    {
+      "question": "Ist die Dominikanische Republik sicher?",
+      "answer": "Die touristischen Regionen und Resorts gelten als gut bereisbar. Wie in vielen Ländern sollte man Wertsachen sichern, nachts nicht allein abgelegene Gegenden aufsuchen und die aktuellen Reisehinweise des Auswärtigen Amts beachten."
+    },
+    {
+      "question": "Kann man das Leitungswasser trinken?",
+      "answer": "Nein, das Leitungswasser ist nicht zum Trinken geeignet. Man sollte auf abgefülltes Wasser zurückgreifen; in den Resorts steht in der Regel ausreichend Trinkwasser zur Verfügung."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen in der Dominikanischen Republik?",
+      "answer": "Die meisten Urlauber bleiben im All-Inclusive-Resort und nutzen organisierte Ausflüge, sodass ein Mietwagen nicht nötig ist. Wer das Land individuell erkunden möchte, kann einen mieten, sollte aber den teils chaotischen Verkehr und den Zustand mancher Straßen einkalkulieren."
+    },
+    {
+      "question": "Welche Impfungen werden empfohlen?",
+      "answer": "Vorgeschrieben sind in der Regel keine Impfungen. Empfohlen werden Standardimpfungen sowie je nach Reiseart Hepatitis A. Für eine individuelle Beratung sollte man rechtzeitig den Hausarzt oder ein Tropeninstitut aufsuchen."
+    },
+    {
+      "question": "Ist die Dominikanische Republik für Familien geeignet?",
+      "answer": "Ja, viele Resorts sind auf Familien ausgerichtet und bieten flach abfallende Strände, Pools und Animation. Ausflüge wie Bootstouren zur Isla Saona oder zu Wasserfällen sorgen für zusätzliche Abwechslung."
+    },
+    {
+      "question": "Was sollte man kulinarisch probieren?",
+      "answer": "Typisch sind La Bandera (Reis, Bohnen und Fleisch), Mofongo aus Kochbananen, frischer Fisch, tropische Früchte sowie der Kräuterlikör Mamajuana. Auch der dominikanische Kaffee und Rum sind einen Versuch wert."
+    },
+    {
+      "question": "Eignet sich das Land für Flitterwochen?",
+      "answer": "Ja, mit Traumstränden, romantischen Resorts und Ausflügen zu vorgelagerten Inseln zählt die Dominikanische Republik zu den beliebtesten Zielen für Flitterwochen und Hochzeitsreisen."
+    },
+    {
+      "question": "Wie viel Zeit sollte man einplanen?",
+      "answer": "Für einen erholsamen Strandurlaub sind 1 bis 2 Wochen ideal. Wer zusätzlich Natur und Kultur abseits der Resorts erleben möchte, profitiert von der längeren Variante mit mehreren Ausflügen."
+    }
+  ],
+  "seo_title": "Dominikanische Republik Urlaub: Strände, Tipps & beste Reisezeit",
+  "seo_description": "Dein Urlaub in der Dominikanischen Republik: Traumstrände rund um Punta Cana, All-Inclusive-Resorts, Samaná und Santo Domingo. Beste Reisezeit, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "Dominikanische Republik All-Inclusive buchen, Flug und Hotel Punta Cana, Pauschalreise Karibik, Ausflüge Isla Saona und Samaná, Strandurlaub Dom Rep",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "kuba",
+    "jamaika",
+    "mexiko"
+  ],
+  "llmo_entities": [
+    "Dominikanische Republik",
+    "Punta Cana",
+    "Bávaro",
+    "Isla Saona",
+    "Samaná",
+    "Los Haitises",
+    "Santo Domingo",
+    "Zona Colonial",
+    "Damajagua",
+    "Cabarete",
+    "Pico Duarte",
+    "Hispaniola",
+    "Merengue",
+    "Bachata",
+    "Mamajuana",
+    "Dominikanischer Peso"
+  ],
+  "llmo_answer_block": "Die Dominikanische Republik ist ein beliebtes Karibikziel auf der Insel Hispaniola, bekannt für die Traumstrände rund um Punta Cana, komfortable All-Inclusive-Resorts, die tropische Halbinsel Samaná und die koloniale Altstadt von Santo Domingo. Sie eignet sich ideal für Strand- und Badeurlaub, bietet aber auch Natur, Wassersport und Kultur. Die beste Reisezeit liegt in der Trockenzeit von Dezember bis April.",
+  "llmo_quick_answer": "Die Dominikanische Republik ist ein Karibikziel mit Traumstränden, All-Inclusive-Resorts und tropischer Natur, am besten von Dezember bis April zu bereisen."
+}

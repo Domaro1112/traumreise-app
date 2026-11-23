@@ -13,9 +13,9 @@ import { listActiveSuggestions } from '@/repositories/homepage-suggestions';
 import { FALLBACK_SUGGESTIONS } from '@/lib/homepage-suggestions';
 
 export const metadata = {
-  title: 'Traumreise – Deine persönliche KI-Reiseberaterin',
+  title: 'ApeAround – Finde deine Traumreise',
   description:
-    'Erzähl uns von dir – wir finden dein perfektes Reiseziel inkl. Hotels, Flügen & Aktivitäten. 100% kostenlos.',
+    'Beantworte ein paar Fragen und entdecke Reiseziele, die zu dir passen – inkl. Hotels, Flügen & Aktivitäten. 100% kostenlos.',
 };
 
 export default async function LandingPage() {

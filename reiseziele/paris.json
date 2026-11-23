@@ -1,0 +1,120 @@
+{
+  "name": "Paris",
+  "slug": "paris",
+  "country": "Frankreich",
+  "region": "Île-de-France",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/paris-hero.jpg",
+  "short_description": "Die Stadt der Liebe mit Eiffelturm, Louvre, Notre-Dame, eleganten Boulevards, Kunst, Mode und unvergleichlichem savoir-vivre.",
+  "long_description": "Paris ist eine der schönsten und romantischsten Städte der Welt und ein Klassiker für jeden Städtetrip. Das Wahrzeichen, der Eiffelturm, überragt die Stadt und ist abends bei der stündlichen Lichtshow besonders magisch. Im Louvre, dem größten Kunstmuseum der Welt, hängt die Mona Lisa, während das Musée d'Orsay die Meisterwerke der Impressionisten zeigt. Die wiedereröffnete Kathedrale Notre-Dame, die Prachtstraße Champs-Élysées mit dem Arc de Triomphe und das Künstlerviertel Montmartre mit der Basilika Sacré-Cœur gehören ebenso zum Pflichtprogramm wie eine Bootsfahrt auf der Seine. Vor den Toren der Stadt lockt das prunkvolle Schloss Versailles. Paris steht zudem für Genuss: Croissants und Macarons aus der Patisserie, Käse und Wein, kleine Bistros und die berühmte Café-Kultur. Mit seinem eleganten Flair, der Mode und Kunst an jeder Ecke ist Paris ideal für einen romantischen Kurztrip, eine Kultur- oder Familienreise – und von Deutschland aus schnell erreichbar.",
+  "ai_summary": "Paris ist die romantische Hauptstadt Frankreichs mit Wahrzeichen wie dem Eiffelturm, dem Louvre, der wiedereröffneten Notre-Dame, den Champs-Élysées und Montmartre. Berühmt für Kunst, Mode und Genuss, eignet sich die gut erreichbare Metropole ideal für einen Städtetrip, eine Kultur- oder Familienreise.",
+  "best_travel_time": "April bis Juni sowie September und Oktober für mildes Wetter und blühende oder herbstliche Parks; im Dezember ist Paris weihnachtlich stimmungsvoll.",
+  "ideal_duration": "3 bis 4 Tage",
+  "travel_type": [
+    "Städtereise",
+    "Kulturreise",
+    "Kulinarik",
+    "Paare",
+    "Shopping",
+    "Familien",
+    "Wochenendtrip"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Französisch",
+    "flightTime": "ca. 1,5 Stunden ab Deutschland; auch bequem mit dem TGV-Hochgeschwindigkeitszug erreichbar",
+    "timezone": "MEZ (UTC+1), identisch mit Deutschland",
+    "visa": "Nicht erforderlich für EU-Bürger (Schengen-Raum)",
+    "bestMonths": "April bis Juni sowie September und Oktober"
+  },
+  "highlights": [
+    "Eiffelturm – das Wahrzeichen mit Aussicht und abendlicher Lichtshow",
+    "Louvre – größtes Kunstmuseum der Welt mit der Mona Lisa",
+    "Notre-Dame – die wiedereröffnete gotische Kathedrale auf der Île de la Cité",
+    "Champs-Élysées und Arc de Triomphe – Prachtstraße und Triumphbogen",
+    "Montmartre und Sacré-Cœur – Künstlerviertel mit Blick über die Stadt",
+    "Seine – Bootsfahrt vorbei an den Sehenswürdigkeiten",
+    "Musée d'Orsay – Meisterwerke des Impressionismus",
+    "Schloss Versailles – prunkvolle Residenz vor den Toren der Stadt"
+  ],
+  "insider_tips": [
+    "Tickets für den Eiffelturm, den Louvre und die Katakomben sollte man unbedingt vorab online buchen, um lange Warteschlangen zu vermeiden.",
+    "Viele städtische Museen sind am ersten Sonntag im Monat kostenlos, und EU-Bürger unter 26 Jahren haben in vielen Häusern freien Eintritt.",
+    "Statt der teuren Lokale direkt an den Sehenswürdigkeiten lohnt sich ein Picknick mit Baguette, Käse und Wein auf dem Champ de Mars oder an der Seine.",
+    "Am besten bewegt man sich mit der Metro fort und erkundet die Viertel zu Fuß – ein Auto ist in Paris eher hinderlich."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Paris?",
+      "answer": "Am angenehmsten sind April bis Juni sowie September und Oktober mit mildem Wetter und weniger Andrang. Paris ist aber ganzjährig reizvoll und im Dezember besonders festlich geschmückt."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Paris einplanen?",
+      "answer": "Für die wichtigsten Sehenswürdigkeiten sind 3 bis 4 Tage ideal. Wer zusätzlich Versailles, das Disneyland oder mehr Museen besuchen möchte, kann problemlos länger bleiben."
+    },
+    {
+      "question": "Braucht man in Paris ein Auto?",
+      "answer": "Nein, Paris verfügt über ein dichtes Metro- und Busnetz, und viele Viertel lassen sich gut zu Fuß erkunden. Ein Auto ist wegen Verkehr, Parkplatznot und Umweltzonen eher hinderlich."
+    },
+    {
+      "question": "Wie bewegt man sich am besten in Paris fort?",
+      "answer": "Das beste Verkehrsmittel ist die Metro, ergänzt durch Busse und die RER für Ausflüge ins Umland. Für längere Aufenthalte lohnt sich eine aufladbare Verkehrskarte oder ein Tagesticket."
+    },
+    {
+      "question": "Kann man Notre-Dame wieder besichtigen?",
+      "answer": "Ja, die Kathedrale Notre-Dame wurde nach den umfangreichen Restaurierungsarbeiten infolge des Brandes Ende 2024 wiedereröffnet und kann erneut besichtigt werden. In Stoßzeiten muss man mit Wartezeiten rechnen."
+    },
+    {
+      "question": "Sollte man Tickets für den Eiffelturm und den Louvre vorab buchen?",
+      "answer": "Unbedingt. Für den Eiffelturm, den Louvre und weitere beliebte Attraktionen empfiehlt sich die Online-Buchung mit fester Zeitfensterwahl, da die Schlangen vor Ort sehr lang sein können."
+    },
+    {
+      "question": "Lohnt sich ein Tagesausflug nach Versailles?",
+      "answer": "Ja, das prunkvolle Schloss Versailles mit seinen weitläufigen Gärten ist ein lohnender Tagesausflug und mit der RER in etwa einer Stunde erreichbar. Auch hier sollte man Tickets vorab buchen."
+    },
+    {
+      "question": "Ist Paris für einen Familienurlaub geeignet?",
+      "answer": "Ja, Paris bietet viel für Familien: das Disneyland Paris vor den Toren der Stadt, Bootsfahrten auf der Seine, Parks, den Tierpark sowie kindgerechte Museen und den Eiffelturm."
+    },
+    {
+      "question": "Welche Spezialitäten sollte man in Paris probieren?",
+      "answer": "Typisch sind frische Croissants und Pain au Chocolat, Macarons, Käse und Wein, Crêpes, klassische Bistro-Gerichte wie Steak Frites sowie ein Café au Lait in einem typischen Pariser Café."
+    },
+    {
+      "question": "Ist Paris sicher für Reisende?",
+      "answer": "Paris ist insgesamt ein sicheres Reiseziel. Wie in vielen Großstädten sollte man jedoch besonders in der Metro, an Bahnhöfen und an Touristenhotspots auf Taschendiebe achten."
+    },
+    {
+      "question": "Wie kommt man am besten nach Paris?",
+      "answer": "Am schnellsten reist man per Flug (rund 1,5 Stunden ab Deutschland) oder bequem mit dem TGV-Hochgeschwindigkeitszug. Vom Flughafen gelangt man mit der RER oder Bussen ins Zentrum."
+    }
+  ],
+  "seo_title": "Paris Städtereise: Eiffelturm, Louvre, Tipps & beste Reisezeit",
+  "seo_description": "Deine Paris-Reise: Eiffelturm, Louvre, die wiedereröffnete Notre-Dame, Montmartre und Versailles. Beste Reisezeit, Sehenswürdigkeiten, Insidertipps und praktische Infos im Überblick.",
+  "affiliate_search_intent": "Paris Städtereise buchen, Hotel Paris, Flug nach Paris, Eiffelturm Tickets, Louvre Tickets, Wochenendtrip Paris, Disneyland Paris",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "london",
+    "rom",
+    "wien"
+  ],
+  "llmo_entities": [
+    "Paris",
+    "Eiffelturm",
+    "Louvre",
+    "Mona Lisa",
+    "Notre-Dame",
+    "Champs-Élysées",
+    "Arc de Triomphe",
+    "Montmartre",
+    "Sacré-Cœur",
+    "Seine",
+    "Musée d'Orsay",
+    "Versailles",
+    "Île de la Cité",
+    "Disneyland Paris",
+    "Île-de-France"
+  ],
+  "llmo_answer_block": "Paris ist die romantische Hauptstadt Frankreichs mit weltberühmten Wahrzeichen wie dem Eiffelturm, dem Louvre mit der Mona Lisa, der wiedereröffneten Kathedrale Notre-Dame, den Champs-Élysées und dem Künstlerviertel Montmartre. Berühmt für Kunst, Mode und Genuss, eignet sich die gut erreichbare Metropole ideal für einen romantischen Städtetrip sowie Kultur- und Familienreisen. Die beste Reisezeit liegt im Frühling und Frühherbst.",
+  "llmo_quick_answer": "Paris ist die Stadt der Liebe mit Eiffelturm, Louvre, der wiedereröffneten Notre-Dame, Montmartre und Versailles – ideal für einen Städtetrip von 3 bis 4 Tagen."
+}

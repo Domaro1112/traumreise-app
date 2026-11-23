@@ -200,7 +200,7 @@ export default async function ArticlePage({ params }) {
           </Container>
         </section>
 
-        {/* ── Full-width KI CTA banner ──────────────────────────────────────────── */}
+        {/* ── Full-width Reisefinder CTA banner ──────────────────────────────────────────── */}
         <section
           style={{
             background: 'linear-gradient(135deg, #0C1A3A 0%, #0B3D6B 40%, #0EA5E9 100%)',
@@ -263,8 +263,8 @@ export default async function ArticlePage({ params }) {
                   marginBottom: '32px',
                 }}
               >
-                Unsere KI erstellt dir in 2 Minuten einen persönlichen Reiseplan – mit
-                Unterkunftsempfehlungen, Aktivitäten und direkten Buchungslinks. 100 % kostenlos.
+                Beantworte ein paar Fragen und erhalte in 2 Minuten passende Reiseideen – mit
+                Aktivitäten, Kostenüberblick und direkten Buchungslinks. 100 % kostenlos.
               </p>
 
               <Link
@@ -285,7 +285,7 @@ export default async function ArticlePage({ params }) {
                 }}
               >
                 <Plane size={18} strokeWidth={2.5} />
-                {article.destination} mit KI planen
+                {article.destination} jetzt planen
                 <ArrowRight size={16} strokeWidth={2.5} />
               </Link>
 

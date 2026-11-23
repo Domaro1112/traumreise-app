@@ -1,0 +1,117 @@
+{
+  "name": "Mallorca",
+  "slug": "mallorca",
+  "country": "Spanien",
+  "region": "Balearische Inseln (Mittelmeer)",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/mallorca-hero.jpg",
+  "short_description": "Die beliebteste Insel der Deutschen mit türkisen Traumbuchten, dem Tramuntana-Gebirge, dem charmanten Palma, Mandelblüte und Lebensfreude – weit mehr als Ballermann.",
+  "long_description": "Mallorca ist die größte der Balearischen Inseln und das mit Abstand beliebteste Urlaubsziel der Deutschen – nicht ohne Grund, denn die Insel ist erstaunlich vielfältig. Die quirlige Hauptstadt Palma beeindruckt mit der gewaltigen Kathedrale La Seu, einer charmanten Altstadt und einer lebendigen Gastro-Szene. Im Nordwesten erhebt sich die Serra de Tramuntana, ein UNESCO-Welterbe mit dramatischen Berglandschaften, alten Olivenhainen und pittoresken Dörfern wie Valldemossa, Deià und Sóller, das ein historischer Holzzug mit Palma verbindet. An den Küsten locken unzählige Traumbuchten mit türkisem Wasser, vom karibisch anmutenden Es Trenc bis zur kleinen Caló des Moro. Familien schätzen die flachen Strände rund um Alcúdia, Naturfreunde die Wanderwege und das Radrevier der Tramuntana, Feierfreudige die Partymeile am Ballermann. Im Februar verwandelt die Mandelblüte die Insel in ein rosa-weißes Blütenmeer. Mit kurzer Flugzeit, gutem Wetter und Angeboten für jeden Geschmack ist Mallorca ideal für Strand-, Familien-, Aktiv- und Genussurlaub.",
+  "ai_summary": "Mallorca ist die beliebteste Insel der Deutschen und überrascht mit weit mehr als dem Ballermann: türkise Traumbuchten, das UNESCO-Gebirge Serra de Tramuntana, das charmante Palma mit der Kathedrale La Seu, malerische Bergdörfer und die Mandelblüte. Mit kurzer Flugzeit eignet es sich ideal für Strand-, Familien-, Aktiv- und Genussurlaub.",
+  "best_travel_time": "Mai bis Oktober für Strand und Badeurlaub; Frühling und Herbst sind ideal zum Wandern und Radfahren, und im Februar verzaubert die Mandelblüte die Insel.",
+  "ideal_duration": "Eine Woche",
+  "travel_type": [
+    "Strandurlaub",
+    "Familien",
+    "Wandern",
+    "Radreise",
+    "Wellness",
+    "Roadtrip",
+    "Partyurlaub"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Spanisch und Katalanisch (Mallorquí); Deutsch und Englisch sind weit verbreitet",
+    "flightTime": "ca. 2 bis 2,5 Stunden ab Deutschland (Palma de Mallorca)",
+    "timezone": "MEZ (UTC+1), identisch mit Deutschland",
+    "visa": "Nicht erforderlich für EU-Bürger (Schengen-Raum)",
+    "bestMonths": "Mai bis Oktober"
+  },
+  "highlights": [
+    "Palma de Mallorca – die Kathedrale La Seu und die charmante Altstadt",
+    "Serra de Tramuntana – UNESCO-Gebirge mit Bergdörfern und Wanderwegen",
+    "Traumbuchten – von Es Trenc bis zur kleinen Caló des Moro",
+    "Sóller – Orangental mit historischem Holzzug ab Palma",
+    "Valldemossa und Deià – malerische Dörfer in den Bergen",
+    "Cap de Formentor – spektakulärer Aussichtspunkt an der Nordspitze",
+    "Coves del Drac – beeindruckende Tropfsteinhöhlen mit unterirdischem See",
+    "Playa de Palma und Ballermann – berühmte Strand- und Partymeile"
+  ],
+  "insider_tips": [
+    "Die schönsten Seiten Mallorcas entdeckt man abseits der Resorts mit dem Mietwagen – etwa die versteckten Calas und die Bergstraßen der Tramuntana.",
+    "Eine Fahrt mit dem historischen Holzzug von Palma nach Sóller und weiter mit der Straßenbahn zum Hafen ist ein nostalgisches Erlebnis.",
+    "Frühling und Herbst sind ideal zum Wandern und Radfahren; die Tramuntana ist ein weltbekanntes Trainingsrevier für Rennradfahrer.",
+    "Beliebte Fotobuchten wie Caló des Moro sind schnell überfüllt – früh am Morgen kommen lohnt sich, und der karibisch wirkende Es Trenc begeistert mit feinem Sand."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Mallorca?",
+      "answer": "Für Strand und Baden eignen sich die Monate Mai bis Oktober. Frühling und Herbst sind ideal zum Wandern und Radfahren, da es dann angenehm mild ist. Im Februar lockt die Mandelblüte, und die Hochsaison im Hochsommer ist am vollsten."
+    },
+    {
+      "question": "Wie reist man nach Mallorca an?",
+      "answer": "Am einfachsten per Flug zum Airport Palma de Mallorca, der von vielen deutschen Flughäfen in rund 2 bis 2,5 Stunden erreichbar ist. Vom Flughafen gelangt man mit Bus, Taxi oder Mietwagen schnell in die Urlaubsorte."
+    },
+    {
+      "question": "Braucht man auf Mallorca einen Mietwagen?",
+      "answer": "Für einen reinen Strandurlaub im Hotel nicht zwingend, doch zum Entdecken der Buchten, Bergdörfer und der Tramuntana ist ein Mietwagen sehr empfehlenswert. In Palma selbst ist ein Auto eher hinderlich."
+    },
+    {
+      "question": "Ist Mallorca nur etwas für Partyurlauber?",
+      "answer": "Nein, das ist ein Klischee. Der Ballermann ist nur ein kleiner Teil der Insel. Mallorca bietet ruhige Buchten, Wandern und Radfahren in der Tramuntana, Kultur in Palma, charmante Dörfer und feine Küche – etwas für jeden Geschmack."
+    },
+    {
+      "question": "Welche Strände sind auf Mallorca besonders schön?",
+      "answer": "Zu den schönsten zählen der lange, feinsandige Es Trenc, die Buchten im Südosten wie Cala Mondragó und Caló des Moro sowie die familienfreundlichen Strände rund um Alcúdia und Playa de Muro im Norden."
+    },
+    {
+      "question": "Ist Mallorca für einen Familienurlaub geeignet?",
+      "answer": "Ja, sehr. Flache Sandstrände, kinderfreundliche Hotels, Wasserparks und Ausflüge wie die Höhlen oder der Zug nach Sóller machen Mallorca zu einem idealen und unkomplizierten Familienziel mit kurzer Anreise."
+    },
+    {
+      "question": "Kann man auf Mallorca gut wandern und Rad fahren?",
+      "answer": "Ja, besonders in der Serra de Tramuntana. Es gibt zahlreiche Wanderwege mit Meer- und Bergblick, und die Insel ist ein weltbekanntes Rennrad-Revier. Frühling und Herbst sind dafür die besten Jahreszeiten."
+    },
+    {
+      "question": "Spricht man auf Mallorca Deutsch?",
+      "answer": "In den touristischen Orten wird sehr häufig Deutsch und Englisch gesprochen, sodass die Verständigung für deutsche Urlauber problemlos ist. Amtssprachen sind Spanisch und Katalanisch (Mallorquí)."
+    },
+    {
+      "question": "Was ist die Mandelblüte auf Mallorca?",
+      "answer": "Im Februar blühen die unzähligen Mandelbäume der Insel und tauchen weite Landstriche in ein rosa-weißes Blütenmeer. Diese ruhige Nebensaison ist ideal für Wanderungen und ein besonderes Naturschauspiel."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Mallorca einplanen?",
+      "answer": "Für einen erholsamen Strandurlaub mit einigen Ausflügen eignet sich eine Woche. Wer die Insel intensiver mit Bergen, Buchten und Palma erkunden möchte, kann gut 10 bis 14 Tage bleiben."
+    }
+  ],
+  "seo_title": "Mallorca Urlaub: Strände, Palma, Tramuntana & beste Reisezeit",
+  "seo_description": "Dein Mallorca-Urlaub: türkise Traumbuchten, das Tramuntana-Gebirge, das charmante Palma und die Mandelblüte – weit mehr als Ballermann. Beste Reisezeit, Anreise, Highlights und Tipps im Überblick.",
+  "affiliate_search_intent": "Mallorca Urlaub buchen, Pauschalreise Mallorca, Flug nach Palma, Hotel Mallorca, Finca Mallorca, Mietwagen Mallorca, Familienurlaub Mallorca",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "ibiza",
+    "menorca",
+    "spanien"
+  ],
+  "llmo_entities": [
+    "Mallorca",
+    "Balearische Inseln",
+    "Palma de Mallorca",
+    "Kathedrale La Seu",
+    "Serra de Tramuntana",
+    "Valldemossa",
+    "Deià",
+    "Sóller",
+    "Es Trenc",
+    "Caló des Moro",
+    "Cap de Formentor",
+    "Coves del Drac",
+    "Playa de Palma",
+    "Ballermann",
+    "Mandelblüte",
+    "Euro"
+  ],
+  "llmo_answer_block": "Mallorca ist die größte Baleareninsel und das beliebteste Urlaubsziel der Deutschen – und weit mehr als der Ballermann: türkise Traumbuchten wie Es Trenc und Caló des Moro, das UNESCO-Gebirge Serra de Tramuntana mit malerischen Dörfern, das charmante Palma mit der Kathedrale La Seu und im Februar die Mandelblüte. Mit kurzer Flugzeit, gutem Wetter und Angeboten für jeden Geschmack eignet es sich ideal für Strand-, Familien-, Aktiv- und Genussurlaub. Die beste Reisezeit für Strand liegt zwischen Mai und Oktober, Frühling und Herbst eignen sich zum Wandern und Radfahren.",
+  "llmo_quick_answer": "Mallorca ist die beliebteste Insel der Deutschen mit türkisen Traumbuchten, dem Tramuntana-Gebirge, dem charmanten Palma und der Mandelblüte – weit mehr als Ballermann."
+}

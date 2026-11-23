@@ -1,0 +1,119 @@
+{
+  "name": "Zion-Nationalpark",
+  "slug": "zion",
+  "country": "Vereinigte Staaten (USA)",
+  "region": "Utah (USA-Südwesten)",
+  "continent": "Nordamerika",
+  "hero_image": "/images/destinations/zion-hero.jpg",
+  "short_description": "Spektakulärer Nationalpark in Utah mit gewaltigen roten Sandsteinwänden, der engen Flussschlucht The Narrows und der berühmten Steilwanderung Angels Landing.",
+  "long_description": "Der Zion-Nationalpark im Süden Utahs ist einer der eindrucksvollsten Parks des amerikanischen Südwestens und ein Paradies für Wanderer und Naturliebhaber. Im Herzen liegt der Zion Canyon, eine tiefe Schlucht, deren gewaltige Sandsteinwände in leuchtendem Rot, Orange und Cremeweiß bis zu rund 800 Meter aufragen, durchflossen vom Virgin River. Zu den berühmtesten Erlebnissen zählt die ausgesetzte Steilwanderung Angels Landing, die über einen schmalen Grat mit Sicherungsketten zu einem atemberaubenden Aussichtspunkt führt und ein Permit erfordert. Ein weiteres Highlight sind The Narrows, wo man durch den Fluss zwischen den engsten, hoch aufragenden Felswänden des Parks wandert. Sanftere Wege wie die Emerald Pools oder der Canyon Overlook Trail bieten ebenfalls grandiose Ausblicke. Über den spektakulären Zion-Mount Carmel Highway samt Tunnel erreicht man den östlichen Parkteil. Zion lässt sich ideal mit Bryce Canyon, dem Grand Canyon und Las Vegas zu einer Südwesten-Rundreise verbinden und ist ein Traumziel für Wander-, Natur- und Fotoreisen.",
+  "ai_summary": "Der Zion-Nationalpark in Utah begeistert mit gewaltigen roten Sandsteinwänden, dem Zion Canyon, der Flusswanderung The Narrows und der berühmten Steilwanderung Angels Landing. Er eignet sich ideal als Teil eines Südwesten-Roadtrips und für Wander- und Naturreisen; für die Einreise gelten die USA-Bestimmungen mit ESTA.",
+  "best_travel_time": "Frühling (April bis Mai) und Herbst (September bis Oktober) mit mildem Wetter sind ideal. Der Sommer ist heiß und sehr voll, die Winter sind mild. Die Flusswanderung The Narrows ist meist im Spätfrühling bis Frühherbst am besten begehbar.",
+  "ideal_duration": "1 bis 3 Tage, oft als Teil eines Südwesten-Roadtrips",
+  "travel_type": [
+    "Naturreise",
+    "Nationalparks",
+    "Roadtrip",
+    "Wandern",
+    "Canyoning",
+    "Fotoreise",
+    "Abenteuer"
+  ],
+  "quick_facts": {
+    "currency": "US-Dollar (USD)",
+    "language": "Englisch",
+    "flightTime": "Kein Direktflug zum Park; ab Deutschland ca. 11 bis 12 Stunden in die USA plus Anschluss/Fahrt. Nächste Flughäfen: Las Vegas (LAS, rund 2,5 bis 3 Stunden Fahrt) und St. George (SGU, rund 1 Stunde)",
+    "timezone": "Mountain Time (UTC−7; im Sommer UTC−6), rund acht Stunden hinter MEZ",
+    "visa": "Wie für die USA: kein Visum für Touristen (bis 90 Tage), aber elektronischer Reisepass und kostenpflichtige ESTA-Genehmigung erforderlich",
+    "bestMonths": "April bis Mai sowie September bis Oktober"
+  },
+  "highlights": [
+    "Zion Canyon – die zentrale Schlucht mit gewaltigen roten Sandsteinwänden",
+    "Angels Landing – berühmte, ausgesetzte Steilwanderung mit Sicherungsketten (Permit nötig)",
+    "The Narrows – Wanderung durch den Virgin River zwischen engen Felswänden",
+    "Emerald Pools – grüne Wasserbecken und Wasserfälle auf leichteren Wegen",
+    "Canyon Overlook Trail – kurze Wanderung mit weitem Blick über den Canyon",
+    "Zion-Mount Carmel Highway und Tunnel – spektakuläre Panoramastraße",
+    "The Watchman und Court of the Patriarchs – markante Felsformationen",
+    "Kolob Canyons – ruhigerer, weniger besuchter Teil des Parks"
+  ],
+  "insider_tips": [
+    "Im Zion Canyon gilt in der Hauptsaison Shuttle-Pflicht: Private Fahrzeuge dürfen die Scenic Drive nicht befahren, der kostenlose Shuttlebus bringt einen zu allen Startpunkten.",
+    "Die berühmte Wanderung Angels Landing erfordert ein Permit, das über eine Verlosung vergeben wird; der ausgesetzte Grat mit Ketten ist nichts für Menschen mit Höhenangst.",
+    "Für The Narrows watet man durch den Fluss – Wasserstand und Strömung vorab prüfen, festes Schuhwerk und einen Wanderstock (vor Ort leihbar) nutzen und die Flash-Flood-Warnungen ernst nehmen.",
+    "Der Park ist sehr beliebt; früh anreisen und Zion gut mit Bryce Canyon, dem Grand Canyon und Las Vegas zu einer Rundreise kombinieren."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für den Zion-Nationalpark?",
+      "answer": "Am angenehmsten sind Frühling (April bis Mai) und Herbst (September bis Oktober) mit mildem Wetter und etwas weniger Andrang. Der Sommer ist heiß und sehr voll, die Winter sind mild und ruhig. The Narrows ist meist vom Spätfrühling bis Frühherbst am besten begehbar."
+    },
+    {
+      "question": "Darf man mit dem eigenen Auto in den Zion Canyon fahren?",
+      "answer": "In der Hauptsaison nicht: Dann gilt im Zion Canyon Shuttle-Pflicht, und private Fahrzeuge dürfen die Scenic Drive nicht befahren. Der kostenlose Shuttlebus bringt Besucher zu allen wichtigen Startpunkten. Außerhalb der Saison ist die Zufahrt teils mit dem Auto möglich."
+    },
+    {
+      "question": "Braucht man für Angels Landing ein Permit?",
+      "answer": "Ja, für den finalen, ausgesetzten Abschnitt von Angels Landing ist ein Permit erforderlich, das über eine Verlosung vergeben wird. Die Wanderung führt über einen schmalen Grat mit Sicherungsketten und ist anspruchsvoll sowie nichts für Menschen mit Höhenangst."
+    },
+    {
+      "question": "Was sind The Narrows?",
+      "answer": "The Narrows ist eine berühmte Wanderung, bei der man durch den Virgin River zwischen den engsten und höchsten Felswänden des Parks watet. Wichtig sind passende Ausrüstung, die Prüfung von Wasserstand und Strömung sowie die Beachtung der Flash-Flood-Gefahr."
+    },
+    {
+      "question": "Wie reist man zum Zion-Nationalpark an?",
+      "answer": "Es gibt keinen Flughafen direkt am Park. Üblich ist ein Flug in die USA mit Ziel Las Vegas (rund 2,5 bis 3 Stunden Fahrt) oder St. George (rund 1 Stunde). Von dort fährt man mit dem Mietwagen weiter, meist im Rahmen eines Südwesten-Roadtrips."
+    },
+    {
+      "question": "Braucht man am Zion einen Mietwagen?",
+      "answer": "Für die Anreise ist ein Mietwagen sehr empfehlenswert, da der Park abgelegen liegt und oft Teil eines Roadtrips ist. Im Zion Canyon selbst bewegt man sich in der Hauptsaison mit dem kostenlosen Shuttlebus fort."
+    },
+    {
+      "question": "Brauche ich für den Zion ein Visum?",
+      "answer": "Es gelten die Einreisebestimmungen der USA: Für touristische Aufenthalte bis 90 Tage ist kein Visum nötig, aber ein elektronischer Reisepass und eine vorab beantragte, kostenpflichtige ESTA-Genehmigung. Details finden sich auf der USA-Seite."
+    },
+    {
+      "question": "Was kostet der Eintritt in den Zion-Nationalpark?",
+      "answer": "Für ein privates Fahrzeug gilt ein mehrtägiges Eintrittsticket. Wer mehrere US-Nationalparks besucht, fährt mit dem Jahrespass „America the Beautiful“ oft günstiger, der den Eintritt in alle Nationalparks abdeckt."
+    },
+    {
+      "question": "Wo übernachtet man am besten?",
+      "answer": "Direkt am Parkeingang liegt der Ort Springdale mit zahlreichen Hotels, Lodges und Restaurants, von dem aus der Shuttle in den Park fährt. Im Park selbst gibt es die Zion Lodge sowie Campingplätze, die früh ausgebucht sind."
+    },
+    {
+      "question": "Ist der Zion für Familien geeignet?",
+      "answer": "Ja, der Park ist familienfreundlich. Leichtere Wege wie der Riverside Walk, die Emerald Pools und das Shuttlesystem eignen sich gut für Kinder. Anspruchsvolle und ausgesetzte Touren wie Angels Landing sind dagegen nichts für kleine Kinder."
+    },
+    {
+      "question": "Wie viele Tage sollte man für den Zion einplanen?",
+      "answer": "Für die wichtigsten Highlights reichen 1 bis 2 Tage. Wer mehrere Wanderungen wie Angels Landing und The Narrows unternehmen möchte, plant 2 bis 3 Tage ein, oft kombiniert mit weiteren Parks im Südwesten."
+    }
+  ],
+  "seo_title": "Zion-Nationalpark: Angels Landing, The Narrows & beste Reisezeit",
+  "seo_description": "Dein Besuch im Zion-Nationalpark in Utah: rote Sandsteinwände, die Wanderung Angels Landing und die Flussschlucht The Narrows. Beste Reisezeit, Shuttle, Anreise, Tipps und Highlights im Überblick.",
+  "affiliate_search_intent": "Zion Nationalpark Reise buchen, Flug nach Las Vegas, Mietwagen USA-Südwesten, Hotel Springdale, Zion Touren und Wanderungen, Rundreise Südwesten USA Nationalparks",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "bryce-canyon",
+    "grand-canyon",
+    "monument-valley"
+  ],
+  "llmo_entities": [
+    "Zion-Nationalpark",
+    "Utah",
+    "Zion Canyon",
+    "Angels Landing",
+    "The Narrows",
+    "Virgin River",
+    "Emerald Pools",
+    "Canyon Overlook Trail",
+    "Zion-Mount Carmel Highway",
+    "The Watchman",
+    "Kolob Canyons",
+    "Springdale",
+    "Las Vegas",
+    "USA-Südwesten"
+  ],
+  "llmo_answer_block": "Der Zion-Nationalpark in Utah begeistert mit gewaltigen roten Sandsteinwänden, dem zentralen Zion Canyon, der Flusswanderung The Narrows durch den Virgin River und der berühmten ausgesetzten Steilwanderung Angels Landing. Er eignet sich ideal als Teil eines Südwesten-Roadtrips, am besten im Frühling und Herbst, und im Zion Canyon gilt in der Hauptsaison Shuttle-Pflicht. Für die Einreise gelten die USA-Bestimmungen mit elektronischem Reisepass und ESTA.",
+  "llmo_quick_answer": "Der Zion-Nationalpark in Utah begeistert mit roten Sandsteinwänden, der Flussschlucht The Narrows und der Steilwanderung Angels Landing, am besten im Frühling und Herbst."
+}

@@ -1,0 +1,114 @@
+{
+  "name": "Scheveningen",
+  "slug": "scheveningen",
+  "country": "Niederlande",
+  "region": "Südholland (Den Haag, Nordseeküste)",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/scheveningen-hero.jpg",
+  "short_description": "Der berühmteste Seebadeort der Niederlande mit langem Sandstrand, lebhafter Promenade, historischer Pier und der Kulturstadt Den Haag direkt nebenan.",
+  "long_description": "Scheveningen ist das bekannteste und mondänste Seebad der Niederlande und zugleich der Küstenstadtteil der Regierungsstadt Den Haag. Sein kilometerlanger, breiter Sandstrand und die lebhafte Strandpromenade ziehen besonders deutsche Urlauber an, die hier Nordseeluft, Strandleben und Großstadtkultur bequem verbinden können. Wahrzeichen ist die markante Pier, eine ins Meer hinausragende Seebrücke mit Riesenrad, Aussichtsturm und Bungee-Sprung. Über allem thront das prächtige historische Kurhaus, ein altehrwürdiges Grandhotel. Entlang des Strandes laden zahlreiche Strandpavillons, Bars und Fischrestaurants zum Verweilen ein, und Wassersportler finden ideale Bedingungen zum Surfen und Kiten. Gleich dahinter beginnt Den Haag mit Weltklasse-Kultur: Das Mauritshuis beherbergt Vermeers „Mädchen mit dem Perlenohrring“, der Binnenhof ist das politische Herz der Niederlande, und der Miniaturpark Madurodam begeistert Familien. Ob Strandwochenende, Familienurlaub oder Städtetrip mit Meerblick – Scheveningen ist von Deutschland aus schnell erreichbar und ein ideales Kurzreiseziel.",
+  "ai_summary": "Scheveningen ist der berühmteste Seebadeort der Niederlande und der Küstenstadtteil von Den Haag, mit langem Sandstrand, lebhafter Promenade, historischer Pier und dem Kurhaus. Die Kulturstadt Den Haag mit dem Mauritshuis und Madurodam liegt direkt nebenan. Von Deutschland schnell erreichbar, eignet es sich ideal für Strandwochenenden, Familien- und Städtereisen.",
+  "best_travel_time": "Mai bis September für Strand, Baden und Strandleben; das Frühjahr und der Herbst eignen sich für Spaziergänge und Wellness, und auch außerhalb der Saison ist der Ort mit Pier und Restaurants belebt.",
+  "ideal_duration": "2 bis 4 Tage (Wochenende), als Strand- oder Städtetrip",
+  "travel_type": [
+    "Strandurlaub",
+    "Städtereise",
+    "Wochenendtrip",
+    "Familien",
+    "Wellness",
+    "Kulinarik"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Niederländisch; Deutsch und Englisch sind sehr weit verbreitet",
+    "flightTime": "Aus Deutschland meist bequem per Auto oder Bahn erreichbar; Flüge gehen nach Amsterdam oder Rotterdam (rund 1 Stunde), von dort weiter nach Den Haag",
+    "timezone": "MEZ (UTC+1), identisch mit Deutschland",
+    "visa": "Nicht erforderlich für EU-Bürger (Schengen-Raum)",
+    "bestMonths": "Mai bis September"
+  },
+  "highlights": [
+    "Strand von Scheveningen – breiter Sandstrand mit langer Promenade",
+    "Pier von Scheveningen – Seebrücke mit Riesenrad, Aussichtsturm und Bungee",
+    "Kurhaus – prächtiges historisches Grandhotel direkt am Strand",
+    "Strandpavillons und Fischrestaurants – frischer Fisch und Strandbars",
+    "Den Haag – Mauritshuis mit Vermeers „Mädchen mit dem Perlenohrring“ und der Binnenhof",
+    "Madurodam – beliebter Miniaturpark in Den Haag, ideal für Familien",
+    "Wassersport – Surfen und Kiten an der Nordsee",
+    "Leuchtturm und SEA LIFE – weitere Attraktionen am Hafen und Strand"
+  ],
+  "insider_tips": [
+    "Scheveningen ist sehr deutschfreundlich – viele Einheimische sprechen Deutsch, was den Aufenthalt besonders unkompliziert macht.",
+    "Aus dem Zentrum von Den Haag erreicht man den Strand schnell und günstig mit der Tram; ein eigenes Auto ist vor Ort nicht nötig.",
+    "Unbedingt typisch niederländische Fischspezialitäten wie Kibbeling, Matjes oder einen Hering vom Stand probieren.",
+    "Ein Spaziergang auf der Pier mit Riesenrad lohnt sich besonders zum Sonnenuntergang über der Nordsee; ein Abstecher zum Mauritshuis und nach Madurodam rundet den Besuch ab."
+  ],
+  "faq": [
+    {
+      "question": "Wo liegt Scheveningen?",
+      "answer": "Scheveningen ist der Küstenstadtteil der Stadt Den Haag an der niederländischen Nordseeküste in der Provinz Südholland. Es ist der bekannteste Seebadeort der Niederlande und von Den Haags Zentrum in wenigen Minuten erreichbar."
+    },
+    {
+      "question": "Wie spricht man Scheveningen aus?",
+      "answer": "Der Name ist berühmt schwer auszusprechen, da der niederländische „sch“-Laut für Deutsche ungewohnt ist – etwa „SCHRÄch-fe-ning-en“ mit kratzigem ch am Anfang. Niemand erwartet eine perfekte Aussprache; man wird auch so bestens verstanden."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Scheveningen?",
+      "answer": "Für Strand und Baden eignen sich die Monate Mai bis September. Frühjahr und Herbst sind ideal für Spaziergänge, Wellness und ruhigere Tage, und dank Pier, Restaurants und Den Haag ist der Ort auch im Winter einen Besuch wert."
+    },
+    {
+      "question": "Wie reist man nach Scheveningen an?",
+      "answer": "Aus vielen Teilen Deutschlands ist Scheveningen bequem mit dem Auto oder der Bahn erreichbar. Mit dem Zug fährt man nach Den Haag und von dort mit der Tram an den Strand. Flüge gehen nach Amsterdam oder Rotterdam."
+    },
+    {
+      "question": "Braucht man in Scheveningen ein Auto?",
+      "answer": "Nein, vor Ort ist ein Auto nicht nötig. Die Promenade und der Strand sind gut zu Fuß zu erkunden, und Den Haag ist per Tram schnell verbunden. Wer mit dem Auto anreist, sollte die Parkgebühren in Strandnähe einplanen."
+    },
+    {
+      "question": "Wie ist der Strand von Scheveningen?",
+      "answer": "Der Strand ist breit, sandig und mehrere Kilometer lang, gesäumt von einer lebhaften Promenade mit Strandpavillons, Bars und Restaurants. Im Sommer ist er gut besucht; zum Baden gibt es bewachte Abschnitte."
+    },
+    {
+      "question": "Kann man Scheveningen mit Den Haag verbinden?",
+      "answer": "Ja, das bietet sich an, da Scheveningen zu Den Haag gehört. In der Stadt locken das Mauritshuis mit Vermeers „Mädchen mit dem Perlenohrring“, der Binnenhof und der Miniaturpark Madurodam – ideal als Ergänzung zum Strandtag."
+    },
+    {
+      "question": "Ist Scheveningen für Familien geeignet?",
+      "answer": "Ja, sehr. Der flache Sandstrand, die Pier mit Riesenrad, das SEA LIFE und der nahe Miniaturpark Madurodam in Den Haag machen Scheveningen zu einem beliebten und unkomplizierten Ziel für Familien mit Kindern."
+    },
+    {
+      "question": "Spricht man in Scheveningen Deutsch?",
+      "answer": "Ja, Scheveningen ist bei deutschen Urlaubern sehr beliebt, und viele Einheimische sowie das Personal in Hotels und Restaurants sprechen Deutsch oder Englisch. Die Verständigung ist daher problemlos."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Scheveningen einplanen?",
+      "answer": "Für ein entspanntes Strandwochenende reichen 2 bis 3 Tage. Wer zusätzlich Den Haag mit seinen Museen und Madurodam erkunden möchte, plant am besten 3 bis 4 Tage ein."
+    }
+  ],
+  "seo_title": "Scheveningen: Strand, Pier, Den Haag & beste Reisezeit",
+  "seo_description": "Dein Urlaub in Scheveningen: der berühmteste Seebadeort der Niederlande mit langem Sandstrand, Pier, Kurhaus und der Kulturstadt Den Haag nebenan. Beste Reisezeit, Anreise, Highlights und Tipps im Überblick.",
+  "affiliate_search_intent": "Scheveningen Urlaub buchen, Strandhotel Scheveningen, Hotel Den Haag, Ferienwohnung Scheveningen, Wochenende Nordsee Niederlande, Kurzurlaub Scheveningen",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "holland",
+    "amsterdam",
+    "rotterdam"
+  ],
+  "llmo_entities": [
+    "Scheveningen",
+    "Den Haag",
+    "Niederlande",
+    "Südholland",
+    "Nordsee",
+    "Pier von Scheveningen",
+    "Kurhaus",
+    "Strandpromenade",
+    "Mauritshuis",
+    "Mädchen mit dem Perlenohrring",
+    "Binnenhof",
+    "Madurodam",
+    "Kibbeling",
+    "Euro"
+  ],
+  "llmo_answer_block": "Scheveningen ist der berühmteste Seebadeort der Niederlande und der Küstenstadtteil von Den Haag, mit kilometerlangem Sandstrand, lebhafter Promenade, der markanten Pier mit Riesenrad und dem historischen Kurhaus. Direkt nebenan bietet Den Haag Weltklasse-Kultur mit dem Mauritshuis, dem Binnenhof und dem Familienpark Madurodam. Von Deutschland aus schnell mit Auto oder Bahn erreichbar und sehr deutschfreundlich, eignet sich der Ort ideal für Strandwochenenden, Familien- und Städtereisen, am besten von Mai bis September.",
+  "llmo_quick_answer": "Scheveningen ist der berühmteste Seebadeort der Niederlande und Küstenstadtteil von Den Haag, mit langem Sandstrand, Pier und Weltklasse-Kultur direkt nebenan."
+}

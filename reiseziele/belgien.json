@@ -1,0 +1,115 @@
+{
+  "name": "Belgien",
+  "slug": "belgien",
+  "country": "Belgien",
+  "region": "Westeuropa",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/belgien-hero.jpg",
+  "short_description": "Charmantes Nachbarland mit dem märchenhaften Brügge, dem lebendigen Brüssel, mittelalterlichen Städten sowie weltberühmter Schokolade, Pommes und Bier.",
+  "long_description": "Belgien überrascht auf kleinem Raum mit einer enormen Dichte an Sehenswürdigkeiten, Kultur und Genuss – und ist von Deutschland aus besonders schnell erreichbar. Das märchenhafte Brügge gilt mit seinen Grachten, Kopfsteinpflastergassen und mittelalterlichen Bauten als „Venedig des Nordens“ und zählt zum UNESCO-Welterbe. Das lebendige Gent begeistert mit der Wasserburg Gravensteen und einer der schönsten Altstädte des Landes. Die Hauptstadt Brüssel vereint den prächtigen Grand-Place, das futuristische Atomium, das berühmte Manneken Pis und das Europaviertel. Antwerpen ist das Zentrum für Mode, Diamanten und das Erbe des Malers Rubens. Belgien ist außerdem ein Schlaraffenland für Genießer: weltberühmte Pralinen und Schokolade, knusprige Pommes (Frites), süße Waffeln und eine einzigartige Biertradition mit hunderten Sorten. Geschichtsinteressierte besuchen die Schlachtfelder Flanderns, Naturfreunde die waldreichen Ardennen im Süden. Ob Städtetrip, Kultur- oder Genussreise – Belgien ist ideal für einen Kurzurlaub.",
+  "ai_summary": "Belgien ist ein charmantes Nachbarland mit dem märchenhaften Brügge, dem lebendigen Gent, der Hauptstadt Brüssel mit Grand-Place und Atomium sowie Antwerpen. Berühmt für Schokolade, Pommes, Waffeln und Bier, eignet es sich ideal für Städte-, Kultur- und Genussreisen und ist von Deutschland aus sehr schnell erreichbar.",
+  "best_travel_time": "April bis September für mildes Wetter und Außengastronomie; die Städte sind ganzjährig attraktiv, im Advent locken stimmungsvolle Weihnachtsmärkte.",
+  "ideal_duration": "2 bis 4 Tage",
+  "travel_type": [
+    "Städtereise",
+    "Kulturreise",
+    "Kulinarik",
+    "Wochenendtrip",
+    "Familien"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Niederländisch (Flämisch), Französisch und Deutsch (drei Amtssprachen)",
+    "flightTime": "ca. 1 Stunde ab Deutschland (Brüssel); sehr gut mit Bahn oder Auto erreichbar",
+    "timezone": "MEZ (UTC+1), identisch mit Deutschland",
+    "visa": "Nicht erforderlich für EU-Bürger (Schengen-Raum)",
+    "bestMonths": "April bis September"
+  },
+  "highlights": [
+    "Brügge – märchenhafte Altstadt mit Grachten, das „Venedig des Nordens“, UNESCO",
+    "Gent – Wasserburg Gravensteen und eine der schönsten Altstädte Belgiens",
+    "Brüssel – Grand-Place, Atomium, Manneken Pis und das Europaviertel",
+    "Antwerpen – Mode, Diamanten, das Erbe von Rubens und der prächtige Bahnhof",
+    "Belgische Kulinarik – Pralinen, Schokolade, Pommes (Frites) und Waffeln",
+    "Belgisches Bier – jahrhundertealte Brautradition mit hunderten Sorten",
+    "Flandern Fields – Schlachtfelder und Gedenkstätten des Ersten Weltkriegs",
+    "Die Ardennen – waldreiche Natur und Burgen im Süden des Landes"
+  ],
+  "insider_tips": [
+    "Unbedingt typische belgische Spezialitäten probieren: Frites aus der Frituur, eine echte Lütticher Waffel, handgemachte Pralinen und ein Trappistenbier.",
+    "Der Grand-Place in Brüssel ist abends, wenn die prächtigen Fassaden beleuchtet sind, besonders eindrucksvoll.",
+    "Eine Grachtenfahrt in Brügge erlebt man am schönsten früh am Morgen, bevor die Tagesausflügler eintreffen.",
+    "Dank des dichten Bahnnetzes lassen sich die Städte Brüssel, Brügge, Gent und Antwerpen bequem an einem Tag per Zug verbinden."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Belgien?",
+      "answer": "Am angenehmsten ist es von April bis September mit mildem Wetter. Die Städte sind jedoch ganzjährig reizvoll, und im Advent sorgen stimmungsvolle Weihnachtsmärkte für besonderen Charme."
+    },
+    {
+      "question": "Welche Währung gilt in Belgien?",
+      "answer": "In Belgien zahlt man mit dem Euro (EUR). Kartenzahlung ist weit verbreitet, etwas Bargeld empfiehlt sich für kleine Cafés, Märkte und Pommesbuden."
+    },
+    {
+      "question": "Brauche ich ein Visum für Belgien?",
+      "answer": "Nein. Belgien ist EU- und Schengen-Mitglied, daher benötigen EU-Bürger kein Visum. Für die Einreise genügt ein gültiger Personalausweis oder Reisepass."
+    },
+    {
+      "question": "Braucht man in Belgien ein Auto?",
+      "answer": "Nein, Belgien hat ein sehr dichtes Bahnnetz, mit dem sich die Städte schnell und bequem verbinden lassen. Die Altstädte sind zudem gut zu Fuß zu erkunden, sodass ein Auto meist überflüssig ist."
+    },
+    {
+      "question": "Welche Städte in Belgien sollte man besuchen?",
+      "answer": "Zu den schönsten zählen das märchenhafte Brügge, das lebendige Gent, die Hauptstadt Brüssel sowie das modische Antwerpen. Alle liegen nah beieinander und lassen sich gut kombinieren."
+    },
+    {
+      "question": "Warum ist Brügge so beliebt?",
+      "answer": "Brügge gilt als eine der besterhaltenen mittelalterlichen Städte Europas. Die Grachten, Kopfsteinpflastergassen, der Belfried und die historischen Fassaden machen es zu einem romantischen Highlight, das zum UNESCO-Welterbe zählt."
+    },
+    {
+      "question": "Welche Spezialitäten sollte man in Belgien probieren?",
+      "answer": "Unbedingt probieren sollte man belgische Pommes (Frites), Waffeln, handgemachte Pralinen und Schokolade, Muscheln mit Pommes (Moules-frites) sowie eines der vielen belgischen Biere."
+    },
+    {
+      "question": "Welche Sprachen spricht man in Belgien?",
+      "answer": "Belgien hat drei Amtssprachen: Niederländisch (Flämisch) im Norden, Französisch im Süden und Deutsch in einem kleinen Gebiet im Osten. In Brüssel und touristischen Orten kommt man auch gut mit Englisch zurecht."
+    },
+    {
+      "question": "Ist Belgien für einen Familienurlaub geeignet?",
+      "answer": "Ja, Belgien ist familienfreundlich. Bootsfahrten in Brügge, das Atomium, Schokoladenmuseen, der Comic-Kult rund um Tim und Struppi sowie die nahe Nordseeküste bieten Abwechslung für Kinder."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Belgien einplanen?",
+      "answer": "Für eine einzelne Stadt wie Brügge oder Brüssel reichen 2 Tage. Wer mehrere Städte kombinieren möchte, sollte ein langes Wochenende von 3 bis 4 Tagen einplanen."
+    }
+  ],
+  "seo_title": "Belgien Urlaub: Brügge, Brüssel, Tipps & beste Reisezeit",
+  "seo_description": "Dein Belgien-Urlaub: das märchenhafte Brügge, das lebendige Brüssel mit Grand-Place und Atomium, Gent und Antwerpen sowie Schokolade, Pommes und Bier. Beste Reisezeit, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "Belgien Reise buchen, Städtereise Brügge oder Brüssel, Hotel Brüssel, Wochenendtrip Belgien, Flug nach Brüssel, Citytrip Gent oder Antwerpen",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "holland",
+    "frankreich",
+    "luxemburg"
+  ],
+  "llmo_entities": [
+    "Belgien",
+    "Brügge",
+    "Grachten",
+    "Gent",
+    "Gravensteen",
+    "Brüssel",
+    "Grand-Place",
+    "Atomium",
+    "Manneken Pis",
+    "Antwerpen",
+    "Rubens",
+    "Flandern",
+    "Ardennen",
+    "belgische Schokolade",
+    "belgisches Bier",
+    "Pommes"
+  ],
+  "llmo_answer_block": "Belgien ist ein charmantes Nachbarland mit dem märchenhaften Brügge und seinen Grachten, dem lebendigen Gent, der Hauptstadt Brüssel mit Grand-Place und Atomium sowie dem modischen Antwerpen. Berühmt für Schokolade, Pralinen, Pommes, Waffeln und seine Biertradition, eignet es sich ideal für Städte-, Kultur- und Genussreisen und ist von Deutschland aus sehr schnell erreichbar. Die beste Reisezeit liegt zwischen April und September.",
+  "llmo_quick_answer": "Belgien ist ein charmantes Nachbarland mit dem märchenhaften Brügge, dem lebendigen Brüssel sowie weltberühmter Schokolade, Pommes und Bier."
+}

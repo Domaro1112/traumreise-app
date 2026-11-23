@@ -1,0 +1,120 @@
+{
+  "name": "Singapur",
+  "slug": "singapur",
+  "country": "Singapur",
+  "region": "Südostasien",
+  "continent": "Asien",
+  "hero_image": "/images/destinations/singapur-hero.jpg",
+  "short_description": "Faszinierender Stadtstaat, der futuristische Skyline, üppige Gärten, multikulturelle Viertel und weltberühmtes Hawker-Streetfood auf engstem Raum vereint.",
+  "long_description": "Singapur ist einer der faszinierendsten Stadtstaaten der Welt – sauber, sicher, hochmodern und zugleich überraschend grün. Das Wahrzeichen ist das Marina Bay Sands mit seiner spektakulären Skyline, davor reckt sich der Merlion über die Bucht. In den Gardens by the Bay ragen die futuristischen Supertrees in den Himmel, während die klimatisierten Gewächshäuser Cloud Forest und Flower Dome ganze Landschaften nachbilden. Singapurs Stärke ist seine Vielfalt: In Chinatown, Little India und dem von der malaiischen Kultur geprägten Kampong Glam treffen Religionen, Architektur und vor allem Aromen aufeinander. Die Hawker Centres gelten als kulinarisches Herz der Stadt, in dem Gerichte wie Hainanese Chicken Rice, Laksa und Chili Crab günstig und in Weltklasse-Qualität serviert werden. Familien lieben die Erlebniswelten auf der Insel Sentosa und den preisgekrönten Zoo. Singapur ist von Deutschland aus direkt erreichbar und eignet sich perfekt für eine kompakte Städtereise oder als komfortabler Stopover.",
+  "ai_summary": "Singapur ist ein hochmoderner, grüner Stadtstaat in Südostasien mit dem Marina Bay Sands, den Gardens by the Bay, multikulturellen Vierteln wie Chinatown und Little India sowie weltberühmtem Hawker-Streetfood. Er ist sauber, sicher und bestens erschlossen und eignet sich ideal für eine kompakte Städtereise oder als Stopover.",
+  "best_travel_time": "Singapur ist als äquatornahes Reiseziel ganzjährig warm und feucht und damit das ganze Jahr über bereisbar; etwas trockener sind oft die Monate Februar bis April.",
+  "ideal_duration": "2 bis 4 Tage",
+  "travel_type": [
+    "Städtereise",
+    "Kulinarik",
+    "Familien",
+    "Shopping",
+    "Stopover",
+    "Kulturreise"
+  ],
+  "quick_facts": {
+    "currency": "Singapur-Dollar (SGD)",
+    "language": "Englisch (Amtssprache neben Malaiisch, Mandarin und Tamil)",
+    "flightTime": "ca. 12 bis 13 Stunden ab Deutschland im Direktflug",
+    "timezone": "SGT (UTC+8), sieben Stunden vor MEZ",
+    "visa": "Visumfreier Aufenthalt bis 90 Tage; vor der Einreise ist die digitale SG Arrival Card online auszufüllen",
+    "bestMonths": "Ganzjährig; etwas trockener Februar bis April"
+  },
+  "highlights": [
+    "Marina Bay Sands – ikonische Skyline und Aussicht über die Bucht",
+    "Gardens by the Bay – futuristische Supertrees und die Gewächshäuser Cloud Forest und Flower Dome",
+    "Hawker Centres – weltberühmtes, günstiges Streetfood, teils mit Michelin-Auszeichnung",
+    "Chinatown, Little India und Kampong Glam – multikulturelle Viertel voller Aromen",
+    "Sentosa – Universal Studios, Strände und Freizeitwelten",
+    "Singapore Zoo und Night Safari – einer der besten Zoos der Welt",
+    "Merlion und Marina Bay – das Wahrzeichen am Wasser",
+    "Botanic Gardens – UNESCO-Welterbe mit berühmtem Orchideengarten"
+  ],
+  "insider_tips": [
+    "Am besten isst man in den Hawker Centres wie Maxwell oder Lau Pa Sat – Klassiker wie Hainanese Chicken Rice, Laksa und Chili Crab gibt es dort günstig und hervorragend.",
+    "Die abendliche Lichtshow „Garden Rhapsody“ bei den Supertrees in den Gardens by the Bay ist kostenlos und ein echtes Highlight.",
+    "Innerhalb der Stadt kommt man mit der MRT schnell, günstig und klimatisiert überallhin – ein Auto ist völlig überflüssig.",
+    "Singapur ist für strenge Regeln bekannt: Bußgelder drohen etwa für das Wegwerfen von Müll oder Essen und Trinken in der MRT, daher lohnt sich ein Blick auf die Vorschriften."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich ein Visum für Singapur?",
+      "answer": "Deutsche Staatsbürger können für touristische Aufenthalte bis zu 90 Tage visumfrei einreisen. Vor der Einreise ist jedoch die digitale SG Arrival Card online auszufüllen. Der Reisepass muss noch mindestens sechs Monate gültig sein."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Singapur?",
+      "answer": "Singapur liegt nahe am Äquator und ist ganzjährig warm und feucht, somit jederzeit bereisbar. Etwas trockener sind häufig die Monate Februar bis April; kurze, heftige Schauer können aber das ganze Jahr über auftreten."
+    },
+    {
+      "question": "Welche Währung gilt in Singapur?",
+      "answer": "Gezahlt wird mit dem Singapur-Dollar (SGD). Kartenzahlung und kontaktloses Bezahlen sind nahezu überall möglich; etwas Bargeld ist nur an manchen Hawker-Ständen praktisch."
+    },
+    {
+      "question": "Wie bewegt man sich am besten in Singapur fort?",
+      "answer": "Das beste Verkehrsmittel ist die MRT, ein schnelles, günstiges und klimatisiertes U-Bahn-Netz. Dazu gibt es Busse und Fahrdienste wie Grab. Ein Mietwagen ist wegen hoher Kosten und Gebühren nicht zu empfehlen und auch unnötig."
+    },
+    {
+      "question": "Ist Singapur ein teures Reiseziel?",
+      "answer": "Singapur gehört zu den teureren Zielen Asiens, besonders bei Hotels und Alkohol. Beim Essen lässt sich jedoch hervorragend sparen, da die Hawker Centres erstklassige Gerichte zu günstigen Preisen bieten."
+    },
+    {
+      "question": "Kann man in Singapur das Leitungswasser trinken?",
+      "answer": "Ja, anders als in vielen Nachbarländern hat Singapur Trinkwasserqualität direkt aus der Leitung. Das Leitungswasser ist sicher und kann bedenkenlos getrunken werden."
+    },
+    {
+      "question": "Ist Singapur für einen Familienurlaub geeignet?",
+      "answer": "Ja, Singapur ist äußerst familienfreundlich und sicher. Die Insel Sentosa mit Universal Studios, der Zoo mit Night Safari, die Gardens by the Bay und zahlreiche kindgerechte Attraktionen sorgen für viel Abwechslung."
+    },
+    {
+      "question": "Lohnt sich Singapur als Stopover?",
+      "answer": "Auf jeden Fall. Dank des Direktflugs und der kompakten Größe lässt sich Singapur ideal als Zwischenstopp auf dem Weg nach Australien oder Südostasien einbauen; schon 2 bis 3 Tage reichen für die Höhepunkte."
+    },
+    {
+      "question": "Ist Singapur sicher?",
+      "answer": "Ja, Singapur zählt zu den sichersten Städten der Welt mit sehr niedriger Kriminalität. Die strengen Gesetze sollte man jedoch ernst nehmen, da bereits kleinere Verstöße empfindliche Bußgelder nach sich ziehen können."
+    },
+    {
+      "question": "Welche Gerichte sollte man in Singapur probieren?",
+      "answer": "Unbedingt probieren sollte man Hainanese Chicken Rice, Laksa, Chili Crab, Char Kway Teow, Satay sowie Kaya Toast zum Frühstück. Die multikulturelle Küche aus chinesischen, malaiischen und indischen Einflüssen ist ein Highlight."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Singapur einplanen?",
+      "answer": "Für die wichtigsten Highlights reichen 2 bis 4 Tage. Wer auch Sentosa, den Zoo und mehrere Viertel in Ruhe erleben möchte, kann problemlos länger bleiben."
+    }
+  ],
+  "seo_title": "Singapur Städtereise: Marina Bay, Tipps & beste Reisezeit",
+  "seo_description": "Deine Singapur-Reise: Marina Bay Sands, Gardens by the Bay, Hawker-Streetfood, Sentosa und multikulturelle Viertel. Beste Reisezeit, Einreise, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "Singapur Städtereise buchen, Flug nach Singapur, Hotel Marina Bay, Stopover Singapur, Sentosa Tickets, Singapur mit Kindern",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "malaysia",
+    "thailand",
+    "hongkong"
+  ],
+  "llmo_entities": [
+    "Singapur",
+    "Marina Bay Sands",
+    "Gardens by the Bay",
+    "Supertrees",
+    "Merlion",
+    "Sentosa",
+    "Hawker Centre",
+    "Chinatown",
+    "Little India",
+    "Kampong Glam",
+    "Singapore Zoo",
+    "Botanic Gardens",
+    "Orchard Road",
+    "MRT",
+    "Singapur-Dollar",
+    "Chili Crab"
+  ],
+  "llmo_answer_block": "Singapur ist ein hochmoderner, grüner Stadtstaat in Südostasien, bekannt für das Marina Bay Sands, die futuristischen Gardens by the Bay, multikulturelle Viertel wie Chinatown und Little India sowie weltberühmtes Hawker-Streetfood. Die Stadt ist sauber, sicher und mit der MRT bestens erschlossen und eignet sich ideal für eine kompakte Städtereise oder als komfortabler Stopover. Singapur ist ganzjährig bereisbar und von Deutschland aus direkt erreichbar.",
+  "llmo_quick_answer": "Singapur ist ein moderner, grüner Stadtstaat mit Marina Bay Sands, Gardens by the Bay und weltberühmtem Hawker-Streetfood, ideal für Städtereise oder Stopover."
+}

@@ -1,8 +1,8 @@
-﻿import { Bot, Globe, Wallet, UserCheck } from 'lucide-react';
+﻿import { Compass, Globe, Wallet, UserCheck } from 'lucide-react';
 import Container from '@/components/layout/Container';
 import { features } from '@/data/features';
 
-const ICON_MAP = { Bot, Globe, Wallet, UserCheck };
+const ICON_MAP = { Compass, Globe, Wallet, UserCheck };
 
 export default function FeatureStrip() {
   return (

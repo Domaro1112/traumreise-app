@@ -1,10 +1,10 @@
 ﻿import Image from 'next/image';
-import { Gift, Bot, ShieldCheck, Plane, Sparkles } from 'lucide-react';
+import { Gift, Compass, ShieldCheck, Plane, Sparkles } from 'lucide-react';
 import Container from '@/components/layout/Container';
 import Button from '@/components/ui/Button';
 import { trustBadges } from '@/data/features';
 
-const TRUST_ICON_MAP = { Gift, Bot, ShieldCheck };
+const TRUST_ICON_MAP = { Gift, Compass, ShieldCheck };
 
 export default function HeroSection() {
   return (

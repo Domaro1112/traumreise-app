@@ -232,7 +232,7 @@ export default function ReisezielePageClient({ destinations = [] }) {
         {/* Hero image */}
         <Image
           src="/images/reiseziele/hero.jpg"
-          alt="Reisemonkey – Reiseziele weltweit entdecken"
+          alt="ApeAround – Reiseziele weltweit entdecken"
           fill
           priority
           sizes="100vw"

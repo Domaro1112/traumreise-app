@@ -276,11 +276,6 @@ function SecurityTab({ form, onChange, save, saving }) {
 function IntegrationsTab({ integrations }) {
   const items = [
     {
-      label: 'Claude / Anthropic AI',
-      note: 'KI-Reiseempfehlungen (5+ API-Routes)',
-      status: integrations?.anthropic ? 'connected' : 'missing',
-    },
-    {
       label: 'Resend (E-Mail)',
       note: 'Newsletter-Bestätigung & Creator-Benachrichtigungen',
       status: integrations?.resend ? 'connected' : 'missing',

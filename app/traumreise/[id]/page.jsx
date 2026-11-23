@@ -17,8 +17,8 @@ export async function generateMetadata({ params }) {
       ? `Deine Traumreise: ${first.destination} & mehr | ApeAround`
       : 'Deine Traumreise | ApeAround';
     const description = first
-      ? `Dein persönlicher KI-Reiseplan: ${analysis.destinations.map(d => d.destination).join(', ')} – Hotels, Aktivitäten, Reiseprofil und mehr.`
-      : 'Dein persönlicher KI-Reiseplan von ApeAround.';
+      ? `Deine passenden Reiseziele: ${analysis.destinations.map(d => d.destination).join(', ')} – mit Reiseprofil, Aktivitäten und Kostenüberblick.`
+      : 'Deine persönlichen Reiseideen von ApeAround.';
     return {
       title,
       description,

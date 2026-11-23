@@ -1,0 +1,121 @@
+{
+  "name": "Philippinen",
+  "slug": "philippinen",
+  "country": "Philippinen",
+  "region": "Südostasien",
+  "continent": "Asien",
+  "hero_image": "/images/destinations/philippinen-hero.jpg",
+  "short_description": "Tropisches Inselparadies aus über 7.000 Inseln mit traumhaften Lagunen, weißen Stränden, erstklassigem Tauchen und herzlicher, englischsprachiger Gastfreundschaft.",
+  "long_description": "Die Philippinen sind ein gewaltiges Archipel aus über 7.000 Inseln und eines der schönsten Strand- und Tauchparadiese der Welt. Im Mittelpunkt steht Palawan mit den spektakulären Lagunen und Kalksteinfelsen von El Nido und Coron, die per Inselhüpfen erkundet werden, sowie dem unterirdischen Fluss von Puerto Princesa. Boracay lockt mit seinem berühmten White Beach, während Bohol mit den kuriosen Chocolate Hills und den winzigen Koboldmakis (Tarsier) überrascht. Surfer zieht es nach Siargao, Kulturreisende zu den jahrtausendealten Reisterrassen von Banaue und Batad auf Luzon. Unter Wasser warten Korallenriffe, Schiffswracks und sanfte Walhaie. Die Philippinen punkten zudem mit einer Besonderheit: Englisch ist Amtssprache und nahezu überall verständlich, und die Menschen gelten als außergewöhnlich herzlich und fröhlich. Ideal für Strandurlaub, Inselhüpfen, Tauchen und Abenteuer.",
+  "ai_summary": "Die Philippinen sind ein tropisches Archipel aus über 7.000 Inseln mit traumhaften Lagunen und Stränden in Palawan (El Nido, Coron), Boracay, den Chocolate Hills auf Bohol und erstklassigen Tauchgründen. Englisch ist weit verbreitet, die Menschen sind sehr gastfreundlich, und das Land eignet sich ideal für Strandurlaub, Inselhüpfen, Tauchen und Abenteuer.",
+  "best_travel_time": "Die beste Reisezeit ist die Trockenzeit von Dezember bis Mai. Von Juni bis November ist Regen- und Taifunsaison mit höherem Risiko für Stürme.",
+  "ideal_duration": "2 bis 3 Wochen",
+  "travel_type": [
+    "Strandurlaub",
+    "Inselhüpfen",
+    "Tauchen",
+    "Naturreise",
+    "Backpacking",
+    "Abenteuer",
+    "Schnorcheln"
+  ],
+  "quick_facts": {
+    "currency": "Philippinischer Peso (PHP)",
+    "language": "Filipino (Tagalog) und Englisch; Englisch ist weit verbreitet",
+    "flightTime": "ca. 15 bis 17 Stunden mit Zwischenstopp (Manila, Cebu)",
+    "timezone": "PHT (UTC+8), sieben Stunden vor MEZ",
+    "visa": "Visumfreier Aufenthalt bis 30 Tage (verlängerbar); vor der Einreise ist die eTravel-Registrierung online auszufüllen",
+    "bestMonths": "Dezember bis Mai"
+  },
+  "highlights": [
+    "El Nido und Coron (Palawan) – traumhafte Lagunen, Kalksteinfelsen und Inselhüpfen",
+    "Puerto Princesa Underground River – unterirdischer Fluss und UNESCO-Welterbe",
+    "Boracay – der berühmte White Beach mit feinstem Sand",
+    "Bohol – die kuriosen Chocolate Hills und die winzigen Tarsier",
+    "Siargao – Surferparadies mit dem Spot Cloud 9",
+    "Reisterrassen von Banaue und Batad – jahrtausendealte Kulturlandschaft auf Luzon",
+    "Walhaie in Donsol – respektvolles Schwimmen mit den sanften Riesen",
+    "Apo Reef und Cebu – erstklassige Tauch- und Schnorchelgründe"
+  ],
+  "insider_tips": [
+    "Die Lagunen von El Nido und Coron erkundet man am schönsten bei einer Inselhüpf-Tour; wer Menschenmassen meiden will, startet früh oder wählt private Touren.",
+    "Da die Inseln per Inlandsflug und Fähre verbunden sind, sollte man bei der Planung großzügige Puffer einplanen, falls sich Verbindungen verspäten oder ausfallen.",
+    "Walhaie erlebt man am verträglichsten im freien Schwimmen vor Donsol, statt an Orten mit Anfütterung wie Oslob.",
+    "Englisch wird fast überall gesprochen, was Reisen, Verhandeln und Verständigung auf den Philippinen besonders einfach macht."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich ein Visum für die Philippinen?",
+      "answer": "Deutsche Staatsbürger können für touristische Aufenthalte bis zu 30 Tage visumfrei einreisen; eine Verlängerung vor Ort ist möglich. Zusätzlich ist vor der Einreise die kostenlose eTravel-Registrierung online auszufüllen. Der Reisepass muss noch mindestens sechs Monate gültig sein."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für die Philippinen?",
+      "answer": "Ideal ist die Trockenzeit von Dezember bis Mai. Von Juni bis November ist Regen- und Taifunsaison; in dieser Zeit können Stürme einzelne Regionen und Flugverbindungen beeinträchtigen."
+    },
+    {
+      "question": "Welche Währung gilt auf den Philippinen?",
+      "answer": "Gezahlt wird mit dem Philippinischen Peso (PHP). In Städten und Resorts ist Kartenzahlung möglich, auf kleineren Inseln und an Märkten ist jedoch Bargeld unerlässlich. Geldautomaten gibt es nicht überall, daher vorab abheben."
+    },
+    {
+      "question": "Wie reist man zwischen den Inseln?",
+      "answer": "Die wichtigsten Verkehrsmittel sind Inlandsflüge und Fähren. Vor Ort bewegt man sich mit Tricycles, Jeepneys und Vans fort. Ein eigener Mietwagen ist auf einem Inselstaat dieser Art unüblich und selten nötig."
+    },
+    {
+      "question": "Spricht man auf den Philippinen Englisch?",
+      "answer": "Ja, Englisch ist Amtssprache und nahezu überall verständlich. Das macht die Philippinen für deutsche Reisende besonders unkompliziert in Bezug auf Verständigung und Organisation."
+    },
+    {
+      "question": "Kann man auf den Philippinen das Leitungswasser trinken?",
+      "answer": "Nein, das Leitungswasser ist nicht zum Trinken geeignet. Man sollte abgefülltes Wasser verwenden und bei Eiswürfeln sowie rohen Speisen vorsichtig sein."
+    },
+    {
+      "question": "Welche Impfungen werden für die Philippinen empfohlen?",
+      "answer": "Vorgeschrieben sind in der Regel keine Impfungen. Empfohlen werden Standardimpfungen sowie je nach Reiseart Hepatitis A und teils Typhus. Für eine individuelle Beratung sollte man rechtzeitig ein Tropeninstitut oder den Hausarzt aufsuchen."
+    },
+    {
+      "question": "Sind die Philippinen sicher für Reisende?",
+      "answer": "Die klassischen Tourismusregionen wie Palawan, Bohol, Cebu und Siargao gelten als gut bereisbar. Von einzelnen Gebieten im Süden des Landes wird jedoch abgeraten. Vor der Reise sollte man die aktuellen Hinweise des Auswärtigen Amts prüfen."
+    },
+    {
+      "question": "Sind die Philippinen für einen Familienurlaub geeignet?",
+      "answer": "Ja, ruhige Strände, Schnorcheln, Tiererlebnisse und die herzliche, englischsprachige Gastfreundschaft eignen sich gut für Familien. Wegen der Inseldistanzen und Anreise sollte man jedoch etwas mehr Reisezeit einplanen."
+    },
+    {
+      "question": "Welche Gerichte sollte man auf den Philippinen probieren?",
+      "answer": "Typisch sind Adobo (in Essig und Sojasauce geschmortes Fleisch), Sinigang (saure Suppe), Lechon (Spanferkel), frischer Fisch und die süße Nachspeise Halo-Halo. Tropische Früchte wie Mango sind ein Genuss."
+    },
+    {
+      "question": "Wie viele Tage sollte man für die Philippinen einplanen?",
+      "answer": "Für ein bis zwei Inselregionen wie Palawan und Bohol sind etwa 10 bis 14 Tage sinnvoll. Wer mehrere Inseln und Aktivitäten wie Tauchen und Surfen verbinden möchte, plant am besten 2 bis 3 Wochen ein."
+    }
+  ],
+  "seo_title": "Philippinen Urlaub: Palawan, Inselhüpfen, Tipps & beste Reisezeit",
+  "seo_description": "Dein Philippinen-Urlaub: die Lagunen von El Nido und Coron, Boracay, die Chocolate Hills auf Bohol und Top-Tauchgründe. Beste Reisezeit, Visum, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "Philippinen Reise buchen, Flug nach Manila oder Cebu, Hotel Palawan oder Boracay, Inselhüpfen El Nido, Tauchreise Philippinen, Backpacking Südostasien",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "indonesien",
+    "thailand",
+    "malaysia"
+  ],
+  "llmo_entities": [
+    "Philippinen",
+    "Palawan",
+    "El Nido",
+    "Coron",
+    "Puerto Princesa",
+    "Boracay",
+    "Bohol",
+    "Chocolate Hills",
+    "Tarsier",
+    "Siargao",
+    "Banaue",
+    "Batad",
+    "Cebu",
+    "Walhaie",
+    "Philippinischer Peso",
+    "Adobo"
+  ],
+  "llmo_answer_block": "Die Philippinen sind ein tropisches Archipel aus über 7.000 Inseln, bekannt für die traumhaften Lagunen von El Nido und Coron auf Palawan, den White Beach von Boracay, die Chocolate Hills auf Bohol und erstklassige Tauchgründe. Englisch ist Amtssprache und weit verbreitet, die Menschen gelten als besonders herzlich, und das Land eignet sich ideal für Strandurlaub, Inselhüpfen, Tauchen und Abenteuer. Die beste Reisezeit ist die Trockenzeit von Dezember bis Mai.",
+  "llmo_quick_answer": "Die Philippinen sind ein tropisches Archipel mit über 7.000 Inseln, traumhaften Lagunen in Palawan, Boracay und Top-Tauchgründen, am besten von Dezember bis Mai."
+}

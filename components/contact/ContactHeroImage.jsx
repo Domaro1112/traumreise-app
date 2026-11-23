@@ -28,7 +28,7 @@ export default function ContactHeroImage() {
       {!imgError && (
         <img
           src="/images/contact/reisemonkey-contact-hero.png"
-          alt="Reisemonkey Kontakt"
+          alt="ApeAround Kontakt"
           loading="eager"
           onError={() => setImgError(true)}
           style={{ width: '100%', height: '100%', objectFit: 'contain', position: 'relative', zIndex: 1 }}

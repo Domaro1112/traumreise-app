@@ -1,0 +1,121 @@
+{
+  "name": "Österreich",
+  "slug": "oesterreich",
+  "country": "Österreich",
+  "region": "Mitteleuropa",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/oesterreich-hero.jpg",
+  "short_description": "Alpennachbar mit kaiserlichem Wien, barockem Salzburg, malerischem Hallstatt, erstklassigen Skigebieten und traumhaften Bergseen – nah und vielseitig.",
+  "long_description": "Österreich verbindet majestätische Alpenlandschaften mit kaiserlicher Kultur und ist für deutsche Reisende besonders schnell und unkompliziert erreichbar. Die Hauptstadt Wien begeistert mit dem Schloss Schönbrunn, dem Stephansdom, der Hofburg und ihrer weltberühmten Kaffeehauskultur. Salzburg verzaubert mit seiner barocken Altstadt, der Festung Hohensalzburg und dem Erbe Mozarts. Im Westen locken Tirol und die Alpen mit Innsbruck, erstklassigen Skigebieten wie Kitzbühel, Sölden und St. Anton sowie unzähligen Wanderrouten. Das Salzkammergut mit dem malerischen Hallstatt und glasklaren Bergseen ist im Sommer ein Traum, während die Wachau an der Donau mit Weinbergen und dem Stift Melk lockt. Die spektakuläre Großglockner-Hochalpenstraße führt durch alpine Hochgebirgswelt. Ob Städtetrip, Wintersport, Wandern, Wellness oder Familienurlaub – Österreich bietet das ganze Jahr über ein abwechslungsreiches und hochwertiges Reiseerlebnis.",
+  "ai_summary": "Österreich ist ein vielseitiges Alpenland mit dem kaiserlichen Wien, dem barocken Salzburg, dem malerischen Hallstatt, erstklassigen Skigebieten in Tirol und traumhaften Bergseen im Salzkammergut. Es ist von Deutschland aus schnell erreichbar und eignet sich ganzjährig für Städtetrips, Wintersport, Wander- und Wellnessreisen.",
+  "best_travel_time": "Dezember bis März für Wintersport, Juni bis September für Wandern und Badeseen; die Städte Wien und Salzburg sind ganzjährig attraktiv.",
+  "ideal_duration": "Städtereise 3 bis 4 Tage, Aktiv- oder Skiurlaub rund eine Woche",
+  "travel_type": [
+    "Städtereise",
+    "Wintersport",
+    "Wandern",
+    "Naturreise",
+    "Wellness",
+    "Familien",
+    "Kulturreise"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Deutsch",
+    "flightTime": "ca. 1 bis 1,5 Stunden ab Deutschland (Wien); sehr gut mit Bahn oder Auto erreichbar",
+    "timezone": "MEZ (UTC+1), identisch mit Deutschland",
+    "visa": "Nicht erforderlich für EU-Bürger (Schengen-Raum)",
+    "bestMonths": "Dezember bis März (Wintersport) sowie Juni bis September (Sommer)"
+  },
+  "highlights": [
+    "Wien – Schloss Schönbrunn, Stephansdom, Hofburg und Kaffeehauskultur",
+    "Salzburg – barocke Altstadt, Festung Hohensalzburg und Mozarts Erbe",
+    "Hallstatt – malerisches Dorf am See, UNESCO-Welterbe",
+    "Tirol und Innsbruck – Alpenpanorama, Wandern und Wintersport",
+    "Skigebiete – Kitzbühel, Sölden, St. Anton und Ischgl",
+    "Salzkammergut – glasklare Bergseen wie der Wolfgangsee",
+    "Großglockner-Hochalpenstraße – spektakuläre Panoramastraße durchs Hochgebirge",
+    "Wachau – Donautal mit Weinbergen und dem Stift Melk"
+  ],
+  "insider_tips": [
+    "Ein Besuch in einem traditionellen Wiener Kaffeehaus mit Melange und Sachertorte oder Apfelstrudel gehört zum Pflichtprogramm.",
+    "Das berühmte Hallstatt ist tagsüber stark überlaufen – am schönsten ist es früh am Morgen, am Abend oder in der Nebensaison.",
+    "Für die Nutzung der Autobahnen benötigt man eine Vignette, die als Klebe- oder digitale Variante erhältlich ist; einige Alpenstraßen sind zusätzlich mautpflichtig.",
+    "Im Sommer laden die Seen des Salzkammerguts zum Baden ein – das Wasser ist klar und an warmen Tagen angenehm erfrischend."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Österreich?",
+      "answer": "Für Wintersport eignen sich die Monate Dezember bis März, für Wandern und Badeseen Juni bis September. Die Städte Wien und Salzburg sind ganzjährig attraktiv, im Advent zudem besonders stimmungsvoll."
+    },
+    {
+      "question": "Welche Währung gilt in Österreich?",
+      "answer": "In Österreich zahlt man mit dem Euro (EUR). Kartenzahlung ist weit verbreitet, etwas Bargeld empfiehlt sich für kleinere Gasthäuser, Hütten und Märkte."
+    },
+    {
+      "question": "Brauche ich eine Vignette für Österreich?",
+      "answer": "Ja, für die Nutzung der österreichischen Autobahnen und Schnellstraßen ist eine Vignette erforderlich, die als Klebevignette oder als digitale Vignette erhältlich ist. Einige Alpenstraßen und Tunnel sind zusätzlich gesondert mautpflichtig."
+    },
+    {
+      "question": "Braucht man in Wien oder Salzburg ein Auto?",
+      "answer": "Nein, beide Städte verfügen über einen sehr guten öffentlichen Nahverkehr, und die Altstädte lassen sich gut zu Fuß erkunden. Für Touren in die Alpen oder ins Salzkammergut ist ein Auto dagegen praktisch."
+    },
+    {
+      "question": "Welche Skigebiete sind in Österreich besonders bekannt?",
+      "answer": "Zu den bekanntesten zählen Kitzbühel, Sölden, St. Anton am Arlberg, Ischgl und Saalbach-Hinterglemm. Sie bieten zahlreiche Pistenkilometer, moderne Lifte und Après-Ski."
+    },
+    {
+      "question": "Lohnt sich Hallstatt wirklich?",
+      "answer": "Ja, das Dorf am See zählt zu den fotogensten Orten Europas. Wegen des großen Andrangs empfiehlt sich ein Besuch früh am Morgen, am späten Nachmittag oder außerhalb der Hauptsaison."
+    },
+    {
+      "question": "Ist Österreich für einen Familienurlaub geeignet?",
+      "answer": "Ja, Österreich ist sehr familienfreundlich. Im Winter gibt es kinderfreundliche Skischulen, im Sommer Badeseen, einfache Wanderungen, Almhütten und Erlebnisparks. Die kurzen Anreisewege sind ein zusätzlicher Vorteil."
+    },
+    {
+      "question": "Wie kommt man am besten nach Österreich?",
+      "answer": "Österreich ist von Deutschland aus bequem mit dem Auto und der Bahn erreichbar, besonders aus dem Süden. Für entferntere Ziele bieten sich Flüge nach Wien, Salzburg oder Innsbruck an."
+    },
+    {
+      "question": "Welche Spezialitäten sollte man in Österreich probieren?",
+      "answer": "Typisch sind Wiener Schnitzel, Tafelspitz, Kaiserschmarrn, Apfelstrudel und die Sachertorte. In den Bergregionen lohnen Käsespätzle und Kasnocken, dazu passen österreichische Weine aus der Wachau."
+    },
+    {
+      "question": "Kann man im Sommer in Österreichs Seen baden?",
+      "answer": "Ja, besonders die Seen des Salzkammerguts wie der Wolfgangsee, der Attersee und der Wörthersee in Kärnten laden im Sommer zum Baden ein und haben oft sehr gute Wasserqualität."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Österreich einplanen?",
+      "answer": "Für eine Stadt wie Wien oder Salzburg reichen 3 bis 4 Tage. Für einen Ski- oder Wanderurlaub in den Alpen oder eine Rundreise sollte man rund eine Woche einplanen."
+    }
+  ],
+  "seo_title": "Österreich Urlaub: Wien, Alpen, Reisetipps & beste Reisezeit",
+  "seo_description": "Dein Österreich-Urlaub: das kaiserliche Wien, barocke Salzburg, malerische Hallstatt, Top-Skigebiete in Tirol und Bergseen im Salzkammergut. Beste Reisezeit, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "Österreich Urlaub buchen, Hotel Wien oder Salzburg, Skiurlaub Tirol buchen, Ferienwohnung Alpen, Wanderurlaub Österreich, Städtereise Wien",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "schweiz",
+    "slowenien",
+    "italien"
+  ],
+  "llmo_entities": [
+    "Österreich",
+    "Wien",
+    "Schloss Schönbrunn",
+    "Stephansdom",
+    "Salzburg",
+    "Festung Hohensalzburg",
+    "Mozart",
+    "Hallstatt",
+    "Tirol",
+    "Innsbruck",
+    "Kitzbühel",
+    "Salzkammergut",
+    "Wolfgangsee",
+    "Großglockner-Hochalpenstraße",
+    "Wachau",
+    "Wiener Schnitzel"
+  ],
+  "llmo_answer_block": "Österreich ist ein vielseitiges Alpenland mit dem kaiserlichen Wien, dem barocken Salzburg, dem malerischen Hallstatt, erstklassigen Skigebieten in Tirol und traumhaften Bergseen im Salzkammergut. Das Land ist von Deutschland aus schnell mit Bahn oder Auto erreichbar und eignet sich ganzjährig für Städtetrips, Wintersport, Wander- und Wellnessreisen. Die beste Reisezeit ist Dezember bis März für Wintersport und Juni bis September für den Sommer.",
+  "llmo_quick_answer": "Österreich ist ein vielseitiges Alpenland mit dem kaiserlichen Wien, barockem Salzburg, Hallstatt, Top-Skigebieten und traumhaften Bergseen."
+}

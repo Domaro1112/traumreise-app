@@ -1,0 +1,125 @@
+{
+  "name": "Marokko",
+  "slug": "marokko",
+  "country": "Marokko",
+  "region": "Nordafrika",
+  "continent": "Afrika",
+  "hero_image": "/images/destinations/marokko-hero.jpg",
+  "short_description": "Farbenprächtiges Land aus 1001 Nacht mit den Königsstädten Marrakesch und Fès, der Sahara, dem Atlasgebirge, der blauen Stadt Chefchaouen und orientalischem Flair.",
+  "long_description": "Marokko ist ein faszinierendes Reiseland, das mit allen Sinnen erlebt wird – ein farbenprächtiger Mix aus Orient, Berberkultur und afrikanischem Charme. In der quirligen Königsstadt Marrakesch verliert man sich in den Souks der Medina, erlebt das Spektakel auf dem Platz Jemaa el-Fnaa und entspannt im Jardin Majorelle. Fès beherbergt die größte und älteste Medina der arabischen Welt mit ihren berühmten Gerbereien. Im Süden lockt die Sahara: In Merzouga reitet man auf Kamelen über die goldenen Dünen des Erg Chebbi und übernachtet unter dem Sternenhimmel in einem Wüstencamp. Das Hohe Atlasgebirge mit Berberdörfern und der spektakulären Lehmfestung Aït-Ben-Haddou bietet großartige Landschaften, während die blaue Stadt Chefchaouen und die entspannte Küstenstadt Essaouira zu den schönsten Orten zählen. Dazu kommen Minztee, würzige Tajines und herzliche Gastfreundschaft. Marokko ist gut erreichbar, günstig und ideal für Rundreisen, Kultur- und Abenteuerurlaub.",
+  "ai_summary": "Marokko ist ein farbenprächtiges nordafrikanisches Reiseland mit den Königsstädten Marrakesch und Fès, der Sahara bei Merzouga, dem Atlasgebirge, der blauen Stadt Chefchaouen und der Küstenstadt Essaouira. Es bietet orientalisches Flair, Berberkultur und herzliche Gastfreundschaft und eignet sich ideal für Rundreisen, Kultur- und Abenteuerurlaube.",
+  "best_travel_time": "Frühling (März bis Mai) und Herbst (September bis November) für angenehme Temperaturen; der Hochsommer ist im Landesinneren und in der Sahara extrem heiß, die Küste bleibt milder.",
+  "ideal_duration": "1 bis 2 Wochen",
+  "travel_type": [
+    "Rundreise",
+    "Kulturreise",
+    "Städtereise",
+    "Abenteuer",
+    "Wüstentour",
+    "Strandurlaub",
+    "Backpacking"
+  ],
+  "quick_facts": {
+    "currency": "Marokkanischer Dirham (MAD); geschlossene Währung, die am besten erst vor Ort gewechselt wird",
+    "language": "Arabisch und Berberisch (Amazigh); Französisch ist weit verbreitet",
+    "flightTime": "ca. 3,5 bis 4 Stunden ab Deutschland (Marrakesch, Agadir)",
+    "timezone": "UTC+1, meist gleich der MEZ; während des Ramadan gilt UTC+0",
+    "visa": "Nicht erforderlich für deutsche Staatsbürger (Aufenthalt bis 90 Tage)",
+    "bestMonths": "März bis Mai sowie September bis November"
+  },
+  "highlights": [
+    "Marrakesch – Medina, der Platz Jemaa el-Fnaa, Souks und der Jardin Majorelle",
+    "Fès – die größte und älteste Medina der arabischen Welt mit ihren Gerbereien",
+    "Sahara bei Merzouga – Kamelritte über die Dünen des Erg Chebbi und Nächte im Wüstencamp",
+    "Atlasgebirge – Berberdörfer, Wanderungen und der Gipfel Toubkal",
+    "Aït-Ben-Haddou – berühmte Lehmfestung und UNESCO-Welterbe",
+    "Chefchaouen – die blau getünchte Stadt im Rif-Gebirge",
+    "Essaouira – entspannte Küstenstadt mit Wind, Festung und Hafenflair",
+    "Casablanca – die imposante Hassan-II.-Moschee am Atlantik"
+  ],
+  "insider_tips": [
+    "Am authentischsten übernachtet man in einem Riad, einem traditionellen Stadthaus mit Innenhof, mitten in der Medina.",
+    "Eine Übernachtung in der Wüste bei Merzouga mit Kamelritt, Sonnenuntergang über den Dünen und Sternenhimmel ist ein unvergessliches Highlight.",
+    "In den Souks gehört Handeln fest zur Kultur – mit Geduld, einem Lächeln und etwas Humor erzielt man die besten Preise.",
+    "Der Dirham ist eine geschlossene Währung: Am besten wechselt man erst vor Ort und gibt restliches Bargeld vor der Ausreise wieder aus."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich ein Visum für Marokko?",
+      "answer": "Nein, deutsche Staatsbürger benötigen für touristische Aufenthalte bis zu 90 Tage kein Visum. Der Reisepass muss bei der Einreise noch mindestens sechs Monate gültig sein."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Marokko?",
+      "answer": "Ideal sind Frühling (März bis Mai) und Herbst (September bis November) mit angenehmen Temperaturen. Der Hochsommer ist im Landesinneren und in der Sahara extrem heiß, während die Atlantikküste rund um Agadir und Essaouira ganzjährig milder bleibt."
+    },
+    {
+      "question": "Welche Währung gilt in Marokko?",
+      "answer": "Gezahlt wird mit dem Marokkanischen Dirham (MAD). Es handelt sich um eine geschlossene Währung, die man im Ausland kaum bekommt und nicht ausführen sollte. Am besten wechselt man vor Ort oder hebt am Automaten ab. Bargeld ist auf Märkten wichtig."
+    },
+    {
+      "question": "Sollte man in Marokko selbst Auto fahren?",
+      "answer": "Für die Küste und den Atlas ist Selbstfahren möglich, in den Städten ist der Verkehr jedoch chaotisch und Medinas sind autofrei. Viele Reisende setzen daher auf Züge zwischen den Städten sowie private Fahrer oder geführte Touren, besonders für die Wüste."
+    },
+    {
+      "question": "Wie sicher ist Marokko für Reisende?",
+      "answer": "Marokko gilt als überwiegend sicheres und gastfreundliches Reiseland. In den Medinas sollte man auf Taschendiebstahl achten und mit aufdringlichen Verkäufern oder selbsternannten Führern freundlich, aber bestimmt umgehen. Aktuelle Hinweise des Auswärtigen Amts beachten."
+    },
+    {
+      "question": "Welche Städte sollte man in Marokko besuchen?",
+      "answer": "Zu den Höhepunkten zählen die Königsstädte Marrakesch und Fès, die blaue Stadt Chefchaouen, die Küstenstadt Essaouira sowie Casablanca mit der Hassan-II.-Moschee. Auch Meknès und Rabat lohnen sich."
+    },
+    {
+      "question": "Wie erlebt man die Sahara in Marokko am besten?",
+      "answer": "Beliebt ist eine mehrtägige Tour ab Marrakesch nach Merzouga zu den Dünen des Erg Chebbi, oft mit Übernachtung in einem Wüstencamp, Kamelritt und Sonnenaufgang über den Dünen."
+    },
+    {
+      "question": "Kann man in Marokko das Leitungswasser trinken?",
+      "answer": "Nein, das Leitungswasser ist nicht zum Trinken geeignet. Man sollte abgefülltes Wasser verwenden und bei Eiswürfeln sowie ungeschältem Obst vorsichtig sein."
+    },
+    {
+      "question": "Welche Kleidung ist in Marokko angemessen?",
+      "answer": "Marokko ist ein muslimisch geprägtes Land, daher empfiehlt sich besonders außerhalb von Touristenorten und Stränden eher bedeckte, respektvolle Kleidung. Für Frauen sind locker sitzende Kleidung sowie bedeckte Schultern und Knie sinnvoll."
+    },
+    {
+      "question": "Welche Spezialitäten sollte man in Marokko probieren?",
+      "answer": "Typisch sind Tajine (Schmorgericht aus dem Tontopf), Couscous, Pastilla, Harira-Suppe und gegrillte Spieße. Dazu gehört der allgegenwärtige süße Minztee, der als Zeichen der Gastfreundschaft serviert wird."
+    },
+    {
+      "question": "Ist Marokko für einen Familienurlaub geeignet?",
+      "answer": "Ja, Marokko kann mit Kindern bereichernd sein, etwa durch Kamelritte, bunte Souks und Strände bei Agadir. Wegen Hitze, Verkehr und langen Fahrstrecken sollte man die Route jedoch entspannt und kindgerecht planen."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Marokko einplanen?",
+      "answer": "Für eine Stadt wie Marrakesch reichen einige Tage. Für eine Rundreise mit Königsstädten, Atlas und Wüste sollte man 1 bis 2 Wochen einplanen, da die Distanzen groß sind."
+    }
+  ],
+  "seo_title": "Marokko Urlaub: Marrakesch, Sahara, Tipps & beste Reisezeit",
+  "seo_description": "Dein Marokko-Urlaub: die Königsstädte Marrakesch und Fès, die Sahara bei Merzouga, das Atlasgebirge und die blaue Stadt Chefchaouen. Beste Reisezeit, Highlights und praktische Reisetipps im Überblick.",
+  "affiliate_search_intent": "Marokko Reise buchen, Flug und Hotel Marrakesch, Riad Marrakesch, Wüstentour Merzouga, Rundreise Marokko, Mietwagen oder Privatfahrer Marokko",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "aegypten",
+    "tunesien",
+    "tuerkei"
+  ],
+  "llmo_entities": [
+    "Marokko",
+    "Marrakesch",
+    "Jemaa el-Fnaa",
+    "Medina",
+    "Fès",
+    "Sahara",
+    "Merzouga",
+    "Erg Chebbi",
+    "Atlasgebirge",
+    "Aït-Ben-Haddou",
+    "Chefchaouen",
+    "Essaouira",
+    "Casablanca",
+    "Hassan-II.-Moschee",
+    "Tajine",
+    "Marokkanischer Dirham"
+  ],
+  "llmo_answer_block": "Marokko ist ein farbenprächtiges nordafrikanisches Reiseland mit den Königsstädten Marrakesch und Fès, der Sahara bei Merzouga, dem Hohen Atlasgebirge, der blauen Stadt Chefchaouen und der Küstenstadt Essaouira. Es bietet orientalisches Flair, Berberkultur, würzige Küche und herzliche Gastfreundschaft und eignet sich ideal für Rundreisen, Kultur- und Abenteuerurlaube. Die beste Reisezeit liegt im Frühling und Herbst.",
+  "llmo_quick_answer": "Marokko ist ein farbenprächtiges Land mit den Königsstädten Marrakesch und Fès, der Sahara, dem Atlasgebirge und der blauen Stadt Chefchaouen."
+}

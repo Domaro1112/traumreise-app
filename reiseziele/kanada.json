@@ -1,0 +1,121 @@
+{
+  "name": "Kanada",
+  "slug": "kanada",
+  "country": "Kanada",
+  "region": "Nordamerika",
+  "continent": "Nordamerika",
+  "hero_image": "/images/destinations/kanada-hero.jpg",
+  "short_description": "Riesiges Naturparadies mit den Rocky Mountains, türkisen Bergseen, endlosen Wäldern, Niagarafällen, Bären, Walen und weltoffenen Metropolen.",
+  "long_description": "Kanada ist das zweitgrößte Land der Erde und ein Sehnsuchtsziel für Naturliebhaber und Abenteurer. Das Highlight sind die Rocky Mountains mit den Nationalparks Banff und Jasper, wo türkisblaue Bergseen wie der Lake Louise und der Moraine Lake, schroffe Gipfel und Gletscher eine traumhafte Kulisse bilden – verbunden durch den Icefields Parkway, eine der schönsten Panoramastraßen der Welt. Im Westen begeistert das weltoffene Vancouver mit Vancouver Island, im Osten die imposanten Niagarafälle, das pulsierende Toronto sowie das französisch geprägte Montréal und Québec City. Im Herbst taucht der „Indian Summer“ die Wälder Ostkanadas in leuchtendes Rot und Gold. Tierbegegnungen mit Bären, Elchen und Walen gehören zu den unvergesslichen Erlebnissen, und im hohen Norden, etwa im Yukon, tanzen die Nordlichter. Wegen der enormen Distanzen sind Roadtrips und Wohnmobilreisen besonders beliebt. Kanada ist ideal für Natur-, Rundreise- und Outdoor-Urlaube und bekannt für seine herzliche, weltoffene Art.",
+  "ai_summary": "Kanada ist ein riesiges Naturparadies mit den Rocky Mountains, türkisen Bergseen, Nationalparks wie Banff und Jasper, den Niagarafällen, reicher Tierwelt und weltoffenen Städten wie Vancouver, Toronto und Montréal. Es eignet sich ideal für Roadtrips, Wohnmobil- und Naturreisen; für Flugreisen ist eine eTA erforderlich.",
+  "best_travel_time": "Juni bis September für die Rocky Mountains, Roadtrips und Tierbeobachtung; September und Oktober für den „Indian Summer“ in Ostkanada; der Winter eignet sich für Wintersport und Nordlichter.",
+  "ideal_duration": "2 bis 3 Wochen",
+  "travel_type": [
+    "Rundreise",
+    "Roadtrip",
+    "Naturreise",
+    "Nationalparks",
+    "Abenteuer",
+    "Wandern",
+    "Wohnmobilreise"
+  ],
+  "quick_facts": {
+    "currency": "Kanadischer Dollar (CAD)",
+    "language": "Englisch und Französisch (zwei Amtssprachen)",
+    "flightTime": "ca. 8,5 Stunden nach Toronto, rund 10 Stunden nach Vancouver ab Deutschland",
+    "timezone": "Mehrere Zeitzonen (Osten UTC−5 bis Pazifikküste UTC−8)",
+    "visa": "Kein Visum für Touristen (bis 6 Monate); für Flugreisen ist eine eTA (Electronic Travel Authorization, rund 7 CAD, 5 Jahre gültig) erforderlich",
+    "bestMonths": "Juni bis September; Indian Summer September bis Oktober"
+  },
+  "highlights": [
+    "Rocky Mountains – Banff und Jasper mit Lake Louise und Moraine Lake",
+    "Icefields Parkway – eine der schönsten Panoramastraßen der Welt",
+    "Niagarafälle – gewaltige Wasserfälle an der Grenze zu den USA",
+    "Vancouver und Vancouver Island – Metropole, Natur und Wale",
+    "Toronto – pulsierende Metropole mit dem CN Tower",
+    "Montréal und Québec City – französisches Flair und Altstadtcharme",
+    "Indian Summer – leuchtende Herbstfärbung der Wälder Ostkanadas",
+    "Yukon und der Norden – Wildnis und Nordlichter"
+  ],
+  "insider_tips": [
+    "Der Icefields Parkway zwischen Banff und Jasper gehört zu den spektakulärsten Strecken der Welt – planen Sie viel Zeit für Stopps an Seen und Gletschern ein.",
+    "Eine Wohnmobilreise (Camper) ist in Kanada besonders beliebt und ideal, um die weiten Landschaften flexibel und naturnah zu erleben.",
+    "Für die Herbstfärbung des Indian Summer reist man Ende September bis Oktober in den Osten, etwa nach Québec oder in den Algonquin Park.",
+    "Tierbegegnungen mit Bären, Elchen und Walen sind möglich – stets respektvollen Abstand halten und in Bärengebieten die Hinweise zur Lebensmittelaufbewahrung beachten."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich für Kanada ein Visum?",
+      "answer": "Für touristische Aufenthalte bis zu sechs Monaten benötigen deutsche Staatsbürger kein Visum. Für die Einreise auf dem Luftweg ist jedoch eine elektronische Reisegenehmigung (eTA) erforderlich, die vor dem Flug online beantragt wird."
+    },
+    {
+      "question": "Was ist die eTA und was kostet sie?",
+      "answer": "Die eTA (Electronic Travel Authorization) ist eine elektronische Einreisegenehmigung für Flugreisen nach Kanada. Sie kostet rund 7 kanadische Dollar, ist nach Genehmigung bis zu fünf Jahre gültig und sollte rechtzeitig vor Abflug beantragt werden."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Kanada?",
+      "answer": "Für die Rocky Mountains, Roadtrips und Tierbeobachtung eignen sich Juni bis September. Für die leuchtende Herbstfärbung des Indian Summer reist man im September und Oktober in den Osten. Der Winter ist ideal für Wintersport und Nordlichter."
+    },
+    {
+      "question": "Welche Währung gilt in Kanada?",
+      "answer": "Gezahlt wird mit dem Kanadischen Dollar (CAD). Kartenzahlung ist nahezu überall üblich. Wie in den USA werden Preise oft ohne Steuer ausgezeichnet, die erst an der Kasse hinzukommt, und Trinkgeld ist üblich."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen oder Wohnmobil in Kanada?",
+      "answer": "Ja, wegen der riesigen Distanzen ist ein Mietwagen oder Wohnmobil fast unverzichtbar, besonders für Roadtrips durch die Rocky Mountains. Nur in den Großstädten ist ein Auto nicht zwingend nötig."
+    },
+    {
+      "question": "Kann man in Kanada wild lebende Tiere beobachten?",
+      "answer": "Ja, Kanada ist berühmt für seine Tierwelt. Mit etwas Glück sieht man Bären, Elche, Biber und Adler; vor der Küste British Columbias lassen sich zudem Wale beobachten. Stets Abstand halten und Tiere nicht füttern."
+    },
+    {
+      "question": "Wo sieht man in Kanada Nordlichter?",
+      "answer": "Die besten Chancen auf Polarlichter hat man im Norden, etwa im Yukon oder in den Nordwest-Territorien rund um Yellowknife, in dunklen, klaren Nächten von Spätsommer bis Frühjahr."
+    },
+    {
+      "question": "Spricht man in Kanada Englisch oder Französisch?",
+      "answer": "Kanada ist offiziell zweisprachig. Englisch dominiert im größten Teil des Landes, während in der Provinz Québec, etwa in Montréal und Québec City, Französisch vorherrscht. Mit Englisch kommt man fast überall gut zurecht."
+    },
+    {
+      "question": "Ist Kanada für einen Familienurlaub geeignet?",
+      "answer": "Ja, Kanada ist familienfreundlich und sehr sicher. Nationalparks, Tierbeobachtungen, Seen, einfache Wanderungen und weltoffene Städte bieten viel Abwechslung. Wegen der Distanzen sollte man die Route entspannt planen."
+    },
+    {
+      "question": "Wie überbrückt man die großen Entfernungen in Kanada?",
+      "answer": "Für lange Strecken zwischen Ost und West sind Inlandsflüge das schnellste Mittel. Innerhalb einer Region erkundet man das Land am besten per Mietwagen oder Wohnmobil, da die öffentlichen Verbindungen begrenzt sind."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Kanada einplanen?",
+      "answer": "Für eine Region wie die Rocky Mountains oder den Osten rund um Toronto, Montréal und Québec sollte man etwa 2 Wochen einplanen. Wer mehrere Regionen verbinden möchte, plant wegen der Distanzen 3 Wochen oder mehr."
+    }
+  ],
+  "seo_title": "Kanada Urlaub: Rocky Mountains, Roadtrip & beste Reisezeit",
+  "seo_description": "Dein Kanada-Urlaub: die Rocky Mountains mit Banff und Jasper, die Niagarafälle, Vancouver, der Indian Summer und reiche Tierwelt. Beste Reisezeit, eTA-Einreise, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "Kanada Reise buchen, Flug nach Toronto oder Vancouver, Mietwagen oder Wohnmobil Kanada, Rundreise Rocky Mountains, Roadtrip Westkanada, Hotel Vancouver",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "amerika",
+    "norwegen",
+    "neuseeland"
+  ],
+  "llmo_entities": [
+    "Kanada",
+    "Rocky Mountains",
+    "Banff",
+    "Jasper",
+    "Lake Louise",
+    "Moraine Lake",
+    "Icefields Parkway",
+    "Niagarafälle",
+    "Vancouver",
+    "Vancouver Island",
+    "Toronto",
+    "CN Tower",
+    "Montréal",
+    "Québec City",
+    "Yukon",
+    "Kanadischer Dollar"
+  ],
+  "llmo_answer_block": "Kanada ist das zweitgrößte Land der Erde und ein riesiges Naturparadies mit den Rocky Mountains, türkisen Bergseen, Nationalparks wie Banff und Jasper, den Niagarafällen, reicher Tierwelt und weltoffenen Städten wie Vancouver, Toronto und Montréal. Wegen der enormen Distanzen sind Roadtrips und Wohnmobilreisen besonders beliebt, und das Land eignet sich ideal für Natur-, Rundreise- und Outdoor-Urlaube. Für Flugreisen benötigen deutsche Reisende eine eTA, die beste Reisezeit liegt zwischen Juni und Oktober.",
+  "llmo_quick_answer": "Kanada ist ein riesiges Naturparadies mit den Rocky Mountains, türkisen Bergseen, den Niagarafällen und reicher Tierwelt; für Flüge braucht man eine eTA."
+}

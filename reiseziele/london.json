@@ -1,0 +1,116 @@
+{
+  "name": "London",
+  "slug": "london",
+  "country": "Vereinigtes Königreich (Großbritannien)",
+  "region": "England",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/london-hero.jpg",
+  "short_description": "Pulsierende Weltmetropole an der Themse mit Big Ben, dem Tower, Buckingham Palace, weltberühmten Museen, West-End-Musicals und royalem Flair.",
+  "long_description": "London ist eine der aufregendsten Metropolen der Welt und vereint jahrhundertealte Geschichte mit pulsierender Moderne. An der Themse reihen sich die ikonischen Wahrzeichen aneinander: der Glockenturm Big Ben mit den Houses of Parliament, die Westminster Abbey, das Riesenrad London Eye und der historische Tower of London mit den Kronjuwelen, direkt neben der prächtigen Tower Bridge. Am Buckingham Palace erlebt man die traditionelle Wachablösung, während sich rund um St Paul's Cathedral und die City das Finanzherz der Stadt erstreckt. London ist zudem ein Paradies für Kulturfans: Weltklasse-Museen wie das British Museum, die National Gallery und die Tate Modern sind kostenlos zugänglich. Im West End locken die besten Musicals und Theater der Welt, in Vierteln wie Soho, Covent Garden, Camden und Notting Hill pulsiert das Leben, und Märkte wie der Borough Market verwöhnen Feinschmecker. Mit seinem multikulturellen Flair, exzellentem Nahverkehr und royaler Eleganz ist London das ideale Ziel für einen Städtetrip – von Deutschland aus in nur kurzer Flugzeit erreichbar.",
+  "ai_summary": "London ist eine pulsierende Weltmetropole an der Themse mit Wahrzeichen wie Big Ben, dem Tower of London, Buckingham Palace und dem London Eye, weltberühmten kostenlosen Museen und den besten Musicals im West End. Die Stadt eignet sich ideal für einen Städtetrip; für die Einreise sind ein Reisepass und eine kostenpflichtige ETA-Genehmigung nötig.",
+  "best_travel_time": "Mai bis September mit mildem Wetter und langen Tagen ist ideal; der Dezember ist mit weihnachtlicher Beleuchtung besonders festlich. Regen ist in London zu jeder Jahreszeit möglich.",
+  "ideal_duration": "3 bis 5 Tage",
+  "travel_type": [
+    "Städtereise",
+    "Kulturreise",
+    "Shopping",
+    "Familien",
+    "Kulinarik",
+    "Wochenendtrip"
+  ],
+  "quick_facts": {
+    "currency": "Britisches Pfund (GBP); nicht Euro",
+    "language": "Englisch",
+    "flightTime": "ca. 1,5 Stunden ab Deutschland (London); alternativ mit dem Eurostar über Brüssel oder Paris",
+    "timezone": "GMT (UTC+0; im Sommer BST, UTC+1), eine Stunde hinter MEZ",
+    "visa": "Kein Visum für Touristen (bis 6 Monate), aber ein Reisepass und eine vorab beantragte, kostenpflichtige ETA (elektronische Einreisegenehmigung, rund 16 £) sind erforderlich",
+    "bestMonths": "Mai bis September"
+  },
+  "highlights": [
+    "Big Ben und die Houses of Parliament an der Themse",
+    "Tower of London und Tower Bridge – Kronjuwelen und historische Festung",
+    "Buckingham Palace – royale Residenz mit Wachablösung",
+    "London Eye – Riesenrad mit weitem Blick über die Stadt",
+    "British Museum und National Gallery – Weltklasse-Museen, kostenlos",
+    "West End – die besten Musicals und Theater der Welt",
+    "Westminster Abbey und St Paul's Cathedral – prächtige Kirchen",
+    "Lebendige Viertel und Märkte – Soho, Covent Garden, Camden und Borough Market"
+  ],
+  "insider_tips": [
+    "In Tube und Bus zahlt man am einfachsten kontaktlos mit Karte oder Handy oder mit einer Oyster Card – durch den täglichen Preisdeckel zahlt man nie mehr als den Tagestarif.",
+    "Viele der besten Museen sind kostenlos, darunter das British Museum, die National Gallery, die Tate Modern und das Natural History Museum.",
+    "Für West-End-Musicals gibt es am TKTS-Stand am Leicester Square oft vergünstigte Tickets für denselben Tag.",
+    "Die ETA-Einreisegenehmigung sollte man rechtzeitig vor der Reise online beantragen; beim Überqueren der Straße wegen des Linksverkehrs zuerst nach rechts schauen."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich für London ein Visum oder eine ETA?",
+      "answer": "Für touristische Aufenthalte benötigen deutsche Staatsbürger kein Visum, jedoch seit 2025 eine kostenpflichtige ETA (Electronic Travel Authorisation), die vorab online beantragt wird. Außerdem ist ein gültiger Reisepass nötig; der Personalausweis reicht für Touristen nicht mehr aus."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für London?",
+      "answer": "Am angenehmsten ist es von Mai bis September mit mildem Wetter und langen Tagen. Der Dezember ist mit festlicher Weihnachtsbeleuchtung besonders stimmungsvoll. Regenschauer sind in London allerdings ganzjährig möglich."
+    },
+    {
+      "question": "Welche Währung gilt in London?",
+      "answer": "In London zahlt man mit dem Britischen Pfund (GBP), nicht mit dem Euro. Kartenzahlung und kontaktloses Bezahlen sind nahezu überall üblich, sodass man kaum Bargeld benötigt."
+    },
+    {
+      "question": "Wie reist man nach London an?",
+      "answer": "Am schnellsten geht es per Flug zu einem der Londoner Flughäfen wie Heathrow, Gatwick oder Stansted. Eine bequeme Alternative ist der Eurostar-Zug über Brüssel oder Paris, der im Zentrum am Bahnhof St Pancras hält."
+    },
+    {
+      "question": "Braucht man in London ein Auto?",
+      "answer": "Nein, im Gegenteil. London hat mit der U-Bahn (Tube), Bussen und Bahnen einen hervorragenden Nahverkehr. Ein Auto ist wegen Linksverkehr, City-Maut (Congestion Charge) und teurer Parkplätze eher hinderlich."
+    },
+    {
+      "question": "Wie nutzt man den Nahverkehr am besten?",
+      "answer": "Am einfachsten zahlt man kontaktlos mit Kreditkarte oder Smartphone, alternativ mit einer Oyster Card. Dank des täglichen Preisdeckels zahlt man nie mehr als den günstigsten Tagestarif für die genutzten Zonen."
+    },
+    {
+      "question": "Sind die Museen in London wirklich kostenlos?",
+      "answer": "Ja, viele der bedeutendsten Museen verlangen keinen Eintritt, darunter das British Museum, die National Gallery, die Tate Modern und das Natural History Museum. Für Sonderausstellungen können jedoch Gebühren anfallen."
+    },
+    {
+      "question": "Lohnt sich ein Musical im West End?",
+      "answer": "Auf jeden Fall. Das Londoner West End gilt neben dem Broadway als Welthauptstadt des Musicals. Vergünstigte Tickets gibt es am TKTS-Stand am Leicester Square oder online; beliebte Shows sollte man frühzeitig buchen."
+    },
+    {
+      "question": "Ist London für Familien geeignet?",
+      "answer": "Ja, London ist sehr familienfreundlich. Das Natural History Museum, der Tower of London, das London Eye, Parks wie der Hyde Park sowie Attraktionen rund um beliebte Filmwelten begeistern Kinder. Vieles ist zudem kostenlos."
+    },
+    {
+      "question": "Wie viele Tage sollte man für London einplanen?",
+      "answer": "Für die wichtigsten Highlights sollte man 3 bis 4 Tage einplanen. Wer tiefer in Museen, Viertel, Märkte und Tagesausflüge eintauchen möchte, kann gut 5 Tage oder mehr bleiben."
+    }
+  ],
+  "seo_title": "London Städtereise: Big Ben, Tower, Tipps & beste Reisezeit",
+  "seo_description": "Deine London-Reise: Big Ben, der Tower of London, Buckingham Palace, kostenlose Museen und West-End-Musicals. Beste Reisezeit, Einreise mit ETA, Highlights und Tipps im Überblick.",
+  "affiliate_search_intent": "London Städtereise buchen, Flug nach London, Hotel London, London Wochenende, Musical Tickets London, London Sehenswürdigkeiten Tickets, Eurostar London",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "paris",
+    "amsterdam",
+    "schottland"
+  ],
+  "llmo_entities": [
+    "London",
+    "Vereinigtes Königreich",
+    "Themse",
+    "Big Ben",
+    "Houses of Parliament",
+    "Tower of London",
+    "Tower Bridge",
+    "Buckingham Palace",
+    "London Eye",
+    "British Museum",
+    "Westminster Abbey",
+    "West End",
+    "Covent Garden",
+    "Camden Market",
+    "Britisches Pfund",
+    "ETA"
+  ],
+  "llmo_answer_block": "London ist eine pulsierende Weltmetropole an der Themse mit ikonischen Wahrzeichen wie Big Ben, dem Tower of London, Buckingham Palace und dem London Eye, weltberühmten kostenlosen Museen wie dem British Museum und den besten Musicals im West End. Mit exzellentem Nahverkehr, multikulturellem Flair und royaler Eleganz eignet sie sich ideal für einen Städtetrip und ist von Deutschland aus in kurzer Flugzeit oder per Eurostar erreichbar. Für die Einreise sind ein Reisepass und eine kostenpflichtige ETA-Genehmigung nötig, die beste Reisezeit liegt zwischen Mai und September.",
+  "llmo_quick_answer": "London ist eine pulsierende Weltmetropole an der Themse mit Big Ben, dem Tower, Buckingham Palace, kostenlosen Museen und West-End-Musicals; zur Einreise braucht man Reisepass und ETA."
+}

@@ -1,0 +1,121 @@
+{
+  "name": "Neuseeland",
+  "slug": "neuseeland",
+  "country": "Neuseeland",
+  "region": "Ozeanien",
+  "continent": "Ozeanien",
+  "hero_image": "/images/destinations/neuseeland-hero.jpg",
+  "short_description": "Atemberaubendes Naturparadies am anderen Ende der Welt mit Fjorden, Vulkanen, Gletschern, Geysiren, „Herr der Ringe“-Drehorten und Māori-Kultur.",
+  "long_description": "Neuseeland gilt als eines der schönsten Länder der Erde und vereint auf zwei Hauptinseln eine unglaubliche landschaftliche Vielfalt. Die Südinsel beeindruckt mit den majestätischen Fjorden des Milford Sound, den Südalpen rund um den Aoraki/Mount Cook, dem türkisen Lake Tekapo unter sternenklarem Himmel sowie den Gletschern Franz Josef und Fox. Queenstown gilt als Abenteuer- und Adrenalinhauptstadt mit Bungeejumping und Skydiving. Die Nordinsel lockt mit der brodelnden Geothermie und Māori-Kultur in Rotorua, der spektakulären Wanderung Tongariro Alpine Crossing und natürlich Hobbiton, dem originalen Filmset aus „Der Herr der Ringe“. Dazu kommen einsame Strände, üppiger Regenwald und eine einzigartige Tierwelt mit dem Kiwi als Wahrzeichen. Wegen der Lage am anderen Ende der Welt und der vielen Höhepunkte lohnt sich eine längere Reise, am besten als Roadtrip oder mit dem Campervan. Neuseeland ist ideal für Natur-, Outdoor- und Abenteuerurlaube und besticht durch herzliche Gastfreundschaft.",
+  "ai_summary": "Neuseeland ist ein atemberaubendes Naturparadies in Ozeanien mit Fjorden wie dem Milford Sound, den Südalpen, Gletschern, der Geothermie und Māori-Kultur in Rotorua sowie „Herr der Ringe“-Drehorten wie Hobbiton. Es eignet sich ideal für Roadtrips, Campervan- und Abenteuerreisen; für die Einreise sind eine NZeTA und die Touristenabgabe IVL nötig.",
+  "best_travel_time": "Da Neuseeland auf der Südhalbkugel liegt, sind die Jahreszeiten umgekehrt. Die beste Reisezeit ist der dortige Sommer und Herbst von November bis April mit mildem Wetter.",
+  "ideal_duration": "3 bis 4 Wochen",
+  "travel_type": [
+    "Rundreise",
+    "Roadtrip",
+    "Naturreise",
+    "Abenteuer",
+    "Wandern",
+    "Wohnmobilreise",
+    "Outdoor"
+  ],
+  "quick_facts": {
+    "currency": "Neuseeland-Dollar (NZD)",
+    "language": "Englisch und Māori",
+    "flightTime": "ca. 24 Stunden und mehr ab Deutschland, immer mit Zwischenstopp(s) (Auckland)",
+    "timezone": "NZST (UTC+12), im Sommer NZDT (UTC+13); rund 11 bis 12 Stunden vor MEZ",
+    "visa": "Kein Visum für Touristen (bis 90 Tage); erforderlich sind die elektronische NZeTA-Reisegenehmigung sowie die Touristenabgabe IVL",
+    "bestMonths": "November bis April"
+  },
+  "highlights": [
+    "Milford Sound – spektakulärer Fjord im Fiordland-Nationalpark (Südinsel)",
+    "Queenstown – Abenteuer- und Adrenalinhauptstadt mit Bungeejumping",
+    "Hobbiton – das originale Filmset aus „Der Herr der Ringe“ (Nordinsel)",
+    "Rotorua – Geothermie, Geysire und lebendige Māori-Kultur",
+    "Tongariro Alpine Crossing – eine der schönsten Tageswanderungen der Welt",
+    "Aoraki/Mount Cook und Lake Tekapo – Südalpen und Sternenhimmel",
+    "Franz-Josef- und Fox-Gletscher – Eis trifft auf Regenwald",
+    "Abel-Tasman-Nationalpark – goldene Strände und türkises Wasser"
+  ],
+  "insider_tips": [
+    "Eine Reise mit dem Campervan ist die klassische Art, Neuseeland zu erleben, und verbindet Mobilität mit naturnaher Übernachtung.",
+    "Die Distanzen sind durch kurvige Straßen länger als gedacht – planen Sie für Etappen großzügig Zeit ein und unterschätzen Sie die Fahrzeiten nicht.",
+    "Beim Lake Tekapo, einem international anerkannten Dark Sky Reserve, lohnt sich ein Blick in den außergewöhnlich klaren Sternenhimmel.",
+    "Die Māori-Kultur erlebt man am besten in Rotorua, etwa bei einem traditionellen Hangi-Essen und einer Haka-Vorführung."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich für Neuseeland ein Visum?",
+      "answer": "Für touristische Aufenthalte bis zu 90 Tagen benötigen deutsche Staatsbürger kein Visum. Erforderlich sind jedoch die elektronische Reisegenehmigung NZeTA sowie die Touristenabgabe IVL, beide vor der Reise online zu beantragen bzw. zu zahlen."
+    },
+    {
+      "question": "Was sind NZeTA und IVL?",
+      "answer": "Die NZeTA ist die elektronische Reisegenehmigung für Neuseeland, die IVL (International Visitor Conservation and Tourism Levy) eine Abgabe für Umwelt- und Tourismusprojekte. Beide werden in der Regel gemeinsam beantragt und sind für mehrere Einreisen über zwei Jahre gültig."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Neuseeland?",
+      "answer": "Da Neuseeland auf der Südhalbkugel liegt, sind die Jahreszeiten umgekehrt. Die beste Reisezeit ist der dortige Sommer und Herbst von November bis April. Der Dezember bis Februar ist Hauptsaison, der Herbst etwas ruhiger."
+    },
+    {
+      "question": "Wie lange dauert der Flug nach Neuseeland?",
+      "answer": "Die Anreise dauert mit Zwischenstopps insgesamt rund 24 Stunden oder mehr, da es keine Direktflüge aus Deutschland gibt. Üblich sind ein oder zwei Stopps, etwa in Asien oder am Persischen Golf, mit Ziel Auckland."
+    },
+    {
+      "question": "Welche Währung gilt in Neuseeland?",
+      "answer": "Gezahlt wird mit dem Neuseeland-Dollar (NZD). Kartenzahlung ist nahezu überall üblich, etwas Bargeld ist nur an wenigen abgelegenen Orten praktisch."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen oder Campervan in Neuseeland?",
+      "answer": "Ja, ein Mietwagen oder Campervan ist nahezu unverzichtbar, um die Höhepunkte flexibel zu erreichen. Zu beachten ist der Linksverkehr sowie die teils kurvigen Straßen, die längere Fahrzeiten bedeuten."
+    },
+    {
+      "question": "Sollte man beide Inseln besuchen?",
+      "answer": "Wenn es die Zeit erlaubt, ja. Die Nordinsel bietet Geothermie, Māori-Kultur und „Herr der Ringe“-Drehorte, die Südinsel dramatische Berge, Fjorde und Gletscher. Eine Fähre verbindet beide Inseln."
+    },
+    {
+      "question": "Kann man in Neuseeland Drehorte aus „Der Herr der Ringe“ besuchen?",
+      "answer": "Ja, das ganze Land diente als Kulisse. Das bekannteste Ziel ist Hobbiton bei Matamata auf der Nordinsel, das originale Auenland-Filmset, das im Rahmen von Touren besichtigt werden kann."
+    },
+    {
+      "question": "Ist Neuseeland für einen Familienurlaub geeignet?",
+      "answer": "Ja, Neuseeland ist sehr sicher und familienfreundlich. Naturerlebnisse, Tierbegegnungen, einfache Wanderungen, Strände und kindgerechte Abenteuer begeistern Familien. Wegen der langen Anreise lohnt sich ein längerer Aufenthalt."
+    },
+    {
+      "question": "Erlebt man in Neuseeland die Māori-Kultur?",
+      "answer": "Ja, die Kultur der Māori, der indigenen Bevölkerung, ist lebendig und allgegenwärtig. Besonders in Rotorua kann man traditionelle Vorführungen, Kunst und ein Hangi-Essen erleben."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Neuseeland einplanen?",
+      "answer": "Wegen der weiten Anreise und der vielen Höhepunkte lohnen sich mindestens 3 Wochen. Wer beide Inseln in Ruhe erleben möchte, plant am besten 3 bis 4 Wochen ein."
+    }
+  ],
+  "seo_title": "Neuseeland Urlaub: Milford Sound, Roadtrip & beste Reisezeit",
+  "seo_description": "Dein Neuseeland-Urlaub: der Milford Sound, Queenstown, Hobbiton, Rotorua und die Südalpen. Beste Reisezeit, Einreise mit NZeTA und IVL, Roadtrip-Tipps und Highlights im Überblick.",
+  "affiliate_search_intent": "Neuseeland Reise buchen, Flug nach Auckland, Mietwagen oder Campervan Neuseeland, Rundreise Neuseeland, Roadtrip Südinsel, Hotel Queenstown",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "australien",
+    "kanada",
+    "island"
+  ],
+  "llmo_entities": [
+    "Neuseeland",
+    "Milford Sound",
+    "Fiordland",
+    "Queenstown",
+    "Hobbiton",
+    "Rotorua",
+    "Tongariro Alpine Crossing",
+    "Aoraki/Mount Cook",
+    "Lake Tekapo",
+    "Franz-Josef-Gletscher",
+    "Abel-Tasman-Nationalpark",
+    "Auckland",
+    "Wellington",
+    "Māori",
+    "Neuseeland-Dollar",
+    "NZeTA"
+  ],
+  "llmo_answer_block": "Neuseeland ist ein atemberaubendes Naturparadies in Ozeanien mit den Fjorden des Milford Sound, den Südalpen, Gletschern, der Geothermie und Māori-Kultur in Rotorua sowie „Herr der Ringe“-Drehorten wie Hobbiton. Wegen der Lage am anderen Ende der Welt und der vielen Höhepunkte lohnt sich eine längere Reise, am besten als Roadtrip oder mit dem Campervan. Die beste Reisezeit ist der dortige Sommer von November bis April; für die Einreise sind eine NZeTA und die Touristenabgabe IVL nötig.",
+  "llmo_quick_answer": "Neuseeland ist ein Naturparadies mit Fjorden, Vulkanen, Gletschern, Māori-Kultur und „Herr der Ringe“-Drehorten; zur Einreise braucht man NZeTA und IVL."
+}

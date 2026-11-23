@@ -276,13 +276,13 @@ export default function HomeTravelWizard() {
       const moodLabels  = moods.map(id => MOODS.find(m => m.id === id)?.label || id);
       const apiBudget   = BUDGET_MAP[budget]    || 'mid';
       const apiDuration = DURATION_MAP[duration] || 'week';
-      const apiSeason   = season === 'flex' ? 'spring' : season;
+      const apiSeason   = season || 'flex';
 
       // Combine manual text + selected chips into one freeText
       const parts = [personalNote.trim(), selectedChips.join(', ')].filter(Boolean);
       const freeText = parts.join(' | ');
 
-      const res = await fetch('/api/ai/travel-save', {
+      const res = await fetch('/api/traumreise', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -292,8 +292,6 @@ export default function HomeTravelWizard() {
           budget:    apiBudget,
           duration:  apiDuration,
           season:    apiSeason,
-          adults:    2,
-          children:  0,
         }),
       });
 

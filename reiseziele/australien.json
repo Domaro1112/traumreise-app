@@ -1,0 +1,121 @@
+{
+  "name": "Australien",
+  "slug": "australien",
+  "country": "Australien",
+  "region": "Ozeanien",
+  "continent": "Australien",
+  "hero_image": "/images/destinations/australien-hero.jpg",
+  "short_description": "Faszinierender Kontinent mit Sydney, dem Great Barrier Reef, dem roten Outback rund um Uluru, der Great Ocean Road und einzigartiger Tierwelt.",
+  "long_description": "Australien ist ein ganzer Kontinent für sich und ein Traumziel voller Superlative – von pulsierenden Küstenmetropolen über das größte Korallenriff der Welt bis zum endlosen roten Outback. Sydney begeistert mit dem ikonischen Opernhaus, der Harbour Bridge und dem berühmten Bondi Beach, während das kreative Melbourne für Kaffeekultur, Kunst und Laneways steht. Vor der Küste Queenslands erstreckt sich das Great Barrier Reef, ein Paradies zum Tauchen und Schnorcheln. Im roten Herzen des Landes thront der heilige Monolith Uluru (Ayers Rock) in der Wüste des Outback. Im Süden zählt die spektakuläre Great Ocean Road mit den Twelve Apostles zu den schönsten Küstenstraßen der Welt. Dazu kommen die Whitsunday Islands mit dem weißen Whitehaven Beach, die unberührte Natur Tasmaniens und eine einzigartige Tierwelt mit Kängurus und Koalas. Wegen der gewaltigen Distanzen kombiniert man am besten Inlandsflüge mit Roadtrips. Australien ist ideal für Rundreisen, Natur-, Tauch- und Abenteuerurlaube.",
+  "ai_summary": "Australien ist ein faszinierender Kontinent mit Metropolen wie Sydney und Melbourne, dem Great Barrier Reef, dem roten Outback rund um Uluru, der Great Ocean Road und einzigartiger Tierwelt mit Kängurus und Koalas. Wegen der großen Distanzen kombiniert man Inlandsflüge mit Roadtrips; für die Einreise ist ein elektronisches Visum nötig.",
+  "best_travel_time": "Da Australien auf der Südhalbkugel liegt, sind die Jahreszeiten umgekehrt und stark regionabhängig. Allgemein sind Frühling und Herbst (September bis November, März bis Mai) ideal; der tropische Norden und das Great Barrier Reef sind in der Trockenzeit von Mai bis Oktober am besten.",
+  "ideal_duration": "3 bis 4 Wochen",
+  "travel_type": [
+    "Rundreise",
+    "Roadtrip",
+    "Naturreise",
+    "Strandurlaub",
+    "Tauchen",
+    "Abenteuer",
+    "Wohnmobilreise"
+  ],
+  "quick_facts": {
+    "currency": "Australischer Dollar (AUD)",
+    "language": "Englisch",
+    "flightTime": "ca. 22 bis 24 Stunden und mehr ab Deutschland, immer mit Zwischenstopp (Sydney)",
+    "timezone": "Mehrere Zeitzonen (Westen UTC+8 bis Osten UTC+10), rund 8 bis 10 Stunden vor MEZ",
+    "visa": "Elektronisches Visum erforderlich (eVisitor oder ETA), vorab online zu beantragen; eine Einreise ohne genehmigtes Visum ist nicht möglich",
+    "bestMonths": "September bis November sowie März bis Mai; tropischer Norden Mai bis Oktober"
+  },
+  "highlights": [
+    "Sydney – Opernhaus, Harbour Bridge und der berühmte Bondi Beach",
+    "Great Barrier Reef – größtes Korallenriff der Welt, ideal zum Tauchen und Schnorcheln",
+    "Uluru (Ayers Rock) – heiliger Monolith im roten Outback",
+    "Great Ocean Road – spektakuläre Küstenstraße mit den Twelve Apostles",
+    "Melbourne – Kaffeekultur, Kunst und lebendige Laneways",
+    "Whitsunday Islands – Whitehaven Beach mit weißem Sand und türkisem Meer",
+    "Tierwelt – Kängurus, Koalas und einzigartige Arten, etwa auf Kangaroo Island",
+    "Tasmanien und die Blue Mountains – unberührte Natur und Wanderungen"
+  ],
+  "insider_tips": [
+    "Wegen der enormen Distanzen kombiniert man am besten Inlandsflüge mit regionalen Roadtrips, etwa entlang der Ostküste oder im Süden.",
+    "Der UV-Index ist in Australien sehr hoch – konsequenter Sonnenschutz mit Hut, Sonnencreme und schützender Kleidung ist unbedingt nötig.",
+    "Beim Fahren gilt Linksverkehr; in der Dämmerung ist wegen Kängurus und anderem Wild auf der Straße besondere Vorsicht geboten.",
+    "Uluru ist eine heilige Stätte der Aborigines; das Besteigen ist nicht mehr gestattet, dafür beeindrucken Wanderungen am Fuß und der Sonnenuntergang über dem Fels."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich ein Visum für Australien?",
+      "answer": "Ja, für Australien ist immer ein Visum nötig, auch für touristische Aufenthalte. Deutsche Staatsbürger beantragen vorab online ein elektronisches Visum (eVisitor oder ETA), das mit dem Reisepass verknüpft wird. Ohne genehmigtes Visum ist keine Einreise möglich."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Australien?",
+      "answer": "Da Australien auf der Südhalbkugel liegt, sind die Jahreszeiten umgekehrt. Allgemein sind Frühling und Herbst (September bis November und März bis Mai) ideal. Das Great Barrier Reef und der tropische Norden sind in der Trockenzeit von Mai bis Oktober am besten."
+    },
+    {
+      "question": "Wie lange dauert der Flug nach Australien?",
+      "answer": "Die Anreise dauert mit Zwischenstopp insgesamt rund 22 bis 24 Stunden oder mehr, da es keine Direktflüge aus Deutschland gibt. Üblich ist ein Stopp, etwa am Persischen Golf oder in Asien."
+    },
+    {
+      "question": "Welche Währung gilt in Australien?",
+      "answer": "Gezahlt wird mit dem Australischen Dollar (AUD). Kartenzahlung und kontaktloses Bezahlen sind nahezu überall üblich, sodass man nur wenig Bargeld benötigt."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen in Australien?",
+      "answer": "Ja, für Roadtrips wie die Great Ocean Road oder die Ostküste ist ein Mietwagen oder Wohnmobil ideal. Zu beachten sind der Linksverkehr, die großen Distanzen und die Gefahr durch Wildtiere auf den Straßen, besonders in der Dämmerung."
+    },
+    {
+      "question": "Wie überbrückt man die großen Entfernungen?",
+      "answer": "Australien ist riesig, daher sind Inlandsflüge zwischen den Regionen das schnellste Mittel. Innerhalb einer Region erkundet man das Land am besten per Mietwagen oder Wohnmobil."
+    },
+    {
+      "question": "Kann man das Great Barrier Reef besuchen?",
+      "answer": "Ja, von Orten wie Cairns und Port Douglas starten Touren zum Schnorcheln und Tauchen am größten Korallenriff der Welt. Die beste Zeit ist die Trockenzeit; aus Rücksicht auf das empfindliche Ökosystem sollte man umweltbewusste Anbieter wählen."
+    },
+    {
+      "question": "Ist Australien wegen gefährlicher Tiere riskant?",
+      "answer": "Australien hat einige gefährliche Tiere, doch Begegnungen sind bei umsichtigem Verhalten selten. Wichtig ist, Warnschilder zu beachten, an ausgewiesenen Stellen zu baden und in der Quallensaison im Norden Schutzkleidung zu tragen."
+    },
+    {
+      "question": "Ist Australien für einen Familienurlaub geeignet?",
+      "answer": "Ja, Australien ist sicher und familienfreundlich. Strände, Tierbegegnungen mit Kängurus und Koalas, Nationalparks und entspannte Städte begeistern Kinder. Wegen der langen Anreise und Distanzen lohnt sich ein längerer Aufenthalt."
+    },
+    {
+      "question": "Worauf sollte man beim Sonnenschutz achten?",
+      "answer": "Der UV-Index ist in Australien extrem hoch. Sonnencreme mit hohem Lichtschutzfaktor, Hut, Sonnenbrille und schützende Kleidung sind unverzichtbar, um Sonnenbrand und Hautschäden zu vermeiden."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Australien einplanen?",
+      "answer": "Wegen der weiten Anreise und der Größe des Landes lohnen sich mindestens 3 Wochen. Wer Ostküste, Outback und Riff verbinden möchte, sollte 3 bis 4 Wochen einplanen."
+    }
+  ],
+  "seo_title": "Australien Urlaub: Sydney, Great Barrier Reef & beste Reisezeit",
+  "seo_description": "Dein Australien-Urlaub: Sydney, das Great Barrier Reef, das Outback mit Uluru, die Great Ocean Road und einzigartige Tierwelt. Beste Reisezeit, Visum, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "Australien Reise buchen, Flug nach Sydney, Mietwagen oder Wohnmobil Australien, Rundreise Ostküste, Tauchreise Great Barrier Reef, Hotel Sydney",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "neuseeland",
+    "indonesien",
+    "thailand"
+  ],
+  "llmo_entities": [
+    "Australien",
+    "Sydney",
+    "Opernhaus Sydney",
+    "Harbour Bridge",
+    "Bondi Beach",
+    "Great Barrier Reef",
+    "Cairns",
+    "Uluru",
+    "Ayers Rock",
+    "Outback",
+    "Great Ocean Road",
+    "Twelve Apostles",
+    "Melbourne",
+    "Whitsunday Islands",
+    "Whitehaven Beach",
+    "Australischer Dollar"
+  ],
+  "llmo_answer_block": "Australien ist ein faszinierender Kontinent mit Metropolen wie Sydney und Melbourne, dem Great Barrier Reef als größtem Korallenriff der Welt, dem roten Outback rund um Uluru, der spektakulären Great Ocean Road und einzigartiger Tierwelt mit Kängurus und Koalas. Wegen der gewaltigen Distanzen kombiniert man am besten Inlandsflüge mit Roadtrips, und das Land eignet sich ideal für Rundreisen, Natur-, Tauch- und Abenteuerurlaube. Die Jahreszeiten sind umgekehrt, und für die Einreise ist vorab ein elektronisches Visum nötig.",
+  "llmo_quick_answer": "Australien ist ein faszinierender Kontinent mit Sydney, dem Great Barrier Reef, dem Outback rund um Uluru und einzigartiger Tierwelt; zur Einreise braucht man ein elektronisches Visum."
+}

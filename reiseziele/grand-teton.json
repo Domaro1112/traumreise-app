@@ -1,0 +1,116 @@
+{
+  "name": "Grand-Teton-Nationalpark",
+  "slug": "grand-teton",
+  "country": "Vereinigte Staaten (USA)",
+  "region": "Wyoming (USA-Westen)",
+  "continent": "Nordamerika",
+  "hero_image": "/images/destinations/grand-teton-hero.jpg",
+  "short_description": "Dramatische Bergkulisse in Wyoming mit der schroffen Teton-Range, glasklaren Bergseen, dem Snake River und reicher Tierwelt – direkt südlich von Yellowstone.",
+  "long_description": "Der Grand-Teton-Nationalpark in Wyoming begeistert mit einer der schönsten Bergkulissen Nordamerikas: Die schroffe Teton-Range erhebt sich fast senkrecht und ohne sanfte Vorberge aus der flachen Ebene, überragt vom rund 4.199 Meter hohen Grand Teton. Zu ihren Füßen liegen glasklare Bergseen wie der idyllische Jenny Lake, an dem ein Shuttleboot und Wanderwege zu den Hidden Falls und zum Inspiration Point führen. Der Snake River windet sich durch die Landschaft und sorgte am berühmten Snake River Overlook für eines der ikonischsten Naturfotos der USA. Die historischen Scheunen der Mormon Row vor der Teton-Kulisse sowie Schwabacher's Landing mit seinen perfekten Spiegelungen sind beliebte Fotomotive, besonders bei Sonnenaufgang. Der Park ist zudem ein hervorragendes Tierbeobachtungsgebiet mit Elchen, Bisons, Bären und Adlern. Da der Grand-Teton-Nationalpark direkt südlich von Yellowstone liegt, lassen sich beide ideal verbinden. Das nahe Jackson Hole dient als charmante Western-Basis. Grand Teton ist ein Traumziel für Natur-, Wander- und Fotoreisen.",
+  "ai_summary": "Der Grand-Teton-Nationalpark in Wyoming beeindruckt mit der dramatisch aufragenden Teton-Range, Bergseen wie dem Jenny Lake, dem Snake River und reicher Tierwelt. Direkt südlich von Yellowstone gelegen, lässt er sich ideal damit verbinden und eignet sich für Natur-, Wander- und Fotoreisen; für die Einreise gelten die USA-Bestimmungen mit ESTA.",
+  "best_travel_time": "Juni bis September mit offenen Straßen und mildem Bergwetter sind ideal; der späte September bringt goldene Herbstfärbung. Im Winter ist die innere Parkstraße gesperrt, dann lockt das Skigebiet Jackson Hole.",
+  "ideal_duration": "2 bis 3 Tage, oft mit dem Yellowstone-Nationalpark kombiniert",
+  "travel_type": [
+    "Naturreise",
+    "Nationalparks",
+    "Roadtrip",
+    "Wandern",
+    "Tierbeobachtung",
+    "Fotoreise",
+    "Familien"
+  ],
+  "quick_facts": {
+    "currency": "US-Dollar (USD)",
+    "language": "Englisch",
+    "flightTime": "Kein Direktflug; ab Deutschland ca. 11 bis 13 Stunden in die USA plus Anschluss. Der Flughafen Jackson Hole (JAC) liegt direkt im Park; alternativ über Salt Lake City (rund 5 Stunden Fahrt)",
+    "timezone": "Mountain Time (UTC−7; im Sommer UTC−6), rund acht Stunden hinter MEZ",
+    "visa": "Wie für die USA: kein Visum für Touristen (bis 90 Tage), aber elektronischer Reisepass und kostenpflichtige ESTA-Genehmigung erforderlich",
+    "bestMonths": "Juni bis September"
+  },
+  "highlights": [
+    "Teton-Range – die schroffe Bergkette mit dem rund 4.199 m hohen Grand Teton",
+    "Jenny Lake – idyllischer Bergsee mit Shuttleboot und Wanderwegen",
+    "Hidden Falls und Inspiration Point – beliebte Ziele am Jenny Lake",
+    "Snake River und Snake River Overlook – berühmtes Fotomotiv",
+    "Mormon Row – historische Scheunen vor der Teton-Kulisse",
+    "Schwabacher's Landing – perfekte Spiegelungen der Berge im Wasser",
+    "Tierwelt – Elche, Bisons, Bären und Adler",
+    "Jackson Hole – charmante Western-Stadt als Tor zum Park"
+  ],
+  "insider_tips": [
+    "Grand Teton liegt direkt südlich von Yellowstone und ist über den John D. Rockefeller Jr. Memorial Parkway verbunden – beide Parks lassen sich ideal zu einer Reise kombinieren.",
+    "Am Jenny Lake spart das Shuttleboot über den See einiges an Fußweg und führt direkt zu den Hidden Falls und zum Inspiration Point.",
+    "Für ikonische Fotos lohnt sich der Sonnenaufgang an der Mormon Row oder bei Schwabacher's Landing, wenn sich die Teton-Range im Wasser spiegelt.",
+    "Tiere beobachtet man am besten früh morgens oder abends; in diesem Bärengebiet gehören großer Abstand und Bärenspray zur Grundausstattung."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für den Grand-Teton-Nationalpark?",
+      "answer": "Am besten besucht man den Park von Juni bis September, wenn die Straßen offen und die Bedingungen für Wanderungen ideal sind. Der späte September bietet goldene Herbstfärbung. Im Winter ist die innere Parkstraße gesperrt, dafür ist Jackson Hole ein bekanntes Skigebiet."
+    },
+    {
+      "question": "Sollte man Grand Teton mit Yellowstone kombinieren?",
+      "answer": "Ja, unbedingt. Der Grand-Teton-Nationalpark grenzt direkt im Süden an Yellowstone an und ist über den Rockefeller Parkway bequem erreichbar. Eine Kombination beider Parks ist die klassische und lohnendste Route."
+    },
+    {
+      "question": "Wie reist man zum Grand-Teton-Nationalpark an?",
+      "answer": "Eine Besonderheit: Der Flughafen Jackson Hole (JAC) liegt direkt im Nationalpark, was die Anreise sehr bequem macht. Alternativ fliegt man nach Salt Lake City und fährt rund 5 Stunden mit dem Mietwagen."
+    },
+    {
+      "question": "Braucht man im Grand-Teton-Nationalpark einen Mietwagen?",
+      "answer": "Ja, ein Mietwagen ist praktisch unverzichtbar, um die Aussichtspunkte, Seen und Wanderparkplätze zu erreichen, da es kaum öffentlichen Nahverkehr gibt. Für die An- und Weiterreise im Westen der USA ist ein Auto ohnehin ideal."
+    },
+    {
+      "question": "Brauche ich für Grand Teton ein Visum?",
+      "answer": "Es gelten die Einreisebestimmungen der USA: Für touristische Aufenthalte bis 90 Tage ist kein Visum nötig, aber ein elektronischer Reisepass und eine vorab beantragte, kostenpflichtige ESTA-Genehmigung. Details finden sich auf der USA-Seite."
+    },
+    {
+      "question": "Was kostet der Eintritt und gilt er auch für Yellowstone?",
+      "answer": "Für ein privates Fahrzeug gilt ein mehrtägiges Eintrittsticket. Für Yellowstone ist ein separates Ticket nötig. Wer beide oder mehrere Nationalparks besucht, fährt mit dem Jahrespass „America the Beautiful“ meist günstiger."
+    },
+    {
+      "question": "Kann man am Jenny Lake wandern?",
+      "answer": "Ja, der Jenny Lake ist ein Höhepunkt des Parks. Ein Shuttleboot überquert den See, von wo aus kurze Wanderungen zu den Hidden Falls und zum Inspiration Point führen. Auch längere Touren in die Berge sind möglich."
+    },
+    {
+      "question": "Welche Tiere kann man im Grand-Teton-Nationalpark sehen?",
+      "answer": "Der Park ist bekannt für seine Tierwelt. Mit etwas Glück sieht man Elche (Moose), Bisons, Wapitis, Schwarz- und Grizzlybären sowie Adler. Stets großen Abstand halten und Bärenspray mitführen."
+    },
+    {
+      "question": "Ist der Grand-Teton-Nationalpark für Familien geeignet?",
+      "answer": "Ja, der Park ist familienfreundlich. Bootsfahrten am Jenny Lake, leichte Uferwege, Tierbeobachtungen und das Junior-Ranger-Programm eignen sich gut für Kinder. In diesem Wildnisgebiet sind die Sicherheitsregeln zu Bären zu beachten."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Grand Teton einplanen?",
+      "answer": "Für die Höhepunkte sollte man 2 Tage einplanen. In Kombination mit Yellowstone lohnt sich entsprechend mehr Zeit, um beide Parks ohne Hektik zu erleben."
+    }
+  ],
+  "seo_title": "Grand-Teton-Nationalpark: Berge, Jenny Lake & beste Reisezeit",
+  "seo_description": "Dein Besuch im Grand-Teton-Nationalpark in Wyoming: die dramatische Teton-Range, der Jenny Lake, der Snake River und reiche Tierwelt – ideal mit Yellowstone kombinierbar. Beste Reisezeit, Anreise und Tipps im Überblick.",
+  "affiliate_search_intent": "Grand Teton Reise buchen, Flug nach Jackson Hole, Mietwagen USA-Westen, Hotel Jackson Hole, Grand Teton und Yellowstone Rundreise, Nationalparks USA Roadtrip",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "yellowstone",
+    "yosemite",
+    "zion"
+  ],
+  "llmo_entities": [
+    "Grand-Teton-Nationalpark",
+    "Wyoming",
+    "Teton-Range",
+    "Grand Teton",
+    "Jenny Lake",
+    "Hidden Falls",
+    "Inspiration Point",
+    "Snake River",
+    "Snake River Overlook",
+    "Mormon Row",
+    "Schwabacher's Landing",
+    "Jackson Hole",
+    "Jackson",
+    "Yellowstone",
+    "USA-Westen"
+  ],
+  "llmo_answer_block": "Der Grand-Teton-Nationalpark in Wyoming beeindruckt mit der schroff aufragenden Teton-Range um den rund 4.199 Meter hohen Grand Teton, glasklaren Bergseen wie dem Jenny Lake, dem Snake River und reicher Tierwelt mit Elchen und Bären. Da er direkt südlich an Yellowstone grenzt, lassen sich beide Parks ideal verbinden, und das nahe Jackson Hole dient als charmante Basis. Er eignet sich ideal für Natur-, Wander- und Fotoreisen, am besten von Juni bis September; für die Einreise gelten die USA-Bestimmungen mit ESTA.",
+  "llmo_quick_answer": "Der Grand-Teton-Nationalpark in Wyoming begeistert mit der dramatischen Teton-Bergkette, dem Jenny Lake und reicher Tierwelt – ideal mit Yellowstone kombinierbar."
+}

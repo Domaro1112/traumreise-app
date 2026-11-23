@@ -1,0 +1,118 @@
+{
+  "name": "Frankreich",
+  "slug": "frankreich",
+  "country": "Frankreich",
+  "region": "Westeuropa",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/frankreich-hero.jpg",
+  "short_description": "Das Land der Lebenskunst mit dem glanzvollen Paris, der Côte d'Azur, der Provence mit Lavendelfeldern, Loire-Schlössern, exzellenter Küche und großen Weinen.",
+  "long_description": "Frankreich ist eines der vielfältigsten und beliebtesten Reiseländer der Welt und der Inbegriff von Lebensart, Genuss und Kultur. Die Hauptstadt Paris verzaubert mit dem Eiffelturm, dem Louvre, dem Künstlerviertel Montmartre und der wiedereröffneten Kathedrale Notre-Dame. Im Süden lockt die glamouröse Côte d'Azur mit Nizza, Cannes und Saint-Tropez, während die Provence mit lavendelduftenden Feldern, malerischen Dörfern und Städten wie Avignon und Aix-en-Provence betört. Das Loire-Tal beeindruckt mit prachtvollen Königsschlössern, die Normandie mit dem märchenhaften Mont-Saint-Michel und den geschichtsträchtigen D-Day-Stränden, die Bretagne mit rauer Küste. Weinliebhaber pilgern nach Bordeaux, ins Burgund und in die Champagne, Bergfreunde in die französischen Alpen rund um den Mont Blanc. Dazu kommen Familienziele wie Disneyland Paris und die wilde Insel Korsika. Frankreich ist ideal für Städte-, Kultur-, Genuss- und Rundreisen – im Landesinneren am schönsten als Roadtrip mit dem Mietwagen.",
+  "ai_summary": "Frankreich ist ein vielfältiges Reiseland mit dem glanzvollen Paris, der Côte d'Azur, der Provence mit Lavendelfeldern, den Loire-Schlössern, dem Mont-Saint-Michel sowie weltberühmter Küche und großen Weinen. Es eignet sich ideal für Städte-, Kultur-, Genuss- und Rundreisen und ist von Deutschland aus schnell erreichbar.",
+  "best_travel_time": "April bis Oktober ist allgemein ideal; die Côte d'Azur und die Strände sind im Sommer am schönsten, Paris im Frühling und Herbst, die Lavendelblüte der Provence erlebt man im Juni und Juli.",
+  "ideal_duration": "Städtereise 3 bis 4 Tage, Rundreise 1 bis 2 Wochen",
+  "travel_type": [
+    "Städtereise",
+    "Kulturreise",
+    "Strandurlaub",
+    "Roadtrip",
+    "Kulinarik",
+    "Wein",
+    "Familien",
+    "Rundreise"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Französisch",
+    "flightTime": "ca. 1,5 bis 2 Stunden ab Deutschland (Paris); gut mit Bahn (TGV) oder Auto erreichbar",
+    "timezone": "MEZ (UTC+1), identisch mit Deutschland",
+    "visa": "Nicht erforderlich für EU-Bürger (Schengen-Raum)",
+    "bestMonths": "April bis Oktober"
+  },
+  "highlights": [
+    "Paris – Eiffelturm, Louvre, Montmartre und die wiedereröffnete Notre-Dame",
+    "Côte d'Azur – die glamouröse Riviera mit Nizza, Cannes und Saint-Tropez",
+    "Provence – Lavendelfelder, malerische Dörfer, Avignon und Aix-en-Provence",
+    "Loire-Tal – prachtvolle Königsschlösser, UNESCO-Welterbe",
+    "Mont-Saint-Michel – die spektakuläre Klosterinsel in der Normandie",
+    "Normandie und Bretagne – raue Küsten und die historischen D-Day-Strände",
+    "Weinregionen – Bordeaux, Burgund und die Champagne",
+    "Französische Alpen – Mont Blanc und Chamonix für Berg und Wintersport"
+  ],
+  "insider_tips": [
+    "Die Kathedrale Notre-Dame in Paris ist nach dem Brand seit Ende 2024 wiedereröffnet und definitiv einen Besuch wert – wegen des Andrangs lohnt sich frühes Kommen.",
+    "Die Lavendelfelder der Provence blühen vor allem im Juni und Juli, am bekanntesten rund um das Plateau de Valensole.",
+    "Das Loire-Tal mit seinen Schlössern erkundet man ideal per Mietwagen oder gemütlich mit dem Fahrrad.",
+    "Zwischen den Städten ist der TGV-Hochgeschwindigkeitszug sehr schnell; in Paris selbst nutzt man am besten die Metro statt eines Autos."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Frankreich?",
+      "answer": "Allgemein ist April bis Oktober ideal. Die Côte d'Azur und die Strände sind im Sommer am schönsten, Paris im Frühling und Herbst, und die Lavendelblüte der Provence erlebt man im Juni und Juli."
+    },
+    {
+      "question": "Welche Währung gilt in Frankreich?",
+      "answer": "In Frankreich zahlt man mit dem Euro (EUR). Kartenzahlung ist weit verbreitet, etwas Bargeld ist für kleine Cafés, Märkte und Bäckereien praktisch."
+    },
+    {
+      "question": "Brauche ich ein Visum für Frankreich?",
+      "answer": "Nein. Frankreich ist EU- und Schengen-Mitglied, daher benötigen EU-Bürger kein Visum. Für die Einreise genügt ein gültiger Personalausweis oder Reisepass."
+    },
+    {
+      "question": "Braucht man in Frankreich ein Auto?",
+      "answer": "Für Paris und andere Städte ist ein Auto nicht nötig, da Metro und der TGV hervorragend sind. Für Regionen wie die Provence, das Loire-Tal, die Dordogne oder die Bretagne ist ein Mietwagen jedoch ideal."
+    },
+    {
+      "question": "Was sollte man in Paris unbedingt sehen?",
+      "answer": "Zu den Höhepunkten zählen der Eiffelturm, der Louvre, die wiedereröffnete Notre-Dame, der Triumphbogen mit den Champs-Élysées, das Künstlerviertel Montmartre und ein Bummel entlang der Seine."
+    },
+    {
+      "question": "Wann blüht der Lavendel in der Provence?",
+      "answer": "Die Lavendelfelder blühen meist von Mitte Juni bis Mitte/Ende Juli, abhängig von Höhenlage und Wetter. Besonders bekannt sind die Felder auf dem Plateau de Valensole und rund um die Abtei Sénanque."
+    },
+    {
+      "question": "Ist Frankreich für einen Familienurlaub geeignet?",
+      "answer": "Ja, Frankreich ist sehr familienfreundlich. Disneyland Paris, kinderfreundliche Strände an der Atlantik- und Mittelmeerküste, Schlösser und Freizeitparks wie der Puy du Fou bieten viel Abwechslung."
+    },
+    {
+      "question": "Spricht man in Frankreich Englisch?",
+      "answer": "In Paris und touristischen Regionen kommt man mit Englisch meist zurecht. Abseits davon sind die Kenntnisse unterschiedlich; ein paar französische Höflichkeitsfloskeln werden sehr geschätzt und öffnen viele Türen."
+    },
+    {
+      "question": "Welche kulinarischen Spezialitäten sollte man probieren?",
+      "answer": "Frankreich ist ein Paradies für Genießer: frische Croissants und Baguettes, Käsespezialitäten, Crêpes, regionale Gerichte wie Bouillabaisse oder Coq au Vin sowie die großen Weine aus Bordeaux, Burgund und der Champagne."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Frankreich einplanen?",
+      "answer": "Für eine Stadt wie Paris reichen 3 bis 4 Tage. Wer mehrere Regionen wie die Provence, die Côte d'Azur oder das Loire-Tal verbinden möchte, sollte 1 bis 2 Wochen einplanen."
+    }
+  ],
+  "seo_title": "Frankreich Urlaub: Paris, Provence, Côte d'Azur & beste Reisezeit",
+  "seo_description": "Dein Frankreich-Urlaub: Paris mit Eiffelturm und Notre-Dame, die Côte d'Azur, die Provence mit Lavendelfeldern und die Loire-Schlösser. Beste Reisezeit, Highlights und praktische Reisetipps im Überblick.",
+  "affiliate_search_intent": "Frankreich Reise buchen, Städtereise Paris, Flug nach Paris oder Nizza, Hotel Paris, Mietwagen Frankreich, Ferienhaus Provence oder Côte d'Azur, Rundreise Frankreich",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "italien",
+    "spanien",
+    "belgien"
+  ],
+  "llmo_entities": [
+    "Frankreich",
+    "Paris",
+    "Eiffelturm",
+    "Louvre",
+    "Notre-Dame",
+    "Montmartre",
+    "Côte d'Azur",
+    "Nizza",
+    "Provence",
+    "Lavendelfelder",
+    "Loire-Tal",
+    "Mont-Saint-Michel",
+    "Normandie",
+    "Bordeaux",
+    "Mont Blanc",
+    "Euro"
+  ],
+  "llmo_answer_block": "Frankreich ist eines der vielfältigsten Reiseländer der Welt mit dem glanzvollen Paris samt Eiffelturm, Louvre und der wiedereröffneten Notre-Dame, der glamourösen Côte d'Azur, der Provence mit Lavendelfeldern, den Loire-Schlössern und dem Mont-Saint-Michel. Berühmt für seine Küche und großen Weine, eignet es sich ideal für Städte-, Kultur-, Genuss- und Rundreisen und ist von Deutschland aus schnell erreichbar. Die beste Reisezeit liegt je nach Region zwischen April und Oktober.",
+  "llmo_quick_answer": "Frankreich begeistert mit Paris, der Côte d'Azur, der Provence mit Lavendelfeldern, Loire-Schlössern sowie weltberühmter Küche und großen Weinen."
+}

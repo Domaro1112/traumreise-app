@@ -1,0 +1,125 @@
+{
+  "name": "Malaysia",
+  "slug": "malaysia",
+  "country": "Malaysia",
+  "region": "Südostasien",
+  "continent": "Asien",
+  "hero_image": "/images/destinations/malaysia-hero.jpg",
+  "short_description": "Vielfältiges Südostasien-Ziel mit moderner Skyline in Kuala Lumpur, multikultureller Streetfood-Kultur, Inselparadiesen und dem Dschungel Borneos.",
+  "long_description": "Malaysia vereint auf faszinierende Weise Moderne, Multikulturalität und üppige Natur. Die Hauptstadt Kuala Lumpur beeindruckt mit den ikonischen Petronas Towers, den Batu Caves und einer pulsierenden Food-Szene. Die UNESCO-Stadt George Town auf Penang gilt als kulinarisches Herz des Landes, in dem malaiische, chinesische und indische Einflüsse zu einer einzigartigen Streetfood-Kultur verschmelzen. Strandliebhaber zieht es auf die Inseln Langkawi, Tioman und die Perhentians mit ihren Korallenriffen, während die Cameron Highlands mit kühlen Teeplantagen locken. Das eigentliche Naturwunder liegt auf der Insel Borneo: Im malaysischen Teil mit Sabah und Sarawak erlebt man Orang-Utans, den mächtigen Mount Kinabalu, dichten Regenwald und erstklassige Tauchgründe. Dazu kommt das geschichtsträchtige Malakka. Mit guter Infrastruktur, weit verbreitetem Englisch, fairen Preisen und enormer Vielfalt ist Malaysia ideal für Rundreisen, Strand-, Natur- und Kulturreisen.",
+  "ai_summary": "Malaysia ist ein vielfältiges Reiseland in Südostasien mit der modernen Hauptstadt Kuala Lumpur, der Streetfood-Stadt George Town auf Penang, Inselparadiesen wie Langkawi und den Perhentians sowie dem Regenwald und den Orang-Utans Borneos. Es bietet gute Infrastruktur, weit verbreitetes Englisch und faire Preise und eignet sich ideal für Rundreisen, Strand-, Natur- und Kulturreisen.",
+  "best_travel_time": "Insgesamt sind die Monate Dezember bis April günstig. Wegen zweier Monsunküsten variiert es jedoch: Die Westküste mit Langkawi und Penang ist im Winter ideal, die Ostküsteninseln wie die Perhentians sind etwa von März bis Oktober am schönsten.",
+  "ideal_duration": "2 bis 3 Wochen",
+  "travel_type": [
+    "Rundreise",
+    "Strandurlaub",
+    "Städtereise",
+    "Kulinarik",
+    "Naturreise",
+    "Inselhüpfen",
+    "Familien"
+  ],
+  "quick_facts": {
+    "currency": "Malaysischer Ringgit (MYR)",
+    "language": "Malaiisch (Bahasa Malaysia); Englisch ist weit verbreitet",
+    "flightTime": "ca. 12 bis 13 Stunden ab Deutschland, teils direkt nach Kuala Lumpur",
+    "timezone": "MYT (UTC+8), sieben Stunden vor MEZ",
+    "visa": "Visumfreier Aufenthalt bis 90 Tage; vor der Einreise ist die digitale Einreisekarte (MDAC) online auszufüllen",
+    "bestMonths": "Dezember bis April (Westküste)"
+  },
+  "highlights": [
+    "Kuala Lumpur – Petronas Towers, Batu Caves und lebendige Food-Szene",
+    "George Town (Penang) – UNESCO-Welterbe, Streetfood und Street Art",
+    "Langkawi – Inselparadies mit Stränden, Sky Bridge und Mangroven",
+    "Perhentian-Inseln und Tioman – Korallenriffe zum Schnorcheln und Tauchen",
+    "Borneo (Sabah und Sarawak) – Orang-Utans, Regenwald und Mount Kinabalu",
+    "Cameron Highlands – kühle Teeplantagen und Wanderwege",
+    "Malakka – koloniale Geschichte und UNESCO-Altstadt",
+    "Taman Negara – einer der ältesten Regenwälder der Erde"
+  ],
+  "insider_tips": [
+    "George Town auf Penang gilt als Streetfood-Hauptstadt – an den Garküchen treffen malaiische, chinesische und indische Küche aufeinander; einfach durchprobieren.",
+    "Wer Orang-Utans und Spitzentauchen erleben möchte, sollte unbedingt einen Abstecher nach Borneo einplanen, etwa zur Auffangstation Sepilok und zur Tauchinsel Sipadan.",
+    "Da Malaysia zwei Monsunküsten hat, sollte man die Inselziele passend zur Jahreszeit wählen, um Regen und Wellengang zu vermeiden.",
+    "Für den Transport in den Städten ist die Grab-App praktisch, günstig und transparent, da der Preis vorab feststeht."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich ein Visum für Malaysia?",
+      "answer": "Deutsche Staatsbürger können für touristische Aufenthalte bis zu 90 Tage visumfrei einreisen. Vor der Einreise ist jedoch die digitale Einreisekarte (Malaysia Digital Arrival Card, MDAC) online auszufüllen. Der Reisepass muss noch mindestens sechs Monate gültig sein."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Malaysia?",
+      "answer": "Insgesamt sind Dezember bis April günstig. Da das Land zwei Monsunküsten hat, gilt es zu unterscheiden: Die Westküste mit Langkawi und Penang ist im Winter ideal, die Ostküsteninseln wie die Perhentians etwa von März bis Oktober."
+    },
+    {
+      "question": "Welche Währung gilt in Malaysia?",
+      "answer": "Gezahlt wird mit dem Malaysischen Ringgit (MYR). Kartenzahlung ist in Städten und Hotels weit verbreitet, an Märkten und Garküchen empfiehlt sich jedoch Bargeld. Geldautomaten sind problemlos verfügbar."
+    },
+    {
+      "question": "Wie reist man am besten innerhalb Malaysias?",
+      "answer": "Günstige Inlandsflüge verbinden die Halbinsel mit Borneo und den Inseln, dazu gibt es komfortable Busse und Züge. In Städten ist die Grab-App praktisch. Inseln erreicht man per Fähre. Ein eigener Mietwagen ist meist nicht nötig."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen in Malaysia?",
+      "answer": "Die Straßen sind gut ausgebaut, dennoch nutzen die meisten Reisenden Flüge, Busse und die Grab-App. Wer selbst fährt, sollte den Linksverkehr beachten. Für entlegene Regionen oder die Cameron Highlands kann ein Mietwagen praktisch sein."
+    },
+    {
+      "question": "Was kann man auf Borneo erleben?",
+      "answer": "Der malaysische Teil Borneos mit Sabah und Sarawak ist berühmt für Orang-Utans (etwa in Sepilok), den 4.095 Meter hohen Mount Kinabalu, dichten Regenwald, Flusssafaris und erstklassiges Tauchen rund um Sipadan."
+    },
+    {
+      "question": "Ist Malaysia für einen Familienurlaub geeignet?",
+      "answer": "Ja, Malaysia ist familienfreundlich und vielseitig. Strände, Tiererlebnisse, moderne Städte, gute Infrastruktur und weit verbreitetes Englisch machen es zu einem entspannten Ziel auch mit Kindern."
+    },
+    {
+      "question": "Kann man in Malaysia das Leitungswasser trinken?",
+      "answer": "Das Leitungswasser ist meist gechlort, sollte aber zur Sicherheit nicht ungekocht getrunken werden. Üblich ist die Verwendung von abgefülltem oder abgekochtem Wasser."
+    },
+    {
+      "question": "Welche Impfungen werden für Malaysia empfohlen?",
+      "answer": "Vorgeschrieben sind in der Regel keine Impfungen. Empfohlen werden Standardimpfungen sowie je nach Reiseart Hepatitis A und teils Typhus. Für eine individuelle Beratung sollte man rechtzeitig ein Tropeninstitut oder den Hausarzt aufsuchen."
+    },
+    {
+      "question": "Spricht man in Malaysia Englisch?",
+      "answer": "Ja, Englisch ist sehr weit verbreitet und wird in Städten, Hotels und im Tourismus problemlos verstanden. Das macht die Verständigung für deutsche Reisende besonders einfach."
+    },
+    {
+      "question": "Welche Gerichte sollte man in Malaysia probieren?",
+      "answer": "Typisch sind Nasi Lemak (das Nationalgericht), Laksa, Char Kway Teow, Satay sowie indische und chinesische Spezialitäten. Die multikulturelle Küche, besonders in Penang, ist ein echtes Highlight."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Malaysia einplanen?",
+      "answer": "Um Kuala Lumpur, Penang und eine Insel zu verbinden, reichen rund 10 Tage. Wer zusätzlich Borneo mit Orang-Utans und Tauchen erleben möchte, sollte 2 bis 3 Wochen einplanen."
+    }
+  ],
+  "seo_title": "Malaysia Urlaub: Kuala Lumpur, Borneo, Tipps & beste Reisezeit",
+  "seo_description": "Dein Malaysia-Urlaub: Kuala Lumpur, die Streetfood-Stadt Penang, Inseln wie Langkawi und der Regenwald Borneos mit Orang-Utans. Beste Reisezeit, Visum, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "Malaysia Rundreise buchen, Flug nach Kuala Lumpur, Hotel Malaysia, Borneo Reise mit Orang-Utans, Strandurlaub Langkawi, Backpacking Südostasien",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "thailand",
+    "singapur",
+    "indonesien"
+  ],
+  "llmo_entities": [
+    "Malaysia",
+    "Kuala Lumpur",
+    "Petronas Towers",
+    "Batu Caves",
+    "Penang",
+    "George Town",
+    "Langkawi",
+    "Perhentian-Inseln",
+    "Tioman",
+    "Borneo",
+    "Sabah",
+    "Sarawak",
+    "Mount Kinabalu",
+    "Cameron Highlands",
+    "Malakka",
+    "Malaysischer Ringgit"
+  ],
+  "llmo_answer_block": "Malaysia ist ein vielfältiges Reiseland in Südostasien mit der modernen Hauptstadt Kuala Lumpur und ihren Petronas Towers, der multikulturellen Streetfood-Stadt George Town auf Penang, Inselparadiesen wie Langkawi und den Perhentians sowie dem Regenwald und den Orang-Utans Borneos. Es bietet gute Infrastruktur, weit verbreitetes Englisch und faire Preise und eignet sich ideal für Rundreisen, Strand-, Natur- und Kulturreisen. Deutsche Reisende können bis zu 90 Tage visumfrei einreisen.",
+  "llmo_quick_answer": "Malaysia ist ein vielfältiges Südostasien-Ziel mit Kuala Lumpur, der Streetfood-Stadt Penang, Inseln wie Langkawi und dem Regenwald Borneos mit Orang-Utans."
+}

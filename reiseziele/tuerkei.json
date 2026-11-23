@@ -1,0 +1,121 @@
+{
+  "name": "Türkei",
+  "slug": "tuerkei",
+  "country": "Türkei",
+  "region": "Vorderasien",
+  "continent": "Europa/Asien",
+  "hero_image": "/images/destinations/tuerkei-hero.jpg",
+  "short_description": "Brücke zwischen Europa und Asien mit dem faszinierenden Istanbul, der Märchenlandschaft Kappadokiens, antiken Stätten und der sonnenverwöhnten Türkischen Riviera.",
+  "long_description": "Die Türkei vereint auf einzigartige Weise Orient und Okzident, Geschichte und Strandurlaub. Die Metropole Istanbul liegt auf zwei Kontinenten und beeindruckt mit der Hagia Sophia, der Blauen Moschee, dem Topkapı-Palast, dem Großen Basar und dem Treiben am Bosporus. Im Landesinneren erstreckt sich die surreale Märchenlandschaft Kappadokiens mit ihren Feenkaminen, Höhlenkirchen und den berühmten Heißluftballonfahrten bei Sonnenaufgang. Antike Höhepunkte wie die gut erhaltene Stadt Ephesus und die schneeweißen Kalksinterterrassen von Pamukkale ziehen Kulturreisende an. Vor allem aber ist die Türkei für ihre Küsten bekannt: Die Türkische Riviera rund um Antalya sowie die malerische Lykische Küste mit Orten wie Ölüdeniz und Kaş bieten Traumstrände, türkises Meer und komfortable All-Inclusive-Resorts. Dazu kommen die herzliche Gastfreundschaft, eine vielfältige Küche und ein gutes Preis-Leistungs-Verhältnis. Ideal für Strand-, Städte-, Kultur- und Rundreisen.",
+  "ai_summary": "Die Türkei verbindet Europa und Asien und bietet die Metropole Istanbul, die Märchenlandschaft Kappadokiens, antike Stätten wie Ephesus und Pamukkale sowie die sonnenverwöhnte Türkische Riviera mit All-Inclusive-Resorts. Sie ist gastfreundlich, günstig und eignet sich ideal für Strand-, Städte-, Kultur- und Rundreisen.",
+  "best_travel_time": "April bis Juni sowie September und Oktober für Kultur und angenehme Temperaturen; die Küsten sind im Sommer ideal zum Baden, im Hochsommer wird es jedoch sehr heiß.",
+  "ideal_duration": "Strandurlaub 1 Woche, Rundreise 1 bis 2 Wochen",
+  "travel_type": [
+    "Strandurlaub",
+    "All-Inclusive",
+    "Städtereise",
+    "Kulturreise",
+    "Rundreise",
+    "Familien",
+    "Wellness"
+  ],
+  "quick_facts": {
+    "currency": "Türkische Lira (TRY)",
+    "language": "Türkisch",
+    "flightTime": "ca. 3 bis 3,5 Stunden ab Deutschland (Istanbul, Antalya)",
+    "timezone": "TRT (UTC+3), zwei Stunden vor MEZ",
+    "visa": "Für deutsche Staatsbürger kein Visum nötig (Aufenthalt bis 90 Tage innerhalb von 180 Tagen)",
+    "bestMonths": "April bis Juni sowie September und Oktober"
+  },
+  "highlights": [
+    "Istanbul – Hagia Sophia, Blaue Moschee, Topkapı-Palast, Großer Basar und Bosporus",
+    "Kappadokien – Feenkamine, Höhlenkirchen und Heißluftballonfahrten bei Sonnenaufgang",
+    "Pamukkale – schneeweiße Kalksinterterrassen und das antike Hierapolis",
+    "Ephesus – eine der besterhaltenen antiken Städte der Welt",
+    "Türkische Riviera – Strände und Resorts rund um Antalya und Side",
+    "Lykische Küste – Ölüdeniz, Kaş und die berühmte Blaue Lagune",
+    "Bodrum und die Ägäisküste – lebendige Orte und schöne Buchten",
+    "Aspendos – beeindruckend erhaltenes römisches Theater"
+  ],
+  "insider_tips": [
+    "Eine Heißluftballonfahrt über Kappadokien bei Sonnenaufgang zählt zu den unvergesslichsten Erlebnissen einer Türkei-Reise – am besten frühzeitig buchen.",
+    "Auf den Basaren wie dem Großen Basar in Istanbul gehört freundliches Handeln zur Kultur – ein Tee und etwas Geduld führen oft zum besseren Preis.",
+    "Ein traditionelles türkisches Frühstück (Kahvaltı) mit vielen kleinen Speisen, dazu Çay und zum Abschluss Baklava, sollte man unbedingt probieren.",
+    "Für Istanbul sind Frühling und Herbst angenehmer als der heiße Hochsommer; die Küstenresorts lohnen sich dafür gerade in den Sommermonaten."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich ein Visum für die Türkei?",
+      "answer": "Nein, deutsche Staatsbürger benötigen für touristische Aufenthalte bis zu 90 Tage innerhalb von 180 Tagen kein Visum. Der Reisepass oder Personalausweis sollte für die Dauer des Aufenthalts gültig sein; für die Einreise wird in der Regel ein Reisepass empfohlen."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für die Türkei?",
+      "answer": "Für Istanbul und Kulturreisen sind April bis Juni sowie September und Oktober ideal. Die Küsten eignen sich im Sommer zum Baden, wobei der Hochsommer an der Riviera sehr heiß werden kann."
+    },
+    {
+      "question": "Welche Währung gilt in der Türkei?",
+      "answer": "Gezahlt wird mit der Türkischen Lira (TRY). In Resorts und touristischen Gebieten werden teils auch Euro akzeptiert. Wegen schwankender Kurse empfiehlt es sich, vor Ort in Lira zu zahlen und nur kleinere Beträge zu wechseln."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen in der Türkei?",
+      "answer": "Für individuelle Rundreisen, etwa entlang der Lykischen Küste oder durch Kappadokien, ist ein Mietwagen sehr praktisch. In Istanbul ist er wegen des dichten Verkehrs nicht zu empfehlen; dort sind Metro, Tram und Fähren besser."
+    },
+    {
+      "question": "Was kann man in Istanbul nicht verpassen?",
+      "answer": "Zu den Höhepunkten zählen die Hagia Sophia, die Blaue Moschee, der Topkapı-Palast, der Große Basar und der Gewürzbasar sowie eine Bosporus-Bootsfahrt zwischen Europa und Asien."
+    },
+    {
+      "question": "Was macht Kappadokien besonders?",
+      "answer": "Kappadokien ist berühmt für seine surreale Landschaft aus Feenkaminen und Tuffsteinformationen, unterirdische Städte, in den Fels gehauene Kirchen und vor allem die spektakulären Heißluftballonfahrten am Morgen."
+    },
+    {
+      "question": "Ist die Türkei gut für einen All-Inclusive-Urlaub?",
+      "answer": "Ja, die Türkische Riviera rund um Antalya, Side und Belek ist bekannt für ihre große Auswahl an komfortablen und oft preiswerten All-Inclusive-Resorts, ideal für einen entspannten Strand- und Familienurlaub."
+    },
+    {
+      "question": "Ist die Türkei für einen Familienurlaub geeignet?",
+      "answer": "Ja, die Türkei ist sehr familienfreundlich. Flache Strände, familienorientierte Resorts mit Animation und Wasserparks sowie die herzliche Gastfreundschaft machen sie zu einem beliebten Familienziel."
+    },
+    {
+      "question": "Welche Spezialitäten sollte man in der Türkei probieren?",
+      "answer": "Typisch sind Kebab in vielen Varianten, Meze, Gözleme, frischer Fisch an der Küste, das reichhaltige türkische Frühstück sowie Süßes wie Baklava und Lokum. Dazu gehören Çay und türkischer Mokka."
+    },
+    {
+      "question": "Ist die Türkei sicher für Reisende?",
+      "answer": "Die klassischen Tourismusregionen wie Istanbul, die Riviera und Kappadokien gelten als gut bereisbar. Von Grenzregionen im Südosten wird abgeraten. Vor der Reise sollte man die aktuellen Hinweise des Auswärtigen Amts beachten."
+    },
+    {
+      "question": "Wie viele Tage sollte man für die Türkei einplanen?",
+      "answer": "Für einen reinen Strandurlaub reicht eine Woche. Wer Istanbul, Kappadokien und antike Stätten verbinden möchte, sollte für eine Rundreise 1 bis 2 Wochen einplanen."
+    }
+  ],
+  "seo_title": "Türkei Urlaub: Istanbul, Kappadokien, Strände & beste Reisezeit",
+  "seo_description": "Dein Türkei-Urlaub: das faszinierende Istanbul, die Märchenlandschaft Kappadokiens, antike Stätten wie Ephesus und Pamukkale sowie die Türkische Riviera. Beste Reisezeit, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "Türkei Urlaub buchen, All-Inclusive Antalya, Flug und Hotel Istanbul, Rundreise Türkei, Ballonfahrt Kappadokien, Mietwagen Türkei vergleichen",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "griechenland",
+    "aegypten",
+    "marokko"
+  ],
+  "llmo_entities": [
+    "Türkei",
+    "Istanbul",
+    "Hagia Sophia",
+    "Blaue Moschee",
+    "Topkapı-Palast",
+    "Bosporus",
+    "Kappadokien",
+    "Göreme",
+    "Pamukkale",
+    "Ephesus",
+    "Antalya",
+    "Türkische Riviera",
+    "Lykische Küste",
+    "Ölüdeniz",
+    "Bodrum",
+    "Türkische Lira"
+  ],
+  "llmo_answer_block": "Die Türkei verbindet Europa und Asien und bietet die faszinierende Metropole Istanbul mit Hagia Sophia und Bosporus, die surreale Märchenlandschaft Kappadokiens mit ihren Ballonfahrten, antike Stätten wie Ephesus und Pamukkale sowie die sonnenverwöhnte Türkische Riviera mit All-Inclusive-Resorts. Das Land ist gastfreundlich, günstig und eignet sich ideal für Strand-, Städte-, Kultur- und Rundreisen. Für deutsche Reisende ist ein Aufenthalt bis 90 Tage visumfrei.",
+  "llmo_quick_answer": "Die Türkei verbindet Europa und Asien mit Istanbul, der Märchenlandschaft Kappadokiens, antiken Stätten und der Türkischen Riviera, für Deutsche visumfrei."
+}

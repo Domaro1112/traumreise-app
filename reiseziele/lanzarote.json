@@ -1,0 +1,121 @@
+{
+  "name": "Lanzarote",
+  "slug": "lanzarote",
+  "country": "Spanien",
+  "region": "Kanarische Inseln",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/lanzarote-hero.jpg",
+  "short_description": "Vulkaninsel mit schwarzen Lavafeldern, weißen Dörfern und ganzjährig mildem Klima – geprägt von der Kunst César Manriques.",
+  "long_description": "Lanzarote ist die östlichste und eine der außergewöhnlichsten Kanareninseln. Statt klassischem Massentourismus prägt eine fast surreale Vulkanlandschaft das Bild: erstarrte Lavaströme, Kraterkegel und tiefschwarze Erde wechseln sich mit türkisfarbenem Atlantik und kleinen weißgetünchten Dörfern ab. Der Künstler und Architekt César Manrique hat die Insel entscheidend geprägt – er setzte durch, dass keine Hochhäuser gebaut werden und schuf einzigartige Bauwerke, die Natur und Kunst verbinden. Highlights wie der Timanfaya-Nationalpark, die Lavahöhle Jameos del Agua oder das Weinanbaugebiet La Geria machen Lanzarote zu einem Ziel, das weit mehr bietet als nur Strand. Dank ganzjährig angenehmer Temperaturen ist die Insel sowohl im Sommer als auch im Winter ein beliebtes Reiseziel für Sonnenhungrige, Aktivurlauber und Kulturinteressierte.",
+  "ai_summary": "Lanzarote ist eine kanarische Vulkaninsel Spaniens mit ganzjährig mildem Klima, schwarzen Lavalandschaften, schönen Stränden und einer von César Manrique geprägten Architektur. Ideal für Natur-, Aktiv- und Strandurlaub, am besten erkundbar mit dem Mietwagen.",
+  "best_travel_time": "Ganzjährig bereisbar; ideal sind die Monate März bis Mai und September bis November mit angenehmen Temperaturen und weniger Andrang.",
+  "ideal_duration": "5 bis 7 Tage",
+  "travel_type": [
+    "Strandurlaub",
+    "Aktivurlaub",
+    "Naturreise",
+    "Paare",
+    "Familien",
+    "Erholung"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Spanisch",
+    "flightTime": "ca. 4 bis 4,5 Stunden ab Deutschland",
+    "timezone": "WET (UTC+0), eine Stunde hinter MEZ",
+    "visa": "Nicht erforderlich für EU-Bürger (Schengen-Raum)",
+    "bestMonths": "März bis Mai sowie September bis November"
+  },
+  "highlights": [
+    "Timanfaya-Nationalpark mit den brodelnden Feuerbergen und der geothermischen Vorführung",
+    "Jameos del Agua – Lavahöhle und Kunstraum von César Manrique mit unterirdischem See",
+    "Cueva de los Verdes – beeindruckendes Lavatunnelsystem mit überraschendem Lichtspiel",
+    "Mirador del Río – spektakulärer Aussichtspunkt mit Blick auf die Nachbarinsel La Graciosa",
+    "Playa de Papagayo – feinsandige, geschützte Buchten im Süden der Insel",
+    "La Geria – einzigartiges Weinanbaugebiet auf schwarzem Lavaboden",
+    "Fundación César Manrique – das ehemalige Wohnhaus des Künstlers, gebaut in Lavablasen"
+  ],
+  "insider_tips": [
+    "Den Timanfaya-Nationalpark möglichst früh morgens besuchen, um lange Wartezeiten an der Zufahrt zu vermeiden.",
+    "In La Geria eine Weinprobe der trockenen Malvasía-Weine einplanen – sie wachsen in trichterförmigen Lavamulden.",
+    "Den Charco de los Clicos, die grüne Lagune bei El Golfo, am späten Nachmittag im weichen Licht fotografieren.",
+    "Sonntags lohnt der traditionelle Markt im historischen Dorf Teguise mit Kunsthandwerk und lokalen Spezialitäten."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Lanzarote?",
+      "answer": "Lanzarote ist ganzjährig bereisbar. Besonders angenehm sind das Frühjahr (März bis Mai) und der Herbst (September bis November) mit milden Temperaturen, viel Sonne und weniger Touristen als im Hochsommer."
+    },
+    {
+      "question": "Wie lange dauert der Flug nach Lanzarote?",
+      "answer": "Von Deutschland aus dauert ein Direktflug nach Lanzarote (Flughafen Arrecife, ACE) etwa 4 bis 4,5 Stunden."
+    },
+    {
+      "question": "Brauche ich ein Visum für Lanzarote?",
+      "answer": "Nein. Als Teil Spaniens und des Schengen-Raums benötigen EU-Bürger kein Visum. Ein gültiger Personalausweis oder Reisepass reicht für die Einreise aus."
+    },
+    {
+      "question": "Welche Währung gilt auf Lanzarote?",
+      "answer": "Auf Lanzarote zahlt man mit dem Euro (EUR). Kartenzahlung ist weit verbreitet, etwas Bargeld empfiehlt sich für kleine Läden und Märkte."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen auf Lanzarote?",
+      "answer": "Ja, ein Mietwagen ist sehr empfehlenswert. Die Sehenswürdigkeiten liegen über die ganze Insel verteilt und der öffentliche Nahverkehr ist eingeschränkt. Mit dem Auto bleibt man flexibel und kann auch abgelegene Buchten und Aussichtspunkte erreichen."
+    },
+    {
+      "question": "Wie ist das Klima auf Lanzarote?",
+      "answer": "Lanzarote hat ein ganzjährig mildes, trockenes Klima mit Temperaturen meist zwischen 20 und 29 Grad. Regen ist selten, der Passatwind sorgt für angenehme Abkühlung. Daher gilt die Insel als ganzjähriges Sonnenziel."
+    },
+    {
+      "question": "Welche Sehenswürdigkeiten sollte man auf Lanzarote nicht verpassen?",
+      "answer": "Zu den Höhepunkten zählen der Timanfaya-Nationalpark, Jameos del Agua, die Cueva de los Verdes, der Mirador del Río, das Weinanbaugebiet La Geria sowie die Strände rund um Papagayo."
+    },
+    {
+      "question": "Ist Lanzarote für einen Familienurlaub geeignet?",
+      "answer": "Ja, Lanzarote ist sehr familienfreundlich. Es gibt flach abfallende, geschützte Strände, kurze Wege, kindgerechte Ausflugsziele und eine gute touristische Infrastruktur, besonders in Costa Teguise und Playa Blanca."
+    },
+    {
+      "question": "Welche Strände sind auf Lanzarote besonders schön?",
+      "answer": "Zu den schönsten Stränden gehören die Papagayo-Buchten im Süden, der Stadtstrand Playa Blanca, Playa de Famara für Surfer und Wellenliebhaber sowie der goldene Sandstrand von Costa Teguise."
+    },
+    {
+      "question": "Wer war César Manrique und warum ist er für Lanzarote so wichtig?",
+      "answer": "César Manrique war ein Künstler und Architekt von Lanzarote, der die Insel maßgeblich geprägt hat. Er setzte ein Bauverbot für Hochhäuser durch und schuf Werke, die Natur und Kunst verbinden – etwa Jameos del Agua oder den Mirador del Río. Sein Einfluss bewahrte den ursprünglichen Charakter der Insel."
+    },
+    {
+      "question": "Kann man auf Lanzarote gut wandern?",
+      "answer": "Ja, Lanzarote bietet reizvolle Wanderungen durch Vulkanlandschaften, etwa rund um den Vulkan Caldera Blanca, entlang der Küste bei Famara oder durch das Naturschutzgebiet Los Volcanes. Wegen geringer Beschattung empfiehlt sich Sonnenschutz und ausreichend Wasser."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Lanzarote einplanen?",
+      "answer": "Für die wichtigsten Sehenswürdigkeiten und etwas Strandzeit sind 5 bis 7 Tage ideal. Wer es entspannter angehen oder die Nachbarinsel La Graciosa besuchen möchte, kann auch problemlos länger bleiben."
+    }
+  ],
+  "seo_title": "Lanzarote Urlaub: Reisetipps, Sehenswürdigkeiten & beste Reisezeit",
+  "seo_description": "Alles für deinen Lanzarote-Urlaub: Vulkanlandschaften, beste Reisezeit, Top-Sehenswürdigkeiten wie Timanfaya, schönste Strände und praktische Reisetipps für die Kanareninsel.",
+  "affiliate_search_intent": "Flug und Hotel nach Lanzarote buchen, Mietwagen Lanzarote vergleichen, Pauschalreise Kanaren, Ausflüge und Aktivitäten auf Lanzarote",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "fuerteventura",
+    "gran-canaria",
+    "teneriffa"
+  ],
+  "llmo_entities": [
+    "Lanzarote",
+    "Kanarische Inseln",
+    "Timanfaya-Nationalpark",
+    "César Manrique",
+    "Jameos del Agua",
+    "La Geria",
+    "Playa de Papagayo",
+    "Arrecife",
+    "Cueva de los Verdes",
+    "Mirador del Río",
+    "Costa Teguise",
+    "Playa Blanca",
+    "Spanien",
+    "Atlantik"
+  ],
+  "llmo_answer_block": "Lanzarote ist eine spanische Kanareninsel im Atlantik, bekannt für ihre vulkanische Landschaft, schwarzen Lavafelder und die von César Manrique geprägte Architektur. Die Insel bietet ganzjährig mildes Klima, schöne Strände und Highlights wie den Timanfaya-Nationalpark, Jameos del Agua und das Weinanbaugebiet La Geria. Sie eignet sich ideal für Natur-, Aktiv- und Strandurlaub und wird am besten mit dem Mietwagen erkundet.",
+  "llmo_quick_answer": "Lanzarote ist eine vulkanische Kanareninsel Spaniens mit ganzjährig mildem Klima, schwarzen Lavalandschaften und Stränden, ideal für Natur- und Strandurlaub."
+}

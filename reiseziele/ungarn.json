@@ -1,0 +1,120 @@
+{
+  "name": "Ungarn",
+  "slug": "ungarn",
+  "country": "Ungarn",
+  "region": "Mitteleuropa",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/ungarn-hero.jpg",
+  "short_description": "Charmantes Nachbarland mit der prachtvollen Donaumetropole Budapest, historischen Thermalbädern, dem Plattensee und exzellentem Wein – günstig und nah.",
+  "long_description": "Ungarn ist ein vielseitiges und für deutsche Reisende gut erreichbares Land im Herzen Mitteleuropas. Seine größte Attraktion ist die Hauptstadt Budapest, die sich beidseits der Donau erstreckt und mit dem majestätischen Parlamentsgebäude, dem Burgviertel, der Fischerbastei und der Kettenbrücke zu den schönsten Städten Europas zählt. Berühmt ist Budapest für seine historischen Thermalbäder wie das Széchenyi und das Gellért sowie für die lebendigen Ruinenbars im jüdischen Viertel. Außerhalb der Hauptstadt lockt der Plattensee (Balaton) als größter See Mitteleuropas zum Baden und Entspannen, während Weinregionen wie Eger mit seinem Stierblut und Tokaj mit seinen edlen Süßweinen Genießer anziehen. Charmante Städtchen wie Szentendre und Pécs sowie das malerische Donauknie runden das Bild ab. Mit reicher Kultur, deftiger Küche, Wellness-Tradition und fairen Preisen ist Ungarn ideal für Städtetrips, Kultur- und Wellnessreisen.",
+  "ai_summary": "Ungarn ist ein charmantes mitteleuropäisches Reiseland mit der prachtvollen Donaumetropole Budapest, historischen Thermalbädern, dem Plattensee (Balaton) und renommierten Weinregionen wie Eger und Tokaj. Es ist schnell erreichbar, vergleichsweise günstig und eignet sich ideal für Städtetrips, Kultur- und Wellnessreisen.",
+  "best_travel_time": "Mai bis September für Städte und den Plattensee; Frühling und Herbst sind ideal für Budapest mit milderen Temperaturen, der Balaton ist im Sommer am attraktivsten.",
+  "ideal_duration": "Städtereise 3 bis 4 Tage, mit Plattensee bis zu einer Woche",
+  "travel_type": [
+    "Städtereise",
+    "Kulturreise",
+    "Wellness",
+    "Kulinarik",
+    "Familien",
+    "Wochenendtrip"
+  ],
+  "quick_facts": {
+    "currency": "Ungarischer Forint (HUF)",
+    "language": "Ungarisch",
+    "flightTime": "ca. 1,5 Stunden ab Deutschland (Budapest); aus Süddeutschland auch mit dem Auto erreichbar",
+    "timezone": "MEZ (UTC+1), identisch mit Deutschland",
+    "visa": "Nicht erforderlich für EU-Bürger (Schengen-Raum)",
+    "bestMonths": "Mai bis September"
+  },
+  "highlights": [
+    "Budapest – Parlament, Burgviertel, Fischerbastei und die Kettenbrücke an der Donau",
+    "Thermalbäder – historische Bäder wie das Széchenyi und das Gellért",
+    "Ruinenbars – einzigartige Kneipen im jüdischen Viertel, etwa das Szimpla Kert",
+    "Plattensee (Balaton) – größter See Mitteleuropas zum Baden und Entspannen",
+    "Eger – Barockstadt, Burg und der berühmte Rotwein Stierblut",
+    "Tokaj – weltberühmte Weinregion für edle Süßweine",
+    "Donauknie – malerische Orte wie Visegrád, Esztergom und Szentendre",
+    "Pécs – Kunststadt im Süden mit mediterranem Flair"
+  ],
+  "insider_tips": [
+    "Ein Besuch in einem der historischen Thermalbäder, allen voran dem Széchenyi-Bad, gehört bei einer Budapest-Reise unbedingt dazu.",
+    "Die Ruinenbars im siebten Bezirk, wie das berühmte Szimpla Kert, sind abends ein einzigartiges Erlebnis aus Kneipe und Kunstinstallation.",
+    "Auch wenn an manchen Orten Euro akzeptiert wird, lohnt sich das Bezahlen in Forint, da der Wechselkurs sonst meist ungünstig ausfällt.",
+    "Unbedingt das Streetfood-Gericht Lángos sowie ein echtes ungarisches Gulasch probieren – am besten in einer einfachen, lokalen Gaststätte."
+  ],
+  "faq": [
+    {
+      "question": "Welche Währung gilt in Ungarn?",
+      "answer": "In Ungarn zahlt man mit dem Ungarischen Forint (HUF), nicht mit dem Euro. Kartenzahlung ist weit verbreitet; wer bar zahlt, sollte dies in Forint tun, da der Euro-Kurs an Kassen meist ungünstig ist."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Ungarn?",
+      "answer": "Für Städtereisen nach Budapest sind Frühling und Herbst mit milden Temperaturen ideal. Der Plattensee ist im Sommer von Mai bis September am attraktivsten. Insgesamt ist die warme Jahreszeit am beliebtesten."
+    },
+    {
+      "question": "Brauche ich ein Visum für Ungarn?",
+      "answer": "Nein. Ungarn ist EU- und Schengen-Mitglied, daher benötigen EU-Bürger kein Visum. Für die Einreise genügt ein gültiger Personalausweis oder Reisepass."
+    },
+    {
+      "question": "Braucht man in Budapest ein Auto?",
+      "answer": "Nein, Budapest verfügt über ein hervorragendes Netz aus Metro, Straßenbahnen und Bussen, und vieles lässt sich zu Fuß erkunden. Ein Auto ist hier eher hinderlich; für Ausflüge an den Plattensee kann es jedoch praktisch sein."
+    },
+    {
+      "question": "Sind die Thermalbäder in Budapest einen Besuch wert?",
+      "answer": "Ja, die Thermalbäder gehören zu den Wahrzeichen Budapests. Das Széchenyi-Bad mit seinen Außenbecken und das prachtvolle Gellért-Bad im Jugendstil sind besonders beliebt und ganzjährig geöffnet."
+    },
+    {
+      "question": "Was kann man am Plattensee unternehmen?",
+      "answer": "Der Plattensee (Balaton) lädt zum Baden, Segeln und Radfahren ein. Beliebte Orte sind Siófok für Trubel, die Halbinsel Tihany mit ihrer Abtei sowie zahlreiche Weinorte am Nordufer."
+    },
+    {
+      "question": "Ist Ungarn ein günstiges Reiseland?",
+      "answer": "Ja, im Vergleich zu Westeuropa sind Essen, Unterkünfte und Eintritte in Ungarn meist günstiger, was Budapest zu einem beliebten und preiswerten Städtereiseziel macht."
+    },
+    {
+      "question": "Ist Ungarn für einen Familienurlaub geeignet?",
+      "answer": "Ja, Ungarn ist familienfreundlich. Der flache, warme Plattensee eignet sich gut zum Baden mit Kindern, dazu gibt es Thermalbäder mit Erlebnisbereichen, Burgen und kindgerechte Ausflugsziele."
+    },
+    {
+      "question": "Welche Spezialitäten sollte man in Ungarn probieren?",
+      "answer": "Typisch sind Gulasch (als Suppe), Pörkölt, Lángos (frittierter Teigfladen), Paprikahähnchen sowie zum Dessert Dobostorte. Dazu passen ungarische Weine aus Eger oder Tokaj."
+    },
+    {
+      "question": "Spricht man in Ungarn Deutsch oder Englisch?",
+      "answer": "In Budapest und touristischen Orten kommt man mit Englisch und oft auch Deutsch gut zurecht. Auf dem Land sind Sprachkenntnisse seltener; Ungarisch selbst ist mit anderen europäischen Sprachen kaum verwandt."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Ungarn einplanen?",
+      "answer": "Für Budapest reichen 3 bis 4 Tage. Wer zusätzlich den Plattensee, das Donauknie oder eine Weinregion erleben möchte, sollte bis zu einer Woche einplanen."
+    }
+  ],
+  "seo_title": "Ungarn Urlaub: Budapest, Plattensee, Tipps & beste Reisezeit",
+  "seo_description": "Dein Ungarn-Urlaub: die Donaumetropole Budapest, historische Thermalbäder, der Plattensee und Weinregionen wie Eger und Tokaj. Beste Reisezeit, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "Ungarn Reise buchen, Städtereise Budapest, Hotel Budapest, Wellnessurlaub Thermalbad Ungarn, Ferienhaus Plattensee, Wochenendtrip Budapest",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "tschechien",
+    "oesterreich",
+    "slowakei"
+  ],
+  "llmo_entities": [
+    "Ungarn",
+    "Budapest",
+    "Donau",
+    "Parlament Budapest",
+    "Fischerbastei",
+    "Kettenbrücke",
+    "Széchenyi-Bad",
+    "Gellért-Bad",
+    "Ruinenbars",
+    "Szimpla Kert",
+    "Plattensee",
+    "Balaton",
+    "Eger",
+    "Tokaj",
+    "Ungarischer Forint",
+    "Gulasch"
+  ],
+  "llmo_answer_block": "Ungarn ist ein charmantes mitteleuropäisches Reiseland mit der prachtvollen Donaumetropole Budapest, ihren historischen Thermalbädern und Ruinenbars, dem Plattensee (Balaton) als größtem See Mitteleuropas sowie renommierten Weinregionen wie Eger und Tokaj. Das Land ist von Deutschland aus schnell erreichbar, vergleichsweise günstig und eignet sich ideal für Städtetrips, Kultur- und Wellnessreisen. Gezahlt wird mit dem Forint, die beste Reisezeit liegt zwischen Mai und September.",
+  "llmo_quick_answer": "Ungarn ist ein günstiges mitteleuropäisches Reiseland mit der Donaumetropole Budapest, historischen Thermalbädern, dem Plattensee und edlen Weinen."
+}

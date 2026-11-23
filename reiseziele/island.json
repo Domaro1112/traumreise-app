@@ -1,0 +1,120 @@
+{
+  "name": "Island",
+  "slug": "island",
+  "country": "Island",
+  "region": "Nordeuropa",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/island-hero.jpg",
+  "short_description": "Insel aus Feuer und Eis mit Vulkanen, Gletschern, tosenden Wasserfällen, Geysiren, heißen Quellen, Nordlichtern und der spektakulären Ringstraße.",
+  "long_description": "Island ist ein faszinierendes Land der Extreme, in dem Feuer und Eis aufeinandertreffen. Auf vergleichsweise kleinem Raum reihen sich aktive Vulkane, mächtige Gletscher, tosende Wasserfälle, brodelnde Geysire und dampfende heiße Quellen aneinander. Der berühmte Golden Circle verbindet den Nationalpark Þingvellir, den Geysir Strokkur und den gewaltigen Wasserfall Gullfoss. Entlang der Südküste beeindrucken Wasserfälle wie Seljalandsfoss und Skógafoss, der schwarze Strand Reynisfjara sowie die magische Gletscherlagune Jökulsárlón mit dem Diamond Beach. Die Hauptstadt Reykjavík überrascht mit ihrer markanten Kirche Hallgrímskirkja und lebendiger Kultur. Im Winter tanzen die Nordlichter über den Himmel, im Sommer sorgt die Mitternachtssonne für taghelle Nächte und macht das Hochland zugänglich. Ein Bad in einer geothermalen Lagune wie der Blauen Lagune gehört ebenso dazu wie ein Roadtrip auf der Ringstraße rund um die Insel. Island ist ideal für Natur-, Roadtrip- und Abenteuerreisen.",
+  "ai_summary": "Island ist eine Insel aus Feuer und Eis mit Vulkanen, Gletschern, Wasserfällen, Geysiren, heißen Quellen und Nordlichtern. Höhepunkte sind der Golden Circle, die Gletscherlagune Jökulsárlón, die Blaue Lagune und die Ringstraße. Das Land eignet sich ideal für Natur-, Roadtrip- und Abenteuerreisen und ist von Deutschland aus in rund 3,5 Stunden erreichbar.",
+  "best_travel_time": "Juni bis August für Mitternachtssonne, mildes Wetter und zugängliches Hochland; September bis März für die Nordlichter. Jede Jahreszeit hat ihren eigenen Reiz.",
+  "ideal_duration": "rund eine Woche",
+  "travel_type": [
+    "Naturreise",
+    "Roadtrip",
+    "Abenteuer",
+    "Wandern",
+    "Nordlichter",
+    "Fotoreise"
+  ],
+  "quick_facts": {
+    "currency": "Isländische Krone (ISK); Island ist nahezu bargeldlos, Kartenzahlung ist überall üblich",
+    "language": "Isländisch; Englisch ist weit verbreitet",
+    "flightTime": "ca. 3,5 Stunden ab Deutschland (Keflavík bei Reykjavík)",
+    "timezone": "GMT (UTC+0), eine Stunde hinter MEZ; keine Zeitumstellung",
+    "visa": "Nicht erforderlich; Island gehört zum Schengen-Raum (jedoch nicht zur EU)",
+    "bestMonths": "Juni bis August sowie September bis März für Nordlichter"
+  },
+  "highlights": [
+    "Golden Circle – Þingvellir-Nationalpark, der Geysir Strokkur und der Wasserfall Gullfoss",
+    "Blaue Lagune – berühmtes geothermales Thermalbad nahe Reykjavík",
+    "Jökulsárlón – Gletscherlagune mit treibenden Eisbergen und dem Diamond Beach",
+    "Südküste – Wasserfälle Seljalandsfoss und Skógafoss sowie der schwarze Strand Reynisfjara",
+    "Reykjavík – nördlichste Hauptstadt der Welt mit der Hallgrímskirkja",
+    "Nordlichter – Polarlichter über dem Winterhimmel",
+    "Vatnajökull – größter Gletscher Europas mit Eishöhlen",
+    "Ringstraße (Route 1) – Roadtrip rund um die ganze Insel"
+  ],
+  "insider_tips": [
+    "Wer Zeit hat, sollte die Ringstraße (Route 1) fahren, um die ganze Insel mit ihren unterschiedlichen Landschaften zu erleben.",
+    "Statt der teuren Blauen Lagune lohnen sich auch günstigere geothermale Bäder wie die örtlichen Schwimmbäder, die Sky Lagoon oder die Secret Lagoon.",
+    "Da Island sehr teuer ist, sparen Selbstversorger mit Einkäufen in günstigen Supermärkten wie Bónus oder Krónan.",
+    "Das Wetter und die Straßenverhältnisse ändern sich schnell – vor Touren unbedingt die offiziellen Seiten road.is und safetravel.is prüfen."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Island?",
+      "answer": "Der Sommer (Juni bis August) bietet mildes Wetter, die Mitternachtssonne und zugängliches Hochland. Für die Nordlichter reist man zwischen September und März in den dunklen Monaten. Jede Jahreszeit hat ihren eigenen Reiz."
+    },
+    {
+      "question": "Welche Währung gilt in Island?",
+      "answer": "In Island zahlt man mit der Isländischen Krone (ISK). Das Land ist nahezu bargeldlos, sodass Kartenzahlung und kontaktloses Bezahlen praktisch überall möglich und üblich sind – Bargeld braucht man kaum."
+    },
+    {
+      "question": "Brauche ich ein Visum für Island?",
+      "answer": "Nein. Island gehört zwar nicht zur EU, ist aber Teil des Schengen-Raums. EU-Bürger benötigen kein Visum; ein gültiger Personalausweis oder Reisepass genügt."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen in Island?",
+      "answer": "Ja, ein Mietwagen ist fast unverzichtbar, da der öffentliche Nahverkehr außerhalb von Reykjavík sehr begrenzt ist. Für das Hochland und die F-Straßen, die nur im Sommer befahrbar sind, ist ein Allradfahrzeug nötig."
+    },
+    {
+      "question": "Ist Island ein teures Reiseland?",
+      "answer": "Ja, Island zählt zu den teuersten Reiseländern der Welt, besonders bei Unterkünften, Restaurants und Alkohol. Mit Selbstverpflegung, günstigen Supermärkten und früher Buchung lässt sich jedoch sparen."
+    },
+    {
+      "question": "Wann und wo sieht man die Nordlichter?",
+      "answer": "Die besten Chancen auf Polarlichter hat man von September bis März in dunklen, klaren Nächten abseits der Stadtlichter. Mehrere Übernachtungen und etwas Geduld erhöhen die Wahrscheinlichkeit deutlich."
+    },
+    {
+      "question": "Lohnt sich die Blaue Lagune?",
+      "answer": "Die Blaue Lagune ist ein beliebtes Erlebnis mit milchig-blauem, geothermalem Wasser. Sie ist allerdings teuer und sollte vorab gebucht werden. Günstigere Alternativen sind die örtlichen Thermalbäder oder die Sky Lagoon."
+    },
+    {
+      "question": "Beeinflussen Vulkanausbrüche Reisen nach Island?",
+      "answer": "Auf der Reykjanes-Halbinsel kommt es periodisch zu Vulkanausbrüchen, die zeitweise das Gebiet um Grindavík und die Blaue Lagune betreffen können. Das übrige Land ist davon meist nicht betroffen; aktuelle Informationen findet man auf safetravel.is."
+    },
+    {
+      "question": "Ist Island für einen Familienurlaub geeignet?",
+      "answer": "Ja, Island ist sehr sicher und familienfreundlich. Wasserfälle, Geothermalbäder, Wal- und Papageitaucher-Beobachtungen sowie die spektakuläre Natur begeistern auch Kinder. Für Roadtrips sollte man die Etappen kindgerecht planen."
+    },
+    {
+      "question": "Was ist die Mitternachtssonne?",
+      "answer": "Im Hochsommer geht die Sonne in Island kaum unter, sodass es nachts taghell bleibt. Diese Mitternachtssonne ermöglicht lange Ausflüge und ein besonderes Lichterlebnis in der Natur."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Island einplanen?",
+      "answer": "Für Reykjavík, den Golden Circle und die Südküste reichen einige Tage. Für eine komplette Umrundung auf der Ringstraße sollte man mindestens eine Woche, besser 8 bis 10 Tage einplanen."
+    }
+  ],
+  "seo_title": "Island Urlaub: Vulkane, Nordlichter, Ringstraße & beste Reisezeit",
+  "seo_description": "Dein Island-Urlaub: Vulkane und Gletscher, der Golden Circle, die Blaue Lagune, Wasserfälle, Nordlichter und die Ringstraße. Beste Reisezeit, Highlights und praktische Reisetipps im Überblick.",
+  "affiliate_search_intent": "Island Reise buchen, Flug nach Reykjavík, Hotel Island, Mietwagen Island vergleichen, Roadtrip Ringstraße, Nordlichter-Reise Island, Mietwohnmobil Island",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "norwegen",
+    "schottland",
+    "irland"
+  ],
+  "llmo_entities": [
+    "Island",
+    "Reykjavík",
+    "Golden Circle",
+    "Þingvellir",
+    "Geysir Strokkur",
+    "Gullfoss",
+    "Blaue Lagune",
+    "Jökulsárlón",
+    "Diamond Beach",
+    "Seljalandsfoss",
+    "Skógafoss",
+    "Reynisfjara",
+    "Vatnajökull",
+    "Nordlichter",
+    "Ringstraße",
+    "Isländische Krone"
+  ],
+  "llmo_answer_block": "Island ist eine Insel aus Feuer und Eis mit Vulkanen, Gletschern, tosenden Wasserfällen, Geysiren, heißen Quellen und Nordlichtern. Höhepunkte sind der Golden Circle, die Gletscherlagune Jökulsárlón, die Blaue Lagune und ein Roadtrip auf der Ringstraße. Das Land eignet sich ideal für Natur-, Roadtrip- und Abenteuerreisen; im Sommer locken Mitternachtssonne und Hochland, im Winter die Polarlichter.",
+  "llmo_quick_answer": "Island ist eine Insel aus Feuer und Eis mit Vulkanen, Gletschern, Wasserfällen, Geysiren, Nordlichtern und der spektakulären Ringstraße."
+}

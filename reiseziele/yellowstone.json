@@ -1,0 +1,121 @@
+{
+  "name": "Yellowstone-Nationalpark",
+  "slug": "yellowstone",
+  "country": "Vereinigte Staaten (USA)",
+  "region": "Wyoming, Montana und Idaho",
+  "continent": "Nordamerika",
+  "hero_image": "/images/destinations/yellowstone-hero.jpg",
+  "short_description": "Der älteste Nationalpark der Welt im US-Westen mit brodelnden Geysiren, regenbogenfarbenen heißen Quellen, gewaltigen Wasserfällen und freilebenden Bisons, Bären und Wölfen.",
+  "long_description": "Der 1872 gegründete Yellowstone-Nationalpark ist der älteste Nationalpark der Welt und eines der spektakulärsten Naturwunder der USA. Er liegt überwiegend in Wyoming und reicht bis nach Montana und Idaho – und thront auf einem gewaltigen Supervulkan, dessen Hitze die einzigartige geothermale Landschaft speist. Das Wahrzeichen ist der Geysir Old Faithful, der zuverlässig in die Höhe schießt. Die Grand Prismatic Spring leuchtet in unwirklichen Regenbogenfarben, die Sinterterrassen von Mammoth Hot Springs und die dampfenden Becken des Norris Geyser Basin faszinieren ebenso wie der farbenprächtige Grand Canyon of the Yellowstone mit seinen tosenden Wasserfällen. Yellowstone ist außerdem eines der besten Wildtiergebiete Nordamerikas: In den weiten Tälern Lamar und Hayden beobachtet man Bisonherden, Wapitis, Grizzlys, Schwarzbären und Wölfe. Direkt im Süden schließt der Grand-Teton-Nationalpark mit seiner dramatischen Bergkulisse an. Yellowstone ist ideal als Höhepunkt eines Roadtrips durch den amerikanischen Westen und ein Traumziel für Natur-, Wander- und Fotoreisen.",
+  "ai_summary": "Der Yellowstone-Nationalpark im US-Westen (überwiegend Wyoming) ist der älteste Nationalpark der Welt, berühmt für Geysire wie Old Faithful, die Grand Prismatic Spring, Wasserfälle und reiche Tierwelt mit Bisons, Bären und Wölfen. Er eignet sich ideal als Höhepunkt eines USA-Westen-Roadtrips und für Natur- und Wanderreisen; für die Einreise gelten die USA-Bestimmungen mit ESTA.",
+  "best_travel_time": "Juni bis September für offene Straßen, mildes Wetter und beste Tierbeobachtung; viele Parkstraßen sind etwa von November bis April geschlossen, im Winter ist der Park nur eingeschränkt per Snowcoach erreichbar.",
+  "ideal_duration": "3 bis 5 Tage, oft als Teil eines größeren West-Roadtrips",
+  "travel_type": [
+    "Naturreise",
+    "Nationalparks",
+    "Roadtrip",
+    "Wandern",
+    "Tierbeobachtung",
+    "Abenteuer",
+    "Familien"
+  ],
+  "quick_facts": {
+    "currency": "US-Dollar (USD)",
+    "language": "Englisch",
+    "flightTime": "Kein Direktflug; ab Deutschland ca. 11 bis 13 Stunden in die USA plus Inlandsanschluss. Nächste Flughäfen: Bozeman (BZN), Jackson Hole (JAC) und Cody (COD)",
+    "timezone": "Mountain Time (UTC−7; im Sommer UTC−6), rund acht Stunden hinter MEZ",
+    "visa": "Wie für die USA: kein Visum für Touristen (bis 90 Tage), aber elektronischer Reisepass und kostenpflichtige ESTA-Genehmigung erforderlich",
+    "bestMonths": "Juni bis September"
+  },
+  "highlights": [
+    "Old Faithful – der berühmteste und besonders zuverlässige Geysir des Parks",
+    "Grand Prismatic Spring – größte heiße Quelle der USA in leuchtenden Regenbogenfarben",
+    "Grand Canyon of the Yellowstone – farbige Schlucht mit den tosenden Lower Falls",
+    "Lamar Valley und Hayden Valley – beste Gebiete für Bisons, Bären und Wölfe",
+    "Mammoth Hot Springs – terrassenförmige Kalksinterformationen",
+    "Norris Geyser Basin – heißestes und dynamischstes Geysirfeld des Parks",
+    "Yellowstone Lake – großer Bergsee inmitten der Wildnis",
+    "Grand-Teton-Nationalpark – dramatische Bergkette direkt südlich, ideal zum Kombinieren"
+  ],
+  "insider_tips": [
+    "Unterkünfte in den Park-Lodges und die Campgrounds sind extrem begehrt – am besten viele Monate im Voraus reservieren; alternativ in Gateway-Towns wie West Yellowstone oder Gardiner übernachten.",
+    "Wildtiere beobachtet man am besten früh morgens oder am Abend in den Tälern Lamar und Hayden – stets großen Abstand halten (mind. 91 m zu Bären und Wölfen, 23 m zu Bisons und Wapitis) und Bärenspray mitführen.",
+    "Die nächste Eruptionszeit von Old Faithful wird am Visitor Center und in der offiziellen NPS-App angezeigt – so vermeidet man langes Warten.",
+    "Yellowstone lässt sich hervorragend mit dem direkt angrenzenden Grand-Teton-Nationalpark zu einer Rundreise verbinden."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für den Yellowstone-Nationalpark?",
+      "answer": "Die beste Zeit ist von Juni bis September, wenn alle Straßen geöffnet und die Temperaturen mild sind. Tiere sind im Frühsommer besonders aktiv. Viele Parkstraßen sind etwa von November bis April geschlossen; im Winter ist der Park nur eingeschränkt per Snowcoach oder Schneemobil erreichbar."
+    },
+    {
+      "question": "Wie reist man zum Yellowstone-Nationalpark an?",
+      "answer": "Es gibt keinen Flughafen direkt am Park. Üblich ist ein Flug ab Deutschland in die USA mit Inlandsanschluss nach Bozeman (BZN), Jackson Hole (JAC) oder Cody (COD). Von dort fährt man mit dem Mietwagen weiter; der Park selbst ist groß und nur per Auto sinnvoll zu erkunden."
+    },
+    {
+      "question": "Braucht man im Yellowstone einen Mietwagen?",
+      "answer": "Ja, ein Mietwagen ist praktisch unverzichtbar. Der Park ist riesig, die Sehenswürdigkeiten liegen weit auseinander, und es gibt kaum öffentlichen Nahverkehr. Für die An- und Weiterreise im US-Westen ist ein Auto ohnehin ideal."
+    },
+    {
+      "question": "Brauche ich für Yellowstone ein Visum?",
+      "answer": "Es gelten die Einreisebestimmungen der USA: Für touristische Aufenthalte bis 90 Tage ist kein Visum nötig, aber ein elektronischer Reisepass und eine vorab beantragte, kostenpflichtige ESTA-Genehmigung. Details dazu finden sich auf der USA-Seite."
+    },
+    {
+      "question": "Was kostet der Eintritt in den Yellowstone-Nationalpark?",
+      "answer": "Für ein privates Fahrzeug gilt ein mehrtägiges Eintrittsticket. Wer mehrere US-Nationalparks besucht, fährt mit dem Jahrespass „America the Beautiful“ oft günstiger, der den Eintritt in alle Nationalparks abdeckt."
+    },
+    {
+      "question": "Wo übernachtet man am besten?",
+      "answer": "Im Park gibt es historische Lodges und Campgrounds, die früh ausgebucht sind und lange im Voraus gebucht werden müssen. Alternativen bieten die Gateway-Towns wie West Yellowstone, Gardiner, Cooke City oder Jackson südlich des Parks."
+    },
+    {
+      "question": "Wie verhält man sich gegenüber Wildtieren?",
+      "answer": "Yellowstone ist Wildnis mit freilebenden Tieren. Man muss großen Abstand halten – mindestens rund 91 Meter zu Bären und Wölfen sowie 23 Meter zu Bisons, Wapitis und anderen Tieren. Bärenspray wird empfohlen, und Tiere dürfen niemals gefüttert werden."
+    },
+    {
+      "question": "Ist Yellowstone für Familien geeignet?",
+      "answer": "Ja, der Park ist ein großartiges Familienziel. Geysire, Tierbeobachtungen, einfache Boardwalk-Wege und das Junior-Ranger-Programm begeistern Kinder. Wichtig sind feste Wege, Sicherheitsabstand zu Tieren und Vorsicht an den heißen Quellen."
+    },
+    {
+      "question": "Sollte man Yellowstone mit dem Grand-Teton-Nationalpark kombinieren?",
+      "answer": "Unbedingt. Der Grand-Teton-Nationalpark grenzt direkt im Süden an und beeindruckt mit seiner schroffen Bergkette und Seen. Beide Parks lassen sich über den John D. Rockefeller Jr. Memorial Parkway bequem verbinden."
+    },
+    {
+      "question": "Muss man mit Höhe und wechselndem Wetter rechnen?",
+      "answer": "Ja, große Teile des Parks liegen auf über 2.000 Metern Höhe. Das Wetter kann schnell umschlagen, und selbst im Sommer sind kühle Nächte oder Schnee möglich. Wetterfeste Kleidung im Zwiebellook ist ratsam."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Yellowstone einplanen?",
+      "answer": "Für die wichtigsten Highlights sollte man mindestens 3 Tage einplanen, besser 4 bis 5, um Geysire, Wasserfälle und Tierbeobachtung in Ruhe zu erleben. In Kombination mit Grand Teton lohnt sich entsprechend mehr Zeit."
+    }
+  ],
+  "seo_title": "Yellowstone-Nationalpark: Geysire, Tierwelt & beste Reisezeit",
+  "seo_description": "Dein Besuch im Yellowstone-Nationalpark: Old Faithful, die Grand Prismatic Spring, Wasserfälle und Wildtiere wie Bisons und Bären. Beste Reisezeit, Anreise, Tipps und Highlights im Überblick.",
+  "affiliate_search_intent": "Yellowstone Reise buchen, Flug nach Bozeman oder Jackson Hole, Hotel West Yellowstone oder Jackson, Mietwagen USA-Westen, Yellowstone Touren und Wildlife-Safaris, Rundreise Nationalparks USA",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "grand-teton",
+    "grand-canyon",
+    "yosemite"
+  ],
+  "llmo_entities": [
+    "Yellowstone-Nationalpark",
+    "Wyoming",
+    "Old Faithful",
+    "Grand Prismatic Spring",
+    "Mammoth Hot Springs",
+    "Norris Geyser Basin",
+    "Grand Canyon of the Yellowstone",
+    "Lower Falls",
+    "Lamar Valley",
+    "Hayden Valley",
+    "Yellowstone Lake",
+    "Bisons",
+    "Grizzlybären",
+    "Grand-Teton-Nationalpark",
+    "Bozeman",
+    "Jackson Hole"
+  ],
+  "llmo_answer_block": "Der Yellowstone-Nationalpark im US-Westen (überwiegend Wyoming) ist der älteste Nationalpark der Welt und liegt auf einem Supervulkan, der seine einzigartige geothermale Landschaft speist. Berühmt ist er für Geysire wie Old Faithful, die regenbogenfarbene Grand Prismatic Spring, den Grand Canyon of the Yellowstone und seine reiche Tierwelt mit Bisons, Bären und Wölfen. Er eignet sich ideal als Höhepunkt eines USA-Westen-Roadtrips, am besten von Juni bis September; für die Einreise gelten die USA-Bestimmungen mit elektronischem Reisepass und ESTA.",
+  "llmo_quick_answer": "Der Yellowstone-Nationalpark ist der älteste Nationalpark der Welt mit Geysiren wie Old Faithful, heißen Quellen, Wasserfällen und Wildtieren wie Bisons und Bären, am besten von Juni bis September."
+}

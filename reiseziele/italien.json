@@ -1,0 +1,121 @@
+{
+  "name": "Italien",
+  "slug": "italien",
+  "country": "Italien",
+  "region": "Südeuropa",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/italien-hero.jpg",
+  "short_description": "Sehnsuchtsland am Mittelmeer mit Rom, Venedig, der Toskana, der Amalfiküste, Bergseen, weltbester Küche und unzähligen Kunstschätzen.",
+  "long_description": "Italien ist eines der beliebtesten Reiseländer der Welt und vereint Geschichte, Kunst, Küste und Kulinarik wie kaum ein anderes Land. Die Ewige Stadt Rom beeindruckt mit Kolosseum, Forum Romanum und dem Vatikan, das einzigartige Venedig mit seinen Kanälen und dem Markusplatz. Florenz und die sanften Hügel der Toskana stehen für Renaissancekunst, Chianti-Weine und Zypressenalleen. Im Süden lockt die spektakuläre Amalfiküste mit der Insel Capri, während Sizilien mit dem Ätna, antiken Tempeln und Taormina fasziniert. Wer es alpiner mag, findet am Gardasee, Comer See und in den Dolomiten Südtirols traumhafte Natur. Mailand ist das Zentrum für Mode und Design. Dazu kommt die weltberühmte italienische Küche mit Pizza, Pasta, Espresso und Gelato sowie die entspannte Aperitivo- und Piazza-Kultur. Ob Städtetrip, Strandurlaub, Roadtrip oder Genussreise – Italien ist von Deutschland aus bequem erreichbar und immer eine Reise wert.",
+  "ai_summary": "Italien ist ein vielseitiges Reiseland am Mittelmeer mit Städten wie Rom, Venedig, Florenz und Mailand, der Toskana, der Amalfiküste, Sizilien sowie den Bergseen und Dolomiten im Norden. Berühmt für Kunst, Geschichte und Küche, eignet es sich ideal für Städtereisen, Strandurlaub, Roadtrips und Genussreisen und ist von Deutschland aus gut erreichbar.",
+  "best_travel_time": "April bis Juni sowie September und Oktober für angenehme Temperaturen und Städtereisen; der Sommer eignet sich für Strände und Bergseen, ist in den Städten jedoch heiß und voll.",
+  "ideal_duration": "Städtereise 3 bis 4 Tage, Rundreise 1 bis 2 Wochen",
+  "travel_type": [
+    "Städtereise",
+    "Kulturreise",
+    "Strandurlaub",
+    "Kulinarik",
+    "Rundreise",
+    "Roadtrip",
+    "Familien"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Italienisch",
+    "flightTime": "ca. 1,5 bis 2 Stunden ab Deutschland (Rom, Mailand); der Norden ist auch mit dem Auto erreichbar",
+    "timezone": "MEZ (UTC+1), identisch mit Deutschland",
+    "visa": "Nicht erforderlich für EU-Bürger (Schengen-Raum)",
+    "bestMonths": "April bis Juni sowie September und Oktober"
+  },
+  "highlights": [
+    "Rom – Kolosseum, Forum Romanum, Vatikan und der Trevi-Brunnen",
+    "Venedig – Kanäle, Markusplatz und Gondelfahrten",
+    "Florenz und die Toskana – Renaissancekunst, Chianti und Zypressenhügel",
+    "Amalfiküste und Capri – dramatische Steilküste und mediterranes Flair",
+    "Mailand – Dom, Mode und Design",
+    "Garda- und Comer See – Bergseen mit malerischen Orten",
+    "Cinque Terre – fünf bunte Dörfer an der ligurischen Küste",
+    "Sizilien – der Ätna, antike Tempel und das elegante Taormina"
+  ],
+  "insider_tips": [
+    "In vielen Altstädten gelten verkehrsbeschränkte Zonen (ZTL); wer dort unerlaubt mit dem Auto einfährt, riskiert empfindliche Bußgelder – am besten außerhalb parken.",
+    "Tickets für stark besuchte Attraktionen wie den Vatikan, die Uffizien und das Kolosseum sollte man unbedingt vorab online buchen.",
+    "Einen Espresso trinkt man günstig im Stehen an der Bar; einen Cappuccino bestellen Italiener traditionell nur am Vormittag.",
+    "Für mildere Temperaturen und weniger Andrang lohnt sich die Nebensaison im Mai oder September statt des heißen Hochsommers."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Italien?",
+      "answer": "Für Städtereisen sind April bis Juni sowie September und Oktober ideal, da es dann angenehm warm und weniger überlaufen ist. Der Sommer eignet sich für Strände und Bergseen, in den Städten wird es dann jedoch sehr heiß und voll."
+    },
+    {
+      "question": "Welche Währung gilt in Italien?",
+      "answer": "In Italien zahlt man mit dem Euro (EUR). Kartenzahlung ist verbreitet, etwas Bargeld empfiehlt sich für kleine Bars, Märkte und Trinkgeld."
+    },
+    {
+      "question": "Brauche ich ein Visum für Italien?",
+      "answer": "Nein. Italien ist EU- und Schengen-Mitglied, daher benötigen EU-Bürger kein Visum. Für die Einreise genügt ein gültiger Personalausweis oder Reisepass."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen in Italien?",
+      "answer": "Für Städte ist ein Auto wegen der ZTL-Zonen und des hervorragenden Zugnetzes oft hinderlich. Für Regionen wie die Toskana, Apulien oder Sizilien ist ein Mietwagen jedoch sehr empfehlenswert. An der Amalfiküste sind Bus oder Fähre meist entspannter."
+    },
+    {
+      "question": "Was sind die ZTL-Zonen in Italien?",
+      "answer": "ZTL (Zona a Traffico Limitato) sind verkehrsbeschränkte Bereiche in vielen Altstädten, in die nur Berechtigte einfahren dürfen. Die Zufahrt wird oft per Kamera überwacht, unerlaubtes Einfahren führt zu Bußgeldern."
+    },
+    {
+      "question": "Reist man in Italien gut mit dem Zug?",
+      "answer": "Ja, Italien verfügt über ein sehr gutes Netz an Hochgeschwindigkeitszügen, die Städte wie Rom, Florenz, Venedig und Mailand schnell verbinden. Tickets sind im Voraus oft günstiger."
+    },
+    {
+      "question": "Ist Italien für einen Familienurlaub geeignet?",
+      "answer": "Ja, Italien ist sehr familienfreundlich. Es bietet Strände an Adria und Mittelmeer, Bergseen, kinderfreundliche Städte, Eis an jeder Ecke und eine herzliche Gastfreundschaft gegenüber Kindern."
+    },
+    {
+      "question": "Welche Regionen in Italien sollte man besuchen?",
+      "answer": "Beliebt sind Rom und Latium, die Toskana, Venetien mit Venedig, die Amalfiküste und Kampanien, Sizilien sowie der Norden mit den Bergseen und Südtirol. Die Auswahl hängt von Interessen und Reisezeit ab."
+    },
+    {
+      "question": "Welche Spezialitäten sollte man in Italien probieren?",
+      "answer": "Neben Pizza und Pasta lohnen sich regionale Spezialitäten wie Risotto im Norden, Bistecca alla Fiorentina in der Toskana, frische Meeresfrüchte im Süden sowie Espresso, Aperitivo und Gelato."
+    },
+    {
+      "question": "Hat Italien schöne Strände?",
+      "answer": "Ja, von den Stränden der Adria über die Amalfiküste und Sardinien bis Sizilien bietet Italien eine große Vielfalt. Viele Strände sind als Lidos organisiert, an denen man Liegen und Schirme mieten kann."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Italien einplanen?",
+      "answer": "Für eine Stadt wie Rom, Florenz oder Venedig reichen 3 bis 4 Tage. Für eine Rundreise durch mehrere Regionen oder einen Roadtrip durch die Toskana sollte man 1 bis 2 Wochen einplanen."
+    }
+  ],
+  "seo_title": "Italien Urlaub: Rom, Toskana, Amalfiküste & beste Reisezeit",
+  "seo_description": "Dein Italien-Urlaub: Rom, Venedig, die Toskana, die Amalfiküste, Sizilien und die Bergseen. Beste Reisezeit, Highlights, Regionen und praktische Reisetipps im Überblick.",
+  "affiliate_search_intent": "Italien Urlaub buchen, Flug und Hotel Rom oder Mailand, Ferienhaus Toskana, Mietwagen Italien vergleichen, Roadtrip Italien, Strandurlaub Adria oder Sardinien",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "spanien",
+    "frankreich",
+    "griechenland"
+  ],
+  "llmo_entities": [
+    "Italien",
+    "Rom",
+    "Kolosseum",
+    "Vatikan",
+    "Venedig",
+    "Florenz",
+    "Toskana",
+    "Amalfiküste",
+    "Capri",
+    "Mailand",
+    "Gardasee",
+    "Comer See",
+    "Cinque Terre",
+    "Sizilien",
+    "Ätna",
+    "Dolomiten"
+  ],
+  "llmo_answer_block": "Italien ist eines der beliebtesten Reiseländer der Welt und vereint Städte wie Rom, Venedig, Florenz und Mailand mit der Toskana, der Amalfiküste, Sizilien sowie den Bergseen und Dolomiten im Norden. Berühmt für Kunst, Geschichte und Küche, eignet es sich ideal für Städtereisen, Strandurlaub, Roadtrips und Genussreisen und ist von Deutschland aus gut erreichbar. Die beste Reisezeit liegt im Frühling und Frühherbst.",
+  "llmo_quick_answer": "Italien ist ein vielseitiges Mittelmeerland mit Rom, Venedig, der Toskana, der Amalfiküste, Sizilien und weltberühmter Küche."
+}

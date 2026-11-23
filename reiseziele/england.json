@@ -1,0 +1,120 @@
+{
+  "name": "England",
+  "slug": "england",
+  "country": "Vereinigtes Königreich",
+  "region": "Westeuropa",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/england-hero.jpg",
+  "short_description": "Geschichtsträchtiges Land mit der Weltmetropole London, royalen Schlössern, malerischen Cotswold-Dörfern, dem Lake District und britischer Pub-Kultur.",
+  "long_description": "England, der größte Landesteil des Vereinigten Königreichs, vereint pulsierende Metropolen, jahrhundertealte Geschichte und idyllische Landschaften. Im Zentrum steht London – eine der spannendsten Städte der Welt mit Wahrzeichen wie Big Ben, dem Tower, dem Buckingham Palace und einer Vielzahl weltberühmter, oft kostenloser Museen. Außerhalb der Hauptstadt erwarten Reisende die geheimnisvollen Steinkreise von Stonehenge, die honigfarbenen Dörfer der Cotswolds, die romantischen Seen und Berge des Lake District sowie die altehrwürdigen Universitätsstädte Oxford und Cambridge. Geschichtsträchtige Orte wie das römische Bath, das mittelalterliche York und royale Schlösser wie Windsor runden das Bild ab. Im Südwesten lockt die raue Küste Cornwalls. Dazu gehören typisch britische Erlebnisse wie ein Pub-Besuch, ein Sunday Roast oder der klassische Afternoon Tea. England ist von Deutschland aus schnell erreichbar und ideal für Städtereisen, Roadtrips und Kulturtrips.",
+  "ai_summary": "England ist der größte Landesteil des Vereinigten Königreichs mit der Weltmetropole London, historischen Stätten wie Stonehenge, royalen Schlössern, den Cotswolds und dem Lake District. Es eignet sich ideal für Städtereisen, Kulturtrips und Roadtrips und ist von Deutschland aus schnell erreichbar. Für die Einreise sind ein Reisepass und eine elektronische Reisegenehmigung (ETA) nötig.",
+  "best_travel_time": "Mai bis September für mildes Wetter und lange Tage; London ist ganzjährig attraktiv, besonders stimmungsvoll auch in der Vorweihnachtszeit.",
+  "ideal_duration": "Städtereise 3 bis 4 Tage, Rundreise rund eine Woche",
+  "travel_type": [
+    "Städtereise",
+    "Kulturreise",
+    "Roadtrip",
+    "Naturreise",
+    "Geschichtsreise",
+    "Familien"
+  ],
+  "quick_facts": {
+    "currency": "Britisches Pfund (GBP)",
+    "language": "Englisch",
+    "flightTime": "ca. 1,5 Stunden ab Deutschland (London)",
+    "timezone": "GMT (UTC+0), eine Stunde hinter MEZ",
+    "visa": "Kein Visum nötig, aber Reisepass und vorab eine kostenpflichtige elektronische Reisegenehmigung (ETA) erforderlich",
+    "bestMonths": "Mai bis September"
+  },
+  "highlights": [
+    "London – Big Ben, Tower of London, Buckingham Palace und weltberühmte Museen",
+    "Stonehenge – prähistorischer Steinkreis und UNESCO-Welterbe",
+    "Cotswolds – malerische Dörfer aus honigfarbenem Stein",
+    "Lake District – romantische Seen- und Berglandschaft im Nordwesten",
+    "Oxford und Cambridge – altehrwürdige Universitätsstädte",
+    "Bath – römische Thermen und elegante georgianische Architektur",
+    "York – mittelalterliche Stadtmauern und das beeindruckende York Minster",
+    "Cornwall – raue Küsten, Strände und malerische Fischerdörfer"
+  ],
+  "insider_tips": [
+    "In London am besten kontaktlos mit Karte oder Smartphone bezahlen oder eine Oyster Card nutzen – das ist günstiger und einfacher als Einzeltickets.",
+    "Viele der besten Museen Londons wie das British Museum, die National Gallery und das Natural History Museum sind kostenlos zugänglich.",
+    "Das Wetter ist wechselhaft – wer in mehreren Schichten und mit einer leichten Regenjacke unterwegs ist, bleibt für jede Lage gewappnet.",
+    "Typisch britische Erlebnisse wie ein Sunday Roast im Pub oder ein klassischer Afternoon Tea gehören bei einem England-Besuch unbedingt dazu."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich für England ein Visum?",
+      "answer": "Für touristische Aufenthalte benötigen deutsche Staatsbürger kein Visum, jedoch seit der Einführung der Regelung eine kostenpflichtige elektronische Reisegenehmigung (ETA), die vor der Reise online beantragt werden muss. Zudem ist ein gültiger Reisepass erforderlich; der Personalausweis reicht seit dem Brexit nicht mehr aus."
+    },
+    {
+      "question": "Was ist die ETA für England?",
+      "answer": "Die ETA (Electronic Travel Authorisation) ist eine elektronische Einreisegenehmigung, die visumfreie Besucher – darunter EU-Bürger – vor der Reise ins Vereinigte Königreich online beantragen müssen. Sie ist kostenpflichtig, gilt für mehrere Einreisen und sollte rechtzeitig vor Abflug beantragt werden."
+    },
+    {
+      "question": "Welche Währung gilt in England?",
+      "answer": "In England zahlt man mit dem Britischen Pfund (GBP), nicht mit dem Euro. Kartenzahlung und kontaktloses Bezahlen sind nahezu überall möglich und üblich."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für England?",
+      "answer": "Am angenehmsten ist es von Mai bis September mit milderem Wetter und langen Tagen. London ist ganzjährig reizvoll und in der Vorweihnachtszeit besonders stimmungsvoll. Das Wetter bleibt jedoch zu jeder Jahreszeit wechselhaft."
+    },
+    {
+      "question": "Fährt man in England links?",
+      "answer": "Ja, in England herrscht Linksverkehr. Wer einen Mietwagen nutzt, sollte sich darauf einstellen, besonders an Kreisverkehren und Kreuzungen. In London ist ein Auto wegen des dichten Verkehrs und der City-Maut (Congestion Charge) nicht zu empfehlen."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen in England?",
+      "answer": "Für London ist ein Auto nicht nötig, da der öffentliche Nahverkehr hervorragend ist. Für ländliche Regionen wie die Cotswolds, den Lake District oder Cornwall ist ein Mietwagen jedoch sehr praktisch – unter Berücksichtigung des Linksverkehrs."
+    },
+    {
+      "question": "Sind die Museen in London wirklich kostenlos?",
+      "answer": "Viele der bedeutendsten Museen sind tatsächlich kostenlos, darunter das British Museum, die National Gallery, die Tate Modern und das Natural History Museum. Für Sonderausstellungen und Attraktionen wie den Tower of London fallen hingegen Eintrittsgebühren an."
+    },
+    {
+      "question": "Wie komme ich am besten nach England?",
+      "answer": "Am schnellsten reist man per Flug nach London (rund 1,5 Stunden) oder andere englische Städte. Alternativ ist die Anreise mit dem Eurostar-Zug über Paris oder Brüssel sowie per Fähre über den Ärmelkanal möglich."
+    },
+    {
+      "question": "Ist England für einen Familienurlaub geeignet?",
+      "answer": "Ja, England ist sehr familienfreundlich. London bietet kostenlose Museen, Parks und Attraktionen wie das London Eye, dazu locken Erlebnisse wie die Harry-Potter-Studios, Schlösser und die Küste Cornwalls."
+    },
+    {
+      "question": "Welche Spezialitäten sollte man in England probieren?",
+      "answer": "Typisch sind Fish and Chips, der Sunday Roast, ein English Breakfast, Scones mit Clotted Cream beim Afternoon Tea sowie Pub-Klassiker wie Pies. Die Esskultur ist heute vielfältiger und besser als ihr Ruf."
+    },
+    {
+      "question": "Wie viele Tage sollte man für England einplanen?",
+      "answer": "Für London allein sind 3 bis 4 Tage ideal. Wer zusätzlich Stonehenge, Bath, die Cotswolds oder den Lake District erleben möchte, sollte für eine Rundreise rund eine Woche oder mehr einplanen."
+    }
+  ],
+  "seo_title": "England Urlaub: London, Sehenswürdigkeiten, Tipps & beste Reisezeit",
+  "seo_description": "Dein England-Urlaub: London, Stonehenge, die Cotswolds, der Lake District und royale Schlösser. Beste Reisezeit, Einreise mit ETA, Highlights und praktische Reisetipps im Überblick.",
+  "affiliate_search_intent": "England Reise buchen, Flug und Hotel London, Städtereise London, Mietwagen England vergleichen, Rundreise England, Ferienhaus Cornwall oder Cotswolds",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "schottland",
+    "irland",
+    "frankreich"
+  ],
+  "llmo_entities": [
+    "England",
+    "Vereinigtes Königreich",
+    "London",
+    "Big Ben",
+    "Tower of London",
+    "Buckingham Palace",
+    "Stonehenge",
+    "Cotswolds",
+    "Lake District",
+    "Oxford",
+    "Cambridge",
+    "Bath",
+    "York",
+    "Cornwall",
+    "Britisches Pfund",
+    "ETA"
+  ],
+  "llmo_answer_block": "England ist der größte Landesteil des Vereinigten Königreichs mit der Weltmetropole London, historischen Stätten wie Stonehenge, royalen Schlössern, den malerischen Cotswolds und dem Lake District. Es eignet sich ideal für Städtereisen, Kulturtrips und Roadtrips und ist von Deutschland aus in rund 1,5 Stunden erreichbar. Für die Einreise sind ein Reisepass und eine vorab beantragte elektronische Reisegenehmigung (ETA) nötig; gezahlt wird mit dem Britischen Pfund.",
+  "llmo_quick_answer": "England ist ein geschichtsträchtiges Land mit der Metropole London, Stonehenge, den Cotswolds und dem Lake District; zur Einreise braucht man Reisepass und ETA."
+}

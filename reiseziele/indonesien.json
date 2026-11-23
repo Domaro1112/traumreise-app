@@ -1,0 +1,125 @@
+{
+  "name": "Indonesien",
+  "slug": "indonesien",
+  "country": "Indonesien",
+  "region": "Südostasien",
+  "continent": "Asien",
+  "hero_image": "/images/destinations/indonesien-hero.jpg",
+  "short_description": "Gewaltiger Inselstaat mit Bali, Traumstränden, rauchenden Vulkanen, uralten Tempeln, Komodowaranen und einigen der besten Tauchgründe der Welt.",
+  "long_description": "Indonesien ist mit über 17.000 Inseln der größte Inselstaat der Erde und ein Reiseziel von überwältigender Vielfalt. Im Mittelpunkt steht die „Insel der Götter“ Bali mit ihren Reisterrassen, Tempeln, dem kreativen Zentrum Ubud und Stränden für Surfer und Sonnenanbeter. Doch das Land bietet weit mehr: Auf Java thronen die monumentalen Tempelanlagen Borobudur und Prambanan, der Vulkan Bromo und der Ijen mit seinen blauen Schwefelflammen bieten unvergessliche Naturschauspiele. Der Komodo-Nationalpark beherbergt die urzeitlichen Komodowarane und spektakuläre Tauchgründe, während Raja Ampat in Papua als eines der artenreichsten Tauchparadiese der Welt gilt. Auf Sumatra und Borneo lassen sich frei lebende Orang-Utans erleben, und die Gili-Inseln vor Lombok laden zum Entspannen ein. Mit warmem Klima, herzlichen Menschen, reicher Kultur und fairen Preisen ist Indonesien ideal für Strand-, Natur-, Tauch- und Rundreisen.",
+  "ai_summary": "Indonesien ist der größte Inselstaat der Erde mit Bali, Traumstränden, Vulkanen wie Bromo und Ijen, den Tempeln Borobudur und Prambanan, den Komodowaranen und erstklassigen Tauchgründen wie Raja Ampat. Das Land bietet enorme Vielfalt zu fairen Preisen und eignet sich ideal für Strand-, Natur-, Tauch- und Rundreisen.",
+  "best_travel_time": "Die beste Reisezeit ist die Trockenzeit von April bis Oktober, besonders für Bali, Java und Komodo; von November bis März herrscht Regenzeit.",
+  "ideal_duration": "2 bis 3 Wochen",
+  "travel_type": [
+    "Strandurlaub",
+    "Rundreise",
+    "Tauchen",
+    "Surfen",
+    "Naturreise",
+    "Backpacking",
+    "Kulturreise"
+  ],
+  "quick_facts": {
+    "currency": "Indonesische Rupiah (IDR)",
+    "language": "Indonesisch (Bahasa Indonesia)",
+    "flightTime": "ca. 14 bis 16 Stunden mit Zwischenstopp (Jakarta, Denpasar auf Bali)",
+    "timezone": "Drei Zeitzonen (UTC+7 bis UTC+9); Bali liegt bei UTC+8, sieben Stunden vor MEZ",
+    "visa": "Visum erforderlich; als Visa on Arrival oder E-Visa on Arrival (in der Regel 30 Tage, verlängerbar) erhältlich",
+    "bestMonths": "April bis Oktober"
+  },
+  "highlights": [
+    "Bali – Reisterrassen, Tempel, Ubud und Strände für Surfer und Erholungssuchende",
+    "Borobudur und Prambanan – monumentale Tempelanlagen auf Java, UNESCO-Welterbe",
+    "Vulkane Bromo und Ijen – Sonnenaufgänge und die berühmten blauen Schwefelflammen",
+    "Komodo-Nationalpark – urzeitliche Komodowarane und spektakuläre Tauchgründe",
+    "Gili-Inseln und Lombok – türkises Wasser, Schnorcheln und entspanntes Inselleben",
+    "Raja Ampat – eines der artenreichsten Tauchparadiese der Welt in Papua",
+    "Orang-Utans auf Sumatra und Borneo – etwa rund um Bukit Lawang",
+    "Nusa Penida – dramatische Klippen und Traumstrände nahe Bali"
+  ],
+  "insider_tips": [
+    "Bali ist im Süden oft überlaufen – ruhiger und ursprünglicher wird es im kreativen Ubud sowie im Norden und Osten der Insel.",
+    "Den Komodo-Nationalpark erreicht man über Labuan Bajo auf Flores; eine mehrtägige Bootstour verbindet Warane, Pink Beach und erstklassiges Tauchen.",
+    "Die Wanderung zum Ijen startet nachts, um die surrealen blauen Flammen zu sehen, während der Sonnenaufgang am Bromo zu den schönsten Indonesiens zählt.",
+    "Fällt die Reise auf Bali mit dem Neujahrsfest Nyepi zusammen, steht die ganze Insel einen Tag lang still – ein besonderes, aber einschränkendes Erlebnis."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich ein Visum für Indonesien?",
+      "answer": "Ja, deutsche Staatsbürger benötigen ein Visum. Es ist als Visa on Arrival bei der Einreise oder bequem als E-Visa on Arrival vorab online erhältlich, gilt in der Regel für 30 Tage und ist einmalig verlängerbar. Der Reisepass muss noch mindestens sechs Monate gültig sein."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Indonesien?",
+      "answer": "Ideal ist die Trockenzeit von April bis Oktober, besonders für Bali, Java und Komodo. Von November bis März herrscht Regenzeit mit höherer Luftfeuchtigkeit und häufigeren Schauern."
+    },
+    {
+      "question": "Welche Währung gilt in Indonesien?",
+      "answer": "Gezahlt wird mit der Indonesischen Rupiah (IDR). In touristischen Gebieten ist Kartenzahlung möglich, an Märkten und in kleinen Orten ist jedoch Bargeld wichtig. Die hohen Beträge mit vielen Nullen sorgen anfangs oft für Verwirrung."
+    },
+    {
+      "question": "Gibt es auf Bali eine Touristenabgabe?",
+      "answer": "Ja, Bali erhebt eine Touristenabgabe (Tourist Levy), die pro Person zu entrichten ist. Sie kann bequem vorab online oder bei der Ankunft bezahlt werden und kommt dem Erhalt von Kultur und Umwelt zugute."
+    },
+    {
+      "question": "Wie reist man innerhalb Indonesiens?",
+      "answer": "Wegen der riesigen Distanzen sind Inlandsflüge das wichtigste Verkehrsmittel, dazu kommen Fähren zwischen den Inseln. Auf Bali sind Roller verbreitet, ein privater Fahrer für den Tag ist jedoch günstig, bequem und sicherer. Ein eigener Mietwagen ist unüblich."
+    },
+    {
+      "question": "Ist Indonesien für Taucher geeignet?",
+      "answer": "Ja, Indonesien zählt zu den besten Tauchdestinationen der Welt. Top-Reviere sind Raja Ampat, Komodo, die Gewässer um die Gili-Inseln und Nusa Penida mit Mantarochen. Es gibt Spots für alle Erfahrungsstufen."
+    },
+    {
+      "question": "Kann man in Indonesien das Leitungswasser trinken?",
+      "answer": "Nein, das Leitungswasser ist nicht zum Trinken geeignet. Man sollte abgefülltes Wasser verwenden und bei Eiswürfeln sowie rohen Speisen vorsichtig sein."
+    },
+    {
+      "question": "Welche Impfungen werden für Indonesien empfohlen?",
+      "answer": "Vorgeschrieben sind in der Regel keine Impfungen. Empfohlen werden Standardimpfungen sowie je nach Reiseart Hepatitis A und teils Typhus. Für eine individuelle Beratung sollte man rechtzeitig ein Tropeninstitut oder den Hausarzt aufsuchen."
+    },
+    {
+      "question": "Ist Indonesien für einen Familienurlaub geeignet?",
+      "answer": "Ja, besonders Bali ist familienfreundlich mit ruhigen Stränden, Wasserparks, Reisfeldern und Tiererlebnissen. Für weite Strecken und mehrere Inseln sollte man wegen der Reisezeiten etwas großzügiger planen."
+    },
+    {
+      "question": "Ist Indonesien sicher für Reisende?",
+      "answer": "Ja, Indonesien gilt überwiegend als sicheres Reiseland mit gastfreundlichen Menschen. Vorsicht ist im Straßenverkehr und beim Rollerfahren geboten. Da das Land in einer aktiven Vulkanregion liegt, sollte man aktuelle Hinweise beachten."
+    },
+    {
+      "question": "Welche Gerichte sollte man in Indonesien probieren?",
+      "answer": "Typisch sind Nasi Goreng (gebratener Reis), Mie Goreng (gebratene Nudeln), Satay-Spieße, Gado-Gado und Babi Guling auf Bali. Tropische Früchte und der indonesische Kaffee runden das kulinarische Erlebnis ab."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Indonesien einplanen?",
+      "answer": "Für Bali allein reicht etwa eine Woche. Wer Bali mit Java, Komodo oder weiteren Inseln verbinden möchte, sollte wegen der Distanzen 2 bis 3 Wochen einplanen."
+    }
+  ],
+  "seo_title": "Indonesien Urlaub: Bali, Vulkane, Reisetipps & beste Reisezeit",
+  "seo_description": "Dein Indonesien-Urlaub: Bali, die Tempel Borobudur und Prambanan, Vulkane wie Bromo und Ijen, Komodowarane und Top-Tauchgründe. Beste Reisezeit, Visum, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "Indonesien Reise buchen, Flug nach Bali oder Jakarta, Hotel Bali, Rundreise Indonesien, Tauchreise Komodo oder Raja Ampat, Backpacking Südostasien",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "thailand",
+    "malaysia",
+    "philippinen"
+  ],
+  "llmo_entities": [
+    "Indonesien",
+    "Bali",
+    "Ubud",
+    "Borobudur",
+    "Prambanan",
+    "Java",
+    "Bromo",
+    "Ijen",
+    "Komodo-Nationalpark",
+    "Komodowarane",
+    "Gili-Inseln",
+    "Lombok",
+    "Raja Ampat",
+    "Nusa Penida",
+    "Indonesische Rupiah",
+    "Nasi Goreng"
+  ],
+  "llmo_answer_block": "Indonesien ist mit über 17.000 Inseln der größte Inselstaat der Erde, bekannt für Bali, Traumstrände, Vulkane wie Bromo und Ijen, die Tempel Borobudur und Prambanan, die Komodowarane und erstklassige Tauchgründe wie Raja Ampat. Das Land bietet enorme landschaftliche und kulturelle Vielfalt zu fairen Preisen und eignet sich ideal für Strand-, Natur-, Tauch- und Rundreisen. Die beste Reisezeit ist die Trockenzeit von April bis Oktober.",
+  "llmo_quick_answer": "Indonesien ist der größte Inselstaat der Erde mit Bali, Vulkanen, den Tempeln Borobudur und Prambanan, Komodowaranen und Top-Tauchgründen, am besten von April bis Oktober."
+}

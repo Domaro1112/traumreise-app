@@ -31,7 +31,7 @@ export default function PartnerHeroImage() {
       {!imgError && (
         <img
           src="/images/partner/reisemonkey-partner-hero.png"
-          alt="Reisemonkey Partner"
+          alt="ApeAround Partner"
           loading="eager"
           onError={() => setImgError(true)}
           style={{

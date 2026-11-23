@@ -1,0 +1,120 @@
+{
+  "name": "Holland",
+  "slug": "holland",
+  "country": "Niederlande",
+  "region": "Westeuropa",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/holland-hero.jpg",
+  "short_description": "Beliebtes Nachbarland mit Grachten, Tulpenfeldern, Windmühlen, Nordseestränden und fahrradfreundlichen Städten – schnell und unkompliziert erreichbar.",
+  "long_description": "Holland – umgangssprachlich für die Niederlande – zählt zu den beliebtesten Reisezielen der Deutschen, denn es ist nah, vielseitig und unkompliziert. Die Hauptstadt Amsterdam begeistert mit ihren malerischen Grachten, weltbekannten Museen wie dem Rijksmuseum und dem Van-Gogh-Museum sowie dem bewegenden Anne-Frank-Haus. Im Frühling verwandeln die Tulpenfelder rund um den Keukenhof das Land in ein Blütenmeer, während die Windmühlen von Kinderdijk und die Käsemärkte von Alkmaar und Gouda typisch holländisches Flair versprühen. An der Nordsee laden lange Sandstrände in Zeeland, an der Küste von Scheveningen und auf Inseln wie Texel zum Familienurlaub ein. Modern und kreativ zeigt sich Rotterdam mit seiner spektakulären Architektur. Dank des dichten Bahnnetzes und der ausgeprägten Fahrradkultur lässt sich das flache Land besonders entspannt und nachhaltig erkunden.",
+  "ai_summary": "Holland, umgangssprachlich für die Niederlande, ist ein beliebtes Nachbarland mit Grachtenstädten wie Amsterdam, Tulpenfeldern, Windmühlen, Käsemärkten und Nordseestränden. Es ist schnell erreichbar, sehr fahrradfreundlich und eignet sich ideal für Städtetrips, Familien- und Strandurlaube.",
+  "best_travel_time": "April bis September für mildes Wetter; die Tulpen blühen von Mitte April bis Anfang Mai, die Nordseesaison läuft im Sommer.",
+  "ideal_duration": "Städtereise 2 bis 4 Tage, Strand- oder Rundreise bis zu einer Woche",
+  "travel_type": [
+    "Städtereise",
+    "Kulturreise",
+    "Strandurlaub",
+    "Radreise",
+    "Familien",
+    "Wochenendtrip"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Niederländisch",
+    "flightTime": "Aus Westdeutschland in 1 bis 2 Stunden per Auto oder Bahn erreichbar; Flüge nach Amsterdam rund 1 Stunde",
+    "timezone": "MEZ (UTC+1), identisch mit Deutschland",
+    "visa": "Nicht erforderlich für EU-Bürger (Schengen-Raum)",
+    "bestMonths": "April bis September; Tulpenblüte Mitte April bis Anfang Mai"
+  },
+  "highlights": [
+    "Amsterdam – Grachten, Rijksmuseum, Van-Gogh-Museum und das Anne-Frank-Haus",
+    "Keukenhof und die Tulpenfelder – farbenprächtiges Blütenmeer im Frühling",
+    "Windmühlen von Kinderdijk – UNESCO-Welterbe und klassisches Holland-Motiv",
+    "Nordseeküste – Strände in Zeeland, Scheveningen und auf der Insel Texel",
+    "Rotterdam – moderne Architektur, Markthal und lebendige Hafenstadt",
+    "Käsemärkte von Alkmaar und Gouda – traditionelles Handwerk zum Anfassen",
+    "Giethoorn – idyllisches „Venedig des Nordens“ mit Grachten statt Straßen",
+    "Den Haag – Regierungssitz mit dem Mauritshuis und dem Seebad Scheveningen"
+  ],
+  "insider_tips": [
+    "Der Keukenhof hat nur von Ende März bis Mitte Mai geöffnet – wer die Tulpen sehen möchte, sollte den Besuch unbedingt in diesen Zeitraum legen.",
+    "Erkunde die Städte wie ein Einheimischer mit dem Fahrrad; in fast allen Orten gibt es günstige Leihräder und ein hervorragendes Radwegenetz.",
+    "Für Bus, Bahn und Tram lohnt sich die landesweite OV-Chipkaart oder kontaktloses Bezahlen, um flexibel und ohne Einzeltickets unterwegs zu sein.",
+    "Statt des überlaufenen Amsterdam lohnen auch charmante Alternativen wie Haarlem, Utrecht oder Delft mit ähnlichem Grachtenflair, aber weniger Andrang."
+  ],
+  "faq": [
+    {
+      "question": "Ist Holland dasselbe wie die Niederlande?",
+      "answer": "Streng genommen bezeichnet Holland nur zwei Provinzen (Nord- und Südholland), umgangssprachlich wird der Begriff aber häufig für das ganze Land verwendet. Der offizielle Staatsname lautet Niederlande."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Holland?",
+      "answer": "Am angenehmsten ist es von April bis September. Wer die berühmten Tulpenfelder erleben möchte, reist zwischen Mitte April und Anfang Mai; die Nordseesaison läuft im Sommer."
+    },
+    {
+      "question": "Brauche ich in Holland ein Auto?",
+      "answer": "Für Städtereisen ist ein Auto nicht nötig, da Bahn, Tram und vor allem das Fahrrad hervorragend funktionieren. Für einen Strandurlaub an der Nordsee oder in Zeeland reisen viele jedoch bequem mit dem eigenen Auto an."
+    },
+    {
+      "question": "Welche Währung gilt in Holland?",
+      "answer": "In den Niederlanden zahlt man mit dem Euro (EUR). Kartenzahlung ist sehr verbreitet, vielerorts wird sogar bevorzugt mit Karte oder kontaktlos bezahlt."
+    },
+    {
+      "question": "Wann blühen die Tulpen in Holland?",
+      "answer": "Die Tulpen blühen je nach Wetter von Mitte April bis Anfang Mai. Der bekannteste Ort ist der Keukenhof bei Lisse, der nur in diesem Zeitraum geöffnet ist; auch die umliegenden Felder bieten sich für Radtouren an."
+    },
+    {
+      "question": "Welche Sehenswürdigkeiten sollte man in Amsterdam nicht verpassen?",
+      "answer": "Zu den Höhepunkten zählen eine Grachtenfahrt, das Rijksmuseum, das Van-Gogh-Museum, das Anne-Frank-Haus sowie ein Bummel durch den Jordaan und über die Blumenmärkte. Tickets für beliebte Museen sollte man vorab buchen."
+    },
+    {
+      "question": "Ist Holland für einen Familienurlaub geeignet?",
+      "answer": "Ja, Holland ist sehr familienfreundlich. Flache Nordseestrände, der Freizeitpark Efteling, kindgerechte Städte und sichere Radwege machen das Land zu einem idealen Ziel für Familien."
+    },
+    {
+      "question": "Wie sind die Coffeeshops in Holland geregelt?",
+      "answer": "In den Niederlanden wird der Verkauf kleiner Mengen Cannabis in lizenzierten Coffeeshops geduldet. Die Regeln und Altersgrenzen werden kontrolliert, und manche Städte schränken den Zugang für Touristen ein. Beim Mitführen über die Grenze droht in Deutschland Strafbarkeit."
+    },
+    {
+      "question": "Spricht man in Holland Deutsch oder Englisch?",
+      "answer": "Viele Niederländer sprechen sehr gut Englisch, und in grenznahen sowie touristischen Gebieten oft auch Deutsch. Die Verständigung ist für deutsche Reisende daher unkompliziert."
+    },
+    {
+      "question": "Lohnt sich Holland auch außerhalb von Amsterdam?",
+      "answer": "Auf jeden Fall. Städte wie Rotterdam, Utrecht, Delft, Haarlem und Den Haag, die Windmühlen von Kinderdijk, das Wasserdorf Giethoorn und die Nordseeküste bieten viel Abwechslung und sind oft weniger überlaufen."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Holland einplanen?",
+      "answer": "Für einen Städtetrip nach Amsterdam reichen 2 bis 4 Tage. Wer mehrere Städte, die Küste und Sehenswürdigkeiten wie Kinderdijk verbinden möchte, plant am besten bis zu einer Woche ein."
+    }
+  ],
+  "seo_title": "Holland Urlaub: Amsterdam, Tulpen, Strände & beste Reisezeit",
+  "seo_description": "Dein Holland-Urlaub: Amsterdam mit Grachten, Tulpenfelder, Windmühlen von Kinderdijk und Nordseestrände. Beste Reisezeit, Sehenswürdigkeiten und praktische Reisetipps im Überblick.",
+  "affiliate_search_intent": "Holland Urlaub buchen, Hotel Amsterdam, Ferienhaus Nordsee Holland, Städtereise Amsterdam, Ferienpark Niederlande, Strandurlaub Zeeland",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "belgien",
+    "daenemark",
+    "frankreich"
+  ],
+  "llmo_entities": [
+    "Holland",
+    "Niederlande",
+    "Amsterdam",
+    "Grachten",
+    "Keukenhof",
+    "Tulpenfelder",
+    "Kinderdijk",
+    "Windmühlen",
+    "Rotterdam",
+    "Den Haag",
+    "Scheveningen",
+    "Texel",
+    "Zeeland",
+    "Giethoorn",
+    "Gouda",
+    "Rijksmuseum"
+  ],
+  "llmo_answer_block": "Holland ist die umgangssprachliche Bezeichnung für die Niederlande und ein bei Deutschen sehr beliebtes Nachbarland mit Grachtenstädten wie Amsterdam, Tulpenfeldern, Windmühlen, Käsemärkten und Nordseestränden. Das flache Land ist schnell erreichbar, äußerst fahrradfreundlich und eignet sich ideal für Städtetrips, Familien- und Strandurlaube. Die beste Reisezeit liegt zwischen April und September, die Tulpen blühen von Mitte April bis Anfang Mai.",
+  "llmo_quick_answer": "Holland (Niederlande) ist ein beliebtes Nachbarland mit Amsterdam, Grachten, Tulpenfeldern, Windmühlen und Nordseestränden, ideal für Städte- und Familienurlaube."
+}

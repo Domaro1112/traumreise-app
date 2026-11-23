@@ -255,7 +255,7 @@ export default async function Reiseblog() {
         {/* ── Community Insider-Tipps ─────────────────────────────────────────── */}
         <CommunityTips tips={communityTips} />
 
-        {/* ── KI-Finder CTA ──────────────────────────────────────────────────── */}
+        {/* ── Reisefinder CTA ──────────────────────────────────────────────────── */}
         <section
           style={{
             background: 'linear-gradient(135deg, #0C1A3A 0%, #0B3D6B 40%, #0EA5E9 100%)',

@@ -46,7 +46,7 @@ export async function generateMetadata({ params }) {
   const dest = await resolveDestination(slug);
   if (!dest) return {};
 
-  const title = dest.seoTitle ?? `${dest.name} Urlaub – Tipps, beste Reisezeit & Angebote |ApeAround`;
+  const title = dest.seoTitle ?? `${dest.name} Urlaub – Tipps, beste Reisezeit & Angebote | ApeAround`;
   const description = dest.seoDescription ?? `Entdecke ${dest.name}: beste Reisezeit, Highlights, Hotels, Flüge, Mietwagen und Aktivitäten für deinen Urlaub in ${dest.country}.`;
   const canonical = dest.canonicalUrl ?? `${BASE_URL}/reiseziele/${dest.slug}`;
   const ogImage   = dest.openGraphImage ?? dest.heroImage;
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }) {
   return {
     title,
     description,
-    keywords: [dest.name, dest.country, dest.region, 'Urlaub', 'Reiseziel', 'Tipps', 'Hotels', 'Flüge', 'Reisemonkey'].filter(Boolean),
+    keywords: [dest.name, dest.country, dest.region, 'Urlaub', 'Reiseziel', 'Tipps', 'Hotels', 'Flüge', 'ApeAround'].filter(Boolean),
     robots: { index: true, follow: true },
     openGraph: {
       title:       ogTitle,
@@ -102,7 +102,7 @@ function buildJsonLd(dest) {
     name: `${dest.name} Urlaub – Tipps, beste Reisezeit & Angebote`,
     description: dest.shortDescription,
     inLanguage: 'de-DE',
-    isPartOf: { '@type': 'WebSite', '@id': BASE_URL, name: 'Reisemonkey', url: BASE_URL },
+    isPartOf: { '@type': 'WebSite', '@id': BASE_URL, name: 'ApeAround', url: BASE_URL },
     breadcrumb: { '@id': url + '#breadcrumb' },
   };
 
@@ -273,7 +273,7 @@ export default async function DestinationPage({ params }) {
                 {[
                   { label: 'Hotels ansehen', href: '#angebote' },
                   { label: 'Flüge suchen', href: '#angebote' },
-                  { label: 'Mit KI planen', href: '/#reiseplaner' },
+                  { label: 'Reise planen', href: '/#reiseplaner' },
                 ].map(cta => (
                   <a
                     key={cta.label}
@@ -284,10 +284,10 @@ export default async function DestinationPage({ params }) {
                       gap: '7px',
                       padding: '10px 20px',
                       borderRadius: '12px',
-                      background: cta.label === 'Mit KI planen'
+                      background: cta.label === 'Reise planen'
                         ? 'linear-gradient(135deg, #F97316 0%, #FBBF24 100%)'
                         : 'rgba(255,255,255,0.15)',
-                      border: cta.label === 'Mit KI planen' ? 'none' : '1.5px solid rgba(255,255,255,0.35)',
+                      border: cta.label === 'Reise planen' ? 'none' : '1.5px solid rgba(255,255,255,0.35)',
                       backdropFilter: 'blur(6px)',
                       color: '#FFFFFF',
                       fontSize: '13px',
@@ -590,7 +590,7 @@ export default async function DestinationPage({ params }) {
                     {dest.name} personalisiert planen
                   </h3>
                   <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.70)', lineHeight: 1.6, marginBottom: '16px' }}>
-                    Unsere KI erstellt dir einen persönlichen Reiseplan – kostenlos.
+                    Finde in wenigen Klicks heraus, ob es zu dir passt – kostenlos.
                   </p>
                   <Link
                     href="/#reiseplaner"
@@ -610,7 +610,7 @@ export default async function DestinationPage({ params }) {
                     }}
                   >
                     <Plane size={13} strokeWidth={2.5} />
-                    Mit KI planen
+                    Jetzt planen
                     <ArrowRight size={12} strokeWidth={2.5} />
                   </Link>
                 </div>

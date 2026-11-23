@@ -1,0 +1,116 @@
+{
+  "name": "Fuerteventura",
+  "slug": "fuerteventura",
+  "country": "Spanien",
+  "region": "Kanarische Inseln (Atlantik)",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/fuerteventura-hero.jpg",
+  "short_description": "Kanarische Sonneninsel mit kilometerlangen Traumstränden, Dünen, ganzjährig mildem Klima, Top-Bedingungen für Surfer und Kiter – ideal für Wintersonne.",
+  "long_description": "Fuerteventura ist die zweitgrößte der Kanarischen Inseln und ein Paradies für Strandliebhaber und Wassersportler. Die Insel im Atlantik vor der Küste Afrikas besticht durch ihre endlosen, feinsandigen Strände, allen voran die kilometerlange Playa de Sotavento auf der Halbinsel Jandía und die hellen Dünen im Naturpark Corralejo. Wer Abgeschiedenheit sucht, fährt zum wild-romantischen Cofete-Strand im Südwesten. Dank des fast ständig wehenden Windes ist Fuerteventura ein Weltklasse-Revier zum Surfen, Wind- und Kitesurfen, etwa rund um El Cotillo und Sotavento. Im Inselinneren prägen karge Vulkanlandschaften und das beschauliche Bergdorf Betancuria, die alte Hauptstadt, das Bild. Vor Corralejo lockt die kleine Insel Isla de Lobos zu einem Tagesausflug. Da das Klima ganzjährig mild ist, gilt Fuerteventura als ideales Ziel für Wintersonne. Mit familienfreundlichen Stränden, entspannter Atmosphäre und einer Flugzeit von nur rund viereinhalb Stunden ist die Insel perfekt für Strand-, Aktiv- und Erholungsurlaub.",
+  "ai_summary": "Fuerteventura ist eine kanarische Sonneninsel mit kilometerlangen Traumstränden, Dünen, ganzjährig mildem Klima und Weltklasse-Bedingungen zum Surfen und Kiten. Als ideales Ziel für Wintersonne, Familien und Wassersportler eignet sie sich bestens für Strand-, Aktiv- und Erholungsurlaub bei kurzer Flugzeit.",
+  "best_travel_time": "Fuerteventura ist dank des milden Klimas ganzjährig ein Reiseziel. Zum Baden ist es von Mai bis Oktober am wärmsten, während die Insel im Winter als sonniges Warmziel beliebt ist. Wind weht fast das ganze Jahr.",
+  "ideal_duration": "Eine Woche",
+  "travel_type": [
+    "Strandurlaub",
+    "Surfen",
+    "Kitesurfen",
+    "Familien",
+    "Wellness",
+    "Naturreise",
+    "Wintersonne"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Spanisch; Deutsch und Englisch sind weit verbreitet",
+    "flightTime": "ca. 4,5 Stunden ab Deutschland",
+    "timezone": "WEZ (UTC+0; im Sommer UTC+1), eine Stunde hinter MEZ",
+    "visa": "Nicht erforderlich für EU-Bürger (Schengen-Raum)",
+    "bestMonths": "Ganzjährig; zum Baden Mai bis Oktober"
+  },
+  "highlights": [
+    "Playa de Sotavento – kilometerlanger Traumstrand auf der Halbinsel Jandía",
+    "Naturpark Corralejo – helle Wanderdünen direkt am Meer",
+    "Playa de Cofete – wild-romantischer, abgelegener Strand im Südwesten",
+    "El Cotillo – Lagunen, Strände und Surfspots im Nordwesten",
+    "Betancuria – beschauliches Bergdorf und alte Inselhauptstadt",
+    "Isla de Lobos – kleine Naturinsel vor Corralejo für einen Tagesausflug",
+    "Vulkanlandschaften – etwa der Vulkan Calderón Hondo",
+    "Top-Bedingungen für Surfen, Wind- und Kitesurfen"
+  ],
+  "insider_tips": [
+    "Fuerteventura ist oft windig – das macht sie ideal für Surfer und Kiter; zum Baden wählt man windgeschützte Buchten und cremt wegen der kühlenden Brise besonders gut ein.",
+    "Für entlegene Strände wie Cofete lohnt sich ein Mietwagen; die Anfahrt führt teils über eine kurvige Schotterpiste.",
+    "Die kleine Isla de Lobos erreicht man per Boot ab Corralejo – für den Besuch ist eine vorherige Anmeldung bzw. Genehmigung nötig.",
+    "Unbedingt den würzigen Majorero-Ziegenkäse der Insel probieren; im Inselinneren lohnt ein Abstecher ins historische Betancuria."
+  ],
+  "faq": [
+    {
+      "question": "Wann ist die beste Reisezeit für Fuerteventura?",
+      "answer": "Dank des milden Klimas ist Fuerteventura ganzjährig ein Reiseziel. Zum Baden ist es von Mai bis Oktober am wärmsten. Im Winter ist die Insel ein beliebtes Warmziel mit angenehmen Temperaturen, weshalb sie sich besonders für Wintersonne eignet."
+    },
+    {
+      "question": "Wie reist man nach Fuerteventura an?",
+      "answer": "Am einfachsten per Direktflug von vielen deutschen Flughäfen zum Airport Fuerteventura bei Puerto del Rosario in rund 4,5 Stunden. Vom Flughafen erreicht man die Urlaubsorte mit Mietwagen, Bus oder Transfer."
+    },
+    {
+      "question": "Braucht man auf Fuerteventura einen Mietwagen?",
+      "answer": "Für einen reinen Strandurlaub im Hotel nicht zwingend, doch zum Entdecken der vielen verstreuten Strände, Dünen und Dörfer ist ein Mietwagen sehr empfehlenswert, da die Insel weitläufig ist."
+    },
+    {
+      "question": "Sind die Strände von Fuerteventura schön?",
+      "answer": "Ja, die Insel hat einige der schönsten Strände der Kanaren: kilometerlange helle Sandstrände wie die Playa de Sotavento, die Dünen von Corralejo und das wilde Cofete. Sie zählen zu den größten Pluspunkten der Insel."
+    },
+    {
+      "question": "Eignet sich Fuerteventura zum Surfen und Kiten?",
+      "answer": "Ja, hervorragend. Dank des beständigen Windes und guter Wellen ist Fuerteventura ein Weltklasse-Revier für Surfer, Wind- und Kitesurfer. Spots wie El Cotillo und Sotavento sind international bekannt, und es gibt zahlreiche Surfschulen."
+    },
+    {
+      "question": "Kann man trotz des Windes gut baden?",
+      "answer": "Ja, man wählt einfach windgeschützte Buchten und Lagunen, etwa bei El Cotillo oder in geschützten Abschnitten im Süden. Wichtig ist guter Sonnenschutz, da die kühlende Brise die Intensität der Sonne leicht unterschätzen lässt."
+    },
+    {
+      "question": "Ist Fuerteventura für einen Familienurlaub geeignet?",
+      "answer": "Ja, sehr. Flache, weitläufige Sandstrände, ruhige Lagunen, familienfreundliche Hotels und das milde Klima machen die Insel zu einem idealen und unkomplizierten Ziel für Familien mit Kindern."
+    },
+    {
+      "question": "Was ist die Isla de Lobos?",
+      "answer": "Die Isla de Lobos ist eine kleine, unbewohnte Naturinsel vor Corralejo. Sie lässt sich auf einem Tagesausflug per Boot besuchen und bietet ruhige Buchten und Wanderwege. Wegen Naturschutz ist eine vorherige Anmeldung erforderlich."
+    },
+    {
+      "question": "Spricht man auf Fuerteventura Deutsch?",
+      "answer": "In den touristischen Orten wird häufig Deutsch und Englisch gesprochen, sodass die Verständigung für deutsche Urlauber unkompliziert ist. Amtssprache ist Spanisch."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Fuerteventura einplanen?",
+      "answer": "Für einen erholsamen Strandurlaub mit einigen Ausflügen eignet sich eine Woche. Wer die Insel intensiver erkunden oder einen Surfkurs belegen möchte, kann gut 10 bis 14 Tage bleiben."
+    }
+  ],
+  "seo_title": "Fuerteventura Urlaub: Strände, Surfen & beste Reisezeit",
+  "seo_description": "Dein Fuerteventura-Urlaub: kilometerlange Traumstrände, die Dünen von Corralejo, Top-Surfspots und ganzjährig mildes Klima für Wintersonne. Beste Reisezeit, Anreise, Highlights und Tipps im Überblick.",
+  "affiliate_search_intent": "Fuerteventura Urlaub buchen, Pauschalreise Fuerteventura, Flug Fuerteventura, Hotel Fuerteventura, Mietwagen Fuerteventura, Surfcamp Fuerteventura, Wintersonne Kanaren",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "lanzarote",
+    "gran-canaria",
+    "teneriffa"
+  ],
+  "llmo_entities": [
+    "Fuerteventura",
+    "Kanarische Inseln",
+    "Atlantik",
+    "Playa de Sotavento",
+    "Jandía",
+    "Corralejo",
+    "Dünen von Corralejo",
+    "Playa de Cofete",
+    "El Cotillo",
+    "Betancuria",
+    "Isla de Lobos",
+    "Morro Jable",
+    "Majorero-Käse",
+    "Kitesurfen",
+    "Euro"
+  ],
+  "llmo_answer_block": "Fuerteventura ist die zweitgrößte Kanareninsel und ein Paradies für Strandliebhaber und Wassersportler, mit kilometerlangen Traumstränden wie der Playa de Sotavento, den Dünen von Corralejo und dem wilden Cofete. Dank beständigem Wind ist sie ein Weltklasse-Revier zum Surfen und Kiten, und das ganzjährig milde Klima macht sie zum idealen Ziel für Wintersonne. Mit familienfreundlichen Stränden und einer Flugzeit von rund 4,5 Stunden eignet sie sich bestens für Strand-, Aktiv- und Erholungsurlaub.",
+  "llmo_quick_answer": "Fuerteventura ist eine kanarische Sonneninsel mit endlosen Traumstränden, Dünen, ganzjährig mildem Klima und Top-Bedingungen zum Surfen und Kiten – ideal für Wintersonne."
+}

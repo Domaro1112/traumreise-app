@@ -1,0 +1,121 @@
+{
+  "name": "Tunesien",
+  "slug": "tunesien",
+  "country": "Tunesien",
+  "region": "Nordafrika",
+  "continent": "Afrika",
+  "hero_image": "/images/destinations/tunesien-hero.jpg",
+  "short_description": "Sonnenziel am Mittelmeer mit weiten Sandstränden, antikem Karthago, dem blau-weißen Sidi Bou Saïd, der Sahara und günstigen All-Inclusive-Resorts.",
+  "long_description": "Tunesien ist ein vielseitiges nordafrikanisches Reiseland und ein klassisches, gut erreichbares Sonnenziel am Mittelmeer. Lange Sandstrände und komfortable All-Inclusive-Resorts in Hammamet, Sousse und auf der Insel Djerba laden zum entspannten Badeurlaub ein. Doch Tunesien hat weit mehr zu bieten: In der Hauptstadt Tunis verzaubert die historische Medina, und ganz in der Nähe liegen die antiken Ruinen von Karthago sowie das malerische, blau-weiße Künstlerdorf Sidi Bou Saïd. Im Landesinneren beeindruckt das gewaltige römische Amphitheater von El Djem, und die heilige Stadt Kairouan mit ihrer großen Moschee zählt zu den bedeutendsten religiösen Orten der islamischen Welt. Im Süden beginnt die Sahara: Von Douz aus startet man zu Wüstentouren, und rund um Matmata und Tozeur erkennt man Drehorte der Star-Wars-Filme wieder. Mit orientalischem Flair, herzlicher Gastfreundschaft, würziger Küche und sehr günstigen Preisen ist Tunesien ideal für Strand-, Kultur- und Abenteuerurlaub.",
+  "ai_summary": "Tunesien ist ein vielseitiges Sonnenziel am Mittelmeer mit langen Sandstränden und günstigen All-Inclusive-Resorts in Hammamet, Sousse und Djerba, dem antiken Karthago, dem blau-weißen Sidi Bou Saïd und der Sahara im Süden. Es ist gut erreichbar, preiswert und eignet sich ideal für Strand-, Kultur- und Wüstenreisen.",
+  "best_travel_time": "April bis Juni sowie September und Oktober für angenehme Temperaturen und Kultur; der Hochsommer ist ideal für den Badeurlaub, im Landesinneren und in der Sahara jedoch sehr heiß.",
+  "ideal_duration": "Strandurlaub 1 Woche, Rundreise 10 bis 14 Tage",
+  "travel_type": [
+    "Strandurlaub",
+    "All-Inclusive",
+    "Pauschalreise",
+    "Kulturreise",
+    "Wüstentour",
+    "Familien",
+    "Rundreise"
+  ],
+  "quick_facts": {
+    "currency": "Tunesischer Dinar (TND); geschlossene Währung, die erst vor Ort gewechselt wird",
+    "language": "Arabisch; Französisch ist weit verbreitet",
+    "flightTime": "ca. 2,5 bis 3 Stunden ab Deutschland (Enfidha, Djerba, Tunis)",
+    "timezone": "UTC+1; im Winter gleich der MEZ, im Sommer eine Stunde zurück",
+    "visa": "Nicht erforderlich für deutsche Staatsbürger (Aufenthalt bis 90 Tage)",
+    "bestMonths": "April bis Juni sowie September und Oktober"
+  },
+  "highlights": [
+    "Karthago – antike Ruinen der einstigen Großmacht bei Tunis, UNESCO-Welterbe",
+    "Sidi Bou Saïd – malerisches blau-weißes Künstlerdorf über dem Meer",
+    "Medina von Tunis – historische Altstadt mit Souks, UNESCO-Welterbe",
+    "Djerba – Sonneninsel mit Stränden und entspanntem Flair",
+    "El Djem – eines der besterhaltenen römischen Amphitheater der Welt",
+    "Kairouan – heilige Stadt mit der Großen Moschee, UNESCO-Welterbe",
+    "Sahara bei Douz – Tor zur Wüste für Kamelritte und Geländetouren",
+    "Matmata und Tozeur – Wüstenlandschaften und Star-Wars-Drehorte"
+  ],
+  "insider_tips": [
+    "Wer die Star-Wars-Filme mag, findet rund um Matmata, Tozeur und Ong Jemel originale Drehorte der Wüstenplaneten wieder.",
+    "Von Douz aus, dem „Tor zur Sahara“, lässt sich die Wüste bei einer Kamelritt- oder Jeep-Tour eindrucksvoll erleben.",
+    "Der Dinar ist eine geschlossene Währung: Am besten wechselt man erst vor Ort und gibt restliches Bargeld vor der Ausreise wieder aus.",
+    "Das blau-weiße Sidi Bou Saïd ist am frühen Morgen besonders fotogen und ruhig, bevor die Tagesausflügler eintreffen."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich ein Visum für Tunesien?",
+      "answer": "Nein, deutsche Staatsbürger benötigen für touristische Aufenthalte bis zu 90 Tage kein Visum. Der Reisepass muss bei der Einreise noch mindestens sechs Monate gültig sein."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Tunesien?",
+      "answer": "Für Kultur und Rundreisen sind Frühling (April bis Juni) und Herbst (September und Oktober) ideal. Der Hochsommer eignet sich für den Badeurlaub an der Küste, ist im Landesinneren und in der Sahara jedoch sehr heiß."
+    },
+    {
+      "question": "Welche Währung gilt in Tunesien?",
+      "answer": "Gezahlt wird mit dem Tunesischen Dinar (TND). Es handelt sich um eine geschlossene Währung, die man im Ausland nicht bekommt und nicht ausführen darf. Am besten wechselt man vor Ort und gibt restliches Bargeld vor der Abreise aus."
+    },
+    {
+      "question": "Ist Tunesien gut für einen All-Inclusive-Urlaub?",
+      "answer": "Ja, Tunesien ist für preiswerte All-Inclusive-Angebote bekannt. Beliebte Badeorte mit großer Resortauswahl sind Hammamet, Sousse, Monastir und die Insel Djerba."
+    },
+    {
+      "question": "Sollte man in Tunesien selbst Auto fahren?",
+      "answer": "Viele Urlauber bleiben im Resort und nutzen organisierte Ausflüge, sodass ein Mietwagen nicht nötig ist. Für individuelle Rundreisen ist Selbstfahren möglich; in Städten und im Süden sind jedoch geführte Touren oder ein Fahrer oft entspannter."
+    },
+    {
+      "question": "Wie sicher ist Tunesien für Reisende?",
+      "answer": "Die touristischen Regionen im Norden und an der Küste gelten als gut bereisbar. Von den Grenzgebieten zu Libyen und Algerien sowie Teilen der südlichen Wüste wird abgeraten. Vor der Reise sollte man die aktuellen Hinweise des Auswärtigen Amts prüfen."
+    },
+    {
+      "question": "Kann man in Tunesien das Leitungswasser trinken?",
+      "answer": "Nein, das Leitungswasser ist nicht zum Trinken geeignet. Man sollte abgefülltes Wasser verwenden und bei Eiswürfeln sowie ungeschältem Obst vorsichtig sein."
+    },
+    {
+      "question": "Wie erlebt man die Sahara in Tunesien?",
+      "answer": "Das Tor zur Wüste ist die Oasenstadt Douz, von der aus Kamelritte und Geländewagentouren starten. Rund um Tozeur, den Salzsee Chott el-Djerid und Matmata lassen sich faszinierende Wüstenlandschaften erkunden."
+    },
+    {
+      "question": "Welche Kleidung ist in Tunesien angemessen?",
+      "answer": "An Stränden und in Resorts ist Badekleidung üblich. Außerhalb sowie an religiösen und kulturellen Stätten empfiehlt sich respektvolle, eher bedeckte Kleidung; in Moscheen sind Schultern und Knie zu bedecken."
+    },
+    {
+      "question": "Welche Spezialitäten sollte man in Tunesien probieren?",
+      "answer": "Typisch sind Couscous, Brik (gefüllte, frittierte Teigtaschen), Tajine in tunesischer Variante, gegrillter Fisch sowie die scharfe Gewürzpaste Harissa. Dazu gehört süßer Minztee."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Tunesien einplanen?",
+      "answer": "Für einen reinen Strandurlaub reicht eine Woche. Wer Strand mit Kultur in Tunis und Karthago sowie der Sahara verbinden möchte, sollte 10 bis 14 Tage einplanen."
+    }
+  ],
+  "seo_title": "Tunesien Urlaub: Strände, Karthago, Sahara & beste Reisezeit",
+  "seo_description": "Dein Tunesien-Urlaub: Sandstrände und All-Inclusive-Resorts, das antike Karthago, das blau-weiße Sidi Bou Saïd und die Sahara. Beste Reisezeit, Highlights und praktische Reisetipps im Überblick.",
+  "affiliate_search_intent": "Tunesien Urlaub buchen, All-Inclusive Hammamet oder Djerba, Flug und Hotel Tunesien, Pauschalreise Tunesien, Wüstentour Sahara, Rundreise Tunesien",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "marokko",
+    "aegypten",
+    "tuerkei"
+  ],
+  "llmo_entities": [
+    "Tunesien",
+    "Tunis",
+    "Karthago",
+    "Sidi Bou Saïd",
+    "Medina von Tunis",
+    "Djerba",
+    "El Djem",
+    "Kairouan",
+    "Sahara",
+    "Douz",
+    "Tozeur",
+    "Matmata",
+    "Chott el-Djerid",
+    "Hammamet",
+    "Sousse",
+    "Tunesischer Dinar"
+  ],
+  "llmo_answer_block": "Tunesien ist ein vielseitiges Sonnenziel am Mittelmeer mit langen Sandstränden und günstigen All-Inclusive-Resorts in Hammamet, Sousse und auf Djerba, dem antiken Karthago, dem malerischen blau-weißen Sidi Bou Saïd und der Sahara im Süden. Das Land ist gut erreichbar, preiswert und bietet orientalisches Flair sowie herzliche Gastfreundschaft, ideal für Strand-, Kultur- und Wüstenreisen. Die beste Reisezeit liegt im Frühling und Herbst, für Badeurlaub auch im Sommer.",
+  "llmo_quick_answer": "Tunesien ist ein günstiges Mittelmeerziel mit Sandstränden, dem antiken Karthago, dem blau-weißen Sidi Bou Saïd und der Sahara, ideal für Strand- und Kulturreisen."
+}

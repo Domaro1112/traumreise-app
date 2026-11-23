@@ -1,0 +1,115 @@
+{
+  "name": "Irland",
+  "slug": "irland",
+  "country": "Irland",
+  "region": "Westeuropa",
+  "continent": "Europa",
+  "hero_image": "/images/destinations/irland-hero.jpg",
+  "short_description": "Die grüne Insel mit dramatischen Steilküsten, sanften Hügeln, mittelalterlichen Burgen, lebendigem Dublin, Guinness und herzlicher Pub-Kultur.",
+  "long_description": "Irland, die „grüne Insel“, begeistert mit sattgrünen Landschaften, einer dramatischen Atlantikküste und einer einzigartig herzlichen, geselligen Kultur. Die Hauptstadt Dublin verbindet Geschichte und Lebensfreude: vom Book of Kells im Trinity College über das Guinness Storehouse bis zum lebhaften Ausgehviertel Temple Bar mit seiner traditionellen Live-Musik. Das Herz Irlands sind jedoch seine Naturschönheiten – allen voran die gewaltigen Cliffs of Moher, die über 200 Meter steil ins Meer abfallen. Panoramarouten wie der Ring of Kerry und der Wild Atlantic Way entlang der Westküste zählen zu den schönsten Roadtrips Europas und führen durch wilde Regionen wie Connemara und die Dingle-Halbinsel. Mittelalterliche Stätten wie der Rock of Cashel und das prähistorische Newgrange, das älter ist als die ägyptischen Pyramiden, erzählen von einer reichen Vergangenheit. Mit seiner Mischung aus Natur, Geschichte und Geselligkeit ist Irland ideal für Roadtrips, Wander- und Kulturreisen und von Deutschland aus schnell erreichbar.",
+  "ai_summary": "Irland ist die „grüne Insel“ mit dramatischen Steilküsten wie den Cliffs of Moher, Panoramarouten wie dem Wild Atlantic Way und dem Ring of Kerry, dem lebendigen Dublin und herzlicher Pub-Kultur. Es eignet sich ideal für Roadtrips, Natur- und Kulturreisen und ist von Deutschland aus schnell erreichbar.",
+  "best_travel_time": "Mai bis September für möglichst mildes Wetter und lange Tage; das Wetter bleibt jedoch ganzjährig wechselhaft, weshalb der April und Frühherbst ebenfalls reizvoll sind.",
+  "ideal_duration": "rund eine Woche",
+  "travel_type": [
+    "Roadtrip",
+    "Naturreise",
+    "Kulturreise",
+    "Wandern",
+    "Geschichtsreise",
+    "Familien"
+  ],
+  "quick_facts": {
+    "currency": "Euro (EUR)",
+    "language": "Englisch und Irisch (Gälisch)",
+    "flightTime": "ca. 2 bis 2,5 Stunden ab Deutschland (Dublin)",
+    "timezone": "GMT (UTC+0), eine Stunde hinter MEZ",
+    "visa": "Nicht erforderlich für EU-Bürger; Irland gehört zur EU, jedoch nicht zum Schengen-Raum (keine ETA nötig)",
+    "bestMonths": "Mai bis September"
+  },
+  "highlights": [
+    "Dublin – Trinity College mit dem Book of Kells, Temple Bar und Guinness Storehouse",
+    "Cliffs of Moher – über 200 Meter hohe Steilklippen am Atlantik",
+    "Ring of Kerry – eine der schönsten Panoramastraßen Europas",
+    "Wild Atlantic Way – spektakuläre Küstenroute entlang der Westküste",
+    "Connemara und die Dingle-Halbinsel – wilde, ursprüngliche Landschaften",
+    "Rock of Cashel – beeindruckende mittelalterliche Burg- und Kirchenanlage",
+    "Killarney-Nationalpark – Seen, Wälder und Berge im Südwesten",
+    "Newgrange – prähistorisches Ganggrab, älter als die ägyptischen Pyramiden"
+  ],
+  "insider_tips": [
+    "Der Wild Atlantic Way entlang der Westküste ist einer der schönsten Roadtrips Europas und lässt sich gut in Etappen erkunden.",
+    "Echte irische Lebensfreude erlebt man bei einer traditionellen Live-Musik-Session (Trad Session) in einem urigen Pub.",
+    "Die Cliffs of Moher sind am frühen Morgen oder am späten Nachmittag am stimmungsvollsten und am wenigsten überlaufen.",
+    "Das Wetter ist wechselhaft – wer in mehreren Schichten und mit wetterfester Jacke unterwegs ist, bleibt für jede Lage gewappnet."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich für Irland ein Visum oder eine ETA?",
+      "answer": "Nein. Irland ist EU-Mitglied, daher benötigen EU-Bürger kein Visum. Anders als für das Vereinigte Königreich ist auch keine ETA nötig, da Irland nicht zum Schengen-Raum, aber zur EU gehört. Für die Einreise genügt ein gültiger Personalausweis oder Reisepass."
+    },
+    {
+      "question": "Welche Währung gilt in Irland?",
+      "answer": "In der Republik Irland zahlt man mit dem Euro (EUR). Im britischen Nordirland gilt dagegen das Britische Pfund. Kartenzahlung ist nahezu überall möglich."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Irland?",
+      "answer": "Am angenehmsten ist es von Mai bis September mit milderem Wetter und langen Tagen. Das berühmt wechselhafte Wetter mit Regen kann jedoch zu jeder Jahreszeit auftreten, weshalb wetterfeste Kleidung wichtig ist."
+    },
+    {
+      "question": "Fährt man in Irland links?",
+      "answer": "Ja, in Irland herrscht Linksverkehr. Auf den oft schmalen Landstraßen ist eine vorsichtige Fahrweise ratsam. In Dublin ist ein Auto wegen des guten Nahverkehrs nicht nötig."
+    },
+    {
+      "question": "Lohnt sich ein Mietwagen in Irland?",
+      "answer": "Ja, für Roadtrips wie den Ring of Kerry oder den Wild Atlantic Way und zur Erkundung der ländlichen Regionen ist ein Mietwagen ideal. Dublin selbst lässt sich gut zu Fuß und mit öffentlichen Verkehrsmitteln erkunden."
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Irland und Nordirland?",
+      "answer": "Die Republik Irland ist ein eigenständiger EU-Staat mit dem Euro, während Nordirland zum Vereinigten Königreich gehört, das Britische Pfund nutzt und für das eine ETA nötig ist. Beide teilen sich die Insel."
+    },
+    {
+      "question": "Sind die Cliffs of Moher einen Besuch wert?",
+      "answer": "Ja, die Cliffs of Moher zählen zu den eindrucksvollsten Steilküsten Europas. Bei klarem Wetter reicht der Blick weit über den Atlantik; am schönsten ist es früh am Morgen oder zum Sonnenuntergang."
+    },
+    {
+      "question": "Ist Irland für einen Familienurlaub geeignet?",
+      "answer": "Ja, Irland ist familienfreundlich und sicher. Burgen, Tierbeobachtungen, Strände, einfache Wanderungen und die herzliche Gastfreundschaft sorgen für ein entspanntes Reiseerlebnis mit Kindern."
+    },
+    {
+      "question": "Spricht man in Irland Englisch?",
+      "answer": "Ja, Englisch ist die Hauptsprache und überall verständlich. Irisch (Gälisch) ist zweite Amtssprache und vor allem im Westen sowie auf Ortsschildern präsent. Die Verständigung ist für deutsche Reisende unkompliziert."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Irland einplanen?",
+      "answer": "Für Dublin und einen ersten Eindruck reichen einige Tage. Für eine Rundreise mit Westküste, Cliffs of Moher und Ring of Kerry sollte man rund eine Woche oder mehr einplanen."
+    }
+  ],
+  "seo_title": "Irland Urlaub: Cliffs of Moher, Roadtrip, Tipps & beste Reisezeit",
+  "seo_description": "Dein Irland-Urlaub: die grüne Insel mit den Cliffs of Moher, dem Wild Atlantic Way, dem Ring of Kerry, Dublin und herzlicher Pub-Kultur. Beste Reisezeit, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "Irland Reise buchen, Flug nach Dublin, Hotel Dublin, Mietwagen Irland vergleichen, Roadtrip Wild Atlantic Way, Rundreise Irland",
+  "car_rental_recommended": true,
+  "similar_destinations": [
+    "schottland",
+    "england",
+    "island"
+  ],
+  "llmo_entities": [
+    "Irland",
+    "Dublin",
+    "Trinity College",
+    "Book of Kells",
+    "Temple Bar",
+    "Guinness",
+    "Cliffs of Moher",
+    "Ring of Kerry",
+    "Wild Atlantic Way",
+    "Connemara",
+    "Dingle-Halbinsel",
+    "Rock of Cashel",
+    "Killarney-Nationalpark",
+    "Newgrange",
+    "Galway"
+  ],
+  "llmo_answer_block": "Irland, die „grüne Insel“, begeistert mit dramatischen Steilküsten wie den Cliffs of Moher, Panoramarouten wie dem Wild Atlantic Way und dem Ring of Kerry, dem lebendigen Dublin mit Guinness Storehouse und Temple Bar sowie herzlicher Pub-Kultur. Das Land eignet sich ideal für Roadtrips, Natur- und Kulturreisen und ist von Deutschland aus schnell erreichbar. Als EU-Land mit Euro ist für Irland – anders als für das britische Nordirland – keine ETA nötig.",
+  "llmo_quick_answer": "Irland ist die grüne Insel mit den Cliffs of Moher, dem Wild Atlantic Way, dem Ring of Kerry, Dublin und herzlicher Pub-Kultur – als EU-Land ohne ETA bereisbar."
+}

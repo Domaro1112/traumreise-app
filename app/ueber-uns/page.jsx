@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import {
   Zap, UserCheck, Sparkles,
-  Bot, Star, BookOpen, Lightbulb,
+  Star, BookOpen, Lightbulb,
   Compass, Map, CheckCircle2, ShieldCheck,
   Plane, ArrowRight,
 } from 'lucide-react';
@@ -12,9 +12,9 @@ import Container from '@/components/layout/Container';
 import Button from '@/components/ui/Button';
 
 export const metadata = {
-  title: 'ÜberApeAround – Wir machen Reiseplanung persönlicher',
+  title: 'Über ApeAround – Wir machen Reiseplanung persönlicher',
   description:
-    'Erfahre mehr überApeAround.de – KI-gestützte Reiseplanung, kostenlos, persönlich und direkt buchbar. Unsere Mission: weniger Suchen, mehr Vorfreude.',
+    'Erfahre mehr über ApeAround.de – persönliche Reiseplanung, kostenlos und direkt buchbar. Unsere Mission: weniger Suchen, mehr Vorfreude.',
 };
 
 const jsonLd = {
@@ -23,21 +23,21 @@ const jsonLd = {
     {
       '@type': 'Organization',
       '@id': 'https://apearound.de/#organization',
-      name: 'Reisemonkey',
+      name: 'ApeAround',
       url: 'https://apearound.de',
       logo: {
         '@type': 'ImageObject',
         url: 'https://apearound.de/images/logo/reisemonkey-logo.png',
       },
       description:
-        'KI-gestützte Reiseplanung – kostenlos, persönlich und direkt buchbar.',
+        'Persönliche Reiseplanung – kostenlos, inspirierend und direkt buchbar.',
       sameAs: ['https://apearound.de'],
     },
     {
       '@type': 'AboutPage',
       '@id': 'https://apearound.de/ueber-uns',
       url: 'https://apearound.de/ueber-uns',
-      name: 'ÜberApeAround',
+      name: 'Über ApeAround',
       isPartOf: { '@id': 'https://apearound.de/#organization' },
       description:
         'Wir machen Reiseplanung einfacher, persönlicher und ein bisschen wilder.',
@@ -71,8 +71,8 @@ const VALUES = [
 
 const LINKS = [
   {
-    Icon: Bot,
-    title: 'KI-Reisefinder',
+    Icon: Compass,
+    title: 'Reisefinder',
     text: 'Dein persönliches Reiseziel in Minuten.',
     href: '/#reiseplaner',
   },
@@ -99,7 +99,7 @@ const LINKS = [
 const TRUST = [
   'Kostenlose Nutzung — kein Abo, kein Haken.',
   'Keine Anmeldung nötig für Reisevorschläge.',
-  'KI-gestützte Inspiration, die wirklich passt.',
+  'Inspiration, die wirklich zu dir passt.',
   'Direkte Buchungsmöglichkeiten über Partnerlinks.',
   'Transparente Affiliate-Hinweise ohne Mehrkosten für dich.',
 ];
@@ -147,7 +147,7 @@ export default function UeberUns() {
                     marginBottom: '24px',
                   }}
                 >
-                  ÜberApeAround
+                  Über ApeAround
                 </div>
 
                 <h1
@@ -185,7 +185,7 @@ export default function UeberUns() {
                   }}
                 >
                  ApeAround ist entstanden, weil Reiseplanung oft komplizierter ist als die Reise selbst.
-                  Wir wollten einen Ort schaffen, der Inspiration, KI-Unterstützung und echte
+                  Wir wollten einen Ort schaffen, der Inspiration, Orientierung und echte
                   Buchungsmöglichkeiten verbindet — schnell, verständlich und mit Spaß.
                 </p>
 
@@ -218,7 +218,7 @@ export default function UeberUns() {
               <div className="about-hero-img-wrap">
                 <Image
                   src="/images/about/reisemonkey-founders.png"
-                  alt="Die Gründer vonApeAround als Reiseaffen"
+                  alt="Die Gründer von ApeAround als Reiseaffen"
                   className="about-hero-img"
                   width={1672}
                   height={941}
@@ -272,7 +272,7 @@ export default function UeberUns() {
                 letterSpacing: '-0.02em',
               }}
             >
-              Warum wirApeAround{' '}
+              Warum wir ApeAround{' '}
               <span
                 style={{
                   background: 'linear-gradient(135deg, #0EA5E9 0%, #06B6D4 100%)',
@@ -292,7 +292,7 @@ export default function UeberUns() {
                 Unsicherheit als Vorfreude.
               </p>
               <p style={{ marginBottom: '20px' }}>
-                Genau hier setztApeAround an: Wir möchten Reiseplanung wieder leicht machen. Nicht mit
+                Genau hier setzt ApeAround an: Wir möchten Reiseplanung wieder leicht machen. Nicht mit
                 endlosen Listen, sondern mit passenden Vorschlägen, klaren Empfehlungen und direktem Zugang
                 zu Flügen, Hotels, Aktivitäten und Pauschalreisen.
               </p>
@@ -444,8 +444,8 @@ export default function UeberUns() {
                   margin: '0 auto',
                 }}
               >
-                HinterApeAround steht die Idee, Reiseplanung persönlicher und greifbarer zu machen.
-                Die Plattform verbindet moderne KI mit echter Reisesehnsucht: weniger Suchen, mehr Vorfreude.
+                Hinter ApeAround steht die Idee, Reiseplanung persönlicher und greifbarer zu machen.
+                Die Plattform verbindet kluge Reisefinder mit echter Reisesehnsucht: weniger Suchen, mehr Vorfreude.
               </p>
             </div>
 
@@ -619,7 +619,7 @@ export default function UeberUns() {
                   letterSpacing: '-0.02em',
                 }}
               >
-                Was du beiApeAround erwarten kannst
+                Was du bei ApeAround erwarten kannst
               </h2>
             </div>
 

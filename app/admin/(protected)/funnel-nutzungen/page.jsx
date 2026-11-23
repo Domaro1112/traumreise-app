@@ -164,7 +164,7 @@ export default async function FunnelNutzungenPage({ searchParams }) {
       {topDestinations.length > 0 && (
         <div style={{ background: '#FFFFFF', borderRadius: '14px', border: '1.5px solid #E2E8F0', padding: '18px 20px', marginBottom: '24px' }}>
           <div style={{ fontSize: '12px', fontWeight: 700, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>
-            Top Reiseziele (30 Tage, Platz 1 der KI-Empfehlung)
+            Top Reiseziele (30 Tage, Platz 1 der Empfehlung)
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
             {topDestinations.map(({ destination, count }, i) => (

@@ -1,12 +1,12 @@
 'use client';
 
-import { PenLine, Cpu, Map, Plane } from 'lucide-react';
+import { PenLine, Compass, Map, Plane } from 'lucide-react';
 import Container from '@/components/layout/Container';
 import SectionTitle from '@/components/ui/SectionTitle';
 import Button from '@/components/ui/Button';
 import { howItWorksSteps } from '@/data/features';
 
-const STEP_ICON_MAP = { PenLine, Cpu, Map };
+const STEP_ICON_MAP = { PenLine, Compass, Map };
 
 export default function HowItWorksSection() {
   return (

@@ -7,12 +7,12 @@ import { listPublishedDestinations } from '@/repositories/destinations-cms';
 export const revalidate = 60;
 
 export const metadata = {
-  title: 'Reiseziele entdecken – Urlaubsideen & Inspirationen |ApeAround',
+  title: 'Reiseziele entdecken – Urlaubsideen & Inspirationen | ApeAround',
   description:
     'Entdecke traumhafte Reiseziele weltweit – von Mallorca bis Bali. Mit Highlights, bester Reisezeit, Insider-Tipps und direkten Buchungslinks. Kostenlos & unverbindlich.',
   robots: { index: true, follow: true },
   openGraph: {
-    title: 'Reiseziele entdecken |ApeAround',
+    title: 'Reiseziele entdecken | ApeAround',
     description:
       'Traumhafte Reiseziele weltweit: Mallorca, Bali, Kreta und weitere Destinationen mit Tipps, Highlights und Angeboten.',
     url: 'https://www.apearound.de/reiseziele',

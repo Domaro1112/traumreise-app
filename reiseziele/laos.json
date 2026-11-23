@@ -1,0 +1,119 @@
+{
+  "name": "Laos",
+  "slug": "laos",
+  "country": "Laos",
+  "region": "Südostasien",
+  "continent": "Asien",
+  "hero_image": "/images/destinations/laos-hero.jpg",
+  "short_description": "Entschleunigtes Südostasien-Ziel am Mekong mit goldenen Tempeln, Karstbergen, Wasserfällen und der UNESCO-Stadt Luang Prabang – ursprünglich und ruhig.",
+  "long_description": "Laos ist das ruhige, ursprüngliche Herz Südostasiens – ein gebirgiges Binnenland am Mekong, das mit Gelassenheit und unberührter Natur verzaubert. Das Juwel des Landes ist die UNESCO-Welterbestadt Luang Prabang mit ihren goldenen Tempeln, dem morgendlichen Almosengang der Mönche und französischem Kolonialcharme. In der Umgebung locken die türkisblauen Becken der Kuang-Si-Wasserfälle. Vang Vieng begeistert mit dramatischen Karstbergen, Lagunen, Höhlen und Heißluftballonfahrten, während die Hauptstadt Vientiane mit dem goldenen Nationaldenkmal That Luang und entspanntem Flair aufwartet. Im Süden liegen die verträumten 4000 Inseln (Si Phan Don) im Mekong sowie das kaffeereiche Bolaven-Plateau, im Norden die geheimnisvolle Ebene der Tonkrüge. Laos ist deutlich weniger touristisch als seine Nachbarn, sehr günstig und ideal für Reisende, die Natur, Kultur und Entschleunigung suchen.",
+  "ai_summary": "Laos ist ein ruhiges, ursprüngliches Binnenland in Südostasien am Mekong mit der UNESCO-Stadt Luang Prabang, den Kuang-Si-Wasserfällen, den Karstbergen von Vang Vieng und den 4000 Inseln im Süden. Es ist weniger touristisch, sehr günstig und eignet sich ideal für entschleunigte Rundreisen mit Natur und Kultur.",
+  "best_travel_time": "Die beste Reisezeit ist die kühle Trockenzeit von November bis Februar; insgesamt sind die Monate Oktober bis April günstig, während von Mai bis September Regenzeit herrscht.",
+  "ideal_duration": "1 bis 2 Wochen",
+  "travel_type": [
+    "Rundreise",
+    "Kulturreise",
+    "Naturreise",
+    "Backpacking",
+    "Abenteuer",
+    "Erholung"
+  ],
+  "quick_facts": {
+    "currency": "Laotischer Kip (LAK)",
+    "language": "Laotisch",
+    "flightTime": "Keine Direktflüge; ca. 14 bis 16 Stunden mit Zwischenstopp, meist über Bangkok oder Hanoi",
+    "timezone": "ICT (UTC+7), sechs Stunden vor MEZ",
+    "visa": "Visum erforderlich; als Visa on Arrival oder E-Visum (in der Regel 30 Tage) erhältlich",
+    "bestMonths": "November bis Februar"
+  },
+  "highlights": [
+    "Luang Prabang – UNESCO-Welterbe mit Tempeln und dem morgendlichen Almosengang der Mönche",
+    "Kuang-Si-Wasserfälle – türkisblaue Becken zum Staunen und Baden",
+    "Vang Vieng – dramatische Karstberge, Lagunen, Höhlen und Ballonfahrten",
+    "Vientiane – entspannte Hauptstadt mit dem goldenen Nationaldenkmal That Luang",
+    "4000 Inseln (Si Phan Don) – verträumte Mekong-Inseln im Süden",
+    "Ebene der Tonkrüge – geheimnisvolles archäologisches UNESCO-Welterbe",
+    "Bolaven-Plateau – Kaffeeanbau, kühles Klima und Wasserfälle",
+    "Mekong – Fahrten mit dem traditionellen Slow Boat durch die Flusslandschaft"
+  ],
+  "insider_tips": [
+    "Eine Fahrt mit dem Slow Boat über den Mekong nach Luang Prabang ist ein entschleunigtes Reiseerlebnis und schöner als der schnellere Landweg.",
+    "Beim morgendlichen Almosengang (Tak Bat) der Mönche in Luang Prabang sollte man respektvoll Abstand halten, leise sein und nur teilnehmen, wenn man die Gepflogenheiten kennt.",
+    "Die neue Schnellzugstrecke zwischen Vientiane, Vang Vieng und Luang Prabang macht das Reisen im Land bequem, schnell und günstig.",
+    "Die Kuang-Si-Wasserfälle am besten früh am Morgen besuchen, bevor die Tagestouren aus Luang Prabang eintreffen."
+  ],
+  "faq": [
+    {
+      "question": "Brauche ich ein Visum für Laos?",
+      "answer": "Ja, deutsche Staatsbürger benötigen für Laos ein Visum. Es ist als Visa on Arrival bei der Einreise oder bequem als E-Visum vorab online erhältlich und gilt in der Regel für 30 Tage. Der Reisepass muss noch mindestens sechs Monate gültig sein."
+    },
+    {
+      "question": "Wann ist die beste Reisezeit für Laos?",
+      "answer": "Ideal ist die kühle Trockenzeit von November bis Februar. Insgesamt sind die Monate Oktober bis April günstig, während von Mai bis September Regenzeit mit höherer Luftfeuchtigkeit herrscht."
+    },
+    {
+      "question": "Wie kommt man nach Laos?",
+      "answer": "Es gibt keine Direktflüge aus Deutschland; die Anreise erfolgt mit Zwischenstopp, meist über Bangkok, Hanoi oder Singapur. Beliebt ist auch die Einreise auf dem Landweg von Thailand oder Vietnam aus."
+    },
+    {
+      "question": "Wie reist man innerhalb von Laos?",
+      "answer": "Praktisch sind die neue Schnellzugstrecke, Busse, Minivans und Inlandsflüge sowie die traditionellen Slow Boats auf dem Mekong. Ein eigener Mietwagen ist unüblich; verbreiteter ist ein Fahrzeug mit Fahrer."
+    },
+    {
+      "question": "Welche Währung gilt in Laos?",
+      "answer": "Gezahlt wird mit dem Laotischen Kip (LAK). Bargeld ist sehr wichtig, da Kartenzahlung außerhalb größerer Orte selten möglich ist. In touristischen Gebieten werden teils auch thailändische Baht oder US-Dollar akzeptiert."
+    },
+    {
+      "question": "Ist Laos ein günstiges Reiseland?",
+      "answer": "Ja, Laos zählt zu den preiswertesten Ländern Südostasiens. Unterkünfte, Essen und Transport sind sehr günstig, was es besonders für Rundreisen und Backpacking attraktiv macht."
+    },
+    {
+      "question": "Kann man in Laos das Leitungswasser trinken?",
+      "answer": "Nein, das Leitungswasser ist nicht zum Trinken geeignet. Man sollte abgefülltes Wasser verwenden und bei Eiswürfeln sowie rohen Speisen vorsichtig sein."
+    },
+    {
+      "question": "Welche Impfungen werden für Laos empfohlen?",
+      "answer": "Vorgeschrieben sind in der Regel keine Impfungen. Empfohlen werden Standardimpfungen sowie je nach Reiseart Hepatitis A und teils Typhus. Für eine individuelle Beratung sollte man rechtzeitig ein Tropeninstitut oder den Hausarzt aufsuchen."
+    },
+    {
+      "question": "Ist Laos sicher für Reisende?",
+      "answer": "Ja, Laos gilt als sicheres und sehr entspanntes Reiseland mit gastfreundlichen Menschen. Vorsicht ist im Straßenverkehr geboten; in einigen abgelegenen Gebieten gibt es zudem noch nicht geräumte Blindgänger, weshalb man markierte Wege nicht verlassen sollte."
+    },
+    {
+      "question": "Ist Laos für einen Familienurlaub geeignet?",
+      "answer": "Ja, das entspannte Tempo, Naturerlebnisse wie Wasserfälle und Bootsfahrten sowie die freundlichen Menschen eignen sich gut für Familien. Wegen der langen Anreise und Fahrten empfiehlt sich etwas mehr Reisezeit."
+    },
+    {
+      "question": "Wie viele Tage sollte man für Laos einplanen?",
+      "answer": "Für die Höhepunkte im Norden mit Luang Prabang, Vang Vieng und Vientiane reicht etwa eine Woche. Wer auch den Süden mit den 4000 Inseln und dem Bolaven-Plateau erleben möchte, sollte 2 Wochen einplanen."
+    }
+  ],
+  "seo_title": "Laos Urlaub: Luang Prabang, Mekong, Reisetipps & beste Reisezeit",
+  "seo_description": "Dein Laos-Urlaub: die UNESCO-Stadt Luang Prabang, Kuang-Si-Wasserfälle, Vang Vieng, der Mekong und die 4000 Inseln. Beste Reisezeit, Visum, Highlights und Reisetipps im Überblick.",
+  "affiliate_search_intent": "Laos Rundreise buchen, Flug nach Vientiane oder Luang Prabang, Hotel Luang Prabang, Mekong-Kreuzfahrt, Backpacking Südostasien, Laos Vietnam Kombireise",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "vietnam",
+    "kambodscha",
+    "thailand"
+  ],
+  "llmo_entities": [
+    "Laos",
+    "Luang Prabang",
+    "Mekong",
+    "Kuang-Si-Wasserfälle",
+    "Vang Vieng",
+    "Vientiane",
+    "That Luang",
+    "4000 Inseln",
+    "Si Phan Don",
+    "Ebene der Tonkrüge",
+    "Bolaven-Plateau",
+    "Slow Boat",
+    "Laotischer Kip",
+    "Almosengang",
+    "Südostasien"
+  ],
+  "llmo_answer_block": "Laos ist ein ruhiges, ursprüngliches Binnenland in Südostasien am Mekong, bekannt für die UNESCO-Welterbestadt Luang Prabang, die Kuang-Si-Wasserfälle, die Karstberge von Vang Vieng, die Hauptstadt Vientiane und die verträumten 4000 Inseln im Süden. Das Land ist weniger touristisch als seine Nachbarn, sehr günstig und ideal für entschleunigte Rundreisen mit Natur und Kultur. Die beste Reisezeit ist die kühle Trockenzeit von November bis Februar.",
+  "llmo_quick_answer": "Laos ist ein ruhiges Südostasien-Ziel am Mekong mit Luang Prabang, Wasserfällen, Karstbergen und den 4000 Inseln, am besten von November bis Februar."
+}

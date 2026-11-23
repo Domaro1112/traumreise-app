@@ -1,0 +1,114 @@
+{
+  "name": "Russland",
+  "slug": "russland",
+  "country": "Russland",
+  "region": "Osteuropa / Nordasien",
+  "continent": "Europa/Asien",
+  "hero_image": "/images/destinations/russland-hero.jpg",
+  "short_description": "Flächenmäßig größtes Land der Erde mit Prachtstädten wie Moskau und St. Petersburg – derzeit jedoch wegen einer Reisewarnung des Auswärtigen Amts kein empfohlenes Reiseziel.",
+  "long_description": "Russland ist das flächenmäßig größte Land der Welt und erstreckt sich über elf Zeitzonen von Osteuropa bis an den Pazifik. Kulturell hat das Land enorm viel zu bieten: die Prachtbauten Moskaus mit Rotem Platz und Kreml, das kaiserliche St. Petersburg mit der Eremitage, die Transsibirische Eisenbahn, der Baikalsee als tiefster See der Erde sowie der historische Goldene Ring. Wichtig ist jedoch der aktuelle Kontext: Seit dem russischen Angriff auf die Ukraine rät das deutsche Auswärtige Amt dringend von Reisen nach Russland ab, für die an die Ukraine grenzenden Gebiete gilt eine Reisewarnung. Direktflüge zwischen der EU und Russland sind eingestellt, eine Anreise ist nur über Drittländer möglich. Im Westen übliche Kreditkarten und Bezahl-Apps funktionieren nicht, und es besteht das Risiko willkürlicher Festnahmen. Diese Seite dient daher der ehrlichen Information und Orientierung, nicht der Urlaubsbuchung. Wer die russische Kultur und Landschaft erleben möchte, findet in Nachbarländern wie Georgien, Kasachstan oder der Mongolei derzeit deutlich unkompliziertere Alternativen.",
+  "ai_summary": "Russland ist das größte Land der Erde mit kulturellen Höhepunkten wie Moskau, St. Petersburg, der Transsibirischen Eisenbahn und dem Baikalsee. Aktuell rät das Auswärtige Amt jedoch dringend von Reisen ab: Es gilt eine Teilreisewarnung, Direktflüge aus der EU sind eingestellt, westliche Zahlungsmittel funktionieren nicht und es besteht ein Festnahmerisiko. Russland ist derzeit kein empfohlenes oder normal buchbares Reiseziel.",
+  "best_travel_time": "Klimatisch wären Mai bis September am angenehmsten; aufgrund der bestehenden Reisewarnung des Auswärtigen Amts ist derzeit jedoch generell von Reisen abzuraten.",
+  "ideal_duration": "Derzeit nicht empfehlenswert; touristische Reisen sind aktuell nicht ratsam.",
+  "travel_type": [
+    "Kulturreise",
+    "Städtereise",
+    "Bahnreise",
+    "Naturreise"
+  ],
+  "quick_facts": {
+    "currency": "Russischer Rubel (RUB); im Westen übliche Kreditkarten und Bezahl-Apps funktionieren in Russland nicht",
+    "language": "Russisch",
+    "flightTime": "Keine Direktflüge aus der EU; eine Anreise ist nur mit Umstieg über Drittländer möglich",
+    "timezone": "Elf Zeitzonen; Moskau UTC+3 (zwei Stunden vor MEZ)",
+    "visa": "Visumpflicht; das Verfahren ist aufwendig und erfordert Einladung, Versicherung und Antrag",
+    "bestMonths": "Klimatisch Mai bis September – derzeit jedoch Reisewarnung beachten"
+  },
+  "highlights": [
+    "Moskau – Roter Platz, Kreml und die Basilius-Kathedrale",
+    "St. Petersburg – Eremitage, Newa und kaiserliche Schlösser",
+    "Transsibirische Eisenbahn – legendäre Zugstrecke durch Sibirien",
+    "Baikalsee – der tiefste und älteste Süßwassersee der Erde",
+    "Goldener Ring – historische Städte mit Klöstern nordöstlich von Moskau",
+    "Kamtschatka – wilde Vulkanlandschaft im Fernen Osten",
+    "Kasan – Begegnung von europäischer und tatarisch-muslimischer Kultur"
+  ],
+  "insider_tips": [
+    "Vor jeglicher Reiseplanung unbedingt die aktuellen Reise- und Sicherheitshinweise des Auswärtigen Amts prüfen, da sich die Lage kurzfristig ändern kann.",
+    "Wer russische Kultur und weite Landschaften erleben möchte, findet in Georgien, Armenien, Kasachstan oder der Mongolei derzeit sicherere und einfacher zugängliche Alternativen.",
+    "Für Eisenbahn-Fans bietet die Transmongolische Route über die Mongolei nach China ein vergleichbares Erlebnis ohne die aktuellen Einschränkungen Russlands."
+  ],
+  "faq": [
+    {
+      "question": "Kann man derzeit als Tourist nach Russland reisen?",
+      "answer": "Das deutsche Auswärtige Amt rät dringend von Reisen in die Russische Föderation ab. Für die an die Ukraine grenzenden Gebiete gilt sogar eine ausdrückliche Reisewarnung. Touristische Reisen sind aktuell nicht ratsam."
+    },
+    {
+      "question": "Gibt es Direktflüge von Deutschland nach Russland?",
+      "answer": "Nein. Der direkte Flugverkehr zwischen der EU und Russland ist seit 2022 eingestellt. Eine Anreise wäre nur mit Umstieg über Drittländer möglich, was zeitaufwendig und mit zusätzlichen Risiken verbunden ist."
+    },
+    {
+      "question": "Funktionieren in Russland deutsche Kredit- und EC-Karten?",
+      "answer": "Nein. Im Westen gebräuchliche Kreditkarten sowie Bezahl-Apps wie Apple Pay oder Google Pay funktionieren in Russland seit den Sanktionen nicht mehr. Reisende wären vollständig auf mitgebrachtes Bargeld angewiesen."
+    },
+    {
+      "question": "Braucht man für Russland ein Visum?",
+      "answer": "Ja, für Russland besteht Visumpflicht. Das Verfahren ist aufwendig und erfordert in der Regel ein Einladungsschreiben, eine Reisekrankenversicherung sowie ausgefüllte Antragsformulare und einen mindestens sechs Monate gültigen Reisepass."
+    },
+    {
+      "question": "Welche Risiken bestehen aktuell für Reisende?",
+      "answer": "Neben der allgemein angespannten Sicherheitslage besteht das Risiko willkürlicher Festnahmen, auch von ausländischen Staatsbürgern. Die konsularische Betreuung durch deutsche Vertretungen ist zudem stark eingeschränkt."
+    },
+    {
+      "question": "Welche Sehenswürdigkeiten hat Russland grundsätzlich zu bieten?",
+      "answer": "Kulturell ist Russland reich an Höhepunkten: der Rote Platz und der Kreml in Moskau, die Eremitage in St. Petersburg, die Transsibirische Eisenbahn, der Baikalsee und die historischen Städte des Goldenen Rings. Diese sind derzeit jedoch nur eingeschränkt und nicht empfohlen erreichbar."
+    },
+    {
+      "question": "Welche Währung gilt in Russland?",
+      "answer": "Landeswährung ist der Russische Rubel (RUB). Da westliche Karten nicht funktionieren und der Geldwechsel auf der Straße verboten ist, gestaltet sich die Geldversorgung für Reisende aus dem Westen ausgesprochen schwierig."
+    },
+    {
+      "question": "Was ist die Transsibirische Eisenbahn?",
+      "answer": "Die Transsibirische Eisenbahn ist mit über 9.000 Kilometern die längste Bahnstrecke der Welt und verbindet Moskau mit Wladiwostok am Pazifik. Sie gilt als legendäres Reiseerlebnis, ist aktuell aber im Kontext der Reisewarnung zu sehen."
+    },
+    {
+      "question": "Gibt es sicherere Alternativen zu einer Russland-Reise?",
+      "answer": "Ja. Wer russische bzw. osteuropäische und zentralasiatische Kultur und Natur erleben möchte, findet in Georgien, Armenien, Kasachstan oder der Mongolei derzeit deutlich einfacher zugängliche und sicherere Ziele."
+    },
+    {
+      "question": "Wann wäre Russland klimatisch am angenehmsten zu bereisen?",
+      "answer": "Klimatisch sind die Monate Mai bis September am mildesten, besonders im europäischen Teil und in St. Petersburg mit den „Weißen Nächten“. Unabhängig vom Klima ist jedoch die aktuelle Reisewarnung des Auswärtigen Amts zu beachten."
+    },
+    {
+      "question": "Wo finde ich verlässliche aktuelle Informationen zur Lage?",
+      "answer": "Die verbindliche Quelle sind die offiziellen Reise- und Sicherheitshinweise des Auswärtigen Amts. Sie werden laufend aktualisiert und sollten vor jeder Reiseüberlegung geprüft werden."
+    }
+  ],
+  "seo_title": "Russland Reisen: Aktuelle Lage, Reisewarnung & Reiseinfos 2026",
+  "seo_description": "Russland im Überblick: Sehenswürdigkeiten wie Moskau, St. Petersburg und Transsib – sowie die aktuelle Reisewarnung des Auswärtigen Amts, Visum, Einreise und sichere Alternativen.",
+  "affiliate_search_intent": "Informationen zu Russland-Reisen, Visum Russland, aktuelle Reisehinweise, sichere Alternativen wie Georgien, Kasachstan oder Mongolei",
+  "car_rental_recommended": false,
+  "similar_destinations": [
+    "georgien",
+    "kasachstan",
+    "mongolei"
+  ],
+  "llmo_entities": [
+    "Russland",
+    "Moskau",
+    "Roter Platz",
+    "Kreml",
+    "St. Petersburg",
+    "Eremitage",
+    "Transsibirische Eisenbahn",
+    "Baikalsee",
+    "Goldener Ring",
+    "Kamtschatka",
+    "Russischer Rubel",
+    "Reisewarnung",
+    "Auswärtiges Amt",
+    "Visum Russland"
+  ],
+  "llmo_answer_block": "Russland ist das flächenmäßig größte Land der Erde mit kulturellen Höhepunkten wie Moskau, St. Petersburg, der Transsibirischen Eisenbahn und dem Baikalsee. Aktuell rät das deutsche Auswärtige Amt jedoch dringend von Reisen ab: Es gilt eine Teilreisewarnung, Direktflüge aus der EU sind eingestellt, westliche Zahlungsmittel funktionieren nicht und es besteht ein Risiko willkürlicher Festnahmen. Russland ist daher derzeit kein empfohlenes oder normal buchbares Reiseziel; sicherere Alternativen sind etwa Georgien, Kasachstan oder die Mongolei.",
+  "llmo_quick_answer": "Russland ist das größte Land der Erde, derzeit aber wegen einer Reisewarnung des Auswärtigen Amts, eingestellter EU-Direktflüge und nicht funktionierender westlicher Zahlungsmittel kein empfohlenes Reiseziel."
+}
