@@ -412,7 +412,7 @@ export function normalizeDestinationKey(value) {
 
   let s = value.toLowerCase().trim();
 
-  // German umlauts BEFORE NFD normalization (they're precomposed in AI output)
+  // German umlauts BEFORE NFD normalization (they're precomposed in imported data)
   s = s
     .replace(/ä/g, 'ae')
     .replace(/ö/g, 'oe')

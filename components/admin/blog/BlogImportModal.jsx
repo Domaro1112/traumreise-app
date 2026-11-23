@@ -6,7 +6,7 @@ import {
   AlertTriangle, AlertCircle, RefreshCw, ChevronDown, ChevronUp,
 } from 'lucide-react';
 import { validateBlogImport } from '@/lib/validate-blog-import';
-import { EXAMPLE_BLOG_JSON, BLOG_CLAUDE_PROMPT } from '@/lib/blog-import-example';
+import { EXAMPLE_BLOG_JSON, BLOG_PROMPT_TEMPLATE } from '@/lib/blog-import-example';
 
 // ── Shared styles ─────────────────────────────────────────────────────────────
 const S = {
@@ -270,7 +270,7 @@ export default function BlogImportModal({ open, onClose, onImport }) {
             ))}
           </div>
 
-          {/* ── 1. Claude Prompt ── */}
+          {/* ── 1. Vorlage ── */}
           <div style={{ border: '1.5px solid #E2E8F0', borderRadius: '14px', marginBottom: '20px', overflow: 'hidden' }}>
             <button
               onClick={() => setPromptOpen(p => !p)}
@@ -282,10 +282,10 @@ export default function BlogImportModal({ open, onClose, onImport }) {
               }}
             >
               <span style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A' }}>
-                1. Prompt für Claude
+                1. Vorlage für das Importformat
               </span>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <span style={{ fontSize: '12px', color: '#64748B' }}>Vorlage kopieren und bei Claude einfügen</span>
+                <span style={{ fontSize: '12px', color: '#64748B' }}>Vorlage mit allen Pflichtfeldern kopieren</span>
                 {promptOpen ? <ChevronUp size={15} strokeWidth={2} color="#64748B" /> : <ChevronDown size={15} strokeWidth={2} color="#64748B" />}
               </div>
             </button>
@@ -299,9 +299,9 @@ export default function BlogImportModal({ open, onClose, onImport }) {
                   margin: '0 0 12px',
                   whiteSpace: 'pre-wrap', color: '#334155', lineHeight: 1.65,
                 }}>
-                  {BLOG_CLAUDE_PROMPT}
+                  {BLOG_PROMPT_TEMPLATE}
                 </pre>
-                <CopyButton text={BLOG_CLAUDE_PROMPT} label="Prompt kopieren" labelDone="Kopiert" />
+                <CopyButton text={BLOG_PROMPT_TEMPLATE} label="Vorlage kopieren" labelDone="Kopiert" />
               </div>
             )}
           </div>

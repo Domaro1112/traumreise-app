@@ -338,7 +338,7 @@ export default async function DestinationPage({ params }) {
                   </div>
                 )}
 
-                {/* AI Summary (LLMO) */}
+                {/* Zusammenfassung (LLMO) */}
                 {dest.aiSummary && (
                   <div
                     itemScope

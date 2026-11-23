@@ -79,7 +79,7 @@ export default function MotorcycleFunnel() {
   const handleNext = () => {
     const next = step + 1;
     setStep(next);
-    // Kurze Ladeanimation, danach regelbasiertes Ergebnis (keine KI)
+    // Kurze Ladeanimation, danach regelbasiertes Ergebnis
     if (next >= QUESTIONS.length) {
       setLoading(true);
       setTimeout(() => setLoading(false), 900);

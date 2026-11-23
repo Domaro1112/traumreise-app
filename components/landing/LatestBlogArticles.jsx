@@ -10,7 +10,6 @@ const CATEGORY_COLORS = {
   Städtereisen:        { bg: '#F5F3FF', border: '#DDD6FE', color: '#6D28D9' },
   'Natur & Abenteuer': { bg: '#ECFEFF', border: '#A5F3FC', color: '#0E7490' },
   Familienurlaub:      { bg: '#FFF1F2', border: '#FECDD3', color: '#BE123C' },
-  'KI-Reiseplanung':   { bg: '#EFF6FF', border: '#BFDBFE', color: '#1D4ED8' },
 };
 const CAT_DEFAULT = { bg: '#F8FAFF', border: '#E2E8F0', color: '#475569' };
 

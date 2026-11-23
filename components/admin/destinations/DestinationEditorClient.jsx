@@ -503,7 +503,7 @@ export default function DestinationEditorClient({ initialData, isNew }) {
         <Field label="Langbeschreibung" hint="Ausführlicher Fließtext für die Detailseite.">
           <TextArea value={form.long_description} onChange={v => set('long_description', v)} rows={8} />
         </Field>
-        <Field label="AI Summary" hint="Kompakter Absatz für LLMO/AEO – zitierbare Kurzfakten für KI-Übersichten.">
+        <Field label="Kurzfassung" hint="Kompakter Absatz mit zitierbaren Kurzfakten – wird als „ApeAround Zusammenfassung“ angezeigt.">
           <TextArea value={form.ai_summary} onChange={v => set('ai_summary', v)} rows={4} />
         </Field>
         <div style={grid2}>
@@ -539,7 +539,7 @@ export default function DestinationEditorClient({ initialData, isNew }) {
         <Field label="Insider-Tipps" hint="Praktische Tipps für Reisende.">
           <SimpleListEditor value={form.insider_tips} onChange={v => set('insider_tips', v)} placeholder="z.B. Mietwagen früh buchen…" />
         </Field>
-        <Field label="FAQ" hint="Häufige Fragen mit Antworten – optimiert für Google FAQPage und AI Overviews.">
+        <Field label="FAQ" hint="Häufige Fragen mit Antworten – optimiert für Google FAQPage und Antwortboxen.">
           <FaqEditor value={form.faq} onChange={v => set('faq', v)} />
         </Field>
       </div>
@@ -733,13 +733,13 @@ export default function DestinationEditorClient({ initialData, isNew }) {
         {/* ── LLMO / AEO ── */}
         <div style={{ borderTop: '1px solid #F1F5F9', paddingTop: '18px', marginTop: '8px' }}>
           <p style={{ fontSize: '11px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.05em', textTransform: 'uppercase', margin: '0 0 14px' }}>
-            LLMO / AEO (KI-Suchmaschinen)
+            LLMO / AEO (Antwort-Optimierung für Suchmaschinen)
           </p>
-          <Field label="AI Quick Answer" hint="Kurze, zitierbare Antwort für KI-Systeme (1–3 Sätze). Erscheint im AI Summary Block.">
+          <Field label="Kurzantwort" hint="Kurze, zitierbare Antwort (1–3 Sätze) für Featured Snippets und Antwortboxen.">
             <TextArea value={form.llmo_quick_answer} onChange={v => set('llmo_quick_answer', v)} rows={3} placeholder="Mallorca ist die größte Baleareninsel Spaniens…" />
           </Field>
           <Field label="LLMO Answer Block" hint="Ausführlicherer Antwortblock für Perplexity, ChatGPT, Gemini etc.">
-            <TextArea value={form.llmo_answer_block} onChange={v => set('llmo_answer_block', v)} rows={5} placeholder="Ausführliche strukturierte Antwort für KI-Systeme…" />
+            <TextArea value={form.llmo_answer_block} onChange={v => set('llmo_answer_block', v)} rows={5} placeholder="Ausführliche strukturierte Antwort für Übersichtsboxen…" />
           </Field>
           <Field label="Entitäten" hint="Wichtige Named Entities für LLMO (Orte, Attraktionen, Personen).">
             <SimpleListEditor value={form.llmo_entities} onChange={v => set('llmo_entities', v)} placeholder="z.B. Tramuntana-Gebirge" />

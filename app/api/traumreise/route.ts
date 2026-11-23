@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { matchTraumreise } from '@/lib/traumreise/match';
 import { createSession, saveAnalysis } from '@/repositories/travel-funnel';
 
-// Regelbasierter Reisefinder – ersetzt die frühere KI-Route /api/ai/travel-save.
+// Regelbasierter Reisefinder.
 // Wählt passende Ziele aus dem Traumreise-Katalog, speichert das Ergebnis in
 // travel_funnel_sessions und gibt die Session-ID für /traumreise/[id] zurück.
 

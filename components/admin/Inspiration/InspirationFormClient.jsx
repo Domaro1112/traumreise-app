@@ -370,7 +370,7 @@ export default function InspirationFormClient({ initial }) {
           <textarea value={form.seo_description} onChange={set('seo_description')} placeholder="Günstige Pauschalreisen nach Santorini mit Flug und Hotel..." rows={2} style={{ ...FIELD_STYLE, resize: 'vertical' }} />
         </Field>
 
-        <Field label="LLMO Summary" hint="Beschreibung für KI-Sprachmodelle (Google SGE, ChatGPT, Perplexity)">
+        <Field label="LLMO Summary" hint="Kompakte Beschreibung für Suchmaschinen und Antwortboxen">
           <textarea value={form.llmo_summary} onChange={set('llmo_summary')} placeholder="Santorini ist eine griechische Kykladen-Insel bekannt für..." rows={3} style={{ ...FIELD_STYLE, resize: 'vertical' }} />
         </Field>
       </div>

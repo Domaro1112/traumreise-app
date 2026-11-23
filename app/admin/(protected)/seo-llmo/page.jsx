@@ -397,7 +397,7 @@ export default async function SeoLlmoPage({ searchParams }) {
                     { label: 'Name'         },
                     { label: 'SEO',    hint: 'Interne SEO-Feldprüfung (0–100): Titel, Meta, Slug, Bild, FAQ, …'         },
                     { label: 'AEO',    hint: 'Answer Engine Optimization: FAQ-Abdeckung, Direkt-Antworten (0–100)'      },
-                    { label: 'LLMO',   hint: 'LLM Optimization: AI-Felder, LLMO-Quick-Answer, Entities (0–100)'         },
+                    { label: 'LLMO',   hint: 'Antwort-Optimierung: Kurzfassung, Kurzantwort, Entities (0–100)'         },
                     { label: 'FAQ'          },
                     { label: 'JSON-LD', hint: '✓ Vollst. = Bild + Beschreibung vorhanden · ~ Teilw. = ein Feld fehlt · ! Felder = beide Felder fehlen' },
                     { label: 'Status'       },
