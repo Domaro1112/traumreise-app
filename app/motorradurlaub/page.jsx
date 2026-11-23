@@ -38,12 +38,12 @@ export default function MotorradUrlaubPage() {
     name: 'Motorradurlaub planen | Routen, Tipps & Reiseideen',
     description:
       'Plane deinen Motorradurlaub mit ApeAround: schöne Routen, passende Reiseziele, Etappen, Unterkünfte und Tipps für Reisen auf zwei Rädern.',
-    url: 'https://www.apearound.de/motorradurlaub',
+    url: 'https://apearound.de/motorradurlaub',
     breadcrumb: {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home',           item: 'https://www.apearound.de' },
-        { '@type': 'ListItem', position: 2, name: 'Motorradurlaub', item: 'https://www.apearound.de/motorradurlaub' },
+        { '@type': 'ListItem', position: 1, name: 'Home',           item: 'https://apearound.de' },
+        { '@type': 'ListItem', position: 2, name: 'Motorradurlaub', item: 'https://apearound.de/motorradurlaub' },
       ],
     },
   };

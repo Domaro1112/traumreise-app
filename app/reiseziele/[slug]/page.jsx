@@ -8,7 +8,7 @@ import DestinationAffiliateSection from '@/components/destinations/DestinationAf
 import DestinationFAQ from '@/components/destinations/DestinationFAQ';
 import { getDestinationBySlugPublic, listPublishedSlugs } from '@/repositories/destinations-cms';
 
-const BASE_URL = 'https://www.apearound.de';
+const BASE_URL = 'https://apearound.de';
 
 // Allow on-demand rendering for slugs not yet in generateStaticParams()
 // (destinations published after the last build). Without this, Next.js 16.x
