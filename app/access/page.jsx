@@ -111,7 +111,7 @@ export default function AccessPage() {
             src="/images/logo/apearound-logo.png"
             alt="ApeAround.de – Deine Reise beginnt mit einer Idee"
             width={1600}
-            height={518}
+            height={534}
             priority
             sizes="320px"
             style={{ width: '100%', maxWidth: '320px', height: 'auto', display: 'block', margin: '0 auto' }}

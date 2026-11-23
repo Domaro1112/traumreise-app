@@ -60,7 +60,7 @@ export default function Footer() {
                 src="/images/logo/apearound-logo.png"
                 alt="ApeAround"
                 width={1600}
-                height={518}
+                height={534}
                 style={{ height: '72px', width: 'auto', display: 'block', objectFit: 'contain' }}
               />
             </Link>

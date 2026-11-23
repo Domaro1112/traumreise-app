@@ -83,7 +83,7 @@ export default function AdminLoginPage() {
 
         {/* Header stripe */}
         <div style={{
-          background: 'linear-gradient(135deg, #0C1A3A 0%, #0B3D6B 50%, #0EA5E9 100%)',
+          background: 'linear-gradient(135deg, #070F24 0%, #0C1A3A 60%, #10264D 100%)',
           padding: '28px 32px 24px',
           textAlign: 'center',
         }}>
@@ -92,7 +92,7 @@ export default function AdminLoginPage() {
               src="/images/logo/apearound-logo-hell.png"
               alt="ApeAround"
               width={1600}
-              height={518}
+              height={534}
               style={{ height: '68px', width: 'auto', objectFit: 'contain' }}
             />
           </div>
