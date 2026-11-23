@@ -50,14 +50,14 @@ export default function Header() {
               style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}
             >
               <Image
-                src="/images/logo/reisemonkey-logo.png"
+                src="/images/logo/apearound-logo.png"
                 alt="apearound.de – Deine Reise. Dein Abenteuer."
-                width={1536}
-                height={1024}
+                width={1600}
+                height={403}
                 loading="eager"
                 fetchPriority="high"
                 style={{
-                  height: 'clamp(64px, 9vw, 66px)',
+                  height: 'clamp(40px, 6vw, 52px)',
                   width: 'auto',
                   display: 'block',
                   objectFit: 'contain',

@@ -27,7 +27,7 @@ export default function ArticleJsonLd({ article }) {
           url: baseUrl,
           logo: {
             '@type': 'ImageObject',
-            url: `${baseUrl}/logo.png`,
+            url: `${baseUrl}/images/logo/apearound-logo.png`,
           },
         },
         image: {

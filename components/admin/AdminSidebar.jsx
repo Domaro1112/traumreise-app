@@ -84,11 +84,11 @@ export default function AdminSidebar({ isOpen, onClose }) {
         }}>
           <Link href="/admin" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
             <Image
-              src="/images/logo/reisemonkey-logo.png"
+              src="/images/logo/apearound-logo-hell.png"
               alt="ApeAround Admin"
-              width={1536}
-              height={1024}
-              style={{ height: '52px', width: 'auto', objectFit: 'contain' }}
+              width={1600}
+              height={403}
+              style={{ height: '36px', width: 'auto', objectFit: 'contain' }}
             />
             <span style={{
               fontSize: '11px', fontWeight: 700, color: '#475569',

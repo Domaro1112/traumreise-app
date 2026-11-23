@@ -27,7 +27,7 @@ const jsonLd = {
       url: 'https://apearound.de',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://apearound.de/images/logo/reisemonkey-logo.png',
+        url: 'https://apearound.de/images/logo/apearound-logo.png',
       },
       description:
         'Persönliche Reiseplanung – kostenlos, inspirierend und direkt buchbar.',

@@ -108,13 +108,13 @@ export default function AccessPage() {
           }}
         >
           <Image
-            src="/images/logo/reisemonkey-logo.png"
-            alt="ApeAround – dein Urlaub beginnt mit einer Idee"
-            width={6000}
-            height={2400}
+            src="/images/logo/apearound-logo.png"
+            alt="ApeAround.de"
+            width={1600}
+            height={403}
             priority
             sizes="320px"
-            style={{ width: '100%', maxWidth: '300px', height: 'auto', display: 'block', margin: '0 auto' }}
+            style={{ width: '100%', maxWidth: '280px', height: 'auto', display: 'block', margin: '0 auto' }}
           />
           <p
             style={{

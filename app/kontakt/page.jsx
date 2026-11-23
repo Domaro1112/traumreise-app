@@ -25,7 +25,7 @@ const jsonLd = {
       '@id': 'https://apearound.de/#organization',
       name: 'ApeAround',
       url: 'https://apearound.de',
-      logo: { '@type': 'ImageObject', url: 'https://apearound.de/images/logo/reisemonkey-logo.png' },
+      logo: { '@type': 'ImageObject', url: 'https://apearound.de/images/logo/apearound-logo.png' },
     },
     {
       '@type': 'ContactPage',

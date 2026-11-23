@@ -57,11 +57,11 @@ export default function Footer() {
               style={{ display: 'inline-block', textDecoration: 'none', marginBottom: '16px' }}
             >
               <Image
-                src="/images/logo/reisemonkey-logo.png"
+                src="/images/logo/apearound-logo.png"
                 alt="ApeAround"
-                width={1536}
-                height={1024}
-                style={{ height: '72px', width: 'auto', display: 'block', objectFit: 'contain' }}
+                width={1600}
+                height={403}
+                style={{ height: '52px', width: 'auto', display: 'block', objectFit: 'contain' }}
               />
             </Link>
             <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.7, marginBottom: '24px' }}>
@@ -154,7 +154,7 @@ export default function Footer() {
           }}
         >
           <p style={{ fontSize: '13px', color: '#94A3B8' }}>
-            © 2025ApeAround. Alle Rechte vorbehalten.
+            © {new Date().getFullYear()} ApeAround. Alle Rechte vorbehalten.
           </p>
           <p style={{ fontSize: '13px', color: '#94A3B8', display: 'flex', alignItems: 'center', gap: '5px' }}>
             Gemacht mit{' '}
