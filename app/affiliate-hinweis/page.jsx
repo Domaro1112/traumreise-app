@@ -1,152 +1,61 @@
-﻿import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import Container from '@/components/layout/Container';
+﻿import LegalPage from '@/components/legal/LegalPage';
+import { LEGAL } from '@/lib/legal-config';
 
 export const metadata = {
   title: 'Affiliate-Hinweis | ApeAround',
-  description: 'Informationen zu Affiliate-Links, Provisionen und Transparenz bei ApeAround.',
+  description: 'Transparenz zu Affiliate-Links, Provisionen und Kooperationen bei ApeAround.',
   robots: { index: true, follow: true },
 };
 
-const SECTIONS = [
+const sections = [
   {
-    heading: 'Warum dieser Hinweis?',
-    items: [
-      'ApeAround ist eine unabhängige Reise- und Inspirationsplattform. Unser Ziel ist es, passende Reiseideen, Reiseanbieter und Urlaubsempfehlungen bereitzustellen.',
-      'Im Sinne der Transparenz informieren wir dich auf dieser Seite offen darüber, wie ApeAround finanziert wird und wie Affiliate-Links auf unserer Plattform funktionieren.',
+    heading: 'Wie sich ApeAround finanziert',
+    blocks: [
+      'ApeAround ist für Sie kostenlos. Wir finanzieren die Plattform über Provisionen aus Affiliate-Links und über gekennzeichnete Werbekooperationen. Auf dieser Seite erklären wir offen, wie das funktioniert.',
     ],
   },
   {
-    heading: 'Affiliate-Links',
-    items: [
-      'Ein Teil der auf ApeAround verwendeten Links sind sogenannte Affiliate-Links. Du erkennst sie daran, dass sie zu externen Anbietern wie Booking.com, Skyscanner, CHECK24 oder GetYourGuide führen.',
-      'Wenn du über einen solchen Link eine Buchung oder einen Kauf tätigst, kann ApeAround eine Provision vom jeweiligen Anbieter erhalten.',
-      'Für dich entstehen dadurch keine zusätzlichen Kosten. Der Preis, den du beim Anbieter zahlst, ist derselbe – unabhängig davon, ob du den Link über ApeAround oder direkt aufrufst.',
+    heading: 'Was sind Affiliate-Links?',
+    blocks: [
+      'Ein Teil der Links auf ApeAround führt zu externen Anbietern, etwa zu Hotelportalen, Flugsuchmaschinen, Reiseveranstaltern oder Ferienparks. Wenn Sie über einen solchen Link eine Buchung oder einen Kauf abschließen, zahlt uns der Anbieter eine Provision.',
+      'Für Sie entstehen dadurch keine Mehrkosten. Der Preis beim Anbieter ist derselbe, ob Sie über ApeAround kommen oder die Seite direkt aufrufen.',
+      'Affiliate-Links erkennen Sie an Schaltflächen wie „Hotels ansehen“, „Flüge vergleichen“ oder „Angebote ansehen“ sowie an einem Hinweis in der Nähe des Links.',
     ],
   },
   {
-    heading: 'Unabhängigkeit',
-    items: [
-      'Unsere Reisevorschläge, Empfehlungen und redaktionellen Inhalte werden unabhängig von bestehenden Affiliate-Partnerschaften erstellt.',
-      'Affiliate-Partnerschaften beeinflussen nicht die Auswahl der Reiseziele, die Reihenfolge der Vorschläge oder die inhaltliche Bewertung der Partner.',
-      'Die Vorschläge des Reisefinders basieren ausschließlich auf den Angaben des Nutzers und festen Auswahlregeln – nicht auf kommerziellen Interessen.',
+    heading: 'Unabhängigkeit unserer Empfehlungen',
+    blocks: [
+      'Die Vorschläge unseres Reisefinders ergeben sich ausschließlich aus Ihren Angaben und festen Auswahlregeln. Ob für ein Reiseziel Provisionen gezahlt werden, spielt für die Auswahl und die Reihenfolge der Vorschläge keine Rolle.',
+      'Unsere redaktionellen Inhalte – Reiseziel-Porträts, Ratgeber und Erfahrungsberichte – erstellen wir unabhängig. Partner haben keinen Einfluss auf unsere Bewertungen.',
     ],
   },
   {
-    heading: 'Partner',
-    intro: 'Zu den Partnern, mit denen ApeAround Affiliate-Beziehungen unterhält oder unterhalten kann, gehören unter anderem:',
-    list: [
-      'Booking.com',
-      'Skyscanner',
-      'CHECK24 (Urlaub & Mietwagen)',
-      'GetYourGuide',
-      'trivago',
-      'Weitere Reise- und Vergleichsanbieter',
+    heading: 'Werbekooperationen',
+    blocks: [
+      'Gelegentlich arbeiten wir mit Tourismusregionen, Hotels oder Reiseanbietern zusammen, die für die Darstellung auf ApeAround bezahlen oder uns Leistungen kostenlos zur Verfügung stellen. Solche Inhalte kennzeichnen wir deutlich als „Anzeige“ bzw. „Werbung“ – im Sinne von § 6 DDG und § 5a UWG.',
+      'Werbekooperationen beeinflussen nicht die Ergebnisse des Reisefinders.',
     ],
-    outro: 'Diese Liste ist nicht abschließend und kann sich jederzeit ändern.',
   },
   {
-    heading: 'Finanzierung',
-    intro: 'Affiliate-Provisionen helfen dabei:',
-    list: [
-      'Den Betrieb der Plattform zu finanzieren',
-      'Neue Funktionen und Inhalte zu entwickeln',
-      'Alle Inhalte für Nutzer kostenlos bereitzustellen',
-      'ApeAround langfristig weiterzuentwickeln',
+    heading: 'Unsere Partner',
+    blocks: [
+      'Zu den Anbietern, mit denen wir über Affiliate-Programme zusammenarbeiten, gehören derzeit:',
+      { list: ['Booking.com', 'trivago', 'Skyscanner', 'GetYourGuide', 'CHECK24 (Pauschalreisen und Mietwagen)', 'Center Parcs, Landal GreenParks, Roompot, TopParken, Sunparks, Eurocamp und NOVASOL'] },
+      'Einige Programme werden über das Partnernetzwerk Awin abgewickelt. Die Liste kann sich ändern.',
     ],
-    outro: 'ApeAround erhebt keine Gebühren von Nutzern und finanziert sich ausschließlich über Affiliate-Provisionen und Werbepartnerschaften.',
   },
   {
-    heading: 'Kontakt',
-    items: [
-      'Bei Fragen zur Affiliate-Kennzeichnung, zu bestehenden Partnerschaften oder zu kommerziellen Inhalten kannst du die Kontaktmöglichkeiten im Impressum nutzen.',
+    heading: 'Datenschutz',
+    blocks: [
+      'Welche Daten beim Klick auf einen Affiliate-Link verarbeitet werden und welche Cookies die Partner auf ihren eigenen Websites setzen können, erläutern wir in Abschnitt 9 unserer Datenschutzerklärung.',
     ],
+  },
+  {
+    heading: 'Fragen',
+    blocks: [`Bei Fragen zu Affiliate-Links oder Kooperationen erreichen Sie uns unter ${LEGAL.email}.`],
   },
 ];
 
-const headingStyle = {
-  fontSize: '12px',
-  fontWeight: 700,
-  letterSpacing: '2px',
-  textTransform: 'uppercase',
-  color: '#0EA5E9',
-  marginBottom: '10px',
-  fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-};
-
-const textStyle = {
-  fontSize: '15px',
-  color: '#475569',
-  lineHeight: 1.8,
-  margin: '0 0 10px',
-};
-
-export default function AffiliateHinweisPage() {
-  return (
-    <>
-      <Header />
-      <main style={{ paddingTop: '80px', background: '#FFFFFF', minHeight: '100vh' }}>
-        <div style={{ paddingTop: '80px', paddingBottom: '100px' }}>
-          <Container size="sm">
-            <h1
-              style={{
-                fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-                fontSize: 'clamp(28px, 4vw, 44px)',
-                fontWeight: 700,
-                color: '#0F172A',
-                marginBottom: '8px',
-                letterSpacing: '-0.02em',
-              }}
-            >
-              Transparenz & Affiliate-Hinweis
-            </h1>
-            <p style={{ fontSize: '14px', color: '#94A3B8', marginBottom: '48px' }}>
-              Letzte Aktualisierung: 11. Juni 2026
-            </p>
-
-            <div
-              style={{
-                background: '#F8FAFF',
-                border: '1px solid #E2E8F0',
-                borderRadius: '20px',
-                padding: '36px',
-              }}
-            >
-              {SECTIONS.map((section, i) => (
-                <div
-                  key={section.heading}
-                  style={{ marginBottom: i < SECTIONS.length - 1 ? '36px' : 0 }}
-                >
-                  <h2 style={headingStyle}>{section.heading}</h2>
-
-                  {section.intro && (
-                    <p style={textStyle}>{section.intro}</p>
-                  )}
-
-                  {section.list && (
-                    <ul style={{ margin: '0 0 10px', paddingLeft: '20px' }}>
-                      {section.list.map((item, j) => (
-                        <li key={j} style={{ ...textStyle, margin: '0 0 4px' }}>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                  {section.outro && (
-                    <p style={textStyle}>{section.outro}</p>
-                  )}
-
-                  {section.items?.map((item, j) => (
-                    <p key={j} style={textStyle}>{item}</p>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </Container>
-        </div>
-      </main>
-      <Footer />
-    </>
-  );
+export default function AffiliateHinweis() {
+  return <LegalPage title="Affiliate-Hinweis" updated={LEGAL.updated} sections={sections} />;
 }

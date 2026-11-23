@@ -24,7 +24,7 @@ export async function sendNewsletterConfirmation(
   const confirmUrl   = `${SITE_URL}/api/newsletter/confirm?token=${token}`;
   const unsubUrl     = `${SITE_URL}/api/newsletter/unsubscribe?token=`;
 
-  console.log(`[MAIL_SEND] Sende DOI-Bestätigungsmail an: ${email}`);
+  console.log('[MAIL_SEND] Sende DOI-Bestätigungsmail…');
   console.log(`[MAIL_SEND] Confirm-URL: ${confirmUrl}`);
   console.log(`[MAIL_SEND] From: ${FROM_ADDRESS}`);
   console.log(`[MAIL_SEND] SITE_URL: ${SITE_URL}`);

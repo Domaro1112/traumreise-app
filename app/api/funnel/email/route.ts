@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
   }
 
   const { sessionId, email, newsletterConsent } = body;
-  console.log(`[FUNNEL_EMAIL] sessionId=${sessionId} email=${email} newsletterConsent=${newsletterConsent}`);
+  console.log(`[FUNNEL_EMAIL] sessionId=${sessionId} newsletterConsent=${newsletterConsent}`); // keine E-Mail-Adresse ins Log
 
   // ── Validation ────────────────────────────────────────────────────────────
   if (!sessionId?.trim()) {
@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
       const ua      = (request.headers.get('user-agent') ?? '').slice(0, 512);
 
       // Subscriber anlegen/aktualisieren (Upsert on email conflict)
-      console.log(`[NEWSLETTER_DOI] Upsert newsletter_subscribers für ${normalizedEmail}…`);
+      console.log('[NEWSLETTER_DOI] Upsert newsletter_subscribers…');
       const supabase = createServerClient();
       const { error: upsertError } = await supabase
         .from('newsletter_subscribers')
