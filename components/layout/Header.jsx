@@ -53,11 +53,11 @@ export default function Header() {
                 src="/images/logo/apearound-logo.png"
                 alt="apearound.de – Deine Reise. Dein Abenteuer."
                 width={1600}
-                height={403}
+                height={518}
                 loading="eager"
                 fetchPriority="high"
                 style={{
-                  height: 'clamp(40px, 6vw, 52px)',
+                  height: 'clamp(48px, 6.5vw, 62px)',
                   width: 'auto',
                   display: 'block',
                   objectFit: 'contain',

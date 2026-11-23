@@ -92,8 +92,8 @@ export default function AdminLoginPage() {
               src="/images/logo/apearound-logo-hell.png"
               alt="ApeAround"
               width={1600}
-              height={403}
-              style={{ height: '52px', width: 'auto', objectFit: 'contain' }}
+              height={518}
+              style={{ height: '68px', width: 'auto', objectFit: 'contain' }}
             />
           </div>
           <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.55)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', margin: 0 }}>

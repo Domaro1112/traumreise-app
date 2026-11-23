@@ -60,8 +60,8 @@ export default function Footer() {
                 src="/images/logo/apearound-logo.png"
                 alt="ApeAround"
                 width={1600}
-                height={403}
-                style={{ height: '52px', width: 'auto', display: 'block', objectFit: 'contain' }}
+                height={518}
+                style={{ height: '72px', width: 'auto', display: 'block', objectFit: 'contain' }}
               />
             </Link>
             <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.7, marginBottom: '24px' }}>
