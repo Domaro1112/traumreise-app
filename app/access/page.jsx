@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Compass, Lock, Eye, EyeOff, ShieldCheck } from 'lucide-react';
+import Image from 'next/image';
+import { Lock, Eye, EyeOff, ShieldCheck } from 'lucide-react';
 
 export default function AccessPage() {
   const router = useRouter();
@@ -40,72 +41,89 @@ export default function AccessPage() {
 
   return (
     <div
+      className="access-wrap"
       style={{
+        position: 'relative',
         minHeight: '100vh',
-        background: 'linear-gradient(160deg, #F0F9FF 0%, #E0F2FE 40%, #F8FAFF 100%)',
+        background: '#0C1A3A',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
         padding: '24px',
+        overflow: 'hidden',
         fontFamily: 'var(--font-inter, "Inter", system-ui, sans-serif)',
       }}
     >
+      {/* Am Desktop sitzt die Karte links, damit der Affe im Bild sichtbar bleibt */}
+      <style>{`
+        .access-wrap { justify-content: center; }
+        @media (min-width: 1024px) {
+          .access-wrap { align-items: flex-start !important; padding-left: 9vw !important; }
+        }
+      `}</style>
+
+      {/* Hintergrundbild */}
+      <Image
+        src="/images/reiseziele/hero.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        style={{ objectFit: 'cover', objectPosition: '70% center', zIndex: 0 }}
+      />
+      {/* Abdunklung, damit die Karte gut lesbar bleibt */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 1,
+          background:
+            'linear-gradient(115deg, rgba(12,26,58,0.82) 0%, rgba(11,61,107,0.55) 45%, rgba(14,165,233,0.10) 100%)',
+        }}
+      />
+
       {/* Card */}
       <div
         style={{
+          position: 'relative',
+          zIndex: 2,
           width: '100%',
           maxWidth: '420px',
-          background: '#FFFFFF',
+          background: 'rgba(255,255,255,0.94)',
+          backdropFilter: 'blur(14px)',
+          WebkitBackdropFilter: 'blur(14px)',
           borderRadius: '24px',
-          boxShadow: '0 8px 48px rgba(15,23,42,0.10), 0 1px 0 rgba(255,255,255,0.8) inset',
-          border: '1px solid #E2E8F0',
+          boxShadow: '0 24px 80px rgba(2,6,23,0.45), 0 1px 0 rgba(255,255,255,0.8) inset',
+          border: '1px solid rgba(255,255,255,0.6)',
           overflow: 'hidden',
         }}
       >
-        {/* Header stripe */}
+        {/* Logo */}
         <div
           style={{
-            background: 'linear-gradient(135deg, #0C1A3A 0%, #0B3D6B 50%, #0EA5E9 100%)',
-            padding: '32px 32px 28px',
+            padding: '28px 32px 20px',
             textAlign: 'center',
+            borderBottom: '1px solid #F1F5F9',
           }}
         >
-          {/* Logo */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '16px' }}>
-            <div
-              style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '12px',
-                background: 'rgba(255,255,255,0.15)',
-                border: '1.5px solid rgba(255,255,255,0.30)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <Compass size={24} strokeWidth={2} color="#FFFFFF" />
-            </div>
-            <span
-              style={{
-                fontFamily: 'var(--font-poppins, "Poppins", system-ui, sans-serif)',
-                fontSize: '22px',
-                fontWeight: 800,
-                color: '#FFFFFF',
-                letterSpacing: '-0.02em',
-              }}
-            >
-              Traumreise
-            </span>
-          </div>
-
+          <Image
+            src="/images/logo/reisemonkey-logo.png"
+            alt="ApeAround – dein Urlaub beginnt mit einer Idee"
+            width={6000}
+            height={2400}
+            priority
+            sizes="320px"
+            style={{ width: '100%', maxWidth: '300px', height: 'auto', display: 'block', margin: '0 auto' }}
+          />
           <p
             style={{
-              fontSize: '13px',
-              color: 'rgba(255,255,255,0.65)',
+              marginTop: '10px',
+              fontSize: '12px',
+              color: '#94A3B8',
               fontWeight: 500,
-              letterSpacing: '0.02em',
+              letterSpacing: '0.04em',
+              textTransform: 'uppercase',
             }}
           >
             Entwicklungsumgebung geschützt
