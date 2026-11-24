@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { isAdminRequest } from '@/lib/admin-auth';
 import { getAffiliateSettings } from '@/repositories/affiliate-settings';
 import { injectAffiliateParam, AFFILIATE_PARAMS } from '@/lib/affiliate';
-import { AFFILIATE_PROVIDERS } from '@/lib/affiliate-config';
+import { AFFILIATE_PROVIDERS, AWIN_MERCHANT_IDS, buildAwinDeeplink } from '@/lib/affiliate-config';
 
 /**
  * GET /api/admin/affiliate/test?provider=booking&url=https://www.booking.com/...
@@ -43,7 +43,11 @@ export async function GET(request: NextRequest) {
 
   if (affiliateId && paramName && providerRow?.enabled) {
     try {
-      if (isAwin && providerConf?.buildUrl) {
+      const awinMid = (AWIN_MERCHANT_IDS as Record<string, number>)[provider];
+      if (awinMid) {
+        // Über AWIN abgerechnet (CHECK24): Zielseite als AWIN-Deeplink
+        finalUrl = buildAwinDeeplink(awinMid, affiliateId, inputUrl);
+      } else if (isAwin && providerConf?.buildUrl) {
         // AWIN: erst AWIN-Deeplink bauen (mit ued= als Ziel-URL), dann awinaffid injizieren
         const awinBase = providerConf.buildUrl(inputUrl);
         finalUrl = injectAffiliateParam(awinBase, 'awinaffid', affiliateId);
