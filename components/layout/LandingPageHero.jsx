@@ -53,7 +53,7 @@ export default function LandingPageHero({
         }
       `}</style>
 
-      <section className="lp-hero">
+      <section className="lp-hero hero-full">
         <div aria-hidden="true" className="lp-hero-overlay" />
         {children}
       </section>

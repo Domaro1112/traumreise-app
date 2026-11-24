@@ -239,7 +239,7 @@ export default async function DestinationPage({ params }) {
 
         {/* ── HERO ── */}
         <section
-          className="dest-hero"
+          className="dest-hero hero-full"
           style={{
             backgroundImage: `url('${dest.heroImage}'), ${dest.heroGradient}`,
             backgroundSize: 'cover, cover',
@@ -251,7 +251,7 @@ export default async function DestinationPage({ params }) {
             alignItems: 'flex-end',
           }}
         >
-          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'rgba(10,20,40,0.50)', pointerEvents: 'none' }} />
+          <div aria-hidden="true" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(10,20,40,0.48) 0%, rgba(10,20,40,0.16) 55%, rgba(10,20,40,0) 80%), linear-gradient(to top, rgba(10,20,40,0.55) 0%, rgba(10,20,40,0) 55%)', pointerEvents: 'none' }} />
           <Container style={{ position: 'relative', zIndex: 1, width: '100%' }}>
 
             {/* Breadcrumb */}

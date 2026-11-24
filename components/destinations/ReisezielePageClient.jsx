@@ -223,9 +223,11 @@ export default function ReisezielePageClient({ destinations = [] }) {
   return (
     <>
       {/* ══ HERO ══════════════════════════════════════════════════════════════ */}
-      <section style={{
+      <section className="hero-full" style={{
         position: 'relative',
         overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'center',
         paddingTop: 'clamp(56px, 8vw, 96px)',
         paddingBottom: 'clamp(44px, 6vw, 72px)',
       }}>

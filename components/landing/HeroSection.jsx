@@ -8,7 +8,7 @@ const TRUST_ICON_MAP = { Gift, Compass, ShieldCheck };
 
 export default function HeroSection() {
   return (
-    <section className="hero-fullwidth">
+    <section className="hero-fullwidth hero-full">
       {/* ── Background image – full browser width, no container ── */}
       <Image
         src="/images/hero/reisemonkey-hero.png"
@@ -30,7 +30,7 @@ export default function HeroSection() {
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(90deg, rgba(4,16,40,0.85) 0%, rgba(4,16,40,0.60) 35%, rgba(4,16,40,0.20) 65%, rgba(4,16,40,0.05) 100%)',
+            'linear-gradient(90deg, rgba(4,16,40,0.62) 0%, rgba(4,16,40,0.38) 35%, rgba(4,16,40,0.08) 60%, rgba(4,16,40,0) 75%)',
           zIndex: 1,
           pointerEvents: 'none',
         }}
@@ -43,7 +43,7 @@ export default function HeroSection() {
           bottom: 0,
           left: 0,
           right: 0,
-          height: '100px',
+          height: '48px',
           background: 'linear-gradient(to bottom, transparent, #FFFFFF)',
           zIndex: 2,
           pointerEvents: 'none',

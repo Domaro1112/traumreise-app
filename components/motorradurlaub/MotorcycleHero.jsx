@@ -49,7 +49,7 @@ export default function MotorcycleHero() {
         backgroundImage="/images/motorradurlaub/motorradurlaub-hero.png"
         backgroundPosition="right 20%"
         mobileBackgroundPosition="68% 25%"
-        overlayGradient="linear-gradient(to right, rgba(15,23,42,0.82) 0%, rgba(15,23,42,0.58) 42%, rgba(15,23,42,0.14) 72%, transparent 100%)"
+        overlayGradient="linear-gradient(to right, rgba(15,23,42,0.62) 0%, rgba(15,23,42,0.36) 40%, rgba(15,23,42,0.06) 65%, transparent 80%)"
         mobileOverlayGradient="linear-gradient(to bottom, rgba(15,23,42,0.62) 0%, rgba(15,23,42,0.52) 60%, rgba(15,23,42,0.72) 100%)"
       >
         <Container>

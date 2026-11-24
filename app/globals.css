@@ -234,6 +234,24 @@ input::placeholder { color: var(--color-text-muted); }
   .hero-bg-img { object-position: 65% 65% !important; }
 }
 
+/* ── Hero-Bilder vollständig zeigen ───────────────────────────────────────────
+   Ab Tablet richtet sich die Hero-Höhe nach dem Bildformat (Standard 16:9,
+   über --hero-ratio änderbar). So wird das Motiv oben und unten nicht
+   abgeschnitten. Braucht der Inhalt mehr Platz, wächst der Bereich mit
+   (dann werden höchstens die Seiten etwas beschnitten). Auf dem Handy
+   bestimmt weiterhin der Inhalt die Höhe. */
+@media (min-width: 769px) {
+  .hero-full {
+    aspect-ratio: var(--hero-ratio, 1672 / 941);
+    height: auto !important;
+    min-height: auto !important;
+    max-height: 1100px;
+  }
+}
+/* Lesbarkeit über Schrift-Schatten statt dunklem Bild */
+.hero-full h1 { text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35); }
+.hero-full .hero-lead { text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45); }
+
 /* ── Newsletter board overlay ─────────────────────────────────────────────── */
 .newsletter-card {
   position: relative;

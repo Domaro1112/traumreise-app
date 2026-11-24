@@ -234,7 +234,7 @@ export default function AlleinerziehendePage() {
       <main>
 
         {/* ── 1. HERO ──────────────────────────────────────────────────────────── */}
-        <section style={{
+        <section className="hero-full" style={{
           position: 'relative',
           paddingTop: 'clamp(100px, 12vw, 160px)',
           paddingBottom: 'clamp(60px, 8vw, 96px)',
@@ -266,12 +266,12 @@ export default function AlleinerziehendePage() {
               <div style={{
                 display: 'inline-flex', alignItems: 'center', gap: '8px',
                 padding: '6px 16px', borderRadius: '40px', marginBottom: '24px',
-                background: 'rgba(14,165,233,0.12)', border: '1px solid rgba(14,165,233,0.30)',
+                background: 'rgba(12,26,58,0.55)', border: '1px solid rgba(56,189,248,0.55)', backdropFilter: 'blur(6px)',
               }}>
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
                 </svg>
-                <span style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#38BDF8', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>
+                <span style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#BAE6FD', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>
                   Reisen mit Kind
                 </span>
               </div>

@@ -65,11 +65,15 @@ export default async function InspirationPage() {
       <main style={{ background: '#FFFFFF', minHeight: '100vh' }}>
         {/* Hero — vollflächiges Hintergrundbild mit gleichmäßigem Overlay */}
         <section
+          className="hero-full"
           style={{
+            '--hero-ratio': '1717 / 916',
+            display: 'flex',
+            alignItems: 'center',
             position: 'relative',
             paddingTop: 'calc(80px + 80px)',
             paddingBottom: '80px',
-            backgroundImage: `linear-gradient(180deg, rgba(8,15,30,0.52) 0%, rgba(8,15,30,0.60) 60%, rgba(8,15,30,0.74) 100%), url('/images/inspiration/reisemonkey-inspiration-hero.png')`,
+            backgroundImage: `linear-gradient(90deg, rgba(8,15,30,0.62) 0%, rgba(8,15,30,0.36) 40%, rgba(8,15,30,0.06) 70%, rgba(8,15,30,0) 100%), url('/images/inspiration/reisemonkey-inspiration-hero.png')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center center',
             backgroundRepeat: 'no-repeat',
@@ -83,13 +87,13 @@ export default async function InspirationPage() {
               <div style={{
                 display: 'inline-flex', alignItems: 'center', gap: '8px',
                 padding: '6px 16px', borderRadius: '40px',
-                background: 'rgba(14,165,233,0.12)', border: '1px solid rgba(14,165,233,0.30)',
+                background: 'rgba(12,26,58,0.55)', border: '1px solid rgba(56,189,248,0.55)', backdropFilter: 'blur(6px)',
                 marginBottom: '24px',
               }}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#38BDF8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" />
                 </svg>
-                <span style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#38BDF8', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>
+                <span style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#BAE6FD', fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)' }}>
                   Handverlesene Reiseideen
                 </span>
               </div>
