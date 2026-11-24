@@ -8,6 +8,7 @@ import {
   RefreshCw, AlertCircle, ExternalLink,
 } from 'lucide-react';
 import { validateDestinationImport } from '@/lib/validate-destination-import';
+import { shrinkImage, MAX_INPUT_BYTES } from '@/lib/shrink-image';
 import { EXAMPLE_DESTINATION_JSON } from '@/lib/destination-import-example';
 
 // ── Styles ────────────────────────────────────────────────────────────────────
@@ -74,7 +75,7 @@ const S = {
 };
 
 const ACCEPTED_MIME = new Set(['image/jpeg', 'image/png', 'image/webp']);
-const MAX_BYTES = 10 * 1024 * 1024;
+const MAX_BYTES = MAX_INPUT_BYTES; // Originale bis 40 MB – werden vor dem Upload verkleinert
 
 // ── Prompt-Vorlage ───────────────────────────────────────────────────────
 const PROMPT_TEMPLATE = `Erstelle ein vollständiges ApeAround Reiseziel-JSON für [REISEZIEL] im Importformat. Gib ausschließlich gültiges JSON zurück, ohne Markdown, ohne Erklärung.
@@ -219,7 +220,7 @@ function LocalFilePicker({ file, preview, alt, onPick, onAlt, onRemove, label, a
     const f = files?.[0];
     if (!f) return;
     if (!ACCEPTED_MIME.has(f.type)) { setErr('Nur JPG, PNG oder WebP erlaubt.'); return; }
-    if (f.size > MAX_BYTES) { setErr('Datei zu groß (max. 10 MB).'); return; }
+    if (f.size > MAX_BYTES) { setErr('Datei zu groß (max. 40 MB).'); return; }
     setErr('');
     onPick(f, URL.createObjectURL(f));
   }
@@ -268,7 +269,7 @@ function LocalFilePicker({ file, preview, alt, onPick, onAlt, onRemove, label, a
             <ImageIcon size={18} strokeWidth={1.5} color="#0EA5E9" />
           </div>
           <p style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A', margin: 0 }}>Bild hierher ziehen oder klicken</p>
-          <p style={{ fontSize: '11px', color: '#94A3B8', margin: 0 }}>JPG, PNG, WebP · max. 10 MB · Empfohlen: 1920×1080 px</p>
+          <p style={{ fontSize: '11px', color: '#94A3B8', margin: 0 }}>JPG, PNG, WebP · große Bilder werden automatisch verkleinert · Empfohlen: 1920×1080 px</p>
           <p style={{ fontSize: '10px', color: '#CBD5E1', margin: '4px 0 0', fontStyle: 'italic' }}>Dateinamen werden automatisch optimiert.</p>
         </div>
       </div>
@@ -288,7 +289,7 @@ function LocalGalleryPicker({ items, onChange, destName }) {
   function addFiles(files) {
     setErr('');
     const valid = Array.from(files).filter(f => ACCEPTED_MIME.has(f.type) && f.size <= MAX_BYTES);
-    if (!valid.length) { setErr('Keine gültigen Bilder (JPG/PNG/WebP, max. 10 MB).'); return; }
+    if (!valid.length) { setErr('Keine gültigen Bilder (JPG/PNG/WebP, max. 40 MB).'); return; }
     const next = [...items, ...valid.map((f, i) => ({
       localId: `${Date.now()}-${i}-${f.name}-${f.size}`,
       file: f,
@@ -329,7 +330,7 @@ function LocalGalleryPicker({ items, onChange, destName }) {
       >
         <Upload size={16} strokeWidth={1.5} color="#94A3B8" style={{ marginBottom: '4px' }} />
         <p style={{ fontSize: '12px', color: '#64748B', margin: 0, fontWeight: 600 }}>Mehrere Bilder auswählen oder hierher ziehen</p>
-        <p style={{ fontSize: '11px', color: '#94A3B8', margin: '2px 0 0' }}>JPG, PNG, WebP · max. 10 MB pro Bild</p>
+        <p style={{ fontSize: '11px', color: '#94A3B8', margin: '2px 0 0' }}>JPG, PNG, WebP · große Bilder werden automatisch verkleinert</p>
       </div>
       <input ref={inputRef} type="file" accept=".jpg,.jpeg,.png,.webp" multiple style={{ display: 'none' }} onChange={e => addFiles(e.target.files)} />
       {err && <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px', fontSize: '12px', color: '#DC2626' }}><AlertCircle size={12} strokeWidth={2} />{err}</div>}
@@ -424,7 +425,8 @@ export default function DestinationImportClient() {
     setGalleryItems([]);
   }
 
-  async function uploadFile(file, slug, type, galleryIndex) {
+  async function uploadFile(original, slug, type, galleryIndex) {
+    const file = await shrinkImage(original); // große Fotos automatisch verkleinern
     if (process.env.NODE_ENV === 'development') {
       console.log('import uploadFile', { type, galleryIndex, fileName: file.name, fileSize: file.size });
     }

@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from 'react';
 import { Upload, X, ChevronUp, ChevronDown, Image as ImageIcon, AlertCircle, RefreshCw } from 'lucide-react';
+import { shrinkImage, MAX_INPUT_BYTES } from '@/lib/shrink-image';
 
 const ACCEPTED = '.jpg,.jpeg,.png,.webp';
 
@@ -32,7 +33,8 @@ export default function GalleryEditor({ items = [], onChange, slug, destName = '
 
   const canUpload = !!slug?.trim();
 
-  async function uploadFile(file, galleryIndex) {
+  async function uploadFile(original, galleryIndex) {
+    const file = await shrinkImage(original); // große Fotos automatisch verkleinern
     if (process.env.NODE_ENV === 'development') {
       const ext = file.name.split('.').pop()?.toLowerCase() ?? 'jpg';
       const n = String(galleryIndex + 1).padStart(2, '0');
@@ -73,10 +75,10 @@ export default function GalleryEditor({ items = [], onChange, slug, destName = '
     try {
       const valid = Array.from(files).filter(f => {
         if (!['image/jpeg', 'image/png', 'image/webp'].includes(f.type)) return false;
-        if (f.size > 10 * 1024 * 1024) return false;
+        if (f.size > MAX_INPUT_BYTES) return false;
         return true;
       });
-      if (!valid.length) { setError('Keine gültigen Bilder (JPG/PNG/WebP, max. 10 MB).'); return; }
+      if (!valid.length) { setError('Keine gültigen Bilder (JPG/PNG/WebP, max. 40 MB).'); return; }
 
       const startIdx = items.length;
       const newItems = [];
@@ -160,7 +162,7 @@ export default function GalleryEditor({ items = [], onChange, slug, destName = '
               {canUpload ? 'Mehrere Bilder auswählen oder hierher ziehen' : 'Slug erforderlich'}
             </p>
             <p style={{ fontSize: '11px', color: '#94A3B8', margin: '3px 0 0' }}>
-              JPG, PNG, WebP · max. 10 MB pro Bild
+              JPG, PNG, WebP · große Bilder werden automatisch verkleinert
             </p>
             <p style={{ fontSize: '10px', color: '#CBD5E1', margin: '4px 0 0', fontStyle: 'italic' }}>
               Dateinamen werden automatisch optimiert (gallery-01.jpg, gallery-02.jpg …)
