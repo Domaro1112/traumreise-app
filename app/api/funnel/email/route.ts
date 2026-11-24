@@ -4,10 +4,16 @@ import { saveEmail } from '@/repositories/travel-funnel';
 import { generateToken, hashToken } from '@/lib/tokens';
 import { sendNewsletterConfirmation } from '@/lib/email';
 
-const CONSENT_TEXT =
-  'Ich möchte den ApeAround-Newsletter erhalten und gelegentlich Reiseideen, Tipps, Angebote und ' +
-  'Neuigkeiten <strong>für Alleinerziehende per E-Mail</strong> bekommen. Ich kann mich jederzeit wieder abmelden. ' +
-  'Die Anmeldung wird erst nach Bestätigung per E-Mail aktiv.';
+// Einwilligungstext je Funnel – gespeichert wird genau der Text, dem zugestimmt wurde.
+const CONSENT_TEXTS: Record<string, string> = {
+  single_parent:
+    'Ich möchte den ApeAround-Newsletter erhalten und gelegentlich Reiseideen, Tipps, Angebote und ' +
+    'Neuigkeiten <strong>für Alleinerziehende per E-Mail</strong> bekommen. Ich kann mich jederzeit wieder abmelden. ' +
+    'Die Anmeldung wird erst nach Bestätigung per E-Mail aktiv.',
+  default:
+    'Ich möchte den ApeAround-Newsletter mit Reiseideen, Tipps und Angeboten per E-Mail erhalten. ' +
+    'Ich kann mich jederzeit wieder abmelden. Die Anmeldung wird erst nach Bestätigung per E-Mail aktiv.',
+};
 
 export async function POST(request: NextRequest) {
   console.log('[FUNNEL_EMAIL] POST /api/funnel/email aufgerufen');
@@ -70,9 +76,32 @@ export async function POST(request: NextRequest) {
       const ipHash  = ipRaw ? hashToken(ipRaw.split(',')[0].trim()) : null;
       const ua      = (request.headers.get('user-agent') ?? '').slice(0, 512);
 
+      const supabase = createServerClient();
+
+      // Welcher Funnel? (für den passenden Einwilligungstext)
+      const { data: sessionRow } = await supabase
+        .from('travel_funnel_sessions')
+        .select('funnel_type')
+        .eq('id', sessionId)
+        .maybeSingle();
+      const consentText = CONSENT_TEXTS[sessionRow?.funnel_type ?? ''] ?? CONSENT_TEXTS.default;
+
+      // Bereits bestätigte Abonnenten nicht wieder auf „pending“ zurücksetzen
+      const { data: existing } = await supabase
+        .from('newsletter_subscribers')
+        .select('status')
+        .eq('email', normalizedEmail)
+        .maybeSingle();
+      if (existing?.status === 'confirmed') {
+        console.log('[NEWSLETTER_DOI] Adresse ist bereits bestätigt — kein erneuter DOI-Versand.');
+        return NextResponse.json({
+          success: true, subscriberSaved, tokenCreated: false, mailSent: false,
+          newsletterQueued: false, alreadySubscribed: true,
+        });
+      }
+
       // Subscriber anlegen/aktualisieren (Upsert on email conflict)
       console.log('[NEWSLETTER_DOI] Upsert newsletter_subscribers…');
-      const supabase = createServerClient();
       const { error: upsertError } = await supabase
         .from('newsletter_subscribers')
         .upsert(
@@ -80,7 +109,7 @@ export async function POST(request: NextRequest) {
             email:                   normalizedEmail,
             status:                  'pending',
             source:                  'travel_funnel',
-            consent_text:            CONSENT_TEXT,
+            consent_text:            consentText,
             consent_given_at:        new Date().toISOString(),
             confirmation_token_hash: confirmHash,
             confirmation_sent_at:    new Date().toISOString(),

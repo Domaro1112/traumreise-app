@@ -50,7 +50,7 @@ export default async function AdminLeadsPage() {
       { data: newsletters },
     ] = await Promise.all([
       supabase.from('newsletter_subscribers').select('*', { count: 'exact', head: true }),
-      supabase.from('newsletter_subscribers').select('*', { count: 'exact', head: true }).eq('confirmed', true),
+      supabase.from('newsletter_subscribers').select('*', { count: 'exact', head: true }).eq('status', 'confirmed'),
       supabase.from('contact_inquiries').select('*', { count: 'exact', head: true }),
       supabase.from('contact_inquiries').select('*', { count: 'exact', head: true }).eq('status', 'new'),
       supabase.from('creator_applications').select('*', { count: 'exact', head: true }),
@@ -61,7 +61,7 @@ export default async function AdminLeadsPage() {
         .order('created_at', { ascending: false })
         .limit(10),
       supabase.from('newsletter_subscribers')
-        .select('id, created_at, email, confirmed, source')
+        .select('id, created_at, email, status, source')
         .order('created_at', { ascending: false })
         .limit(10),
     ]);
@@ -203,11 +203,11 @@ export default async function AdminLeadsPage() {
                     <td style={{ padding: '9px 14px' }}>
                       <span style={{
                         fontSize: '12px', fontWeight: 700,
-                        color:      r.confirmed ? '#059669' : '#94A3B8',
-                        background: r.confirmed ? '#ECFDF5' : '#F8FAFF',
+                        color:      r.status === 'confirmed' ? '#059669' : '#94A3B8',
+                        background: r.status === 'confirmed' ? '#ECFDF5' : '#F8FAFF',
                         padding: '2px 8px', borderRadius: '6px',
                       }}>
-                        {r.confirmed ? '✓ Ja' : 'Ausstehend'}
+                        {r.status === 'confirmed' ? '✓ Ja' : 'Ausstehend'}
                       </span>
                     </td>
                   </tr>

@@ -7,12 +7,36 @@ import TravelOfferQuickLinks from '@/components/finder/TravelOfferQuickLinks';
 import EmailGate from '@/components/funnel/EmailGate';
 import { Mail, CheckCircle2 } from 'lucide-react';
 
-/* ─── optional newsletter popup (kept unchanged) ───────────────────────── */
-function EmailPopup({ destination, onClose }) {
-  const [email,  setEmail]  = useState('');
-  const [agreed, setAgreed] = useState(false);
-  const [done,   setDone]   = useState(false);
-  const valid = email.includes('@') && email.includes('.') && agreed;
+/* ─── optionales Newsletter-Popup (Double-Opt-in über /api/funnel/email) ─── */
+function EmailPopup({ sessionId, onClose }) {
+  const [email,   setEmail]   = useState('');
+  const [agreed,  setAgreed]  = useState(false);
+  const [done,    setDone]    = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error,   setError]   = useState('');
+  const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) && agreed;
+
+  const submit = async () => {
+    if (!valid || sending) return;
+    setSending(true);
+    setError('');
+    try {
+      const res  = await fetch('/api/funnel/email', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ sessionId, email: email.trim(), newsletterConsent: true }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) { setError(data.error || 'Das hat leider nicht geklappt. Bitte versuche es erneut.'); return; }
+      if (data.alreadySubscribed) { setDone('already'); return; }
+      if (!data.newsletterQueued) { setError('Die Bestätigungsmail konnte gerade nicht versendet werden. Bitte versuche es später erneut.'); return; }
+      setDone(true);
+    } catch {
+      setError('Verbindungsfehler. Bitte versuche es erneut.');
+    } finally {
+      setSending(false);
+    }
+  };
 
   if (done) return (
     <div style={{ position: 'fixed', inset: 0, background: 'rgba(15,23,42,0.72)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
@@ -22,8 +46,10 @@ function EmailPopup({ destination, onClose }) {
             <Mail size={28} strokeWidth={1.5} color="#0EA5E9" />
           </div>
         </div>
-        <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', fontWeight: 700, color: '#0F172A', marginBottom: '10px' }}>Fast geschafft!</h3>
-        <p style={{ color: '#64748B', fontSize: '15px', lineHeight: 1.7, marginBottom: '24px' }}>Wir haben dir eine <strong style={{ color: '#0EA5E9' }}>Bestätigungsmail</strong> geschickt.</p>
+        <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', fontWeight: 700, color: '#0F172A', marginBottom: '10px' }}>{done === 'already' ? 'Du bist schon dabei!' : 'Fast geschafft!'}</h3>
+        {done === 'already'
+          ? <p style={{ color: '#64748B', fontSize: '15px', lineHeight: 1.7, marginBottom: '24px' }}>Diese Adresse ist bereits für den Newsletter angemeldet und bestätigt.</p>
+          : <p style={{ color: '#64748B', fontSize: '15px', lineHeight: 1.7, marginBottom: '24px' }}>Wir haben dir eine <strong style={{ color: '#0EA5E9' }}>Bestätigungsmail</strong> geschickt. Erst wenn du den Link darin anklickst, ist die Anmeldung aktiv.</p>}
         <button type="button" onClick={onClose} style={{ padding: '12px 28px', borderRadius: '12px', border: 'none', background: 'linear-gradient(135deg,#0EA5E9,#06B6D4)', color: '#fff', fontWeight: 700, fontSize: '15px', cursor: 'pointer' }}>
           Alles klar
         </button>
@@ -38,7 +64,7 @@ function EmailPopup({ destination, onClose }) {
         <div style={{ textAlign: 'center', marginBottom: '24px' }}>
           <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', fontWeight: 700, color: '#0F172A', marginBottom: '8px' }}>Reise-Inspiration ins Postfach</h3>
           <p style={{ color: '#64748B', fontSize: '14px', lineHeight: 1.6 }}>
-            {destination ? `Erhalte deinen ${destination}-Reiseplan + wöchentlich die besten Deals.` : 'Wöchentlich die besten Deals & Inspiration.'}
+            Gelegentlich neue Reiseideen, Tipps und Angebote von ApeAround – kostenlos und jederzeit abbestellbar.
           </p>
         </div>
         <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="deine@email.de"
@@ -48,17 +74,18 @@ function EmailPopup({ destination, onClose }) {
             {agreed && <span style={{ color: '#0EA5E9', fontSize: '13px', fontWeight: 700 }}>✓</span>}
           </div>
           <span style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.6 }}>
-            Ich bin einverstanden, Reise-Inspiration & Angebote per Mail zu erhalten. Abmeldung jederzeit möglich.
+            Ich möchte den ApeAround-Newsletter mit Reiseideen, Tipps und Angeboten per E-Mail erhalten. Abmeldung jederzeit möglich. Hinweise in der <a href="/datenschutz" target="_blank" rel="noopener noreferrer" style={{ color: '#0EA5E9' }}>Datenschutzerklärung</a>.
           </span>
         </label>
-        <button type="button" onClick={() => valid && setDone(true)} disabled={!valid}
+        {error && <p style={{ margin: '0 0 12px', fontSize: '13px', color: '#B91C1C' }}>{error}</p>}
+        <button type="button" onClick={submit} disabled={!valid || sending}
           style={{ width: '100%', padding: '14px', borderRadius: '12px', border: 'none', background: valid ? 'linear-gradient(135deg,#0EA5E9,#06B6D4)' : '#F1F5F9', color: valid ? '#fff' : '#94A3B8', fontWeight: 700, fontSize: '15px', cursor: valid ? 'pointer' : 'not-allowed', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
           <Mail size={16} strokeWidth={2} />
-          Kostenlos anmelden
+          {sending ? 'Wird gesendet …' : 'Kostenlos anmelden'}
         </button>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '14px', marginTop: '12px' }}>
           <span style={{ fontSize: '11px', color: '#94A3B8', display: 'flex', alignItems: 'center', gap: '4px' }}>
-            <CheckCircle2 size={11} strokeWidth={2} /> DSGVO-konform
+            <CheckCircle2 size={11} strokeWidth={2} /> Double-Opt-in
           </span>
           <span style={{ fontSize: '11px', color: '#94A3B8' }}>Kein Spam</span>
         </div>
@@ -96,7 +123,7 @@ function NewsletterBanner({ email, onClose }) {
 export default function ResultPageClient({
   sessionId, results: initialResults, personality, interests,
   packingList: initialPackingList, surprise, duration, budget,
-  needsEmailGate,
+  needsEmailGate, funnelType = null,
 }) {
   const router = useRouter();
 
@@ -113,6 +140,7 @@ export default function ResultPageClient({
     return (
       <EmailGate
         sessionId={sessionId}
+        funnelType={funnelType}
         onComplete={({ email, newsletterQueued }) => {
           setGatePassed(true);
           if (newsletterQueued) {
@@ -144,7 +172,7 @@ export default function ResultPageClient({
 
       {showEmail && (
         <EmailPopup
-          destination={results?.[0]?.destination || ''}
+          sessionId={sessionId}
           onClose={() => setShowEmail(false)}
         />
       )}

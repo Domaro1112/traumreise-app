@@ -61,10 +61,12 @@ function buildWhyWon(result, personality, matchPct) {
     const clean = stripEmoji(h).replace(/^[^\wäöüÄÖÜ]+/, '').replace(/[.,!?;]$/, '').trim();
     if (clean.length > 3) reasons.push(clean);
   });
+  const matched = (result.matchReasons || []).filter(r => !/^Dein Wunsch/.test(r));
   const profileType = personality?.types?.[0] ? stripEmoji(personality.types[0]).trim() : null;
-  if (profileType) reasons.push(`Passt perfekt zu deinem Reiseprofil: ${profileType}`);
-  if (result.budgetPerDay) reasons.push(`Attraktives Budget: ab ${result.budgetPerDay}`);
-  else reasons.push('Hervorragendes Preis-Leistungs-Verhältnis');
+  if ((result.matchReasons || []).some(r => /^Dein Wunsch/.test(r))) reasons.push('Passt zu deinem persönlichen Wunsch');
+  if (matched.length) reasons.push(`Passt zu deinen Wünschen: ${matched.slice(0, 3).join(', ')}`);
+  else if (profileType) reasons.push(`Passt zu deinem Reiseprofil: ${profileType}`);
+  if (result.budgetPerDay) reasons.push(`Tagesbudget vor Ort: ca. ${result.budgetPerDay}`);
   if (reasons.length < 5) reasons.push(`${matchPct}% Übereinstimmung mit deinen Reisewünschen`);
   return reasons.filter(r => r.length > 3).slice(0, 5);
 }
@@ -133,11 +135,20 @@ function InlineSkeleton({ message }) {
 }
 
 function NextStepCard({ result, onEmail }) {
-  const s = JSON.stringify(result).toLowerCase();
-  const isBeach  = /strand|beach|meer|sea|island|küste|insel/.test(s);
+  // Strandziel? Neue Ergebnisse bringen ihre Tags mit; bei älteren nur Tagline & Highlights prüfen
+  const isBeach  = Array.isArray(result.tags)
+    ? result.tags.slice(0, 3).includes('beach')
+    : /strand|beach|küste|badeurlaub/i.test(`${result.tagline || ''} ${(result.highlights || []).join(' ')}`);
   const needsCar = result.carRental?.recommended;
+  const hasFlight = !!result.skyUrl;
   let step, reason, StepIcon, iconBg, iconColor, cta1, cta2;
-  if (isBeach) {
+  if (!hasFlight) {
+    step = `Unterkunft in ${result.destination} sichern`;
+    reason = 'Hier reist du bequem mit Auto oder Bahn an – entscheidend ist eine gute Unterkunft, besonders in den Ferien.';
+    StepIcon = Hotel; iconBg = '#F3E8FF'; iconColor = '#7C3AED';
+    cta1 = { label: 'Unterkünfte vergleichen', href: result.bookingUrl || result.trivagoUrl, provider: 'booking' };
+    cta2 = result.gygUrl ? { label: 'Ausflüge ansehen', href: result.gygUrl, provider: 'getyourguide' } : null;
+  } else if (isBeach) {
     step = `Unterkunft in ${result.destination} sichern`;
     reason = 'Gute Strandunterkünfte sind schnell ausgebucht – besonders in der Hochsaison lohnt frühes Buchen.';
     StepIcon = Hotel; iconBg = '#F3E8FF'; iconColor = '#7C3AED';
@@ -175,13 +186,15 @@ function NextStepCard({ result, onEmail }) {
             <div style={{ fontSize: '12px', color: '#94A3B8', lineHeight: 1.6 }}>{reason}</div>
           </div>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: cta2 ? '1fr 1fr' : '1fr', gap: '8px' }}>
           <a href={goUrl(cta1.provider, cta1.href)} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '11px 12px', borderRadius: '11px', background: 'linear-gradient(135deg,#0EA5E9,#06B6D4)', color: '#FFFFFF', textDecoration: 'none', fontSize: '12px', fontWeight: 700, textAlign: 'center' }}>
             <StepIcon size={12} strokeWidth={2} />{cta1.label}
           </a>
+          {cta2 && (
           <a href={goUrl(cta2.provider, cta2.href)} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '11px 12px', borderRadius: '11px', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', color: '#E2E8F0', textDecoration: 'none', fontSize: '12px', fontWeight: 600, textAlign: 'center' }}>
             {cta2.label}
           </a>
+          )}
         </div>
       </div>
     </section>
@@ -584,7 +597,7 @@ export default function TravelResultView({ results, personality, interests, pack
           </h1>
           <div style={{ fontSize: 'clamp(12px,1.8vw,15px)', color: 'rgba(255,255,255,0.78)', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><MapPin size={11} strokeWidth={2.5} />{cur.country}</span>
-            {cur.flightTime && <span style={{ opacity: 0.7 }}>· {cur.flightTime} Flug</span>}
+            {cur.flightTime && <span style={{ opacity: 0.7 }}>· {cur.flightTime}</span>}
             {cur.weather && <span style={{ opacity: 0.7 }}>· {cur.weather}</span>}
           </div>
           {cur.tagline && (
@@ -593,9 +606,11 @@ export default function TravelResultView({ results, personality, interests, pack
             </p>
           )}
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+            {cur.skyUrl && (
             <a href={goUrl('skyscanner', cur.skyUrl)} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '11px 20px', borderRadius: '12px', background: 'linear-gradient(135deg,#0EA5E9,#06B6D4)', color: '#fff', textDecoration: 'none', fontSize: '13px', fontWeight: 700, boxShadow: '0 4px 16px rgba(14,165,233,0.4)' }}>
               <Plane size={13} strokeWidth={2} /> Flüge finden
             </a>
+            )}
             <a href={goUrl('booking', cur.bookingUrl)} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '11px 20px', borderRadius: '12px', background: 'rgba(255,255,255,0.18)', border: '1.5px solid rgba(255,255,255,0.35)', color: '#fff', textDecoration: 'none', fontSize: '13px', fontWeight: 700, backdropFilter: 'blur(8px)' }}>
               <Hotel size={13} strokeWidth={2} /> Hotels ansehen
             </a>
@@ -952,9 +967,10 @@ export default function TravelResultView({ results, personality, interests, pack
         {/* ── KOSTENSCHÄTZUNG ─────────────────────────────────────────────── */}
         {cur.costEstimate && (() => {
           const BUDGET_META = {
-            low:  { display: 'bis 500 €',     max: 500  },
-            mid:  { display: '500–1.500 €',   max: 1500 },
-            high: { display: '1.500–4.000 €', max: 4000 },
+            low:    { display: 'bis 500 €',     max: 500   },
+            mid:    { display: '500–1.500 €',   max: 1500  },
+            high:   { display: '1.500–5.000 €', max: 5000  },
+            luxury: { display: 'ab 5.000 €',    max: 12000 },
           };
           const budgetMeta = BUDGET_META[budget] ?? null;
 
@@ -976,12 +992,15 @@ export default function TravelResultView({ results, personality, interests, pack
             : numericRatio <= 1.60 ? 'ueber'
             : 'nur_sparreise';
 
-          const effectiveStatus = (aiStatus && ['passt','knapp','ueber','nur_sparreise'].includes(aiStatus))
-            ? aiStatus
-            : derivedStatus;
+          const effectiveStatus = budget === 'open' || aiStatus === 'offen'
+            ? 'offen'
+            : (aiStatus && ['passt','knapp','ueber','nur_sparreise'].includes(aiStatus))
+              ? aiStatus
+              : derivedStatus;
 
           // Visual config per status
           const STATUS_CFG = {
+            offen:         { badgeLabel: 'Budget offen – grobe Richtwerte', badgeBg: '#F1F5F9', badgeColor: '#475569', badgeBorder: '#E2E8F0', totalBg: 'linear-gradient(135deg,#EFF6FF,#ECFEFF)', totalBorder: '2px solid #BFDBFE', totalColor: '#0284C7', gemBg: 'linear-gradient(135deg,#0EA5E9,#06B6D4)', totalLabel: 'Gesamt', showWarning: false, disclaimer: '* Grobe Richtwerte auf Basis typischer Preise. Tatsächliche Preise hängen von Reisedatum und Anbieter ab.' },
             passt:         { badgeLabel: 'Passt zu deinem Budget',        badgeBg: '#F0FDF4', badgeColor: '#15803D', badgeBorder: '#BBF7D0', totalBg: 'linear-gradient(135deg,#EFF6FF,#ECFEFF)', totalBorder: '2px solid #BFDBFE', totalColor: '#0284C7', gemBg: 'linear-gradient(135deg,#0EA5E9,#06B6D4)', totalLabel: 'Gesamt', showWarning: false, disclaimer: '* Grobe Richtwerte auf Basis typischer Preise. Tatsächliche Preise hängen von Reisedatum und Anbieter ab.' },
             knapp:         { badgeLabel: 'Knapp im Budget',               badgeBg: '#FFFBEB', badgeColor: '#92400E', badgeBorder: '#FDE68A', totalBg: 'linear-gradient(135deg,#FFFBEB,#FEF3C7)', totalBorder: '2px solid #FDE68A', totalColor: '#B45309', gemBg: 'linear-gradient(135deg,#F59E0B,#FBBF24)', totalLabel: 'Gesamt*', showWarning: true,  disclaimer: '* Schätzwerte – knapp im Budget. Mit Frühbucher-Rabatt oder Nebensaison oft erreichbar.' },
             ueber:         { badgeLabel: 'Über deinem Budget',            badgeBg: '#FEF2F2', badgeColor: '#991B1B', badgeBorder: '#FECACA', totalBg: 'linear-gradient(135deg,#FEF2F2,#FEE2E2)', totalBorder: '2px solid #FECACA', totalColor: '#991B1B', gemBg: 'linear-gradient(135deg,#EF4444,#F87171)', totalLabel: 'Gesamt*', showWarning: true,  disclaimer: '* Schätzwerte basieren auf realistischen Marktpreisen – dieses Ziel liegt über deinem Budget.' },
@@ -1029,9 +1048,12 @@ export default function TravelResultView({ results, personality, interests, pack
               {/* Cost cards */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(110px,1fr))', gap: '8px', alignItems: 'stretch' }}>
                 {[
-                  { label: 'Flug',        value: cur.costEstimate.flight,     Icon: Plane,     iconBg: '#DBEAFE', iconColor: '#1D4ED8' },
+                  (cur.costEstimate.travelType === 'boden' || /anreise/i.test(cur.costEstimate.flight || ''))
+                    ? { label: 'Anreise',   value: cur.costEstimate.flight === 'eigene Anreise' ? null : cur.costEstimate.flight, Icon: Car, iconBg: '#DBEAFE', iconColor: '#1D4ED8' }
+                    : { label: 'Flug',      value: cur.costEstimate.flight,     Icon: Plane,     iconBg: '#DBEAFE', iconColor: '#1D4ED8' },
                   { label: 'Unterkunft',  value: cur.costEstimate.hotel,      Icon: Hotel,     iconBg: '#F3E8FF', iconColor: '#7C3AED' },
                   { label: 'Aktivitäten', value: cur.costEstimate.activities, Icon: MapPinned, iconBg: '#FEE2E2', iconColor: '#DC2626' },
+                  { label: 'Mietwagen',   value: cur.costEstimate.carRental,  Icon: Car,       iconBg: '#F5F3FF', iconColor: '#7C3AED' },
                 ].filter(r => r.value && !['0€','0€ p.P.','0 € p.P.','0 €'].includes(r.value.trim())).map((row, i) => (
                   <div key={i} style={{ padding: '14px 10px', borderRadius: '13px', background: '#F8FAFF', border: '1px solid #F1F5F9', textAlign: 'center' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>
@@ -1089,6 +1111,7 @@ export default function TravelResultView({ results, personality, interests, pack
           </section>
 
           {/* Flüge */}
+          {cur.skyUrl && (
           <section aria-label="Empfohlene Flüge" style={{ ...card, display: 'flex', flexDirection: 'column' }}>
             <SectionTitle label="Flüge buchen" title="Empfohlene Flüge" icon={Plane} />
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px', borderRadius: '12px', background: '#EFF6FF', border: '1.5px solid #BFDBFE', marginBottom: '10px' }}>
@@ -1096,7 +1119,7 @@ export default function TravelResultView({ results, personality, interests, pack
                 <Plane size={16} strokeWidth={1.75} color="#FFFFFF" />
               </div>
               <div>
-                <div style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A' }}>Direktflüge nach {cur.destination}</div>
+                <div style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A' }}>Flüge nach {cur.destination}</div>
                 {cur.flightTime && <div style={{ fontSize: '11px', color: '#64748B', marginTop: '2px' }}>{cur.flightTime} · via Skyscanner</div>}
               </div>
             </div>
@@ -1105,6 +1128,7 @@ export default function TravelResultView({ results, personality, interests, pack
               <ArrowRight size={13} strokeWidth={2.5} style={{ marginLeft: 'auto' }} />
             </a>
           </section>
+          )}
 
           {/* Mietwagen */}
           {cur.carRental && (
@@ -1141,8 +1165,8 @@ export default function TravelResultView({ results, personality, interests, pack
                 <Mail size={16} strokeWidth={1.5} color="#0284C7" />
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A' }}>Reiseplan per Mail erhalten</div>
-                <div style={{ fontSize: '11px', color: '#64748B' }}>Wöchentlich Deals & Inspiration</div>
+                <div style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A' }}>Newsletter abonnieren</div>
+                <div style={{ fontSize: '11px', color: '#64748B' }}>Neue Reiseideen & Angebote</div>
               </div>
               <button type="button" onClick={onEmail} style={{ padding: '8px 13px', borderRadius: '10px', border: 'none', background: 'linear-gradient(135deg,#0EA5E9,#06B6D4)', color: '#FFFFFF', fontWeight: 700, fontSize: '12px', cursor: 'pointer', fontFamily: 'inherit', whiteSpace: 'nowrap', flexShrink: 0, boxShadow: '0 3px 10px rgba(14,165,233,0.3)' }}>
                 Kostenlos →

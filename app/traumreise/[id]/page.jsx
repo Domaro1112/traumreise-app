@@ -106,6 +106,7 @@ export default async function TravelResultPage({ params }) {
           duration={displayDuration}
           budget={budget ?? null}
           needsEmailGate={!session.email_submitted_at}
+          funnelType={session.funnel_type ?? null}
         />
       </main>
       <Footer />

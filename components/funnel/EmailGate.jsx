@@ -3,7 +3,8 @@
 import { useState } from 'react';
 
 
-export default function EmailGate({ sessionId, onComplete }) {
+export default function EmailGate({ sessionId, onComplete, funnelType = null }) {
+  const isSingleParent = funnelType === 'single_parent';
   const [email,    setEmail]    = useState('');
   const [consent,  setConsent]  = useState(false); // newsletter opt-in, NOT pre-checked
   const [loading,  setLoading]  = useState(false);
@@ -127,10 +128,17 @@ export default function EmailGate({ sessionId, onComplete }) {
               )}
             </div>
             <span style={{ fontSize: '13px', color: '#64748B', lineHeight: 1.6 }}>
-              Ich möchte den ApeAround-Newsletter erhalten und gelegentlich Reiseideen, Tipps,
-              Angebote und Neuigkeiten{' '}
-              <strong>für Alleinerziehende per E-Mail</strong>{' '}
-              bekommen. Ich kann mich jederzeit wieder abmelden. Die Anmeldung wird erst nach
+              {isSingleParent ? (
+                <>
+                  Ich möchte den ApeAround-Newsletter erhalten und gelegentlich Reiseideen, Tipps,
+                  Angebote und Neuigkeiten{' '}
+                  <strong>für Alleinerziehende per E-Mail</strong>{' '}
+                  bekommen.
+                </>
+              ) : (
+                <>Ich möchte den ApeAround-Newsletter mit Reiseideen, Tipps und Angeboten per E-Mail erhalten.</>
+              )}{' '}
+              Ich kann mich jederzeit wieder abmelden. Die Anmeldung wird erst nach
               Bestätigung per E-Mail aktiv.
             </span>
           </label>
