@@ -72,7 +72,6 @@ export default async function InspirationPage() {
           className="hero-full hero-focus-bg"
           style={{
             ...focusStyle(await getHeroFocus('inspiration')),
-            '--hero-h': '0.5335',
             display: 'flex',
             alignItems: 'center',
             position: 'relative',

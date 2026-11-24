@@ -235,14 +235,15 @@ input::placeholder { color: var(--color-text-muted); }
 }
 
 /* ── Hero-Bereiche ────────────────────────────────────────────────────────────
-   Ab Tablet folgt die Höhe dem Bildformat (Standard 16:9, über --hero-h
-   änderbar), höchstens aber Bildschirmhöhe minus Kopfzeile. Braucht der Inhalt
-   mehr Platz, wächst der Bereich mit. Welcher Teil des Bildes sichtbar bleibt,
-   wird im Admin unter „Hero-Bilder“ eingestellt (--focus-d / --focus-m). */
+   Einheitliche Höhe ab Tablet: mit der Bildschirmbreite wachsend, zwischen
+   --hero-min und --hero-max (Standard 500–640 px, wie beim Reiseblog).
+   Braucht der Inhalt mehr Platz, wächst der Bereich mit. Welcher Teil des
+   Bildes sichtbar bleibt, wird im Admin unter „Hero-Bilder“ eingestellt
+   (--focus-d / --focus-m). */
 @media (min-width: 769px) {
   .hero-full {
     width: 100%;
-    height: clamp(520px, calc(100vw * var(--hero-h, 0.5628)), calc(100svh - 80px)) !important;
+    height: clamp(var(--hero-min, 500px), var(--hero-pref, 32vw), var(--hero-max, 640px)) !important;
     min-height: fit-content !important;
   }
 }

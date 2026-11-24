@@ -9,7 +9,7 @@ const TRUST_ICON_MAP = { Gift, Compass, ShieldCheck };
 
 export default function HeroSection({ focus }) {
   return (
-    <section className="hero-fullwidth hero-full" style={focusStyle(focus)}>
+    <section className="hero-fullwidth hero-full" style={{ ...focusStyle(focus), '--hero-min': '560px', '--hero-pref': '43vw', '--hero-max': '820px' }}>
       {/* ── Background image – full browser width, no container ── */}
       <Image
         src="/images/hero/reisemonkey-hero.png"

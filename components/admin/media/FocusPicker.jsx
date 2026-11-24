@@ -80,7 +80,7 @@ export default function FocusPicker({ image, value, defaults, onChange }) {
       <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ fontSize: '11px', fontWeight: 700, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '6px' }}>Vorschau Computer</div>
-          <div style={{ aspectRatio: '1440 / 740', borderRadius: '10px', overflow: 'hidden', border: mode === 'desktop' ? '2px solid #0EA5E9' : '2px solid #E2E8F0' }}>
+          <div style={{ aspectRatio: '1600 / 560', borderRadius: '10px', overflow: 'hidden', border: mode === 'desktop' ? '2px solid #0EA5E9' : '2px solid #E2E8F0' }}>
             <img src={image} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: focus.desktop, display: 'block' }} />
           </div>
         </div>
