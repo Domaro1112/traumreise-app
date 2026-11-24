@@ -16,7 +16,10 @@ function dbToPublic(row) {
     region:       row.region       ?? '',
     continent:    row.continent    ?? '',
     // media
-    heroImage:    row.hero_image   ?? `/images/destinations/${row.slug}.jpg`,
+    // Titelbild: eigenes Hero-Bild → sonst erstes Galeriebild → sonst Standardpfad
+    heroImage:    row.hero_image
+                  || (Array.isArray(row.gallery_images) && row.gallery_images[0])
+                  || `/images/destinations/${row.slug}.jpg`,
     heroGradient: 'linear-gradient(160deg, #0C1A3A 0%, #0B3D6B 50%, #0EA5E9 100%)',
     // content
     shortDescription: row.short_description ?? '',

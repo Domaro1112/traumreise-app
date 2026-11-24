@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import { Upload, X, RefreshCw, AlertCircle, Image as ImageIcon } from 'lucide-react';
 
 const ACCEPTED = '.jpg,.jpeg,.png,.webp';
@@ -28,7 +28,20 @@ export default function ImageUploader({ value, alt = '', onChange, onDelete, slu
   const [uploading, setUploading] = useState(false);
   const [error, setError]         = useState('');
   const [localAlt, setLocalAlt]   = useState(alt);
+  const [broken, setBroken]       = useState(false);
+  const [lastValue, setLastValue] = useState(value);
   const inputRef = useRef(null);
+
+  const imgRef = useRef(null);
+
+  // Neues Bild → Fehlerstatus zurücksetzen
+  if (value !== lastValue) { setLastValue(value); setBroken(false); }
+
+  // Fehler, der schon vor dem Laden des Skripts passiert ist, nachträglich erkennen
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img && img.complete && img.naturalWidth === 0) setBroken(true);
+  }, [value]);
 
   const canUpload = !!slug?.trim();
 
@@ -146,13 +159,25 @@ export default function ImageUploader({ value, alt = '', onChange, onDelete, slu
   // ── Preview with controls ────────────────────────────────────────────────────
   return (
     <div>
-      <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', background: '#F1F5F9', border: '1.5px solid #E2E8F0' }}>
-        <img
-          src={value}
-          alt={localAlt || altDefault || label || 'Bild'}
-          style={{ width: '100%', maxHeight: '240px', objectFit: 'cover', display: 'block' }}
-          onError={e => { e.currentTarget.style.display = 'none'; }}
-        />
+      <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', background: '#F1F5F9', border: `1.5px solid ${broken ? '#FECACA' : '#E2E8F0'}`, minHeight: broken ? '96px' : undefined }}>
+        {broken ? (
+          // Gespeicherte Adresse ist nicht erreichbar (z. B. Bild gelöscht oder alter Speicherort)
+          <div style={{ padding: '14px 16px', paddingRight: '150px', display: 'flex', gap: '10px', alignItems: 'flex-start', color: '#991B1B', fontSize: '12px', lineHeight: 1.5 }}>
+            <AlertCircle size={16} strokeWidth={2} style={{ flexShrink: 0, marginTop: '1px' }} />
+            <div>
+              <strong>Bild konnte nicht geladen werden.</strong> Bitte über „Ersetzen“ neu hochladen oder entfernen.
+              <div style={{ marginTop: '4px', color: '#B91C1C', wordBreak: 'break-all', opacity: 0.8 }}>{value}</div>
+            </div>
+          </div>
+        ) : (
+          <img
+            ref={imgRef}
+            src={value}
+            alt={localAlt || altDefault || label || 'Bild'}
+            style={{ width: '100%', maxHeight: '240px', objectFit: 'cover', display: 'block' }}
+            onError={() => setBroken(true)}
+          />
+        )}
         {/* Overlay buttons */}
         <div style={{ position: 'absolute', top: '8px', right: '8px', display: 'flex', gap: '6px' }}>
           <button
