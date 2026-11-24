@@ -234,19 +234,23 @@ input::placeholder { color: var(--color-text-muted); }
   .hero-bg-img { object-position: 65% 65% !important; }
 }
 
-/* ── Hero-Bilder vollständig zeigen ───────────────────────────────────────────
-   Ab Tablet richtet sich die Hero-Höhe nach dem Bildformat (Standard 16:9,
-   über --hero-ratio änderbar). So wird das Motiv oben und unten nicht
-   abgeschnitten. Braucht der Inhalt mehr Platz, wächst der Bereich mit
-   (dann werden höchstens die Seiten etwas beschnitten). Auf dem Handy
-   bestimmt weiterhin der Inhalt die Höhe. */
+/* ── Hero-Bereiche ────────────────────────────────────────────────────────────
+   Ab Tablet folgt die Höhe dem Bildformat (Standard 16:9, über --hero-h
+   änderbar), höchstens aber Bildschirmhöhe minus Kopfzeile. Braucht der Inhalt
+   mehr Platz, wächst der Bereich mit. Welcher Teil des Bildes sichtbar bleibt,
+   wird im Admin unter „Hero-Bilder“ eingestellt (--focus-d / --focus-m). */
 @media (min-width: 769px) {
   .hero-full {
-    aspect-ratio: var(--hero-ratio, 1672 / 941);
-    height: auto !important;
-    min-height: auto !important;
-    max-height: 1100px;
+    width: 100%;
+    height: clamp(520px, calc(100vw * var(--hero-h, 0.5628)), calc(100svh - 80px)) !important;
+    min-height: fit-content !important;
   }
+}
+.hero-focus-img { object-position: var(--focus-d, 50% 50%) !important; }
+.hero-focus-bg  { background-position: var(--focus-d, 50% 50%) !important; }
+@media (max-width: 768px) {
+  .hero-focus-img { object-position: var(--focus-m, var(--focus-d, 50% 50%)) !important; }
+  .hero-focus-bg  { background-position: var(--focus-m, var(--focus-d, 50% 50%)) !important; }
 }
 /* Lesbarkeit über Schrift-Schatten statt dunklem Bild */
 .hero-full h1 { text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35); }

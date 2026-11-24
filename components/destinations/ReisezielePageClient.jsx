@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo, useRef } from 'react';
+import { focusStyle } from '@/lib/hero-config';
 import Link from 'next/link';
 import Image from 'next/image';
 import Container from '@/components/layout/Container';
@@ -150,7 +151,7 @@ function DestCard({ dest }) {
 
 // ── Main export ────────────────────────────────────────────────────────────────
 
-export default function ReisezielePageClient({ destinations = [] }) {
+export default function ReisezielePageClient({ destinations = [], heroFocus }) {
   const [searchQuery,   setSearchQuery]   = useState('');
   const [activeFilter,  setActiveFilter]  = useState('');
   const [expandedConts, setExpandedConts] = useState({});
@@ -224,6 +225,7 @@ export default function ReisezielePageClient({ destinations = [] }) {
     <>
       {/* ══ HERO ══════════════════════════════════════════════════════════════ */}
       <section className="hero-full" style={{
+        ...focusStyle(heroFocus),
         position: 'relative',
         overflow: 'hidden',
         display: 'flex',
@@ -238,8 +240,8 @@ export default function ReisezielePageClient({ destinations = [] }) {
           fill
           priority
           sizes="100vw"
-          className="rzp-hero-img"
-          style={{ objectFit: 'cover', objectPosition: 'center 35%' }}
+          className="hero-focus-img"
+          style={{ objectFit: 'cover' }}
         />
         {/* Gradient overlay – keeps text readable without losing the image */}
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(12,26,58,0.50) 0%, rgba(12,26,58,0.22) 38%, rgba(12,26,58,0) 62%)' }} />

@@ -239,8 +239,10 @@ export default async function DestinationPage({ params }) {
 
         {/* ── HERO ── */}
         <section
-          className="dest-hero hero-full"
+          className="dest-hero hero-full hero-focus-bg"
           style={{
+            '--focus-d': dest.imageAltTexts?.hero_focus || '50% 50%',
+            '--focus-m': dest.imageAltTexts?.hero_focus_mobile || dest.imageAltTexts?.hero_focus || '50% 50%',
             backgroundImage: `url('${dest.heroImage}'), ${dest.heroGradient}`,
             backgroundSize: 'cover, cover',
             backgroundPosition: 'center, center',

@@ -1,8 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { getHeroFocus } from '@/repositories/hero-images';
+import { focusStyle } from '@/lib/hero-config';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Container from '@/components/layout/Container';
+
+export const revalidate = 60;
 
 export const metadata = {
   title: 'Urlaub für Alleinerziehende mit Kind | ApeAround',
@@ -223,7 +227,8 @@ const CHECK_ICON = (
   </svg>
 );
 
-export default function AlleinerziehendePage() {
+export default async function AlleinerziehendePage() {
+  const heroFocus = await getHeroFocus('alleinerziehende');
   return (
     <>
       <script
@@ -235,6 +240,7 @@ export default function AlleinerziehendePage() {
 
         {/* ── 1. HERO ──────────────────────────────────────────────────────────── */}
         <section className="hero-full" style={{
+          ...focusStyle(heroFocus),
           position: 'relative',
           paddingTop: 'clamp(100px, 12vw, 160px)',
           paddingBottom: 'clamp(60px, 8vw, 96px)',
@@ -250,7 +256,8 @@ export default function AlleinerziehendePage() {
             fill
             priority
             sizes="100vw"
-            style={{ objectFit: 'cover', objectPosition: 'center 5%' }}
+            className="hero-focus-img"
+            style={{ objectFit: 'cover' }}
           />
 
           {/* Dark gradient overlay – keeps text readable over any photo */}

@@ -2,6 +2,7 @@
 import Footer from '@/components/layout/Footer';
 import ReisezielePageClient from '@/components/destinations/ReisezielePageClient';
 import { listPublishedDestinations } from '@/repositories/destinations-cms';
+import { getHeroFocus } from '@/repositories/hero-images';
 
 // ISR: re-render from DB every 60 seconds
 export const revalidate = 60;
@@ -43,6 +44,7 @@ export default async function ReisezielePage() {
   try {
     destinations = await listPublishedDestinations();
   } catch { /* Supabase not available — show empty state */ }
+  const heroFocus = await getHeroFocus('reiseziele');
 
   return (
     <>
@@ -52,7 +54,7 @@ export default async function ReisezielePage() {
       />
       <Header />
       <main style={{ paddingTop: '80px', background: '#FFFFFF', minHeight: '100vh' }}>
-        <ReisezielePageClient destinations={destinations} />
+        <ReisezielePageClient destinations={destinations} heroFocus={heroFocus} />
       </main>
       <Footer />
     </>

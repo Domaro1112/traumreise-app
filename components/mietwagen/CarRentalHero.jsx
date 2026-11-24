@@ -47,7 +47,7 @@ const labelStyle = {
 function onFocusInput(e)  { e.target.style.borderColor = '#0EA5E9'; e.target.style.background = '#FFFFFF'; }
 function onBlurInput(e)   { e.target.style.borderColor = '#E2E8F0'; e.target.style.background = '#F8FAFC'; }
 
-export default function CarRentalHero() {
+export default function CarRentalHero({ focus }) {
   const [pickupLocation, setPickupLocation] = useState('');
   const [pickupDate,     setPickupDate]     = useState('');
   const [returnDate,     setReturnDate]     = useState('');
@@ -68,6 +68,7 @@ export default function CarRentalHero() {
 
   return (
     <LandingPageHero
+      focus={focus}
       backgroundImage={HERO_IMAGE}
       backgroundPosition="right center"
       overlayGradient="linear-gradient(90deg, rgba(15,23,42,0.50) 0%, rgba(15,23,42,0.24) 45%, rgba(15,23,42,0.05) 100%)"

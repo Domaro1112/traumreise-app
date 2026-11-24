@@ -6,6 +6,7 @@ import { Save, Globe, ChevronDown, ChevronUp, Plus, Trash2, AlertCircle, Sparkle
 import { buildAutoValues } from '@/lib/validate-destination-import';
 import ImageUploader from '@/components/admin/media/ImageUploader';
 import GalleryEditor from '@/components/admin/media/GalleryEditor';
+import FocusPicker from '@/components/admin/media/FocusPicker';
 
 // ── Predefined options ────────────────────────────────────────────────────────
 const TRAVEL_TYPES   = ['Strand', 'Stadt', 'Natur', 'Abenteuer', 'Familie', 'Luxus', 'Kultur', 'Wandern', 'Roadtrip'];
@@ -589,6 +590,20 @@ export default function DestinationEditorClient({ initialData, isNew }) {
             set('image_alt_texts', { ...altTexts, hero: '' });
           }}
         />
+
+        {/* Bildausschnitt des Hero-Bildes (wird in image_alt_texts.hero_focus gespeichert) */}
+        {(form.hero_image || form.gallery_items?.[0]?.url) && (
+          <div style={{ marginTop: '16px', padding: '16px', borderRadius: '12px', background: '#F8FAFF', border: '1.5px solid #E2E8F0' }}>
+            <div style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A', marginBottom: '4px' }}>Bildausschnitt</div>
+            <p style={{ fontSize: '12px', color: '#64748B', margin: '0 0 12px' }}>Welcher Teil des Titelbilds soll oben auf der Seite sichtbar bleiben? Danach speichern.</p>
+            <FocusPicker
+              image={form.hero_image || form.gallery_items?.[0]?.url}
+              value={{ desktop: altTexts.hero_focus || '50% 50%', mobile: altTexts.hero_focus_mobile || altTexts.hero_focus || '50% 50%' }}
+              defaults={{ desktop: '50% 50%', mobile: '50% 50%' }}
+              onChange={f => set('image_alt_texts', { ...altTexts, hero_focus: f.desktop, hero_focus_mobile: f.mobile })}
+            />
+          </div>
+        )}
 
         {/* ── Open Graph Bild ───────────────────────────────────────────────── */}
         <SectionDivider label={<>Open Graph Bild{isAuto('open_graph_image') && <AutoBadge />}</>} style={{ marginTop: '24px' }} />

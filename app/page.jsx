@@ -11,6 +11,9 @@ import LatestBlogArticles from '@/components/landing/LatestBlogArticles';
 import SpecialTeaserGrid from '@/components/landing/SpecialTeaserGrid';
 import { listActiveSuggestions } from '@/repositories/homepage-suggestions';
 import { FALLBACK_SUGGESTIONS } from '@/lib/homepage-suggestions';
+import { getHeroFocus } from '@/repositories/hero-images';
+
+export const revalidate = 60;
 
 export const metadata = {
   title: 'ApeAround – Finde deine Traumreise',
@@ -26,12 +29,13 @@ export default async function LandingPage() {
   } catch {
     // Table not yet migrated or Supabase unavailable — fall back to static data
   }
+  const heroFocus = await getHeroFocus('home');
 
   return (
     <>
       <Header />
       <main>
-        <HeroSection />
+        <HeroSection focus={heroFocus} />
         <HomeTravelWizard />
         <FeatureStrip />
         <DestinationCards suggestions={suggestions} />

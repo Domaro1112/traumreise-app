@@ -1,14 +1,15 @@
 ﻿import Image from 'next/image';
 import { Gift, Compass, ShieldCheck, Plane, Sparkles } from 'lucide-react';
 import Container from '@/components/layout/Container';
+import { focusStyle } from '@/lib/hero-config';
 import Button from '@/components/ui/Button';
 import { trustBadges } from '@/data/features';
 
 const TRUST_ICON_MAP = { Gift, Compass, ShieldCheck };
 
-export default function HeroSection() {
+export default function HeroSection({ focus }) {
   return (
-    <section className="hero-fullwidth hero-full">
+    <section className="hero-fullwidth hero-full" style={focusStyle(focus)}>
       {/* ── Background image – full browser width, no container ── */}
       <Image
         src="/images/hero/reisemonkey-hero.png"
@@ -16,10 +17,9 @@ export default function HeroSection() {
         fill
         loading="eager"
         fetchPriority="high"
-        className="hero-bg-img"
+        className="hero-focus-img"
         style={{
           objectFit: 'cover',
-          objectPosition: 'center 65%',
           zIndex: 0,
         }}
       />

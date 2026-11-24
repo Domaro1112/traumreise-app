@@ -7,6 +7,9 @@ import CarRentalTips from '@/components/mietwagen/CarRentalTips';
 import CarRentalBookingHints from '@/components/mietwagen/CarRentalBookingHints';
 import CarRentalFAQ from '@/components/mietwagen/CarRentalFAQ';
 import { CAR_RENTAL_FAQ } from '@/lib/car-rental-config';
+import { getHeroFocus } from '@/repositories/hero-images';
+
+export const revalidate = 60;
 
 export const metadata = {
   title: 'Mietwagen vergleichen – Angebote für deinen Urlaub | ApeAround',
@@ -18,7 +21,7 @@ export const metadata = {
   },
 };
 
-export default function MietwagenPage() {
+export default async function MietwagenPage() {
   const faqJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -52,7 +55,7 @@ export default function MietwagenPage() {
       />
       <Header />
       <main style={{ minHeight: '100vh', paddingTop: '80px', background: '#FFFFFF' }}>
-        <CarRentalHero />
+        <CarRentalHero focus={await getHeroFocus('mietwagen')} />
         <CarRentalDestinations />
         <CarRentalProsCons />
         <CarRentalTips />

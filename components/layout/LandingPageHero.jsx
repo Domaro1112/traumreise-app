@@ -1,5 +1,7 @@
 'use client';
 
+import { focusStyle } from '@/lib/hero-config';
+
 /**
  * Shared shell for all landing-page fullscreen heroes.
  *
@@ -18,6 +20,7 @@ export default function LandingPageHero({
   mobileBackgroundPosition,
   overlayGradient           = 'rgba(15,23,42,0.50)',
   mobileOverlayGradient,
+  focus,
   children,
 }) {
   const mobilePos     = mobileBackgroundPosition ?? backgroundPosition;
@@ -53,7 +56,7 @@ export default function LandingPageHero({
         }
       `}</style>
 
-      <section className="lp-hero hero-full">
+      <section className="lp-hero hero-full hero-focus-bg" style={focusStyle(focus)}>
         <div aria-hidden="true" className="lp-hero-overlay" />
         {children}
       </section>

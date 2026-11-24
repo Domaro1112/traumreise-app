@@ -8,6 +8,9 @@ import MotorcyclePlanningGuide  from '@/components/motorradurlaub/MotorcyclePlan
 import MotorcycleInternalLinks  from '@/components/motorradurlaub/MotorcycleInternalLinks';
 import MotorcycleFAQ            from '@/components/motorradurlaub/MotorcycleFAQ';
 import { MOTORCYCLE_FAQ }       from '@/lib/motorradurlaub-config';
+import { getHeroFocus }         from '@/repositories/hero-images';
+
+export const revalidate = 60;
 
 export const metadata = {
   title: 'Motorradurlaub planen | Routen, Tipps & Reiseideen',
@@ -21,7 +24,7 @@ export const metadata = {
   },
 };
 
-export default function MotorradUrlaubPage() {
+export default async function MotorradUrlaubPage() {
   const faqJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -56,7 +59,7 @@ export default function MotorradUrlaubPage() {
       />
       <Header />
       <main style={{ minHeight: '100vh', background: '#FFFFFF' }}>
-        <MotorcycleHero />
+        <MotorcycleHero focus={await getHeroFocus('motorradurlaub')} />
         <MotorcycleIntro />
         <MotorcycleBenefits />
         <MotorcycleTripTypes />

@@ -1,7 +1,7 @@
 import Container from '@/components/layout/Container';
 import LandingPageHero from '@/components/layout/LandingPageHero';
 
-export default function MotorcycleHero() {
+export default function MotorcycleHero({ focus }) {
   return (
     <>
       <style>{`
@@ -46,6 +46,7 @@ export default function MotorcycleHero() {
       `}</style>
 
       <LandingPageHero
+        focus={focus}
         backgroundImage="/images/motorradurlaub/motorradurlaub-hero.png"
         backgroundPosition="right 20%"
         mobileBackgroundPosition="68% 25%"

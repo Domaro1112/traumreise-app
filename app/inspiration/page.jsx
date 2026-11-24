@@ -4,6 +4,10 @@ import Container from '@/components/layout/Container';
 import InspirationGrid from '@/components/inspiration/InspirationGrid';
 import { listActiveInspirationItems } from '@/repositories/inspiration-items';
 import { FALLBACK_INSPIRATION_ITEMS } from '@/lib/inspiration-items';
+import { getHeroFocus } from '@/repositories/hero-images';
+import { focusStyle } from '@/lib/hero-config';
+
+export const revalidate = 60;
 
 export const metadata = {
   title: 'Reiseinspirationen | Hotels, Pauschalreisen & Reiseideen | ApeAround',
@@ -65,9 +69,10 @@ export default async function InspirationPage() {
       <main style={{ background: '#FFFFFF', minHeight: '100vh' }}>
         {/* Hero — vollflächiges Hintergrundbild mit gleichmäßigem Overlay */}
         <section
-          className="hero-full"
+          className="hero-full hero-focus-bg"
           style={{
-            '--hero-ratio': '1717 / 916',
+            ...focusStyle(await getHeroFocus('inspiration')),
+            '--hero-h': '0.5335',
             display: 'flex',
             alignItems: 'center',
             position: 'relative',

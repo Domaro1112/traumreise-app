@@ -6,6 +6,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import {
   LayoutDashboard, MapPin, FileText, Image as ImageIcon,
   Users, TrendingUp, Search, Settings, LogOut, X, ExternalLink, Sparkles, Compass, Handshake, Mail, Bell, Star, BadgeCheck, PenLine, Zap, MousePointerClick,
+  Crop,
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
@@ -16,6 +17,7 @@ const NAV_ITEMS = [
   { label: 'Reisevorschläge', href: '/admin/homepage-suggestions', icon: Sparkles        },
   { label: 'Inspirationen',   href: '/admin/inspiration',          icon: Compass         },
   { label: 'Medien',          href: '/admin/medien',               icon: ImageIcon       },
+  { label: 'Hero-Bilder',     href: '/admin/hero-bilder',          icon: Crop            },
   { label: 'Leads',              href: '/admin/leads',                icon: Users              },
   { label: 'Funnel-Nutzungen',  href: '/admin/funnel-nutzungen',      icon: Zap                },
   { label: 'Affiliate-Klicks',  href: '/admin/affiliate-clicks',      icon: MousePointerClick  },
