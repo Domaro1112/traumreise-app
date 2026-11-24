@@ -240,19 +240,19 @@ export default function ReisezielePageClient({ destinations = [] }) {
           style={{ objectFit: 'cover', objectPosition: 'center 35%' }}
         />
         {/* Gradient overlay – keeps text readable without losing the image */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(12,26,58,0.55) 0%, rgba(12,26,58,0.25) 45%, rgba(12,26,58,0.05) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(12,26,58,0.50) 0%, rgba(12,26,58,0.22) 38%, rgba(12,26,58,0) 62%)' }} />
         <Container style={{ position: 'relative', zIndex: 1 }}>
           {/* Badge */}
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(14,165,233,0.2)', border: '1px solid rgba(14,165,233,0.38)', borderRadius: '20px', padding: '4px 12px', marginBottom: '16px' }}>
-            <Globe size={12} strokeWidth={2} color="#38BDF8" />
-            <span style={{ fontSize: '11px', fontWeight: 700, color: '#38BDF8', letterSpacing: '0.8px', textTransform: 'uppercase' }}>Weltweit reisen</span>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(12,26,58,0.55)', border: '1px solid rgba(56,189,248,0.55)', borderRadius: '20px', padding: '4px 12px', marginBottom: '16px', backdropFilter: 'blur(6px)' }}>
+            <Globe size={12} strokeWidth={2} color="#7DD3FC" />
+            <span style={{ fontSize: '11px', fontWeight: 700, color: '#BAE6FD', letterSpacing: '0.8px', textTransform: 'uppercase' }}>Weltweit reisen</span>
           </div>
 
-          <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(28px, 5vw, 58px)', fontWeight: 900, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.08, margin: '0 0 14px', maxWidth: '680px' }}>
+          <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(28px, 5vw, 58px)', fontWeight: 900, color: '#FFFFFF', letterSpacing: '-0.03em', lineHeight: 1.08, margin: '0 0 14px', maxWidth: '680px', textShadow: '0 2px 18px rgba(0,0,0,0.35)' }}>
             Reiseziele{' '}<span style={{ color: '#38BDF8' }}>entdecken</span>
           </h1>
 
-          <p style={{ fontSize: 'clamp(14px, 1.5vw, 18px)', color: 'rgba(255,255,255,0.70)', margin: '0 0 28px', maxWidth: '500px', lineHeight: 1.65 }}>
+          <p style={{ fontSize: 'clamp(14px, 1.5vw, 18px)', color: 'rgba(255,255,255,0.92)', margin: '0 0 28px', maxWidth: '500px', lineHeight: 1.65, textShadow: '0 1px 10px rgba(0,0,0,0.45)' }}>
             Finde Inspiration für deinen nächsten Traumurlaub – mit Highlights, Reisetipps, bester Reisezeit und direkten Buchungslinks.
           </p>
 
