@@ -109,9 +109,9 @@ export default function AccessPage() {
         >
           <Image
             src="/images/logo/apearound-logo.png"
-            alt="ApeAround.de – Deine Reise beginnt mit einer Idee"
+            alt="ApeAround.de – Dein Urlaub beginnt mit einer Idee"
             width={1600}
-            height={534}
+            height={536}
             priority
             sizes="320px"
             style={{ width: '100%', maxWidth: '320px', height: 'auto', display: 'block', margin: '0 auto' }}

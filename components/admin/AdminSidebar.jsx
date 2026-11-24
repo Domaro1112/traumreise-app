@@ -89,7 +89,7 @@ export default function AdminSidebar({ isOpen, onClose }) {
               src="/images/logo/apearound-logo-hell.png"
               alt="ApeAround Admin"
               width={1600}
-              height={534}
+              height={536}
               style={{ height: '46px', width: 'auto', objectFit: 'contain' }}
             />
             <span style={{
