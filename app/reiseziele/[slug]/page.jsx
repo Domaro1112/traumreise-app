@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer';
 import Container from '@/components/layout/Container';
 import DestinationAffiliateSection from '@/components/destinations/DestinationAffiliateSection';
 import DestinationFAQ from '@/components/destinations/DestinationFAQ';
+import DestinationGallery from '@/components/destinations/DestinationGallery';
 import { getDestinationBySlugPublic, listPublishedSlugs } from '@/repositories/destinations-cms';
 
 const BASE_URL = 'https://apearound.de';
@@ -144,10 +145,39 @@ function buildJsonLd(dest) {
 
 function QuickFactRow({ icon: Icon, label, value }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', padding: '11px 0', borderBottom: '1px solid #F1F5F9' }}>
-      <Icon size={14} strokeWidth={2} color="#0EA5E9" style={{ marginTop: '2px', flexShrink: 0 }} />
-      <span style={{ fontSize: '13px', color: '#94A3B8', minWidth: '120px', fontWeight: 500 }}>{label}</span>
-      <span style={{ fontSize: '13px', color: '#0F172A', fontWeight: 600 }}>{value}</span>
+    <div className="dest-qf-row" style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '12px 0' }}>
+      <span style={{ width: '30px', height: '30px', borderRadius: '9px', background: '#EFF6FF', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <Icon size={14} strokeWidth={2} color="#0EA5E9" />
+      </span>
+      <div style={{ minWidth: 0 }}>
+        <div style={{ fontSize: '11px', color: '#94A3B8', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', marginBottom: '2px' }}>{label}</div>
+        <div style={{ fontSize: '14px', color: '#0F172A', fontWeight: 600, lineHeight: 1.5 }}>{value}</div>
+      </div>
+    </div>
+  );
+}
+
+function QuickFacts({ facts, variant = 'sidebar' }) {
+  if (!facts || !Object.keys(facts).length) return null;
+  const rows = [
+    facts.currency      && <QuickFactRow key="cur"  icon={Globe}    label="Währung"        value={facts.currency} />,
+    facts.language      && <QuickFactRow key="lang" icon={Globe}    label="Sprache"        value={facts.language} />,
+    facts.bestMonths    && <QuickFactRow key="best" icon={Calendar} label="Beste Monate"   value={facts.bestMonths} />,
+    facts.timezone      && <QuickFactRow key="tz"   icon={Clock}    label="Zeitzone"       value={facts.timezone} />,
+    facts.visaRequired  && <QuickFactRow key="visa" icon={Globe}    label="Visum"          value={facts.visaRequired} />,
+    facts.avgTempSummer && <QuickFactRow key="temp" icon={Globe}    label="Ø Temp. Sommer" value={facts.avgTempSummer} />,
+    facts.flightTime    && <QuickFactRow key="fly"  icon={Plane}    label="Anreise & Flug" value={facts.flightTime} />,
+  ].filter(Boolean);
+  if (!rows.length) return null;
+  return (
+    <div
+      className={variant === 'inline' ? 'dest-qf dest-qf-inline' : 'dest-qf'}
+      style={{ background: '#F8FAFF', border: '1.5px solid #E2E8F0', borderRadius: '20px', padding: '20px 22px', marginBottom: variant === 'inline' ? '40px' : '20px' }}
+    >
+      <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '15px', fontWeight: 800, color: '#0F172A', margin: '0 0 4px', letterSpacing: '-0.01em' }}>
+        Quick Facts
+      </h3>
+      <div className="dest-qf-grid">{rows}</div>
     </div>
   );
 }
@@ -308,7 +338,21 @@ export default async function DestinationPage({ params }) {
         {/* ── CONTENT ── */}
         <section className="dest-content-section">
           <Container>
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 300px', gap: '48px', alignItems: 'start' }}
+            <style>{`
+              .destination-layout { }
+              @media (min-width: 960px) { .destination-layout { grid-template-columns: minmax(0, 1fr) 340px !important; } }
+              .dest-qf-grid > .dest-qf-row + .dest-qf-row { border-top: 1px solid #EEF2F7; }
+              /* Unter 960 px gibt es keine Seitenleiste – dann stehen die Quick Facts im Inhalt, zweispaltig */
+              .dest-qf-inline { display: none; }
+              @media (max-width: 959px) {
+                .dest-qf-inline { display: block; }
+                .dest-qf-inline .dest-qf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); column-gap: 20px; }
+                .dest-qf-inline .dest-qf-grid > .dest-qf-row + .dest-qf-row { border-top: none; }
+                .dest-qf-inline .dest-qf-row { border-bottom: 1px solid #EEF2F7; }
+              }
+              .dest-gallery-thumb:hover img { transform: scale(1.04); }
+            `}</style>
+            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 340px', gap: '48px', alignItems: 'start' }}
               className="destination-layout">
 
               {/* ── Main column ── */}
@@ -390,6 +434,9 @@ export default async function DestinationPage({ params }) {
                     </div>
                   </div>
                 )}
+
+                {/* Quick Facts für Handy/Tablet (dort gibt es keine Seitenleiste) */}
+                <QuickFacts facts={dest.quickFacts} variant="inline" />
 
                 {/* Long description */}
                 {dest.longDescription && (
@@ -482,24 +529,12 @@ export default async function DestinationPage({ params }) {
                   <div style={{ marginBottom: '40px' }}>
                     <SectionLabel>Bilder</SectionLabel>
                     <SectionHeading>Bilder aus {dest.name}</SectionHeading>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '10px' }}>
-                      {dest.galleryImages.map((url, i) => {
-                        const alt = dest.imageAltTexts?.[`gallery_${i}`] || `${dest.name} ${i + 1}`;
-                        return (
-                          <div
-                            key={url}
-                            style={{ borderRadius: '12px', overflow: 'hidden', background: '#F1F5F9', aspectRatio: '4/3' }}
-                          >
-                            <img
-                              src={url}
-                              alt={alt}
-                              loading="lazy"
-                              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                            />
-                          </div>
-                        );
-                      })}
-                    </div>
+                    <DestinationGallery
+                      images={dest.galleryImages.map((url, i) => ({
+                        url,
+                        alt: dest.imageAltTexts?.[`gallery_${i}`] || `${dest.name} ${i + 1}`,
+                      }))}
+                    />
                   </div>
                 )}
 
@@ -551,30 +586,7 @@ export default async function DestinationPage({ params }) {
               <aside>
 
                 {/* Quick Facts */}
-                {dest.quickFacts && Object.keys(dest.quickFacts).length > 0 && (
-                  <div
-                    style={{
-                      background: '#F8FAFF',
-                      border: '1.5px solid #E2E8F0',
-                      borderRadius: '20px',
-                      padding: '22px 24px',
-                      marginBottom: '20px',
-                    }}
-                  >
-                    <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '14px', fontWeight: 800, color: '#0F172A', margin: '0 0 14px', letterSpacing: '-0.01em' }}>
-                      Quick Facts
-                    </h3>
-                    <div>
-                      {dest.quickFacts.currency    && <QuickFactRow icon={Globe}    label="Währung"       value={dest.quickFacts.currency}    />}
-                      {dest.quickFacts.language    && <QuickFactRow icon={Globe}    label="Sprache"       value={dest.quickFacts.language}    />}
-                      {dest.quickFacts.flightTime  && <QuickFactRow icon={Plane}    label="Flugzeit"      value={dest.quickFacts.flightTime}  />}
-                      {dest.quickFacts.timezone    && <QuickFactRow icon={Clock}    label="Zeitzone"      value={dest.quickFacts.timezone}    />}
-                      {dest.quickFacts.visaRequired && <QuickFactRow icon={Globe}   label="Visum"         value={dest.quickFacts.visaRequired} />}
-                      {dest.quickFacts.bestMonths  && <QuickFactRow icon={Calendar} label="Beste Monate"  value={dest.quickFacts.bestMonths}  />}
-                      {dest.quickFacts.avgTempSummer && <QuickFactRow icon={Globe}  label="Ø Temp. Sommer" value={dest.quickFacts.avgTempSummer} />}
-                    </div>
-                  </div>
-                )}
+                <QuickFacts facts={dest.quickFacts} />
 
                 {/* Finder CTA */}
                 <div
