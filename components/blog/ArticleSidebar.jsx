@@ -4,7 +4,12 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { List, Plane, Sparkles, ArrowRight, Images, X } from 'lucide-react';
 
+// Sammelbegriffe wie „Weltweit“ sind kein Reiseziel – dann allgemein formulieren
+const GENERIC_DESTINATIONS = /^(weltweit|welt|international|global|europa|allgemein|diverse|verschiedene|mehrere|alle|überall|reisen)$/i;
+const isSpecificDestination = d => typeof d === 'string' && d.trim().length > 1 && !GENERIC_DESTINATIONS.test(d.trim());
+
 export default function ArticleSidebar({ tableOfContents, destination, galleryImages = [], relatedDestinations = [] }) {
+  const specific = isSpecificDestination(destination);
   const [lightbox, setLightbox] = useState(null); // { src, alt }
   const visibleImages = galleryImages.slice(0, 6);
 
@@ -147,7 +152,7 @@ export default function ArticleSidebar({ tableOfContents, destination, galleryIm
               lineHeight: 1.25,
             }}
           >
-            Deine Traumreise nach {destination} planen
+            Deine Traumreise planen
           </div>
 
           <p
@@ -158,7 +163,9 @@ export default function ArticleSidebar({ tableOfContents, destination, galleryIm
               marginBottom: '20px',
             }}
           >
-            Lass unsere Analyse in 2 Minuten ein personalisiertes Reisepaket für dich zusammenstellen.
+            {specific
+              ? <>Lust auf {destination}? Unser Reisefinder zeigt dir in 2 Minuten, welche Reiseziele wirklich zu dir passen – mit Kostenschätzung und Reiseplan.</>
+              : <>Unser Reisefinder zeigt dir in 2 Minuten, welche Reiseziele wirklich zu dir passen – mit Kostenschätzung und Reiseplan.</>}
           </p>
 
           <Link
@@ -180,7 +187,7 @@ export default function ArticleSidebar({ tableOfContents, destination, galleryIm
             }}
           >
             <Plane size={15} strokeWidth={2.5} />
-            Analyse starten
+            Reisefinder starten
             <ArrowRight size={14} strokeWidth={2.5} />
           </Link>
 

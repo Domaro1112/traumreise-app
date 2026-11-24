@@ -193,7 +193,7 @@ export default async function ArticlePage({ params }) {
                 }}
               >
                 <Plane size={15} strokeWidth={2.5} />
-                Traumreise nach {article.destination} planen
+                Deine Traumreise planen
                 <ArrowRight size={14} strokeWidth={2.5} />
               </Link>
             </div>
