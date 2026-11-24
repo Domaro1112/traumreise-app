@@ -73,7 +73,7 @@ export default function CarRentalHero({ focus }) {
       backgroundPosition="right center"
       overlayGradient="linear-gradient(90deg, rgba(15,23,42,0.50) 0%, rgba(15,23,42,0.24) 45%, rgba(15,23,42,0.05) 100%)"
     >
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(48px, 7vw, 88px) clamp(16px, 4vw, 40px)', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: 'clamp(36px, 4vw, 56px) clamp(16px, 4vw, 40px)', position: 'relative', zIndex: 1 }}>
         {/* Badge */}
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', background: 'rgba(12,26,58,0.55)', border: '1px solid rgba(56,189,248,0.55)', borderRadius: '20px', padding: '5px 14px', marginBottom: '20px', backdropFilter: 'blur(6px)' }}>
           <Car size={13} strokeWidth={2} color="#7DD3FC" />
@@ -82,20 +82,20 @@ export default function CarRentalHero({ focus }) {
 
         <h1 style={{
           fontFamily: 'var(--font-heading)',
-          fontSize: 'clamp(28px, 5vw, 56px)',
+          fontSize: 'clamp(28px, 4vw, 46px)',
           fontWeight: 900,
           color: '#FFFFFF',
           letterSpacing: '-0.03em',
           lineHeight: 1.1,
-          margin: '0 0 16px',
-          maxWidth: '760px',
+          margin: '0 0 14px',
+          maxWidth: '900px',
         }}>
           Mietwagen vergleichen –{' '}
           <span style={{ color: '#38BDF8' }}>günstige Angebote</span>{' '}
           für deinen Urlaub
         </h1>
 
-        <p className="hero-lead" style={{ fontSize: 'clamp(15px, 1.5vw, 18px)', color: 'rgba(255,255,255,0.92)', margin: '0 0 36px', maxWidth: '540px', lineHeight: 1.65 }}>
+        <p className="hero-lead" style={{ fontSize: 'clamp(15px, 1.5vw, 18px)', color: 'rgba(255,255,255,0.92)', margin: '0 0 24px', maxWidth: '620px', lineHeight: 1.6 }}>
           Mietwagen-Angebote für deinen Urlaub suchen und vergleichen. Gib deinen Abholort und Zeitraum an und sieh dir passende Fahrzeuge bei CHECK24 an.
         </p>
 
