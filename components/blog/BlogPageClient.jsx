@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Container from '@/components/layout/Container';
+import { focusStyle } from '@/lib/hero-config';
 import {
   Search, X, Clock, CalendarDays, ArrowRight, Plane,
   Star, MapPin, BookOpen, Compass, CheckSquare, Users, Globe,
@@ -225,7 +226,7 @@ function FeaturedCard({ article }) {
 
 // ── Main component ───────────────────────────────────────────────────────────
 // Note: 'categories' prop accepted for backwards compat but not used (replaced by BLOG_FILTERS)
-export default function BlogPageClient({ articles, categories: _ignored }) {
+export default function BlogPageClient({ articles, categories: _ignored, heroFocus }) {
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -249,7 +250,9 @@ export default function BlogPageClient({ articles, categories: _ignored }) {
     <>
       {/* ══ HERO IMAGE ════════════════════════════════════════════════════════ */}
       <section
+        className="hero-focus-bg"
         style={{
+          ...focusStyle(heroFocus),
           backgroundImage: `url('/images/blog/reiseblog-hero.jpg'), linear-gradient(135deg, #0C1A3A 0%, #0B3D6B 40%, #0EA5E9 100%)`,
           backgroundSize: 'cover, cover',
           backgroundPosition: 'center 35%, center',

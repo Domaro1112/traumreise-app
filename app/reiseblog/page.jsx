@@ -12,6 +12,7 @@ import {
   popularDestinations,
 } from '@/data/blogArticles';
 import { listPublishedBlogArticles } from '@/repositories/blog-cms';
+import { getHeroFocus } from '@/repositories/hero-images';
 import { SITE_URL } from '@/lib/site-config';
 import { MapPin, ArrowRight } from 'lucide-react';
 
@@ -53,6 +54,7 @@ export const metadata = {
 
 export default async function Reiseblog() {
   const blogArticles = await listPublishedBlogArticles();
+  const heroFocus = await getHeroFocus('reiseblog');
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -125,7 +127,7 @@ export default async function Reiseblog() {
 
       <main style={{ paddingTop: '80px', background: '#FFFFFF', minHeight: '100vh' }}>
         {/* Hero + Category Filter + Featured + Blog Grid (client-interactive) */}
-        <BlogPageClient articles={blogArticles} categories={blogCategories} />
+        <BlogPageClient articles={blogArticles} categories={blogCategories} heroFocus={heroFocus} />
 
         {/* ── Beliebte Reiseziele ─────────────────────────────────────────────── */}
         <section
