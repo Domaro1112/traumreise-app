@@ -2073,13 +2073,15 @@ export const blogCategories = [
 export const communityTips = [
   {
     icon: 'Calendar',
+    image: '/images/tipps/reisezeit.jpg',
     title: 'Beste Reisezeit wählen',
-    tip: 'Reise in der Nebensaison: 20–40 % günstigere Hotels, weniger Menschenmassen und oft sogar angenehmeres Wetter als im Hochsommer.',
+    tip: 'Reise in der Nebensaison: oft deutlich günstigere Hotels, weniger Menschenmassen und manchmal sogar angenehmeres Wetter als im Hochsommer.',
     link: '/finder',
     linkLabel: 'Reisezeit finden',
   },
   {
     icon: 'Wallet',
+    image: '/images/tipps/budget-finder.jpg',
     title: 'Passend zum Budget planen',
     tip: 'Unser Reisefinder zeigt dir Ziele, die zu deinem Reisestil und Budget passen – inklusive Kostenüberblick, völlig kostenlos und ohne Anmeldung.',
     link: '/finder',
@@ -2087,6 +2089,7 @@ export const communityTips = [
   },
   {
     icon: 'MapPin',
+    image: '/images/tipps/geheimtipps.jpg',
     title: 'Lokale Geheimtipps',
     tip: 'Die besten Erlebnisse sind oft abseits der Hauptattraktionen. Unser Blog zeigt dir, wo Einheimische wirklich essen, feiern und entspannen.',
     link: '/reiseblog',
@@ -2094,8 +2097,9 @@ export const communityTips = [
   },
   {
     icon: 'Compass',
+    image: '/images/tipps/flexibel.jpg',
     title: 'Flexibel bleiben lohnt sich',
-    tip: 'Wer Abflugdaten um 1–2 Tage verschiebt, spart oft bis zu 30 %. Unser Finder zeigt dir automatisch die günstigsten Zeitfenster für dein Ziel.',
+    tip: 'Wer bei den Reisedaten ein paar Tage Spielraum hat, findet oft deutlich günstigere Flüge und Hotels. Vergleiche ruhig mehrere Abflugtage, bevor du buchst.',
     link: '/finder',
     linkLabel: 'Flexibel suchen',
   },
