@@ -45,11 +45,13 @@ const POPULAR_PICKS = [
 
 const CONTINENTS_ORDER = ['Europa', 'Asien', 'Amerika', 'Afrika', 'Ozeanien'];
 
+// Bilder liegen unter public/images/jahreszeiten/. Fehlt ein Bild, zeigt die
+// Kachel stattdessen einen Farbverlauf in der Farbe der Jahreszeit.
 const SEASONS = [
-  { label: 'Frühling', emoji: '🌸', bg: '#F0FDF4', border: '#BBF7D0', color: '#166534', desc: 'Perfekte Temperaturen und blühende Landschaften.', examples: ['Amsterdam', 'Madeira', 'Toskana'] },
-  { label: 'Sommer',   emoji: '☀️', bg: '#FFFBEB', border: '#FDE68A', color: '#92400E', desc: 'Sonne, Strand und beste Reisezeit.',               examples: ['Griechenland', 'Kroatien', 'Bali'] },
-  { label: 'Herbst',   emoji: '🍂', bg: '#FFF7ED', border: '#FED7AA', color: '#9A3412', desc: 'Angenehme Temperaturen und weniger Touristen.',     examples: ['Südtirol', 'New York', 'Algarve'] },
-  { label: 'Winter',   emoji: '❄️', bg: '#EFF6FF', border: '#BAE6FD', color: '#0C4A6E', desc: 'Schnee, Sonne oder Winterwunder erleben.',          examples: ['Lappland', 'Malediven', 'Dubai'] },
+  { label: 'Frühling', emoji: '🌸', image: '/images/jahreszeiten/fruehling.jpg', fallback: 'linear-gradient(135deg,#BBF7D0,#86EFAC)', bg: '#F0FDF4', border: '#BBF7D0', color: '#166534', desc: 'Perfekte Temperaturen und blühende Landschaften.', examples: ['Amsterdam', 'Madeira', 'Toskana'] },
+  { label: 'Sommer',   emoji: '☀️', image: '/images/jahreszeiten/sommer.jpg',    fallback: 'linear-gradient(135deg,#FDE68A,#FCD34D)', bg: '#FFFBEB', border: '#FDE68A', color: '#92400E', desc: 'Sonne, Strand und beste Reisezeit.',               examples: ['Griechenland', 'Kroatien', 'Bali'] },
+  { label: 'Herbst',   emoji: '🍂', image: '/images/jahreszeiten/herbst.jpg',    fallback: 'linear-gradient(135deg,#FED7AA,#FDBA74)', bg: '#FFF7ED', border: '#FED7AA', color: '#9A3412', desc: 'Angenehme Temperaturen und weniger Touristen.',     examples: ['Südtirol', 'New York', 'Algarve'] },
+  { label: 'Winter',   emoji: '❄️', image: '/images/jahreszeiten/winter.jpg',    fallback: 'linear-gradient(135deg,#BAE6FD,#7DD3FC)', bg: '#EFF6FF', border: '#BAE6FD', color: '#0C4A6E', desc: 'Schnee, Sonne oder Winterwunder erleben.',          examples: ['Lappland', 'Malediven', 'Dubai'] },
 ];
 
 const BLOG_PICKS = blogArticles.slice(0, 3);
@@ -528,15 +530,26 @@ export default function ReisezielePageClient({ destinations = [], heroFocus }) {
               <p style={{ fontSize: '14px', color: '#64748B', margin: '0 0 22px' }}>Die besten Reiseziele für jede Saison.</p>
               <div className="rzp-seasons-grid">
                 {SEASONS.map(s => (
-                  <div key={s.label} style={{ background: s.bg, border: `1.5px solid ${s.border}`, borderRadius: '14px', padding: '14px 15px' }}>
-                    <div style={{ fontSize: '22px', marginBottom: '6px' }}>{s.emoji}</div>
-                    <div style={{ fontSize: '14px', fontWeight: 700, color: s.color, marginBottom: '4px' }}>{s.label}</div>
-                    <div style={{ fontSize: '11.5px', color: '#64748B', marginBottom: '8px', lineHeight: 1.5 }}>{s.desc}</div>
-                    <ul style={{ margin: 0, padding: '0 0 0 13px' }}>
-                      {s.examples.map(ex => (
-                        <li key={ex} style={{ fontSize: '11px', color: '#64748B', marginBottom: '2px' }}>{ex}</li>
-                      ))}
-                    </ul>
+                  <div key={s.label} style={{ background: s.bg, border: `1.5px solid ${s.border}`, borderRadius: '14px', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+                    {/* Bild (Farbverlauf als Ersatz, solange kein Bild hochgeladen ist) */}
+                    <div
+                      role="img"
+                      aria-label={`${s.label}: ${s.examples.join(', ')}`}
+                      style={{ position: 'relative', aspectRatio: '16 / 10', backgroundImage: `url('${s.image}'), ${s.fallback}`, backgroundSize: 'cover, cover', backgroundPosition: 'center, center' }}
+                    >
+                      <span style={{ position: 'absolute', top: '10px', left: '10px', width: '34px', height: '34px', borderRadius: '10px', background: 'rgba(255,255,255,0.92)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', boxShadow: '0 2px 8px rgba(15,23,42,0.15)' }}>
+                        {s.emoji}
+                      </span>
+                    </div>
+                    <div style={{ padding: '12px 15px 14px' }}>
+                      <div style={{ fontSize: '15px', fontWeight: 700, color: s.color, marginBottom: '4px' }}>{s.label}</div>
+                      <div style={{ fontSize: '12px', color: '#64748B', marginBottom: '8px', lineHeight: 1.5 }}>{s.desc}</div>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px' }}>
+                        {s.examples.map(ex => (
+                          <span key={ex} style={{ fontSize: '11px', fontWeight: 600, color: s.color, background: '#FFFFFF', border: `1px solid ${s.border}`, borderRadius: '999px', padding: '2px 9px' }}>{ex}</span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
