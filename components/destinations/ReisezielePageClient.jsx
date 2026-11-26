@@ -27,13 +27,15 @@ const FILTER_ALIASES = {
   Luxus:     ['luxus', 'luxusreise', 'luxusurlaub', 'premium'],
 };
 
+// Bilder liegen unter public/images/reisearten/. Fehlt eins, wird das alte
+// Unsplash-Foto (fallbackImg) gezeigt.
 const REISEARTEN = [
-  { type: 'Strand',    label: 'Strandurlaub',   Icon: Sun,       desc: 'Entspanne an den schönsten Stränden der Welt.',        img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80' },
-  { type: 'Stadt',     label: 'Städtereisen',   Icon: Building2, desc: 'Erlebe pulsierende Städte und kulturelle Highlights.',  img: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80' },
-  { type: 'Natur',     label: 'Natur & Berge',  Icon: Mountain,  desc: 'Entdecke atemberaubende Landschaften und Natur.',       img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80' },
-  { type: 'Abenteuer', label: 'Abenteuer',      Icon: Compass,   desc: 'Für alle, die das Besondere suchen und erleben wollen.',img: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=80' },
-  { type: 'Familie',   label: 'Familienurlaub', Icon: Users,     desc: 'Gemeinsame Zeit an den schönsten Orten genießen.',     img: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80' },
-  { type: 'Luxus',     label: 'Luxusreisen',    Icon: Star,      desc: 'Exklusive Erlebnisse und höchster Komfort.',           img: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80' },
+  { type: 'Strand',    label: 'Strandurlaub',   Icon: Sun,       desc: 'Entspanne an den schönsten Stränden der Welt.',        img: '/images/reisearten/strand.jpg', fallbackImg: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80' },
+  { type: 'Stadt',     label: 'Städtereisen',   Icon: Building2, desc: 'Erlebe pulsierende Städte und kulturelle Highlights.',  img: '/images/reisearten/staedte.jpg', fallbackImg: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80' },
+  { type: 'Natur',     label: 'Natur & Berge',  Icon: Mountain,  desc: 'Entdecke atemberaubende Landschaften und Natur.',       img: '/images/reisearten/natur.jpg', fallbackImg: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80' },
+  { type: 'Abenteuer', label: 'Abenteuer',      Icon: Compass,   desc: 'Für alle, die das Besondere suchen und erleben wollen.',img: '/images/reisearten/abenteuer.jpg', fallbackImg: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=80' },
+  { type: 'Familie',   label: 'Familienurlaub', Icon: Users,     desc: 'Gemeinsame Zeit an den schönsten Orten genießen.',     img: '/images/reisearten/familie.jpg', fallbackImg: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80' },
+  { type: 'Luxus',     label: 'Luxusreisen',    Icon: Star,      desc: 'Exklusive Erlebnisse und höchster Komfort.',           img: '/images/reisearten/luxus.jpg', fallbackImg: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80' },
 ];
 
 const POPULAR_PICKS = [
@@ -354,21 +356,25 @@ export default function ReisezielePageClient({ destinations = [], heroFocus }) {
           </div>
 
           <div className="rzp-reisearten-grid">
-            {REISEARTEN.map(({ type, label, Icon, desc, img }) => {
+            {REISEARTEN.map(({ type, label, desc, img, fallbackImg }) => {
               const active = activeFilter === type;
+              const count = destinations.filter(d => Array.isArray(d.travelType) && d.travelType.some(t => (FILTER_ALIASES[type] ?? []).includes(norm(t).trim()))).length;
               return (
-                <button key={type} type="button" onClick={() => handleFilterChip(type)}
-                  style={{ border: active ? '2px solid #0EA5E9' : '1.5px solid #E2E8F0', borderRadius: '18px', overflow: 'hidden', background: '#FFFFFF', cursor: 'pointer', textAlign: 'left', padding: 0, boxShadow: active ? '0 0 0 3px rgba(14,165,233,0.12)' : 'none', transition: 'all 0.15s', fontFamily: 'inherit', display: 'block' }}>
-                  <div style={{ height: '115px', overflow: 'hidden', position: 'relative' }}>
-                    <img src={img} alt={label} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                    <div style={{ position: 'absolute', inset: 0, background: 'rgba(15,23,42,0.15)' }} />
-                    <div style={{ position: 'absolute', bottom: '8px', left: '10px', width: '28px', height: '28px', borderRadius: '7px', background: active ? '#0EA5E9' : 'rgba(255,255,255,0.92)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <Icon size={14} strokeWidth={2} color={active ? '#fff' : '#0EA5E9'} />
-                    </div>
+                <button key={type} type="button" onClick={() => handleFilterChip(type)} className="rzp-type-card"
+                  aria-label={`${label}: Reiseziele anzeigen`}
+                  style={{ border: active ? '2px solid #0EA5E9' : '1.5px solid #E2E8F0', borderRadius: '16px', overflow: 'hidden', background: '#FFFFFF', cursor: 'pointer', textAlign: 'left', padding: 0, margin: 0, boxShadow: active ? '0 0 0 3px rgba(14,165,233,0.12)' : 'none', fontFamily: 'inherit', display: 'flex', flexDirection: 'column', alignItems: 'stretch', width: '100%' }}>
+                  <div style={{ overflow: 'hidden' }}>
+                    <div className="rzp-type-img" role="img" aria-label={label}
+                      style={{ aspectRatio: '16 / 10', backgroundImage: `url('${img}'), url('${fallbackImg}')`, backgroundSize: 'cover, cover', backgroundPosition: 'center, center', backgroundColor: '#E2E8F0' }} />
                   </div>
-                  <div style={{ padding: '10px 12px 12px' }}>
-                    <div style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A', marginBottom: '3px' }}>{label}</div>
-                    <div style={{ fontSize: '11px', color: '#64748B', lineHeight: 1.5 }}>{desc}</div>
+                  <div style={{ padding: '14px 18px 16px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '4px' }}>
+                      <span style={{ fontSize: '15px', fontWeight: 700, color: '#0F172A' }}>{label}</span>
+                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', fontSize: '12px', fontWeight: 700, color: '#0EA5E9', whiteSpace: 'nowrap' }}>
+                        {count > 0 ? `${count} Ziele` : 'Ansehen'} <ArrowRight size={12} strokeWidth={2.5} />
+                      </span>
+                    </div>
+                    <div style={{ fontSize: '12.5px', color: '#64748B', lineHeight: 1.55 }}>{desc}</div>
                   </div>
                 </button>
               );
