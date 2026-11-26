@@ -2092,7 +2092,7 @@ export const communityTips = [
     image: '/images/tipps/geheimtipps.jpg',
     title: 'Lokale Geheimtipps',
     tip: 'Die besten Erlebnisse sind oft abseits der Hauptattraktionen. Unser Blog zeigt dir, wo Einheimische wirklich essen, feiern und entspannen.',
-    link: '/reiseblog',
+    link: '/reiseblog#blog-artikel',
     linkLabel: 'Guides entdecken',
   },
   {
