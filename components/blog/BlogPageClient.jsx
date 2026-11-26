@@ -37,12 +37,25 @@ const PLANUNG_KARTEN = [
   { Icon: Globe,   title: 'Visum & Einreise',    desc: 'Einreisebestimmungen und Reisedokumente im Überblick.',          href: '/reiseblog', cta: 'Mehr erfahren' },
 ];
 
+// Bilder liegen unter public/images/tipps/. Fehlt ein Bild, zeigt die Kachel
+// einen Farbverlauf. Klick → passender Artikel (Stichwort im Titel/Tags),
+// sonst Suche nach dem Stichwort in der Artikelliste.
 const CHECKLISTEN = [
-  { emoji: '✈️', title: 'Packliste Strand',    desc: 'Was du für den perfekten Strandurlaub wirklich brauchst.' },
-  { emoji: '🏨', title: 'Unterkunft wählen',   desc: 'Hotel, Hostel oder Airbnb? So findest du die beste Option.' },
-  { emoji: '💳', title: 'Reisebudget planen',  desc: 'Tagesbudgets nach Reiseziel – realistisch und praktisch.' },
-  { emoji: '🛡️', title: 'Reiseversicherung',   desc: 'Was du brauchst und was überflüssig ist – ehrlich erklärt.' },
+  { title: 'Packliste Strand',    desc: 'Was du für den perfekten Strandurlaub wirklich brauchst.',   image: '/images/tipps/packliste.jpg',      fallback: 'linear-gradient(135deg,#BAE6FD,#7DD3FC)', keywords: ['packliste', 'koffer packen', 'packen'],          search: 'Packliste' },
+  { title: 'Unterkunft wählen',   desc: 'Hotel, Hostel oder Airbnb? So findest du die beste Option.', image: '/images/tipps/unterkunft.jpg',     fallback: 'linear-gradient(135deg,#FDE68A,#FCD34D)', keywords: ['unterkunft', 'hotel', 'hostel', 'airbnb', 'ferienwohnung'], search: 'Unterkunft' },
+  { title: 'Reisebudget planen',  desc: 'Tagesbudgets nach Reiseziel – realistisch und praktisch.',   image: '/images/tipps/budget.jpg',         fallback: 'linear-gradient(135deg,#BBF7D0,#86EFAC)', keywords: ['reisebudget', 'budget', 'sparen', 'kosten'],     search: 'Budget' },
+  { title: 'Reiseversicherung',   desc: 'Was du brauchst und was überflüssig ist – ehrlich erklärt.', image: '/images/tipps/versicherung.jpg',   fallback: 'linear-gradient(135deg,#DDD6FE,#C4B5FD)', keywords: ['reiseversicherung', 'versicherung', 'krankenversicherung'], search: 'Versicherung' },
 ];
+
+function findTipArticle(articles, keywords) {
+  const lower = (v) => String(v ?? '').toLowerCase();
+  for (const k of keywords) {
+    const hit = articles.find(a => lower(a.title).includes(k))
+             || articles.find(a => (a.tags ?? []).some(t => lower(t).includes(k)));
+    if (hit) return hit;
+  }
+  return null;
+}
 
 // ── Article card ─────────────────────────────────────────────────────────────
 function ArticleCard({ article }) {
@@ -246,6 +259,12 @@ export default function BlogPageClient({ articles, categories: _ignored, heroFoc
 
   const popularGuides = useMemo(() => articles.slice(0, 4), [articles]);
 
+  const searchTip = (q) => {
+    setActiveFilter('all');
+    setSearchQuery(q);
+    setTimeout(() => document.getElementById('blog-artikel')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  };
+
   return (
     <>
       {/* ══ HERO IMAGE ════════════════════════════════════════════════════════ */}
@@ -391,7 +410,7 @@ export default function BlogPageClient({ articles, categories: _ignored, heroFoc
       {featured && !isFiltering && <FeaturedCard article={featured} />}
 
       {/* ══ NEUESTE ARTIKEL ═══════════════════════════════════════════════════ */}
-      <section style={{ background: '#FFFFFF', padding: 'clamp(36px, 5vw, 60px) 0' }}>
+      <section id="blog-artikel" style={{ background: '#FFFFFF', padding: 'clamp(36px, 5vw, 60px) 0', scrollMarginTop: '80px' }}>
         <Container>
           {/* Section header */}
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
@@ -514,16 +533,32 @@ export default function BlogPageClient({ articles, categories: _ignored, heroFoc
             <h2 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: 'clamp(18px, 2.5vw, 26px)', fontWeight: 800, color: '#0F172A', margin: '0 0 24px', letterSpacing: '-0.02em' }}>
               Checklisten &amp; Tipps
             </h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(210px, 1fr))', gap: '14px' }}>
-              {CHECKLISTEN.map(c => (
-                <div key={c.title} style={{ background: '#FFFFFF', border: '1.5px solid #E2E8F0', borderRadius: '14px', padding: '20px' }}>
-                  <div style={{ fontSize: '28px', marginBottom: '10px' }}>{c.emoji}</div>
-                  <h3 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: '14px', fontWeight: 700, color: '#0F172A', margin: '0 0 6px' }}>
-                    {c.title}
-                  </h3>
-                  <p style={{ fontSize: '12.5px', color: '#64748B', lineHeight: 1.6, margin: 0 }}>{c.desc}</p>
-                </div>
-              ))}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '14px' }}>
+              {CHECKLISTEN.map(c => {
+                const article = findTipArticle(articles, c.keywords);
+                const inner = (
+                  <>
+                    <div style={{ overflow: 'hidden' }}>
+                      <div className="tip-card-img" style={{ aspectRatio: '16 / 10', backgroundImage: `url('${c.image}'), ${c.fallback}`, backgroundSize: 'cover, cover', backgroundPosition: 'center, center' }} />
+                    </div>
+                    <div style={{ padding: '14px 18px 18px' }}>
+                      <h3 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: '14.5px', fontWeight: 700, color: '#0F172A', margin: '0 0 6px' }}>
+                        {c.title}
+                      </h3>
+                      <p style={{ fontSize: '12.5px', color: '#64748B', lineHeight: 1.6, margin: '0 0 10px' }}>{c.desc}</p>
+                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '12.5px', fontWeight: 700, color: '#0EA5E9' }}>
+                        {article ? 'Zum Artikel' : 'Artikel ansehen'} <ArrowRight size={13} strokeWidth={2.5} />
+                      </span>
+                    </div>
+                  </>
+                );
+                const cardStyle = { background: '#FFFFFF', border: '1.5px solid #E2E8F0', borderRadius: '14px', overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'stretch', justifyContent: 'flex-start', textDecoration: 'none', textAlign: 'left', padding: 0, margin: 0, color: 'inherit', cursor: 'pointer', fontFamily: 'inherit', width: '100%' };
+                return article ? (
+                  <Link key={c.title} href={`/reiseblog/${article.slug}`} className="tip-card" style={cardStyle}>{inner}</Link>
+                ) : (
+                  <button key={c.title} type="button" onClick={() => searchTip(c.search)} className="tip-card" style={cardStyle}>{inner}</button>
+                );
+              })}
             </div>
           </Container>
         </section>
