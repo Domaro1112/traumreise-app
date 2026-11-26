@@ -48,10 +48,10 @@ const CONTINENTS_ORDER = ['Europa', 'Asien', 'Amerika', 'Afrika', 'Ozeanien'];
 // Bilder liegen unter public/images/jahreszeiten/. Fehlt ein Bild, zeigt die
 // Kachel stattdessen einen Farbverlauf in der Farbe der Jahreszeit.
 const SEASONS = [
-  { label: 'Frühling', emoji: '🌸', image: '/images/jahreszeiten/fruehling.jpg', fallback: 'linear-gradient(135deg,#BBF7D0,#86EFAC)', bg: '#F0FDF4', border: '#BBF7D0', color: '#166534', desc: 'Perfekte Temperaturen und blühende Landschaften.', examples: ['Amsterdam', 'Madeira', 'Toskana'] },
-  { label: 'Sommer',   emoji: '☀️', image: '/images/jahreszeiten/sommer.jpg',    fallback: 'linear-gradient(135deg,#FDE68A,#FCD34D)', bg: '#FFFBEB', border: '#FDE68A', color: '#92400E', desc: 'Sonne, Strand und beste Reisezeit.',               examples: ['Griechenland', 'Kroatien', 'Bali'] },
-  { label: 'Herbst',   emoji: '🍂', image: '/images/jahreszeiten/herbst.jpg',    fallback: 'linear-gradient(135deg,#FED7AA,#FDBA74)', bg: '#FFF7ED', border: '#FED7AA', color: '#9A3412', desc: 'Angenehme Temperaturen und weniger Touristen.',     examples: ['Südtirol', 'New York', 'Algarve'] },
-  { label: 'Winter',   emoji: '❄️', image: '/images/jahreszeiten/winter.jpg',    fallback: 'linear-gradient(135deg,#BAE6FD,#7DD3FC)', bg: '#EFF6FF', border: '#BAE6FD', color: '#0C4A6E', desc: 'Schnee, Sonne oder Winterwunder erleben.',          examples: ['Lappland', 'Malediven', 'Dubai'] },
+  { key: 'spring', label: 'Frühling', image: '/images/jahreszeiten/fruehling.jpg', fallback: 'linear-gradient(135deg,#BBF7D0,#86EFAC)', bg: '#F0FDF4', border: '#BBF7D0', color: '#166534', desc: 'Perfekte Temperaturen und blühende Landschaften.', examples: ['Amsterdam', 'Madeira', 'Toskana'] },
+  { key: 'summer', label: 'Sommer',   image: '/images/jahreszeiten/sommer.jpg',    fallback: 'linear-gradient(135deg,#FDE68A,#FCD34D)', bg: '#FFFBEB', border: '#FDE68A', color: '#92400E', desc: 'Sonne, Strand und beste Reisezeit.',               examples: ['Griechenland', 'Kroatien', 'Bali'] },
+  { key: 'autumn', label: 'Herbst',   image: '/images/jahreszeiten/herbst.jpg',    fallback: 'linear-gradient(135deg,#FED7AA,#FDBA74)', bg: '#FFF7ED', border: '#FED7AA', color: '#9A3412', desc: 'Angenehme Temperaturen und weniger Touristen.',     examples: ['Südtirol', 'New York', 'Algarve'] },
+  { key: 'winter', label: 'Winter',   image: '/images/jahreszeiten/winter.jpg',    fallback: 'linear-gradient(135deg,#BAE6FD,#7DD3FC)', bg: '#EFF6FF', border: '#BAE6FD', color: '#0C4A6E', desc: 'Schnee, Sonne oder Winterwunder erleben.',          examples: ['Lappland', 'Malediven', 'Dubai'] },
 ];
 
 const BLOG_PICKS = blogArticles.slice(0, 3);
@@ -156,6 +156,7 @@ function DestCard({ dest }) {
 export default function ReisezielePageClient({ destinations = [], heroFocus }) {
   const [searchQuery,   setSearchQuery]   = useState('');
   const [activeFilter,  setActiveFilter]  = useState('');
+  const [activeSeason,  setActiveSeason]  = useState('');
   const [expandedConts, setExpandedConts] = useState({});
   const gridRef = useRef(null);
 
@@ -176,9 +177,11 @@ export default function ReisezielePageClient({ destinations = [], heroFocus }) {
       );
       // Search bar: full-text across all relevant fields
       const matchSearch = !q || searchTexts[i].includes(q);
-      return matchFilter && matchSearch;
+      // Jahreszeit-Kachel: nur Ziele, die in dieser Jahreszeit ideal sind
+      const matchSeason = !activeSeason || (Array.isArray(d.idealSeasons) && d.idealSeasons.includes(activeSeason));
+      return matchFilter && matchSearch && matchSeason;
     });
-  }, [destinations, searchTexts, activeFilter, searchQuery]);
+  }, [destinations, searchTexts, activeFilter, searchQuery, activeSeason]);
 
   const byContinent = useMemo(() => {
     const map = {};
@@ -196,7 +199,28 @@ export default function ReisezielePageClient({ destinations = [], heroFocus }) {
   ];
 
   const dbSlugs = new Set(destinations.map(d => d.slug));
-  const hasFilter = searchQuery.trim() || activeFilter;
+  const hasFilter = searchQuery.trim() || activeFilter || activeSeason;
+  const activeSeasonLabel = SEASONS.find(s => s.key === activeSeason)?.label;
+
+  // Jahreszeit-Kachel anklicken → Liste unten auf diese Jahreszeit filtern
+  const pickSeason = (key) => {
+    setActiveSeason(key);
+    setSearchQuery('');
+    setActiveFilter('');
+    setTimeout(scrollToGrid, 50);
+  };
+
+  // Beispielziel anklicken → passende Detailseite, sonst Suche danach
+  const findDestination = (name) => {
+    const n = norm(name).trim();
+    return destinations.find(d => norm(d.name).trim() === n || d.slug === n.replace(/\s+/g, '-'));
+  };
+  const searchFor = (name) => {
+    setActiveSeason('');
+    setActiveFilter('');
+    setSearchQuery(name);
+    setTimeout(scrollToGrid, 50);
+  };
 
   // Derive popular picks: prefer real DB destinations (first 4 published).
   // Fall back to static POPULAR_PICKS only when DB is empty, and always link
@@ -444,13 +468,15 @@ export default function ReisezielePageClient({ destinations = [], heroFocus }) {
                 </span>
               </div>
               <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(18px, 2.8vw, 28px)', fontWeight: 800, color: '#0F172A', margin: 0, letterSpacing: '-0.02em' }}>
-                {hasFilter
+                {activeSeasonLabel && !searchQuery.trim() && !activeFilter
+                  ? `${filtered.length} Reiseziel${filtered.length !== 1 ? 'e' : ''} – ideal im ${activeSeasonLabel}`
+                  : hasFilter
                   ? `${filtered.length} Reiseziel${filtered.length !== 1 ? 'e' : ''} gefunden`
                   : 'Reiseziele nach Kontinenten'}
               </h2>
             </div>
             {hasFilter && (
-              <button type="button" onClick={() => { setSearchQuery(''); setActiveFilter(''); }}
+              <button type="button" onClick={() => { setSearchQuery(''); setActiveFilter(''); setActiveSeason(''); }}
                 style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '8px 14px', borderRadius: '10px', background: '#FFFFFF', border: '1.5px solid #E2E8F0', fontSize: '12px', fontWeight: 600, color: '#64748B', cursor: 'pointer', fontFamily: 'inherit' }}>
                 <X size={12} strokeWidth={2.5} /> Filter zurücksetzen
               </button>
@@ -465,7 +491,7 @@ export default function ReisezielePageClient({ destinations = [], heroFocus }) {
               <p style={{ fontSize: '13px', color: '#94A3B8', margin: '0 0 20px' }}>Versuche einen anderen Suchbegriff oder entferne den Filter.</p>
               <button
                 type="button"
-                onClick={() => { setSearchQuery(''); setActiveFilter(''); }}
+                onClick={() => { setSearchQuery(''); setActiveFilter(''); setActiveSeason(''); }}
                 style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '9px 20px', borderRadius: '10px', background: '#FFFFFF', border: '1.5px solid #E2E8F0', fontSize: '13px', fontWeight: 600, color: '#334155', cursor: 'pointer', fontFamily: 'inherit' }}
               >
                 <X size={12} strokeWidth={2.5} /> Filter zurücksetzen
@@ -529,29 +555,48 @@ export default function ReisezielePageClient({ destinations = [], heroFocus }) {
               </h2>
               <p style={{ fontSize: '14px', color: '#64748B', margin: '0 0 22px' }}>Die besten Reiseziele für jede Saison.</p>
               <div className="rzp-seasons-grid">
-                {SEASONS.map(s => (
-                  <div key={s.label} style={{ background: s.bg, border: `1.5px solid ${s.border}`, borderRadius: '14px', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-                    {/* Bild (Farbverlauf als Ersatz, solange kein Bild hochgeladen ist) */}
-                    <div
-                      role="img"
-                      aria-label={`${s.label}: ${s.examples.join(', ')}`}
-                      style={{ position: 'relative', aspectRatio: '16 / 10', backgroundImage: `url('${s.image}'), ${s.fallback}`, backgroundSize: 'cover, cover', backgroundPosition: 'center, center' }}
+                {SEASONS.map(s => {
+                  const count = destinations.filter(d => Array.isArray(d.idealSeasons) && d.idealSeasons.includes(s.key)).length;
+                  const isActive = activeSeason === s.key;
+                  const chipStyle = { fontSize: '11px', fontWeight: 600, color: s.color, background: '#FFFFFF', border: `1px solid ${s.border}`, borderRadius: '999px', padding: '2px 9px', textDecoration: 'none', cursor: 'pointer', fontFamily: 'inherit', lineHeight: 1.6 };
+                  return (
+                  <div key={s.key} className="rzp-season-card" style={{ background: s.bg, border: `1.5px solid ${isActive ? s.color : s.border}`, borderRadius: '14px', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+                    <button
+                      type="button"
+                      onClick={() => pickSeason(s.key)}
+                      aria-label={`Reiseziele für den ${s.label} anzeigen`}
+                      style={{ all: 'unset', cursor: 'pointer', display: 'block' }}
                     >
-                      <span style={{ position: 'absolute', top: '10px', left: '10px', width: '34px', height: '34px', borderRadius: '10px', background: 'rgba(255,255,255,0.92)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', boxShadow: '0 2px 8px rgba(15,23,42,0.15)' }}>
-                        {s.emoji}
-                      </span>
-                    </div>
-                    <div style={{ padding: '12px 15px 14px' }}>
-                      <div style={{ fontSize: '15px', fontWeight: 700, color: s.color, marginBottom: '4px' }}>{s.label}</div>
-                      <div style={{ fontSize: '12px', color: '#64748B', marginBottom: '8px', lineHeight: 1.5 }}>{s.desc}</div>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px' }}>
-                        {s.examples.map(ex => (
-                          <span key={ex} style={{ fontSize: '11px', fontWeight: 600, color: s.color, background: '#FFFFFF', border: `1px solid ${s.border}`, borderRadius: '999px', padding: '2px 9px' }}>{ex}</span>
-                        ))}
+                      {/* Bild (Farbverlauf als Ersatz, solange kein Bild vorhanden ist) */}
+                      <div style={{ overflow: 'hidden' }}>
+                        <div
+                          className="rzp-season-img"
+                          style={{ aspectRatio: '16 / 10', backgroundImage: `url('${s.image}'), ${s.fallback}`, backgroundSize: 'cover, cover', backgroundPosition: 'center, center' }}
+                        />
                       </div>
+                      <div style={{ padding: '12px 15px 0' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '4px' }}>
+                          <span style={{ fontSize: '15px', fontWeight: 700, color: s.color }}>{s.label}</span>
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', fontSize: '11.5px', fontWeight: 700, color: s.color, whiteSpace: 'nowrap' }}>
+                            {count > 0 ? `${count} Ziele` : 'Ansehen'} <ArrowRight size={12} strokeWidth={2.5} />
+                          </span>
+                        </div>
+                        <div style={{ fontSize: '12px', color: '#64748B', marginBottom: '8px', lineHeight: 1.5 }}>{s.desc}</div>
+                      </div>
+                    </button>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', padding: '0 15px 14px' }}>
+                      {s.examples.map(ex => {
+                        const dest = findDestination(ex);
+                        return dest ? (
+                          <Link key={ex} href={`/reiseziele/${dest.slug}`} className="rzp-season-chip" style={chipStyle}>{ex}</Link>
+                        ) : (
+                          <button key={ex} type="button" onClick={() => searchFor(ex)} className="rzp-season-chip" style={chipStyle}>{ex}</button>
+                        );
+                      })}
                     </div>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 

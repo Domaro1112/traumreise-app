@@ -3,6 +3,7 @@ import Footer from '@/components/layout/Footer';
 import ReisezielePageClient from '@/components/destinations/ReisezielePageClient';
 import { listPublishedDestinations } from '@/repositories/destinations-cms';
 import { getHeroFocus } from '@/repositories/hero-images';
+import { withIdealSeasons } from '@/lib/destination-seasons';
 
 // ISR: re-render from DB every 60 seconds
 export const revalidate = 60;
@@ -42,7 +43,7 @@ const jsonLd = {
 export default async function ReisezielePage() {
   let destinations = [];
   try {
-    destinations = await listPublishedDestinations();
+    destinations = withIdealSeasons(await listPublishedDestinations());
   } catch { /* Supabase not available — show empty state */ }
   const heroFocus = await getHeroFocus('reiseziele');
 
