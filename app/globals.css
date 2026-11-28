@@ -623,6 +623,10 @@ input::placeholder { color: var(--color-text-muted); }
 .article-sidebar-desktop {
   display: none;
 }
+/* Blog-Galerie: im Artikel nur auf Handy/Tablet, am Computer steht sie in der Seitenleiste */
+@media (min-width: 1024px) {
+  .article-gallery-inline { display: none; }
+}
 @media (min-width: 1024px) {
   .article-sidebar-desktop {
     display: block;

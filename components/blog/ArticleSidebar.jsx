@@ -1,15 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { List, Plane, Sparkles, ArrowRight } from 'lucide-react';
+import { List, Plane, Sparkles, ArrowRight, Images } from 'lucide-react';
+import DestinationGallery from '@/components/destinations/DestinationGallery';
 
 // Sammelbegriffe wie „Weltweit“ sind kein Reiseziel – dann allgemein formulieren
 const GENERIC_DESTINATIONS = /^(weltweit|welt|international|global|europa|allgemein|diverse|verschiedene|mehrere|alle|überall|reisen)$/i;
 const isSpecificDestination = d => typeof d === 'string' && d.trim().length > 1 && !GENERIC_DESTINATIONS.test(d.trim());
 
-// Die Bildergalerie steht seit 11/2026 im Artikel selbst (sichtbar auch auf dem Handy),
-// nicht mehr in der Seitenleiste, die erst ab 1024 px angezeigt wird.
-export default function ArticleSidebar({ tableOfContents, destination, relatedDestinations = [] }) {
+// Bildergalerie: auf dem Computer hier in der Seitenleiste unter „Passende Reiseziele“,
+// auf Handy/Tablet im Artikel selbst (die Seitenleiste erscheint erst ab 1024 px).
+export default function ArticleSidebar({ tableOfContents, destination, relatedDestinations = [], galleryImages = [] }) {
   const specific = isSpecificDestination(destination);
 
   return (
@@ -348,6 +349,36 @@ export default function ArticleSidebar({ tableOfContents, destination, relatedDe
                 </div>
               ))}
             </div>
+          </div>
+        )}
+
+        {/* ── Bildergalerie ─────────────────────────────────────────────────── */}
+        {galleryImages.length > 0 && (
+          <div
+            style={{
+              background: '#FFFFFF',
+              border: '1px solid #E2E8F0',
+              borderRadius: '16px',
+              padding: '20px 22px',
+              boxShadow: '0 2px 12px rgba(15,23,42,0.06)',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
+              <Images size={16} strokeWidth={2} color="#0EA5E9" />
+              <span
+                style={{
+                  fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
+                  fontSize: '13px',
+                  fontWeight: 700,
+                  letterSpacing: '1px',
+                  textTransform: 'uppercase',
+                  color: '#64748B',
+                }}
+              >
+                Bildergalerie
+              </span>
+            </div>
+            <DestinationGallery images={galleryImages} columns="1fr 1fr" />
           </div>
         )}
 

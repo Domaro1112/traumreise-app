@@ -129,7 +129,7 @@ export default async function ArticlePage({ params }) {
                   internalLinks={article.internalLinks}
                 />
                 {galleryImages.length > 0 && (
-                  <section aria-label="Bildergalerie" style={{ margin: '8px 0 40px' }}>
+                  <section aria-label="Bildergalerie" className="article-gallery-inline" style={{ margin: '8px 0 40px' }}>
                     <h2 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: 'clamp(20px, 2.4vw, 26px)', fontWeight: 800, color: '#0F172A', margin: '0 0 16px' }}>
                       Bildergalerie
                     </h2>
@@ -153,6 +153,7 @@ export default async function ArticlePage({ params }) {
                 tableOfContents={article.tableOfContents}
                 destination={article.destination}
                 relatedDestinations={relatedDestinations}
+                galleryImages={galleryImages}
               />
             </div>
 

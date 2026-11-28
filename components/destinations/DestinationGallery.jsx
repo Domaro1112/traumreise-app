@@ -7,9 +7,10 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react';
  * Bildergalerie eines Reiseziels mit Vollbild-Ansicht.
  * Klick auf ein Bild öffnet es groß; Pfeile, Tastatur (← → Esc) und Wischen blättern.
  *
- * @param {{ images: { url: string, alt: string }[] }} props
+ * @param {{ images: { url: string, alt: string }[], columns?: string }} props
+ *   columns – optionales CSS-Spaltenraster für die Vorschaubilder (z. B. '1fr 1fr' in schmalen Spalten)
  */
-export default function DestinationGallery({ images = [] }) {
+export default function DestinationGallery({ images = [], columns = 'repeat(auto-fill, minmax(220px, 1fr))' }) {
   const [open, setOpen] = useState(null); // Index des geöffneten Bildes
   const touchX = useRef(null);
   const count = images.length;
@@ -43,7 +44,7 @@ export default function DestinationGallery({ images = [] }) {
 
   return (
     <>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '10px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: columns, gap: '10px' }}>
         {images.map((img, i) => (
           <button
             key={img.url}
