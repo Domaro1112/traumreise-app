@@ -9,6 +9,7 @@ import ArticleContent from '@/components/blog/ArticleContent';
 import ArticleKeyTakeaways from '@/components/blog/ArticleKeyTakeaways';
 import ArticleFAQ from '@/components/blog/ArticleFAQ';
 import ArticleSidebar from '@/components/blog/ArticleSidebar';
+import DestinationGallery from '@/components/destinations/DestinationGallery';
 import RelatedArticles from '@/components/blog/RelatedArticles';
 import ArticleFeedback from '@/components/blog/ArticleFeedback';
 import {
@@ -89,6 +90,12 @@ export default async function ArticlePage({ params }) {
 
   if (!article) notFound();
 
+  // Galeriebilder: Einträge können Objekte ({ url, alt, title, caption }) oder reine URLs sein
+  const galleryImages = (article.galleryImages ?? [])
+    .map(g => (typeof g === 'string' ? { url: g } : g))
+    .filter(g => g && typeof g.url === 'string' && g.url.trim())
+    .map((g, i) => ({ url: g.url, alt: g.alt || g.title || g.caption || `${article.title} – Bild ${i + 1}` }));
+
   // Enrich related destination slugs with DB names (published only).
   // Falls back to slug-derived name for slugs not found in DB.
   const rawSlugs = (article.relatedArticles ?? []).slice(0, 3);
@@ -121,6 +128,14 @@ export default async function ArticlePage({ params }) {
                   sections={article.contentSections}
                   internalLinks={article.internalLinks}
                 />
+                {galleryImages.length > 0 && (
+                  <section aria-label="Bildergalerie" style={{ margin: '8px 0 40px' }}>
+                    <h2 style={{ fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)', fontSize: 'clamp(20px, 2.4vw, 26px)', fontWeight: 800, color: '#0F172A', margin: '0 0 16px' }}>
+                      Bildergalerie
+                    </h2>
+                    <DestinationGallery images={galleryImages} />
+                  </section>
+                )}
                 <ArticleFAQ faq={article.faq} destination={article.destination} />
                 <RelatedArticles
                   relatedSlugs={article.relatedArticles}
@@ -137,7 +152,6 @@ export default async function ArticlePage({ params }) {
               <ArticleSidebar
                 tableOfContents={article.tableOfContents}
                 destination={article.destination}
-                galleryImages={article.galleryImages}
                 relatedDestinations={relatedDestinations}
               />
             </div>

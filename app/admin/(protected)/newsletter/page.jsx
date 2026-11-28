@@ -1,5 +1,6 @@
 import { createServerClient } from '@/lib/supabase/server';
 import NewsletterAdminClient from '@/components/admin/Newsletter/NewsletterAdminClient';
+import NewsletterTabs from '@/components/admin/Newsletter/NewsletterTabs';
 
 export const dynamic = 'force-dynamic';
 
@@ -26,6 +27,7 @@ export default async function AdminNewsletterPage() {
 
   return (
     <div>
+      <NewsletterTabs active="abonnenten" />
       <div style={{ marginBottom: '28px' }}>
         <h2 style={{
           fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',

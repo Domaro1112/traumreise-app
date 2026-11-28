@@ -722,11 +722,11 @@ export default function TravelResultView({ results, personality, interests, pack
         {(cur.weather || cur.flightTime || cur.budgetPerDay || cur.highlights?.length > 0) && (
           <section aria-label="Reiseziel-Details" style={{ ...card, marginBottom: '12px' }}>
             {(cur.weather || cur.flightTime || cur.budgetPerDay) && (
-              <div style={{ display: 'grid', gridTemplateColumns: `repeat(${[cur.weather, cur.flightTime, cur.budgetPerDay].filter(Boolean).length},1fr)`, gap: '10px', marginBottom: cur.highlights?.length > 0 ? '12px' : 0 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,170px),1fr))', gap: '10px', marginBottom: cur.highlights?.length > 0 ? '12px' : 0 }}>
                 {cur.weather && (
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px', borderRadius: '12px', background: '#FFF7ED', border: '1px solid #FED7AA' }}>
                     <div style={{ width: '36px', height: '36px', borderRadius: '11px', background: '#FEF3C7', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Sun size={16} strokeWidth={2} color="#D97706" /></div>
-                    <div>
+                    <div style={{ minWidth: 0 }}>
                       <div style={{ fontSize: '10px', fontWeight: 700, color: '#C2410C', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '2px' }}>Wetter</div>
                       <div style={{ fontSize: '13px', color: '#78350F', fontWeight: 600 }}>{cur.weather}</div>
                     </div>
@@ -734,18 +734,18 @@ export default function TravelResultView({ results, personality, interests, pack
                 )}
                 {cur.flightTime && (
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px', borderRadius: '12px', background: '#EFF6FF', border: '1px solid #BFDBFE' }}>
-                    <div style={{ width: '36px', height: '36px', borderRadius: '11px', background: '#DBEAFE', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Plane size={16} strokeWidth={2} color="#1D4ED8" /></div>
-                    <div>
-                      <div style={{ fontSize: '10px', fontWeight: 700, color: '#1D4ED8', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '2px' }}>Flugzeit</div>
-                      <div style={{ fontSize: '13px', color: '#1E3A8A', fontWeight: 600 }}>{cur.flightTime}</div>
+                    <div style={{ width: '36px', height: '36px', borderRadius: '11px', background: '#DBEAFE', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>{/^Anreise/i.test(cur.flightTime) ? <Car size={16} strokeWidth={2} color="#1D4ED8" /> : <Plane size={16} strokeWidth={2} color="#1D4ED8" />}</div>
+                    <div style={{ minWidth: 0 }}>
+                      <div style={{ fontSize: '10px', fontWeight: 700, color: '#1D4ED8', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '2px' }}>{/^Anreise/i.test(cur.flightTime) ? 'Anreise' : 'Flugzeit'}</div>
+                      <div style={{ fontSize: '13px', color: '#1E3A8A', fontWeight: 600 }}>{cur.flightTime.replace(/^Anreise mit /i, '')}</div>
                     </div>
                   </div>
                 )}
                 {cur.budgetPerDay && (
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px', borderRadius: '12px', background: '#F0FDF4', border: '1px solid #BBF7D0' }}>
                     <div style={{ width: '36px', height: '36px', borderRadius: '11px', background: '#DCFCE7', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Wallet size={16} strokeWidth={2} color="#15803D" /></div>
-                    <div>
-                      <div style={{ fontSize: '10px', fontWeight: 700, color: '#15803D', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '2px' }}>TAGESBUDGET</div>
+                    <div style={{ minWidth: 0 }}>
+                      <div style={{ fontSize: '10px', fontWeight: 700, color: '#15803D', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '2px' }}>Tagesbudget</div>
                       <div style={{ fontSize: '13px', color: '#14532D', fontWeight: 600 }}>{cur.budgetPerDay}</div>
                     </div>
                   </div>

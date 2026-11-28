@@ -1,7 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse, after } from 'next/server';
 import { createServerClient } from '@/lib/supabase/server';
 import { hashToken } from '@/lib/tokens';
 import { SITE_URL } from '@/lib/site-config';
+import { sendWelcomeMail } from '@/lib/newsletter/send';
 
 export async function GET(request: NextRequest) {
   const token = request.nextUrl.searchParams.get('token');
@@ -46,6 +47,11 @@ export async function GET(request: NextRequest) {
       status: 500, headers: { 'Content-Type': 'text/html; charset=utf-8' },
     });
   }
+
+  // Willkommensmail nach der Antwort verschicken (falls im Admin eingeschaltet)
+  after(async () => {
+    try { await sendWelcomeMail(data.id); } catch (err) { console.error('[NEWSLETTER_WELCOME]', err); }
+  });
 
   return new NextResponse(successPage(false), {
     status: 200, headers: { 'Content-Type': 'text/html; charset=utf-8' },

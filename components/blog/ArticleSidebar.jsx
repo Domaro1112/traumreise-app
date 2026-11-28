@@ -1,17 +1,16 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
-import { List, Plane, Sparkles, ArrowRight, Images, X } from 'lucide-react';
+import { List, Plane, Sparkles, ArrowRight } from 'lucide-react';
 
 // Sammelbegriffe wie „Weltweit“ sind kein Reiseziel – dann allgemein formulieren
 const GENERIC_DESTINATIONS = /^(weltweit|welt|international|global|europa|allgemein|diverse|verschiedene|mehrere|alle|überall|reisen)$/i;
 const isSpecificDestination = d => typeof d === 'string' && d.trim().length > 1 && !GENERIC_DESTINATIONS.test(d.trim());
 
-export default function ArticleSidebar({ tableOfContents, destination, galleryImages = [], relatedDestinations = [] }) {
+// Die Bildergalerie steht seit 11/2026 im Artikel selbst (sichtbar auch auf dem Handy),
+// nicht mehr in der Seitenleiste, die erst ab 1024 px angezeigt wird.
+export default function ArticleSidebar({ tableOfContents, destination, relatedDestinations = [] }) {
   const specific = isSpecificDestination(destination);
-  const [lightbox, setLightbox] = useState(null); // { src, alt }
-  const visibleImages = galleryImages.slice(0, 6);
 
   return (
     <>
@@ -352,123 +351,9 @@ export default function ArticleSidebar({ tableOfContents, destination, galleryIm
           </div>
         )}
 
-        {/* ── Bildergalerie ─────────────────────────────────────────────────── */}
-        {visibleImages.length > 0 && (
-          <div
-            style={{
-              background: '#FFFFFF',
-              border: '1px solid #E2E8F0',
-              borderRadius: '16px',
-              padding: '20px 24px',
-              boxShadow: '0 2px 12px rgba(15,23,42,0.06)',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-              <Images size={16} strokeWidth={2} color="#0EA5E9" />
-              <span
-                style={{
-                  fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
-                  fontSize: '13px',
-                  fontWeight: 700,
-                  letterSpacing: '1px',
-                  textTransform: 'uppercase',
-                  color: '#64748B',
-                }}
-              >
-                Bildergalerie
-              </span>
-            </div>
-
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '6px',
-              }}
-            >
-              {visibleImages.map((img, i) => {
-                const alt = img.alt || img.title || img.caption || `Bild ${i + 1}`;
-                return (
-                  <button
-                    key={img.url || `img-${i}`}
-                    type="button"
-                    onClick={() => setLightbox({ src: img.url, alt })}
-                    title={alt}
-                    style={{
-                      display: 'block',
-                      padding: 0,
-                      border: 'none',
-                      borderRadius: '8px',
-                      overflow: 'hidden',
-                      cursor: 'zoom-in',
-                      aspectRatio: '4 / 3',
-                      background: '#F1F5F9',
-                    }}
-                  >
-                    <img
-                      src={img.url}
-                      alt={alt}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                    />
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
       </div>
     </aside>
 
-    {/* ── Lightbox ─────────────────────────────────────────────────────────── */}
-    {lightbox && (
-      <div
-        onClick={() => setLightbox(null)}
-        style={{
-          position: 'fixed',
-          inset: 0,
-          background: 'rgba(0,0,0,0.88)',
-          zIndex: 9999,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          cursor: 'zoom-out',
-        }}
-      >
-        <button
-          type="button"
-          onClick={() => setLightbox(null)}
-          style={{
-            position: 'absolute',
-            top: '20px',
-            right: '20px',
-            background: 'rgba(255,255,255,0.12)',
-            border: '1px solid rgba(255,255,255,0.20)',
-            borderRadius: '50%',
-            width: '40px',
-            height: '40px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-          }}
-        >
-          <X size={20} strokeWidth={2} color="#fff" />
-        </button>
-        <img
-          src={lightbox.src}
-          alt={lightbox.alt}
-          onClick={e => e.stopPropagation()}
-          style={{
-            maxWidth: '90vw',
-            maxHeight: '85vh',
-            objectFit: 'contain',
-            borderRadius: '10px',
-            boxShadow: '0 24px 80px rgba(0,0,0,0.60)',
-          }}
-        />
-      </div>
-    )}
     </>
   );
 }

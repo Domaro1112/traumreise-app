@@ -120,7 +120,9 @@ export default function NewsletterSection() {
                 }}
               >
                 <CheckCircle2 size={20} strokeWidth={2} color="#15803D" />
-                Fast geschafft! Bestätige deine E-Mail — dann bist du dabei.
+                {state.alreadySubscribed
+                  ? 'Du bist schon angemeldet – schön, dass du dabei bist!'
+                  : 'Fast geschafft! Bitte klick auf den Link in der Mail, die wir dir gerade geschickt haben.'}
               </div>
             ) : (
               <form action={formAction}>
@@ -185,7 +187,12 @@ export default function NewsletterSection() {
                   }}
                 >
                   <ShieldCheck size={12} strokeWidth={2} color="#5a3010" />
-                  <b>Kein Spam. Jederzeit kündbar. DSGVO-konform.</b>
+                  <b>Kein Spam. Jederzeit kündbar.</b>
+                </p>
+                <p style={{ fontSize: '11px', color: '#5a3010', lineHeight: 1.5, margin: '6px 0 0', maxWidth: '520px' }}>
+                  Mit „Jetzt anmelden“ willige ich ein, den ApeAround-Newsletter mit Reiseideen, Tipps und Angeboten per E-Mail zu erhalten.
+                  Ich kann mich jederzeit wieder abmelden. Die Anmeldung wird erst nach Bestätigung per E-Mail aktiv.
+                  Mehr in der <a href="/datenschutz" style={{ color: '#5a3010', textDecoration: 'underline' }}>Datenschutzerklärung</a>.
                 </p>
               </form>
             )}

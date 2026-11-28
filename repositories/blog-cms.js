@@ -49,7 +49,7 @@ function dbToPublic(row) {
     openGraphDescription: row.open_graph_description ?? null,
     openGraphImage: row.open_graph_image ?? row.cover_image_url ?? null,
     // gallery
-    galleryImages: Array.isArray(row.gallery_images) ? row.gallery_images : [],
+    galleryImages: parseGallery(row.gallery_images),
     // feedback
     helpfulCount:    row.helpful_count    ?? 0,
     notHelpfulCount: row.not_helpful_count ?? 0,
@@ -351,4 +351,13 @@ export async function incrementBlogFeedback(slug, vote) {
     p_vote: vote,
   });
   if (error) throw new Error(error.message);
+}
+
+// Galerie kann als JSON-Liste oder (ältere Einträge) als JSON-Text gespeichert sein
+function parseGallery(value) {
+  if (Array.isArray(value)) return value;
+  if (typeof value === 'string' && value.trim().startsWith('[')) {
+    try { const v = JSON.parse(value); return Array.isArray(v) ? v : []; } catch { return []; }
+  }
+  return [];
 }
