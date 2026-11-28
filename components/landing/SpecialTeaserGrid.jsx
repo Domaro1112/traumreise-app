@@ -11,7 +11,7 @@ const CARDS = [
     backgroundPosition: 'center 20%',
     // Fallback gradient shown when image fails to load
     fallbackGradient: 'linear-gradient(145deg, #0F172A 0%, #0e2d46 55%, #0d3a52 100%)',
-    overlay: 'linear-gradient(to top, rgba(10,20,38,0.94) 0%, rgba(10,20,38,0.72) 45%, rgba(10,20,38,0.48) 80%, rgba(10,20,38,0.36) 100%)',
+    overlay: 'linear-gradient(to right, rgba(10,20,38,0.72) 0%, rgba(10,20,38,0.45) 32%, rgba(10,20,38,0) 62%)',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -29,7 +29,7 @@ const CARDS = [
     backgroundImage: '/images/motorradurlaub/motorradurlaub-hero.png',
     backgroundPosition: '68% center',
     fallbackGradient: 'linear-gradient(145deg, #0F172A 0%, #0c2840 55%, #0a3352 100%)',
-    overlay: 'linear-gradient(to top, rgba(10,20,38,0.94) 0%, rgba(10,20,38,0.68) 45%, rgba(10,20,38,0.42) 80%, rgba(10,20,38,0.28) 100%)',
+    overlay: 'linear-gradient(to right, rgba(10,20,38,0.72) 0%, rgba(10,20,38,0.45) 32%, rgba(10,20,38,0) 62%)',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M3 17l4-8 4 4 4-6 4 10"/><path d="M21 17H3"/>
