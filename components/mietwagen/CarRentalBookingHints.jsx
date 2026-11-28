@@ -2,34 +2,34 @@ import SectionTitle from '@/components/ui/SectionTitle';
 
 const HINTS = [
   {
-    icon: '🛡️',
+    image: '/images/mietwagen/hinweis-versicherung.jpg',
     title: 'Versicherung',
-    text: 'Vollkaskoversicherung ohne Selbstbeteiligung (CDW ohne Franchise) ist empfehlenswert. Prüfe vorab, ob deine Kreditkarte bereits eine Mietwagen-Kaskoversicherung bietet – viele Premium-Kreditkarten schließen das ein.',
+    text: 'Eine Vollkasko ohne Selbstbeteiligung gibt dir die meiste Ruhe. Prüfe vorab, ob deine Kreditkarte schon einen Mietwagen-Schutz enthält – das ist bei einigen Karten der Fall.',
   },
   {
-    icon: '🛣️',
+    image: '/images/mietwagen/hinweis-maut.jpg',
     title: 'Maut',
-    text: 'In Österreich, Italien, Frankreich und Portugal ist Maut Pflicht. Kläre vorab, ob das Fahrzeug mit Vignette ausgestattet ist oder ein elektronischer Transponder benötigt wird, um an Mautstationen durchzufahren.',
+    text: 'In vielen Ländern, etwa Österreich, Italien, Frankreich oder Portugal, fällt Maut an. Frag vorab, ob eine Vignette oder ein elektronischer Transponder im Auto ist.',
   },
   {
-    icon: '⛽',
+    image: '/images/mietwagen/hinweis-tanken.jpg',
     title: 'Tankregelung',
-    text: '"Full to Full" ist die fairste Variante: Voll abholen, voll zurückgeben. Bei "Full to Empty" berechnest du beim Vermieter oft deutlich überhöhte Treibstoffpreise – bis zu 50% mehr als an der Tankstelle.',
+    text: '„Voll/Voll“ ist meist die fairste Variante: voll abholen, voll zurückgeben. Lässt du den Vermieter tanken, wird das oft deutlich teurer als an der Tankstelle.',
   },
   {
-    icon: '💳',
+    image: '/images/mietwagen/hinweis-kaution.jpg',
     title: 'Kaution',
-    text: 'Nahezu alle Vermieter blockieren eine Kaution auf der Kreditkarte (EC-Karten werden meist nicht akzeptiert). Der Betrag variiert je nach Fahrzeugklasse zwischen 200 und 2.000 Euro.',
+    text: 'Die meisten Vermieter blocken eine Kaution auf einer Kreditkarte, Debitkarten werden oft nicht akzeptiert. Je nach Fahrzeugklasse sind das oft mehrere hundert Euro, bei großen Autos auch mehr.',
   },
   {
-    icon: '👤',
+    image: '/images/mietwagen/hinweis-zusatzfahrer.jpg',
     title: 'Zusatzfahrer',
-    text: 'Alle geplanten Fahrer müssen namentlich eingetragen sein. Vorab online buchen spart erheblich – an der Station ist der Aufpreis für Zusatzfahrer oft doppelt so hoch wie bei Online-Buchung.',
+    text: 'Wer fahren soll, muss im Vertrag eingetragen sein. Buch Zusatzfahrer am besten gleich online mit – an der Station ist der Aufpreis meist teurer.',
   },
   {
-    icon: '🌍',
+    image: '/images/mietwagen/hinweis-grenze.jpg',
     title: 'Grenzübertritt',
-    text: 'Nicht jeder Vermieter erlaubt Grenzübertritte automatisch. Kläre vorab, ob eine Auslandszulassung vorhanden ist. Für bestimmte Länder können Zusatzgebühren und Versicherungsanpassungen notwendig sein.',
+    text: 'Nicht jeder Vermieter erlaubt Fahrten ins Ausland automatisch. Kläre vorab, in welche Länder du darfst – manchmal kommen Gebühren oder ein angepasster Versicherungsschutz dazu.',
   },
 ];
 
@@ -45,40 +45,63 @@ export default function CarRentalBookingHints() {
           align="center"
         />
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-          gap: '20px',
-          marginTop: '40px',
-        }}>
-          {HINTS.map((hint, i) => (
-            <div
-              key={i}
-              style={{
-                background: '#FFFFFF',
-                borderRadius: '18px',
-                padding: '24px 22px',
-                border: '1.5px solid #E2E8F0',
-                boxShadow: '0 2px 8px rgba(15,23,42,0.05)',
-              }}
-            >
-              <div style={{ fontSize: '28px', marginBottom: '12px', lineHeight: 1 }}>{hint.icon}</div>
-              <h3 style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: '16px',
-                fontWeight: 700,
-                color: '#0F172A',
-                margin: '0 0 8px',
-              }}>
-                {hint.title}
-              </h3>
-              <p style={{ fontSize: '13px', color: '#64748B', lineHeight: 1.75, margin: 0 }}>
-                {hint.text}
-              </p>
-            </div>
+        <div className="bh-grid">
+          {HINTS.map((hint) => (
+            <article key={hint.title} className="bh-card">
+              <div className="bh-img" style={{ backgroundImage: `url(${hint.image})` }} aria-hidden="true" />
+              <div className="bh-body">
+                <h3 className="bh-title">{hint.title}</h3>
+                <p className="bh-text">{hint.text}</p>
+              </div>
+            </article>
           ))}
         </div>
       </div>
+
+      <style>{`
+        .bh-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+          gap: 20px;
+          margin-top: 40px;
+        }
+        .bh-card {
+          background: #FFFFFF;
+          border-radius: 18px;
+          border: 1.5px solid #E2E8F0;
+          box-shadow: 0 2px 8px rgba(15,23,42,0.05);
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          transition: transform .2s ease, box-shadow .2s ease;
+        }
+        .bh-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(15,23,42,0.10); }
+        .bh-img {
+          position: relative;
+          aspect-ratio: 16 / 9;
+          background-size: cover;
+          background-position: center 30%;
+        }
+        .bh-img::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to bottom, rgba(255,255,255,0) 45%, rgba(255,255,255,0.75) 80%, #FFFFFF 100%);
+        }
+        .bh-body { padding: 4px 22px 24px; margin-top: -18px; position: relative; }
+        .bh-title {
+          font-family: var(--font-heading);
+          font-size: 17px;
+          font-weight: 700;
+          color: #0F172A;
+          margin: 0 0 8px;
+        }
+        .bh-text { font-size: 13.5px; color: #64748B; line-height: 1.75; margin: 0; }
+        @media (max-width: 560px) {
+          .bh-img { aspect-ratio: 2 / 1; }
+          .bh-body { padding: 4px 18px 20px; }
+        }
+      `}</style>
     </section>
   );
 }
