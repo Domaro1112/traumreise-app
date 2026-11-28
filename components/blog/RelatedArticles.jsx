@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { ArrowRight, Clock, BookOpen } from 'lucide-react';
-import { blogArticles } from '@/data/blogArticles';
 
 const CATEGORY_COLORS = {
   Spartipps:           { bg: '#FFF7ED', color: '#C2410C' },
@@ -12,11 +11,11 @@ const CATEGORY_COLORS = {
   Familienurlaub:      { bg: '#FFF1F2', color: '#BE123C' },
 };
 
-export default function RelatedArticles({ relatedSlugs, currentSlug }) {
+export default function RelatedArticles({ relatedSlugs, currentSlug, articles = [] }) {
   if (!relatedSlugs?.length) return null;
 
   const related = relatedSlugs
-    .map((slug) => blogArticles.find((a) => a.slug === slug))
+    .map((slug) => articles.find((a) => a.slug === slug && a.slug !== currentSlug))
     .filter(Boolean)
     .slice(0, 3);
 

@@ -307,7 +307,7 @@ export default function CreatorProfileEditClient({ initialProfile, isNew }) {
 
         {/* Galerie */}
         <Section title="Galerie (Bild-URLs, eine pro Zeile)">
-          <Textarea value={form.gallery_images} onChange={v => set('gallery_images', v)} rows={4} placeholder="https://images.unsplash.com/…&#10;https://…" />
+          <Textarea value={form.gallery_images} onChange={v => set('gallery_images', v)} rows={4} placeholder="https://…/bild-1.jpg&#10;https://…" />
         </Section>
 
         {/* Reisetipps */}

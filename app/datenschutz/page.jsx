@@ -114,8 +114,7 @@ const sections = [
   {
     heading: '12. Bilder und Schriftarten',
     blocks: [
-      { sub: 'Bilder von Unsplash' },
-      'Einige Bilder auf unserer Website werden direkt von den Servern der Unsplash Inc., Montréal, Kanada, geladen. Dabei wird Ihre IP-Adresse an Unsplash übermittelt, da dies technisch erforderlich ist, um das Bild an Ihren Browser auszuliefern. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO; unser berechtigtes Interesse liegt in einer ansprechenden Darstellung unseres Angebots. Für Kanada besteht ein Angemessenheitsbeschluss der EU-Kommission.',
+      'Alle Bilder auf unserer Website liegen auf unserem eigenen Server bzw. Dateispeicher. Beim Aufruf werden keine Bilder von fremden Bilddiensten nachgeladen.',
       { sub: 'Schriftarten' },
       'Die verwendeten Schriftarten sind lokal auf unserem Server eingebunden. Beim Aufruf der Website wird keine Verbindung zu Servern von Google oder anderen Schriftanbietern hergestellt.',
     ],
@@ -128,9 +127,8 @@ const sections = [
         'Vercel Inc., USA – Hosting der Website',
         'Supabase Inc., USA (Server in Frankfurt am Main) – Datenbank und Dateispeicher',
         'Resend, Inc., USA – Versand von E-Mails',
-        'Unsplash Inc., Kanada – Auslieferung einzelner Bilder',
       ] },
-      'Diese Dienstleister verarbeiten die Daten – mit Ausnahme von Unsplash – ausschließlich in unserem Auftrag und nach unseren Weisungen (Art. 28 DSGVO). Darüber hinaus geben wir Daten nur weiter, wenn wir gesetzlich dazu verpflichtet sind.',
+      'Diese Dienstleister verarbeiten die Daten ausschließlich in unserem Auftrag und nach unseren Weisungen (Art. 28 DSGVO). Darüber hinaus geben wir Daten nur weiter, wenn wir gesetzlich dazu verpflichtet sind.',
     ],
   },
   {

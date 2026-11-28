@@ -5,7 +5,6 @@ import { focusStyle } from '@/lib/hero-config';
 import Link from 'next/link';
 import Image from 'next/image';
 import Container from '@/components/layout/Container';
-import { blogArticles } from '@/data/blogArticles';
 import {
   Search, X, MapPin, ArrowRight, Globe, ChevronDown, ChevronUp,
   Zap, Star, Building2, Mountain, Compass, Users, Sun,
@@ -27,22 +26,21 @@ const FILTER_ALIASES = {
   Luxus:     ['luxus', 'luxusreise', 'luxusurlaub', 'premium'],
 };
 
-// Bilder liegen unter public/images/reisearten/. Fehlt eins, wird das alte
-// Unsplash-Foto (fallbackImg) gezeigt.
+// Bilder liegen unter public/images/reisearten/.
 const REISEARTEN = [
-  { type: 'Strand',    label: 'Strandurlaub',   Icon: Sun,       desc: 'Entspanne an den schönsten Stränden der Welt.',        img: '/images/reisearten/strand.jpg', fallbackImg: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80' },
-  { type: 'Stadt',     label: 'Städtereisen',   Icon: Building2, desc: 'Erlebe pulsierende Städte und kulturelle Highlights.',  img: '/images/reisearten/staedte.jpg', fallbackImg: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=600&q=80' },
-  { type: 'Natur',     label: 'Natur & Berge',  Icon: Mountain,  desc: 'Entdecke atemberaubende Landschaften und Natur.',       img: '/images/reisearten/natur.jpg', fallbackImg: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80' },
-  { type: 'Abenteuer', label: 'Abenteuer',      Icon: Compass,   desc: 'Für alle, die das Besondere suchen und erleben wollen.',img: '/images/reisearten/abenteuer.jpg', fallbackImg: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=80' },
-  { type: 'Familie',   label: 'Familienurlaub', Icon: Users,     desc: 'Gemeinsame Zeit an den schönsten Orten genießen.',     img: '/images/reisearten/familie.jpg', fallbackImg: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80' },
-  { type: 'Luxus',     label: 'Luxusreisen',    Icon: Star,      desc: 'Exklusive Erlebnisse und höchster Komfort.',           img: '/images/reisearten/luxus.jpg', fallbackImg: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80' },
+  { type: 'Strand',    label: 'Strandurlaub',   Icon: Sun,       desc: 'Entspanne an den schönsten Stränden der Welt.',        img: '/images/reisearten/strand.jpg' },
+  { type: 'Stadt',     label: 'Städtereisen',   Icon: Building2, desc: 'Erlebe pulsierende Städte und kulturelle Highlights.',  img: '/images/reisearten/staedte.jpg' },
+  { type: 'Natur',     label: 'Natur & Berge',  Icon: Mountain,  desc: 'Entdecke atemberaubende Landschaften und Natur.',       img: '/images/reisearten/natur.jpg' },
+  { type: 'Abenteuer', label: 'Abenteuer',      Icon: Compass,   desc: 'Für alle, die das Besondere suchen und erleben wollen.',img: '/images/reisearten/abenteuer.jpg' },
+  { type: 'Familie',   label: 'Familienurlaub', Icon: Users,     desc: 'Gemeinsame Zeit an den schönsten Orten genießen.',     img: '/images/reisearten/familie.jpg' },
+  { type: 'Luxus',     label: 'Luxusreisen',    Icon: Star,      desc: 'Exklusive Erlebnisse und höchster Komfort.',           img: '/images/reisearten/luxus.jpg' },
 ];
 
 const POPULAR_PICKS = [
-  { name: 'Santorini', country: 'Griechenland', badge: 'Beliebt',      badgeBg: '#EFF6FF', badgeColor: '#0284C7', desc: 'Traumhafte Sonnenuntergänge, weiße Häuser und türkisblaues Meer.', img: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&q=80', slug: 'santorini' },
-  { name: 'Mallorca',  country: 'Spanien',      badge: 'Sommer-Tipp',  badgeBg: '#FFFBEB', badgeColor: '#B45309', desc: 'Die perfekte Mischung aus Strand, Natur und mediterranem Flair.',  img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80', slug: 'mallorca' },
-  { name: 'Bali',      country: 'Indonesien',   badge: 'Trendziel',    badgeBg: '#ECFDF5', badgeColor: '#059669', desc: 'Exotische Kultur, traumhafte Strände und einzigartige Natur.',     img: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80', slug: 'bali' },
-  { name: 'Thailand',  country: 'Thailand',     badge: 'Beliebt',      badgeBg: '#EFF6FF', badgeColor: '#0284C7', desc: 'Vielfältige Erlebnisse, leckeres Essen und paradiesische Strände.', img: 'https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?w=800&q=80', slug: 'thailand' },
+  { name: 'Santorini', country: 'Griechenland', badge: 'Beliebt',      badgeBg: '#EFF6FF', badgeColor: '#0284C7', desc: 'Traumhafte Sonnenuntergänge, weiße Häuser und türkisblaues Meer.', img: '/images/jahreszeiten/sommer.jpg', slug: 'santorini' },
+  { name: 'Mallorca',  country: 'Spanien',      badge: 'Sommer-Tipp',  badgeBg: '#FFFBEB', badgeColor: '#B45309', desc: 'Die perfekte Mischung aus Strand, Natur und mediterranem Flair.',  img: '/images/reisearten/strand.jpg', slug: 'mallorca' },
+  { name: 'Bali',      country: 'Indonesien',   badge: 'Trendziel',    badgeBg: '#ECFDF5', badgeColor: '#059669', desc: 'Exotische Kultur, traumhafte Strände und einzigartige Natur.',     img: '/images/reisearten/luxus.jpg', slug: 'bali' },
+  { name: 'Thailand',  country: 'Thailand',     badge: 'Beliebt',      badgeBg: '#EFF6FF', badgeColor: '#0284C7', desc: 'Vielfältige Erlebnisse, leckeres Essen und paradiesische Strände.', img: '/images/reisearten/abenteuer.jpg', slug: 'thailand' },
 ];
 
 const CONTINENTS_ORDER = ['Europa', 'Asien', 'Amerika', 'Afrika', 'Ozeanien'];
@@ -56,7 +54,6 @@ const SEASONS = [
   { key: 'winter', label: 'Winter',   image: '/images/jahreszeiten/winter.jpg',    fallback: 'linear-gradient(135deg,#BAE6FD,#7DD3FC)', bg: '#EFF6FF', border: '#BAE6FD', color: '#0C4A6E', desc: 'Schnee, Sonne oder Winterwunder erleben.',          examples: ['Lappland', 'Malediven', 'Dubai'] },
 ];
 
-const BLOG_PICKS = blogArticles.slice(0, 3);
 
 const TRUST_ITEMS = [
   { Icon: Globe,   label: 'Kostenlose Nutzung',   sub: '100% kostenlos und unverbindlich'    },
@@ -155,7 +152,7 @@ function DestCard({ dest }) {
 
 // ── Main export ────────────────────────────────────────────────────────────────
 
-export default function ReisezielePageClient({ destinations = [], heroFocus }) {
+export default function ReisezielePageClient({ destinations = [], heroFocus, blogPicks = [] }) {
   const [searchQuery,   setSearchQuery]   = useState('');
   const [activeFilter,  setActiveFilter]  = useState('');
   const [activeSeason,  setActiveSeason]  = useState('');
@@ -356,7 +353,7 @@ export default function ReisezielePageClient({ destinations = [], heroFocus }) {
           </div>
 
           <div className="rzp-reisearten-grid">
-            {REISEARTEN.map(({ type, label, desc, img, fallbackImg }) => {
+            {REISEARTEN.map(({ type, label, desc, img }) => {
               const active = activeFilter === type;
               const count = destinations.filter(d => Array.isArray(d.travelType) && d.travelType.some(t => (FILTER_ALIASES[type] ?? []).includes(norm(t).trim()))).length;
               return (
@@ -365,7 +362,7 @@ export default function ReisezielePageClient({ destinations = [], heroFocus }) {
                   style={{ border: active ? '2px solid #0EA5E9' : '1.5px solid #E2E8F0', borderRadius: '16px', overflow: 'hidden', background: '#FFFFFF', cursor: 'pointer', textAlign: 'left', padding: 0, margin: 0, boxShadow: active ? '0 0 0 3px rgba(14,165,233,0.12)' : 'none', fontFamily: 'inherit', display: 'flex', flexDirection: 'column', alignItems: 'stretch', width: '100%' }}>
                   <div style={{ overflow: 'hidden' }}>
                     <div className="rzp-type-img" role="img" aria-label={label}
-                      style={{ aspectRatio: '16 / 10', backgroundImage: `url('${img}'), url('${fallbackImg}')`, backgroundSize: 'cover, cover', backgroundPosition: 'center, center', backgroundColor: '#E2E8F0' }} />
+                      style={{ aspectRatio: '16 / 10', backgroundImage: `url('${img}')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: '#E2E8F0' }} />
                   </div>
                   <div style={{ padding: '14px 18px 16px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '4px' }}>
@@ -628,13 +625,15 @@ export default function ReisezielePageClient({ destinations = [], heroFocus }) {
               </div>
               <p style={{ fontSize: '14px', color: '#64748B', margin: '0 0 22px' }}>Tipps, Guides und Geschichten für deine nächste Reise.</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                {BLOG_PICKS.map(a => (
+                {blogPicks.map(a => (
                   <Link key={a.slug} href={`/reiseblog/${a.slug}`} style={{ textDecoration: 'none', display: 'flex', gap: '0', background: '#FFFFFF', border: '1.5px solid #E2E8F0', borderRadius: '14px', overflow: 'hidden', transition: 'box-shadow 0.15s' }}
                     onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 6px 22px rgba(15,23,42,0.10)'; }}
                     onMouseLeave={e => { e.currentTarget.style.boxShadow = 'none'; }}
                   >
                     <div style={{ width: '88px', flexShrink: 0, overflow: 'hidden', position: 'relative' }}>
-                      <img src={a.imageUrl} alt={a.title} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                      {a.imageUrl
+                        ? <img src={a.imageUrl} alt={a.title} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                        : <div style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg,#BAE6FD,#7DD3FC)' }} />}
                     </div>
                     <div style={{ padding: '11px 14px 11px 12px', flex: 1, minWidth: 0 }}>
                       <span style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.8px', textTransform: 'uppercase', color: '#0EA5E9' }}>{a.category}</span>
@@ -642,7 +641,7 @@ export default function ReisezielePageClient({ destinations = [], heroFocus }) {
                         {a.title.length > 62 ? a.title.slice(0, 62) + '…' : a.title}
                       </h3>
                       <p style={{ fontSize: '11px', color: '#94A3B8', margin: 0, lineHeight: 1.5 }}>
-                        {a.excerpt.slice(0, 78)}…
+                        {(a.excerpt ?? '').slice(0, 78)}…
                       </p>
                     </div>
                   </Link>

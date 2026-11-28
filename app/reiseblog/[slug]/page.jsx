@@ -15,6 +15,7 @@ import ArticleFeedback from '@/components/blog/ArticleFeedback';
 import {
   getBlogArticleBySlugPublic,
   listPublishedBlogSlugs,
+  listPublishedBlogArticles,
 } from '@/repositories/blog-cms';
 import { SITE_URL } from '@/lib/site-config';
 import { getDestinationsBySlugsBatch } from '@/repositories/destinations-cms';
@@ -96,6 +97,13 @@ export default async function ArticlePage({ params }) {
     .filter(g => g && typeof g.url === 'string' && g.url.trim())
     .map((g, i) => ({ url: g.url, alt: g.alt || g.title || g.caption || `${article.title} – Bild ${i + 1}` }));
 
+  // Verwandte Artikel aus der Datenbank (eigene Bilder statt der alten Beispieldaten)
+  const relatedArticleData = article.relatedArticles?.length
+    ? (await listPublishedBlogArticles())
+        .filter(a => article.relatedArticles.includes(a.slug))
+        .map(a => ({ slug: a.slug, title: a.title, category: a.category, readingTime: a.readingTime, imageUrl: /unsplash\.com/i.test(a.imageUrl ?? '') ? '' : a.imageUrl }))
+    : [];
+
   // Enrich related destination slugs with DB names (published only).
   // Falls back to slug-derived name for slugs not found in DB.
   const rawSlugs = (article.relatedArticles ?? []).slice(0, 3);
@@ -138,6 +146,7 @@ export default async function ArticlePage({ params }) {
                 )}
                 <ArticleFAQ faq={article.faq} destination={article.destination} />
                 <RelatedArticles
+                  articles={relatedArticleData}
                   relatedSlugs={article.relatedArticles}
                   currentSlug={article.slug}
                 />

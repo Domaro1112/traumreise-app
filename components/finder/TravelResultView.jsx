@@ -547,8 +547,9 @@ export default function TravelResultView({ results, personality, interests, pack
   function getDestImage(r, i) {
     const moodId   = interests[i % Math.max(interests.length, 1)];
     const heroMood = moodOptions.find(m => m.id === moodId) || moodOptions[0];
-    const fallback = heroMood.imageUrl.replace('w=600', 'w=1400').replace('q=80', 'q=88');
-    return getDestinationImage(r.destination, fallback, r.country, { interest: moodId, resultType: 'travel-finder' });
+    // 1. Titelbild des Reiseziels aus dem Admin, 2. eigenes Bild passend zur Region/Stimmung
+    if (r.ownImage) return r.ownImage;
+    return getDestinationImage(r.destination, heroMood.imageUrl, r.country, { interest: moodId, resultType: 'travel-finder' });
   }
 
 

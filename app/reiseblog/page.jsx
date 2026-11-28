@@ -9,8 +9,8 @@ import CommunityTips from '@/components/blog/CommunityTips';
 import {
   blogCategories,
   communityTips,
-  popularDestinations,
 } from '@/data/blogArticles';
+import { listPublishedDestinations } from '@/repositories/destinations-cms';
 import { listPublishedBlogArticles } from '@/repositories/blog-cms';
 import { getHeroFocus } from '@/repositories/hero-images';
 import { SITE_URL } from '@/lib/site-config';
@@ -40,10 +40,10 @@ export const metadata = {
     url: `${SITE_URL}/reiseblog`,
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80',
-        width: 1200,
-        height: 630,
-        alt: 'Traumreise Reiseblog',
+        url: `${SITE_URL}/images/jahreszeiten/sommer.jpg`,
+        width: 1000,
+        height: 625,
+        alt: 'ApeAround Reiseblog',
       },
     ],
   },
@@ -55,6 +55,16 @@ export const metadata = {
 export default async function Reiseblog() {
   const blogArticles = await listPublishedBlogArticles();
   const heroFocus = await getHeroFocus('reiseblog');
+
+  // Beliebte Reiseziele: veröffentlichte Ziele aus dem Admin mit eigenem Titelbild
+  let popularDestinations = [];
+  try {
+    popularDestinations = (await listPublishedDestinations())
+      .filter(d => d.heroImage && !/unsplash\.com/i.test(d.heroImage))
+      .sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)))
+      .slice(0, 6)
+      .map(d => ({ name: d.name, country: d.country ?? '', imageUrl: d.heroImage, href: `/reiseziele/${d.slug}` }));
+  } catch { /* ohne Datenbank: Bereich ausblenden */ }
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -130,6 +140,7 @@ export default async function Reiseblog() {
         <BlogPageClient articles={blogArticles} categories={blogCategories} heroFocus={heroFocus} />
 
         {/* ── Beliebte Reiseziele ─────────────────────────────────────────────── */}
+        {popularDestinations.length > 0 && (
         <section
           style={{
             background: 'linear-gradient(180deg, #F8FAFF 0%, #EFF6FF 100%)',
@@ -142,14 +153,14 @@ export default async function Reiseblog() {
               label="Beliebte Reiseziele"
               title="Entdecke die"
               titleHighlight="schönsten Orte"
-              subtitle="Von asiatischen Metropolen bis zu europäischen Geheimtipps – unsere Guides zeigen dir die Welt."
+              subtitle="Von asiatischen Metropolen bis zu europäischen Geheimtipps – entdecke unsere Reiseziele."
             />
 
             <div className="blog-destinations">
               {popularDestinations.map((dest) => (
                 <Link
                   key={dest.name}
-                  href={`/reiseblog/${dest.slug}`}
+                  href={dest.href}
                   style={{ textDecoration: 'none', display: 'block' }}
                 >
                   <div
@@ -253,6 +264,7 @@ export default async function Reiseblog() {
             </div>
           </Container>
         </section>
+        )}
 
         {/* ── Community Insider-Tipps ─────────────────────────────────────────── */}
         <CommunityTips tips={communityTips} />

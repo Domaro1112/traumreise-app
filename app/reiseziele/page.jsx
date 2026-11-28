@@ -2,6 +2,7 @@
 import Footer from '@/components/layout/Footer';
 import ReisezielePageClient from '@/components/destinations/ReisezielePageClient';
 import { listPublishedDestinations } from '@/repositories/destinations-cms';
+import { listPublishedBlogArticles } from '@/repositories/blog-cms';
 import { getHeroFocus } from '@/repositories/hero-images';
 import { withIdealSeasons } from '@/lib/destination-seasons';
 
@@ -46,6 +47,11 @@ export default async function ReisezielePage() {
     destinations = withIdealSeasons(await listPublishedDestinations());
   } catch { /* Supabase not available — show empty state */ }
   const heroFocus = await getHeroFocus('reiseziele');
+  // Neueste Blogartikel für den Teaser (aus dem Admin, mit eigenen Bildern)
+  const blogPicks = (await listPublishedBlogArticles({ limit: 3 })).map(a => ({
+    slug: a.slug, title: a.title, excerpt: a.excerpt ?? '', category: a.category ?? '',
+    imageUrl: /unsplash\.com/i.test(a.imageUrl ?? '') ? '' : (a.imageUrl ?? ''),
+  }));
 
   return (
     <>
@@ -55,7 +61,7 @@ export default async function ReisezielePage() {
       />
       <Header />
       <main style={{ paddingTop: '80px', background: '#FFFFFF', minHeight: '100vh' }}>
-        <ReisezielePageClient destinations={destinations} heroFocus={heroFocus} />
+        <ReisezielePageClient destinations={destinations} heroFocus={heroFocus} blogPicks={blogPicks} />
       </main>
       <Footer />
     </>

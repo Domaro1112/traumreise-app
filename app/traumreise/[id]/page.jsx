@@ -4,6 +4,23 @@ import Footer from '@/components/layout/Footer';
 import ResultPageClient from './ResultPageClient';
 import { getSession } from '@/repositories/travel-funnel';
 import { buildAffiliateUrls, DURATION_MAP } from '@/lib/travel/affiliateUrls';
+import { listPublishedDestinations } from '@/repositories/destinations-cms';
+
+const normName = v => String(v ?? '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/ß/g, 'ss').replace(/\(.*?\)/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
+
+// Titelbilder der veröffentlichten Reiseziele – Treffer über Slug oder Namen
+async function ownImageLookup() {
+  const map = new Map();
+  try {
+    for (const d of await listPublishedDestinations()) {
+      const img = d.heroImage;
+      if (!img || /unsplash\.com/i.test(img)) continue;
+      if (d.slug) map.set(normName(d.slug.replace(/-/g, ' ')), img);
+      if (d.name) map.set(normName(d.name), img);
+    }
+  } catch { /* ohne Datenbank: Bilder je Region */ }
+  return map;
+}
 
 export const dynamic = 'force-dynamic';
 
@@ -77,8 +94,10 @@ export default async function TravelResultPage({ params }) {
   const resultsChildren = isSingleParent ? 1 : 0;
   const resultsChildAge = isSingleParent ? mapNoteChildAge(session.personal_note ?? '') : null;
 
+  const ownImages = await ownImageLookup();
   const results = analysis.destinations.map(dest => ({
     ...dest,
+    ownImage: ownImages.get(normName(String(dest.catalogId ?? '').replace(/-/g, ' '))) || ownImages.get(normName(dest.destination)) || null,
     ...buildAffiliateUrls(dest, {
       budget, season, duration,
       adults:         resultsAdults,

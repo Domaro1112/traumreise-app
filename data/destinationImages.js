@@ -9,21 +9,21 @@
 // All keys are compact-lowercase (normalizeDestinationKey output with spaces/hyphens removed).
 // ─────────────────────────────────────────────────────────────────────────────
 
-// ── Step 3: Region safe-images (all photo IDs confirmed in the project) ──────
+// Nur eigene Bilder (public/images/) – keine Bilder mehr von fremden Servern.
 const REGION_IMAGES = {
-  alps:        'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=88', // mountain lake
-  mediterranean:'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1400&q=88', // Santorini
-  atlantic:    'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1400&q=88',    // Lisbon coast
-  nordics:     'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1400&q=88', // fjord
-  tropical:    'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1400&q=88', // Bali lush
-  beach:       'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&q=88', // clear beach
-  cityeurope:  'https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1400&q=88', // Amsterdam canals
-  cityusa:     'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1400&q=88', // NYC Manhattan
-  cityasia:    'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1400&q=88', // Tokyo skyline
-  island:      'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=1400&q=88', // Maldives overwater
-  desert:      'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1400&q=88', // Dubai desert city
-  nature:      'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1400&q=88', // forest sunlight
-  mountains:   'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=88', // Banff peaks
+  alps:         '/images/reisearten/natur.jpg',
+  mediterranean:'/images/jahreszeiten/sommer.jpg',
+  atlantic:     '/images/reisearten/staedte.jpg',
+  nordics:      '/images/jahreszeiten/winter.jpg',
+  tropical:     '/images/reisearten/luxus.jpg',
+  beach:        '/images/reisearten/strand.jpg',
+  cityeurope:   '/images/reisearten/staedte.jpg',
+  cityusa:      '/images/reisearten/staedte.jpg',
+  cityasia:     '/images/reisearten/staedte.jpg',
+  island:       '/images/reisearten/luxus.jpg',
+  desert:       '/images/reisearten/abenteuer.jpg',
+  nature:       '/images/reisearten/natur.jpg',
+  mountains:    '/images/jahreszeiten/herbst.jpg',
 };
 
 // ── Step 3b: Country → Region (used when country is not in DESTINATION_IMAGES) ─
@@ -144,266 +144,9 @@ const INTEREST_TO_REGION = {
 };
 
 // ── Destination lookup table ──────────────────────────────────────────────────
-export const DESTINATION_IMAGES = {
-
-  // ── Switzerland ─────────────────────────────────────────────────────────────
-  schweiz:        'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=88', // alpine lake
-  switzerland:    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=88',
-  luzern:         'https://images.unsplash.com/photo-1549144511-f099e773c147?w=1400&q=88', // lake city
-  lucerne:        'https://images.unsplash.com/photo-1549144511-f099e773c147?w=1400&q=88',
-  zuerich:        'https://images.unsplash.com/photo-1515488764276-beab7607c1e6?w=1400&q=88', // Zürich old town
-  zurich:         'https://images.unsplash.com/photo-1515488764276-beab7607c1e6?w=1400&q=88',
-  zermatt:        'https://images.unsplash.com/photo-1503435980610-a51f3ddfee50?w=1400&q=88', // Matterhorn
-  interlaken:     'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=88', // alpine valley
-  genf:           'https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?w=1400&q=88', // Lake Geneva
-  geneva:         'https://images.unsplash.com/photo-1523731407965-2430cd12f5e4?w=1400&q=88',
-  bern:           'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=88', // swiss city/alps fallback
-
-  // ── Austria ─────────────────────────────────────────────────────────────────
-  oesterreich:    'https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=1400&q=88', // Vienna
-  austria:        'https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=1400&q=88',
-  wien:           'https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=1400&q=88', // confirmed
-  vienna:         'https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=1400&q=88',
-  salzburg:       'https://images.unsplash.com/photo-1571401835393-8c5f35328320?w=1400&q=88', // baroque fortress
-  innsbruck:      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=88', // alpine → alps
-  hallstatt:      'https://images.unsplash.com/photo-1480796927426-f609979314bd?w=1400&q=88', // lake village
-
-  // ── Germany ─────────────────────────────────────────────────────────────────
-  deutschland:    'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1400&q=88', // Bavarian castle
-  germany:        'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1400&q=88',
-  berlin:         'https://plus.unsplash.com/premium_photo-1677486562712-d03d3d9ac23d?w=1400&q=88', // Brandenburg Gate
-  muenchen:       'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1400&q=88', // Bavaria
-  munich:         'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1400&q=88',
-  hamburg:        'https://plus.unsplash.com/premium_photo-1733353207482-d85d35635a45?w=1400&q=88', // Speicherstadt
-  koeln:          'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1400&q=88', // Germany fallback
-  cologne:        'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=1400&q=88',
-  schwarzwald:    'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1400&q=88', // forest
-
-  // ── France ──────────────────────────────────────────────────────────────────
-  frankreich:     'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1400&q=88', // Paris Eiffel
-  france:         'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1400&q=88',
-  paris:          'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1400&q=88', // confirmed
-  nizza:          'https://plus.unsplash.com/premium_photo-1661962506417-f6056afac074?w=1400&q=88', // Nice bay
-  nice:           'https://plus.unsplash.com/premium_photo-1661962506417-f6056afac074?w=1400&q=88',
-  provence:       'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1400&q=88', // → France
-  cotedazur:      'https://plus.unsplash.com/premium_photo-1661962506417-f6056afac074?w=1400&q=88', // → Nice
-  lyon:           'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1400&q=88', // → France
-
-  // ── Italy ───────────────────────────────────────────────────────────────────
-  italien:        'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1400&q=88', // Colosseum
-  italy:          'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1400&q=88',
-  rom:            'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1400&q=88', // confirmed
-  rome:           'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1400&q=88',
-  venedig:        'https://images.unsplash.com/photo-1534113414509-0eec2bfb493f?w=1400&q=88', // Grand Canal
-  venice:         'https://images.unsplash.com/photo-1534113414509-0eec2bfb493f?w=1400&q=88',
-  florenz:        'https://plus.unsplash.com/premium_photo-1676288635850-cd91d5b2a3af?w=1400&q=88', // Duomo
-  florence:       'https://plus.unsplash.com/premium_photo-1676288635850-cd91d5b2a3af?w=1400&q=88',
-  mailand:        'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1400&q=88', // → Italy
-  milan:          'https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1400&q=88',
-  amalfi:         'https://images.unsplash.com/photo-1533587851505-d119e13fa0d7?w=1400&q=88', // cliff towns
-  positano:       'https://images.unsplash.com/photo-1533587851505-d119e13fa0d7?w=1400&q=88', // same coast
-  sardinien:      'https://plus.unsplash.com/premium_photo-1722009043656-a43537f0f7d7?w=1400&q=88', // emerald coast
-  sardinia:       'https://plus.unsplash.com/premium_photo-1722009043656-a43537f0f7d7?w=1400&q=88',
-  suedtirol:      'https://plus.unsplash.com/premium_photo-1724178052290-3b45e5400a9c?w=1400&q=88', // Dolomites
-  sizilien:       'https://plus.unsplash.com/premium_photo-1716236651666-606f1df1710b?w=1400&q=88',
-  sicily:         'https://plus.unsplash.com/premium_photo-1716236651666-606f1df1710b?w=1400&q=88',
-  toskana:        'https://plus.unsplash.com/premium_photo-1676288635850-cd91d5b2a3af?w=1400&q=88', // rolling hills
-  tuscany:        'https://plus.unsplash.com/premium_photo-1676288635850-cd91d5b2a3af?w=1400&q=88',
-  neapel:         'https://images.unsplash.com/photo-1533587851505-d119e13fa0d7?w=1400&q=88', // Amalfi area
-  naples:         'https://images.unsplash.com/photo-1533587851505-d119e13fa0d7?w=1400&q=88',
-
-  // ── Spain ───────────────────────────────────────────────────────────────────
-  spanien:        'https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1400&q=88', // Sagrada Família
-  spain:          'https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1400&q=88',
-  barcelona:      'https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1400&q=88', // confirmed
-  madrid:         'https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=1400&q=88', // Gran Vía
-  mallorca:       'https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=1400&q=88', // rocky cove
-  ibiza:          'https://images.unsplash.com/photo-1555244162-803834f70033?w=1400&q=88',
-  teneriffa:      'https://plus.unsplash.com/premium_photo-1700566982560-31ed8b46991a?w=1400&q=88',
-  tenerife:       'https://plus.unsplash.com/premium_photo-1700566982560-31ed8b46991a?w=1400&q=88',
-  kanaren:        'https://plus.unsplash.com/premium_photo-1700566982560-31ed8b46991a?w=1400&q=88', // Canaries
-  canaryislands:  'https://plus.unsplash.com/premium_photo-1700566982560-31ed8b46991a?w=1400&q=88',
-  sevilla:        'https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1400&q=88', // → Spain
-  seville:        'https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1400&q=88',
-  granada:        'https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1400&q=88',
-
-  // ── Portugal ────────────────────────────────────────────────────────────────
-  portugal:       'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1400&q=88', // Alfama
-  lissabon:       'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1400&q=88', // confirmed
-  lisbon:         'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1400&q=88',
-  porto:          'https://images.unsplash.com/photo-1555993539-1732b0258235?w=1400&q=88', // confirmed
-  madeira:        'https://plus.unsplash.com/premium_photo-1720885652264-e9a44e012761?w=1400&q=88', // cliff coast
-  algarve:        'https://plus.unsplash.com/premium_photo-1667761276033-2ee987ffb5b1?w=1400&q=88', // Praia da Marinha
-  azoren:         'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1400&q=88',
-  azores:         'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1400&q=88',
-
-  // ── Greece & Greek Islands ───────────────────────────────────────────────────
-  griechenland:   'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1400&q=88', // Santorini
-  greece:         'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1400&q=88',
-  santorini:      'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1400&q=88', // confirmed Oia domes
-  kreta:          'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1400&q=88', // Balos lagoon
-  crete:          'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1400&q=88',
-  mykonos:        'https://plus.unsplash.com/premium_photo-1661935781384-b27f5faa9197?w=1400&q=88', // windmills
-  rhodos:         'https://plus.unsplash.com/premium_photo-1661911756283-fd0fbefee201?w=1400&q=88', // medieval city
-  rhodes:         'https://plus.unsplash.com/premium_photo-1661911756283-fd0fbefee201?w=1400&q=88',
-  korfu:          'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1400&q=88', // → Greece/Ionian
-  corfu:          'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1400&q=88',
-  athen:          'https://images.unsplash.com/photo-1603565816030-6b389eeb23cb?w=1400&q=88', // Acropolis
-  athens:         'https://images.unsplash.com/photo-1603565816030-6b389eeb23cb?w=1400&q=88',
-  zakynthos:      'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1400&q=88', // → Greece
-  zante:          'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1400&q=88',
-  heraklion:      'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1400&q=88', // Balos/Crete
-  iraklio:        'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1400&q=88',
-  iraklion:       'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1400&q=88',
-  chania:         'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1400&q=88',
-  rethymno:       'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1400&q=88',
-  heraklionkreta: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1400&q=88',
-  heraklioncrete: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1400&q=88',
-
-  // ── Croatia & Balkans ────────────────────────────────────────────────────────
-  kroatien:       'https://plus.unsplash.com/premium_photo-1661960492445-a2409ba481b7?w=1400&q=88', // confirmed Dubrovnik
-  croatia:        'https://plus.unsplash.com/premium_photo-1661960492445-a2409ba481b7?w=1400&q=88',
-  dubrovnik:      'https://plus.unsplash.com/premium_photo-1661960492445-a2409ba481b7?w=1400&q=88',
-  split:          'https://plus.unsplash.com/premium_photo-1661960492445-a2409ba481b7?w=1400&q=88', // → Croatia
-  plitvice:       'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1400&q=88', // waterfall/nature
-  albanien:       'https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1400&q=88', // Riviera
-  albania:        'https://images.unsplash.com/photo-1560969184-10fe8719e047?w=1400&q=88',
-  budapest:       'https://plus.unsplash.com/premium_photo-1680721310107-46b29d3b1d7f?w=1400&q=88', // Parliament/Danube
-
-  // ── UK & Ireland ─────────────────────────────────────────────────────────────
-  london:         'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1400&q=88', // confirmed Westminster
-  schottland:     'https://plus.unsplash.com/premium_photo-1673002093745-205f31f3784e?w=1400&q=88', // Highlands
-  scotland:       'https://plus.unsplash.com/premium_photo-1673002093745-205f31f3784e?w=1400&q=88',
-  edinburgh:      'https://plus.unsplash.com/premium_photo-1699566448247-1627bee256d0?w=1400&q=88', // castle
-  irland:         'https://plus.unsplash.com/premium_photo-1697729870676-85a2eee0c593?w=1400&q=88', // green coast
-  ireland:        'https://plus.unsplash.com/premium_photo-1697729870676-85a2eee0c593?w=1400&q=88',
-  dublin:         'https://plus.unsplash.com/premium_photo-1697729870676-85a2eee0c593?w=1400&q=88', // → Ireland
-
-  // ── Benelux & CEE ────────────────────────────────────────────────────────────
-  amsterdam:      'https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1400&q=88', // confirmed canals
-  prag:           'https://images.unsplash.com/photo-1541849546-216549ae216d?w=1400&q=88', // confirmed Old Town
-  prague:         'https://images.unsplash.com/photo-1541849546-216549ae216d?w=1400&q=88',
-  wien:           'https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=1400&q=88', // confirmed
-  vienna:         'https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=1400&q=88',
-
-  // ── Scandinavia ──────────────────────────────────────────────────────────────
-  norwegen:       'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1400&q=88', // confirmed fjords
-  norway:         'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1400&q=88',
-  oslo:           'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1400&q=88', // → Norway
-  bergen:         'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1400&q=88', // → fjords
-  lofoten:        'https://plus.unsplash.com/premium_photo-1668017178993-4c8fc9f59872?w=1400&q=88', // dramatic islands
-  schweden:       'https://images.unsplash.com/photo-1509356843151-3e7d96241e11?w=1400&q=88', // Stockholm
-  sweden:         'https://images.unsplash.com/photo-1509356843151-3e7d96241e11?w=1400&q=88',
-  stockholm:      'https://images.unsplash.com/photo-1509356843151-3e7d96241e11?w=1400&q=88', // confirmed
-  kopenhagen:     'https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?w=1400&q=88', // confirmed Nyhavn
-  copenhagen:     'https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?w=1400&q=88',
-  daenemark:      'https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?w=1400&q=88',
-  denmark:        'https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?w=1400&q=88',
-  finnland:       'https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?w=1400&q=88', // Helsinki/Nordic
-  finland:        'https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?w=1400&q=88',
-  helsinki:       'https://images.unsplash.com/photo-1538332576228-eb5b4c4de6f5?w=1400&q=88',
-  island:         'https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=1400&q=88', // confirmed volcanic
-  iceland:        'https://images.unsplash.com/photo-1476610182048-b716b8518aae?w=1400&q=88',
-  reykjavik:      'https://images.unsplash.com/photo-1474690870753-1b92efa1f2d8?w=1400&q=88', // confirmed
-
-  // ── Turkey / Middle East ─────────────────────────────────────────────────────
-  istanbul:       'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1400&q=88', // confirmed Blue Mosque
-  tuerkei:        'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1400&q=88',
-  turkey:         'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1400&q=88',
-  kappadokien:    'https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1400&q=88', // hot air balloons
-  cappadocia:     'https://images.unsplash.com/photo-1527838832700-5059252407fa?w=1400&q=88',
-  dubai:          'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1400&q=88', // confirmed Burj Khalifa
-  abudhabi:       'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1400&q=88', // → Dubai/UAE
-  oman:           'https://plus.unsplash.com/premium_photo-1674156433236-2338418ec4d9?w=1400&q=88', // Oman landscape
-  jordanien:      'https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=1400&q=88', // Petra
-  jordan:         'https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=1400&q=88',
-  petra:          'https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=1400&q=88', // Treasury
-
-  // ── Africa ───────────────────────────────────────────────────────────────────
-  marokko:        'https://images.unsplash.com/photo-1489493887464-892be6d1daae?w=1400&q=88', // Marrakech medina
-  morocco:        'https://images.unsplash.com/photo-1489493887464-892be6d1daae?w=1400&q=88',
-  marrakesch:     'https://images.unsplash.com/photo-1489493887464-892be6d1daae?w=1400&q=88', // confirmed
-  marrakech:      'https://images.unsplash.com/photo-1489493887464-892be6d1daae?w=1400&q=88',
-  suedafrika:     'https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=1400&q=88', // Table Mountain
-  southafrica:    'https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=1400&q=88',
-  kapstadt:       'https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=1400&q=88', // confirmed
-  capetown:       'https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=1400&q=88',
-  tansania:       'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1400&q=88', // savanna/Kilimanjaro
-  tanzania:       'https://images.unsplash.com/photo-1547970810-dc1eac37d174?w=1400&q=88',
-  sansibar:       'https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?w=1400&q=88', // turquoise beach
-  zanzibar:       'https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?w=1400&q=88',
-
-  // ── Indian Ocean ─────────────────────────────────────────────────────────────
-  malediven:      'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=1400&q=88', // confirmed overwater
-  maldives:       'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=1400&q=88',
-  seychellen:     'https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=1400&q=88', // confirmed boulders
-  seychelles:     'https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=1400&q=88',
-
-  // ── Americas ─────────────────────────────────────────────────────────────────
-  usa:            'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1400&q=88', // NYC
-  newyork:        'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1400&q=88', // confirmed Manhattan
-  newyorkcity:    'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1400&q=88',
-  nyc:            'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1400&q=88',
-  sanfrancisco:   'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1400&q=88', // Golden Gate
-  losangeles:     'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1400&q=88', // LA coast/city
-  miami:          'https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=1400&q=88', // beach/skyline
-  lasvegas:       'https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1400&q=88', // Strip at night
-  kanada:         'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=88', // Banff mountains
-  canada:         'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=88',
-  banff:          'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=88', // confirmed
-  vancouver:      'https://plus.unsplash.com/premium_photo-1697729974122-9c8ce287c0f3?w=1400&q=88',
-  toronto:        'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1400&q=88', // → Canada
-  mexiko:         'https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1400&q=88',
-  mexico:         'https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1400&q=88',
-  cancun:         'https://images.unsplash.com/photo-1552074284-5e88ef1aef18?w=1400&q=88', // Caribbean coast
-  tulum:          'https://images.unsplash.com/photo-1552074284-5e88ef1aef18?w=1400&q=88', // Yucatán coast
-  costarica:      'https://plus.unsplash.com/premium_photo-1687428554373-216355fb6929?w=1400&q=88', // confirmed waterfall
-  brasilien:      'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1400&q=88', // Rio Christ statue
-  brazil:         'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1400&q=88',
-  rio:            'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1400&q=88',
-  riodejaneiro:   'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1400&q=88',
-  peru:           'https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1400&q=88', // confirmed Machu Picchu
-  machupichu:     'https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1400&q=88',
-  machupicchu:    'https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1400&q=88',
-
-  // ── Southeast Asia ───────────────────────────────────────────────────────────
-  bali:           'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1400&q=88', // confirmed rice terraces
-  thailand:       'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1400&q=88',
-  bangkok:        'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1400&q=88', // → Thailand temples
-  phuket:         'https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?w=1400&q=88',
-  kohsamui:       'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=1400&q=88',
-  kosamui:        'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=1400&q=88',
-  chiangmai:      'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1400&q=88', // → Thailand
-  vietnam:        'https://images.unsplash.com/photo-1528127269322-539801943592?w=1400&q=88', // Ha Long Bay
-  hanoi:          'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=1400&q=88', // → Hoi An style
-  hochiminh:      'https://images.unsplash.com/photo-1528127269322-539801943592?w=1400&q=88', // → Vietnam
-  hoian:          'https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=1400&q=88', // lanterns
-  singapur:       'https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=1400&q=88', // confirmed Marina Bay
-  singapore:      'https://images.unsplash.com/photo-1513407030348-c983a97b98d8?w=1400&q=88',
-  philippinen:    'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=1400&q=88',
-  palawan:        'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=1400&q=88',
-
-  // ── East Asia ────────────────────────────────────────────────────────────────
-  tokio:          'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1400&q=88', // confirmed
-  tokyo:          'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1400&q=88',
-  japan:          'https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=1400&q=88', // Mt Fuji
-  kyoto:          'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1400&q=88', // confirmed Fushimi
-  osaka:          'https://plus.unsplash.com/premium_photo-1733353232022-f55baef22c5a?w=1400&q=88', // confirmed Dotonbori
-  hiroshima:      'https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=1400&q=88', // → Japan
-  nara:           'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1400&q=88', // → Kyoto/Japan
-  hokkaido:       'https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=1400&q=88', // → Japan
-  suedkorea:      'https://images.unsplash.com/photo-1538485399081-7191377e8241?w=1400&q=88', // Seoul skyline
-  southkorea:     'https://images.unsplash.com/photo-1538485399081-7191377e8241?w=1400&q=88',
-  korea:          'https://images.unsplash.com/photo-1538485399081-7191377e8241?w=1400&q=88',
-  seoul:          'https://images.unsplash.com/photo-1538485399081-7191377e8241?w=1400&q=88',
-  hongkong:       'https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=1400&q=88', // confirmed skyline
-
-  // ── South Asia ───────────────────────────────────────────────────────────────
-  srilanka:       'https://images.unsplash.com/photo-1586861203927-800a5acdcc4d?w=1400&q=88',
-  nepal:          'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=1400&q=88', // Himalaya
-  kathmandu:      'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=1400&q=88',
-
-};
+// Früher Unsplash-Fotos je Reiseziel. Die Ergebnisseite nutzt jetzt das Titelbild
+// des Reiseziels aus dem Admin (falls vorhanden), sonst die Bilder je Region oben.
+export const DESTINATION_IMAGES = {};
 
 // ── Normalizer ────────────────────────────────────────────────────────────────
 
