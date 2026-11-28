@@ -17,6 +17,23 @@ const CONS = [
   'Versicherungsbedingungen sorgfältig vergleichen und prüfen',
 ];
 
+// Bild oben in der Kachel, läuft nach unten weich in die Kachelfarbe aus
+function CardImage({ src, alt, fadeTo }) {
+  return (
+    <div style={{ position: 'relative' }}>
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        width={1000}
+        height={563}
+        style={{ display: 'block', width: '100%', height: 'auto', aspectRatio: '16 / 9', objectFit: 'cover' }}
+      />
+      <div aria-hidden="true" style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '45%', background: `linear-gradient(to bottom, transparent 0%, ${fadeTo} 100%)` }} />
+    </div>
+  );
+}
+
 export default function CarRentalProsCons() {
   return (
     <section style={{ padding: 'clamp(60px, 7vw, 96px) 0', background: '#FFFFFF' }}>
@@ -40,8 +57,10 @@ export default function CarRentalProsCons() {
             background: '#F0FDF4',
             borderRadius: '20px',
             border: '1.5px solid #86EFAC',
-            padding: '28px 26px',
+            overflow: 'hidden',
           }}>
+            <CardImage src="/images/mietwagen/mietwagen-vorteile.jpg" alt="Entspannter Affe im Mietwagen auf einer Küstenstraße" fadeTo="#F0FDF4" />
+            <div style={{ padding: '6px 26px 28px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
               <div style={{
                 width: '36px', height: '36px', borderRadius: '10px',
@@ -62,6 +81,7 @@ export default function CarRentalProsCons() {
                 </li>
               ))}
             </ul>
+            </div>
           </div>
 
           {/* Nachteile */}
@@ -69,8 +89,10 @@ export default function CarRentalProsCons() {
             background: '#FFF7ED',
             borderRadius: '20px',
             border: '1.5px solid #FED7AA',
-            padding: '28px 26px',
+            overflow: 'hidden',
           }}>
+            <CardImage src="/images/mietwagen/mietwagen-nachteile.jpg" alt="Ratloser Affe mit Strafzettel in einer engen Altstadtgasse" fadeTo="#FFF7ED" />
+            <div style={{ padding: '6px 26px 28px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
               <div style={{
                 width: '36px', height: '36px', borderRadius: '10px',
@@ -91,6 +113,7 @@ export default function CarRentalProsCons() {
                 </li>
               ))}
             </ul>
+            </div>
           </div>
         </div>
       </div>
