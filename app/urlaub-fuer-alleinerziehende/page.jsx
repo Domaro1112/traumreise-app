@@ -113,6 +113,7 @@ const BENEFIT_POINTS = [
 const TRAVEL_TYPES = [
   {
     title: 'Ferienpark mit Kind',
+    image: '/images/alleinerziehende/ferienpark.jpg',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
@@ -122,6 +123,7 @@ const TRAVEL_TYPES = [
   },
   {
     title: 'Urlaub an der Nordsee oder Ostsee',
+    image: '/images/alleinerziehende/nordsee.jpg',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
@@ -133,6 +135,7 @@ const TRAVEL_TYPES = [
   },
   {
     title: 'Bauernhofurlaub',
+    image: '/images/alleinerziehende/bauernhof.jpg',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2a10 10 0 0 1 10 10H2A10 10 0 0 1 12 2z"/><path d="M12 12v10"/><path d="M12 12l-4-4"/><path d="M12 12l4-4"/>
@@ -142,6 +145,7 @@ const TRAVEL_TYPES = [
   },
   {
     title: 'All-Inclusive mit Kinderbetreuung',
+    image: '/images/alleinerziehende/all-inclusive.jpg',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
@@ -151,6 +155,7 @@ const TRAVEL_TYPES = [
   },
   {
     title: 'Campingurlaub mit Kind',
+    image: '/images/alleinerziehende/camping.jpg',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 17l7.5-13L18 17"/><path d="M1 17h22"/>
@@ -160,12 +165,13 @@ const TRAVEL_TYPES = [
   },
   {
     title: 'Städtetrip mit kurzer Anreise',
+    image: '/images/alleinerziehende/staedtetrip.jpg',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
       </svg>
     ),
-    text: 'Für Kinder ab ca. 5 Jahren eignen sich kurze Städtetrips mit direkter Bahn- oder Busverbindung. Hamburg, Berlin, Wien, Prag – viele Städte haben kinderfreundliche Museen, Parks und kurze Wege. Gut planbar, kein langer Anreisetag.',
+    text: 'Für Kinder ab ca. 5 Jahren eignen sich kurze Städtetrips mit direkter Bahn- oder Busverbindung. Hamburg, Berlin, Dresden, Wien, Prag – viele Städte haben kinderfreundliche Museen, Parks und kurze Wege. Gut planbar, kein langer Anreisetag.',
   },
 ];
 
@@ -457,7 +463,7 @@ export default async function AlleinerziehendePage() {
 
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
                 gap: '24px',
               }}>
                 {TRAVEL_TYPES.map((t) => (
@@ -465,18 +471,22 @@ export default async function AlleinerziehendePage() {
                     background: '#FFFFFF',
                     border: '1px solid #E2E8F0',
                     borderRadius: '20px',
-                    padding: '28px 24px',
+                    overflow: 'hidden',
                     boxShadow: '0 2px 12px rgba(15,23,42,0.05)',
                   }}>
-                    <div style={{
-                      width: '48px', height: '48px', borderRadius: '14px',
-                      background: 'linear-gradient(135deg, rgba(14,165,233,0.10) 0%, rgba(6,182,212,0.10) 100%)',
-                      border: '1px solid rgba(14,165,233,0.15)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      color: '#0EA5E9', marginBottom: '18px',
+                    <div aria-hidden="true" style={{
+                      position: 'relative',
+                      aspectRatio: '16 / 9',
+                      backgroundImage: `url(${t.image})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
                     }}>
-                      {t.icon}
+                      <div style={{
+                        position: 'absolute', left: 0, right: 0, top: 0, bottom: '-2px',
+                        background: 'linear-gradient(to bottom, rgba(255,255,255,0) 45%, rgba(255,255,255,0.75) 80%, #FFFFFF 98%)',
+                      }} />
                     </div>
+                    <div style={{ padding: '0 24px 28px', marginTop: '-14px', position: 'relative' }}>
                     <h3 style={{
                       fontFamily: 'var(--font-heading, "Poppins", system-ui, sans-serif)',
                       fontSize: '17px', fontWeight: 700, color: '#0F172A',
@@ -487,6 +497,7 @@ export default async function AlleinerziehendePage() {
                     <p style={{ fontSize: '14px', color: '#64748B', lineHeight: 1.7, margin: 0 }}>
                       {t.text}
                     </p>
+                    </div>
                   </div>
                 ))}
               </div>
