@@ -621,7 +621,12 @@ export default function SoFunktionierts() {
                 border: '1.5px solid #E2E8F0',
                 borderRadius: '24px',
                 padding: '32px 28px',
+                overflow: 'hidden',
               }}>
+                <div style={{ margin: '-32px -28px 24px', overflow: 'hidden' }}>
+                  <img src="/images/so-funktionierts/unterschied-klassisch.jpg" alt="Gestresster Affe vor Laptop, Prospekten und Notizzetteln" loading="lazy" width={1000} height={563}
+                    style={{ display: 'block', width: '100%', height: 'auto', aspectRatio: '16 / 9', objectFit: 'cover' }} />
+                </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
                   <div style={{
                     width: '38px',
@@ -677,7 +682,12 @@ export default function SoFunktionierts() {
                 borderRadius: '24px',
                 padding: '32px 28px',
                 boxShadow: '0 8px 40px rgba(14,165,233,0.10)',
+                overflow: 'hidden',
               }}>
+                <div style={{ margin: '-32px -28px 24px', overflow: 'hidden' }}>
+                  <img src="/images/so-funktionierts/unterschied-apearound.jpg" alt="Entspannter Affe in der Hängematte mit Blick aufs Meer" loading="lazy" width={1000} height={563}
+                    style={{ display: 'block', width: '100%', height: 'auto', aspectRatio: '16 / 9', objectFit: 'cover' }} />
+                </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
                   <div style={{
                     width: '38px',
