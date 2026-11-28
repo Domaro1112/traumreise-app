@@ -25,7 +25,7 @@ export default function NewsletterSection() {
               srcSet="/images/newsletter/newsletter-image-mobile.png"
             />
             <img
-              src="/images/newsletter/newsletter-image.png"
+              src="/images/newsletter/newsletter-bild.jpg"
               alt=""
               aria-hidden="true"
               className="newsletter-bg-img"
