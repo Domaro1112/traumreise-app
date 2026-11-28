@@ -19,12 +19,6 @@ export default async function AdminNewsletterPage() {
     subscribers = data ?? [];
   } catch {}
 
-  const counts = {
-    pending:      subscribers.filter(s => s.status === 'pending').length,
-    confirmed:    subscribers.filter(s => s.status === 'confirmed').length,
-    unsubscribed: subscribers.filter(s => s.status === 'unsubscribed').length,
-  };
-
   return (
     <div>
       <NewsletterTabs active="abonnenten" />
@@ -37,34 +31,13 @@ export default async function AdminNewsletterPage() {
         }}>
           Newsletter-Abonnenten
         </h2>
-        <p style={{ fontSize: '14px', color: '#64748B', margin: '0 0 20px' }}>
-          Alle Anmeldungen mit Double-Opt-In-Status.
+        <p style={{ fontSize: '14px', color: '#64748B', margin: 0 }}>
+          Alle Anmeldungen mit Double-Opt-In-Status. Newsletter gehen nur an bestätigte Adressen.
         </p>
 
-        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-          {[
-            { label: 'Bestätigt',   count: counts.confirmed,    color: '#059669', bg: 'rgba(16,185,129,0.10)' },
-            { label: 'Ausstehend',  count: counts.pending,      color: '#D97706', bg: 'rgba(245,158,11,0.10)' },
-            { label: 'Abgemeldet',  count: counts.unsubscribed, color: '#475569', bg: 'rgba(100,116,139,0.12)' },
-          ].map(({ label, count, color, bg }) => (
-            <div key={label} style={{
-              padding: '6px 14px', borderRadius: '20px',
-              background: bg, color, fontSize: '13px', fontWeight: 600,
-            }}>
-              {label}: {count}
-            </div>
-          ))}
-          <div style={{
-            padding: '6px 14px', borderRadius: '20px',
-            background: '#F1F5F9', color: '#374151',
-            fontSize: '13px', fontWeight: 600,
-          }}>
-            Gesamt: {subscribers.length}
-          </div>
-        </div>
       </div>
 
-      <NewsletterAdminClient subscribers={subscribers} counts={counts} />
+      <NewsletterAdminClient subscribers={subscribers} />
     </div>
   );
 }

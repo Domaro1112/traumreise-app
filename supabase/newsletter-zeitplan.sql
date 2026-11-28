@@ -24,7 +24,7 @@ select cron.schedule(
   $$
   select net.http_post(
     url     := 'https://apearound.de/api/cron/newsletter',
-    headers := jsonb_build_object('Authorization', 'Bearer DEIN_CRON_SECRET'),
+    headers := jsonb_build_object('Authorization', 'Bearer NHjyiNBASCN36ehJIJg<ztdfk*+9084hHGctawgvd-oeru8Gteg??'),
     body    := '{}'::jsonb,
     timeout_milliseconds := 60000
   );
