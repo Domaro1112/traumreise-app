@@ -386,17 +386,18 @@ export default function ReisezielePageClient({ destinations = [], heroFocus }) {
       {/* ══ BELIEBTE REISEZIELE + CTA ══════════════════════════════════════════ */}
       <section style={{ padding: 'clamp(44px, 6vw, 68px) 0', background: '#FFFFFF' }}>
         <Container>
+          {/* Überschrift über beiden Spalten – so beginnen Karten und Kasten auf gleicher Höhe */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '5px' }}>
+            <Star size={13} strokeWidth={2} color="#F59E0B" />
+            <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: '#F59E0B' }}>Empfehlungen</span>
+          </div>
+          <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(17px, 2.5vw, 26px)', fontWeight: 800, color: '#0F172A', margin: '0 0 20px', letterSpacing: '-0.02em' }}>
+            Aktuell beliebte Reiseziele
+          </h2>
           <div className="rzp-popular-wrap">
 
             {/* Destination cards */}
             <div className="rzp-popular-content">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '5px' }}>
-                <Star size={13} strokeWidth={2} color="#F59E0B" />
-                <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: '#F59E0B' }}>Empfehlungen</span>
-              </div>
-              <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(17px, 2.5vw, 26px)', fontWeight: 800, color: '#0F172A', margin: '0 0 20px', letterSpacing: '-0.02em' }}>
-                Aktuell beliebte Reiseziele
-              </h2>
               <div className="rzp-popular-grid">
                 {popularPicks.map(pick => (
                   <Link key={pick.slug} href={pick.href} style={{ textDecoration: 'none', display: 'block' }}>
@@ -433,23 +434,35 @@ export default function ReisezielePageClient({ destinations = [], heroFocus }) {
 
             {/* CTA card */}
             <aside className="rzp-popular-aside">
-              <div className="rzp-popular-cta" style={{ background: 'linear-gradient(160deg, #0C1A3A 0%, #0B3D6B 60%, #0EA5E9 100%)', borderRadius: '20px', padding: '26px 20px', color: '#fff', boxShadow: '0 8px 32px rgba(14,165,233,0.22)', position: 'sticky', top: '88px' }}>
-                <div style={{ width: '42px', height: '42px', borderRadius: '11px', background: 'rgba(255,255,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '14px' }}>
-                  <Zap size={20} strokeWidth={2} color="#38BDF8" />
+              <div className="rzp-popular-cta" style={{ background: 'linear-gradient(165deg, #0C1A3A 0%, #0B3D6B 55%, #0284C7 100%)', borderRadius: '16px', overflow: 'hidden', color: '#fff', boxShadow: '0 10px 32px rgba(14,165,233,0.22)', position: 'sticky', top: '88px' }}>
+                <div style={{ position: 'relative', height: '155px', backgroundImage: "url('/images/tipps/budget-finder.jpg'), linear-gradient(135deg,#0EA5E9,#06B6D4)", backgroundSize: 'cover', backgroundPosition: 'center 30%' }}>
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(12,26,58,0) 45%, rgba(12,26,58,0.85) 100%)' }} />
+                  <span style={{ position: 'absolute', top: '10px', left: '10px', display: 'inline-flex', alignItems: 'center', gap: '4px', background: 'rgba(255,255,255,0.95)', color: '#0284C7', fontSize: '10px', fontWeight: 700, borderRadius: '6px', padding: '3px 8px' }}>
+                    <Zap size={11} strokeWidth={2.5} /> Reisefinder
+                  </span>
                 </div>
-                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', fontWeight: 800, margin: '0 0 9px', letterSpacing: '-0.01em' }}>
-                  Noch keine Idee?
-                </h3>
-                <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.72)', margin: '0 0 22px', lineHeight: 1.65 }}>
-                  Beantworte ein paar kurze Fragen und finde dein perfektes Reiseziel.
-                </p>
-                <Link href="/#wizard" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '12px 16px', borderRadius: '11px', background: 'rgba(255,255,255,0.15)', border: '1.5px solid rgba(255,255,255,0.25)', color: '#fff', textDecoration: 'none', fontSize: '14px', fontWeight: 700, transition: 'background 0.15s' }}
-                  onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.22)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.15)'; }}
-                >
-                  <Zap size={14} strokeWidth={2} />
-                  Traumurlaub finden
-                </Link>
+                <div style={{ padding: '16px 18px 18px' }}>
+                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '19px', fontWeight: 800, color: '#FFFFFF', margin: '0 0 6px', letterSpacing: '-0.01em' }}>
+                    Noch keine Idee?
+                  </h3>
+                  <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.78)', margin: '0 0 14px', lineHeight: 1.6 }}>
+                    Beantworte ein paar kurze Fragen und finde Reiseziele, die zu dir passen.
+                  </p>
+                  <ul style={{ listStyle: 'none', margin: '0 0 16px', padding: 0, display: 'grid', gap: '6px' }}>
+                    {['In 2 Minuten fertig', 'Kostenlos & ohne Anmeldung', 'Passend zu Budget & Reisezeit'].map(t => (
+                      <li key={t} style={{ display: 'flex', alignItems: 'center', gap: '7px', fontSize: '12.5px', color: 'rgba(255,255,255,0.9)' }}>
+                        <span style={{ width: '16px', height: '16px', borderRadius: '50%', background: 'rgba(56,189,248,0.22)', color: '#7DD3FC', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', fontWeight: 800, flexShrink: 0 }}>✓</span>
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/#wizard" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '11px 16px', borderRadius: '11px', background: '#FFFFFF', color: '#0284C7', textDecoration: 'none', fontSize: '14px', fontWeight: 800, boxShadow: '0 4px 14px rgba(0,0,0,0.18)', transition: 'transform 0.15s' }}
+                    onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                    onMouseLeave={e => { e.currentTarget.style.transform = 'none'; }}
+                  >
+                    Traumurlaub finden <ArrowRight size={14} strokeWidth={2.5} />
+                  </Link>
+                </div>
               </div>
             </aside>
 

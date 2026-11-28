@@ -975,7 +975,7 @@ details > summary::marker { display: none; }
 
 /* Tablet ≤860px: stack popular aside below content, unlock sticky */
 @media (max-width: 860px) {
-  .rzp-popular-wrap    { flex-direction: column; }
+  .rzp-popular-wrap    { flex-direction: column; align-items: stretch; }
   .rzp-popular-aside   { width: 100% !important; flex-shrink: unset; }
   .rzp-popular-cta     { position: static !important; top: auto !important; }
   .rzp-popular-grid    { grid-template-columns: repeat(2, 1fr); }
