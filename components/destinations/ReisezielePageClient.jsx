@@ -435,9 +435,9 @@ export default function ReisezielePageClient({ destinations = [], heroFocus }) {
             {/* CTA card */}
             <aside className="rzp-popular-aside">
               <div className="rzp-popular-cta" style={{ background: 'linear-gradient(165deg, #0C1A3A 0%, #0B3D6B 55%, #0284C7 100%)', borderRadius: '16px', overflow: 'hidden', color: '#fff', boxShadow: '0 10px 32px rgba(14,165,233,0.22)', position: 'sticky', top: '88px' }}>
-                <div style={{ position: 'relative', height: '155px', backgroundImage: "url('/images/tipps/budget-finder.jpg'), linear-gradient(135deg,#0EA5E9,#06B6D4)", backgroundSize: 'cover', backgroundPosition: 'center 30%' }}>
+                <div style={{ position: 'relative', aspectRatio: '16 / 10', backgroundImage: "url('/images/reisefinder.jpg'), linear-gradient(135deg,#0EA5E9,#06B6D4)", backgroundSize: 'cover', backgroundPosition: 'center' }}>
                   <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(12,26,58,0) 45%, rgba(12,26,58,0.85) 100%)' }} />
-                  <span style={{ position: 'absolute', top: '10px', left: '10px', display: 'inline-flex', alignItems: 'center', gap: '4px', background: 'rgba(255,255,255,0.95)', color: '#0284C7', fontSize: '10px', fontWeight: 700, borderRadius: '6px', padding: '3px 8px' }}>
+                  <span style={{ position: 'absolute', bottom: '10px', left: '10px', display: 'inline-flex', alignItems: 'center', gap: '4px', background: 'rgba(255,255,255,0.95)', color: '#0284C7', fontSize: '10px', fontWeight: 700, borderRadius: '6px', padding: '3px 8px' }}>
                     <Zap size={11} strokeWidth={2.5} /> Reisefinder
                   </span>
                 </div>
