@@ -19,11 +19,10 @@ export default function NewsletterSection() {
       <Container>
         <div className="newsletter-card">
           {/* ── Background: desktop landscape / mobile portrait ── */}
-          <picture style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
-            <source
-              media="(max-width: 768px)"
-              srcSet="/images/newsletter/newsletter-image-mobile.png"
-            />
+          {/* Auf dem Handy (≤ 640 px) wird stattdessen das Hochkant-Bild aus drei Teilen als
+              Hintergrund der Karte genutzt (siehe .newsletter-card in globals.css) – so wächst
+              das Holzschild mit dem Text mit und nichts ragt über den Rand. */}
+          <picture className="newsletter-bg-picture" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
             <img
               src="/images/newsletter/newsletter-bild.jpg"
               alt=""
