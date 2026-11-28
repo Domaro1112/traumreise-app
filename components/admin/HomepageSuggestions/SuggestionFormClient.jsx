@@ -2,7 +2,18 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import ImageUploader from '@/components/admin/media/ImageUploader';
 import { buildProviderTargetUrl, buildHomepageSuggestionHref, normalizeImageUrl, isValidImageUrl } from '@/lib/homepage-suggestions';
+
+// Ordnername für hochgeladene Bilder (aus dem Titel, nur a–z, 0–9 und -)
+function uploadSlug(prefix, title) {
+  const s = String(title ?? '').toLowerCase()
+    .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 50);
+  return `${prefix}-${s || 'bild'}`;
+}
+
 
 const BADGE_OPTIONS = ['Beliebt', 'Traumziel', 'Geheimtipp', 'Trending'];
 const PROVIDER_OPTIONS = [
@@ -250,12 +261,26 @@ export default function SuggestionFormClient({ initial }) {
           Bild
         </h3>
 
-        <Field label="Bild-URL *" hint="Lokaler Pfad: /images/reisevorschlag/bali.jpg · Externe URL: https://example.com/bild.jpg">
+        <Field label="Bild *" hint="Bild hierher ziehen oder auswählen – große Bilder werden automatisch verkleinert.">
+          <ImageUploader
+            value={form.image_url}
+            alt={form.image_alt}
+            slug={uploadSlug('startseite', form.title)}
+            type="cover"
+            context="blog"
+            label="Bild"
+            altDefault={form.title}
+            onChange={(url, alt) => setForm(prev => ({ ...prev, image_url: url, image_alt: alt || prev.image_alt }))}
+            onDelete={() => setForm(prev => ({ ...prev, image_url: '' }))}
+          />
+        </Field>
+
+        <Field label="Oder Bild-Adresse" hint="Nur falls das Bild schon im Projekt liegt, z. B. /images/reisearten/strand.jpg">
           <input
             type="text"
             value={form.image_url}
             onChange={set('image_url')}
-            placeholder="/images/reisevorschlag/bali.jpg"
+            placeholder="/images/…"
             style={FIELD_STYLE}
           />
         </Field>
@@ -269,16 +294,6 @@ export default function SuggestionFormClient({ initial }) {
             style={FIELD_STYLE}
           />
         </Field>
-
-        {form.image_url && (
-          <div style={{ marginTop: '4px' }}>
-            <img
-              src={form.image_url}
-              alt="Vorschau"
-              style={{ width: '100%', maxWidth: '320px', height: '180px', objectFit: 'cover', borderRadius: '10px', border: '1.5px solid #E2E8F0' }}
-            />
-          </div>
-        )}
       </div>
 
       {/* Section: Link & Affiliate */}
